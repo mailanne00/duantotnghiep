@@ -114,6 +114,14 @@
                                 <td>$103,600</td>
                             </tr>
                             <tr>
+                                <td>Jena Gaines</td>
+                                <td>Office Manager</td>
+                                <td>London</td>
+                                <td>30</td>
+                                <td>2008/12/19</td>
+                                <td>$90,560</td>
+                            </tr>
+                            <tr>
                                 <td>Quinn Flynn</td>
                                 <td>Support Lead</td>
                                 <td>Edinburgh</td>
