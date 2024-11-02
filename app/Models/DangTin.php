@@ -10,10 +10,7 @@ class DangTin extends Model
     use HasFactory;
 
     protected $fillable = [
-        "tai_khoan_id",
-        "video",
-        "noi_dung",
-        "trang_thai"
+       
     ];
 
     // Model Story.php
