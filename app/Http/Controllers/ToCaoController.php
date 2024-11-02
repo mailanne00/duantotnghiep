@@ -71,7 +71,7 @@ class ToCaoController extends Controller
     {
         // Validate incoming request
         $request->validate([
-            'trang_thai' => 'required|in:Chờ xử lí,Đã Duyệt,Hủy', // Removed Thành công from validation rules
+            'trang_thai' => 'required|in:Chờ xử lí,Đã Duyệt,Hủy,huy', // Removed Thành công from validation rules
         ]);
 
         // Check if the complaint is already successful
