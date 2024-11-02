@@ -13,7 +13,7 @@
                 <div class="input-group">
                     <input type="text" name="query" class="form-control" placeholder="Nhập ID player để tìm kiếm..." value="{{ request('query') }}">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Tìm kiếm ID</button>
+                        <button class="btn btn-primary" type="submit">Tìm kiếm theo ID</button>
                     </div>
                 </div>
             </div>

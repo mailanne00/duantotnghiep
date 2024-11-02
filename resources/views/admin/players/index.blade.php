@@ -31,15 +31,15 @@
                         </thead>
                         <tbody>
                             @foreach ($players as $player)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $player -> taiKhoan -> ten }}</td>
-                                    <td>{{ $player -> taiKhoan -> gioi_tinh }}</td>
-                                    <td><img src="{{ Storage::url($player -> taiKhoan -> anh_dai_dien) }}" alt="Ảnh đại diện" width="100"></td>
-                                    <td>{{ $player -> trang_thai_player }}</td>
-                                    {{-- <td>{{ $player -> taiKhoan -> phanQuyen -> ten }}</td> --}}
-                                    <td><a href="{{ route('admin.players.show', $player -> id) }}"><i class="fas fa-eye" style="font-size: 18px"></i></a></td>
-                                </tr>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $player -> taiKhoan -> ten }}</td>
+                                <td>{{ $player -> taiKhoan -> gioi_tinh }}</td>
+                                <td><img src="{{ Storage::url($player -> taiKhoan -> anh_dai_dien) }}" alt="Ảnh đại diện" width="100"></td>
+                                <td>{{ $player -> trang_thai_player }}</td>
+                                {{-- <td>{{ $player -> taiKhoan -> phanQuyen -> ten }}</td> --}}
+                                <td><a href="{{ route('admin.players.show', $player -> id) }}"><i class="fas fa-eye" style="font-size: 18px"></i></a></td>
+                            </tr>
                             @endforeach
                             <tr>
                                 <td>Quinn Flynn</td>
@@ -167,6 +167,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/plugins/data-tables/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/data-basic-custom.js') }}"></script>
+<script src="{{ asset('assets/plugins/data-tables/js/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/data-basic-custom.js') }}"></script>
 @endsection
