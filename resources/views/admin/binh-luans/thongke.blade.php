@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-4">Đánh giá player</h1>
+    <h1 class="text-center mb-4">Đánh giá từng player </h1>
 
     <!-- Form Tìm Kiếm -->
     <form method="GET" action="{{ route('admin.binhluans.thongke') }}" class="mb-4">
@@ -35,7 +35,7 @@
         </div>
     </form> 
 
-    <h3 class="mb-3">Danh sách</h3>
+    <h3 class="mb-3">Danh sách player</h3>
     <div class="row">
         @foreach($binhLuans->groupBy('player_id') as $playerId => $binhLuansForPlayer)
             <div class="col-md-4 mb-4">
