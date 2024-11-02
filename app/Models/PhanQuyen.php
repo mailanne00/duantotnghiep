@@ -10,7 +10,7 @@ class PhanQuyen extends Model
     use HasFactory;
 
     public $fillable = [
-        "ten"
+       
     ];
 
 }
