@@ -92,6 +92,14 @@ class TaiKhoanController extends Controller
         $taikhoan = TaiKhoan::find($id);
         return view('admin.taikhoans.show', compact('taikhoan'));
     }
+    public function banUser($id)
+    {
+        $user = TaiKhoan::findOrFail($id);
+        $user->banned_at = now();
+        $user->save();
+
+        return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã bị cấm.');
+    }
 
 
 }
