@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\BinhLuanController;
+use App\Http\Controllers\DangTinController;
+use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ToCaoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +23,30 @@ Route::get('/', function () {
     return view('admin.layouts.app');
 });
 
+
+
+Route::get('/to-caos', [ToCaoController::class, 'index'])->name('tocao.index');
+Route::delete('/to-caos/{complaint}', [ToCaoController::class, 'destroy'])->name('tocaos.destroy');
+Route::patch('/to-caos/{complaint}', [ToCaoController::class, 'updateStatus'])->name('tocao.updateStatus');
+Route::get('/to-caos/add', [ToCaoController::class, 'create'])->name('tocao.add');
+Route::post('/to-caos/add', [ToCaoController::class, 'store'])->name('tocao.store');
+Route::get('/to-caos/{complaint}', [ToCaoController::class, 'show'])->name('tocao.show');
+
+
+Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');
+Route::get('/dangtins/create', [DangTinController::class, 'create'])->name('dangtins.create');
+Route::post('/dangtins', [DangTinController::class, 'store'])->name('dangtins.store');
+Route::delete('/dangtins/{id}', [DangTinController::class, 'store'])->name('dangtins.destroy');
+
+Route::get('/phuongthucthanhtoans', [PhuongThucThanhToanController::class, 'index'])->name('phuongthucthanhtoans.index');
+Route::get('/phuongthucthanhtoans/create', [PhuongThucThanhToanController::class, 'create'])->name('phuongthucthanhtoans.create');
+Route::post('/phuongthucthanhtoans', [PhuongThucThanhToanController::class, 'store'])->name('phuongthucthanhtoans.store');
+Route::get('/phuongthucthanhtoans/{id}/edit', [PhuongThucThanhToanController::class, 'edit'])->name('phuongthucthanhtoans.edit');
+Route::put('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'update'])->name('phuongthucthanhtoans.update');
+Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanController::class, 'updateStatus'])->name('phuongthucthanhtoans.update-status');
+Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
+
+
 Route::resource('players', PlayerController::class);
 
 
@@ -30,3 +58,22 @@ Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('tai
 Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
+Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+//Quản lí nạp tiền
+Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
+Route::get('/danhmucs', [DanhMucController::class, 'index'])->name('danhmucs.index');
+Route::get('/danhmucs/create', [DanhMucController::class, 'create'])->name('danhmucs.create');
+Route::post('/danhmucs/store', [DanhMucController::class, 'store'])->name('danhmucs.store');
+Route::get('/danhmucs/{id}/edit', [DanhMucController::class, 'edit'])->name('danhmucs.edit');
+Route::put('/danhmucs/{id}', [DanhMucController::class, 'update'])->name('danhmucs.update');
+Route::put('/danhmucs/{id}/update-status', [DanhMucController::class, 'updateStatus'])->name('danhmucs.update-status');
+Route::delete('/danhmucs/{id}', [DanhMucController::class, 'destroy'])->name('danhmucs.destroy');
+
+
+Route::get('/binhluans', [BinhLuanController::class, 'index'])->name('binhluans.index');
+Route::get('/binhluans/create', [BinhLuanController::class, 'create'])->name('binhluans.create');
+Route::post('/binhluans/store', [BinhLuanController::class, 'store'])->name('binhluans.store');
+Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('binhluans.edit');
+Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
+Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
+Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');

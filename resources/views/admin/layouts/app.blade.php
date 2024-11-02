@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>@yield('title' , 'Đây là trang chủ')</title>
+    <title>@yield('title', 'Đây là trang chủ')</title>
     <meta name="description"
         content="Dasho Bootstrap admin template made using Bootstrap 5 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords"
@@ -55,7 +55,8 @@
         <div class="navbar-wrapper ">
             <div class="navbar-brand header-logo" style="display: flex; align-items: center;">
                 <a href="index.html" class="b-brand">
-                    <img src="{{ asset('assets/images/logoPD.png') }}" alt="logo" style="margin-right: 5px; width: 30px">
+                    <img src="{{ asset('assets/images/logoPD.png') }}" alt="logo"
+                        style="margin-right: 5px; width: 30px">
                     <span style="color: #fff ;font-weight: bold; font-size: 16px;">PlayerDuo</span>
                 </a>
                 <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
@@ -80,9 +81,14 @@
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lí player</span></a>
+                                    class="fas fa-user"></i></span><span class="pcoded-mtext">Quản lí
+                                player</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a>
+                            </li>
+                            <li class=""><a href="{{ route('admin.players.bieudoduong') }}" class="">Biểu đồ
+                                    đường player</a>
+                            </li>
                         </ul>
                     </li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
@@ -95,6 +101,56 @@
 
                         </ul>
                     </li>
+
+
+                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="{{ route('admin.tocao.index') }}" class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-exclamation-circle"></i></span><span class="pcoded-mtext">Tố cáo
+                                player</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{ route('admin.tocao.index') }}" class="">Danh
+                                    sách</a>
+                            </li>
+                            <li class=""><a href="{{ route('admin.tocao.add') }}" class="">Thêm
+                                    mới</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-video"></i></span><span
+                                class="pcoded-mtext">Quản lý đăng tin</span></a></li>
+                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}" class="">Thêm mới</a></li>
+                        </ul>
+
+                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-money-check-alt"></i></span><span class="pcoded-mtext">Quản lí nạp tiền</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{route('admin.quan-li-nap-tiens.index')}}" class="">Danh sách</a></li>
+                        </ul>
+                    </li>
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
+                        class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-comment-dots"></i></span><span
+                            class="pcoded-mtext">Quản lý bình luận</span></a></li>
+                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                    class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-list-ul"></i></span><span class="pcoded-mtext">Quản lý danh mục</span></a>
+                    <ul class="pcoded-submenu">
+                        <li class=""><a href="{{ route('admin.danhmucs.index') }}" class="">Danh sách</a></li>
+                        <li class=""><a href="{{ route('admin.danhmucs.create') }}" class="">Thêm mới</a></li>
+                    </ul>
+                </li>
                 </ul>
             </div>
 
