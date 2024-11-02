@@ -9,7 +9,7 @@ class BinhLuan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['noi_dung', 'tai_khoan_id', 'player_id', 'binh_luan_id', 'danh_gia', 'trang_thai'];
+  
 
     public function taikhoan()
     {
