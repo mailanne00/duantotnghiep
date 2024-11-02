@@ -137,14 +137,6 @@
                                 <td>2013/03/03</td>
                                 <td>$342,000</td>
                             </tr>
-                            <tr>
-                                <td>Charde Marshall</td>
-                                <td>Regional Director</td>
-                                <td>San Francisco</td>
-                                <td>36</td>
-                                <td>2008/10/16</td>
-                                <td>$470,600</td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>
