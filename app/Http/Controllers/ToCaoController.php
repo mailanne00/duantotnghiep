@@ -69,24 +69,32 @@ class ToCaoController extends Controller
 
     public function updateStatus(ToCao $complaint, Request $request)
     {
+        // Validate incoming request
         $request->validate([
-            'trang_thai' => 'required|in:Chờ xử lí,Đã Duyệt,Hủy',
+            'trang_thai' => 'required|in:Chờ xử lí,Đã Duyệt,Hủy', // Removed Thành công from validation rules
         ]);
 
-        if ($complaint->trang_thai === 'Đã Duyệt' && $request->trang_thai !== 'Đã Duyệt') {
-            return redirect()->route('admin.tocao.index')->with('error', 'Không thể cập nhật trạng thái từ "Đã Duyệt" sang trạng thái khác.');
+        // Check if the complaint is already successful
+        if ($complaint->trang_thai === 'Thành công' && $request->trang_thai !== 'Đã Duyệt') {
+            return redirect()->route('admin.tocao.index')->with('error', 'Không thể cập nhật trạng thái từ "Thành công" sang trạng thái khác.');
         }
 
-        $complaint->update([
-            'trang_thai' => $request->trang_thai,
-        ]);
+        // Update the status based on user input
+        if ($request->trang_thai === 'Đã Duyệt') {
+            $complaint->update([
+                'trang_thai' => 'Thành công', // Set to Thành công when Đã Duyệt is selected
+            ]);
+        } else {
+            $complaint->update([
+                'trang_thai' => $request->trang_thai,
+            ]);
+        }
 
-
-
+        // Handle user updates based on the new status
         $user = TaiKhoan::find($complaint->id_player);
         if ($user) {
-            switch ($request->trang_thai) {
-                case 'Đã Duyệt':
+            switch ($complaint->trang_thai) { // Use the updated status
+                case 'Thành công':
                     $user->update(['bi_cam' => 1]);
                     break;
                 case 'Chờ xử lí':

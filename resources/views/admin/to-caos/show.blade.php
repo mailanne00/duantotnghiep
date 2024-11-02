@@ -79,7 +79,7 @@
                             <select class="form-control" id="status" name="trang_thai" required>
                                 <option value="Chờ xử lí" {{ $complaint->trang_thai === 'Chờ xử lí' ? 'selected' : '' }}>Chờ
                                     xử lí</option>
-                                <option value="Đã Duyệt" {{ $complaint->trang_thai === 'Đã Duyệt' ? 'selected' : '' }}>Đã
+                                <option value="Đã Duyệt" {{ $complaint->trang_thai === 'Thành công' ? 'selected' : '' }}>Đã
                                     Duyệt</option>
                                 <option value="Hủy" {{ $complaint->trang_thai === 'Hủy' ? 'selected' : '' }}>Hủy</option>
                             </select>
