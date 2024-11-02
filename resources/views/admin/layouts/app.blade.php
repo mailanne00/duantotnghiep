@@ -97,6 +97,15 @@
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}" class="">Thêm mới</a></li>
                         </ul>
+
+                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                                    class="feather icon-credit-card"></i></span><span class="pcoded-mtext">Quản lí nạp tiền</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{route('admin.quan-li-nap-tiens.index')}}" class="">Danh sách</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
