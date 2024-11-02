@@ -114,6 +114,14 @@
                                 <td>$103,600</td>
                             </tr>
                             <tr>
+                                <td>Quinn Flynn</td>
+                                <td>Support Lead</td>
+                                <td>Edinburgh</td>
+                                <td>22</td>
+                                <td>2013/03/03</td>
+                                <td>$342,000</td>
+                            </tr>
+                            <tr>
                                 <td>Charde Marshall</td>
                                 <td>Regional Director</td>
                                 <td>San Francisco</td>
