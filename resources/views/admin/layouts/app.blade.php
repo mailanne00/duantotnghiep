@@ -91,6 +91,8 @@
                                     class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lí tài khoản</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.taikhoans.index') }}" class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.taikhoans.create') }}" class="">Thêm mới</a></li>
+
                         </ul>
                     </li>
                 </ul>

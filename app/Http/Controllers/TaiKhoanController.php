@@ -87,5 +87,11 @@ class TaiKhoanController extends Controller
 
         return redirect()->route('admin.taikhoans.index')->with('success', 'Thêm tài khoản thành công!');
     }
+    public function show($id)
+    {
+        $taikhoan = TaiKhoan::find($id);
+        return view('admin.taikhoans.show', compact('taikhoan'));
+    }
+
 
 }
