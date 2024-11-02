@@ -99,6 +99,9 @@
                             <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh
                                     sách</a>
                             </li>
+                            <li class=""><a href="{{ route('admin.players.bieudoduong') }}" class="">Biểu đồ
+                                    đường player</a>
+                            </li>
                         </ul>
                     </li>
 
