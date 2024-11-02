@@ -32,4 +32,9 @@ class Player extends Model
     {
         return $this->hasOne(TheoDoiPlayer::class, 'player_id');
     }
+
+    public function danhGias()
+    {
+        return $this->hasMany(DanhGia::class);
+    }
 }
