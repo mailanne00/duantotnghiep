@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-4">Đánh giá từng player </h1>
+    <h1 class="text-center mb-4">Đánh giá từng player</h1>
 
     <!-- Form Tìm Kiếm -->
     <form method="GET" action="{{ route('admin.binhluans.thongke') }}" class="mb-4">
@@ -53,7 +53,7 @@
                     @endphp
 
                     <div class="average-rating mb-2">
-                        <h5 class="font-weight-bold">Tỷ lệ đánh giá</h5>
+                        <h5 class="font-weight-bold">Tỷ lệ</h5>
                         <div class="star-rating">
                             @for ($i = 1; $i <= 5; $i++)
                                 <div class="star-count">
