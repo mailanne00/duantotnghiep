@@ -64,6 +64,7 @@
                                 <th>Video</th>
                                 <th>Lượt Thích</th>
                                 <th>Nội Dung</th>
+                                <th>Trạng Thái</th>
                             </tr>
                         </tfoot>
                     </table>
