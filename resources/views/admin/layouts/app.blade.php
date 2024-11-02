@@ -96,7 +96,7 @@
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="{{ route('admin.tocao.index') }}" class="nav-link"><span class="pcoded-micon"><i
-                                    class="feather icon-credit-card"></i></span><span class="pcoded-mtext">Tố cáo
+                                    class="fas fa-exclamation-circle"></i></span><span class="pcoded-mtext">Tố cáo
                                 player</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.tocao.index') }}" class="">Danh
@@ -114,7 +114,7 @@
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="feather icon-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
+                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}" class="">Thêm mới</a></li>
@@ -130,7 +130,7 @@
                     </li>
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
                         class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-comment-alt"></i></span><span
+                                class="fas fa-comment-dots"></i></span><span
                             class="pcoded-mtext">Quản lý bình luận</span></a></li>
                 <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">
