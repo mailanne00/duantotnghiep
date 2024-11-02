@@ -14,8 +14,5 @@ class PhanQuyen extends Model
         'ten',
         'trang_thai'
     ];
-    public $fillable = [
-        "ten"
-    ];
 
 }
