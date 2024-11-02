@@ -30,7 +30,7 @@ class TaiKhoanController extends Controller
             'sdt' => 'required|numeric|digits_between:10,15',
             'mat_khau' => 'required|string|min:8',
             
-            'bi_cam' => 'boolean',
+            // 'bi_cam' => 'boolean',
 
 
         ], [
@@ -78,7 +78,13 @@ class TaiKhoanController extends Controller
         
         $taikhoans->anh_dai_dien = $avatarPath;
         $taikhoans->cccd = $cccdPath;
-        $taikhoans->banned_at = $request->has('bi_cam') ? now() : null; // Trạng thái cấm tài khoản
+        if ($request->bi_cam == 1) {
+            $taikhoans->bi_cam = 1; // Gán giá trị cho vai trò Admin
+            $taikhoans->banned_at = now(); // Cấm tài khoản
+        } else {
+            $taikhoans->bi_cam = 2; // Gán giá trị cho vai trò Người dùng
+            $taikhoans->banned_at = null; // Không cấm tài khoản
+        }// Trạng thái cấm tài khoản
         $taikhoans->id_dinh_danh = $taikhoans->generateAccountId();
         
 
