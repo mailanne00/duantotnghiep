@@ -19,7 +19,7 @@ class PlayerController extends Controller
 
     public function bieudo()
     {
-        $playerId = 1; // ID của player bạn muốn thống kê
+        $playerId = 2; // ID của player bạn muốn thống kê
 
         // Tính tổng số giờ thuê theo từng ngày
         $chartData = LichSuThuePlayer::select(
