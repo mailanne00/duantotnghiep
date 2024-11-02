@@ -5,6 +5,7 @@ use App\Http\Controllers\DangTinController;
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
 /*
@@ -47,6 +48,16 @@ Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::clas
 
 
 Route::resource('players', PlayerController::class);
+
+
+
+//taikhoan
+Route::get('/taikhoans', [TaiKhoanController::class, 'index'])->name('taikhoans.index');
+Route::get('/taikhoans/create', [TaiKhoanController::class, 'create'])->name('taikhoans.create');
+Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('taikhoans.store');
+Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
+Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
+Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
 Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 //Quản lí nạp tiền
 Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
