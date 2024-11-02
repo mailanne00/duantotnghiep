@@ -131,6 +131,11 @@
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.thongke') }}"
                         class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-comment-dots"></i></span><span
+                            class="pcoded-mtext">Quản lý thống kê</span></a></li>
+
+                            <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
+                        class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-comment-dots"></i></span><span
                             class="pcoded-mtext">Quản lý bình luận</span></a></li>
                 <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">

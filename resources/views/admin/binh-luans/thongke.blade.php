@@ -7,7 +7,7 @@
     <h1 class="text-center mb-4">Đánh giá player</h1>
 
     <!-- Form Tìm Kiếm -->
-    <form method="GET" action="{{ route('admin.binh-luans.index') }}" class="mb-4">
+    <form method="GET" action="{{ route('admin.binhluans.thongke') }}" class="mb-4">
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div class="input-group">

@@ -9,12 +9,30 @@ use Illuminate\Http\Request;
 
 class BinhLuanController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $binhluans = BinhLuan::all();
         $taikhoan = TaiKhoan::all();
         $player = Player::all();
 
+
+        return view('admin.binh-luans.index', compact('binhluans', 'taikhoan', 'player'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $binhluan = BinhLuan::findOrFail($id);
+        $trang_thai = $request->input('trang_thai') ? 1 : 0;
+        $binhluan->trang_thai = $trang_thai;
+        $binhluan->save();
+
+        return redirect()->route('admin.binhluans.index')->with('success', 'Cập nhật thành công!');
+    }
+
+    public function thongke(Request $request){
+
+        $taikhoan = TaiKhoan::all();
+        $player = Player::all();
         $query = BinhLuan::with('player');
 
         // Tìm kiếm theo player_id hoặc số sao
@@ -28,17 +46,9 @@ class BinhLuanController extends Controller
         // Phân trang kết quả
         $binhLuans = $query->paginate(10);
 
-        return view('admin.binh-luans.index', compact('binhluans', 'taikhoan', 'player'));
-    }
+        return view('admin.binh-luans.thongke', compact('binhLuans', 'taikhoan', 'player'));
 
-    public function updateStatus(Request $request, $id)
-    {
-        $binhluan = BinhLuan::findOrFail($id);
-        $trang_thai = $request->input('trang_thai') ? 1 : 0;
-        $binhluan->trang_thai = $trang_thai;
-        $binhluan->save();
 
-        return redirect()->route('admin.binhluans.index')->with('success', 'Cập nhật thành công!');
     }
 
     

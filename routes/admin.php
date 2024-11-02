@@ -68,7 +68,8 @@ Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('b
 Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
-Route::get('/binhluans', [BinhLuanController::class, 'index'])->name('binhluans.thongke');
+
+Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 
 
 
