@@ -60,6 +60,7 @@
                         <tfoot>
                             <tr>
                                 <th>STT</th>
+                                <th>Tài Khoản</th>
                             </tr>
                         </tfoot>
                     </table>
