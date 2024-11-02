@@ -61,6 +61,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tài Khoản</th>
+                                <th>Video</th>
                             </tr>
                         </tfoot>
                     </table>
