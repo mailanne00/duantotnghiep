@@ -85,20 +85,18 @@
                             <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a></li>
                         </ul>
                     </li>
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="feather icon-aperture"></i></span><span
+                                class="pcoded-mtext">Quản lý đăng tin</span></a></li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
+                                    class="feather icon-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
-                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}" class="">Thêm mới</a></li>
                         </ul>
-                    </li>
-                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
-                        class="nav-item pcoded-hasmenu">
-                        <a href="{{ route('admin.dangtins.index') }}" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a>
-                    </li>
                 </ul>
             </div>
 
