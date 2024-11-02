@@ -109,7 +109,7 @@
                     </li>
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i
-                                    class="feather icon-aperture"></i></span><span
+                                    class="fas fa-video"></i></span><span
                                 class="pcoded-mtext">Quản lý đăng tin</span></a></li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
