@@ -11,7 +11,7 @@ class BinhLuanController extends Controller
 {
     public function index()
     {
-        $binhluans = BinhLuan::all();
+        $binhluans = BinhLuan::all()
         $taikhoan = TaiKhoan::all();
         $player = Player::all();
 
