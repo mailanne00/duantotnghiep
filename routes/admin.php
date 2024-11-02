@@ -43,7 +43,8 @@ Route::put('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 
 Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanController::class, 'updateStatus'])->name('phuongthucthanhtoans.update-status');
 Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
 
+
 Route::resource('players', PlayerController::class);
 Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
-
+//Quản lí nạp tiền
 Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
