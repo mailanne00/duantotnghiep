@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('players', PlayerController::class);
+//Quản lí nạp tiền
+Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
