@@ -59,7 +59,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                
+                                <th>STT</th>
                             </tr>
                         </tfoot>
                     </table>
