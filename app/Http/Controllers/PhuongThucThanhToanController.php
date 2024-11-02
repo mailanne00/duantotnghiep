@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PhuongThucThanhToanStoreRequest;
 use App\Models\PhuongThucThanhToan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhuongThucThanhToanController extends Controller
 {
