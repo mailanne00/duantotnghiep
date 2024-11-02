@@ -20,7 +20,7 @@
             <div class="col-md-6 mb-3">
                 <div class="input-group">
                     <select name="danh_gia" class="form-control">
-                        <option value="">Chọn số </option>
+                        <option value="">Chọn số sao</option>
                         <option value="1" {{ request('danh_gia') == '1' ? 'selected' : '' }}>1 sao</option>
                         <option value="2" {{ request('danh_gia') == '2' ? 'selected' : '' }}>2 sao</option>
                         <option value="3" {{ request('danh_gia') == '3' ? 'selected' : '' }}>3 sao</option>
@@ -35,7 +35,7 @@
         </div>
     </form> 
 
-    <h3 class="mb-3">Danh sách player</h3>
+    <h3 class="mb-3">Danh sách</h3>
     <div class="row">
         @foreach($binhLuans->groupBy('player_id') as $playerId => $binhLuansForPlayer)
             <div class="col-md-4 mb-4">
