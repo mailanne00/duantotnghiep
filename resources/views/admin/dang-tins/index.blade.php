@@ -63,6 +63,7 @@
                                 <th>Tài Khoản</th>
                                 <th>Video</th>
                                 <th>Lượt Thích</th>
+                                <th>Nội Dung</th>
                             </tr>
                         </tfoot>
                     </table>
