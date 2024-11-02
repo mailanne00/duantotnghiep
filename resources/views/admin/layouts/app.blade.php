@@ -138,7 +138,12 @@
                             <li class=""><a href="{{route('admin.quan-li-nap-tiens.index')}}" class="">Danh sách</a></li>
                         </ul>
                     </li>
-                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.thongke') }}"
+                        class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-comment-dots"></i></span><span
+                            class="pcoded-mtext">Quản lý thống kê</span></a></li>
+
+                            <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
                         class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-comment-dots"></i></span><span
                             class="pcoded-mtext">Quản lý bình luận</span></a></li>

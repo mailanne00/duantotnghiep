@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\DangTinController;
+use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\PhanQuyenController;
 use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
@@ -77,3 +79,16 @@ Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('b
 Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
+
+Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
+
+
+
+Route::get('/phan-quyens', [PhanQuyenController::class, 'index'])->name('phanquyen.index');
+Route::get('/phan-quyens/create', [PhanQuyenController::class, 'create'])->name('phanquyen.create');
+Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('phanquyen.store');
+Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
+Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
+Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
+
+
