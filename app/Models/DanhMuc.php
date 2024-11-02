@@ -9,5 +9,5 @@ class DanhMuc extends Model
 {
     use HasFactory;
 
-   
+    protected $fillable = ['ten', 'anh_dai_dien', 'trang_thai'];
 }
