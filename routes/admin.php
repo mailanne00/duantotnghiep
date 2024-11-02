@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DangNhapController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('players', PlayerController::class);
+Route::get('dang-nhap', DangNhapController::class);
