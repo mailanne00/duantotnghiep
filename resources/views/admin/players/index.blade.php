@@ -106,6 +106,14 @@
                                 <td>$327,900</td>
                             </tr>
                             <tr>
+                                <td>Colleen Hurst</td>
+                                <td>Javascript Developer</td>
+                                <td>San Francisco</td>
+                                <td>39</td>
+                                <td>2009/09/15</td>
+                                <td>$205,500</td>
+                            </tr>
+                            <tr>
                                 <td>Sonya Frost</td>
                                 <td>Software Engineer</td>
                                 <td>Edinburgh</td>
