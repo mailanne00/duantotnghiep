@@ -100,6 +100,14 @@ class TaiKhoanController extends Controller
 
         return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã bị cấm.');
     }
+    public function unbanUser($id)
+    {
+        $user = TaiKhoan::findOrFail($id);
+        $user->banned_at = null;
+        $user->save();
+
+        return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã được mở lại.');
+    }
 
 
 }
