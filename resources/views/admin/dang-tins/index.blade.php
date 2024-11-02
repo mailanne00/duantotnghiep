@@ -65,6 +65,7 @@
                                 <th>Lượt Thích</th>
                                 <th>Nội Dung</th>
                                 <th>Trạng Thái</th>
+                                <th>Ngày Đăng</th>
                             </tr>
                         </tfoot>
                     </table>
