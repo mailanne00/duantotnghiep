@@ -20,7 +20,7 @@
             <div class="col-md-6 mb-3">
                 <div class="input-group">
                     <select name="danh_gia" class="form-control">
-                        <option value="">Chọn số sao</option>
+                        <option value="">Chọn sao</option>
                         <option value="1" {{ request('danh_gia') == '1' ? 'selected' : '' }}>1 sao</option>
                         <option value="2" {{ request('danh_gia') == '2' ? 'selected' : '' }}>2 sao</option>
                         <option value="3" {{ request('danh_gia') == '3' ? 'selected' : '' }}>3 sao</option>
@@ -53,7 +53,7 @@
                     @endphp
 
                     <div class="average-rating mb-2">
-                        <h5 class="font-weight-bold">Tỷ lệ</h5>
+                        <h5 class="font-weight-bold">Tỷ lệ đánh giá</h5>
                         <div class="star-rating">
                             @for ($i = 1; $i <= 5; $i++)
                                 <div class="star-count">
