@@ -29,7 +29,7 @@ class TaiKhoanController extends Controller
             'email' => 'required|email|unique:tai_khoans,email',
             'sdt' => 'required|numeric|digits_between:10,15',
             'mat_khau' => 'required|string|min:8',
-            
+
             // 'bi_cam' => 'boolean',
 
 
@@ -54,11 +54,11 @@ class TaiKhoanController extends Controller
             'mat_khau.required' => 'Mật khẩu không được để trống.',
             'mat_khau.string' => 'Mật khẩu phải là chuỗi ký tự.',
             'mat_khau.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-           
+
             'anh_dai_dien.required' => 'Ảnh đại diện không được để trống.',
             'anh_dai_dien.image' => 'Ảnh đại diện phải là định dạng ảnh.',
 
-            
+
         ]);
         //Xử lí ảnh cccd
         $cccdPath = $request->file('cccd')->store('cccds', 'public');
@@ -75,7 +75,7 @@ class TaiKhoanController extends Controller
         $taikhoans->sdt = $request->sdt;
         $taikhoans->cccd = $request->cccd;
         $taikhoans->mat_khau = $request->mat_khau;
-        
+
         $taikhoans->anh_dai_dien = $avatarPath;
         $taikhoans->cccd = $cccdPath;
         if ($request->bi_cam == 1) {
@@ -84,9 +84,9 @@ class TaiKhoanController extends Controller
         } else {
             $taikhoans->bi_cam = 2; // Gán giá trị cho vai trò Người dùng
             $taikhoans->banned_at = null; // Không cấm tài khoản
-        }// Trạng thái cấm tài khoản
+        } // Trạng thái cấm tài khoản
         $taikhoans->id_dinh_danh = $taikhoans->generateAccountId();
-        
+
 
 
         $taikhoans->save();
@@ -114,6 +114,4 @@ class TaiKhoanController extends Controller
 
         return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã được mở lại.');
     }
-
-
 }
