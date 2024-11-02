@@ -16,8 +16,7 @@ class ToCao extends Model
         'id_tin_nhan',
         'tieu_de_to_cao',
         'noi_dung_to_cao',
-        'image_path',
-        'trang_thai'
+
     ];
 
     public function user()
