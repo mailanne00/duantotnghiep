@@ -62,6 +62,7 @@
                                 <th>STT</th>
                                 <th>Tài Khoản</th>
                                 <th>Video</th>
+                                <th>Lượt Thích</th>
                             </tr>
                         </tfoot>
                     </table>
