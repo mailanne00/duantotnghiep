@@ -9,7 +9,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5>Danh sách tài khoản</h5>
+                
             </div>
             @if(session('success'))
             <div class="alert alert-success">
