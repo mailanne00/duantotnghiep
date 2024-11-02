@@ -1,72 +1,99 @@
-@extends('admin.layout.app')
+@extends('admin.layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5>Xử lí tố cáo</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form cập nhật thông tin tố cáo -->
+                    <form action="{{ route('admin.tocao.updateStatus', $complaint->id) }}" method="POST"
+                        onsubmit="return confirmUpdate();">
+                        @csrf
+                        @method('PATCH')
+
+                        <div class="mb-3">
+                            <label class="form-label" for="user_name">Tên người dùng:</label>
+                            <input type="text" class="form-control" id="user_name" placeholder="Tên người dùng ..."
+                                value="{{ $complaint->user->ten }}" readonly disabled>
+                            <a href="#" class="text-primary" style="text-decoration: none;"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'">Chi tiết người tố cáo tại đây.</a>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="player_name">Tên player:</label>
+                            <input type="text" class="form-control" id="player_name" placeholder="Tên player ..."
+                                value="{{ $complaint->player->ten }}" readonly disabled>
+                            <a href="#" class="text-primary" style="text-decoration: none;"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'">Chi tiết player bị tố cáo tại đây.</a>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="player_name">ID tin nhắn:</label>
+                            <input type="text" class="form-control" id="id_tin_nhan" placeholder="Id Tin Nhắn"
+                                value="{{ $complaint->id_tin_nhan }}" readonly disabled>
+                            <a href="#" class="text-primary" style="text-decoration: none;"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'">Chi tiết tin nhắn của đôi bên tại đây.</a>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="player_name">Tiêu đề tố cáo player:</label>
+                            <input type="text" class="form-control" id="tieu_de_to_cao"
+                                placeholder="Tiêu đề tố cáo player ..." value="{{ $complaint->tieu_de_to_cao }}" readonly
+                                disabled>
 
 
-        <h2>Bảng tố cáo</h2>
+                        </div>
 
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+
+                        <div class="mb-3">
+                            <label class="form-label" for="complaint_content">Nội dung tố cáo:</label>
+                            <textarea class="form-control" id="complaint_content" rows="3" readonly disabled>{{ $complaint->noi_dung_to_cao }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="complaint_image">Ảnh minh chứng:</label>
+                            <div class="card">
+                                <div class="card-body">
+                                    @if ($complaint->image_path)
+                                        <img src="{{ asset($complaint->image_path) }}" class="img-fluid rounded"
+                                            width="100" height="100" alt="Ảnh minh chứng">
+                                        <p class="mt-2 text-muted">Ảnh minh chứng cho tố cáo của bạn.</p>
+                                    @else
+                                        <p class="text-warning">Không có ảnh minh chứng</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label" for="status">Trạng thái của tố cáo:</label>
+                            <select class="form-control" id="status" name="trang_thai" required>
+                                <option value="Chờ xử lí" {{ $complaint->trang_thai === 'Chờ xử lí' ? 'selected' : '' }}>Chờ
+                                    xử lí</option>
+                                <option value="Đã Duyệt" {{ $complaint->trang_thai === 'Đã Duyệt' ? 'selected' : '' }}>Đã
+                                    Duyệt</option>
+                                <option value="Hủy" {{ $complaint->trang_thai === 'Hủy' ? 'selected' : '' }}>Hủy</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </form>
+                    <script>
+                        function confirmUpdate() {
+                            return confirm("Bạn có muốn cập nhật trạng thái không?");
+                        }
+                    </script>
+                </div>
             </div>
-        @endif
-
-
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-
-        <form action="{{ route('admin.tocao.store') }}" method="POST" enctype="multipart/form-data" id="complaintForm">
-            @csrf
-            <div class="form-group">
-                <label for="id_player">Chọn người chơi mà bạn muốn tố cáo:</label>
-                <select name="id_player" id="id_player" class="form-control" required>
-                    <option value="">-- Chọn --</option>
-                    @foreach ($players as $player)
-                        <option value="{{ $player->id }}">{{ $player->ten }} (Player)</option>
-                    @endforeach
-                </select>
-                @error('id_player')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="tieu_de_to_cao">Player có hành vì:</label>
-                <select name="tieu_de_to_cao" id="tieu_de_to_cao" class="form-control" required>
-                    <option value="">-- Chọn --</option>
-
-                    <option value="Có thái độ không tốt?">Có thái độ không tốt?</option>
-                    <option value="Có hành vi không chuẩn mực?">Có hành vi không chuẩn mực?</option>
-                    <option value="Mất lịch sự?">Mất lịch sự?</option>
-                    <option value="Không hoàn thành nhiệm vụ?">Không hoàn thành nhiệm vụ?</option>
-                    <option value="Có hành vi phá game?">Có hành vi phá game?</option>
-                    <option value="Khác">Khác</option>
-
-                </select>
-                @error('id_player')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="noi_dung_to_cao">Nội dung tố cáo:</label>
-                <textarea name="noi_dung_to_cao" id="noi_dung_to_cao" class="form-control" rows="5"
-                    placeholder="Nội dung tố cáo..." required></textarea>
-                @error('noi_dung_to_cao')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-
-            <label for="image">Ảnh minh chứng (Tùy chọn):</label>
-            <input type="file" id="image" name="image" accept="image/*" class="form-control">
-
-            <button type="submit" class="btn btn-primary mt-3">Gửi</button>
-        </form>
+        </div>
     </div>
 @endsection
