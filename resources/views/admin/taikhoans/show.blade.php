@@ -72,9 +72,9 @@
                         <label>Trạng thái:</label>
                         <p>
                             @if($taikhoan->banned_at)
-                                <span class="text-danger">Tài khoản bị cấm</span>
+                            <span class="text-danger">Tài khoản bị cấm</span>
                             @else
-                                <span class="text-success">Tài khoản đang hoạt động</span>
+                            <span class="text-success">Tài khoản đang hoạt động</span>
                             @endif
                         </p>
                     </div>
