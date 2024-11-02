@@ -66,6 +66,7 @@
                                 <th>Nội Dung</th>
                                 <th>Trạng Thái</th>
                                 <th>Ngày Đăng</th>
+                                <th>Thao Tác</th>
                             </tr>
                         </tfoot>
                     </table>
