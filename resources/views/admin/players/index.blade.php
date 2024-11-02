@@ -81,14 +81,6 @@
                                 <td>2008/11/28</td>
                                 <td>$162,700</td>
                             </tr>
-                            <tr>
-                                <td>Brielle Williamson</td>
-                                <td>Integration Specialist</td>
-                                <td>New York</td>
-                                <td>61</td>
-                                <td>2012/12/02</td>
-                                <td>$372,000</td>
-                            </tr>
                             
                             <tr>
                                 <td>Rhona Davidson</td>
