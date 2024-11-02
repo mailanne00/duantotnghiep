@@ -45,3 +45,5 @@ Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::clas
 
 Route::resource('players', PlayerController::class);
 Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+
+Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
