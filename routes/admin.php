@@ -44,4 +44,4 @@ Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanContr
 Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
 
 Route::resource('players', PlayerController::class);
-Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+// Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
