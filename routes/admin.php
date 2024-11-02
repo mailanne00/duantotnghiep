@@ -68,6 +68,8 @@ Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('b
 Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
+Route::get('/binhluans', [BinhLuanController::class, 'index'])->name('binhluans.thongke');
+
 
 
 Route::get('/phan-quyens', [PhanQuyenController::class, 'index'])->name('phanquyen.index');
@@ -78,6 +80,3 @@ Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
 
 
-Route::get('danh-gias', [DanhGiaController::class, 'index'])->name('danhgia.index');
-Route::get('/danh-gias/{id}', [DanhGiaController::class, 'getAverageRating'])->name('danhgia.show');
-Route::post('/danh-gias/store', [DanhGiaController::class, 'store'])->name('danhgia.store');
