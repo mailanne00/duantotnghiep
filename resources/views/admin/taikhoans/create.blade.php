@@ -91,7 +91,7 @@
                     @enderror
                 </div>
 
-                
+
 
                 <div class="form-group">
                     <label for="anh_dai_dien">Ảnh đại diện</label>
@@ -112,7 +112,7 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
 
             </div>
         </div>
