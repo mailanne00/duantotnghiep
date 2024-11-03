@@ -8,6 +8,7 @@ use App\Http\Controllers\PhanQuyenController;
 use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
+use App\Http\Controllers\ThongKeUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
 /*
@@ -91,3 +92,6 @@ Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('
 Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
 Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
+
+Route::get('/tk-users', [ThongKeUserController::class, 'index'])->name('tkuser.index');
+
