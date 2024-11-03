@@ -38,7 +38,7 @@
 
     <h3 class="mb-3">Danh sách player</h3>
     <div class="row">
-        @foreach($binhLuans->groupBy('player_id') as $playerId => $binhLuansForPlayer)
+        @foreach($groupedBinhLuans as $playerId => $binhLuansForPlayer)
             <div class="col-md-4 mb-4">
                 <div class="player-rating border rounded shadow-sm bg-light p-3">
 
@@ -94,6 +94,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    
+                    <!-- Phân Trang Bình Luận -->
+                    <div class="pagination">
+                        {{ $binhLuans->links() }} <!-- Liên kết phân trang tổng thể cho các bình luận -->
+                    </div>
                 </div>  
             </div>
         @endforeach
@@ -113,9 +118,4 @@
     .star { color: #ddd; font-size: 18px; }
     .star.filled { color: gold; }
 </style>
-@endsection
-
-@section('script')
-<script src="{{asset('assets/plugins/data-tables/js/datatables.min.js')}}"></script>
-<script src="{{asset('assets/js/pages/data-basic-custom.js')}}"></script>
 @endsection
