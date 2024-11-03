@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\DangTinController;
+use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\PhanQuyenController;
 use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
@@ -50,6 +52,8 @@ Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::clas
 
 
 Route::resource('players', PlayerController::class);
+Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
 
 
 
@@ -60,7 +64,6 @@ Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('tai
 Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
-Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 //Quản lí nạp tiền
 Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
 Route::get('/danhmucs', [DanhMucController::class, 'index'])->name('danhmucs.index');
@@ -87,3 +90,13 @@ Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('
     Route::get('/most-liked-players', [TopPlayerController::class, 'getMostLikedPlayers'])->name('most_liked_players');
     Route::get('/most-hired-players', [TopPlayerController::class, 'getMostHiredPlayers'])->name('most_hired_players');
 
+Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
+
+
+
+Route::get('/phan-quyens', [PhanQuyenController::class, 'index'])->name('phanquyen.index');
+Route::get('/phan-quyens/create', [PhanQuyenController::class, 'create'])->name('phanquyen.create');
+Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('phanquyen.store');
+Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
+Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
+Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');

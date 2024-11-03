@@ -86,18 +86,19 @@
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a>
                             </li>
-                            <li class=""><a href="{{ route('admin.players.bieudoduong') }}" class="">Biểu đồ
-                                    đường player</a>
-                            </li>
+
                         </ul>
                     </li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lí tài khoản</span></a>
+                                    class="fas fa-user-secret"></i></span><span class="pcoded-mtext">Quản lí tài
+                                khoản</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{ route('admin.taikhoans.index') }}" class="">Danh sách</a></li>
-                            <li class=""><a href="{{ route('admin.taikhoans.create') }}" class="">Thêm mới</a></li>
+                            <li class=""><a href="{{ route('admin.taikhoans.index') }}" class="">Danh
+                                    sách</a></li>
+                            <li class=""><a href="{{ route('admin.taikhoans.create') }}" class="">Thêm
+                                    mới</a></li>
 
                         </ul>
                     </li>
@@ -118,39 +119,51 @@
                         </ul>
                     </li>
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
-                            class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-video"></i></span><span
+                            class="nav-link"><span class="pcoded-micon"><i class="fas fa-video"></i></span><span
                                 class="pcoded-mtext">Quản lý đăng tin</span></a></li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương thức thanh toán</span></a>
+                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương
+                                thức thanh toán</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}" class="">Danh sách</a></li>
-                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}" class="">Thêm mới</a></li>
+                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}"
+                                    class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.phuongthucthanhtoans.create') }}"
+                                    class="">Thêm mới</a></li>
                         </ul>
 
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-money-check-alt"></i></span><span class="pcoded-mtext">Quản lí nạp tiền</span></a>
+                                    class="fas fa-money-check-alt"></i></span><span class="pcoded-mtext">Quản lí nạp
+                                tiền</span></a>
                         <ul class="pcoded-submenu">
-                            <li class=""><a href="{{route('admin.quan-li-nap-tiens.index')}}" class="">Danh sách</a></li>
+                            <li class=""><a href="{{ route('admin.quan-li-nap-tiens.index') }}"
+                                    class="">Danh sách</a></li>
                         </ul>
                     </li>
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.thongke') }}"
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý thống
+                                kê</span></a></li>
+
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
-                        class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-comment-dots"></i></span><span
-                            class="pcoded-mtext">Quản lý bình luận</span></a></li>
-                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
-                    class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-list-ul"></i></span><span class="pcoded-mtext">Quản lý danh mục</span></a>
-                    <ul class="pcoded-submenu">
-                        <li class=""><a href="{{ route('admin.danhmucs.index') }}" class="">Danh sách</a></li>
-                        <li class=""><a href="{{ route('admin.danhmucs.create') }}" class="">Thêm mới</a></li>
-                    </ul>
-                </li>
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý bình
+                                luận</span></a></li>
+                    <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                        class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-list-ul"></i></span><span class="pcoded-mtext">Quản lý danh
+                                mục</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="{{ route('admin.danhmucs.index') }}" class="">Danh
+                                    sách</a></li>
+                            <li class=""><a href="{{ route('admin.danhmucs.create') }}" class="">Thêm
+                                    mới</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 

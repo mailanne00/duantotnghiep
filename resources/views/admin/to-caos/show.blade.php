@@ -18,8 +18,8 @@
                             <label class="form-label" for="user_name">Tên người dùng:</label>
                             <input type="text" class="form-control" id="user_name" placeholder="Tên người dùng ..."
                                 value="{{ $complaint->user->ten }}" readonly disabled>
-                            <a href="#" class="text-primary" style="text-decoration: none;"
-                                onmouseover="this.style.textDecoration='underline'"
+                            <a href="{{ route('admin.taikhoans.show', $complaint->user->id) }}" class="text-primary"
+                                style="text-decoration: none;" onmouseover="this.style.textDecoration='underline'"
                                 onmouseout="this.style.textDecoration='none'">Chi tiết người tố cáo tại đây.</a>
                         </div>
 
@@ -27,8 +27,8 @@
                             <label class="form-label" for="player_name">Tên player:</label>
                             <input type="text" class="form-control" id="player_name" placeholder="Tên player ..."
                                 value="{{ $complaint->player->ten }}" readonly disabled>
-                            <a href="#" class="text-primary" style="text-decoration: none;"
-                                onmouseover="this.style.textDecoration='underline'"
+                            <a href="{{ route('admin.taikhoans.show', $complaint->player->id) }}" class="text-primary"
+                                style="text-decoration: none;" onmouseover="this.style.textDecoration='underline'"
                                 onmouseout="this.style.textDecoration='none'">Chi tiết player bị tố cáo tại đây.</a>
 
                         </div>
@@ -81,7 +81,8 @@
                                     xử lí</option>
                                 <option value="Đã Duyệt" {{ $complaint->trang_thai === 'Thành công' ? 'selected' : '' }}>Đã
                                     Duyệt</option>
-                                <option value="Hủy" {{ $complaint->trang_thai === 'Hủy' ? 'selected' : '' }}>Hủy</option>
+                                <option value="Hủy" {{ $complaint->trang_thai === 'Hủy' ? 'selected' : '' }}>Hủy
+                                </option>
                             </select>
                         </div>
 

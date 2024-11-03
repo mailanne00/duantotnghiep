@@ -57,6 +57,18 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tài Khoản</th>
+                                <th>Video</th>
+                                <th>Lượt Thích</th>
+                                <th>Nội Dung</th>
+                                <th>Trạng Thái</th>
+                                <th>Ngày Đăng</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
