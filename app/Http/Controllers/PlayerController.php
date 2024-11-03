@@ -131,13 +131,10 @@ class PlayerController extends Controller
 
     public function showlichsu($id)
     {
-
-
-
-        $lichSuThue = LichSuThuePlayer::where('player_id', $id)
+        // Eager load taiKhoan để lấy thông tin khách hàng
+        $lichSuThue = LichSuThuePlayer::with('taiKhoan')
+            ->where('player_id', $id)
             ->get();
-
-
 
 
         return view('admin.players.showlichsu', compact('lichSuThue'));

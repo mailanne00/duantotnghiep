@@ -27,6 +27,7 @@
                                     <th>Giá player</th>
                                     <th>Số giờ thuê</th>
                                     <th>Trạng thái</th>
+                                    <th>Tổng tiền</th>
 
                                 </tr>
                             </thead>
@@ -39,7 +40,7 @@
                                         <td>{{ $lichSuThue->gia_player }}</td>
                                         <td>{{ $lichSuThue->gio_thue }}</td>
                                         <td>{{ $lichSuThue->trang_thai_thue }}</td>
-
+                                        <td>{{ number_format($lichSuThue->gia_player * $lichSuThue->gio_thue) }} VND</td>
                                         {{-- <td>
                                             <a href="{{ route('admin.taikhoans.show', $taikhoan->id) }}"
                                                 class="btn btn-info">Xóa</a>
@@ -55,7 +56,7 @@
                                     <th>Giá player</th>
                                     <th>Số giờ thuê</th>
                                     <th>Trạng thái</th>
-
+                                    <th>Tổng tiền</th>
                                 </tr>
                             </tfoot>
                         </table>
