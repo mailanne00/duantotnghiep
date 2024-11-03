@@ -1,3 +1,8 @@
+@extends('admin.layouts.app')
+
+<title>@yield('title' , 'Thống kê tài khoản')</title>
+@section('content')
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -16,42 +21,53 @@
 
     <script>
     $(document).ready(function() {
-        $.ajax({
-            url: "{{ route('admin.tkuser.data') }}", // Đã sửa lại tên route
-            method: "GET",
-            success: function(response) {
-                const labels = response.dates; // Ngày thêm tài khoản
-                const data = response.counts; // Số lượng tài khoản
+    $.ajax({
+        url: "{{ route('admin.tkuser.data') }}",
+        method: "GET",
+        success: function(response) {
+            const labels = response.dates; // Chỉ lấy ngày tháng
+            const data = response.counts; // Chỉ lấy số lượng tài khoản
 
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Số lượng tài khoản mới',
-                            data: data,
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượng tài khoản mới',
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Ngày tháng' // Nhãn cho trục X
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Số lượng tài khoản' // Nhãn cho trục Y
                             }
                         }
                     }
-                });
-            },
-            error: function(xhr) {
-                console.log('Error:', xhr);
-            }
-        });
+                }
+            });
+        },
+        error: function(xhr) {
+            console.log('Error:', xhr);
+        }
     });
+});
 </script>
 </body>
 </html>
+@endsection
