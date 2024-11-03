@@ -24,7 +24,7 @@ class PlayerController extends Controller
         $chartDataDay = collect(range(0, 23))->map(function ($hour) use ($playerId): array {
             $rentals = LichSuThuePlayer::with('taiKhoan')
                 ->where('player_id', $playerId)
-                ->where('trang_thai_thue', 'success')
+                ->where('trang_thai_thue', 'thành công')
                 ->whereDate('created_at', Carbon::today())
                 ->whereRaw('HOUR(created_at) = ?', [$hour])
                 ->get();
@@ -48,7 +48,7 @@ class PlayerController extends Controller
             DB::raw('SUM(gio_thue) as total_hours')
         )
             ->where('player_id', $playerId)
-            ->where('trang_thai_thue', 'success')
+            ->where('trang_thai_thue', 'thành công')
             ->groupBy('date')
             ->orderBy('date')
             ->get()
@@ -65,7 +65,7 @@ class PlayerController extends Controller
             DB::raw('SUM(gia_player * gio_thue) as total_earnings') // Tính tổng tiền kiếm được
         )
             ->where('player_id', $playerId)
-            ->where('trang_thai_thue', 'success')
+            ->where('trang_thai_thue', 'thành công')
             ->groupBy('date')
             ->orderBy('date')
             ->get()
@@ -105,24 +105,22 @@ class PlayerController extends Controller
 
     public function show($id, Request $request)
     {
-        // Lấy thông tin player
+
         $player = Player::findOrFail($id);
 
         $lichSuThue = LichSuThuePlayer::where('player_id', $id)
-            ->where('trang_thai_thue', 'thành công') // Kiểm tra trạng thái thuê
+            ->where('trang_thai_thue', 'thành công')
             ->get();
 
         $tongDoanhThu = $lichSuThue->sum(function ($thue) {
-            return $thue->gia_player * $thue->gio_thue; // Tính tổng giá nhân với số giờ thuê
+            return $thue->gia_player * $thue->gio_thue;
         });
 
-        // Số lượng đơn thuê thành công của player
+
         $soDonThue = $lichSuThue->count();
 
-        // Tổng số giờ thuê (cũng cần kiểm tra trạng thái)
         $tongGioThue = $lichSuThue->sum('gio_thue');
 
-        // Tổng số người theo dõi (cũng cần kiểm tra trạng thái)
         $soNguoiTheoDoi = TheoDoiPlayer::where('player_id', $id)
             ->distinct('tai_khoan_id')
             ->count('tai_khoan_id');
