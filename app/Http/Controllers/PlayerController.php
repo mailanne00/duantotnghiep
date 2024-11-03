@@ -140,6 +140,6 @@ class PlayerController extends Controller
 
 
 
-        return view('admin.players.show', compact('lichSuThue'));
+        return view('admin.players.showlichsu', compact('lichSuThue'));
     }
 }
