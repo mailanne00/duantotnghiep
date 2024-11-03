@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LichSuThuePlayer;
 use App\Models\Player;
 use App\Models\TheoDoiPlayer;
+use App\Models\TaiKhoan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -88,7 +89,7 @@ class PlayerController extends Controller
         });
         $dataTongTien = $chartDataTongTien->pluck('total_earnings');
 
-        return view('admin.players.bieudoduong', compact('labels', 'data', 'labelsTongTien', 'dataTongTien', '$chartDataDay'));
+        return view('admin.players.bieudoduong', compact('labels', 'data', 'labelsTongTien', 'dataTongTien', 'chartDataDay'));
     }
 
 

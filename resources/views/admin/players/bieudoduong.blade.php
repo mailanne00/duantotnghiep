@@ -9,6 +9,14 @@
                 </div>
 
                 <div class="col-md-12">
+                    <h2>Biểu đồ Tổng Giờ Thuê Theo Giờ</h2>
+                    <canvas id="chartHours"></canvas>
+
+                    <h2>Danh sách người thuê theo giờ</h2>
+                    <div id="renterNames"></div>
+                </div>
+
+                <div class="col-md-12">
                     <div class="card seo-card">
                         <div class="card-body seo-statustic">
                             <i class="fas fa-chart-line text-c-green f-16 mb-2"></i>
@@ -111,6 +119,46 @@
                     }
                 }
             });
+
+
+            const chartDataDay = @json($chartDataDay);
+            const labelsHours = chartDataDay.map(item => `${item.hour}:00`);
+            const dataHours = chartDataDay.map(item => item.total_hour);
+
+            const ctxHours = document.getElementById('chartHours').getContext('2d');
+            new Chart(ctxHours, {
+                type: 'bar',
+                data: {
+                    labels: labelsHours,
+                    datasets: [{
+                        label: 'Tổng Giờ Thuê',
+                        data: dataHours,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        fill: true,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Hiển thị tên người thuê theo giờ
+            const renterNamesDiv = document.getElementById('renterNames');
+            chartDataDay.forEach(item => {
+                const hourDiv = document.createElement('div');
+                hourDiv.innerHTML =
+                    `<strong>${item.hour}:00</strong>: ${item.renter_names.join(', ') || 'Không có người thuê'}`;
+                renterNamesDiv.appendChild(hourDiv);
+            });
+
+
         };
     </script>
 @endsection
