@@ -18,9 +18,8 @@ class PlayerController extends Controller
         return view('admin.players.index', compact('players'));
     }
 
-    public function bieudo()
+    public function bieudo($playerId)
     {
-        $playerId = 2;
 
         $chartDataDay = collect(range(0, 23))->map(function ($hour) use ($playerId): array {
             $rentals = LichSuThuePlayer::with('taiKhoan')
