@@ -44,8 +44,12 @@
                                                 <a href="{{ route('admin.players.show', $player->id) }}" class="me-4">
                                                     <i class="fas fa-eye" style="font-size: 18px"></i>
                                                 </a>
-                                                <a href="{{ route('admin.players.bieudoduong', $player->id) }}">
+                                                <a href="{{ route('admin.players.bieudoduong', $player->id) }}"
+                                                    class="me-4">
                                                     <i class="fas fa-chart-line" style="font-size: 18px"></i>
+                                                </a>
+                                                <a href="{{ route('admin.players.showlichsu', $player->id) }}">
+                                                    <i class="fas fa-bars" style="font-size: 18px"></i>
                                                 </a>
                                             </div>
                                         </td>

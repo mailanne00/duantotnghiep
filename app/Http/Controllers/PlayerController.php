@@ -127,4 +127,19 @@ class PlayerController extends Controller
 
         return view('admin.players.show', compact('player', 'soDonThue', 'tongGioThue', 'soNguoiTheoDoi', 'tongDoanhThu'));
     }
+
+
+    public function showlichsu($id)
+    {
+
+
+
+        $lichSuThue = LichSuThuePlayer::where('player_id', $id)
+            ->get();
+
+
+
+
+        return view('admin.players.show', compact('lichSuThue'));
+    }
 }
