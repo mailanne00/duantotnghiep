@@ -125,6 +125,8 @@
             const labelsHours = chartDataDay.map(item => `${item.hour}:00`);
             const dataHours = chartDataDay.map(item => item.total_hour);
 
+            console.log(chartDataDay);
+
             const ctxHours = document.getElementById('chartHours').getContext('2d');
             new Chart(ctxHours, {
                 type: 'bar',
