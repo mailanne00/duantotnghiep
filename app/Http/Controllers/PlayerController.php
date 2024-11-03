@@ -22,6 +22,27 @@ class PlayerController extends Controller
         $playerId = 2; // ID của player bạn muốn thống kê
 
         // Tính tổng số giờ thuê theo từng ngày
+        $chartDataDay = collect(range(0, 23))->map(function ($hour) use ($playerId) {
+            $rentals = LichSuThuePlayer::with('taiKhoan') // Giả sử tên người thuê có trong mối quan hệ `taiKhoan`
+                ->where('player_id', $playerId)
+                ->where('trang_thai_thue', 'success')
+                ->whereDate('created_at', Carbon::today())
+                ->whereRaw('HOUR(created_at) = ?', [$hour])
+                ->get();
+
+            $totalHour = $rentals->sum('gio_thue');
+            $renterNames = $rentals->map(function ($rental) {
+                return $rental->taiKhoan->ten; // Giả sử tên người thuê là `ten` trong mối quan hệ `taiKhoan`
+            })->unique()->values(); // Lấy tên người thuê không trùng lặp
+
+            return [
+                'hour' => $hour,
+                'total_hour' => $totalHour,
+                'renter_names' => $renterNames
+            ];
+        });
+
+
         $chartData = LichSuThuePlayer::select(
             DB::raw('DATE(created_at) as date'),
             DB::raw('SUM(gio_thue) as total_hours')
@@ -67,7 +88,7 @@ class PlayerController extends Controller
         });
         $dataTongTien = $chartDataTongTien->pluck('total_earnings');
 
-        return view('admin.players.bieudoduong', compact('labels', 'data', 'labelsTongTien', 'dataTongTien'));
+        return view('admin.players.bieudoduong', compact('labels', 'data', 'labelsTongTien', 'dataTongTien', '$chartDataDay'));
     }
 
 

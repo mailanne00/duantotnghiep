@@ -12,7 +12,7 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
 
     use HasFactory, Notifiable; // Thêm Notifiable để sử dụng thông báo
 
-    
+
 
     protected $table = 'tai_khoans';
 
@@ -60,12 +60,12 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
         });
     }
     public function generateAccountId()
-{
-    $lastId = TaiKhoan::orderBy('id', 'desc')->first();
-    $newId = $lastId ? $lastId->id + 1 : 1;
+    {
+        $lastId = TaiKhoan::orderBy('id', 'desc')->first();
+        $newId = $lastId ? $lastId->id + 1 : 1;
 
-    return 'TK' . str_pad($newId, 5, '0', STR_PAD_LEFT);
-}
+        return 'TK' . str_pad($newId, 5, '0', STR_PAD_LEFT);
+    }
 
 
     public function lichSuThue()
@@ -77,5 +77,4 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
     {
         return $this->hasOne(TheoDoiPlayer::class, 'tai_khoan_id');
     }
-
 }
