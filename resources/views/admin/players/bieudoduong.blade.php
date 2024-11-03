@@ -129,8 +129,7 @@
             const chartDataDay = @json($chartDataDay);
             const labelsHours = chartDataDay.map(item => `${item.hour}:00`);
             const dataHours = chartDataDay.map(item => item.total_hour);
-
-            console.log(chartDataDay);
+            const renterNames = chartDataDay.map(item => item.renter_names.join(', ') || 'Không có người thuê');
 
             const ctxHours = document.getElementById('chartHours').getContext('2d');
             new Chart(ctxHours, {
@@ -152,17 +151,20 @@
                         y: {
                             beginAtZero: true
                         }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    return tooltipItems[0].label; // Giữ nguyên label (giờ)
+                                },
+                                label: function(tooltipItem) {
+                                    return `Tên người thuê: ${renterNames[tooltipItem.dataIndex]}`; // Hiển thị tên người thuê
+                                }
+                            }
+                        }
                     }
                 }
-            });
-
-            // Hiển thị tên người thuê theo giờ
-            const renterNamesDiv = document.getElementById('renterNames');
-            chartDataDay.forEach(item => {
-                const hourDiv = document.createElement('div');
-                hourDiv.innerHTML =
-                    `<strong>${item.hour}:00</strong>: ${item.renter_names.join(', ') || 'Không có người thuê'}`;
-                renterNamesDiv.appendChild(hourDiv);
             });
 
 
