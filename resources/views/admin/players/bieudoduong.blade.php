@@ -9,11 +9,16 @@
                 </div>
 
                 <div class="col-md-12">
-                    <h2>Biểu đồ Tổng Giờ Thuê Theo Giờ</h2>
-                    <canvas id="chartHours"></canvas>
-
-                    <h2>Danh sách người thuê theo giờ</h2>
-                    <div id="renterNames"></div>
+                    <div class="card seo-card">
+                        <div class="card-body seo-statustic">
+                            <i class="fas fa-chart-line text-c-green f-16 mb-2"></i>
+                            <h5 class="m-0">Thống kê số giờ được thuê theo ngày</h5>
+                            <p class="m-0">Số giờ được thuê theo ngày</p>
+                        </div>
+                        <div class="process">
+                            <canvas id="chartHours" height="100"></canvas>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-12">
