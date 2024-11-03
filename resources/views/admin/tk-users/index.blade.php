@@ -13,7 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Thống Kê Tài Khoản</h1>
+    <h1> Số lượng tài khoản </h1>
     
     <div style="width: 50%; height: 400px; margin: auto;">
         <canvas id="myChart"></canvas>
