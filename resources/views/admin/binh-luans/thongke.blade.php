@@ -38,7 +38,7 @@
 
     <h3 class="mb-3">Danh sách player</h3>
     <div class="row">
-        @foreach($groupedBinhLuans as $playerId => $binhLuansForPlayer)
+        @foreach($binhLuans->groupBy('player_id') as $playerId => $binhLuansForPlayer)
             <div class="col-md-4 mb-4">
                 <div class="player-rating border rounded shadow-sm bg-light p-3">
 
@@ -94,14 +94,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
-                    <!-- Phân Trang Bình Luận -->
-                    <div class="pagination">
-                        {{ $binhLuans->links() }} <!-- Liên kết phân trang tổng thể cho các bình luận -->
-                    </div>
-                    <div class="mt-2">
-                        <p>Hiện tại đang ở trang {{ $binhLuans->currentPage() }} của {{ $binhLuans->lastPage() }} trang.</p>
-                    </div>
                 </div>  
             </div>
         @endforeach
@@ -122,3 +114,5 @@
     .star.filled { color: gold; }
 </style>
 @endsection
+
+
