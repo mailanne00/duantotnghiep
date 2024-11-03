@@ -50,6 +50,8 @@ Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::clas
 
 
 Route::resource('players', PlayerController::class);
+Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
 
 
 
@@ -60,7 +62,6 @@ Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('tai
 Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
-Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 //Quản lí nạp tiền
 Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
 Route::get('/danhmucs', [DanhMucController::class, 'index'])->name('danhmucs.index');
@@ -90,5 +91,3 @@ Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('
 Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
 Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
-
-
