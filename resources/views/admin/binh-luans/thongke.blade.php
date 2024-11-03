@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+<title>@yield('title' , 'Quản lý bình luận')</title>
 
 @section('title', 'Đánh giá 5 sao')
 

@@ -15,43 +15,43 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "{{ route('admin.statistics.data') }}",
-                method: "GET",
-                success: function(response) {
-                    const labels = response.dates; // Ngày thêm tài khoản
-                    const data = response.counts; // Số lượng tài khoản
+    $(document).ready(function() {
+        $.ajax({
+            url: "{{ route('admin.tkuser.data') }}", // Đã sửa lại tên route
+            method: "GET",
+            success: function(response) {
+                const labels = response.dates; // Ngày thêm tài khoản
+                const data = response.counts; // Số lượng tài khoản
 
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [{
-                                label: 'Số lượng tài khoản mới',
-                                data: data,
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                }
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Số lượng tài khoản mới',
+                            data: data,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
                             }
                         }
-                    });
-                },
-                error: function(xhr) {
-                    console.log('Error:', xhr);
-                }
-            });
+                    }
+                });
+            },
+            error: function(xhr) {
+                console.log('Error:', xhr);
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>

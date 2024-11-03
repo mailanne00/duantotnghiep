@@ -94,4 +94,7 @@ Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
 
 Route::get('/tk-users', [ThongKeUserController::class, 'index'])->name('tkuser.index');
+Route::get('/tk-users/data', [ThongKeUserController::class, 'getStatisticsData'])->name('tkuser.data'); 
+
+
 
