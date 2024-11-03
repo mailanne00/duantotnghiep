@@ -41,21 +41,23 @@
         @foreach($binhLuans->groupBy('player_id') as $playerId => $binhLuansForPlayer)
             <div class="col-md-4 mb-4">
                 <div class="player-rating border rounded shadow-sm bg-light p-3">
-                    @php
-                        // Tính tổng số đánh giá và số sao
-                        $totalReviews = $binhLuansForPlayer->count();
-                        $starCounts = [
-                            1 => $binhLuansForPlayer->where('danh_gia', 1)->count(),
-                            2 => $binhLuansForPlayer->where('danh_gia', 2)->count(),
-                            3 => $binhLuansForPlayer->where('danh_gia', 3)->count(),
-                            4 => $binhLuansForPlayer->where('danh_gia', 4)->count(),
-                            5 => $binhLuansForPlayer->where('danh_gia', 5)->count(),
-                        ];
-                    @endphp
 
+                    <!-- Phần Tỷ Lệ Đánh Giá -->
                     <div class="average-rating mb-2">
                         <h5 class="font-weight-bold">Tỷ lệ đánh giá</h5>
                         <div class="star-rating">
+                            @php
+                                // Tính tổng số đánh giá và số sao
+                                $totalReviews = $binhLuansForPlayer->count();
+                                $starCounts = [
+                                    1 => $binhLuansForPlayer->where('danh_gia', 1)->count(),
+                                    2 => $binhLuansForPlayer->where('danh_gia', 2)->count(),
+                                    3 => $binhLuansForPlayer->where('danh_gia', 3)->count(),
+                                    4 => $binhLuansForPlayer->where('danh_gia', 4)->count(),
+                                    5 => $binhLuansForPlayer->where('danh_gia', 5)->count(),
+                                ];
+                            @endphp
+
                             @for ($i = 1; $i <= 5; $i++)
                                 <div class="star-count">
                                     <div class="star-label">{{ $i }} <span class="star filled">★</span>:</div>
@@ -68,20 +70,31 @@
                         </div>
                     </div>
 
-                    <div class="player-stars" style="max-height: 250px; overflow-y: auto;">
-                        @foreach ($binhLuansForPlayer as $binhLuan)
-                            <div class="rating-item border rounded bg-white p-2 mb-2">
-                                <div class="user-stars mb-2">
-                                    @for ($j = 1; $j <= 5; $j++)
-                                        <span class="star {{ $j <= $binhLuan->danh_gia ? 'filled' : '' }}">★</span>
-                                    @endfor
-                                </div>
-                                <p class="comment mt-2">{{ $binhLuan->noi_dung }}</p>
-                                <small class="timestamp text-muted">{{ $binhLuan->created_at ? $binhLuan->created_at->format('d/m/Y H:i:s') : 'Chưa có thời gian' }}</small>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+                    <!-- Phần Bình Luận -->
+                    <h5 class="font-weight-bold mt-3">Bình luận</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nội Dung</th>
+                                <th>Thời Gian</th>
+                                <th>Số Sao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($binhLuansForPlayer as $binhLuan)
+                                <tr>
+                                    <td>{{ $binhLuan->noi_dung }}</td>
+                                    <td>{{ $binhLuan->created_at ? $binhLuan->created_at->format('d/m/Y H:i:s') : 'Chưa có thời gian' }}</td>
+                                    <td>
+                                        @for ($j = 1; $j <= 5; $j++)
+                                            <span class="star {{ $j <= $binhLuan->danh_gia ? 'filled' : '' }}">★</span>
+                                        @endfor
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>  
             </div>
         @endforeach
     </div>
@@ -100,4 +113,9 @@
     .star { color: #ddd; font-size: 18px; }
     .star.filled { color: gold; }
 </style>
+@endsection
+
+@section('script')
+<script src="{{asset('assets/plugins/data-tables/js/datatables.min.js')}}"></script>
+<script src="{{asset('assets/js/pages/data-basic-custom.js')}}"></script>
 @endsection
