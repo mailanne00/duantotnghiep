@@ -12,8 +12,8 @@
                     <div class="card seo-card">
                         <div class="card-body seo-statustic">
                             <i class="fas fa-chart-line text-c-green f-16 mb-2"></i>
-                            <h5 class="m-0">Thống kê số giờ được thuê theo ngày</h5>
-                            <p class="m-0">Số giờ được thuê theo ngày</p>
+                            <h5 class="m-0">Thống kê người thuê 1 ngày</h5>
+                            <p class="m-0">Số giờ được thuê theo giờ</p>
                         </div>
                         <div class="process">
                             <canvas id="chartHours" height="100"></canvas>
