@@ -20,21 +20,22 @@ class PlayerController extends Controller
 
     public function bieudo()
     {
-        $playerId = 2;
+        $playerId = 2; // ID của player bạn muốn thống kê
 
-
-        $chartDataDay = collect(range(0, 23))->map(function ($hour) use ($playerId) {
-            $rentals = LichSuThuePlayer::with('tai_khoan_id')
+        // Tính tổng số giờ thuê theo từng ngày
+        $chartDataDay = collect(range(0, 23))->map(function ($hour) use ($playerId): array {
+            $rentals = LichSuThuePlayer::with('taiKhoan')
                 ->where('player_id', $playerId)
                 ->where('trang_thai_thue', 'success')
                 ->whereDate('created_at', Carbon::today())
                 ->whereRaw('HOUR(created_at) = ?', [$hour])
                 ->get();
 
-            $totalHour = $rentals->sum('gio_thue');
+            $totalHour = $rentals->sum('gio_thue'); // Kiểm tra giá trị của gio_thue
             $renterNames = $rentals->map(function ($rental) {
-                return $rental->taiKhoan->ten ?? 'Không có tên';
+                return $rental->taiKhoan->ten ?? 'Không có tên'; // Kiểm tra trường hợp không có tên
             })->unique()->values();
+
 
 
             return [
