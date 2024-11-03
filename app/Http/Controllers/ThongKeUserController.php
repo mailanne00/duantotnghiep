@@ -10,19 +10,30 @@ class ThongKeUserController extends Controller
 {
     public function index()
     {
-        $totalAccounts = User::count();
-        $accountsThisMonth = User::whereMonth('created_at', Carbon::now()->month)
-                                 ->whereYear('created_at', Carbon::now()->year)
-                                 ->count();
-
-        $accountsByDay = User::selectRaw('DATE(created_at) as date, COUNT(*) as count')
-                             ->groupBy('date')
-                             ->get();
-
-        // Tạo mảng dữ liệu cho biểu đồ
-        $dates = $accountsByDay->pluck('date')->toArray();
-        $counts = $accountsByDay->pluck('count')->toArray();
-
-        return view('admin.tk-users.index', compact('totalAccounts', 'accountsThisMonth', 'dates', 'counts'));
+        $counts = [];
+        $dates = [];
+    
+        // Giả sử bạn lấy số lượng tài khoản mới theo ngày trong tháng này
+        for ($i = 1; $i <= date('t'); $i++) {
+            $counts[$i] = User::whereDate('created_at', Carbon::now()->year . '-' . Carbon::now()->month . '-' . $i)->count();
+            $dates[] = $i;
+        }
+    
+        // Trả về view
+        return view('admin.tk-users.index', compact('counts', 'dates'));
+    }
+    
+    // Thêm một phương thức mới để trả về dữ liệu JSON cho biểu đồ
+    public function getStatisticsData()
+    {
+        $counts = [];
+        $dates = [];
+    
+        for ($i = 1; $i <= date('t'); $i++) {
+            $counts[$i] = User::whereDate('created_at', Carbon::now()->year . '-' . Carbon::now()->month . '-' . $i)->count();
+            $dates[] = $i;
+        }
+    
+        return response()->json(['dates' => $dates, 'counts' => $counts]);
     }
 }

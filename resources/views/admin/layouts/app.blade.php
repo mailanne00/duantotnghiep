@@ -148,6 +148,10 @@
                                     class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý thống
                                 kê</span></a></li>
 
+                                <li data-username="comments" class="nav-item"><a href="{{ route('admin.phanquyen.index') }}"
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Phân quyền</span></a></li>
+
                                 <li data-username="comments" class="nav-item"><a href="{{ route('admin.tkuser.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i
                                     class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý user</span></a></li>           
