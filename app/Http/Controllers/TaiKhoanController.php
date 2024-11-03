@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PhanQuyen;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class TaiKhoanController extends Controller
     }
     public function create()
     {
-
-        return view("admin.taikhoans.create");
+        $phanQuyens = PhanQuyen::all();
+        return view("admin.taikhoans.create",compact('phanQuyens'));
     }
     public function store(Request $request)
     {

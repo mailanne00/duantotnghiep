@@ -111,12 +111,15 @@
                             <label for="bi_cam">Vai trò</label>
                             <select name="bi_cam" class="form-control" required>
                                 <option value="">Chọn vai trò</option>
-                                <option value=""></option>
+                                @foreach ($phanQuyens as $phanQuyen)
+                                <option value="{{ $phanQuyen->id }}">{{ $phanQuyen->ten }}</option>
+                                @endforeach
                             </select>
                             @error('bi_cam')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
 
 
                     </div>
