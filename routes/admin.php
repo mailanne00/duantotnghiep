@@ -10,6 +10,8 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
+use App\Http\Controllers\TopPlayerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +82,13 @@ Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('b
 Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
+
+
+//top-player
+
+    Route::get('/top-followed-players', [TopPlayerController::class, 'getTopFollowedPlayers'])->name('top_followed_players');
+    Route::get('/most-liked-players', [TopPlayerController::class, 'getMostLikedPlayers'])->name('most_liked_players');
+    Route::get('/most-hired-players', [TopPlayerController::class, 'getMostHiredPlayers'])->name('most_hired_players');
 
 Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 
