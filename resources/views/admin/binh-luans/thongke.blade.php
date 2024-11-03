@@ -99,6 +99,9 @@
                     <div class="pagination">
                         {{ $binhLuans->links() }} <!-- Liên kết phân trang tổng thể cho các bình luận -->
                     </div>
+                    <div class="mt-2">
+                        <p>Hiện tại đang ở trang {{ $binhLuans->currentPage() }} của {{ $binhLuans->lastPage() }} trang.</p>
+                    </div>
                 </div>  
             </div>
         @endforeach
