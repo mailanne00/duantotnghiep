@@ -111,8 +111,7 @@
                             <label for="bi_cam">Vai trò</label>
                             <select name="bi_cam" class="form-control" required>
                                 <option value="">Chọn vai trò</option>
-                                <option value="1" {{ old('bi_cam') == '1' ? 'selected' : '' }}>Admin</option>
-                                <option value="2" {{ old('bi_cam') == '2' ? 'selected' : '' }}>Người dùng</option>
+                                <option value=""></option>
                             </select>
                             @error('bi_cam')
                             <span class="text-danger">{{ $message }}</span>

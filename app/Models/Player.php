@@ -32,4 +32,13 @@ class Player extends Model
     {
         return $this->hasOne(TheoDoiPlayer::class, 'player_id');
     }
+    public function dangTin()
+    {
+        return $this->hasMany(DangTin::class);
+    }
+    public function follows()
+    {
+        return $this->belongsToMany(Player::class, 'theo_doi_players', 'player_id', 'tai_khoan_id');
+    }
+
 }
