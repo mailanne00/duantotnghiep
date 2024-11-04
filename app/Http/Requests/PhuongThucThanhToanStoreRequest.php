@@ -22,7 +22,7 @@ class PhuongThucThanhToanStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten_phuong_thuc' => 'required|max:255',
+            'ten_phuong_thuc' => 'required|max:255|unique:phuong_thuc_thanh_toans,ten_phuong_thuc',
             'mo_ta' => 'required|max:255',
             'so_tai_khoan' => 'required|regex:/^[0-9]+$/',
             'logo' => 'required|mimes:png,jpg,svg|max:10240',
@@ -34,6 +34,7 @@ class PhuongThucThanhToanStoreRequest extends FormRequest
         return [
             'ten_phuong_thuc.required' => 'Tên phương thức không được để trống',
             'ten_phuong_thuc.max' => 'Tên phương thức không được quá 255 ký tự',
+            'ten_phuong_thuc.unique' => 'Tên phương thức đã tồn tại',
             'mo_ta.required' => 'Mô tả không được để trống',
             'mo_ta.max' => 'Mô tả không được quá 255 ký tự',
             'so_tai_khoan.required' => 'Số tài khoản không được để trống',
