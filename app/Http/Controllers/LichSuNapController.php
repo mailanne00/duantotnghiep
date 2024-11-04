@@ -38,9 +38,7 @@ class LichSuNapController extends Controller
                     'trang_thai_thanh_toan' => 'Đã bị huỷ'
                 ]);
             }
-        } else {
-            abort(404);
         }
-        return redirect()->route('quan-li-nap-tiens.index');
+        return redirect()->route('admin.quan-li-nap-tiens.index')->with(['success'=> 'update thành công']);
     }
 }
