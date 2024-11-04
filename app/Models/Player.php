@@ -32,4 +32,6 @@ class Player extends Model
     {
         return $this->hasOne(TheoDoiPlayer::class, 'player_id');
     }
+
+    
 }

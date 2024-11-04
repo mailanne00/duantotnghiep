@@ -9,8 +9,10 @@ class PhanQuyen extends Model
 {
     use HasFactory;
 
-    public $fillable = [
-        "ten"
+
+    protected $fillable = [
+        'ten',
+        'trang_thai'
     ];
 
 }

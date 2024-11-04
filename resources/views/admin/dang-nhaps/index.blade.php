@@ -42,23 +42,24 @@
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="http://blog.stackfindover.com/" rel="dofollow">PlayerDuo</a></h1>
+          <h1><a href="http://blog.stackfindover.com/" rel="dofollow" class="playerduo">Admin PlayerDuo</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Đăng nhập vào tài khoản của bạn</span>
-              <form id="stripe-login">
+              <span class="padding-bottom--15">Đăng nhập</span>
+              <form id="stripe-login" method="post" action="{{ route('admin.dangnhap.submit') }}">
+                @csrf
                 <div class="field padding-bottom--24">
                   <label for="email">Email</label>
                   <input type="email" name="email">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
-                    <label for="password">Mật khẩu</label>
-                    <div class="reset-pass">
+                    <label for="">Mật khẩu</label>
+                    <!-- <div class="reset-pass">
                       <a href="#">Quên mật khẩu?</a>
-                    </div>
+                    </div> -->
                   </div>
                   <input type="password" name="password">
                 </div>
@@ -68,13 +69,13 @@
                   </label>
                 </div>
                 <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Continue">
+                  <input type="submit" name="submit" value="Đăng nhập">
                 </div>
               </form>
             </div>
           </div>
           <div class="footer-link padding-top--24">
-<!--             <span>Don't have an account? <a href="">Sign up</a></span> -->
+            <span>Bạn chưa có tài khoản? <a href="#">Trở về trang chủ</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">© Stackfindover</a></span>
               <span><a href="#">Contact</a></span>
