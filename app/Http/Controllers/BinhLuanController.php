@@ -25,6 +25,6 @@ class BinhLuanController extends Controller
         $binhluan->trang_thai = $trang_thai;
         $binhluan->save();
 
-        return redirect()->route('admin.binhluans.index')->with('success', 'Cập nhật thành công!');
+        return redirect()->route('admin.binhluans.index')->with('success', 'Cập nhật thành công!')
     }
 }
