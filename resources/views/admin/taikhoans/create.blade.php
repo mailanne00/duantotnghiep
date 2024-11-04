@@ -69,7 +69,7 @@
 
                         <div class="form-group">
                             <label for="mat_khau">Mật khẩu</label>
-                            <input type="password" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu" required>
+                            <input type="password" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu" value="{{ old('mat_khau') }}" required>
                             @error('mat_khau')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -78,9 +78,9 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="biet_danh">Biệt danh</label>
-                            <input type="text" name="biet_danh" class="form-control" placeholder="Nhập biệt danh" value="{{ old('biet_danh') }}" required>
-                            @error('biet_danh')
+                            <label for="que_quan">Quê quán</label>
+                            <input type="text" name="que_quan" class="form-control" placeholder="Nhập quê quán" value="{{ old('que_quan') }}" required>
+                            @error('que_quan')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -97,8 +97,6 @@
                             @enderror
                         </div>
 
-
-
                         <div class="form-group">
                             <label for="anh_dai_dien">Ảnh đại diện</label>
                             <input type="file" name="anh_dai_dien" class="form-control" required>
@@ -108,11 +106,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="bi_cam">Vai trò</label>
-                            <select name="bi_cam" class="form-control" required>
+                            <label for="phan_quyen_id">Vai trò</label>
+                            <select name="phan_quyen_id" class="form-control" required>
                                 <option value="">Chọn vai trò</option>
                                 @foreach ($phanQuyens as $phanQuyen)
-                                <option value="{{ $phanQuyen->id }}">{{ $phanQuyen->ten }}</option>
+                                <option value="{{ $phanQuyen->id }}" {{ old('bi_cam') == $phanQuyen->id ? 'selected' : '' }}>{{ $phanQuyen->ten }}</option>
                                 @endforeach
                             </select>
                             @error('bi_cam')
