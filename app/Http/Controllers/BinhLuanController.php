@@ -29,27 +29,29 @@ class BinhLuanController extends Controller
         return redirect()->route('admin.binhluans.index')->with('success', 'Cập nhật thành công!');
     }
 
-    public function thongke(Request $request){
+    public function thongke(Request $request)
+    {
+        // Lấy các tham số tìm kiếm
+        $query = $request->input('query');
+        $danhGia = $request->input('danh_gia');
+    
+        // Lấy danh sách bình luận với phân trang
+        $binhLuans = BinhLuan::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('player_id', 'like', '%' . $query . '%');
+        })
+        ->when($danhGia, function ($queryBuilder) use ($danhGia) {
+            return $queryBuilder->where('danh_gia', $danhGia);
+        })
 
-        $taikhoan = TaiKhoan::all();
-        $player = Player::all();
-        $query = BinhLuan::with('player');
-
-        // Tìm kiếm theo player_id hoặc số sao
-        if ($request->has('query')) {
-            $query->where('player_id', $request->query);
-        }
-        if ($request->has('danh_gia')) {
-            $query->where('danh_gia', $request->danh_gia);
-        }
-
-        // Phân trang kết quả
-        $binhLuans = $query->paginate(10);
-
-        return view('admin.binh-luans.thongke', compact('binhLuans', 'taikhoan', 'player'));
-
-
+        ->with('taikhoan') 
+        ->paginate(10); // Số bình luận trên mỗi trang
+    
+        // Nhóm bình luận theo player_id
+        $groupedBinhLuans = $binhLuans->groupBy('player_id');
+    
+        return view('admin.binh-luans.thongke', compact('groupedBinhLuans', 'binhLuans'));
     }
+    
 
     
 }
