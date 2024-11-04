@@ -49,7 +49,9 @@
         <h5 class="font-weight-bold">Bình luận</h5>
         @foreach ($binhLuans as $binhLuan)
             <div class="comment-item p-3 mb-3 border rounded">
+            <span>{{$binhLuan->taiKhoan->ten}}</span>
                 <div class="d-flex justify-content-between">
+                
                     <div class="rating-stars">
                         @for ($j = 1; $j <= 5; $j++)
                             <span class="star {{ $j <= $binhLuan->danh_gia ? 'filled' : '' }}">★</span>

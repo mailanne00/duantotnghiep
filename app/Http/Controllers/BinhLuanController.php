@@ -42,6 +42,8 @@ class BinhLuanController extends Controller
         ->when($danhGia, function ($queryBuilder) use ($danhGia) {
             return $queryBuilder->where('danh_gia', $danhGia);
         })
+
+        ->with('taikhoan') 
         ->paginate(10); // Số bình luận trên mỗi trang
     
         // Nhóm bình luận theo player_id
