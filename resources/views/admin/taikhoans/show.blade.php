@@ -13,10 +13,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>ID:</label>
-                        <input type="text" class="form-control" value="{{ $taikhoan->id }}" readonly>
-                    </div>
+                    
                     <div class="form-group">
                         <label>Mã định danh:</label> <!-- Thêm dòng này -->
                         <input type="text" class="form-control" value="{{ $taikhoan->uid }}" readonly>
