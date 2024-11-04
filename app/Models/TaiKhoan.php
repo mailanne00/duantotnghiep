@@ -21,6 +21,7 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
         'ngay_sinh',
         'biet_danh',
         'gioi_tinh',
+        'que_quan',
         'email',
         'sdt',
         'cccd',
