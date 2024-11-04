@@ -153,7 +153,7 @@
 
                                 <li data-username="comments" class="nav-item"><a href="{{ route('admin.tkuser.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý user</span></a></li>           
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Thống kê user</span></a></li>           
 
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i
