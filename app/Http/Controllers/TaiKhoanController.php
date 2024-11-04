@@ -21,6 +21,7 @@ class TaiKhoanController extends Controller
     }
     public function store(Request $request)
     {
+        
         // Thêm validation
         $request->validate([
             'ten' => 'required|string|max:255',
@@ -30,6 +31,7 @@ class TaiKhoanController extends Controller
             'email' => 'required|email|unique:tai_khoans,email',
             'sdt' => 'required|numeric|digits_between:10,15',
             'mat_khau' => 'required|string|min:8',
+            'phan_quyen_id' => 'required|exists:phan_quyens,id',
 
             // 'bi_cam' => 'boolean',
 
@@ -88,6 +90,7 @@ class TaiKhoanController extends Controller
             $taikhoans->banned_at = null; // Không cấm tài khoản
         } // Trạng thái cấm tài khoản
         $taikhoans->id_dinh_danh = $taikhoans->generateAccountId();
+        $taikhoans->phan_quyen_id = $request->phan_quyen_id;
 
 
 
@@ -98,7 +101,8 @@ class TaiKhoanController extends Controller
     public function show($id)
     {
         $taikhoan = TaiKhoan::find($id);
-        return view('admin.taikhoans.show', compact('taikhoan'));
+        $phanQuyens = PhanQuyen::all();
+        return view('admin.taikhoans.show', compact('taikhoan','phanQuyens'));
     }
     public function banUser($id)
     {
@@ -116,4 +120,5 @@ class TaiKhoanController extends Controller
 
         return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã được mở lại.');
     }
+    
 }
