@@ -6,6 +6,7 @@ use App\Models\LichSuThuePlayer;
 use App\Models\Player;
 use App\Models\TheoDoiPlayer;
 use App\Models\TaiKhoan;
+use App\Models\BinhLuan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -181,6 +182,27 @@ class PlayerController extends Controller
                 ];
             });
 
+        $query = $request->input('query');
+        $danhGia = $request->input('danh_gia');
+
+        // Lấy danh sách bình luận với phân trang
+        $binhLuans = BinhLuan::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('player_id', 'like', '%' . $query . '%');
+        })
+            ->when($danhGia, function ($queryBuilder) use ($danhGia) {
+                return $queryBuilder->where('danh_gia', $danhGia);
+            })
+
+            ->with('taikhoan')
+            ->paginate(10); // Số bình luận trên mỗi trang
+
+        // Nhóm bình luận theo player_id
+        $groupedBinhLuans = $binhLuans->groupBy('player_id');
+
+
+
+
+
         // Tạo mảng labels và data từ dữ liệu vừa lấy cho số giờ thuê
         $labels = $chartData->pluck('date')->map(function ($date) {
             return \Carbon\Carbon::parse($date)->format('d/m/Y');
@@ -195,7 +217,7 @@ class PlayerController extends Controller
 
 
 
-        return view('admin.players.show', compact('player', 'soDonThue', 'tongGioThue', 'soNguoiTheoDoi', 'tongDoanhThu', 'labels', 'data', 'labelsTongTien', 'dataTongTien', 'chartDataDay'));
+        return view('admin.players.show', compact('player', 'soDonThue', 'tongGioThue', 'soNguoiTheoDoi', 'tongDoanhThu', 'labels', 'data', 'labelsTongTien', 'dataTongTien', 'chartDataDay', 'groupedBinhLuans', 'binhLuans'));
     }
 
 
