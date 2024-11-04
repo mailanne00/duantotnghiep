@@ -46,8 +46,8 @@ Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanContr
 Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
 
 // Đăng nhập admin
-Route::get('/', [AdminController::class, 'trangChu'])->name('index');
-Route::get('dang-nhap', [AdminController::class, 'index'])->name('dangnhap.index');
+//Route::get('/', [AdminController::class, 'trangChu'])->name('index');
+Route::get('/', [AdminController::class, 'index'])->name('dangnhap.index');
 Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.submit');
 
 // Quản lí player
@@ -61,7 +61,7 @@ Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('
 Route::get('/taikhoans', [TaiKhoanController::class, 'index'])->name('taikhoans.index');
 Route::get('/taikhoans/create', [TaiKhoanController::class, 'create'])->name('taikhoans.create');
 Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('taikhoans.store');
-Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
+Route::get('/taikhoans/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
 //Quản lí nạp tiền

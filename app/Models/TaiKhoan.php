@@ -27,7 +27,8 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
         'password',
         'so_du',
         'anh_dai_dien',
-        'bi_cam',
+        'uid',
+        'banned_at',
         'phan_quyen_id',
     ];
 
@@ -55,14 +56,6 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
     public function isBanned()
     {
         return !is_null($this->banned_at);
-    }
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->uuid = (string) Str::uuid();
-        });
     }
     public function generateAccountId()
     {

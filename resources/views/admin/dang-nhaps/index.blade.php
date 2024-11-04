@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8">
   <title>PlayerDuo: Đăng nhập</title>
+    <link rel="shortcut icon" href="https://files.playerduo.net/production/static-files/logo.png" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admins/dang-nhap.css') }}">
 </head>
 
