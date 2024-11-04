@@ -82,10 +82,10 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="form-label" for="biet_danh">Biệt danh</label>
-                            <input type="text" name="biet_danh" id="biet_danh" class="form-control" placeholder="Nhập biệt danh" value="{{ old('biet_danh') }}" required>
-                            @error('biet_danh')
-                            <div class="text-danger mt-2">{{ $message }}</div>
+                            <label for="que_quan">Quê quán</label>
+                            <input type="text" name="que_quan" class="form-control" placeholder="Nhập quê quán" value="{{ old('que_quan') }}" required>
+                            @error('que_quan')
+                            <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
 
@@ -114,7 +114,7 @@
                             <select name="phan_quyen_id" id="phan_quyen_id" class="form-control" required>
                                 <option value="">Chọn vai trò</option>
                                 @foreach ($phanQuyens as $phanQuyen)
-                                <option value="{{ $phanQuyen->id }}">{{ $phanQuyen->ten }}</option>
+                                <option value="{{ $phanQuyen->id }}" {{ old('phan_quyen_id') == $phanQuyen->id ? 'selected' : '' }}>{{ $phanQuyen->ten }}</option>
                                 @endforeach
                             </select>
                             @error('phan_quyen_id')

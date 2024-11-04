@@ -26,7 +26,6 @@ class TaiKhoanController extends Controller
         $request->validate([
             'ten' => 'required|string|max:255',
             'ngay_sinh' => 'required|date|before_or_equal:' . now()->subYears(13)->toDateString(),
-            'biet_danh' => 'required|string|max:255',
             'gioi_tinh' => 'required|in:Nam,Nữ',
             'email' => 'required|email|unique:tai_khoans,email',
             'sdt' => 'required|numeric|digits_between:10,15',
@@ -34,8 +33,6 @@ class TaiKhoanController extends Controller
             'phan_quyen_id' => 'required|exists:phan_quyens,id',
 
             // 'bi_cam' => 'boolean',
-
-
         ], [
             'ten.required' => 'Tên không được để trống.',
             'ten.string' => 'Tên phải là chuỗi ký tự.',
@@ -44,9 +41,7 @@ class TaiKhoanController extends Controller
             'ngay_sinh.date' => 'Ngày sinh không hợp lệ.',
              'ngay_sinh.before_or_equal' => 'Bạn phải từ 13 tuổi trở lên.',
             'biet_danh.required' => 'Biệt danh không được để trống.',
-
             'gioi_tinh.required' => 'Giới tính không được để trống.',
-
             'email.required' => 'Email không được để trống.',
             'email.email' => 'Email không hợp lệ.',
             'email.unique' => 'Email này đã được sử dụng.',
@@ -58,7 +53,6 @@ class TaiKhoanController extends Controller
             'mat_khau.required' => 'Mật khẩu không được để trống.',
             'mat_khau.string' => 'Mật khẩu phải là chuỗi ký tự.',
             'mat_khau.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-
             'anh_dai_dien.required' => 'Ảnh đại diện không được để trống.',
             'anh_dai_dien.image' => 'Ảnh đại diện phải là định dạng ảnh.',
 
@@ -78,21 +72,17 @@ class TaiKhoanController extends Controller
         $taikhoans->email = $request->email;
         $taikhoans->sdt = $request->sdt;
         $taikhoans->cccd = $request->cccd;
-        $taikhoans->mat_khau = $request->mat_khau;
-
+        $taikhoans->password = $request->mat_khau;
+        $taikhoans->que_quan = $request->que_quan;
+        $taikhoans->phan_quyen_id = $request->phan_quyen_id;
         $taikhoans->anh_dai_dien = $avatarPath;
         $taikhoans->cccd = $cccdPath;
-        if ($request->bi_cam == 1) {
-            $taikhoans->bi_cam = 1; // Gán giá trị cho vai trò Admin
-            $taikhoans->banned_at = now(); // Cấm tài khoản
-        } else {
-            $taikhoans->bi_cam = 2; // Gán giá trị cho vai trò Người dùng
-            $taikhoans->banned_at = null; // Không cấm tài khoản
-        } // Trạng thái cấm tài khoản
-        $taikhoans->id_dinh_danh = $taikhoans->generateAccountId();
+        
+       
         $taikhoans->phan_quyen_id = $request->phan_quyen_id;
 
 
+        $taikhoans->uid = $taikhoans->generateAccountId();
 
         $taikhoans->save();
 

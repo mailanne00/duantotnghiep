@@ -24,16 +24,17 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
         'email',
         'sdt',
         'cccd',
-        'mat_khau',
+        'password',
         'so_du',
         'anh_dai_dien',
-        'bi_cam',
+        'uid',
+        'banned_at',
         'phan_quyen_id',
     ];
 
 
     protected $hidden = [
-        'mat_khau', // Ẩn mật khẩu trong kết quả truy vấn
+        'password', // Ẩn mật khẩu trong kết quả truy vấn
     ];
 
 
@@ -47,17 +48,14 @@ class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
         return $this->belongsTo(PhanQuyen::class, 'phan_quyen_id');
     }
 
+    public function isAdmin()
+    {
+        return $this->phanQuyen && $this->phanQuyen->ten === 'admin';
+    }
+
     public function isBanned()
     {
         return !is_null($this->banned_at);
-    }
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->uuid = (string) Str::uuid();
-        });
     }
     public function generateAccountId()
     {

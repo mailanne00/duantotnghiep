@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mã định danh:</label> <!-- Thêm dòng này -->
-                        <input type="text" class="form-control" value="{{ $taikhoan->id_dinh_danh }}" readonly>
+                        <input type="text" class="form-control" value="{{ $taikhoan->uid }}" readonly>
                         <!-- Thêm input cho mã định danh -->
                     </div>
                     <div class="form-group">
@@ -31,10 +31,7 @@
                         <input type="text" class="form-control"
                             value="{{ $taikhoan->created_at ? $taikhoan->created_at->format('Y-m-d') : '' }}" readonly>
                     </div>
-                    <div class="form-group">
-                        <label>Biệt danh:</label>
-                        <input type="text" class="form-control" value="{{ $taikhoan->biet_danh }}" readonly>
-                    </div>
+                    
                     <div class="form-group">
                         <label>Giới tính:</label>
                         <input type="text" class="form-control" value="{{ $taikhoan->gioi_tinh }}" readonly>
@@ -50,8 +47,8 @@
                     <div class="form-group">
                         <label>Mật khẩu:</label>
                         <div class="input-group">
-                            <input type="password" id="mat_khau" class="form-control"
-                                value="{{ $taikhoan->mat_khau }}" readonly>
+                            <input type="password" id="password" class="form-control"
+                                value="{{ $taikhoan->password }}" readonly>
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                     <i class="fa fa-eye" id="togglePassword" style="cursor: pointer;"
@@ -104,7 +101,7 @@
 
 <script>
     function togglePassword() {
-        var passwordField = document.getElementById("mat_khau");
+        var passwordField = document.getElementById("password");
         var toggleIcon = document.getElementById("togglePassword");
         if (passwordField.type === "password") {
             passwordField.type = "text";

@@ -25,6 +25,7 @@
                                 <th>STT</th>
                                 <th>Tên phương thức</th>
                                 <th>Logo</th>
+                                <th>Số tài khoản</th>
                                 <th>Mô tả</th>
                                 <th>Trạng thái</th>
                                 <th>Thao tác</th>
@@ -38,6 +39,7 @@
                                 <td>
                                     <img src="{{ Storage::url($phuongthucthanhtoan->logo) }}" alt="" width="70px">
                                 </td>
+                                <td>{{$phuongthucthanhtoan->so_tai_khoan}}</td>
                                 <td>{{$phuongthucthanhtoan->mo_ta}}</td>
                                 <td>
                                     <form action="{{ route('admin.phuongthucthanhtoans.update-status', $phuongthucthanhtoan->id) }}" method="POST">
