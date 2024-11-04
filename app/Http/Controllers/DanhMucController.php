@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DanhMucStoreRequest;
+use App\Http\Requests\DanhMucUpdateRequest;
 use App\Models\DanhMuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -66,8 +67,9 @@ class DanhMucController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $id)
+    public function update(DanhMucUpdateRequest $request, int $id)
     {
+        $validate = $request->validated();
         $danhmuc = DanhMuc::findOrFail($id);
         $data = $request->except('anh_dai_dien');
 

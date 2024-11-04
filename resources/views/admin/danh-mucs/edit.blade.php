@@ -16,6 +16,9 @@
                             <div class="col-6">
                                 <label class="form-label">Tên danh mục</label>
                                 <input type="text" name="ten" class="form-control" value="{{$danhmuc->ten}}">
+                                @error('ten')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-6 mt-3">
                                 <label class="form-label">Ảnh đại diện</label>
@@ -23,6 +26,9 @@
                                     <img src="{{ Storage::url($danhmuc->anh_dai_dien)}}" alt="" width="100px">
                                 </div>
                                 <input type="file" name="anh_dai_dien" class="form-control mt-3">
+                                @error('anh_dai_dien')
+                                <div class="text-danger mt-2">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-4">Submit</button>
