@@ -24,7 +24,7 @@ class PhuongThucThanhToanStoreRequest extends FormRequest
         return [
             'ten_phuong_thuc' => 'required|max:255',
             'mo_ta' => 'required|max:255',
-            'so_tai_khoan' => 'required|integer',
+            'so_tai_khoan' => 'required|regex:/^[0-9]+$/',
             'logo' => 'required|mimes:png,jpg,svg|max:10240',
         ];
     }
@@ -37,7 +37,7 @@ class PhuongThucThanhToanStoreRequest extends FormRequest
             'mo_ta.required' => 'Mô tả không được để trống',
             'mo_ta.max' => 'Mô tả không được quá 255 ký tự',
             'so_tai_khoan.required' => 'Số tài khoản không được để trống',
-            'so_tai_khoan.integer' => 'Số tài khoản bắt buộc là số',
+            'so_tai_khoan.regex' => 'Số tài khoản bắt buộc là số',
             'logo.required' => 'Logo không được để trống',
             'logo.mimes' => 'Logo bắt buộc là ảnh',
             'logo.max' => 'Logo không được quá 10Mb',
