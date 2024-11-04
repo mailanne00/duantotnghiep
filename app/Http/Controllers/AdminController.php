@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Hash;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function index()
@@ -26,7 +24,7 @@ class AdminController extends Controller
             $taiKhoan = Auth::user();
             // Kiểm tra xem tài khoản có phải admin hay không
             if ($taiKhoan->isAdmin()) {
-                return redirect()->route('admin.index');
+                return view('admin.index');
             } else {
                 Auth::logout();
                 return redirect()->route('admin.dangnhap.index')->with(['Bạn không có quyền truy cập.']);

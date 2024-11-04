@@ -124,7 +124,7 @@
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý phương
+                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Phương
                                 thức thanh toán</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}"
