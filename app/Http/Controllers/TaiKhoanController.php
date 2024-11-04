@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PhanQuyen;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 
@@ -15,15 +16,15 @@ class TaiKhoanController extends Controller
     }
     public function create()
     {
-
-        return view("admin.taikhoans.create");
+        $phanQuyens = PhanQuyen::all();
+        return view("admin.taikhoans.create",compact('phanQuyens'));
     }
     public function store(Request $request)
     {
         // Thêm validation
         $request->validate([
             'ten' => 'required|string|max:255',
-            'ngay_sinh' => 'required|date',
+            'ngay_sinh' => 'required|date|before_or_equal:' . now()->subYears(13)->toDateString(),
             'biet_danh' => 'required|string|max:255',
             'gioi_tinh' => 'required|in:Nam,Nữ',
             'email' => 'required|email|unique:tai_khoans,email',
@@ -39,6 +40,7 @@ class TaiKhoanController extends Controller
             'ten.max' => 'Tên không được vượt quá 255 ký tự.',
             'ngay_sinh.required' => 'Ngày sinh không được để trống.',
             'ngay_sinh.date' => 'Ngày sinh không hợp lệ.',
+             'ngay_sinh.before_or_equal' => 'Bạn phải từ 13 tuổi trở lên.',
             'biet_danh.required' => 'Biệt danh không được để trống.',
 
             'gioi_tinh.required' => 'Giới tính không được để trống.',

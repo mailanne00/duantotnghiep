@@ -11,6 +11,8 @@ use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
+use App\Http\Controllers\TopPlayerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +52,8 @@ Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.su
 
 // Quản lí player
 Route::resource('players', PlayerController::class);
+Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
+Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
 
 
 
@@ -60,7 +64,6 @@ Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('tai
 Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
-Route::get('/bieu-do-duong', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 //Quản lí nạp tiền
 Route::resource('quan-li-nap-tiens', \App\Http\Controllers\LichSuNapController::class);
 Route::get('/danhmucs', [DanhMucController::class, 'index'])->name('danhmucs.index');
@@ -80,6 +83,13 @@ Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binh
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
 
+
+//top-player
+
+    Route::get('/top-followed-players', [TopPlayerController::class, 'getTopFollowedPlayers'])->name('top_followed_players');
+    Route::get('/most-liked-players', [TopPlayerController::class, 'getMostLikedPlayers'])->name('most_liked_players');
+    Route::get('/most-hired-players', [TopPlayerController::class, 'getMostHiredPlayers'])->name('most_hired_players');
+
 Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 
 
@@ -90,5 +100,3 @@ Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('
 Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
 Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
-
-

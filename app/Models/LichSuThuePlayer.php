@@ -19,7 +19,7 @@ class LichSuThuePlayer extends Model
 
     public function taiKhoan()
     {
-        return $this->hasOne(TaiKhoan::class, 'tai_khoan_id');
+        return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id'); // Thay đổi nếu cần
     }
 
     public function player()
