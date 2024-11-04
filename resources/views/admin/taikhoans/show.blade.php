@@ -31,7 +31,10 @@
                         <input type="text" class="form-control"
                             value="{{ $taikhoan->created_at ? $taikhoan->created_at->format('Y-m-d') : '' }}" readonly>
                     </div>
-                    
+                    <div class="form-group">
+                        <label>Quê quán:</label>
+                        <input type="text" class="form-control" value="{{ $taikhoan->que_quan }}" readonly>
+                    </div>
                     <div class="form-group">
                         <label>Giới tính:</label>
                         <input type="text" class="form-control" value="{{ $taikhoan->gioi_tinh }}" readonly>
