@@ -4,6 +4,8 @@
 
 <!-- data tables css -->
 <link rel="stylesheet" href="{{asset('assets/plugins/data-tables/css/datatables.min.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 @endsection
 
@@ -37,10 +39,14 @@
                                     <img src="{{Storage::url($danhmuc->anh_dai_dien)}}" alt="" width="100px">
                                 </td>
                                 <td>
-                                    <div class="switch switch-primary d-inline">
-                                        <input onclick="updateStatus('{{ $danhmuc->id }}', '{{$danhmuc->trang_thai==1 ? 0 : 1}}')" type="checkbox" id="switch-{{ $danhmuc->id }}" {{ $danhmuc->trang_thai == 1 ? 'checked' : '' }}>
-                                        <label for="switch-{{ $danhmuc->id }}" class="cr switch-alignment"></label>
-                                    </div>
+                                    <form action="{{ route('admin.danhmucs.update-status', $danhmuc->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="switch switch-primary d-inline">
+                                            <input type="checkbox" name="trang_thai" value="{{ $danhmuc->trang_thai == 1 ? 0 : 1 }}" id="switch-{{ $danhmuc->id }}" {{ $danhmuc->trang_thai == 1 ? 'checked' : '' }} onchange="this.form.submit()">
+                                            <label for="switch-{{ $danhmuc->id }}" class="cr switch-alignment"></label>
+                                        </div>
+                                    </form>
                                 </td>
                                 <td>
                                     <div class="row">
@@ -68,24 +74,14 @@
     </div>
     <!-- Language - Comma Decimal Place table end -->
 </div>
-
+@if (session('success'))
+<script>
+    swal("Thành công!", "{{ session('success') }}", "success");
+</script>
+@endif
 @endsection
 
-<script>
-    function updateStatus(id, status) {
-        $.ajax({
-            url: '/admin/catalogues/' + id,
-            method: 'PUT',
-            data: {
-                _token: '{{csrf_token()}}',
-                trang_thai: status,
-            },
-            success: (data) => {
-                alert('Sửa trạng thái thành công');
-            }
-        })
-    }
-</script>
+
 
 @section('script')
 <script src="{{asset('assets/plugins/data-tables/js/datatables.min.js')}}"></script>

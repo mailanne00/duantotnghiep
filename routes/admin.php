@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\DangTinController;
 use App\Http\Controllers\DanhGiaController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\ThongKeUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
+use App\Http\Controllers\TopPlayerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,12 +24,6 @@ use App\Http\Controllers\ToCaoController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('admin.layouts.app');
-});
-
-
 
 Route::get('/to-caos', [ToCaoController::class, 'index'])->name('tocao.index');
 Route::delete('/to-caos/{complaint}', [ToCaoController::class, 'destroy'])->name('tocaos.destroy');
@@ -49,7 +46,12 @@ Route::put('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 
 Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanController::class, 'updateStatus'])->name('phuongthucthanhtoans.update-status');
 Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
 
+// Đăng nhập admin
+//Route::get('/', [AdminController::class, 'trangChu'])->name('index');
+Route::get('/', [AdminController::class, 'index'])->name('dangnhap.index');
+Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.submit');
 
+// Quản lí player
 Route::resource('players', PlayerController::class);
 Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
@@ -60,7 +62,7 @@ Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('
 Route::get('/taikhoans', [TaiKhoanController::class, 'index'])->name('taikhoans.index');
 Route::get('/taikhoans/create', [TaiKhoanController::class, 'create'])->name('taikhoans.create');
 Route::post('/taikhoans/store', [TaiKhoanController::class, 'store'])->name('taikhoans.store');
-Route::get('/taikhoans/show/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
+Route::get('/taikhoans/{id}', [TaiKhoanController::class, 'show'])->name('taikhoans.show');
 Route::post('/taikhoans/ban/{id}', [TaiKhoanController::class, 'banUser'])->name('taikhoans.ban');
 Route::post('/taikhoans/unban/{id}', [TaiKhoanController::class, 'unbanUser'])->name('taikhoans.unban');
 //Quản lí nạp tiền
@@ -81,6 +83,13 @@ Route::get('/binhluans/{id}/edit', [BinhLuanController::class, 'edit'])->name('b
 Route::put('/binhluans/{id}', [BinhLuanController::class, 'update'])->name('binhluans.update');
 Route::put('/binhluans/{id}/update-status', [BinhLuanController::class, 'updateStatus'])->name('binhluans.update-status');
 Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('binhluans.destroy');
+
+
+//top-player
+
+    Route::get('/top-followed-players', [TopPlayerController::class, 'getTopFollowedPlayers'])->name('top_followed_players');
+    Route::get('/most-liked-players', [TopPlayerController::class, 'getMostLikedPlayers'])->name('most_liked_players');
+    Route::get('/most-hired-players', [TopPlayerController::class, 'getMostHiredPlayers'])->name('most_hired_players');
 
 Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 

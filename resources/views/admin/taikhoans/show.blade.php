@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-<title>@yield('title', 'Đây là trang chi tiết')</title>
+@section('title', "Chi tiết tài khoản - ".$taikhoan->ten)
 
 @section('content')
     <div class="container mt-4">
@@ -14,27 +14,20 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>ID:</label>
-                            <input type="text" class="form-control" value="{{ $taikhoan->id }}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>Mã định danh:</label> <!-- Thêm dòng này -->
-                            <input type="text" class="form-control" value="{{ $taikhoan->id_dinh_danh }}" readonly>
-                            <!-- Thêm input cho mã định danh -->
-                        </div>
-                        <div class="form-group">
                             <label>Tên:</label>
                             <input type="text" class="form-control" value="{{ $taikhoan->ten }}" readonly>
                         </div>
                         <div class="form-group">
                             <label>Ngày sinh:</label>
                             <input type="text" class="form-control"
-                                value="{{ $taikhoan->created_at ? $taikhoan->created_at->format('Y-m-d') : '' }}" readonly>
+                                value="{{ $taikhoan->ngay_sinh}}" readonly>
                         </div>
-                        <div class="form-group">
-                            <label>Biệt danh:</label>
-                            <input type="text" class="form-control" value="{{ $taikhoan->biet_danh }}" readonly>
-                        </div>
+                       @isset($taikhoan->bietdanh)
+                            <div class="form-group">
+                                <label>Biệt danh:</label>
+                                <input type="text" class="form-control" value="{{ $taikhoan->biet_danh }}" readonly>
+                            </div>
+                        @endisset
                         <div class="form-group">
                             <label>Giới tính:</label>
                             <input type="text" class="form-control" value="{{ $taikhoan->gioi_tinh }}" readonly>
@@ -51,7 +44,7 @@
                             <label>Mật khẩu:</label>
                             <div class="input-group">
                                 <input type="password" id="mat_khau" class="form-control"
-                                    value="{{ $taikhoan->mat_khau }}" readonly>
+                                    value="{{ $taikhoan->password }}" readonly>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
                                         <i class="fa fa-eye" id="togglePassword" style="cursor: pointer;"
@@ -75,16 +68,18 @@
                             <input type="text" class="form-control" value="{{ $taikhoan->created_at->format('Y-m-d') }}"
                                 readonly>
                         </div>
-                        <div class="form-group">
-                            <label>Trạng thái:</label>
-                            <p>
-                                @if ($taikhoan->banned_at)
-                                    <span class="text-danger">Tài khoản bị cấm</span>
-                                @else
-                                    <span class="text-success">Tài khoản đang hoạt động</span>
-                                @endif
-                            </p>
-                        </div>
+                        @isset($taikhoan->banned_at)
+                            <div class="form-group">
+                                <label>Trạng thái:</label>
+                                <p>
+                                    @if ($taikhoan->banned_at)
+                                        <span class="text-danger">Tài khoản bị cấm</span>
+                                    @else
+                                        <span class="text-danger">Tài khoản đã bị cấm</span>
+                                    @endif
+                                </p>
+                            </div>
+                        @endisset
                     </div>
 
                     <div class="col-md-6">

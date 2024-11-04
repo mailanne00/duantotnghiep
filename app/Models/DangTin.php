@@ -36,4 +36,8 @@ class DangTin extends Model
 
         return ($currentTime->diffInHours($createdTime) >= 24) ? false : true;
     }
+    public function player()
+    {
+        return $this->belongsTo(Player::class);
+    }
 }
