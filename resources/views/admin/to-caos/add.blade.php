@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Tố cáo player')
+
 @section('content')
     <div class="container">
 

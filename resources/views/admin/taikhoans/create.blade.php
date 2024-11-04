@@ -3,13 +3,11 @@
 @section('title', 'Thêm tài khoản')
 
 @section('content')
-<div class="row custom-color">
-
-</div>
+<div class="row custom-color"></div>
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Thêm tài khoản</h1>
+            <h5>Thêm tài khoản</h5>
         </div>
         <div class="card-body">
             @if ($errors->any())
@@ -24,54 +22,60 @@
 
             <form action="{{ route('admin.taikhoans.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="ten">Tên</label>
-                            <input type="text" name="ten" class="form-control" placeholder="Nhập tên của bạn" value="{{ old('ten') }}" required>
+                            <label class="form-label" for="ten">Tên</label>
+                            <input type="text" name="ten" id="ten" class="form-control" placeholder="Nhập tên của bạn" value="{{ old('ten') }}" required>
                             @error('ten')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="ngay_sinh">Ngày sinh</label>
-                            <input type="date" name="ngay_sinh" class="form-control" value="{{ old('ngay_sinh') }}" required>
+                            <label class="form-label" for="ngay_sinh">Ngày sinh</label>
+                            <input type="date" name="ngay_sinh" id="ngay_sinh" class="form-control" value="{{ old('ngay_sinh') }}" required>
                             @error('ngay_sinh')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Nhập email" value="{{ old('email') }}" required>
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Nhập email" value="{{ old('email') }}" required>
                             @error('email')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="sdt">Số điện thoại</label>
-                            <input type="text" name="sdt" class="form-control" placeholder="Nhập số điện thoại" value="{{ old('sdt') }}" required>
+                            <label class="form-label" for="sdt">Số điện thoại</label>
+                            <input type="text" name="sdt" id="sdt" class="form-control" placeholder="Nhập số điện thoại" value="{{ old('sdt') }}" required>
                             @error('sdt')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="cccd">CCCD (Ảnh)</label>
-                            <input type="file" name="cccd" class="form-control" required>
+                            <label class="form-label" for="cccd">CCCD (Ảnh)</label>
+                            <input type="file" name="cccd" id="cccd" class="form-control" required>
                             @error('cccd')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="mat_khau">Mật khẩu</label>
-                            <input type="password" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu" value="{{ old('mat_khau') }}" required>
+                            <label for="mat_khau">Mật khẩu:</label>
+                            <div class="input-group">
+                                <input type="password" id="mat_khau" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu của bạn" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-eye" id="togglePassword" style="cursor: pointer;" onclick="togglePassword()"></i>
+                                    </span>
+                                </div>
+                            </div>
                             @error('mat_khau')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -86,50 +90,58 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="gioi_tinh">Giới tính</label>
-                            <select name="gioi_tinh" class="form-control" required>
+                            <label class="form-label" for="gioi_tinh">Giới tính</label>
+                            <select name="gioi_tinh" id="gioi_tinh" class="form-control" required>
                                 <option value="">Chọn giới tính</option>
                                 <option value="Nam" {{ old('gioi_tinh') == 'Nam' ? 'selected' : '' }}>Nam</option>
                                 <option value="Nữ" {{ old('gioi_tinh') == 'Nữ' ? 'selected' : '' }}>Nữ</option>
                             </select>
                             @error('gioi_tinh')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="anh_dai_dien">Ảnh đại diện</label>
-                            <input type="file" name="anh_dai_dien" class="form-control" required>
+                            <label class="form-label" for="anh_dai_dien">Ảnh đại diện</label>
+                            <input type="file" name="anh_dai_dien" id="anh_dai_dien" class="form-control" required>
                             @error('anh_dai_dien')
-                            <span class="text-danger">{{ $message }}</span>
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="phan_quyen_id">Vai trò</label>
-                            <select name="phan_quyen_id" class="form-control" required>
+                            <label class="form-label" for="phan_quyen_id">Vai trò</label>
+                            <select name="phan_quyen_id" id="phan_quyen_id" class="form-control" required>
                                 <option value="">Chọn vai trò</option>
                                 @foreach ($phanQuyens as $phanQuyen)
-                                <option value="{{ $phanQuyen->id }}" {{ old('bi_cam') == $phanQuyen->id ? 'selected' : '' }}>{{ $phanQuyen->ten }}</option>
+                                <option value="{{ $phanQuyen->id }}" {{ old('phan_quyen_id') == $phanQuyen->id ? 'selected' : '' }}>{{ $phanQuyen->ten }}</option>
                                 @endforeach
                             </select>
-                            @error('bi_cam')
-                            <span class="text-danger">{{ $message }}</span>
+                            @error('phan_quyen_id')
+                            <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
-
-
-
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">Thêm tài khoản</button>
+                <button type="submit" class="btn btn-primary mt-4">Thêm tài khoản</button>
             </form>
         </div>
     </div>
 </div>
-
-
-
-
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("mat_khau");
+        var toggleIcon = document.getElementById("togglePassword");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.classList.remove("fa-eye");
+            toggleIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            toggleIcon.classList.remove("fa-eye-slash");
+            toggleIcon.classList.add("fa-eye");
+        }
+    }
+</script>
 @endsection

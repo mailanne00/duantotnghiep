@@ -13,7 +13,7 @@ class DoanhThuController extends Controller
         $arrTongTien = [];
         $tongSoTien = LichSuNap::query()->select('so_tien')->get();
         for ($i = 1; $i <= 12; $i++) {
-            $tongTienThang1 = LichSuNap::query()->where('created_at', '>', date('Y').'-'.$i.'-01')->where('created_at', '<', date('Y').'-'. $i+1 .'-01')->sum('so_tien');
+            $tongTienThang1 = LichSuNap::query()->where('trang_thai_thanh_toan', 'Thành công')->where('created_at', '>', date('Y').'-'.$i.'-01')->where('created_at', '<', date('Y').'-'. $i+1 .'-01')->sum('so_tien');
             $arrTongTien[] = $tongTienThang1;
         }
         foreach ($arrTongTien as $key => $value) {
