@@ -11,7 +11,7 @@ class DanhMucUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,16 +22,17 @@ class DanhMucUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten' => 'required|max:50',
-            'anh_dai_dien' => 'required|mimes:png,jpg,svg|max:10240'
+            'ten' => 'required|max:50|unique:danh_mucs,ten',
+            'anh_dai_dien' => 'mimes:png,jpg,svg|max:10240'
         ];
     }
     public function messages(): array
     {
         return [
             'ten.required' => 'Không được để trống',
+            'ten.unique' => 'Tên danh mục đã tồn tại',
             'ten.max' => 'Không được quá 50 ký tự',
-            'anh_dai_dien.required' => 'Không được để trống ảnh',
+           
             'anh_dai_dien.mimes' => 'Bắt buộc phải là ảnh',
             'anh_dai_dien.max' => 'Không được quá 10MB'
         ];
