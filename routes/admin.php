@@ -51,7 +51,12 @@ Route::get('/', [AdminController::class, 'index'])->name('dangnhap.index');
 Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.submit');
 
 // Quản lí player
+Route::get('players/yeu-cau-duyet', [PlayerController::class, 'yeuCau'])->name('players.yeucauduyet');
+Route::post('/players/update-status/{id}', [PlayerController::class, 'chapNhan'])->name('players.updateStatus');
+
 Route::resource('players', PlayerController::class);
+
+
 Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
 

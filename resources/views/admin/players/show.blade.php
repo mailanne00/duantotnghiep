@@ -31,11 +31,15 @@
                             <div class="card-footer bg-inverse">
                                 <div class="row text-center">
                                     <div class="col">
-                                        <h4>400</h4>
+                                        <h4>{{$player->taiKhoan->que_quan}}</h4>
                                         <span>Quê Quán</span>
                                     </div>
                                     <div class="col">
-                                        <h4>90</h4>
+                                        <h4>@php
+                                            $tuoi = \Carbon\Carbon::parse($player->taiKhoan->ngay_sinh)->age;
+                                            @endphp
+                                            {{$tuoi}}
+                                        </h4>
                                         <span>Tuổi</span>
                                     </div>
                                     <div class="col">
@@ -49,59 +53,62 @@
                     <div class="col-md-6">
                         <form method="GET" enctype="multipart/form-data">
                             <fieldset disabled>
-                            <div class="mb-3">
-                                <label class="form-label" for="">Ảnh</label>
-                                <img src="{{ Storage::url($player -> anh) }}" alt="Ảnh" width="100">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="">Email</label>
-                                <input type="email" class="form-control" value="{{ $player -> taiKhoan -> email }}">
-                            </div>
-                            <div class="row">
-                            <div class="mb-3 col-md-6">
-                                <label class="form-label" for="">Số dư</label>
-                                <input type="number" class="form-control" value="{{ $player -> taiKhoan -> so_du }}">
-                            </div>
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="">Giá tiền</label>
-                                    <input type="number" class="form-control" value="{{ $player -> gia_tien }}">
+                                <div class="mb-3">
+                                    <label class="form-label" for="">Ảnh</label>
+                                    <img src="{{ Storage::url($player -> anh) }}" alt="Ảnh" width="100">
                                 </div>
-                            <div class="row">
-                                <div class="mb-3 col-md-5">
-                                    <label class="form-label" for="">Ngày sinh</label>
-                                    <input type="datetime" class="form-control" value="{{ $player -> taiKhoan -> ngay_sinh }}">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Email</label>
+                                        <input type="email" class="form-control" value="{{ $player -> taiKhoan -> email }}">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Số dư</label>
+                                        <input type="text" class="form-control" value="{!! $player -> taiKhoan -> so_du == null ? "0" : number_format($player -> taiKhoan -> so_du, 0, ',', '.' ) !!} VNĐ">
+                                    </div>
                                 </div>
-                                <div class="mb-3 col-md-5">
-                                    <label class="form-label" for="">Số điện thoại</label>
-                                    <input type="text" class="form-control" value="{{ $player -> taiKhoan -> sdt }}">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Giá tiền</label>
+                                        <input type="number" class="form-control" value="{{ $player -> gia_tien }}">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Số điện thoại</label>
+                                        <input type="text" class="form-control" value="{{ $player -> taiKhoan -> sdt }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="">Căn cước công dân</label>
-                                    <input type="text" class="form-control" value="{{ $player -> taiKhoan -> cccd }}">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Ngày sinh</label>
+                                        <input type="datetime" class="form-control" value="{{ $player -> taiKhoan -> ngay_sinh }}">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label class="form-label" for="">Số tài khoản</label>
+                                        <input type="number" class="form-control" value="{{ $player -> so_tai_khoan }}">
+                                    </div>
                                 </div>
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label" for="">Số tài khoản</label>
-                                    <input type="number" class="form-control" value="{{ $player -> so_tai_khoan }}">
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="">Căn cước công dân</label>
+                                        <img src="{{Storage::url($player -> taiKhoan -> cccd)}}" alt="" width="100px">
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            </div>
-                            </fieldset>
-                        </form>
                     </div>
+
                 </div>
-                <div class="row">
-                    <fieldset disabled>
-                    <label class="form-label">Thông tin</label>
-                    <textarea class="form-control" rows="8">
-                        {{ $player -> thong_tin }}
-                    </textarea>
-                    </fieldset>
-                </div>
-                <div class="row mt-3">
+                </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <fieldset disabled>
+                <label class="form-label">Thông tin</label>
+                <textarea class="form-control" rows="8">
+                {{ $player -> thong_tin }}
+                </textarea>
+            </fieldset>
+        </div>
+        <!-- <div class="row mt-3">
                     <div class="col-xl-3 col-md-6">
                         <div class="card prod-p-card bg-c-red">
                             <div class="card-body">
@@ -397,12 +404,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                <a href="{{ route('admin.players.index') }}"><button type="" class="btn btn-primary mb-4 mt-3 text-center">Trở về</button></a>
-            </div>
-        </div>
+                            </div> -->
+        <a href="{{ route('admin.players.index') }}"><button type="" class="btn btn-primary mb-4 mt-3 text-center">Trở về</button></a>
     </div>
-    
+</div>
+</div>
+
 </div>
 
 @endsection
@@ -421,96 +428,94 @@
 <script src="{{asset('assets/js/pages/chart.js')}}"></script>
 <script>
     // [ traffic-chart ] start
-$(function() {
-   // Themes begin
-   am4core.useTheme(am4themes_animated);
-   // Themes end
-   var chart = am4core.create("traffic-chart", am4charts.XYChart);
-   chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+    $(function() {
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+        var chart = am4core.create("traffic-chart", am4charts.XYChart);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-   chart.data = [
-    {
-       "date": "2018-01-04",
-       "steps": 4878
-    }
-       ];
+        chart.data = [{
+            "date": "2018-01-04",
+            "steps": 4878
+        }];
 
-   chart.dateFormatter.inputDateFormat = "YYYY-MM-dd";
-   chart.zoomOutButton.disabled = true;
+        chart.dateFormatter.inputDateFormat = "YYYY-MM-dd";
+        chart.zoomOutButton.disabled = true;
 
-   var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-   dateAxis.renderer.grid.template.strokeOpacity = 0;
-   dateAxis.renderer.minGridDistance = 10;
-   dateAxis.dateFormats.setKey("day", "d");
-   dateAxis.tooltip.hiddenState.properties.opacity = 1;
-   dateAxis.tooltip.hiddenState.properties.visible = true;
+        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+        dateAxis.renderer.grid.template.strokeOpacity = 0;
+        dateAxis.renderer.minGridDistance = 10;
+        dateAxis.dateFormats.setKey("day", "d");
+        dateAxis.tooltip.hiddenState.properties.opacity = 1;
+        dateAxis.tooltip.hiddenState.properties.visible = true;
 
-   var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-   valueAxis.renderer.inside = true;
-   valueAxis.renderer.labels.template.fillOpacity = 0.3;
-   valueAxis.renderer.grid.template.strokeOpacity = 0;
-   valueAxis.min = 0;
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.renderer.inside = true;
+        valueAxis.renderer.labels.template.fillOpacity = 0.3;
+        valueAxis.renderer.grid.template.strokeOpacity = 0;
+        valueAxis.min = 0;
 
-   // goal guides
-   var axisRange = valueAxis.axisRanges.create();
-   axisRange.value = 6000;
-   axisRange.grid.strokeOpacity = 0.1;
-   axisRange.label.text = "Session";
-   axisRange.label.align = "right";
-   axisRange.label.verticalCenter = "bottom";
-   axisRange.label.fillOpacity = 0.8;
+        // goal guides
+        var axisRange = valueAxis.axisRanges.create();
+        axisRange.value = 6000;
+        axisRange.grid.strokeOpacity = 0.1;
+        axisRange.label.text = "Session";
+        axisRange.label.align = "right";
+        axisRange.label.verticalCenter = "bottom";
+        axisRange.label.fillOpacity = 0.8;
 
-   valueAxis.renderer.gridContainer.zIndex = 1;
+        valueAxis.renderer.gridContainer.zIndex = 1;
 
-   var axisRange2 = valueAxis.axisRanges.create();
-   axisRange2.value = 12000;
-   axisRange2.grid.strokeOpacity = 0.1;
-   axisRange2.label.text = "2x Session";
-   axisRange2.label.align = "right";
-   axisRange2.label.verticalCenter = "bottom";
-   axisRange2.label.fillOpacity = 0.8;
+        var axisRange2 = valueAxis.axisRanges.create();
+        axisRange2.value = 12000;
+        axisRange2.grid.strokeOpacity = 0.1;
+        axisRange2.label.text = "2x Session";
+        axisRange2.label.align = "right";
+        axisRange2.label.verticalCenter = "bottom";
+        axisRange2.label.fillOpacity = 0.8;
 
-   var series = chart.series.push(new am4charts.ColumnSeries);
-   series.dataFields.valueY = "steps";
-   series.dataFields.dateX = "date";
-   series.tooltipText = "{valueY.value}";
+        var series = chart.series.push(new am4charts.ColumnSeries);
+        series.dataFields.valueY = "steps";
+        series.dataFields.dateX = "date";
+        series.tooltipText = "{valueY.value}";
 
-   var columnTemplate = series.columns.template;
-   columnTemplate.width = am4core.percent(50);
-   columnTemplate.strokeOpacity = 0;
+        var columnTemplate = series.columns.template;
+        columnTemplate.width = am4core.percent(50);
+        columnTemplate.strokeOpacity = 0;
 
 
-   var gradient = new am4core.LinearGradient();
-   gradient.addColor(am4core.color("#19BCBF"), 1);
-   gradient.addColor(am4core.color("#149698"), 1);
-   gradient.rotation = -45;
+        var gradient = new am4core.LinearGradient();
+        gradient.addColor(am4core.color("#19BCBF"), 1);
+        gradient.addColor(am4core.color("#149698"), 1);
+        gradient.rotation = -45;
 
-   var gradient1 = new am4core.LinearGradient();
-   gradient1.addColor(am4core.color("#13bd8a"), 1);
-   gradient1.addColor(am4core.color("#30a262"), 1);
-   gradient1.rotation = -45;
+        var gradient1 = new am4core.LinearGradient();
+        gradient1.addColor(am4core.color("#13bd8a"), 1);
+        gradient1.addColor(am4core.color("#30a262"), 1);
+        gradient1.rotation = -45;
 
 
-   columnTemplate.adapter.add("fill", function(fill, target) {
-       var dataItem = target.dataItem;
-       if (dataItem.valueY > 6000) {
-           return gradient;
-       } else {
-           return gradient1;
-       }
-   })
+        columnTemplate.adapter.add("fill", function(fill, target) {
+            var dataItem = target.dataItem;
+            if (dataItem.valueY > 6000) {
+                return gradient;
+            } else {
+                return gradient1;
+            }
+        })
 
-   var cursor = new am4charts.XYCursor();
-   cursor.behavior = "panX";
-   chart.cursor = cursor;
+        var cursor = new am4charts.XYCursor();
+        cursor.behavior = "panX";
+        chart.cursor = cursor;
 
-   chart.events.on("datavalidated", function() {
-       dateAxis.zoomToDates(new Date(2018, 0, 11), new Date(2018, 1, 1), false, true);
-   });
+        chart.events.on("datavalidated", function() {
+            dateAxis.zoomToDates(new Date(2018, 0, 11), new Date(2018, 1, 1), false, true);
+        });
 
-   chart.scrollbarX = new am4core.Scrollbar();
-   chart.scrollbarX.parent = chart.bottomAxesContainer;
-});
-// [ traffic-chart ] end
+        chart.scrollbarX = new am4core.Scrollbar();
+        chart.scrollbarX.parent = chart.bottomAxesContainer;
+    });
+    // [ traffic-chart ] end
 </script>
 @endsection

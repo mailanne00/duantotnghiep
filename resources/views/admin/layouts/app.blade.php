@@ -86,6 +86,8 @@
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a>
                             </li>
+                            <li class=""><a href="{{ route('admin.players.yeucauduyet') }}" class="">Yêu cầu duyệt</a>
+                            </li>
 
                         </ul>
                     </li>
