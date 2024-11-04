@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label>Ngày sinh:</label>
                             <input type="text" class="form-control"
-                                value="{{ $taikhoan->created_at ? $taikhoan->created_at->format('Y-m-d') : '' }}" readonly>
+                                value="{{ $taikhoan->ngay_sinh}}" readonly>
                         </div>
                        @isset($taikhoan->bietdanh)
                             <div class="form-group">
