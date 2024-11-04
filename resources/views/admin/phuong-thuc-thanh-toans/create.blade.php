@@ -15,14 +15,14 @@
                         <div class="row">
                             <div class="col-6">
                                 <label class="form-label" for="exampleInputEmail1">Tên phương thức</label>
-                                <input type="text" name="ten_phuong_thuc" class="form-control" placeholder="Ten phuong thuc">
+                                <input type="text" name="ten_phuong_thuc" class="form-control" placeholder="Ten phuong thuc" value="{{old('ten_phuong_thuc')}}">
                                 @error('ten_phuong_thuc')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Số tài khoản</label>
-                                <input type="text" name="so_tai_khoan" class="form-control" placeholder="So tai khoan">
+                                <input type="text" name="so_tai_khoan" class="form-control" placeholder="So tai khoan" value="{{old('so_tai_khoan')}}">
                                 @error('so_tai_khoan')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Mô tả</label>
-                                <input type="text" name="mo_ta" class="form-control" placeholder="Mo ta">
+                                <input type="text" name="mo_ta" class="form-control" placeholder="Mo ta" value="{{old('mo_ta')}}">
                                 @error('mo_ta')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
