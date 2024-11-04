@@ -22,7 +22,7 @@ class DanhMucStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten' => 'required|max:50',
+            'ten' => 'required|max:50|unique:danh_mucs,ten',
             'anh_dai_dien' => 'required|mimes:png,jpg,svg,webp|max:10240'
         ];
     }
@@ -30,6 +30,7 @@ class DanhMucStoreRequest extends FormRequest
     {
         return [
             'ten.required' => 'Không được để trống',
+            'ten.unique' => 'Tên danh mục đã tồn tại',
             'ten.max' => 'Không được quá 50 ký tự',
             'anh_dai_dien.required' => 'Không được để trống ảnh',
             'anh_dai_dien.mimes' => 'Bắt buộc phải là ảnh',
