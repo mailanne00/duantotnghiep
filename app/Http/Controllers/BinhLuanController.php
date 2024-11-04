@@ -34,11 +34,29 @@ class BinhLuanController extends Controller
         // Lấy các tham số tìm kiếm
         $query = $request->input('query');
         $danhGia = $request->input('danh_gia');
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 5afc1b509a6547a168f575aff41bb0ef4107761f
         // Lấy danh sách bình luận với phân trang
         $binhLuans = BinhLuan::when($query, function ($queryBuilder) use ($query) {
             return $queryBuilder->where('player_id', 'like', '%' . $query . '%');
         })
+<<<<<<< HEAD
+            ->when($danhGia, function ($queryBuilder) use ($danhGia) {
+                return $queryBuilder->where('danh_gia', $danhGia);
+            })
+
+            ->with('taikhoan')
+            ->paginate(10); // Số bình luận trên mỗi trang
+
+        // Nhóm bình luận theo player_id
+        $groupedBinhLuans = $binhLuans->groupBy('player_id');
+
+        return view('admin.binh-luans.thongke', compact('groupedBinhLuans', 'binhLuans'));
+    }
+=======
         ->when($danhGia, function ($queryBuilder) use ($danhGia) {
             return $queryBuilder->where('danh_gia', $danhGia);
         })
@@ -54,4 +72,5 @@ class BinhLuanController extends Controller
     
 
     
+>>>>>>> 5afc1b509a6547a168f575aff41bb0ef4107761f
 }
