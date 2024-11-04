@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\DangTinController;
 use App\Http\Controllers\DanhGiaController;
@@ -23,12 +24,6 @@ use App\Http\Controllers\TopPlayerController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts.app');
-});
-
-
-
 Route::get('/to-caos', [ToCaoController::class, 'index'])->name('tocao.index');
 Route::delete('/to-caos/{complaint}', [ToCaoController::class, 'destroy'])->name('tocaos.destroy');
 Route::patch('/to-caos/{complaint}', [ToCaoController::class, 'updateStatus'])->name('tocao.updateStatus');
@@ -50,7 +45,12 @@ Route::put('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 
 Route::put('/phuongthucthanhtoans/{id}/update-status', [PhuongThucThanhToanController::class, 'updateStatus'])->name('phuongthucthanhtoans.update-status');
 Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::class, 'destroy'])->name('phuongthucthanhtoans.destroy');
 
+// Đăng nhập admin
+Route::get('/', [AdminController::class, 'trangChu'])->name('index');
+Route::get('dang-nhap', [AdminController::class, 'index'])->name('dangnhap.index');
+Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.submit');
 
+// Quản lí player
 Route::resource('players', PlayerController::class);
 Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
