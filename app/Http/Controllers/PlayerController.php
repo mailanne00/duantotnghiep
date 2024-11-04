@@ -14,7 +14,10 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        $players = Player::with(['taiKhoan', 'taiKhoan.phanQuyen'])->orderByDesc('id')->get();
+        $players = Player::with(['taiKhoan', 'taiKhoan.phanQuyen'])
+            ->where('tinh_trang', 'Duyệt')
+            ->orderByDesc('id')
+            ->get();
         return view('admin.players.index', compact('players'));
     }
 
@@ -138,5 +141,27 @@ class PlayerController extends Controller
 
 
         return view('admin.players.showlichsu', compact('lichSuThue'));
+    }
+
+    public function yeuCau()
+    {
+        $acceptPlayers = Player::whereIn('tinh_trang', ['Chờ xử lý', 'Từ chối'])
+                            ->get();
+
+        return view('admin.players.yeucauduyet', compact('acceptPlayers'));
+    }
+
+    public function chapNhan(Request $request, $id)
+    {
+        $request->validate([
+            'tinh_trang' => 'required|in:Chờ xử lý,Duyệt,Từ chối',
+        ]);
+
+        $player = Player::findOrFail($id);
+
+        $player->tinh_trang = $request->input('tinh_trang');
+        $player->save();
+
+        return redirect()->back()->with('success', 'Cập nhật thành công!');
     }
 }
