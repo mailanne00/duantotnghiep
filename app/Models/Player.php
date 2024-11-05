@@ -36,9 +36,24 @@ class Player extends Model
     {
         return $this->hasMany(DangTin::class);
     }
-    public function follows()
+    public function followers()
     {
-        return $this->belongsToMany(Player::class, 'theo_doi_players', 'player_id', 'tai_khoan_id');
+        return $this->hasMany(Follower::class);
     }
+    public function hireLogs()
+    {
+        return $this->hasMany(HireLog::class);
+    }
+    public function followersCount()
+    {
+        return $this->followers()->count();
+    }
+
+    // Phương thức để đếm số lần thuê
+    public function hireLogsCount()
+    {
+        return $this->hireLogs()->count();
+    }
+    
 
 }

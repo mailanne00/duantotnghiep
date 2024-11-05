@@ -86,9 +86,12 @@ Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('
 
 //top-player
 
-    Route::get('/top-player', [TopPlayerController::class, 'getTopFollowedPlayers'])->name('top_followed_players');
-    Route::get('/most-liked-players', [TopPlayerController::class, 'getMostLikedPlayers'])->name('most_liked_players');
-    Route::get('/most-hired-players', [TopPlayerController::class, 'getMostHiredPlayers'])->name('most_hired_players');
+
+
+// Thống kê player được theo dõi và thuê nhiều nhất
+Route::get('/top-players/index', [TopPlayerController::class, 'index']);
+
+
 
 Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 
