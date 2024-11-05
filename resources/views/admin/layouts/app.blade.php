@@ -86,6 +86,8 @@
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.players.index') }}" class="">Danh sách</a>
                             </li>
+                            <li class=""><a href="{{ route('admin.players.yeucauduyet') }}" class="">Yêu cầu duyệt</a>
+                            </li>
 
                         </ul>
                     </li>
@@ -121,10 +123,14 @@
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i class="fas fa-video"></i></span><span
                                 class="pcoded-mtext">Quản lý đăng tin</span></a></li>
+                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.dangtins.index') }}"
+                                                                     class="nav-link"><span class="pcoded-micon"><i class="fas fa-video"></i></span><span
+                                class="pcoded-mtext">Quản lý doanh thu</span></a></li>
                     <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                         class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Phương thức thanh toán</span></a>
+                                    class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Phương
+                                thức thanh toán</span></a>
                         <ul class="pcoded-submenu">
                             <li class=""><a href="{{ route('admin.phuongthucthanhtoans.index') }}"
                                     class="">Danh sách</a></li>
@@ -142,10 +148,13 @@
                                     class="">Danh sách</a></li>
                         </ul>
                     </li>
-                    <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.thongke') }}"
+                                <li data-username="comments" class="nav-item"><a href="{{ route('admin.phanquyen.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i
-                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý thống
-                                kê</span></a></li>
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Phân quyền</span></a></li>
+
+                                <li data-username="comments" class="nav-item"><a href="{{ route('admin.tkuser.index') }}"
+                            class="nav-link"><span class="pcoded-micon"><i
+                                    class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Thống kê user</span></a></li>
 
                     <li data-username="comments" class="nav-item"><a href="{{ route('admin.binhluans.index') }}"
                             class="nav-link"><span class="pcoded-micon"><i

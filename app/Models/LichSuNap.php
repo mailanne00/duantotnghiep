@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class LichSuNap extends Model
 {
+    protected $fillable = [
+        'trang_thai_thanh_toan'
+    ];
     use HasFactory;
     const TRANG_THAI = [
         [

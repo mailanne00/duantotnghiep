@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\DoanhThuController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\DangTinController;
-use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\PhanQuyenController;
 use App\Http\Controllers\PhuongThucThanhToanController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TaiKhoanController;
+use App\Http\Controllers\ThongKeUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToCaoController;
 use App\Http\Controllers\TopPlayerController;
@@ -48,14 +49,19 @@ Route::delete('/phuongthucthanhtoans/{id}', [PhuongThucThanhToanController::clas
 // Đăng nhập admin
 //Route::get('/', [AdminController::class, 'trangChu'])->name('index');
 Route::get('/', [AdminController::class, 'index'])->name('dangnhap.index');
-Route::post('dang-nhap', [AdminController::class,'dangNhap'])->name('dangnhap.submit');
+Route::post('dang-nhap', [AdminController::class, 'dangNhap'])->name('dangnhap.submit');
 
 // Quản lí player
+Route::get('players/yeu-cau-duyet', [PlayerController::class, 'yeuCau'])->name('players.yeucauduyet');
+Route::post('/players/update-status/{id}', [PlayerController::class, 'chapNhan'])->name('players.updateStatus');
+
 Route::resource('players', PlayerController::class);
+
+
 Route::get('/bieu-do-duong/{id}', [PlayerController::class, 'bieudo'])->name('players.bieudoduong');
 Route::get('/lich-su-duo/{id}', [PlayerController::class, 'showlichsu'])->name('players.showlichsu');
 
-
+Route::get('doanh-thus', [DoanhThuController::class, 'index'])->name('doanhthus.index');
 
 //taikhoan
 Route::get('/taikhoans', [TaiKhoanController::class, 'index'])->name('taikhoans.index');
@@ -85,6 +91,7 @@ Route::delete('/binhluans/{id}', [BinhLuanController::class, 'destroy'])->name('
 
 
 //top-player
+Route::get('/top-followed-players', [TopPlayerController::class, 'getTopFollowedPlayers'])->name('top_followed_players');
 
 
 
@@ -95,11 +102,13 @@ Route::get('/top-players/index', [TopPlayerController::class, 'index']);
 
 Route::get('/binhluans/thongke', [BinhLuanController::class, 'thongke'])->name('binhluans.thongke');
 
-
-
 Route::get('/phan-quyens', [PhanQuyenController::class, 'index'])->name('phanquyen.index');
 Route::get('/phan-quyens/create', [PhanQuyenController::class, 'create'])->name('phanquyen.create');
 Route::post('/phan-quyens/store', [PhanQuyenController::class, 'store'])->name('phanquyen.store');
 Route::get('/phan-quyens/edit/{id}', [PhanQuyenController::class, 'edit'])->name('phanquyen.edit');
 Route::put('/phan-quyens/update/{id}', [PhanQuyenController::class, 'update'])->name('phanquyen.update');
 Route::delete('/phan-quyens/{id}', [PhanQuyenController::class, 'destroy'])->name('phanquyen.destroy');
+
+Route::get('doanh-thus', [DoanhThuController::class, 'index'])->name('doanhthu.index');
+Route::get('/tk-users', [ThongKeUserController::class, 'index'])->name('tkuser.index');
+Route::get('/tk-users/data', [ThongKeUserController::class, 'getStatisticsData'])->name('tkuser.data');
