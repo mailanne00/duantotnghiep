@@ -96,7 +96,7 @@ Route::get('/top-followed-players', [TopPlayerController::class, 'getTopFollowed
 
 
 // Thống kê player được theo dõi và thuê nhiều nhất
-Route::get('/top-players/index', [TopPlayerController::class, 'index']);
+Route::get('/top-players/index', [TopPlayerController::class, 'index'])->name('top-players.index');
 
 
 

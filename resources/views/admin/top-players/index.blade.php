@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Thông tin Player</th>
+                            <th>Tên Player</th>
                             <th>Số lượt theo dõi</th>
                             <th>Số lần thuê</th>
                             <th>Thao tác</th>
@@ -52,7 +52,7 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Thông tin Player</th>
+                            <th>Tên Player</th>
                             <th>Số lượt theo dõi</th>
                             <th>Số lần thuê</th>
                             <th>Thao tác</th>
