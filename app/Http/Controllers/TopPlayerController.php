@@ -18,7 +18,7 @@ class TopPlayerController extends Controller
 
     // Sắp xếp lại để lấy player được thuê nhiều nhất từ danh sách đã lấy
     $mostHiredPlayers = $players->sortByDesc('hire_logs_count')->take(10);
-
+    
     return view('admin.top-players.index', compact('players', 'mostHiredPlayers'));
 }
 
