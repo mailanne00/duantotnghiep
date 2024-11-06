@@ -23,7 +23,6 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-
                                 <th>Tên</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Giới tính</th>
@@ -77,5 +76,25 @@
         </div>
     </div>
 </div>
+<style>
+    .dataTables_filter {
+        float: right;
+        margin-top:20px ;
+    }
+    .dataTables_filter label {
+        display: flex;
+        align-items: center;
+    }
+    
+    .dataTables_paginate {
+        float: right;
+    }
+</style>
 
+</style>
+
+@endsection
+@section('script')
+    <script src="{{ asset('assets/plugins/data-tables/js/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/data-basic-custom.js') }}"></script>
 @endsection
