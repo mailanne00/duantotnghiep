@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     @yield('header')
 

@@ -20,46 +20,36 @@
         @endif
 
         <div class="card-body">
-            <div class="dt-responsive table-responsive">
-                <table id="simpletable" class="table table-striped table-bordered nowrap">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên Player</th>
-                            <th>Số lượt theo dõi</th>
-                            <th>Số lần thuê</th>
-                            <th>Thao tác</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($players as $player)
-                        <tr>
-                            <td>{{ $player->id }}</td>
-                            <td>{{ $player->taiKhoan->ten }}</td>
-                            <td>{{ $player->followers_count }}</td>
-                            <td>{{ $player->hire_logs_count }}</td>
-                         
-                            <td>
-                            <a href="{{ route('admin.players.show', $player->id) }}" class="btn btn-success">Chi tiết</a>    
-                            
-                            </td>
-
-                            
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên Player</th>
-                            <th>Số lượt theo dõi</th>
-                            <th>Số lần thuê</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+            <canvas id="playerChart"></canvas>
+            <script>
+                var ctx = document.getElementById('playerChart').getContext('2d');
+                var playerChart = new Chart(ctx, {
+                    type: 'bar', // Loại biểu đồ (có thể là 'line', 'bar', 'pie', v.v.)
+                    data: {
+                        labels: @json($players->pluck('taiKhoan.ten')),
+                        datasets: [{
+                            label: 'Số lượt theo dõi',
+                            data: @json($players->pluck('followers_count')),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }, {
+                            label: 'Số lần thuê',
+                            data: @json($players->pluck('hire_logs_count')),
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
         </div>
     </div>
 </div>
