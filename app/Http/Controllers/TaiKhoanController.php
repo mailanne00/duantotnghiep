@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PhanQuyen;
+use App\Models\Player;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 
@@ -110,5 +111,15 @@ class TaiKhoanController extends Controller
 
         return redirect()->route('admin.taikhoans.index')->with('success', 'Tài khoản đã được mở lại.');
     }
+    public function getTopPlayers()
+{
+    $players = Player::withCount(['lichSuThue', 'follows'])
+        ->orderBy('lich_su_thue_count', 'desc') // Sắp xếp theo số lượng thuê
+        ->orderBy('follows_count', 'desc') // Sắp xếp theo số lượng follow
+        ->get();
+
+    return view('admin.top-players.index', compact('players'));
+}
+
     
 }

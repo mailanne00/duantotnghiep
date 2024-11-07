@@ -58,6 +58,8 @@ $(document).ready(function() {
                 "thousands": "."
             }
         });
+        
+        
 
     }, 350);
 });
