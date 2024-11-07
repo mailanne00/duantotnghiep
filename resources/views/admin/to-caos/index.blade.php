@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Danh sách tố cáo player')
+
 @section('content')
     <div class="col-sm-12">
         <div class="card">
