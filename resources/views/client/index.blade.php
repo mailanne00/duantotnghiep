@@ -21,55 +21,9 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-                <div class="media-body">
-
-                    <p class="chat-name">
-
-                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
-
-                                    trước</span></span></a>
-
-                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
-
-                                Quếˆˆ Trader🔥</span></strong>
-
-                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
-
-                    </p>
-
-                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
-
-                </div>
-
-                <div class="hidden-xs media-right">
-
-                    <span>55 phút trước</span>
-
-                </div>
-
-            </div>
-
-            <div class="global_message__item">
-
-                <div class="media-left">
-
-                    <a href="./user.html" target="_blank">
-
-                        <div class="avt avt-sm">
-
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
-
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -113,55 +67,9 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-                <div class="media-body">
-
-                    <p class="chat-name">
-
-                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
-
-                                    trước</span></span></a>
-
-                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
-
-                                Quếˆˆ Trader🔥</span></strong>
-
-                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
-
-                    </p>
-
-                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
-
-                </div>
-
-                <div class="hidden-xs media-right">
-
-                    <span>55 phút trước</span>
-
-                </div>
-
-            </div>
-
-            <div class="global_message__item">
-
-                <div class="media-left">
-
-                    <a href="./user.html" target="_blank">
-
-                        <div class="avt avt-sm">
-
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
-
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -205,55 +113,9 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-                <div class="media-body">
-
-                    <p class="chat-name">
-
-                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
-
-                                    trước</span></span></a>
-
-                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
-
-                                Quếˆˆ Trader🔥</span></strong>
-
-                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
-
-                    </p>
-
-                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
-
-                </div>
-
-                <div class="hidden-xs media-right">
-
-                    <span>55 phút trước</span>
-
-                </div>
-
-            </div>
-
-            <div class="global_message__item">
-
-                <div class="media-left">
-
-                    <a href="./user.html" target="_blank">
-
-                        <div class="avt avt-sm">
-
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
-
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -297,55 +159,9 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-                <div class="media-body">
-
-                    <p class="chat-name">
-
-                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
-
-                                    trước</span></span></a>
-
-                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
-
-                                Quếˆˆ Trader🔥</span></strong>
-
-                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
-
-                    </p>
-
-                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
-
-                </div>
-
-                <div class="hidden-xs media-right">
-
-                    <span>55 phút trước</span>
-
-                </div>
-
-            </div>
-
-            <div class="global_message__item">
-
-                <div class="media-left">
-
-                    <a href="./user.html" target="_blank">
-
-                        <div class="avt avt-sm">
-
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
-
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -389,9 +205,9 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -435,9 +251,193 @@
 
                         <div class="avt avt-sm">
 
-                            <img src="./images/page_avatar.jpg" alt="" class="avt-img">
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
 
-                            <img src="./images/rank-avt.png" alt="" class="avt-rank">
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="media-body">
+
+                    <p class="chat-name">
+
+                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
+
+                                    trước</span></span></a>
+
+                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
+
+                                Quếˆˆ Trader🔥</span></strong>
+
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
+
+                    </p>
+
+                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
+
+                </div>
+
+                <div class="hidden-xs media-right">
+
+                    <span>55 phút trước</span>
+
+                </div>
+
+            </div>
+
+            <div class="global_message__item">
+
+                <div class="media-left">
+
+                    <a href="./user.html" target="_blank">
+
+                        <div class="avt avt-sm">
+
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
+
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="media-body">
+
+                    <p class="chat-name">
+
+                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
+
+                                    trước</span></span></a>
+
+                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
+
+                                Quếˆˆ Trader🔥</span></strong>
+
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
+
+                    </p>
+
+                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
+
+                </div>
+
+                <div class="hidden-xs media-right">
+
+                    <span>55 phút trước</span>
+
+                </div>
+
+            </div>
+
+            <div class="global_message__item">
+
+                <div class="media-left">
+
+                    <a href="./user.html" target="_blank">
+
+                        <div class="avt avt-sm">
+
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
+
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="media-body">
+
+                    <p class="chat-name">
+
+                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
+
+                                    trước</span></span></a>
+
+                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
+
+                                Quếˆˆ Trader🔥</span></strong>
+
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
+
+                    </p>
+
+                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
+
+                </div>
+
+                <div class="hidden-xs media-right">
+
+                    <span>55 phút trước</span>
+
+                </div>
+
+            </div>
+
+            <div class="global_message__item">
+
+                <div class="media-left">
+
+                    <a href="./user.html" target="_blank">
+
+                        <div class="avt avt-sm">
+
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
+
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <div class="media-body">
+
+                    <p class="chat-name">
+
+                        <a target="_blank" href="./user.html"><span class="visible-xs d-none"><span>56 phút
+
+                                    trước</span></span></a>
+
+                        <strong class="name-player-review color-vip-6"><span class="cursor-pointer">Phan
+
+                                Quếˆˆ Trader🔥</span></strong>
+
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> :
+
+                    </p>
+
+                    <p class="mess-global"> vẫn cần 3m pld ai rút 1-1 ib</p>
+
+                </div>
+
+                <div class="hidden-xs media-right">
+
+                    <span>55 phút trước</span>
+
+                </div>
+
+            </div>
+
+            <div class="global_message__item">
+
+                <div class="media-left">
+
+                    <a href="./user.html" target="_blank">
+
+                        <div class="avt avt-sm">
+
+                            <img src="{{asset('asset/images/page_avatar.jpg')}}" alt="" class="avt-img">
+
+                            <img src="{{asset('asset/images/rank-avt.png')}}" alt="" class="avt-rank">
 
                         </div>
 
@@ -723,7 +723,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -751,7 +751,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -773,7 +773,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -801,7 +801,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -823,7 +823,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -851,7 +851,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -873,7 +873,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -901,7 +901,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -923,7 +923,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -951,7 +951,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -973,7 +973,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1001,7 +1001,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1023,7 +1023,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1051,7 +1051,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1073,7 +1073,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1101,7 +1101,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1143,7 +1143,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1171,7 +1171,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1193,7 +1193,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1221,7 +1221,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1243,7 +1243,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1271,7 +1271,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1293,7 +1293,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1321,7 +1321,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1343,7 +1343,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1371,7 +1371,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1393,7 +1393,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1421,7 +1421,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1443,7 +1443,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1471,7 +1471,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1493,7 +1493,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="./images/player_avatar.jpg" alt="" class="img-fluid"></a>
+                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
@@ -1521,7 +1521,7 @@
 
                                 <div class="d-flex">
 
-                                    <img src="./images/other.png" alt="" class="img-fluid">
+                                    <img src="{{asset('asset/images/other.png')}}" alt="" class="img-fluid">
 
                                     <span>HÁT - TÂM SỰ - TFT (NA/Việt) - LOL - BUSINESS TOUR - PROP AND
 
@@ -1536,7 +1536,6 @@
                     </div>
 
                 </div>
-
             </div>
 
         </div>
@@ -1545,4 +1544,3 @@
 
 </div>
 @endsection
-

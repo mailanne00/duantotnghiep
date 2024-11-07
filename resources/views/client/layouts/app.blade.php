@@ -14,6 +14,8 @@
 
     <title>@yield('title','Đây là trang chủ')</title>
 
+    <link rel="icon" href="{{ asset('asset/images/logoPD.png') }}" type="image/x-icon">
+
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -42,15 +44,15 @@
 
             <a href="./index.html" class="logo">
 
-                <img src="{{asset('asset/images/logo.png')}}" alt="logo playerduo">
+                <img src="{{asset('asset/images/logoPD.png')}}" alt="logo playerduo">
 
-                <div class="text-logo d-lg-block d-none">
+                <!-- <div class="text-logo d-lg-block d-none">
 
                     <h4>PLAYERDUO</h4>
 
                     <p>GAME COMMUNITY</p>
 
-                </div>
+                </div> -->
 
             </a>
 
@@ -58,7 +60,7 @@
 
         <div class="navbar p-0">
 
-            <ul class="navbar-left">
+            <ul class="navbar-center">
 
                 <!-- <li class="item active"><a href=""><span>Thuê người chơi</span></a></li>
 
@@ -66,7 +68,7 @@
 
                 <li class="item"><a href="" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><span>BXH</span></a></li> -->
 
-                <li class="item-search">
+                <!-- <li class="item-search">
 
                     <form action="">
 
@@ -76,7 +78,7 @@
 
                     </form>
 
-                </li>
+                </li> -->
 
             </ul>
 
@@ -110,7 +112,7 @@
 
                 <li class="item-icon group-fb"><a href="" class="group-user" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><i class="far fa-trophy-alt"></i></a></li>
 
-                <li class="item-icon">
+                <li class="item-icon">  
 
                     <a href="" class="dropdown-toggle" id="dropdown-bell" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
 
@@ -230,13 +232,13 @@
 
                 <li class="item-icon item-avatar">
 
-                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false"><img src="./images/avatar5.png" alt="" width="43px" height="43px"></a>
+                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('asset/images/avatar5.png')}}" alt="" width="43px" height="43px"></a>
 
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
 
                         <li class="page-user">
 
-                            <a tabindex="-1" href="./profile.html"><img src="./images/avatar5.png" class="avt-img" alt="PD">
+                            <a tabindex="-1" href="./profile.html"><img src="{{asset('asset/images/avatar5.png')}}" class="avt-img" alt="PD">
 
                                 <div class="text-logo">
 
@@ -1176,13 +1178,13 @@
 
 </body>
 
-<script src="./js/jquery-3.6.0.min.js"></script>
+<script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
 
-<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="./js/popper.min.js"></script>
+<script src="{{asset('asset/js/popper.min.js')}}"></script>
 
-<script src=".js/bootstrap.min.js"></script>
+<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
 
