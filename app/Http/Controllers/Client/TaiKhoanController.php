@@ -46,4 +46,10 @@ class TaiKhoanController extends Controller
     {
         return view("client.tai-khoans.lich-su-giao-dichs.lich-su-donate");
     }
+
+    public function lichSuDuo()
+    {
+        return view("client.tai-khoans.lich-su-giao-dichs.lich-su-duo");
+    }
+    
 }

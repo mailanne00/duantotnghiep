@@ -545,7 +545,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./customer_history_duo.html">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuDuo') }}">Lịch sử
                                                                         duo</a>
                                                                 </div>
 
