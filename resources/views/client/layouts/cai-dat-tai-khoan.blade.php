@@ -571,7 +571,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./balance_fluctuation.html">Biến động số
+                                                                        href="{{ route('taikhoan.bienDongSoDu') }}">Biến động số
                                                                         dư</a></div>
 
                                                             </div>
