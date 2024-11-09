@@ -28,9 +28,9 @@
 
     <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
-
     <link rel="stylesheet" href="{{asset('asset/css/profile.css')}}">
+
+    <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
 
     @yield('header')
 
@@ -46,15 +46,15 @@
 
             <a href="./index.html" class="logo">
 
-                <img src="./images/logo.png" alt="logo playerduo">
+                <img src="{{ asset('asset/images/logoPD.png')}}" alt="logo playerduo">
 
-                <div class="text-logo d-lg-block d-none">
+                <!-- <div class="text-logo d-lg-block d-none">
 
                     <h4>PLAYERDUO</h4>
 
                     <p>GAME COMMUNITY</p>
 
-                </div>
+                </div> -->
 
             </a>
 
@@ -70,7 +70,7 @@
 
                 <li class="item"><a href="" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><span>BXH</span></a></li> -->
 
-                <li class="item-search">
+                <!-- <li class="item-search">
 
                     <form action="">
 
@@ -80,7 +80,7 @@
 
                     </form>
 
-                </li>
+                </li> -->
 
             </ul>
 
@@ -262,7 +262,7 @@
 
                                 <div class="text-logo">
 
-                                    <h5>hoact</h5>
+                                    <h5>User</h5>
 
                                     <p>ID : <span>hoact</span></p>
 
@@ -401,7 +401,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="active panel-title"><a href="./customer_info.html"><i
+                                                <div class="active panel-title"><a href="{{ route('taikhoan.thongtincanhan') }}"><i
                                                             class="fas fa-user-tie"></i> Thông tin cá nhân</a> </div>
 
                                             </div>
@@ -412,7 +412,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./customer_static.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.thongke') }}"><i
                                                             class="fas fa-sliders-h"></i> Thống kê</a> </div>
 
                                             </div>
@@ -2368,7 +2368,6 @@
     });
 
 </script>
-
-
+@yield('footer')
 
 </html>

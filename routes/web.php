@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('client.index');
 });
 
-Route::get('tai_khoan/thong_tin_ca_nhan', [TaiKhoanController::class, 'index'])->name('taikhoan.thongtincanhan');
+Route::get('tai-khoan/thong-tin-ca-nhan', [TaiKhoanController::class, 'index'])->name('taikhoan.thongtincanhan');
+Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongke');
