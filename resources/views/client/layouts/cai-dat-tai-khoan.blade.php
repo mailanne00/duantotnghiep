@@ -558,7 +558,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./customer_history_create_code.html">Lịch
+                                                                        href="{{ route('taikhoan.lichSuTaoCode') }}">Lịch
                                                                         sử
                                                                         tạo code</a></div>
 

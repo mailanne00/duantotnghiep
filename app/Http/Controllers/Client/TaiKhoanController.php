@@ -52,4 +52,8 @@ class TaiKhoanController extends Controller
         return view("client.tai-khoans.lich-su-giao-dichs.lich-su-duo");
     }
     
+    public function lichSuTaoCode()
+    {
+        return view("client.tai-khoans.lich-su-giao-dichs.lich-su-tao-code");
+    }
 }
