@@ -493,7 +493,7 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="./display.html">Hiển
+                                                                <div class="panel-title"><a href="{{ route('taikhoan.hienThi') }}">Hiển
                                                                         thị</a></div>
 
                                                             </div>
@@ -533,7 +533,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./customer_history_donate.html">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuDonate') }}">Lịch sử
                                                                         donate</a></div>
 
                                                             </div>

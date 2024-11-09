@@ -36,4 +36,14 @@ class TaiKhoanController extends Controller
     {
         return view("client.tai-khoans.cai-dats.vip");
     }
+
+    public function hienThi()
+    {
+        return view("client.tai-khoans.cai-dats.hien-thi");
+    }
+
+    public function lichSuDonate()
+    {
+        return view("client.tai-khoans.lich-su-giao-dichs.lich-su-donate");
+    }
 }

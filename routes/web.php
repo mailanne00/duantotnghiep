@@ -24,3 +24,5 @@ Route::get('tai-khoan/email', [TaiKhoanController::class, 'email'])->name('taikh
 Route::get('tai-khoan/tai-khoan-va-mat-khau', [TaiKhoanController::class, 'taiKhoanVaMatKhau'])->name('taikhoan.taiKhoanVaMatKhau');
 Route::get('tai-khoan/khoa-bao-ve', [TaiKhoanController::class, 'khoaBaoVe'])->name('taikhoan.khoaBaoVe');
 Route::get('tai-khoan/vip', [TaiKhoanController::class, 'vip'])->name('taikhoan.vip');
+Route::get('tai-khoan/hien-thi', [TaiKhoanController::class, 'hienThi'])->name('taikhoan.hienThi');
+Route::get('tai-khoan/lich-su-donate', [TaiKhoanController::class, 'lichSuDonate'])->name('taikhoan.lichSuDonate');
