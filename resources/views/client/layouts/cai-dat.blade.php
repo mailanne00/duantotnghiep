@@ -412,7 +412,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="{{ route('taikhoan.thongke') }}"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.thongKe') }}"><i
                                                             class="fas fa-sliders-h"></i> Thống kê</a> </div>
 
                                             </div>
@@ -448,7 +448,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./setting_email.html">Email</a></div>
+                                                                        href="{{ route('taikhoan.email') }}">Email</a></div>
 
                                                             </div>
 
@@ -459,7 +459,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./account_password.html">Tài khoản và mật
+                                                                        href="{{ route('taikhoan.taiKhoanVaMatKhau') }}">Tài khoản và mật
                                                                         khẩu</a></div>
 
                                                             </div>

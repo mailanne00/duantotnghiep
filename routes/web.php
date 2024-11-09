@@ -19,4 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('tai-khoan/thong-tin-ca-nhan', [TaiKhoanController::class, 'index'])->name('taikhoan.thongtincanhan');
-Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongke');
+Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongKe');
+Route::get('tai-khoan/email', [TaiKhoanController::class, 'email'])->name('taikhoan.email');
+Route::get('tai-khoan/tai-khoan-va-mat-khau', [TaiKhoanController::class, 'taiKhoanVaMatKhau'])->name('taikhoan.taiKhoanVaMatKhau');

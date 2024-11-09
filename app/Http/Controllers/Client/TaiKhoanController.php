@@ -14,4 +14,12 @@ class TaiKhoanController extends Controller
     public function thongKe(){
         return view("client.tai-khoans.thong-ke");
     }
+
+    public function email(){
+        return view("client.tai-khoans.cai-dats.email");
+    }
+
+    public function taiKhoanVaMatKhau(){
+        return view("client.tai-khoans.cai-dats.tai-khoan-va-mat-khau");
+    }
 }
