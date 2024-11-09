@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('client.index');
 });
+
+Route::get('tai_khoan/thong_tin_ca_nhan', [TaiKhoanController::class, 'index'])->name('taikhoan.thongtincanhan');
