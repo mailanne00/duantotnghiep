@@ -583,7 +583,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./customer_history_buy_card.html">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuMuaThe') }}">Lịch sử
                                                                         mua
                                                                         thẻ</a></div>
 

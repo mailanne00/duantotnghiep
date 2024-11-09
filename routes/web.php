@@ -29,3 +29,4 @@ Route::get('tai-khoan/lich-su-donate', [TaiKhoanController::class, 'lichSuDonate
 Route::get('tai-khoan/lich-su-duo', [TaiKhoanController::class, 'lichSuDuo'])->name('taikhoan.lichSuDuo');
 Route::get('tai-khoan/lich-su-tao-code', [TaiKhoanController::class, 'lichSuTaoCode'])->name('taikhoan.lichSuTaoCode');
 Route::get('tai-khoan/bien-dong-so-du', [TaiKhoanController::class, 'bienDongSoDu'])->name('taikhoan.bienDongSoDu');
+Route::get('tai-khoan/lich-su-mua-the', [TaiKhoanController::class, 'lichSuMuaThe'])->name('taikhoan.lichSuMuaThe');
