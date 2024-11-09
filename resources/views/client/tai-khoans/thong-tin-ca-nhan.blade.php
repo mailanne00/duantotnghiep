@@ -1,4 +1,4 @@
-@extends("client.layouts.cai-dat")
+@extends("client.layouts.cai-dat-tai-khoan")
 
 @section("title", "Thông tin cá nhân")
 

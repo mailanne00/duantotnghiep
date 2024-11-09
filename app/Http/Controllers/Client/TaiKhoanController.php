@@ -7,19 +7,33 @@ use Illuminate\Http\Request;
 
 class TaiKhoanController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view("client.tai-khoans.thong-tin-ca-nhan");
     }
 
-    public function thongKe(){
+    public function thongKe()
+    {
         return view("client.tai-khoans.thong-ke");
     }
 
-    public function email(){
+    public function email()
+    {
         return view("client.tai-khoans.cai-dats.email");
     }
 
-    public function taiKhoanVaMatKhau(){
+    public function taiKhoanVaMatKhau()
+    {
         return view("client.tai-khoans.cai-dats.tai-khoan-va-mat-khau");
+    }
+
+    public function khoaBaoVe()
+    {
+        return view("client.tai-khoans.cai-dats.khoa-bao-ve");
+    }
+
+    public function vip()
+    {
+        return view("client.tai-khoans.cai-dats.vip");
     }
 }

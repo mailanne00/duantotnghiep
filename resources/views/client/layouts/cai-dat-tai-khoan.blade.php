@@ -470,7 +470,7 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="./security.html">Khoá
+                                                                <div class="panel-title"><a href="{{ route('taikhoan.khoaBaoVe') }}">Khoá
                                                                         bảo
                                                                         vệ</a></div>
 
@@ -482,7 +482,7 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="./vip.html">Vip</a>
+                                                                <div class="panel-title"><a href="{{ route('taikhoan.vip') }}">Vip</a>
                                                                 </div>
 
                                                             </div>
