@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\ChinhSachController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('client.index');
 });
+Route::get('/chinhsachs', [ChinhSachController::class, 'chinhSach'])->name('chinhsachs.index');
