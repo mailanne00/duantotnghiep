@@ -44,7 +44,7 @@
 
         <div class="navbar-header">
 
-            <a href="./index.html" class="logo">
+            <a href="{{ route('client.index') }}" class="logo">
 
                 <img src="{{ asset('asset/images/logoPD.png')}}" alt="logo playerduo">
 
@@ -603,7 +603,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./customer_agency.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.daiLyCard') }}"><i
                                                             class="fas fa-id-card"></i> Đại lý card</a> </div>
 
                                             </div>
@@ -614,7 +614,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./customer_bank.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.thanhToan') }}"><i
                                                             class="fas fa-credit-card"></i> Thanh toán</a> </div>
 
                                             </div>
@@ -625,7 +625,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./withdraw.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.vi') }}"><i
                                                             class="fas fa-wallet"></i> Ví</a> </div>
 
                                             </div>
@@ -683,7 +683,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./hashtag_content.html">Dành cho sáng tạo
+                                                                        href="{{ route('taikhoan.hashtags') }}">Dành cho sáng tạo
                                                                         nội
                                                                         dung</a></div>
 
@@ -724,7 +724,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./user_setting_url.html">Url</a></div>
+                                                                        href="{{ route('taikhoan.url') }}">Url</a></div>
 
                                                             </div>
 
@@ -735,7 +735,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./user_setting_info.html">Mạng xã hội</a>
+                                                                        href="{{ route('taikhoan.mangXaHoi') }}">Mạng xã hội</a>
                                                                 </div>
 
                                                             </div>
@@ -747,7 +747,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./user_display.html">Hiển
+                                                                        href="{{ route('taikhoan.caiDatHienThi') }}">Hiển
                                                                         thị</a></div>
 
                                                             </div>
@@ -787,7 +787,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./member_ship_level.html">Bậc</a></div>
+                                                                        href="{{ route('taikhoan.bac') }}">Bậc</a></div>
 
                                                             </div>
 
@@ -798,7 +798,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./member_list.html">Danh
+                                                                        href="{{ route('taikhoan.danhSachThanhVien') }}">Danh
                                                                         sách thành viên</a></div>
 
                                                             </div>
@@ -810,7 +810,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./registed_history.html">Lịch sử đã đăng
+                                                                        href="{{ route('taikhoan.lichSuDangKyThanhVien') }}">Lịch sử đã đăng
                                                                         ký</a></div>
 
                                                             </div>
@@ -850,7 +850,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./target_setting.html">Cài
+                                                                        href="{{ route('taikhoan.caiDatMucTieu') }}">Cài
                                                                         đặt</a></div>
 
                                                             </div>
@@ -862,7 +862,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./target_history.html">Lịch sử</a></div>
+                                                                        href="{{ route('taikhoan.lichSuMucTieu') }}">Lịch sử</a></div>
 
                                                             </div>
 
@@ -880,7 +880,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./user_block_list.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.danhSachChanComment') }}"><i
                                                             class="fas fa-ban"></i> Danh sách chặn comment </a></div>
 
                                             </div>
@@ -939,7 +939,7 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="./pay_info.html">Thông
+                                                                <div class="panel-title"><a href="{{ route('taikhoan.thongTinVi') }}">Thông
                                                                         tin</a></div>
 
                                                             </div>
@@ -951,7 +951,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./pay_history.html">Lịch
+                                                                        href="{{ route('taikhoan.lichSuGiaoDich') }}">Lịch
                                                                         sử</a></div>
 
                                                             </div>
@@ -970,8 +970,8 @@
 
                                             <div class="panel-heading ">
 
-                                                <div class=" panel-title "><a href="./link_pay.html"><i
-                                                            class="fas fa-link "></i> Link Pay </a></div>
+                                                <div class=" panel-title "><a href="{{ route('taikhoan.linkPay') }}"><i
+                                                            class="fas fa-link"></i> Link Pay </a></div>
 
                                             </div>
 
@@ -1007,7 +1007,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="./player_dashboard.html"><i
+                                                <div class=" panel-title"><a href="{{ route('taikhoan.trangChuPlayer') }}"><i
                                                             class="fas fa-user-tie"></i> Tổng quan </a></div>
 
                                             </div>
@@ -1018,7 +1018,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="./player_loyal_customer.html"><i
+                                                <div class=" panel-title"><a href="{{ route('taikhoan.khachHangThanThiet') }}"><i
                                                             class="fas fa-user-friends"></i> Khách hàng thân thiết </a>
                                                 </div>
 
@@ -1051,7 +1051,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_setting_url.html">Url</a></div>
+                                                                        href="{{ route('taikhoan.caiDatPlayerUrl') }}">Url</a></div>
 
                                                             </div>
 
@@ -1062,7 +1062,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_setting_info.html">Thông tin
+                                                                        href="{{ route('taikhoan.thongTinPlayer') }}">Thông tin
                                                                         Player</a></div>
 
                                                             </div>
@@ -1074,7 +1074,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_setting_albums.html">Albums
+                                                                        href="{{ route('taikhoan.albumPlayer') }}">Albums
                                                                         Player</a></div>
 
                                                             </div>
@@ -1086,7 +1086,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_setting_duo.html">Cài đặt Duo</a>
+                                                                        href="{{ route('taikhoan.caiDatDuo') }}">Cài đặt Duo</a>
                                                                 </div>
 
                                                             </div>
@@ -1098,7 +1098,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_setting_different.html">Khác</a>
+                                                                        href="{{ route('taikhoan.caiDatKhac') }}">Khác</a>
                                                                 </div>
 
                                                             </div>
@@ -1138,7 +1138,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_history_duo.html">Lịch sử nhận
+                                                                        href="{{ route('taikhoan.lichSuDuoPlayer') }}">Lịch sử nhận
                                                                         duo</a></div>
 
                                                             </div>
@@ -1150,7 +1150,7 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="./player_history_donate.html">Lịch sử nhận
+                                                                        href="{{ route('taikhoan.lichSuDonatePlayer') }}">Lịch sử nhận
                                                                         donate</a></div>
 
                                                             </div>
@@ -1171,7 +1171,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="./player_block_list.html"><i
+                                                <div class=" panel-title"><a href="{{ route('taikhoan.danhSachChanUser') }}"><i
                                                             class="fas fa-ban"></i> Danh sách chặn User </a></div>
 
                                             </div>
@@ -1182,7 +1182,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="./player_guide.html"><i
+                                                <div class=" panel-title"><a href="{{ route('taikhoan.huongDanPlayer') }}"><i
                                                             class="fas fa-book"></i> Hướng Dẫn Player </a></div>
 
                                             </div>
@@ -1230,7 +1230,7 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="./player_donate.html"><i
+                                                <div class="panel-title"><a href="{{ route('taikhoan.donateCaiDat') }}"><i
                                                             class="fas fa-cog"></i> Cài đặt </a></div>
 
                                             </div>
