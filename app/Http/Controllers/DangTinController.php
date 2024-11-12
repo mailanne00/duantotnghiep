@@ -42,21 +42,21 @@ class DangTinController extends Controller
         return view('admin.dangtins.create');
     }
 
-    public function store(Request $request)
-    {
-        // $validate = $request->validated();
+    // public function store(Request $request)
+    // {
+    //     $validate = $request->validated();
 
-        $data['tai_khoan_id'] = Auth::id();
+    //     $data['tai_khoan_id'] = Auth::id();
 
-        $data = $request->except('video');
+    //     $data = $request->except('video');
 
-        if($request->hasFile('video')){
-            $data['video'] = Storage::put(self::PATH_UPLOAD,$request->file('video'));
-        }
-        DangTin::create($data);
+    //     if($request->hasFile('video')){
+    //         $data['video'] = Storage::put(self::PATH_UPLOAD,$request->file('video'));
+    //     }
+    //     DangTin::create($data);
 
-        return redirect()->route('dangtins.index');
-    }
+    //     return redirect()->route('dangtins.index');
+    // }
 
     public function destroy(Request $request, $id)
     {
