@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 
+Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');
