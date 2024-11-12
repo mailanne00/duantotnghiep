@@ -2262,9 +2262,9 @@ ul.rank-list li .avt img.avt-img {
 
 .player-information-card {
 
-    border-radius: 8px;
+    /* border-radius: 8px; */
 
-    border: 1px solid #e2e6ea;
+    /* border: 1px solid #e2e6ea; */
 
     cursor: pointer;
 
@@ -2278,6 +2278,7 @@ ul.rank-list li .avt img.avt-img {
 
 .player-information-card .player-avt {
 
+    border-radius: 8px;
     position: relative;
 
     overflow: hidden;
@@ -2286,13 +2287,15 @@ ul.rank-list li .avt img.avt-img {
 
 
 
-.player-information-card .player-avt img {
+.player-information-card .player-avt video {
 
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 8px 8px;
 
-    height: 275px;
+    height: 320px;
 
     width: 100%;
+    
+    object-fit: cover;
 
 }
 
@@ -2328,7 +2331,7 @@ ul.rank-list li .avt img.avt-img {
 
     left: 5px;
 
-    background-color: #f0564a;
+    /* background-color: #f0564a; */
 
     color: #fff;
 
@@ -2337,14 +2340,13 @@ ul.rank-list li .avt img.avt-img {
     padding: 6px 10px 4px;
 
     font-size: 14px;
-
 }
 
 
 
 .player-information-card .player-information {
 
-    padding: 10px 15px 15px;
+    padding: 10px 15px 15px 0px;
 
     background: #fff;
 
@@ -2370,7 +2372,7 @@ ul.rank-list li .avt img.avt-img {
 
     margin-top: 0;
 
-    font-weight: 500;
+    font-weight: 420;
 
     font-size: 15px;
 
@@ -2380,7 +2382,8 @@ ul.rank-list li .avt img.avt-img {
 
 .player-information-card .player-name a {
 
-    color: #f0564a;
+    color: #000;
+    margin-left: 5px;
 
 }
 
