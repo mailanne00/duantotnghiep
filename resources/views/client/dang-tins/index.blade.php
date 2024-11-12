@@ -202,7 +202,7 @@
 
                             <h3 class="player-name">
 
-                                <img src="{{Storage::url($dangtin->taiKhoan->anh_dai_dien)}}" alt="" style="width:40px; border-radius:50%;">
+                                <img src="{{Storage::url($dangtin->taiKhoan->anh_dai_dien)}}" alt="" style="width:40px; height:40px; border-radius:50%;">
                                 <a href="./info.html" target="_blank">{{$dangtin->taiKhoan->ten}}</a>
 
                             </h3>

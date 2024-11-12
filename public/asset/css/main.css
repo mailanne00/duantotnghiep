@@ -2294,6 +2294,8 @@ ul.rank-list li .avt img.avt-img {
     height: 320px;
 
     width: 100%;
+    
+    object-fit: cover;
 
     object-fit: cover;
 
