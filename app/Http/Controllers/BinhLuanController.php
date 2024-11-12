@@ -34,8 +34,6 @@ class BinhLuanController extends Controller
         // Lấy các tham số tìm kiếm
         $query = $request->input('query');
         $danhGia = $request->input('danh_gia');
-
-
         // Lấy danh sách bình luận với phân trang
         $binhLuans = BinhLuan::when($query, function ($queryBuilder) use ($query) {
             return $queryBuilder->where('player_id', 'like', '%' . $query . '%');
