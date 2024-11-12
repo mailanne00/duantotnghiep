@@ -252,6 +252,10 @@ class PlayerController extends Controller
         $player = Player::findOrFail($id);
 
         $player->tinh_trang = $request->input('tinh_trang');
+
+        if($request->tinh_trang === "Duyệt"){
+            $player->taiKhoan->update(['phan_quyen_id' => 3]);
+        }
         $player->save();
 
         return redirect()->back()->with('success', 'Cập nhật thành công!');

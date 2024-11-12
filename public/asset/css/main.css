@@ -792,7 +792,7 @@ header.menu__header {
 
     color: #354052;
 
-    border: none!important;
+    border: none !important;
 
     padding: 0 15px 0 0;
 
@@ -1326,7 +1326,7 @@ ul.rank-list li .avt img.avt-img {
 
 .color-vip-6 {
 
-    display: inline-block!important;
+    display: inline-block !important;
 
     font-weight: 600;
 
@@ -1336,7 +1336,7 @@ ul.rank-list li .avt img.avt-img {
 
 .color-vip-1 {
 
-    color: #007895!important;
+    color: #007895 !important;
 
 }
 
@@ -1666,7 +1666,7 @@ ul.rank-list li .avt img.avt-img {
 
 .global_message__item .media-left .avt-img {
 
-    height: auto!important;
+    height: auto !important;
 
 }
 
@@ -1820,7 +1820,7 @@ ul.rank-list li .avt img.avt-img {
 
     border: 1px solid #aaa;
 
-    outline: 0!important;
+    outline: 0 !important;
 
     color: #333;
 
@@ -2295,6 +2295,8 @@ ul.rank-list li .avt img.avt-img {
 
     width: 100%;
     
+    object-fit: cover;
+
     object-fit: cover;
 
 }

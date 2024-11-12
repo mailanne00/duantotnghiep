@@ -25,7 +25,7 @@
                                     <th>Giới tính</th>
                                     <th>Ảnh đại diện</th>
                                     <th>Trạng thái</th>
-                                    {{-- <th>Phân quyền</th>? --}}
+                                    <th>Phân quyền</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                         <td><img src="{{ Storage::url($player->taiKhoan->anh_dai_dien) }}"
                                                 alt="Ảnh đại diện" width="100"></td>
                                         <td>{{ $player->trang_thai_player }}</td>
-                                        {{-- <td>{{ $player -> taiKhoan -> phanQuyen -> ten }}</td> --}}
+                                        <td>{{ $player -> taiKhoan -> phanQuyen -> ten }}</td> 
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('admin.players.show', $player->id) }}" class="me-4">

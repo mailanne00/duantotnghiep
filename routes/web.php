@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('client.index');
 });
 
+
+Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');
 Route::get('/', [TaiKhoanController::class, 'index'])->name('client.index');
 Route::get('tai-khoan/thong-tin-ca-nhan', [TaiKhoanController::class, 'thongTinCaNhan'])->name('taikhoan.thongtincanhan');
 Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongKe');
