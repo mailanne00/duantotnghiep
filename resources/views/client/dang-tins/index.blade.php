@@ -181,13 +181,13 @@
             <div class="row">
 
                 @foreach ($dangtins as $dangtin)
-                <div class="col-xl-3 col-md-6 col-sm-12" data-bs-toggle="modal" data-bs-target="#exampleModal{{$loop->index}}">
+                <div class="col-xl-3 col-md-6 col-sm-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
 
                     <div class="player-information-card">
 
                         <div class="player-avt">
 
-                            <video width="100%">
+                            <video width="100%" style="pointer-events: none;">
                                 <source src="{{ Storage::url($dangtin->video) }}" type="video/mp4">
                             </video>
 
@@ -212,8 +212,7 @@
                     </div>
 
                 </div>
-
-                <div class="modal fade" id="exampleModal{" style="height:900px" tabindex="-1" aria-labelledby="exampleModal{Label" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" style="height:900px" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content row" style="transform: translateX(-210px); width: 1020px; flex-direction: row">
                             <div class="modal-left col-6">
