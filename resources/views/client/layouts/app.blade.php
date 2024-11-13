@@ -12,13 +12,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('title','Đây là trang chủ')</title>
+    <title>@yield('title', 'Đây là trang chủ')</title>
 
     <link rel="icon" href="{{ asset('asset/images/logoPD.png') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('asset/css/normalize.min.css')}}">
 
@@ -46,13 +48,13 @@
 
                 <img src="{{asset('asset/images/logoPD.png')}}" alt="logo playerduo">
 
-                <!-- <div class="text-logo d-lg-block d-none">
+                <div class="text-logo d-lg-block d-none">
 
                     <h4>PLAYERDUO</h4>
 
                     <p>GAME COMMUNITY</p>
 
-                </div> -->
+                </div>
 
             </a>
 
@@ -68,7 +70,7 @@
 
                 <li class="item"><a href="" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><span>BXH</span></a></li> -->
 
-                <!-- <li class="item-search">
+                <li class="item-search">
 
                     <form action="">
 
@@ -78,7 +80,7 @@
 
                     </form>
 
-                </li> -->
+                </li>
 
             </ul>
 
@@ -96,9 +98,11 @@
 
                 <li class="item-icon facebook">
 
-                    <a href="" class="dropdown-toggle" id="dropdown-facebook" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <a href="" class="dropdown-toggle" id="dropdown-facebook" data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="false">
 
-                        <i class="fab fa-facebook-f"></i></a>
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
 
                     <div class="dropdown-menu p-2 facebook-dp" aria-labelledby="dropdown-facebook">
 
@@ -107,14 +111,15 @@
                         <p>Fanpage</p>
 
                     </div>
-
                 </li>
 
-                <li class="item-icon group-fb"><a href="" class="group-user" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><i class="far fa-trophy-alt"></i></a></li>
+                <li class="item-icon group-fb"><a href="" class="group-user" data-bs-toggle="modal"
+                        data-bs-target="#rank" aria-hidden="true"><i class="far fa-trophy-alt"></i></a></li>
 
-                <li class="item-icon">  
+                <li class="item-icon">
 
-                    <a href="" class="dropdown-toggle" id="dropdown-bell" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <a href="" class="dropdown-toggle" id="dropdown-bell" data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="false">
 
                         <i class="far fa-bell"></i></a>
 
@@ -130,13 +135,17 @@
 
                                     <li class="nav-item" role="presentation">
 
-                                        <button class="nav-link  active" id="notification-tab" data-bs-toggle="pill" data-bs-target="#notification" type="button" role="tab" aria-controls="notification" aria-selected="false">Chính</button>
+                                        <button class="nav-link  active" id="notification-tab" data-bs-toggle="pill"
+                                            data-bs-target="#notification" type="button" role="tab"
+                                            aria-controls="notification" aria-selected="false">Chính</button>
 
                                     </li>
 
                                     <li class="nav-item" role="presentation">
 
-                                        <button class="nav-link" id="other-noti-tab" data-bs-toggle="pill" data-bs-target="#other-noti" type="button" role="tab" aria-controls="other-noti" aria-selected="true">Khác</button>
+                                        <button class="nav-link" id="other-noti-tab" data-bs-toggle="pill"
+                                            data-bs-target="#other-noti" type="button" role="tab"
+                                            aria-controls="other-noti" aria-selected="true">Khác</button>
 
                                     </li>
 
@@ -148,13 +157,15 @@
 
                             <div class="tab-content" id="pills-tab2Content">
 
-                                <div class="tab-pane fade" id="other-noti" role="tabpanel" aria-labelledby="other-noti-tab">
+                                <div class="tab-pane fade" id="other-noti" role="tabpanel"
+                                    aria-labelledby="other-noti-tab">
 
                                     ...
 
                                 </div>
 
-                                <div class="tab-pane fade show  active" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+                                <div class="tab-pane fade show  active" id="notification" role="tabpanel"
+                                    aria-labelledby="notification-tab">
 
                                     ...
 
@@ -170,7 +181,8 @@
 
                 <li class="item-icon">
 
-                    <a href="" class="dropdown-toggle" id="dropdown-users" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <a href="" class="dropdown-toggle" id="dropdown-users" data-bs-toggle="dropdown"
+                        data-bs-auto-close="outside" aria-expanded="false">
 
                         <i class="far fa-users"></i></a>
 
@@ -186,13 +198,17 @@
 
                                     <li class="nav-item" role="presentation">
 
-                                        <button class="nav-link  active" id="notification-tab" data-bs-toggle="pill" data-bs-target="#notification" type="button" role="tab" aria-controls="notification" aria-selected="false">Theo dõi</button>
+                                        <button class="nav-link  active" id="notification-tab" data-bs-toggle="pill"
+                                            data-bs-target="#notification" type="button" role="tab"
+                                            aria-controls="notification" aria-selected="false">Theo dõi</button>
 
                                     </li>
 
                                     <li class="nav-item" role="presentation">
 
-                                        <button class="nav-link" id="other-noti-tab" data-bs-toggle="pill" data-bs-target="#other-noti" type="button" role="tab" aria-controls="other-noti" aria-selected="true">Tương tác</button>
+                                        <button class="nav-link" id="other-noti-tab" data-bs-toggle="pill"
+                                            data-bs-target="#other-noti" type="button" role="tab"
+                                            aria-controls="other-noti" aria-selected="true">Tương tác</button>
 
                                     </li>
 
@@ -202,13 +218,15 @@
 
                             <div class="tab-content" id="pills-tabContent">
 
-                                <div class="tab-pane fade" id="other-noti" role="tabpanel" aria-labelledby="other-noti-tab">
+                                <div class="tab-pane fade" id="other-noti" role="tabpanel"
+                                    aria-labelledby="other-noti-tab">
 
                                     ...
 
                                 </div>
 
-                                <div class="tab-pane fade show  active" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+                                <div class="tab-pane fade show  active" id="notification" role="tabpanel"
+                                    aria-labelledby="notification-tab">
 
                                     ...
 
@@ -225,20 +243,22 @@
                 <li class="item-icon balance d-lg-block d-none">
 
                     <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true"><i
-
                             class="fas fa-plus"></i> 0 đ</a>
 
                 </li>
 
                 <li class="item-icon item-avatar">
 
-                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('asset/images/avatar5.png')}}" alt="" width="43px" height="43px"></a>
+                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('asset/images/avatar5.png')}}"
+                            alt="" width="43px" height="43px"></a>
 
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
 
                         <li class="page-user">
 
-                            <a tabindex="-1" href="./profile.html"><img src="{{asset('asset/images/avatar5.png')}}" class="avt-img" alt="PD">
+                            <a tabindex="-1" href="./profile.html"><img src="{{asset('asset/images/avatar5.png')}}"
+                                    class="avt-img" alt="PD">
 
                                 <div class="text-logo">
 
@@ -256,43 +276,53 @@
 
                         <li class="menu-item hidden-lg hidden-md">
 
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" href="#"><i class="fa fa-plus"></i> <span>Số dư</span> : <span
-
-                                    class="money">0
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" href="#"><i
+                                    class="fa fa-plus"></i> <span>Số dư</span> : <span class="money">0
 
                                     đ</span></a>
 
                         </li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./withdraw.html"><i class="fas fa-minus"></i> <span>Rút
+                        <li class="menu-item"><a tabindex="-1" href="./withdraw.html"><i class="fas fa-minus"></i>
+                                <span>Rút
 
                                     tiền</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./cards.html"><i class="fas fa-credit-card"></i> <span>Mua
+                        <li class="menu-item"><a tabindex="-1" href="./cards.html"><i class="fas fa-credit-card"></i>
+                                <span>Mua
 
                                     thẻ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./security.html"><i class="fas fa-user-lock"></i><span>Tạo khóa bảo vệ</span></a></li>
+                        <li class="menu-item"><a tabindex="-1" href="./security.html"><i
+                                    class="fas fa-user-lock"></i><span>Tạo khóa bảo vệ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./balance_fluctuation.html"><i class="fas fa-clock"></i><span>Lịch sử giao dịch</span></a></li>
+                        <li class="menu-item"><a tabindex="-1" href="./balance_fluctuation.html"><i
+                                    class="fas fa-clock"></i><span>Lịch sử giao dịch</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./following.html"><i class="fas fa-users"></i> <span>Danh sách theo
+                        <li class="menu-item"><a tabindex="-1" href="./following.html"><i class="fas fa-users"></i>
+                                <span>Danh sách theo
 
                                     dõi</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./customer_info.html"><i class="fas fa-cogs"></i> <span>Cài đặt tài
+                        <li class="menu-item"><a tabindex="-1" href="./customer_info.html"><i class="fas fa-cogs"></i>
+                                <span>Cài đặt tài
 
                                     khoản</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./login.html"><i class="fas fa-power-off"></i> <span>Đăng
+                        <li class="menu-item"><a tabindex="-1" href="./login.html"><i class="fas fa-power-off"></i>
+                                <span>Đăng
 
                                     xuất</span></a></li>
 
                         <div class="menu-item list-flag">
 
-                            <div class="flag-all active"><img src="https://files.playerduo.com/production/static-files/flag/2.png" class="flag flag-vn" alt="PD"></div>
+                            <div class="flag-all active"><img
+                                    src="https://files.playerduo.com/production/static-files/flag/2.png"
+                                    class="flag flag-vn" alt="PD"></div>
 
-                            <div class="flag-all false"><img src="https://files.playerduo.com/production/static-files/flag/1.png" class="flag flag-en" alt="PD"></div>
+                            <div class="flag-all false"><img
+                                    src="https://files.playerduo.com/production/static-files/flag/1.png"
+                                    class="flag flag-en" alt="PD"></div>
 
                         </div>
 
@@ -317,7 +347,6 @@
                     <span class="input-group-addon">
 
                         <button type="button" class="btn btn-default"><i class="fa fa-search"
-
                                 aria-hidden="true"></i></button>
 
                     </span>
@@ -352,7 +381,8 @@
 
     <!-- Nạp tiền player duo -->
 
-    <div class="recharge-modal modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="recharge-modal modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
         <div class="modal-dialog">
 
@@ -378,9 +408,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/bank.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/bank.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -402,7 +435,8 @@
 
                             </div>
 
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
@@ -412,19 +446,31 @@
 
                                             <div class="col-md-3 col-xs-6">
 
-                                                <div class="item-bank "><img src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/vietcombank.png" class="" alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/vietcombank.png"></div>
+                                                <div class="item-bank "><img
+                                                        src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/vietcombank.png"
+                                                        class=""
+                                                        alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/vietcombank.png">
+                                                </div>
 
                                             </div>
 
                                             <div class="col-md-3 col-xs-6">
 
-                                                <div class="item-bank "><img src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/viettinbank.png" class="" alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/viettinbank.png"></div>
+                                                <div class="item-bank "><img
+                                                        src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/viettinbank.png"
+                                                        class=""
+                                                        alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/viettinbank.png">
+                                                </div>
 
                                             </div>
 
                                             <div class="col-md-3 col-xs-6">
 
-                                                <div class="item-bank "><img src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/techcombank.png" class="" alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/techcombank.png"></div>
+                                                <div class="item-bank "><img
+                                                        src="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/techcombank.png"
+                                                        class=""
+                                                        alt="https://playerduo-data.sgp1.cdn.digitaloceanspaces.com/production/static-files/bank/techcombank.png">
+                                                </div>
 
                                             </div>
 
@@ -436,9 +482,12 @@
 
                                                 <form>
 
-                                                    <div class="fieldGroup "><input type="text" name="amount" placeholder="Số tiền muốn nạp (VND)" maxlength="5000" autocomplete="false" value=""></div>
+                                                    <div class="fieldGroup "><input type="text" name="amount"
+                                                            placeholder="Số tiền muốn nạp (VND)" maxlength="5000"
+                                                            autocomplete="false" value=""></div>
 
-                                                    <p class="text-center"><button type="submit" class="btn btn-success">Nạp tiền</button></p>
+                                                    <p class="text-center"><button type="submit"
+                                                            class="btn btn-success">Nạp tiền</button></p>
 
                                                 </form>
 
@@ -456,15 +505,21 @@
 
                                             <p><span>* Hỗ trợ từ 8:30 đến 22:00 hằng ngày (Trừ CN)</span></p>
 
-                                            <p><span>* Nếu bạn có vấn đê cần hỗ trợ:</span> <a href="https://www.facebook.com/playerduo/" target="_blank" rel="noopener noreferrer"><span>Chat ngay</span></a></p>
+                                            <p><span>* Nếu bạn có vấn đê cần hỗ trợ:</span> <a
+                                                    href="https://www.facebook.com/playerduo/" target="_blank"
+                                                    rel="noopener noreferrer"><span>Chat ngay</span></a></p>
 
                                         </div>
 
                                         <div class="sub-form">
 
-                                            <div class="fieldGroup "><input type="text" name="code" placeholder="Mã nạp tiền" maxlength="5000" autocomplete="false" value=""></div>
+                                            <div class="fieldGroup "><input type="text" name="code"
+                                                    placeholder="Mã nạp tiền" maxlength="5000" autocomplete="false"
+                                                    value=""></div>
 
-                                            <div class="btn__fill"><button disabled="" type="button" class="pull-right btn btn-danger"><span>Thông báo</span></button></div>
+                                            <div class="btn__fill"><button disabled="" type="button"
+                                                    class="pull-right btn btn-danger"><span>Thông báo</span></button>
+                                            </div>
 
                                         </div>
 
@@ -482,9 +537,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/player-card.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/player-card.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -502,7 +560,8 @@
 
                             </div>
 
-                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
@@ -514,13 +573,18 @@
 
                                                 <li class="col-sm-4 position-relative">
 
-                                                    <div class="type-card-playercode"><img src="https://files.playerduo.com/production/static-files/card/playercode.png" alt="PD" class="img-thumbnail"><span class="discount-card">-10%</span></div>
+                                                    <div class="type-card-playercode"><img
+                                                            src="https://files.playerduo.com/production/static-files/card/playercode.png"
+                                                            alt="PD" class="img-thumbnail"><span
+                                                            class="discount-card">-10%</span></div>
 
                                                 </li>
 
                                             </ul>
 
-                                            <p><a href="https://playerduo.com/partner" rel="noopener noreferrer" target="_blank"><i class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem nơi bán Player Code gần bạn</span></a>.</p>
+                                            <p><a href="https://playerduo.com/partner" rel="noopener noreferrer"
+                                                    target="_blank"><i class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem
+                                                        nơi bán Player Code gần bạn</span></a>.</p>
 
                                             <hr>
 
@@ -532,7 +596,9 @@
 
                                                         <div class="form-group">
 
-                                                            <div class="fieldGroup "><input type="text" name="seriesNumber" placeholder="" maxlength="255" autocomplete="false" value=""></div>
+                                                            <div class="fieldGroup "><input type="text"
+                                                                    name="seriesNumber" placeholder="" maxlength="255"
+                                                                    autocomplete="false" value=""></div>
 
                                                         </div>
 
@@ -542,23 +608,34 @@
 
                                                         <div class="form-group">
 
-                                                            <div class="fieldGroup "><input type="text" name="cardNumber" placeholder="" maxlength="255" autocomplete="false" value=""></div>
+                                                            <div class="fieldGroup "><input type="text"
+                                                                    name="cardNumber" placeholder="" maxlength="255"
+                                                                    autocomplete="false" value=""></div>
 
                                                         </div>
 
-                                                    </div><i class="fas fa-minus common__space"></i></div>
+                                                    </div><i class="fas fa-minus common__space"></i>
+                                                </div>
 
                                                 <div class="recaptcha">
 
-                                                    <div id="pc" class="g-recaptcha" data-sitekey="6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb" data-theme="light" data-type="image" data-size="normal" data-badge="bottomright" data-tabindex="0">
+                                                    <div id="pc" class="g-recaptcha"
+                                                        data-sitekey="6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb"
+                                                        data-theme="light" data-type="image" data-size="normal"
+                                                        data-badge="bottomright" data-tabindex="0">
 
                                                         <div style="width: 304px; height: 78px;">
 
-                                                            <div><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=2eu9kzqz6qmp"
+                                                            <div><iframe title="reCAPTCHA"
+                                                                    src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=2eu9kzqz6qmp"
+                                                                    width="304" height="78" role="presentation"
+                                                                    name="a-1iutqbfswf0a" frameborder="0" scrolling="no"
+                                                                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                                            </div>
 
-                                                                    width="304" height="78" role="presentation" name="a-1iutqbfswf0a" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div>
-
-                                                            <textarea id="g-recaptcha-response-4" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                                            <textarea id="g-recaptcha-response-4"
+                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                                style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
                                                         </div>
 
@@ -566,7 +643,8 @@
 
                                                 </div>
 
-                                                <p class="text-center"><button type="submit" class="btn btn-success"><span>Nạp tiền</span></button></p>
+                                                <p class="text-center"><button type="submit"
+                                                        class="btn btn-success"><span>Nạp tiền</span></button></p>
 
                                             </form>
 
@@ -586,9 +664,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/mobile-card.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/mobile-card.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -606,7 +687,8 @@
 
                             </div>
 
-                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
@@ -618,19 +700,28 @@
 
                                                 <li class="col-sm-4">
 
-                                                    <div class="type-card-mobile card--active"><img src="https://files.playerduo.com/production/static-files/card/viettel.png" alt="PD" class="img-thumbnail"><span class="discount-mobile">-35%</span></div>
+                                                    <div class="type-card-mobile card--active"><img
+                                                            src="https://files.playerduo.com/production/static-files/card/viettel.png"
+                                                            alt="PD" class="img-thumbnail"><span
+                                                            class="discount-mobile">-35%</span></div>
 
                                                 </li>
 
                                                 <li class="col-sm-4">
 
-                                                    <div class="type-card-mobile"><img src="https://files.playerduo.com/production/static-files/card/mobiphone.png" alt="PD" class="img-thumbnail"><span class="discount-mobile">-35%</span></div>
+                                                    <div class="type-card-mobile"><img
+                                                            src="https://files.playerduo.com/production/static-files/card/mobiphone.png"
+                                                            alt="PD" class="img-thumbnail"><span
+                                                            class="discount-mobile">-35%</span></div>
 
                                                 </li>
 
                                                 <li class="col-sm-4">
 
-                                                    <div class="type-card-mobile"><img src="https://files.playerduo.com/production/static-files/card/vinaphone.png" alt="PD" class="img-thumbnail"><span class="discount-mobile">-35%</span></div>
+                                                    <div class="type-card-mobile"><img
+                                                            src="https://files.playerduo.com/production/static-files/card/vinaphone.png"
+                                                            alt="PD" class="img-thumbnail"><span
+                                                            class="discount-mobile">-35%</span></div>
 
                                                 </li>
 
@@ -638,7 +729,8 @@
 
                                             <hr>
 
-                                            <div class="bg-warning"><span>Vui lòng chọn đúng mệnh giá thẻ, nếu chọn sai mệnh giá sẽ bị trừ 50% giá trị thẻ.</span></div>
+                                            <div class="bg-warning"><span>Vui lòng chọn đúng mệnh giá thẻ, nếu chọn sai
+                                                    mệnh giá sẽ bị trừ 50% giá trị thẻ.</span></div>
 
                                             <form class="card">
 
@@ -688,21 +780,31 @@
 
                                                 <div class="recaptcha">
 
-                                                    <div id="mc" class="g-recaptcha" data-sitekey="6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb" data-theme="light" data-type="image" data-size="normal" data-badge="bottomright" data-tabindex="0">
+                                                    <div id="mc" class="g-recaptcha"
+                                                        data-sitekey="6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb"
+                                                        data-theme="light" data-type="image" data-size="normal"
+                                                        data-badge="bottomright" data-tabindex="0">
 
                                                         <div style="width: 304px; height: 78px;">
 
-                                                            <div><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=mnqbztqamlyw"
+                                                            <div><iframe title="reCAPTCHA"
+                                                                    src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=mnqbztqamlyw"
+                                                                    width="304" height="78" role="presentation"
+                                                                    name="a-ajhz6twbnr8t" frameborder="0" scrolling="no"
+                                                                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                                            </div>
 
-                                                                    width="304" height="78" role="presentation" name="a-ajhz6twbnr8t" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div>
+                                                            <textarea id="g-recaptcha-response-5"
+                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                                style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
-                                                            <textarea id="g-recaptcha-response-5" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-
-                                                        </div><iframe style="display: none;"></iframe></div>
+                                                        </div><iframe style="display: none;"></iframe>
+                                                    </div>
 
                                                 </div>
 
-                                                <p class="text-center"><button type="submit" class="btn btn-success"><span>Nạp tiền</span></button></p>
+                                                <p class="text-center"><button type="submit"
+                                                        class="btn btn-success"><span>Nạp tiền</span></button></p>
 
                                             </form>
 
@@ -724,9 +826,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/atm-card.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/atm-card.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -744,7 +849,8 @@
 
                             </div>
 
-                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
@@ -754,101 +860,189 @@
 
                                             <div class="bank-list  row">
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/1.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/1.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/116.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/116.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/173.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/173.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/174.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/174.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/175.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/175.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/176.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/176.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/177.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/177.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/178.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/178.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/179.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/179.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/168.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/168.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/180.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/180.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/127.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/127.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/87.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/87.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/84.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/84.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/83.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/83.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/108.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/108.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/95.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/95.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/81.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/81.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/121.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/121.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/136.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/136.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/117.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/117.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/110.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/110.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/82.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/82.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/113.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/113.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/99.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/99.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/114.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/114.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/105.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/105.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/135.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/135.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/120.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/120.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/163.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/163.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/107.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/107.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/94.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/94.png" alt="PD"
+                                                        class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/106.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/106.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/111.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/111.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/164.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/164.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/129.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/129.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/101.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/101.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/131.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/131.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/166.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/166.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/134.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/134.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
-                                                <div class="bank col-md-2 col-xs-3"><img src="https://cdn.baokim.vn/public/uploads/banks/124.png" alt="PD" class="img-thumbnail"></div>
+                                                <div class="bank col-md-2 col-xs-3"><img
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/124.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                             </div>
 
                                             <div class="form-recharge hide-form-recharge row">
 
-                                                <div class="col-xs-12"><button type="button" class="btn btn-sm btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i><span>Chọn lại</span></button>
+                                                <div class="col-xs-12"><button type="button"
+                                                        class="btn btn-sm btn-primary"><i class="fa fa-chevron-left"
+                                                            aria-hidden="true"></i><span>Chọn lại</span></button>
 
                                                     <p></p>
 
                                                     <form>
 
-                                                        <div class="fieldGroup "><input type="text" name="amount" placeholder="Số tiền muốn nạp (VND)" maxlength="5000" autocomplete="false" value=""></div>
+                                                        <div class="fieldGroup "><input type="text" name="amount"
+                                                                placeholder="Số tiền muốn nạp (VND)" maxlength="5000"
+                                                                autocomplete="false" value=""></div>
 
-                                                        <p class="text-center"><button type="submit" class="btn btn-success"><span>Nạp tiền</span></button></p>
+                                                        <p class="text-center"><button type="submit"
+                                                                class="btn btn-success"><span>Nạp tiền</span></button>
+                                                        </p>
 
                                                     </form>
 
@@ -872,9 +1066,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/qr_code.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/qr_code.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -892,7 +1089,8 @@
 
                             </div>
 
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
@@ -904,9 +1102,12 @@
 
                                                 <form>
 
-                                                    <div class="fieldGroup "><input type="text" name="amount" placeholder="Số tiền muốn nạp (VND)" maxlength="5000" autocomplete="false" value=""></div>
+                                                    <div class="fieldGroup "><input type="text" name="amount"
+                                                            placeholder="Số tiền muốn nạp (VND)" maxlength="5000"
+                                                            autocomplete="false" value=""></div>
 
-                                                    <p class="text-center"><button type="submit" class="btn btn-success"><span>Nạp tiền</span></button></p>
+                                                    <p class="text-center"><button type="submit"
+                                                            class="btn btn-success"><span>Nạp tiền</span></button></p>
 
                                                 </form>
 
@@ -928,9 +1129,12 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
 
-                                        <div class="option d-flex"><img src="https://files.playerduo.com/production/static-files/icon/paypal.png" alt="PD" class="option-icon img-rounded">
+                                        <div class="option d-flex"><img
+                                                src="https://files.playerduo.com/production/static-files/icon/paypal.png"
+                                                alt="PD" class="option-icon img-rounded">
 
                                             <div class="option-title">
 
@@ -948,13 +1152,15 @@
 
                             </div>
 
-                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#accordion-controlled-example">
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                                data-bs-parent="#accordion-controlled-example">
 
                                 <div class="accordion-body option-content panel-body">
 
                                     <p><span>Danh sách đại lý bán Player Code qua Paypal</span>:</p>
 
-                                    <p><a href="https://www.facebook.com/moonho93" rel="noopener noreferrer" target="_blank">Hồ Như Nguyệt</a></p>
+                                    <p><a href="https://www.facebook.com/moonho93" rel="noopener noreferrer"
+                                            target="_blank">Hồ Như Nguyệt</a></p>
 
                                 </div>
 
@@ -984,7 +1190,8 @@
 
     <!-- Bảng xếp hạng -->
 
-    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rankLabel" aria-hidden="true">
+    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="rankLabel" aria-hidden="true">
 
         <div class="modal-dialog">
 
@@ -1006,19 +1213,25 @@
 
                         <li class="nav-item" role="presentation">
 
-                            <a class="nav-link active" id="pills-home-tab1" data-bs-toggle="pill" data-bs-target="#pills-home1" role="tab" aria-controls="pills-home1" aria-selected="true"><span>Hôm nay</span></a>
+                            <a class="nav-link active" id="pills-home-tab1" data-bs-toggle="pill"
+                                data-bs-target="#pills-home1" role="tab" aria-controls="pills-home1"
+                                aria-selected="true"><span>Hôm nay</span></a>
 
                         </li>
 
                         <li class="nav-item" role="presentation">
 
-                            <a class="nav-link" id="pills-profile-tab2" data-bs-toggle="pill" data-bs-target="#pills-profile1" role="tab" aria-controls="pills-profile1" aria-selected="false"><span>7 ngày qua</span></a>
+                            <a class="nav-link" id="pills-profile-tab2" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile1" role="tab" aria-controls="pills-profile1"
+                                aria-selected="false"><span>7 ngày qua</span></a>
 
                         </li>
 
                         <li class="nav-item" role="presentation">
 
-                            <a class="nav-link" id="pills-contact-tab3" data-bs-toggle="pill" data-bs-target="#pills-contact1" role="tab" aria-controls="pills-contact1" aria-selected="false"><span>30 ngày qua</span></a>
+                            <a class="nav-link" id="pills-contact-tab3" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact1" role="tab" aria-controls="pills-contact1"
+                                aria-selected="false"><span>30 ngày qua</span></a>
 
                         </li>
 
@@ -1026,18 +1239,19 @@
 
                     <div class="tab-content" id="pills-tab1Content">
 
-                        <div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab1">
+                        <div class="tab-pane fade show active" id="pills-home1" role="tabpanel"
+                            aria-labelledby="pills-home-tab1">
 
                             <div class="mt-5">
 
-                                <div class="top-info-section"><img src="https://playerduo.com/api/upload-service/images/13d6afc5-2cfb-4247-b041-952a7b929582__131d2c70-5fae-11ec-ba40-b5b607f164e2__page_avatar.jpg" class="" alt="top donate"><img src="https://files.playerduo.com/production/static-files/no1_top_list.png"
-
+                                <div class="top-info-section"><img
+                                        src="https://playerduo.com/api/upload-service/images/13d6afc5-2cfb-4247-b041-952a7b929582__131d2c70-5fae-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        class="" alt="top donate"><img
+                                        src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
 
                                     <p style="margin-top: 25px;"><span><a href="/page5ff8cea655977e2f46a923cb"
-
                                                 target="_blank" rel="noopener noreferrer"
-
                                                 style="font-weight: bold;">Hào Nguyễn </a></span></p>
 
                                     <p style="font-weight: bold;">15,000,000 đ</p>
@@ -1052,9 +1266,12 @@
 
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
-                                            <div class="avt avt-xs"><img src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg" class="avt-img" alt="PD"><img src="https://files.playerduo.com/production/images/new-rankvip/10.png"
-
-                                                    class="vip-avatar undefined" alt="PD" style="height: 17px; width: 17px;"></div>
+                                            <div class="avt avt-xs"><img
+                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    class="avt-img" alt="PD"><img
+                                                    src="https://files.playerduo.com/production/images/new-rankvip/10.png"
+                                                    class="vip-avatar undefined" alt="PD"
+                                                    style="height: 17px; width: 17px;"></div>
 
                                             <p class="name-player-review color-vip-1">Văn Mít </p>
 
@@ -1070,18 +1287,19 @@
 
                         </div>
 
-                        <div class="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile-tab2">
+                        <div class="tab-pane fade" id="pills-profile1" role="tabpanel"
+                            aria-labelledby="pills-profile-tab2">
 
                             <div class="mt-5">
 
-                                <div class="top-info-section"><img src="https://playerduo.com/api/upload-service/images/8bc40fcc-b016-45c7-8233-26fa4f55fc4e__ece7fa20-a83d-11ec-ba40-b5b607f164e2__page_avatar.jpg" class="" alt="top donate"><img src="https://files.playerduo.com/production/static-files/no1_top_list.png"
-
+                                <div class="top-info-section"><img
+                                        src="https://playerduo.com/api/upload-service/images/8bc40fcc-b016-45c7-8233-26fa4f55fc4e__ece7fa20-a83d-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        class="" alt="top donate"><img
+                                        src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
 
                                     <p style="margin-top: 25px;"><span><a href="/page60f2f84a10abd358da162c70"
-
                                                 target="_blank" rel="noopener noreferrer"
-
                                                 style="font-weight: bold;">✨KEM•KHUM•TỆ 👌 </a></span></p>
 
                                     <p style="font-weight: bold;">32,568,000 đ</p>
@@ -1096,9 +1314,12 @@
 
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
-                                            <div class="avt avt-xs"><img src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg" class="avt-img" alt="PD"><img src="https://files.playerduo.com/production/images/new-rankvip/10.png"
-
-                                                    class="vip-avatar undefined" alt="PD" style="height: 17px; width: 17px;"></div>
+                                            <div class="avt avt-xs"><img
+                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    class="avt-img" alt="PD"><img
+                                                    src="https://files.playerduo.com/production/images/new-rankvip/10.png"
+                                                    class="vip-avatar undefined" alt="PD"
+                                                    style="height: 17px; width: 17px;"></div>
 
                                             <p class="name-player-review color-vip-1">Văn Mít </p>
 
@@ -1114,16 +1335,18 @@
 
                         </div>
 
-                        <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab3">
+                        <div class="tab-pane fade" id="pills-contact1" role="tabpanel"
+                            aria-labelledby="pills-contact-tab3">
 
                             <div class="mt-5">
 
-                                <div class="top-info-section"><img src="https://playerduo.com/api/upload-service/images/11c77d6b-ddbc-47b4-bd07-4a0531e4a236__8e58ac60-92b3-11ec-ba40-b5b607f164e2__page_avatar.jpg" class="" alt="top donate"><img src="https://files.playerduo.com/production/static-files/no1_top_list.png"
-
+                                <div class="top-info-section"><img
+                                        src="https://playerduo.com/api/upload-service/images/11c77d6b-ddbc-47b4-bd07-4a0531e4a236__8e58ac60-92b3-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        class="" alt="top donate"><img
+                                        src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
 
                                     <p style="margin-top: 25px;"><span><a href="/hiencute1" target="_blank"
-
                                                 rel="noopener noreferrer" style="font-weight: bold;">Neih1 </a></span>
 
                                     </p>
@@ -1140,9 +1363,12 @@
 
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
-                                            <div class="avt avt-xs"><img src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg" class="avt-img" alt="PD"><img src="https://files.playerduo.com/production/images/new-rankvip/10.png"
-
-                                                    class="vip-avatar undefined" alt="PD" style="height: 17px; width: 17px;"></div>
+                                            <div class="avt avt-xs"><img
+                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    class="avt-img" alt="PD"><img
+                                                    src="https://files.playerduo.com/production/images/new-rankvip/10.png"
+                                                    class="vip-avatar undefined" alt="PD"
+                                                    style="height: 17px; width: 17px;"></div>
 
                                             <p class="name-player-review color-vip-1">Văn Mít </p>
 
@@ -1176,25 +1402,25 @@
 
     </div>
 
+
+    <script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/popper.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
+
 </body>
-
-<script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
-
-<script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
-
-<script src="{{asset('asset/js/popper.min.js')}}"></script>
-
-<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
 
 
 
 <script>
-
     //fix menu when scroll
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
 
         if ($(window).scrollTop() > 200) {
 
@@ -1210,7 +1436,7 @@
 
     //menu mobile
 
-    $('.navbar-right .mobile-search').click(function() {
+    $('.navbar-right .mobile-search').click(function () {
 
         $('.menu__header .mobile-input-search').toggleClass("d-block");
 
@@ -1218,7 +1444,7 @@
 
     //filter 
 
-    $('.filter-player .form-control.ready').click(function() {
+    $('.filter-player .form-control.ready').click(function () {
 
         $(this).toggleClass("false");
 
@@ -1226,7 +1452,7 @@
 
     });
 
-    $('.filter-player .form-control.online').click(function() {
+    $('.filter-player .form-control.online').click(function () {
 
         $(this).toggleClass("false");
 
@@ -1236,13 +1462,13 @@
 
     // noSlider price
 
-    $(function() {
+    $(function () {
 
         var $propertiesForm = $('.mall-category-filter');
 
 
 
-        $propertiesForm.on('submit', function(e) {
+        $propertiesForm.on('submit', function (e) {
 
             e.preventDefault();
 
@@ -1254,7 +1480,7 @@
 
                 loading: $.oc.stripeLoadIndicator,
 
-                complete: function(response) {
+                complete: function (response) {
 
                     $.oc.stripeLoadIndicator.hide()
 
@@ -1280,7 +1506,7 @@
 
                 },
 
-                error: function() {
+                error: function () {
 
                     $.oc.stripeLoadIndicator.hide()
 
@@ -1302,7 +1528,7 @@
 
 
 
-        $('.mall-slider-handles').each(function() {
+        $('.mall-slider-handles').each(function () {
 
             var el = this;
 
@@ -1324,7 +1550,7 @@
 
 
 
-            }).on('change', function(values) {
+            }).on('change', function (values) {
 
                 $('[data-min="' + el.dataset.target + '"]').val(new Intl.NumberFormat().format(parseInt(values[0])))
 
@@ -1350,9 +1576,9 @@
 
     })
 
-    $("input[name='city[]']").change(function() {
+    $("input[name='city[]']").change(function () {
 
-        var list = $("input[name='city[]']:checked").map(function() {
+        var list = $("input[name='city[]']:checked").map(function () {
 
             return this.value;
 
@@ -1361,7 +1587,6 @@
         $('#dropdown-city').val(list)
 
     });
-
 </script>
 
 @yield('footer')
