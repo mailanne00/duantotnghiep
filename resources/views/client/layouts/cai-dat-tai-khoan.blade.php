@@ -14,23 +14,23 @@
 
     <link rel="icon" href="{{ asset('asset/images/logoPD.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('asset/css/normalize.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/normalize.min.css') }}">
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
-    <link rel="stylesheet" href="{{asset('asset/font-awesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/font-awesome/css/all.css') }}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/profile.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/profile.css') }}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
 
     @yield('header')
 
@@ -46,7 +46,7 @@
 
             <a href="{{ route('client.index') }}" class="logo">
 
-                <img src="{{ asset('asset/images/logoPD.png')}}" alt="logo playerduo">
+                <img src="{{ asset('asset/images/logoPD.png') }}" alt="logo playerduo">
 
                 <!-- <div class="text-logo d-lg-block d-none">
 
@@ -249,16 +249,17 @@
 
                 <li class="item-icon item-avatar">
 
-                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('asset/images/avatar5.png')}}" alt=""
-                            width="43px" height="43px"></a>
+                    <a href="" class="d-flex justify-content-center align-items-center"
+                        id="header-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false"><img
+                            src="{{ asset('asset/images/avatar5.png') }}" alt="" width="43px"
+                            height="43px"></a>
 
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
 
                         <li class="page-user">
 
-                            <a tabindex="-1" href="./profile.html"><img src="{{asset('asset/images/avatar5.png')}}" class="avt-img"
-                                    alt="PD">
+                            <a tabindex="-1" href="./profile.html"><img
+                                    src="{{ asset('asset/images/avatar5.png') }}" class="avt-img" alt="PD">
 
                                 <div class="text-logo">
 
@@ -276,40 +277,43 @@
 
                         <li class="menu-item hidden-lg hidden-md">
 
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" href="#"><i
-                                    class="fa fa-plus"></i> <span>Số dư</span> : <span class="money">0
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true"
+                                href="#"><i class="fa fa-plus"></i> <span>Số dư</span> : <span class="money">0
 
                                     đ</span></a>
 
                         </li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./withdraw.html"><i class="fas fa-minus"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.vi') }}"><i
+                                    class="fas fa-minus"></i>
                                 <span>Rút
 
                                     tiền</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./cards.html"><i class="fas fa-credit-card"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.daiLyCard') }}"><i
+                                    class="fas fa-credit-card"></i>
                                 <span>Mua
 
                                     thẻ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./security.html"><i
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.khoaBaoVe') }}"><i
                                     class="fas fa-user-lock"></i><span>Tạo khóa bảo vệ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./balance_fluctuation.html"><i
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.lichSuDuo') }}"><i
                                     class="fas fa-clock"></i><span>Lịch sử giao dịch</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./following.html"><i class="fas fa-users"></i>
-                                <span>Danh sách theo
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.danhSachThanhVien') }}"><i
+                                    class="fas fa-users"></i>
+                                <span>Danh sách theo dõi</span></a></li>
 
-                                    dõi</span></a></li>
-
-                        <li class="menu-item"><a tabindex="-1" href="./customer_info.html"><i class="fas fa-cogs"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.thongtincanhan') }}"><i
+                                    class="fas fa-cogs"></i>
                                 <span>Cài đặt tài
 
                                     khoản</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./login.html"><i class="fas fa-power-off"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('login.index') }}"><i
+                                    class="fas fa-power-off"></i>
                                 <span>Đăng
 
                                     xuất</span></a></li>
@@ -372,18 +376,19 @@
 
         <div class="setting__main row">
 
-            <div class="setting__main--menu col-lg-3 col-12">
+            <div class="setting__main--menu col-lg-3 col-12 ">
 
                 <div class="menu">
 
-                    <div class="menu__setting  panel-group accordion accordion-flush">
+                    <div class="menu__setting  panel-group accordion accordion-flush ">
 
-                        <div class="menu__setting--main panel panel-default accordion-item">
+                        <div class="menu__setting--main panel panel-default accordion-item ">
 
                             <div id="flush-heading1" class="panel-heading">
 
-                                <div class="panel-title"><a data-bs-toggle="collapse" data-bs-target="#flush-collapse1"
-                                        aria-expanded="false" aria-controls="flush-collapse1" role="button" href="#">TÀI
+                                <div class="panel-title"><a data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse1" aria-expanded="false"
+                                        aria-controls="flush-collapse1" role="button" href="#">TÀI
                                         KHOẢN <i class="fas fa-chevron-right"></i><i
                                             class="fas fa-chevron-down"></i></a>
                                 </div>
@@ -401,7 +406,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="active panel-title"><a href="{{ route('taikhoan.thongtincanhan') }}"><i
+                                                <div class="active panel-title"><a
+                                                        href="{{ route('taikhoan.thongtincanhan') }}"><i
                                                             class="fas fa-user-tie"></i> Thông tin cá nhân</a> </div>
 
                                             </div>
@@ -448,7 +454,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.email') }}">Email</a></div>
+                                                                        href="{{ route('taikhoan.email') }}">Email</a>
+                                                                </div>
 
                                                             </div>
 
@@ -459,7 +466,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.taiKhoanVaMatKhau') }}">Tài khoản và mật
+                                                                        href="{{ route('taikhoan.taiKhoanVaMatKhau') }}">Tài
+                                                                        khoản và mật
                                                                         khẩu</a></div>
 
                                                             </div>
@@ -470,7 +478,8 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="{{ route('taikhoan.khoaBaoVe') }}">Khoá
+                                                                <div class="panel-title"><a
+                                                                        href="{{ route('taikhoan.khoaBaoVe') }}">Khoá
                                                                         bảo
                                                                         vệ</a></div>
 
@@ -482,7 +491,8 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="{{ route('taikhoan.vip') }}">Vip</a>
+                                                                <div class="panel-title"><a
+                                                                        href="{{ route('taikhoan.vip') }}">Vip</a>
                                                                 </div>
 
                                                             </div>
@@ -493,7 +503,8 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="{{ route('taikhoan.hienThi') }}">Hiển
+                                                                <div class="panel-title"><a
+                                                                        href="{{ route('taikhoan.hienThi') }}">Hiển
                                                                         thị</a></div>
 
                                                             </div>
@@ -514,9 +525,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse13" aria-expanded="false"
-                                                        aria-controls="flush-collapse13" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-history"></i> Lịch sử giao dịch <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse13" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-history"></i>
+                                                        Lịch sử giao dịch <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -533,7 +544,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuDonate') }}">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuDonate') }}">Lịch
+                                                                        sử
                                                                         donate</a></div>
 
                                                             </div>
@@ -545,7 +557,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuDuo') }}">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuDuo') }}">Lịch
+                                                                        sử
                                                                         duo</a>
                                                                 </div>
 
@@ -571,7 +584,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.bienDongSoDu') }}">Biến động số
+                                                                        href="{{ route('taikhoan.bienDongSoDu') }}">Biến
+                                                                        động số
                                                                         dư</a></div>
 
                                                             </div>
@@ -583,7 +597,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuMuaThe') }}">Lịch sử
+                                                                        href="{{ route('taikhoan.lichSuMuaThe') }}">Lịch
+                                                                        sử
                                                                         mua
                                                                         thẻ</a></div>
 
@@ -603,7 +618,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="{{ route('taikhoan.daiLyCard') }}"><i
+                                                <div class="panel-title"><a
+                                                        href="{{ route('taikhoan.daiLyCard') }}"><i
                                                             class="fas fa-id-card"></i> Đại lý card</a> </div>
 
                                             </div>
@@ -614,7 +630,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="{{ route('taikhoan.thanhToan') }}"><i
+                                                <div class="panel-title"><a
+                                                        href="{{ route('taikhoan.thanhToan') }}"><i
                                                             class="fas fa-credit-card"></i> Thanh toán</a> </div>
 
                                             </div>
@@ -644,9 +661,10 @@
 
                             <div id="flush-heading2" class="panel-heading">
 
-                                <div class="panel-title"><a data-bs-toggle="collapse" data-bs-target="#flush-collapse2"
-                                        aria-expanded="false" aria-controls="flush-collapse2" class="collapsed"
-                                        role="button" href="#">TRANG CÁ NHÂN <i class="fas fa-chevron-right"></i><i
+                                <div class="panel-title"><a data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse2" aria-expanded="false"
+                                        aria-controls="flush-collapse2" class="collapsed" role="button"
+                                        href="#">TRANG CÁ NHÂN <i class="fas fa-chevron-right"></i><i
                                             class="fas fa-chevron-down"></i></a></div>
 
                             </div>
@@ -664,9 +682,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse21" aria-expanded="false"
-                                                        aria-controls="flush-collapse21" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-tags"></i> Hashtags <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse21" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-tags"></i>
+                                                        Hashtags <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -683,7 +701,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.hashtags') }}">Dành cho sáng tạo
+                                                                        href="{{ route('taikhoan.hashtags') }}">Dành
+                                                                        cho sáng tạo
                                                                         nội
                                                                         dung</a></div>
 
@@ -705,9 +724,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse22" aria-expanded="false"
-                                                        aria-controls="flush-collapse22" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-cog"></i> Cài đặt <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse22" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-cog"></i> Cài
+                                                        đặt <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -724,7 +743,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.url') }}">Url</a></div>
+                                                                        href="{{ route('taikhoan.url') }}">Url</a>
+                                                                </div>
 
                                                             </div>
 
@@ -735,7 +755,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.mangXaHoi') }}">Mạng xã hội</a>
+                                                                        href="{{ route('taikhoan.mangXaHoi') }}">Mạng
+                                                                        xã hội</a>
                                                                 </div>
 
                                                             </div>
@@ -768,9 +789,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse23" aria-expanded="false"
-                                                        aria-controls="flush-collapse23" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-users"></i> Thành viên <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse23" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-users"></i>
+                                                        Thành viên <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -787,7 +808,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.bac') }}">Bậc</a></div>
+                                                                        href="{{ route('taikhoan.bac') }}">Bậc</a>
+                                                                </div>
 
                                                             </div>
 
@@ -810,7 +832,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuDangKyThanhVien') }}">Lịch sử đã đăng
+                                                                        href="{{ route('taikhoan.lichSuDangKyThanhVien') }}">Lịch
+                                                                        sử đã đăng
                                                                         ký</a></div>
 
                                                             </div>
@@ -831,8 +854,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse24" aria-expanded="false"
-                                                        aria-controls="flush-collapse24" class="collapsed" role="button"
-                                                        href="#"><i class="far fa-dot-circle"></i> Mục tiêu <i
+                                                        aria-controls="flush-collapse24" class="collapsed"
+                                                        role="button" href="#"><i
+                                                            class="far fa-dot-circle"></i> Mục tiêu <i
                                                             class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
@@ -862,7 +886,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuMucTieu') }}">Lịch sử</a></div>
+                                                                        href="{{ route('taikhoan.lichSuMucTieu') }}">Lịch
+                                                                        sử</a></div>
 
                                                             </div>
 
@@ -880,7 +905,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="{{ route('taikhoan.danhSachChanComment') }}"><i
+                                                <div class="panel-title"><a
+                                                        href="{{ route('taikhoan.danhSachChanComment') }}"><i
                                                             class="fas fa-ban"></i> Danh sách chặn comment </a></div>
 
                                             </div>
@@ -899,9 +925,10 @@
 
                             <div id="flush-heading3" class="panel-heading">
 
-                                <div class="panel-title"><a data-bs-toggle="collapse" data-bs-target="#flush-collapse3"
-                                        aria-expanded="false" aria-controls="flush-collapse3" class="collapsed"
-                                        role="button" href="#">VÍ ĐIỆN TỬ <i class="fas fa-chevron-right "></i><i
+                                <div class="panel-title"><a data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse3" aria-expanded="false"
+                                        aria-controls="flush-collapse3" class="collapsed" role="button"
+                                        href="#">VÍ ĐIỆN TỬ <i class="fas fa-chevron-right "></i><i
                                             class="fas fa-chevron-down "></i></a></div>
 
                             </div>
@@ -921,9 +948,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse31" aria-expanded="false"
-                                                        aria-controls="flush-collapse31" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-cog"></i> Cài đặt <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse31" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-cog"></i> Cài
+                                                        đặt <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -939,7 +966,8 @@
 
                                                             <div class="panel-heading">
 
-                                                                <div class="panel-title"><a href="{{ route('taikhoan.thongTinVi') }}">Thông
+                                                                <div class="panel-title"><a
+                                                                        href="{{ route('taikhoan.thongTinVi') }}">Thông
                                                                         tin</a></div>
 
                                                             </div>
@@ -970,7 +998,8 @@
 
                                             <div class="panel-heading ">
 
-                                                <div class=" panel-title "><a href="{{ route('taikhoan.linkPay') }}"><i
+                                                <div class=" panel-title "><a
+                                                        href="{{ route('taikhoan.linkPay') }}"><i
                                                             class="fas fa-link"></i> Link Pay </a></div>
 
                                             </div>
@@ -989,9 +1018,10 @@
 
                             <div id="flush-heading4" class="panel-heading">
 
-                                <div class="panel-title"><a data-bs-toggle="collapse" data-bs-target="#flush-collapse4"
-                                        aria-expanded="false " aria-controls="flush-collapse4" class="collapsed "
-                                        role="button " href="# ">PLAYER <i class="fas fa-chevron-right "></i><i
+                                <div class="panel-title"><a data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse4" aria-expanded="false "
+                                        aria-controls="flush-collapse4" class="collapsed " role="button "
+                                        href="# ">PLAYER <i class="fas fa-chevron-right "></i><i
                                             class="fas fa-chevron-down "></i></a></div>
 
                             </div>
@@ -1007,7 +1037,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="{{ route('taikhoan.trangChuPlayer') }}"><i
+                                                <div class=" panel-title"><a
+                                                        href="{{ route('taikhoan.trangChuPlayer') }}"><i
                                                             class="fas fa-user-tie"></i> Tổng quan </a></div>
 
                                             </div>
@@ -1018,7 +1049,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="{{ route('taikhoan.khachHangThanThiet') }}"><i
+                                                <div class=" panel-title"><a
+                                                        href="{{ route('taikhoan.khachHangThanThiet') }}"><i
                                                             class="fas fa-user-friends"></i> Khách hàng thân thiết </a>
                                                 </div>
 
@@ -1032,9 +1064,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse41" aria-expanded="false"
-                                                        aria-controls="flush-collapse41" class="collapsed" role="button"
-                                                        href="#"><i class="fas fa-cog"></i> Cài đặt <i
-                                                            class="fas fa-chevron-right"></i><i
+                                                        aria-controls="flush-collapse41" class="collapsed"
+                                                        role="button" href="#"><i class="fas fa-cog"></i> Cài
+                                                        đặt <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
                                             </div>
@@ -1051,7 +1083,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.caiDatPlayerUrl') }}">Url</a></div>
+                                                                        href="{{ route('taikhoan.caiDatPlayerUrl') }}">Url</a>
+                                                                </div>
 
                                                             </div>
 
@@ -1062,7 +1095,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.thongTinPlayer') }}">Thông tin
+                                                                        href="{{ route('taikhoan.thongTinPlayer') }}">Thông
+                                                                        tin
                                                                         Player</a></div>
 
                                                             </div>
@@ -1086,7 +1120,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.caiDatDuo') }}">Cài đặt Duo</a>
+                                                                        href="{{ route('taikhoan.caiDatDuo') }}">Cài
+                                                                        đặt Duo</a>
                                                                 </div>
 
                                                             </div>
@@ -1119,8 +1154,9 @@
 
                                                 <div class="title-sub  panel-title"><a data-bs-toggle="collapse"
                                                         data-bs-target="#flush-collapse42" aria-expanded="false"
-                                                        aria-controls="flush-collapse42" class="collapsed" role="button"
-                                                        href="#"><i class="far fa-calendar-alt "></i> Lịch sử nhận Duo,
+                                                        aria-controls="flush-collapse42" class="collapsed"
+                                                        role="button" href="#"><i
+                                                            class="far fa-calendar-alt "></i> Lịch sử nhận Duo,
                                                         Donate <i class="fas fa-chevron-right"></i><i
                                                             class="fas fa-chevron-down"></i></a></div>
 
@@ -1138,7 +1174,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuDuoPlayer') }}">Lịch sử nhận
+                                                                        href="{{ route('taikhoan.lichSuDuoPlayer') }}">Lịch
+                                                                        sử nhận
                                                                         duo</a></div>
 
                                                             </div>
@@ -1150,7 +1187,8 @@
                                                             <div class="panel-heading">
 
                                                                 <div class="panel-title"><a
-                                                                        href="{{ route('taikhoan.lichSuDonatePlayer') }}">Lịch sử nhận
+                                                                        href="{{ route('taikhoan.lichSuDonatePlayer') }}">Lịch
+                                                                        sử nhận
                                                                         donate</a></div>
 
                                                             </div>
@@ -1171,7 +1209,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="{{ route('taikhoan.danhSachChanUser') }}"><i
+                                                <div class=" panel-title"><a
+                                                        href="{{ route('taikhoan.danhSachChanUser') }}"><i
                                                             class="fas fa-ban"></i> Danh sách chặn User </a></div>
 
                                             </div>
@@ -1182,7 +1221,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class=" panel-title"><a href="{{ route('taikhoan.huongDanPlayer') }}"><i
+                                                <div class=" panel-title"><a
+                                                        href="{{ route('taikhoan.huongDanPlayer') }}"><i
                                                             class="fas fa-book"></i> Hướng Dẫn Player </a></div>
 
                                             </div>
@@ -1212,9 +1252,10 @@
 
                             <div id="flush-heading5" class="panel-heading">
 
-                                <div class="panel-title"><a data-bs-toggle="collapse" data-bs-target="#flush-collapse5"
-                                        aria-expanded="false" aria-controls="flush-collapse5" class="collapsed"
-                                        role="button" href="#">DONATE <i class="fas fa-chevron-right"></i><i
+                                <div class="panel-title"><a data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapse5" aria-expanded="false"
+                                        aria-controls="flush-collapse5" class="collapsed" role="button"
+                                        href="#">DONATE <i class="fas fa-chevron-right"></i><i
                                             class="fas fa-chevron-down"></i></a></div>
 
                             </div>
@@ -1230,7 +1271,8 @@
 
                                             <div class="panel-heading">
 
-                                                <div class="panel-title"><a href="{{ route('taikhoan.donateCaiDat') }}"><i
+                                                <div class="panel-title"><a
+                                                        href="{{ route('taikhoan.donateCaiDat') }}"><i
                                                             class="fas fa-cog"></i> Cài đặt </a></div>
 
                                             </div>
@@ -1252,8 +1294,9 @@
                 </div>
 
             </div>
-            @yield("content")
-
+            <div class="col-lg-9 col-12">
+                @yield('content')
+            </div>
         </div>
 
     </div>
@@ -1288,8 +1331,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/bank.png"
@@ -1420,8 +1464,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true"
+                                        aria-controls="collapse3">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/player-card.png"
@@ -1466,7 +1511,8 @@
                                             </ul>
 
                                             <p><a href="https://playerduo.com/partner" rel="noopener noreferrer"
-                                                    target="_blank"><i class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem
+                                                    target="_blank"><i
+                                                        class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem
                                                         nơi bán Player Code gần bạn</span></a>.</p>
 
                                             <hr>
@@ -1480,8 +1526,9 @@
                                                         <div class="form-group">
 
                                                             <div class="fieldGroup "><input type="text"
-                                                                    name="seriesNumber" placeholder="" maxlength="255"
-                                                                    autocomplete="false" value=""></div>
+                                                                    name="seriesNumber" placeholder=""
+                                                                    maxlength="255" autocomplete="false"
+                                                                    value=""></div>
 
                                                         </div>
 
@@ -1512,12 +1559,12 @@
                                                             <div><iframe title="reCAPTCHA"
                                                                     src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=2eu9kzqz6qmp"
                                                                     width="304" height="78" role="presentation"
-                                                                    name="a-1iutqbfswf0a" frameborder="0" scrolling="no"
+                                                                    name="a-1iutqbfswf0a" frameborder="0"
+                                                                    scrolling="no"
                                                                     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
                                                             </div>
 
-                                                            <textarea id="g-recaptcha-response-4"
-                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                            <textarea id="g-recaptcha-response-4" name="g-recaptcha-response" class="g-recaptcha-response"
                                                                 style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
                                                         </div>
@@ -1548,8 +1595,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true"
+                                        aria-controls="collapse4">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/mobile-card.png"
@@ -1662,8 +1710,9 @@
 
                                                                 <p class="control-label"><span>Số series:</span>
                                                                 </p>
-                                                                <input type="text" name="mobileSeri" placeholder=""
-                                                                    maxlength="5000" autocomplete="false" value="">
+                                                                <input type="text" name="mobileSeri"
+                                                                    placeholder="" maxlength="5000"
+                                                                    autocomplete="false" value="">
                                                             </div>
 
                                                         </div>
@@ -1678,8 +1727,8 @@
 
                                                                 <p class="control-label"><span>Mã thẻ:</span>
                                                                 </p><input type="text" name="mobileCardNumber"
-                                                                    placeholder="" maxlength="5000" autocomplete="false"
-                                                                    value="">
+                                                                    placeholder="" maxlength="5000"
+                                                                    autocomplete="false" value="">
                                                             </div>
 
                                                         </div>
@@ -1700,12 +1749,12 @@
                                                             <div><iframe title="reCAPTCHA"
                                                                     src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=mnqbztqamlyw"
                                                                     width="304" height="78" role="presentation"
-                                                                    name="a-ajhz6twbnr8t" frameborder="0" scrolling="no"
+                                                                    name="a-ajhz6twbnr8t" frameborder="0"
+                                                                    scrolling="no"
                                                                     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
                                                             </div>
 
-                                                            <textarea id="g-recaptcha-response-5"
-                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                            <textarea id="g-recaptcha-response-5" name="g-recaptcha-response" class="g-recaptcha-response"
                                                                 style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
                                                         </div><iframe style="display: none;"></iframe>
@@ -1737,8 +1786,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true"
+                                        aria-controls="collapse5">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/atm-card.png"
@@ -1772,8 +1822,8 @@
                                             <div class="bank-list  row">
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/1.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/1.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/116.png"
@@ -1820,28 +1870,28 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/87.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/87.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/84.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/84.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/83.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/83.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/108.png"
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/95.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/95.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/81.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/81.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/121.png"
@@ -1860,16 +1910,16 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/82.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/82.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/113.png"
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/99.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/99.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/114.png"
@@ -1896,8 +1946,8 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/94.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/94.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/106.png"
@@ -1948,9 +1998,10 @@
 
                                                     <form>
 
-                                                        <div class="fieldGroup "><input type="text" name="amount"
-                                                                placeholder="Số tiền muốn nạp (VND)" maxlength="5000"
-                                                                autocomplete="false" value="">
+                                                        <div class="fieldGroup "><input type="text"
+                                                                name="amount" placeholder="Số tiền muốn nạp (VND)"
+                                                                maxlength="5000" autocomplete="false"
+                                                                value="">
                                                         </div>
 
                                                         <p class="text-center"><button type="submit"
@@ -1980,8 +2031,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                        aria-expanded="true" aria-controls="collapseTwo">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/qr_code.png"
@@ -2045,8 +2097,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true"
+                                        aria-controls="collapse2">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/paypal.png"
@@ -2106,8 +2159,8 @@
 
     <!-- Bảng xếp hạng -->
 
-    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="rankLabel" aria-hidden="true">
+    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="rankLabel" aria-hidden="true">
 
         <div class="modal-dialog">
 
@@ -2119,7 +2172,8 @@
 
                     </h5>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
 
                 </div>
 
@@ -2321,21 +2375,20 @@
 
 </body>
 
-<script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{ asset('asset/js/jquery-3.6.0.min.js') }}"></script>
 
-<script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
 
-<script src="{{asset('asset/js/popper.min.js')}}"></script>
+<script src="{{ asset('asset/js/popper.min.js') }}"></script>
 
-<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
 <script>
-
     var header = $('header.menu__header');
 
-    $(window).scroll(function () {
+    $(window).scroll(function() {
 
         if ($(window).scrollTop() > 200) {
 
@@ -2351,13 +2404,13 @@
 
     });
 
-    $('.navbar-right .mobile-search').click(function () {
+    $('.navbar-right .mobile-search').click(function() {
 
         $('.menu__header .mobile-input-search').toggleClass("d-block");
 
     });
 
-    $('.setting__main--menu .btn-drawer-setting').click(function () {
+    $('.setting__main--menu .btn-drawer-setting').click(function() {
 
         $('.setting__main--menu .menu__setting').toggleClass("drawer");
 
@@ -2366,7 +2419,6 @@
         $('.setting__main--menu .btn-drawer-setting i').toggleClass("fa-chevron-left");
 
     });
-
 </script>
 @yield('footer')
 

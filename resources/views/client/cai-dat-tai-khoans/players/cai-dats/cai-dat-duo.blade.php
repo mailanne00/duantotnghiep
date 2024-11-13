@@ -3,35 +3,35 @@
 @section('title', 'Cài đặt Duo')
 
 @section('content')
-<div class="col-lg-9 col-12">
+    <div class="col-lg-9 col-12">
 
-    <div class="aside">
+        <div class="aside">
 
-        <h3>Cài đặt Duo</h3>
+            <h3>Cài đặt Duo</h3>
 
-        <div class="settingduo">
+            <div class="settingduo">
 
-            <label class="mb-3"><span>Bạn muốn nhận yêu cầu thuê Duo</span>
+                <label class="mb-3"><span>Bạn muốn nhận yêu cầu thuê Duo</span>
 
-                <input id="chck5" type="checkbox" class="opacity-0">
+                    <input id="chck5" type="checkbox" class="opacity-0">
 
-                <label for="chck5" style="width: 56px;" class="check-trail">
+                    <label for="chck5" style="width: 56px;" class="check-trail">
 
-                    <span class="check-handler"></span>
+                        <span class="check-handler"></span>
+
+                    </label>
 
                 </label>
 
-            </label>
+                <form class="form--settingduo row">
 
-            <form class="form--settingduo row">
+                    <div class="col-md-6"><button type="button" class="btn-update ">Cập nhật</button></div>
 
-                <div class="col-md-6"><button type="button" class="btn-update ">Cập nhật</button></div>
+                </form>
 
-            </form>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 @endsection
