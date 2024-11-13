@@ -16,21 +16,23 @@
 
     <link rel="icon" href="{{ asset('asset/images/logoPD.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="{{asset('asset/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('asset/css/normalize.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/normalize.min.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.css" />
 
-    <link rel="stylesheet" href="{{asset('asset/font-awesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/font-awesome/css/all.css') }}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/login.css') }}">
 
-    <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
 
     @yield('header')
 
@@ -44,9 +46,9 @@
 
         <div class="navbar-header">
 
-            <a href="./index.html" class="logo">
+            <a href="{{ route('client.index') }}" class="logo">
 
-                <img src="{{asset('asset/images/logoPD.png')}}" alt="logo playerduo">
+                <img src="{{ asset('asset/images/logoPD.png') }}" alt="logo playerduo">
 
                 <div class="text-logo d-lg-block d-none">
 
@@ -249,16 +251,17 @@
 
                 <li class="item-icon item-avatar">
 
-                    <a href="" class="d-flex justify-content-center align-items-center" id="header-nav-dropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('asset/images/avatar5.png')}}"
-                            alt="" width="43px" height="43px"></a>
+                    <a href="" class="d-flex justify-content-center align-items-center"
+                        id="header-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false"><img
+                            src="{{ asset('asset/images/avatar5.png') }}" alt="" width="43px"
+                            height="43px"></a>
 
                     <ul role="menu" class="dropdown-menu" aria-labelledby="header-nav-dropdown">
 
                         <li class="page-user">
 
-                            <a tabindex="-1" href="./profile.html"><img src="{{asset('asset/images/avatar5.png')}}"
-                                    class="avt-img" alt="PD">
+                            <a tabindex="-1" href="./profile.html"><img
+                                    src="{{ asset('asset/images/avatar5.png') }}" class="avt-img" alt="PD">
 
                                 <div class="text-logo">
 
@@ -276,40 +279,43 @@
 
                         <li class="menu-item hidden-lg hidden-md">
 
-                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true" href="#"><i
-                                    class="fa fa-plus"></i> <span>Số dư</span> : <span class="money">0
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" aria-hidden="true"
+                                href="#"><i class="fa fa-plus"></i> <span>Số dư</span> : <span class="money">0
 
                                     đ</span></a>
 
                         </li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./withdraw.html"><i class="fas fa-minus"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.vi') }}"><i
+                                    class="fas fa-minus"></i>
                                 <span>Rút
 
                                     tiền</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./cards.html"><i class="fas fa-credit-card"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.daiLyCard') }}"><i
+                                    class="fas fa-credit-card"></i>
                                 <span>Mua
 
                                     thẻ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./security.html"><i
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.khoaBaoVe') }}"><i
                                     class="fas fa-user-lock"></i><span>Tạo khóa bảo vệ</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./balance_fluctuation.html"><i
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.lichSuDuo') }}"><i
                                     class="fas fa-clock"></i><span>Lịch sử giao dịch</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./following.html"><i class="fas fa-users"></i>
-                                <span>Danh sách theo
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.danhSachThanhVien') }}"><i
+                                    class="fas fa-users"></i>
+                                <span>Danh sách theo dõi</span></a></li>
 
-                                    dõi</span></a></li>
-
-                        <li class="menu-item"><a tabindex="-1" href="./customer_info.html"><i class="fas fa-cogs"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('taikhoan.thongtincanhan') }}"><i
+                                    class="fas fa-cogs"></i>
                                 <span>Cài đặt tài
 
                                     khoản</span></a></li>
 
-                        <li class="menu-item"><a tabindex="-1" href="./login.html"><i class="fas fa-power-off"></i>
+                        <li class="menu-item"><a tabindex="-1" href="{{ route('login.index') }}"><i
+                                    class="fas fa-power-off"></i>
                                 <span>Đăng
 
                                     xuất</span></a></li>
@@ -390,7 +396,8 @@
 
                 <div class="modal-header">
 
-                    <h5 class="modal-title text-center text-uppercase" id="staticBackdropLabel">NẠP TIỀN VÀO PLAYER DUO
+                    <h5 class="modal-title text-center text-uppercase" id="staticBackdropLabel">NẠP TIỀN VÀO PLAYER
+                        DUO
 
                     </h5>
 
@@ -408,8 +415,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/bank.png"
@@ -537,8 +545,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true"
+                                        aria-controls="collapse3">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/player-card.png"
@@ -583,7 +592,8 @@
                                             </ul>
 
                                             <p><a href="https://playerduo.com/partner" rel="noopener noreferrer"
-                                                    target="_blank"><i class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem
+                                                    target="_blank"><i
+                                                        class="fas fa-map-marker-alt"></i>&nbsp;<span>Xem
                                                         nơi bán Player Code gần bạn</span></a>.</p>
 
                                             <hr>
@@ -597,8 +607,9 @@
                                                         <div class="form-group">
 
                                                             <div class="fieldGroup "><input type="text"
-                                                                    name="seriesNumber" placeholder="" maxlength="255"
-                                                                    autocomplete="false" value=""></div>
+                                                                    name="seriesNumber" placeholder=""
+                                                                    maxlength="255" autocomplete="false"
+                                                                    value=""></div>
 
                                                         </div>
 
@@ -629,12 +640,12 @@
                                                             <div><iframe title="reCAPTCHA"
                                                                     src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=2eu9kzqz6qmp"
                                                                     width="304" height="78" role="presentation"
-                                                                    name="a-1iutqbfswf0a" frameborder="0" scrolling="no"
+                                                                    name="a-1iutqbfswf0a" frameborder="0"
+                                                                    scrolling="no"
                                                                     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
                                                             </div>
 
-                                                            <textarea id="g-recaptcha-response-4"
-                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                            <textarea id="g-recaptcha-response-4" name="g-recaptcha-response" class="g-recaptcha-response"
                                                                 style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
                                                         </div>
@@ -664,8 +675,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true"
+                                        aria-controls="collapse4">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/mobile-card.png"
@@ -742,7 +754,17 @@
 
                                                             <div class="fieldGroup">
 
-                                                                <p class="control-label"><span>Mệnh giá thẻ:</span></p><select class="form-control" name="moneyNumber"><option value="">Vui lòng chọn</option><option value="10000">10,000đ (-35%)</option><option value="20000">20,000đ (-35%)</option><option value="50000">50,000đ (-35%)</option><option value="100000">100,000đ (-35%)</option><option value="200000">200,000đ (-35%)</option><option value="500000">500,000đ (-35%)</option></select></div>
+                                                                <p class="control-label"><span>Mệnh giá thẻ:</span></p>
+                                                                <select class="form-control" name="moneyNumber">
+                                                                    <option value="">Vui lòng chọn</option>
+                                                                    <option value="10000">10,000đ (-35%)</option>
+                                                                    <option value="20000">20,000đ (-35%)</option>
+                                                                    <option value="50000">50,000đ (-35%)</option>
+                                                                    <option value="100000">100,000đ (-35%)</option>
+                                                                    <option value="200000">200,000đ (-35%)</option>
+                                                                    <option value="500000">500,000đ (-35%)</option>
+                                                                </select>
+                                                            </div>
 
                                                         </div>
 
@@ -758,7 +780,11 @@
 
                                                             <div class="fieldGroup ">
 
-                                                                <p class="control-label"><span>Số series:</span></p><input type="text" name="mobileSeri" placeholder="" maxlength="5000" autocomplete="false" value=""></div>
+                                                                <p class="control-label"><span>Số series:</span></p>
+                                                                <input type="text" name="mobileSeri"
+                                                                    placeholder="" maxlength="5000"
+                                                                    autocomplete="false" value="">
+                                                            </div>
 
                                                         </div>
 
@@ -770,7 +796,11 @@
 
                                                             <div class="fieldGroup ">
 
-                                                                <p class="control-label"><span>Mã thẻ:</span></p><input type="text" name="mobileCardNumber" placeholder="" maxlength="5000" autocomplete="false" value=""></div>
+                                                                <p class="control-label"><span>Mã thẻ:</span></p><input
+                                                                    type="text" name="mobileCardNumber"
+                                                                    placeholder="" maxlength="5000"
+                                                                    autocomplete="false" value="">
+                                                            </div>
 
                                                         </div>
 
@@ -790,12 +820,12 @@
                                                             <div><iframe title="reCAPTCHA"
                                                                     src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LfJeF8UAAAAAN5D0Ylx8PQAeYjmEHR4G2hY9pdb&amp;co=aHR0cHM6Ly9wbGF5ZXJkdW8uY29tOjQ0Mw..&amp;hl=vi&amp;type=image&amp;v=2uoiJ4hP3NUoP9v_eBNfU6CR&amp;theme=light&amp;size=normal&amp;badge=bottomright&amp;cb=mnqbztqamlyw"
                                                                     width="304" height="78" role="presentation"
-                                                                    name="a-ajhz6twbnr8t" frameborder="0" scrolling="no"
+                                                                    name="a-ajhz6twbnr8t" frameborder="0"
+                                                                    scrolling="no"
                                                                     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
                                                             </div>
 
-                                                            <textarea id="g-recaptcha-response-5"
-                                                                name="g-recaptcha-response" class="g-recaptcha-response"
+                                                            <textarea id="g-recaptcha-response-5" name="g-recaptcha-response" class="g-recaptcha-response"
                                                                 style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
 
                                                         </div><iframe style="display: none;"></iframe>
@@ -826,8 +856,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true"
+                                        aria-controls="collapse5">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/atm-card.png"
@@ -861,8 +892,8 @@
                                             <div class="bank-list  row">
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/1.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/1.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/116.png"
@@ -909,28 +940,28 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/87.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/87.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/84.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/84.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/83.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/83.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/108.png"
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/95.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/95.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/81.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/81.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/121.png"
@@ -949,16 +980,16 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/82.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/82.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/113.png"
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/99.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/99.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/114.png"
@@ -985,8 +1016,8 @@
                                                         alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
-                                                        src="https://cdn.baokim.vn/public/uploads/banks/94.png" alt="PD"
-                                                        class="img-thumbnail"></div>
+                                                        src="https://cdn.baokim.vn/public/uploads/banks/94.png"
+                                                        alt="PD" class="img-thumbnail"></div>
 
                                                 <div class="bank col-md-2 col-xs-3"><img
                                                         src="https://cdn.baokim.vn/public/uploads/banks/106.png"
@@ -1066,8 +1097,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                                        aria-controls="collapseTwo">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/qr_code.png"
@@ -1129,8 +1161,9 @@
 
                                 <div class="panel-title">
 
-                                    <a href="#" class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                    <a href="#" class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true"
+                                        aria-controls="collapse2">
 
                                         <div class="option d-flex"><img
                                                 src="https://files.playerduo.com/production/static-files/icon/paypal.png"
@@ -1190,8 +1223,8 @@
 
     <!-- Bảng xếp hạng -->
 
-    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="rankLabel" aria-hidden="true">
+    <div class="modal fade rank-modal" id="rank" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="rankLabel" aria-hidden="true">
 
         <div class="modal-dialog">
 
@@ -1245,7 +1278,7 @@
                             <div class="mt-5">
 
                                 <div class="top-info-section"><img
-                                        src="https://playerduo.com/api/upload-service/images/13d6afc5-2cfb-4247-b041-952a7b929582__131d2c70-5fae-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                         class="" alt="top donate"><img
                                         src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
@@ -1267,7 +1300,7 @@
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
                                             <div class="avt avt-xs"><img
-                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                                     class="avt-img" alt="PD"><img
                                                     src="https://files.playerduo.com/production/images/new-rankvip/10.png"
                                                     class="vip-avatar undefined" alt="PD"
@@ -1293,7 +1326,7 @@
                             <div class="mt-5">
 
                                 <div class="top-info-section"><img
-                                        src="https://playerduo.com/api/upload-service/images/8bc40fcc-b016-45c7-8233-26fa4f55fc4e__ece7fa20-a83d-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                         class="" alt="top donate"><img
                                         src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
@@ -1315,7 +1348,7 @@
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
                                             <div class="avt avt-xs"><img
-                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                                     class="avt-img" alt="PD"><img
                                                     src="https://files.playerduo.com/production/images/new-rankvip/10.png"
                                                     class="vip-avatar undefined" alt="PD"
@@ -1341,7 +1374,7 @@
                             <div class="mt-5">
 
                                 <div class="top-info-section"><img
-                                        src="https://playerduo.com/api/upload-service/images/11c77d6b-ddbc-47b4-bd07-4a0531e4a236__8e58ac60-92b3-11ec-ba40-b5b607f164e2__page_avatar.jpg"
+                                        src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                         class="" alt="top donate"><img
                                         src="https://files.playerduo.com/production/static-files/no1_top_list.png"
                                         class="background-top1" alt="s">
@@ -1364,7 +1397,7 @@
                                             <p class="rank-list__index" style="width: 25px;">#10</p>
 
                                             <div class="avt avt-xs"><img
-                                                    src="https://playerduo.com/api/upload-service/images/284e5176-8514-4d30-ab17-9ebb5c3acfc4__a6793ab0-31e4-11ec-851f-6161af46f080__page_avatar.jpg"
+                                                    src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
                                                     class="avt-img" alt="PD"><img
                                                     src="https://files.playerduo.com/production/images/new-rankvip/10.png"
                                                     class="vip-avatar undefined" alt="PD"
@@ -1403,13 +1436,13 @@
     </div>
 
 
-    <script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ asset('asset/js/jquery-3.6.0.min.js') }}"></script>
 
-    <script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('asset/js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{asset('asset/js/popper.min.js')}}"></script>
+    <script src="{{ asset('asset/js/popper.min.js') }}"></script>
 
-    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
 
@@ -1420,7 +1453,7 @@
 <script>
     //fix menu when scroll
 
-    $(window).scroll(function () {
+    $(window).scroll(function() {
 
         if ($(window).scrollTop() > 200) {
 
@@ -1436,15 +1469,15 @@
 
     //menu mobile
 
-    $('.navbar-right .mobile-search').click(function () {
+    $('.navbar-right .mobile-search').click(function() {
 
         $('.menu__header .mobile-input-search').toggleClass("d-block");
 
     });
 
-    //filter 
+    //filter
 
-    $('.filter-player .form-control.ready').click(function () {
+    $('.filter-player .form-control.ready').click(function() {
 
         $(this).toggleClass("false");
 
@@ -1452,7 +1485,7 @@
 
     });
 
-    $('.filter-player .form-control.online').click(function () {
+    $('.filter-player .form-control.online').click(function() {
 
         $(this).toggleClass("false");
 
@@ -1462,13 +1495,13 @@
 
     // noSlider price
 
-    $(function () {
+    $(function() {
 
         var $propertiesForm = $('.mall-category-filter');
 
 
 
-        $propertiesForm.on('submit', function (e) {
+        $propertiesForm.on('submit', function(e) {
 
             e.preventDefault();
 
@@ -1480,13 +1513,14 @@
 
                 loading: $.oc.stripeLoadIndicator,
 
-                complete: function (response) {
+                complete: function(response) {
 
                     $.oc.stripeLoadIndicator.hide()
 
                     if (response.responseJSON.hasOwnProperty('queryString')) {
 
-                        history.replaceState(null, '', '?' + response.responseJSON.queryString)
+                        history.replaceState(null, '', '?' + response.responseJSON
+                            .queryString)
 
                     }
 
@@ -1506,7 +1540,7 @@
 
                 },
 
-                error: function () {
+                error: function() {
 
                     $.oc.stripeLoadIndicator.hide()
 
@@ -1528,7 +1562,7 @@
 
 
 
-        $('.mall-slider-handles').each(function () {
+        $('.mall-slider-handles').each(function() {
 
             var el = this;
 
@@ -1550,17 +1584,22 @@
 
 
 
-            }).on('change', function (values) {
+            }).on('change', function(values) {
 
-                $('[data-min="' + el.dataset.target + '"]').val(new Intl.NumberFormat().format(parseInt(values[0])))
+                $('[data-min="' + el.dataset.target + '"]').val(new Intl.NumberFormat().format(
+                    parseInt(values[0])))
 
-                $('[data-max="' + el.dataset.target + '"]').val(new Intl.NumberFormat().format(parseInt(values[1])))
+                $('[data-max="' + el.dataset.target + '"]').val(new Intl.NumberFormat().format(
+                    parseInt(values[1])))
 
-                $('#dropdown-price').html(`${new Intl.NumberFormat().format(parseInt(values[0]))} - ${new Intl.NumberFormat().format(parseInt(values[1]))}`)
+                $('#dropdown-price').html(
+                    `${new Intl.NumberFormat().format(parseInt(values[0]))} - ${new Intl.NumberFormat().format(parseInt(values[1]))}`
+                )
 
                 $('#dropdown-price').addClass('check');
 
-                if (parseInt(values[0]) == parseInt(el.dataset.min) && parseInt(values[1]) == parseInt(el.dataset.max)) {
+                if (parseInt(values[0]) == parseInt(el.dataset.min) && parseInt(values[1]) ==
+                    parseInt(el.dataset.max)) {
 
                     $('#dropdown-price').removeClass('check');
 
@@ -1576,9 +1615,9 @@
 
     })
 
-    $("input[name='city[]']").change(function () {
+    $("input[name='city[]']").change(function() {
 
-        var list = $("input[name='city[]']:checked").map(function () {
+        var list = $("input[name='city[]']:checked").map(function() {
 
             return this.value;
 
@@ -1588,6 +1627,51 @@
 
     });
 </script>
+
+<script>
+    var header = $('header.menu__header');
+
+    $(window).scroll(function() {
+
+        if ($(window).scrollTop() > 200) {
+
+            header.addClass('fix-menu')
+
+        } else {
+
+            header.removeClass('fix-menu')
+
+        }
+
+    });
+
+    $('.navbar-right .mobile-search').click(function() {
+
+        $('.menu__header .mobile-input-search').toggleClass("d-block ");
+
+    });
+
+    $('.js-login').click(function() {
+
+        $('.form-content .content-main:first-child').toggleClass("d-none");
+
+        $('.form-content .content-main:last-child').toggleClass("d-none");
+
+
+
+    });
+
+    $(' .js-res').click(function() {
+
+        $('.form-content .content-main:last-child').toggleClass("d-none");
+
+        $('.form-content .content-main:first-child').toggleClass("d-none");
+
+
+
+    });
+</script>
+
 
 @yield('footer')
 

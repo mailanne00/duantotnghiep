@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Client\ChiTietPlayerController;
 use App\Http\Controllers\Client\DangTinController;
+use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +21,9 @@ Route::get('/', function () {
     return view('client.index');
 });
 
-
+Route::get('/chi-tiet-player', [ChiTietPlayerController::class, 'index'])->name('chitiet.index');
 Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::get('/', [TaiKhoanController::class, 'index'])->name('client.index');
 Route::get('tai-khoan/thong-tin-ca-nhan', [TaiKhoanController::class, 'thongTinCaNhan'])->name('taikhoan.thongtincanhan');
 Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongKe');

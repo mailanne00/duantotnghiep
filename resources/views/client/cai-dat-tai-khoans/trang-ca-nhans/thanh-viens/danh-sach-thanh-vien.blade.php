@@ -3,41 +3,41 @@
 @section('title', 'Danh sách thành viên')
 
 @section('content')
-<div class="col-lg-9 col-12">
+    <div class="col-lg-9 col-12">
 
-    <div class="aside">
+        <div class="aside">
 
-        <h3>Danh sách thành viên</h3>
+            <h3>Danh sách thành viên</h3>
 
-        <div class="table-responsive">
+            <div class="table-responsive">
 
-            <table class="table table-striped table-bordered table-condensed table-hover">
+                <table class="table table-striped table-bordered table-condensed table-hover">
 
-                <thead>
+                    <thead>
 
-                    <tr>
+                        <tr>
 
-                        <th>Thời gian đăng ký</th>
+                            <th>Thời gian đăng ký</th>
 
-                        <th>Thời gian hết hạn</th>
+                            <th>Thời gian hết hạn</th>
 
-                        <th>Tên thành viên</th>
+                            <th>Tên thành viên</th>
 
-                        <th>Bậc</th>
+                            <th>Bậc</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
+                    </thead>
 
-                <tbody></tbody>
+                    <tbody></tbody>
 
-            </table>
+                </table>
+
+            </div>
+
+            <div class="text-center mt-20 col-md-12"><span>Không có dữ liệu</span></div>
 
         </div>
 
-        <div class="text-center mt-20 col-md-12"><span>Không có dữ liệu</span></div>
-
     </div>
-
-</div>
 @endsection

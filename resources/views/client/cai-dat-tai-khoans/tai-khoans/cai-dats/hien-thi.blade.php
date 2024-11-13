@@ -3,54 +3,54 @@
 @section('title', 'Hiển thị')
 
 @section('content')
-<div class="col-lg-9 col-12">
+    <div class="col-lg-9 col-12">
 
-    <div class="aside">
+        <div class="aside">
 
-        <h3>Cài đặt hiển thị</h3>
+            <h3>Cài đặt hiển thị</h3>
 
-        <hr>
+            <hr>
 
-        <div class="user-setting-display">
+            <div class="user-setting-display">
 
-            <div class="table-responsive">
+                <div class="table-responsive">
 
-                <table class="table">
+                    <table class="table">
 
-                    <tbody>
+                        <tbody>
 
-                        <tr>
+                            <tr>
 
-                            <td>
+                                <td>
 
-                                <p>Hiển thị trên bảng xếp hạng</p>
+                                    <p>Hiển thị trên bảng xếp hạng</p>
 
-                            </td>
+                                </td>
 
-                            <td>
+                                <td>
 
-                                <input id="chck" type="checkbox" class="opacity-0">
+                                    <input id="chck" type="checkbox" class="opacity-0">
 
-                                <label for="chck" class="check-trail">
+                                    <label for="chck" class="check-trail">
 
-                                    <span class="check-handler"></span>
+                                        <span class="check-handler"></span>
 
-                                </label>
+                                    </label>
 
-                            </td>
+                                </td>
 
-                        </tr>
+                            </tr>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
 
+                </div>
+
+                <hr><button class="btn-update" type="button" id="btn-update-user-setting-display">Cập nhật</button>
             </div>
 
-            <hr><button class="btn-update" type="button" id="btn-update-user-setting-display">Cập nhật</button>
         </div>
 
     </div>
-
-</div>
 @endsection
