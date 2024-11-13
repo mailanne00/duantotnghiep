@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\DangTinController;
 use App\Http\Controllers\Client\TaiKhoanController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ Route::get('/', function () {
     return view('client.index');
 });
 
+
+Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');
 Route::get('/', [TaiKhoanController::class, 'index'])->name('client.index');
 Route::get('tai-khoan/thong-tin-ca-nhan', [TaiKhoanController::class, 'thongTinCaNhan'])->name('taikhoan.thongtincanhan');
 Route::get('tai-khoan/thong-ke', [TaiKhoanController::class, 'thongKe'])->name('taikhoan.thongKe');
@@ -59,3 +62,4 @@ Route::get('tai-khoan/lich-su-donate-player', [TaiKhoanController::class, 'lichS
 Route::get('tai-khoan/danh-sach-chan-user', [TaiKhoanController::class, 'danhSachChanUser'])->name('taikhoan.danhSachChanUser');
 Route::get('tai-khoan/huong-dan-player', [TaiKhoanController::class, 'huongDanPlayer'])->name('taikhoan.huongDanPlayer');
 Route::get('tai-khoan/player-donate', [TaiKhoanController::class, 'donateCaiDat'])->name('taikhoan.donateCaiDat');
+Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');

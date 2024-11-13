@@ -48,13 +48,13 @@
 
                 <img src="{{asset('asset/images/logoPD.png')}}" alt="logo playerduo">
 
-                <!-- <div class="text-logo d-lg-block d-none">
+                <div class="text-logo d-lg-block d-none">
 
                     <h4>PLAYERDUO</h4>
 
                     <p>GAME COMMUNITY</p>
 
-                </div> -->
+                </div>
 
             </a>
 
@@ -70,7 +70,7 @@
 
                 <li class="item"><a href="" data-bs-toggle="modal" data-bs-target="#rank" aria-hidden="true"><span>BXH</span></a></li> -->
 
-                <!-- <li class="item-search">
+                <li class="item-search">
 
                     <form action="">
 
@@ -80,7 +80,7 @@
 
                     </form>
 
-                </li> -->
+                </li>
 
             </ul>
 
@@ -101,7 +101,8 @@
                     <a href="" class="dropdown-toggle" id="dropdown-facebook" data-bs-toggle="dropdown"
                         data-bs-auto-close="outside" aria-expanded="false">
 
-                        <i class="fab fa-facebook-f"></i></a>
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
 
                     <div class="dropdown-menu p-2 facebook-dp" aria-labelledby="dropdown-facebook">
 
@@ -110,7 +111,6 @@
                         <p>Fanpage</p>
 
                     </div>
-
                 </li>
 
                 <li class="item-icon group-fb"><a href="" class="group-user" data-bs-toggle="modal"
@@ -742,17 +742,7 @@
 
                                                             <div class="fieldGroup">
 
-                                                                <p class="control-label"><span>Mệnh giá thẻ:</span></p>
-                                                                <select class="form-control" name="moneyNumber">
-                                                                    <option value="">Vui lòng chọn</option>
-                                                                    <option value="10000">10,000đ (-35%)</option>
-                                                                    <option value="20000">20,000đ (-35%)</option>
-                                                                    <option value="50000">50,000đ (-35%)</option>
-                                                                    <option value="100000">100,000đ (-35%)</option>
-                                                                    <option value="200000">200,000đ (-35%)</option>
-                                                                    <option value="500000">500,000đ (-35%)</option>
-                                                                </select>
-                                                            </div>
+                                                                <p class="control-label"><span>Mệnh giá thẻ:</span></p><select class="form-control" name="moneyNumber"><option value="">Vui lòng chọn</option><option value="10000">10,000đ (-35%)</option><option value="20000">20,000đ (-35%)</option><option value="50000">50,000đ (-35%)</option><option value="100000">100,000đ (-35%)</option><option value="200000">200,000đ (-35%)</option><option value="500000">500,000đ (-35%)</option></select></div>
 
                                                         </div>
 
@@ -768,10 +758,7 @@
 
                                                             <div class="fieldGroup ">
 
-                                                                <p class="control-label"><span>Số series:</span></p>
-                                                                <input type="text" name="mobileSeri" placeholder=""
-                                                                    maxlength="5000" autocomplete="false" value="">
-                                                            </div>
+                                                                <p class="control-label"><span>Số series:</span></p><input type="text" name="mobileSeri" placeholder="" maxlength="5000" autocomplete="false" value=""></div>
 
                                                         </div>
 
@@ -783,10 +770,7 @@
 
                                                             <div class="fieldGroup ">
 
-                                                                <p class="control-label"><span>Mã thẻ:</span></p><input
-                                                                    type="text" name="mobileCardNumber" placeholder=""
-                                                                    maxlength="5000" autocomplete="false" value="">
-                                                            </div>
+                                                                <p class="control-label"><span>Mã thẻ:</span></p><input type="text" name="mobileCardNumber" placeholder="" maxlength="5000" autocomplete="false" value=""></div>
 
                                                         </div>
 
@@ -1418,22 +1402,22 @@
 
     </div>
 
+
+    <script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/popper.min.js')}}"></script>
+
+    <script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
+
 </body>
-
-<script src="{{asset('asset/js/jquery-3.6.0.min.js')}}"></script>
-
-<script src="{{asset('asset/js/bootstrap.bundle.min.js')}}"></script>
-
-<script src="{{asset('asset/js/popper.min.js')}}"></script>
-
-<script src="{{asset('asset/js/bootstrap.min.js')}}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.min.js"></script>
 
 
 
 <script>
-
     //fix menu when scroll
 
     $(window).scroll(function () {
@@ -1603,7 +1587,6 @@
         $('#dropdown-city').val(list)
 
     });
-
 </script>
 
 @yield('footer')
