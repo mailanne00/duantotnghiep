@@ -723,7 +723,7 @@
 
                         <div class="player-avt">
 
-                            <a href="./info.html" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
+                            <a href="{{route('players.show')}}" target="_blank"><img src="{{asset('asset/images/player_avatar.jpg')}}" alt="" class="img-fluid"></a>
 
                             <div class="sound-player pause">
 
