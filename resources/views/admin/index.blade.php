@@ -1,11 +1,5 @@
-@extends('admin.layouts.app')
+    @extends('admin.layout.app')
 
-@section('title', 'Đây là trang admin')
+    @section('content')
 
-@section('content')
-
-    <h1>
-        Đây là trang admin
-    </h1>
-
-@endsection
+    @endsection

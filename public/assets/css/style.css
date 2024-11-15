@@ -21,7 +21,7 @@ File: style.css
 =================================================================================
 =================================================================================== */
 /*
-    description Of variables for build for theme layouts
+    description Of variables for build for theme layout
         1) menu-caption-color
             List of color for sidebar menu caption
 
@@ -16085,7 +16085,7 @@ div.code-toolbar > .toolbar span:hover {
 /* Radial Chart End */
 /**====== Chart css end ======**/
 /**  =====================
-      Icon layouts css start
+      Icon layout css start
 ==========================  **/
 .i-main .i-block {
   display: inline-flex;
@@ -16120,7 +16120,7 @@ div.code-toolbar > .toolbar span:hover {
   height: 40px;
 }
 
-/**====== Icon layouts css end ======**/
+/**====== Icon layout css end ======**/
 /**  =====================
       Calendar css start
 ==========================  **/

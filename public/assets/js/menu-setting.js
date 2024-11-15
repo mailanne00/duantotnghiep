@@ -124,8 +124,8 @@ $(document).ready(function() {
                         '</div>' +
                         '<div class="form-group mb-0">' +
                             '<div class="switch switch-primary d-inline m-r-10">' +
-                                '<input type="checkbox" id="box-layouts">' +
-                                '<label for="box-layouts" class="cr"></label>' +
+                                '<input type="checkbox" id="box-layout">' +
+                                '<label for="box-layout" class="cr"></label>' +
                             '</div>' +
                             '<label>Box Layouts</label>' +
                         '</div>' +
@@ -437,7 +437,7 @@ $(document).ready(function() {
         if (temp == "dark") {
             $('.pcoded-navbar').removeClassPrefix('menu-');
             $('.pcoded-navbar').addClass('navbar-dark');
-            $('.layout-css').attr("href", "assets/css/layouts/dark.css");
+            $('.layout-css').attr("href", "assets/css/layout/dark.css");
         } else {
             $('.layout-css').attr("href", "");
         }
@@ -496,11 +496,11 @@ $(document).ready(function() {
             $('.pcoded-navbar').addClass(temp);
         }
     });
-    // rtl layouts
+    // rtl layout
     $('#theme-rtl').change(function() {
         $('head').append('<link rel="stylesheet" class="rtl-css" href="">');
         if ($(this).is(":checked")) {
-            $('.rtl-css').attr("href", "assets/css/layouts/rtl.css");
+            $('.rtl-css').attr("href", "assets/css/layout/rtl.css");
         } else {
             $('.rtl-css').attr("href", "");
         }
@@ -533,8 +533,8 @@ $(document).ready(function() {
             $('.pcoded-navbar').removeClass('icon-colored');
         }
     });
-    // Box layouts
-    $('#box-layouts').change(function() {
+    // Box layout
+    $('#box-layout').change(function() {
         if ($(this).is(":checked")) {
             $('body').addClass('container');
             $('body').addClass('box-layout');
