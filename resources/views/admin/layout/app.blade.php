@@ -76,6 +76,15 @@
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
+                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                    class="nav-item pcoded-hasmenu">
+                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                            class="pcoded-mtext">Quản lý danh mục</span></a>
+                    <ul class="pcoded-submenu">
+                        <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh mục</a></li>
+                        <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
+                    </ul>
+                </li>
             </ul>
 
         </div>
