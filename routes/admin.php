@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index']);
 
     Route::resource('tai-khoans', \App\Http\Controllers\Admin\TaiKhoanController::class);
+
+    Route::resource('lich-su-don-thues', \App\Http\Controllers\Admin\LichSuThueController::class);

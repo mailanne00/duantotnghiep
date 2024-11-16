@@ -73,7 +73,9 @@
                     </ul>
                 </li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.tai-khoans.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lí tài khoản</span></a></li>
+                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
             </ul>
 
         </div>
