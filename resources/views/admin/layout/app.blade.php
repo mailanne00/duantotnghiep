@@ -25,16 +25,16 @@
     <!-- Favicon icon -->
     <link rel="icon" href="https://files.playerduo.net/production/static-files/logo.png" type="image/x-icon">
     <!-- fontawesome icon -->
-    <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/fonts/fontawesome/css/fontawesome-all.min.css')}}">
     <!-- animation css -->
-    <link rel="stylesheet" href="{{asset('assets/plugins/animation/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/plugins/animation/css/animate.min.css')}}">
 
     <!-- notification css -->
-    <link rel="stylesheet" href="{{asset('assets/plugins/notification/css/notification.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/plugins/notification/css/notification.min.css')}}">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/css/style.css')}}">
+
     @yield('script-header')
 
 </head>
@@ -61,36 +61,23 @@
         <div class="navbar-content scroll-div   "
              id="layout-sidenav" >
             <ul class="nav pcoded-inner-navbar sidenav-inner">
-                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
-                    class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
-                            class="pcoded-mtext">Dashboard</span></a>
-                    <ul class="pcoded-submenu">
-                        <li class=""><a href="index.html" class="">Analytics</a></li>
-                        <li class=""><a href="dashboard-sale.html" class="">Sales</a></li>
-                        <li class=""><a href="dashboard-project.html" class="">Project</a></li>
-                        <li class=""><a href="dashboard-help.html" class="">Helpdesk<span
-                                    class="pcoded-badge label label-danger">NEW</span></a></li>
-                    </ul>
-                </li>
+                <li data-username="table foo" class="nav-item"><a href="/admin" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.tai-khoans.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
+                                class="fas fa-user"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
-<<<<<<< HEAD
+                                class="fas fa-file-invoice-dollar"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.to-caos.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
-=======
+                                class="fas fa-ban"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
                 <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">
-                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-clipboard-list"></i></span><span
                             class="pcoded-mtext">Quản lý danh mục</span></a>
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh mục</a></li>
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
->>>>>>> 31c8c0bedd2fa628aa1e7677bf79fc2ed107279a
             </ul>
 
         </div>
@@ -107,8 +94,8 @@
     <div class="m-header">
         <a href="index.html" class="b-brand">
 
-            <img src="assets/images/logo.svg" alt="" class="logo images">
-            <img src="assets/images/logo-icon.svg" alt="" class="logo-thumb images">
+            <img src="assets-admin/images/logo.svg" alt="" class="logo images">
+            <img src="assets-admin/images/logo-icon.svg" alt="" class="logo-thumb images">
         </a>
     </div>
     <div class="collapse navbar-collapse">
@@ -147,7 +134,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-1.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-1.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>John Doe</strong><span class="n-time text-muted"><i
@@ -161,7 +148,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-2.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-2.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>Joseph William</strong><span class="n-time text-muted"><i
@@ -172,7 +159,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-3.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-3.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
@@ -183,7 +170,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-1.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-1.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>Joseph William</strong><span class="n-time text-muted"><i
@@ -194,7 +181,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-3.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-3.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>Sara Soudein</strong><span class="n-time text-muted"><i
@@ -205,7 +192,7 @@
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
-                                    <img class="img-radius" src="assets/images/user/avatar-1.jpg"
+                                    <img class="img-radius" src="assets-admin/images/user/avatar-1.jpg"
                                          alt="Profile Image">
                                     <div class="flex-grow-1">
                                         <p><strong>Joseph William</strong><span class="n-time text-muted"><i
@@ -229,7 +216,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-notification">
                         <div class="pro-head">
-                            <img src="assets/images/user/avatar-1.jpg" class="img-radius"
+                            <img src="assets-admin/images/user/avatar-1.jpg" class="img-radius"
                                  alt="User-Profile-Image">
                             <span>
 										<span class="text-muted">Free Trial</span>
@@ -288,7 +275,7 @@
                         <div class="d-flex userlist-box" data-id="1" data-status="online"
                              data-username="Josephin Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image ">
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image ">
                                 <div class="live-status">3</div>
                             </a>
                             <div class="flex-grow-1">
@@ -298,7 +285,7 @@
                         </div>
                         <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-2.jpg" alt="Profile Image">
+                                                                 src="assets-admin/images/user/avatar-2.jpg" alt="Profile Image">
                                 <div class="live-status">1</div>
                             </a>
                             <div class="media-body">
@@ -308,14 +295,14 @@
                         </div>
                         <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-3.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-3.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Alice<small class="d-block text-c-green">online</small></h6>
                             </div>
                         </div>
                         <div class="media userlist-box" data-id="4" data-status="offline" data-username="Alia">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image">
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image">
                                 <div class="live-status">1</div>
                             </a>
                             <div class="media-body">
@@ -325,7 +312,7 @@
                         </div>
                         <div class="media userlist-box" data-id="5" data-status="offline" data-username="Suzen">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-4.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-4.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Suzen<small class="d-block text-muted">15 min ago</small>
                                 </h6>
@@ -334,7 +321,7 @@
                         <div class="media userlist-box" data-id="1" data-status="online"
                              data-username="Josephin Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image ">
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image ">
                                 <div class="live-status">3</div>
                             </a>
                             <div class="media-body">
@@ -344,7 +331,7 @@
                         </div>
                         <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-2.jpg" alt="Profile Image">
+                                                                 src="assets-admin/images/user/avatar-2.jpg" alt="Profile Image">
                                 <div class="live-status">1</div>
                             </a>
                             <div class="media-body">
@@ -354,14 +341,14 @@
                         </div>
                         <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-3.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-3.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Alice<small class="d-block text-c-green">online</small></h6>
                             </div>
                         </div>
                         <div class="media userlist-box" data-id="4" data-status="offline" data-username="Alia">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image">
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image">
                                 <div class="live-status">1</div>
                             </a>
                             <div class="media-body">
@@ -371,7 +358,7 @@
                         </div>
                         <div class="media userlist-box" data-id="5" data-status="offline" data-username="Suzen">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-4.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-4.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Suzen<small class="d-block text-muted">15 min ago</small>
                                 </h6>
@@ -380,7 +367,7 @@
                         <div class="media userlist-box" data-id="1" data-status="online"
                              data-username="Josephin Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image ">
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image ">
                                 <div class="live-status">3</div>
                             </a>
                             <div class="media-body">
@@ -390,7 +377,7 @@
                         </div>
                         <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-2.jpg" alt="Profile Image">
+                                                                 src="assets-admin/images/user/avatar-2.jpg" alt="Profile Image">
                                 <div class="live-status">1</div>
                             </a>
                             <div class="media-body">
@@ -400,7 +387,7 @@
                         </div>
                         <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-3.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-3.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Alice<small class="d-block text-c-green">online</small></h6>
                             </div>
@@ -438,7 +425,7 @@
                         <div class="media userlist-box" data-id="1" data-status="online"
                              data-username="Josephin Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-1.jpg" alt="Profile Image "></a>
+                                                                 src="assets-admin/images/user/avatar-1.jpg" alt="Profile Image "></a>
                             <div class="media-body">
                                 <p class="chat-header">Josephin Doe<small class="d-block">i am not what happened .
                                         .</small></p>
@@ -446,14 +433,14 @@
                         </div>
                         <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-2.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-2.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Lary Doe<small class="d-block">Avalable</small></h6>
                             </div>
                         </div>
                         <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-3.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-3.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Alice<small class="d-block">hear using Dasho</small></h6>
                             </div>
@@ -470,7 +457,7 @@
                         </div>
                         <div class="media userlist-box" data-id="5" data-status="offline" data-username="Suzen">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-4.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-4.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Suzen<small class="d-block text-muted">Avalable</small></h6>
                             </div>
@@ -489,7 +476,7 @@
                         </div>
                         <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe">
                             <a class="media-left" href="#!"><img class="media-object img-radius"
-                                                                 src="assets/images/user/avatar-2.jpg" alt="Profile Image"></a>
+                                                                 src="assets-admin/images/user/avatar-2.jpg" alt="Profile Image"></a>
                             <div class="media-body">
                                 <h6 class="chat-header">Lary Doe<small class="d-block text-muted">not send free
                                         msg</small></h6>
@@ -562,7 +549,7 @@
             <div class="main-friend-chat">
                 <div class="d-flex chat-messages">
                     <a class="media-left photo-table" href="#!"><img
-                            class="media-object img-radius img-radius m-t-5" src="assets/images/user/avatar-2.jpg"
+                            class="media-object img-radius img-radius m-t-5" src="assets-admin/images/user/avatar-2.jpg"
                             alt="Profile Image"></a>
                     <div class="flex-grow-1 chat-menu-content">
                         <div class="">
@@ -580,12 +567,12 @@
                         <p class="chat-time">8:22 a.m.</p>
                     </div>
                     <a class="media-right photo-table" href="#!"><img
-                            class="media-object img-radius img-radius m-t-5" src="assets/images/user/avatar-1.jpg"
+                            class="media-object img-radius img-radius m-t-5" src="assets-admin/images/user/avatar-1.jpg"
                             alt="Profile Image"></a>
                 </div>
                 <div class="d-flex chat-messages">
                     <a class="media-left photo-table" href="#!"><img
-                            class="media-object img-radius img-radius m-t-5" src="assets/images/user/avatar-2.jpg"
+                            class="media-object img-radius img-radius m-t-5" src="assets-admin/images/user/avatar-2.jpg"
                             alt="Profile Image"></a>
                     <div class="flex-grow-1 chat-menu-content">
                         <div class="">
@@ -634,23 +621,23 @@
 <!-- Warning Section Ends -->
 
 <!-- Required Js -->
-<script src="{{asset('assets/js/vendor-all.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/js/pcoded.min.js')}}"></script>
-<script src="{{asset('assets/js/menu-setting.js')}}"></script>
+<script src="{{asset('assets-admin/js/vendor-all.min.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets-admin/js/pcoded.min.js')}}"></script>
+<script src="{{asset('assets-admin/js/menu-setting.js')}}"></script>
 
 <!-- am chart js -->
-<script src="{{asset('assets/plugins/chart-am4/js/core.js')}}"></script>
-<script src="{{asset('assets/plugins/chart-am4/js/charts.js')}}"></script>
-<script src="{{asset('assets/plugins/chart-am4/js/animated.js')}}"></script>
-<script src="{{asset('assets/plugins/chart-am4/js/maps.js')}}"></script>
-<script src="{{asset('assets/plugins/chart-am4/js/worldLow.js')}}"></script>
-<script src="{{asset('assets/plugins/chart-am4/js/continentsLow.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/core.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/charts.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/animated.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/maps.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/worldLow.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/chart-am4/js/continentsLow.js')}}"></script>
 
 @yield('script-footer')
 <!-- dashboard-custom js -->
-<script src="{{asset('assets/js/pages/dashboard-analytics.js')}}"></script>
+<script src="{{asset('assets-admin/js/pages/dashboard-analytics.js')}}"></script>
 <script !src="">
     setTimeout(()=> {
         document.getElementById('styleSelector').remove();

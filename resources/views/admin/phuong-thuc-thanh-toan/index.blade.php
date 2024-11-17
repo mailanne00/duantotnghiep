@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('script-header')
-    <link rel="stylesheet" href="{{asset('assets/plugins/data-tables/css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
 @section('title', 'Quản lí phương thức thanh toán')
 @section('content')
@@ -63,6 +63,6 @@
     </div>
 @endsection
 @section('script-footer')
-    <script src="{{asset('assets/plugins/data-tables/js/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/data-basic-custom.js')}}"></script>
+    <script src="{{asset('assets-admin/plugins/data-tables/js/datatables.min.js')}}"></script>
+    <script src="{{asset('assets-admin/js/pages/data-basic-custom.js')}}"></script>
 @endsection

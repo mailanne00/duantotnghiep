@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('script-header')
-    <link rel="stylesheet" href="{{asset('assets/plugins/data-tables/css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
 @section('title', 'Chi tiết bản tố cáo số '.$toCao->id  )
 @section('content')
@@ -25,7 +25,7 @@
                                <div class="card user-card user-card-1">
                                    <div class="card-header border-0 p-2 pb-0">
                                        <div class="cover-img-block">
-                                           <img src="{{asset('assets/images/widget/slider5.jpg')}}" alt=""
+                                           <img src="{{asset('assets-admin/images/widget/slider5.jpg')}}" alt=""
                                                 class="img-fluid">
                                        </div>
                                    </div>
@@ -35,7 +35,7 @@
                                                <div class="col"></div>
                                                <div class="col"><img
                                                        class="img-radius img-fluid wid-80"
-                                                       src="{{asset('assets/images/user/avatar-2.jpg')}}"
+                                                       src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
                                                        alt="User image"></div>
                                                <div class="col"></div>
                                            </div>
@@ -69,7 +69,7 @@
                                <div class="card user-card user-card-1">
                                    <div class="card-header border-0 p-2 pb-0">
                                        <div class="cover-img-block">
-                                           <img src="{{asset('assets/images/widget/slider5.jpg')}}" alt=""
+                                           <img src="{{asset('assets-admin/images/widget/slider5.jpg')}}" alt=""
                                                 class="img-fluid">
                                        </div>
                                    </div>
@@ -79,7 +79,7 @@
                                                <div class="col"></div>
                                                <div class="col"><img
                                                        class="img-radius img-fluid wid-80"
-                                                       src="{{asset('assets/images/user/avatar-2.jpg')}}"
+                                                       src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
                                                        alt="User image"></div>
                                                <div class="col"></div>
                                            </div>
@@ -124,7 +124,7 @@
                                             <div class="d-flex chat-messages">
                                                 <a class="media-left photo-table" href="#!"><img
                                                         class="img-fluid media-object img-radius m-t-5"
-                                                        src="{{asset('assets/images/user/avatar-2.jpg')}}"
+                                                        src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
                                                         alt="Generic placeholder image"></a>
                                                 <div class="media-body chat-menu-content">
                                                     <div class="">
@@ -146,13 +146,13 @@
                                                 </div>
                                                 <a class="media-right photo-table" href="#!"><img
                                                         class="media-object img-radius img-radius m-t-5"
-                                                        src="{{asset('assets/images/user/avatar-1.jpg')}}"
+                                                        src="{{asset('assets-admin/images/user/avatar-1.jpg')}}"
                                                         alt="Generic placeholder image"></a>
                                             </div>
                                             <div class="d-flex chat-messages">
                                                 <a class="media-left photo-table" href="#!"><img
                                                         class="img-fluid media-object img-radius m-t-5"
-                                                        src="{{asset('assets/images/user/avatar-2.jpg')}}"
+                                                        src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
                                                         alt="Generic placeholder image"></a>
                                                 <div class="media-body chat-menu-content">
                                                     <div class="">
@@ -180,8 +180,8 @@
     <!-- [ Main Content ] end -->
 @endsection
 @section('script-footer')
-    <script src="{{asset('assets/plugins/data-tables/js/datatables.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/data-basic-custom.js')}}"></script>
+    <script src="{{asset('assets-admin/plugins/data-tables/js/datatables.min.js')}}"></script>
+    <script src="{{asset('assets-admin/js/pages/data-basic-custom.js')}}"></script>
     <script !src="">
         let b = document.getElementsByClassName('overlay-image')[0];
         function largeImage(id) {
