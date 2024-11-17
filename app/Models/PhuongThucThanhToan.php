@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class PhuongThucThanhToan extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        "ten_phuong_thuc",
-        "mo_ta",
-        "logo",
-        "so_tai_khoan"
-    ];
 }

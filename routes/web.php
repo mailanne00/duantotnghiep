@@ -4,12 +4,10 @@ use App\Http\Controllers\Client\BangxephangController;
 use App\Http\Controllers\Client\ChinhsachController;
 use App\Http\Controllers\Client\ChiTietPlayerController;
 use App\Http\Controllers\Client\DangKyController;
-use App\Http\Controllers\Client\DangTinController;
 use App\Http\Controllers\Client\DanhmucController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
-use App\Http\Controllers\Client\TaiKhoanController;
 use App\Http\Controllers\Client\ThongtinController;
 use Illuminate\Support\Facades\Route;
 
