@@ -3,7 +3,7 @@
 @section('title', 'Chi tiết tài khoản')
 
 @section('header')
-    <link rel="stylesheet" href="{{asset('assets/plugins/ratting/css/bars-1to10.css')}}">
+    <link rel="stylesheet" href="{{asset('assets-admin/plugins/ratting/css/bars-1to10.css')}}">
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
             <div class="card user-card user-card-1">
                 <div class="card-header border-0 p-2 pb-0">
                     <div class="cover-img-block">
-                        <img src="{{asset('assets/images/widget/slider5.jpg')}}" alt=""
+                        <img src="{{asset('assets-admin/images/widget/slider5.jpg')}}" alt=""
                              class="img-fluid">
                     </div>
                 </div>
