@@ -60,18 +60,8 @@
         <div class="navbar-content scroll-div   "
              id="layout-sidenav" >
             <ul class="nav pcoded-inner-navbar sidenav-inner">
-                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
-                    class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
-                            class="pcoded-mtext">Dashboard</span></a>
-                    <ul class="pcoded-submenu">
-                        <li class=""><a href="index.html" class="">Analytics</a></li>
-                        <li class=""><a href="dashboard-sale.html" class="">Sales</a></li>
-                        <li class=""><a href="dashboard-project.html" class="">Project</a></li>
-                        <li class=""><a href="dashboard-help.html" class="">Helpdesk<span
-                                    class="pcoded-badge label label-danger">NEW</span></a></li>
-                    </ul>
-                </li>
+                <li data-username="table foo" class="nav-item"><a href="/admin" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.tai-khoans.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
