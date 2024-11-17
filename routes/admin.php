@@ -21,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::resource('to-caos', \App\Http\Controllers\Admin\ToCaoController::class);
     Route::resource('danh-mucs', \App\Http\Controllers\Admin\DanhMucController::class);
+
+    Route::resource('banners', \App\Http\Controllers\Admin\BannerController::class);
+
+    Route::resource('dang-tins', \App\Http\Controllers\Admin\DangTinController::class);
