@@ -32,11 +32,11 @@
                         <div class="row">
                             <div class="col-4 text-center">
                                 <i class="fas fa-calendar-check text-white f-20"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Số đơn hoàn thành"></i>
-                                <h6 class="text-white mt-2 mb-0">1256</h6>
+                                <h6 class="text-white mt-2 mb-0">56</h6>
                             </div>
                             <div class="col-4 text-center">
-                                <i class="fas fa-user text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Người theo dõi"></i>
-                                <h6 class="text-white mt-2 mb-0">8562</h6>
+                                <i class="fas fa-star text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Đánh giá"></i>
+                                <h6 class="text-white mt-2 mb-0">4.8</h6>
                             </div>
                             <div class="col-4 text-center">
                                 <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Số giờ được thuê"></i>
@@ -132,34 +132,30 @@
                 </div>
                 <div class="col mt-3">
                     <div class="row">
-                        <div class="col-4">
-                            <h6 style=" margin-left: 30px">Số dư</h6>
+                        <div class="col-5" style="margin-left: 30px;">
+                            <div class="card seo-card">
+                                <div class="card-body seo-statustic">
+                                    <i class="fas fa-money-bill-wave-alt text-c-blue f-16 mb-2"></i>
+                                    <h5 class="m-0">{{number_format($taiKhoan->so_du, 0, ',')}} VNĐ</h5>
+                                    <p class="m-0">Số dư</p>
+                                </div>
+                                <div class="process">
+                                    <div id="process2" style="height:87px"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-{{--                            <div class="card seo-card">--}}
-{{--                                <div class="card-body seo-statustic">--}}
-{{--                                    <i class="fas fa-folder-open text-c-red f-16 mb-2"></i>--}}
-{{--                                    <h5 class="m-0">{{number_format($taiKhoan->so_du, 0, ',')}} VNĐ</h5>--}}
-{{--                                    <p class="m-0">Số dư</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="process">--}}
-{{--                                    <div id="process3" style="height:87px"></div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <p>{{number_format($taiKhoan->gia_tien,0,',')}} VNĐ</p>
+                        <div class="col-5">
+                            <div class="card seo-card">
+                                <div class="card-body seo-statustic">
+                                    <i class="fas fa-user text-c-red f-16 mb-2"></i>
+                                    <h5 class="m-0">187</h5>
+                                    <p class="m-0">Người theo dõi</p>
+                                </div>
+                                <div class="process">
+                                    <div id="process3" style="height:87px"></div>
+                                </div>
+                            </div>
                         </div>
-{{--                        <div class="col-5">--}}
-{{--                            <div class="card seo-card">--}}
-{{--                                <div class="card-body seo-statustic">--}}
-{{--                                    <i class="fas fa-money-bill-wave-alt text-c-blue f-16 mb-2"></i>--}}
-{{--                                    <h5 class="m-0">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</h5>--}}
-{{--                                    <p class="m-0">Giá thuê 1 giờ</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="process">--}}
-{{--                                    <div id="process2" style="height:87px"></div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -184,26 +180,38 @@
                 // Add data
                 chart.data = [{
                     "date": "2018-01-6",
-                    "price": 0
+                    "price": 168
                 }, {
                     "date": "2018-01-7",
-                    "price": 0
+                    "price": 200
                 }, {
                     "date": "2018-01-8",
-                    "price": 0
+                    "price": 170
                 }, {
                     "date": "2018-01-9",
-                    "price": 0
+                    "price": 243
                 }, {
                     "date": "2018-01-10",
-                    "price": 0
+                    "price": 210
                 }, {
                     "date": "2018-01-11",
-                    "price": 0
+                    "price": 228
                 }, {
                     "date": "2018-01-12",
-                    "price": 0
-                };
+                    "price": 180
+                }, {
+                    "date": "2018-01-13",
+                    "price": 158
+                }, {
+                    "date": "2018-01-14",
+                    "price": 200
+                }, {
+                    "date": "2018-01-15",
+                    "price": 90
+                }, {
+                    "date": "2018-01-16",
+                    "price": 175
+                }];
 
                 // Create axes
                 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -252,37 +260,37 @@
                 // Add data
                 chart.data = [{
                     "date": "2018-01-6",
-                    "price": 100
+                    "price": 190
                 }, {
                     "date": "2018-01-7",
-                    "price": 100
+                    "price": 158
                 }, {
                     "date": "2018-01-8",
-                    "price": 0
+                    "price": 200
                 }, {
                     "date": "2018-01-9",
-                    "price": 0
+                    "price": 90
                 }, {
                     "date": "2018-01-10",
-                    "price": 0
+                    "price": 175
                 }, {
                     "date": "2018-01-11",
-                    "price": 0
+                    "price": 228
                 }, {
                     "date": "2018-01-12",
-                    "price": 0
+                    "price": 168
                 }, {
                     "date": "2018-01-13",
-                    "price": 0
+                    "price": 200
                 }, {
                     "date": "2018-01-14",
-                    "price": 0
+                    "price": 187
                 }, {
                     "date": "2018-01-15",
-                    "price": 100
+                    "price": 243
                 }, {
                     "date": "2018-01-16",
-                    "price": 100
+                    "price": 222
                 }];
 
                 // Create axes
