@@ -53,7 +53,8 @@
                     @if($taiKhoan->biet_danh != null)
                         <div class="col mt-3">
                             <div class="row">
-                                <div class="col-4">/-strong/-heart:>:o:-((:-h <h6 style=" margin-left: 30px">Biệt danh</h6>
+                                <div class="col-4">/
+                                    <h6 style=" margin-left: 30px">Biệt danh</h6>
                                 </div>
                                 <div class="col">
                                     <p>{{$taiKhoan->biet_danh}}</p>
@@ -110,7 +111,8 @@
                                     <h6 style=" margin-left: 30px">Số điện thoại</h6>
                                 </div>
                                 <div class="col">
-                                    <p>{{$taiKhoan->sdt}}</p>/-strong/-heart:>:o:-((:-h </div>
+                                    <p>{{$taiKhoan->sdt}}</p>
+                                </div>
                             </div>
                         </div>
                     @endif
@@ -167,7 +169,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">/-strong/-heart:>:o:-((:-h <div class="card user-list">
+            <div class="col-md-12">
+                <div class="card user-list">
                     <div class="card-header">
                         <h5>Đánh giá</h5>
                         <div class="card-header-right">
@@ -210,7 +213,7 @@
                                             class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
                                 </h2>
                             </div>
-                            <div class="col-6">/-strong/-heart:>:o:-((:-h </div>
+                            <div class="col-6"></div>
                         </div>
 
                         <div class="row">
@@ -258,10 +261,13 @@
                                             class="fas fa-star f-10 m-r-10 text-c-yellow"></i>2
                                 </h6>
                                 <h6 class="align-items-center float-end">1</h6>
-                                <div class="progress m-t-30  m-b-15" style="height: 6px;">/-strong/-heart:>:o:-((:-h <div class="progress-bar progress-primary"
+                                <div class="progress m-t-30  m-b-15" style="height: 6px;">
+                                    <div class="progress-bar progress-primary"
                                          role="progressbar" style="width: 10%;"
                                          aria-valuenow="10" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
+                                         aria-valuemax="100">
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xl-12">
@@ -395,7 +401,8 @@
                 am4core.useTheme(am4themes_animated);
                 // Themes end
 
-                // Create chart instance/-strong/-heart:>:o:-((:-h var chart = am4core.create("process3", am4charts.XYChart);
+                // Create chart instance
+                var chart = am4core.create("process3", am4charts.XYChart);
                 // Add data
                 chart.data = [{
                     "date": "2018-01-6",
@@ -471,7 +478,7 @@
 
 
             $(function() {
-                // Themes begin/-strong/-heart:>:o:-((:-h am4core.useTheme(am4themes_animated);
+                // Themes begin am4core.useTheme(am4themes_animated);
                 // Themes end
                 // Create chart instance
                 var chart = am4core.create("device-chart", am4charts.PieChart);
