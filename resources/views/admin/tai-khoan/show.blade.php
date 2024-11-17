@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
+
+    <a href="{{route('admin.tai-khoans.index')}}" class="btn btn-primary mb-3">Quay trở lại</a>
     <div class="row mb-n4">
         <div class="col-xl-6 col-md-6">
             <div class="card user-card user-card-1">
@@ -53,7 +55,7 @@
                     @if($taiKhoan->biet_danh != null)
                         <div class="col mt-3">
                             <div class="row">
-                                <div class="col-4">/
+                                <div class="col-4">
                                     <h6 style=" margin-left: 30px">Biệt danh</h6>
                                 </div>
                                 <div class="col">

@@ -64,14 +64,14 @@
                 <li data-username="table foo" class="nav-item"><a href="/admin" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.tai-khoans.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
+                                class="fas fa-user"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
+                                class="fas fa-file-invoice-dollar"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.to-caos.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
+                                class="fas fa-ban"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
                 <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">
-                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-clipboard-list"></i></span><span
                             class="pcoded-mtext">Quản lý danh mục</span></a>
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh mục</a></li>
