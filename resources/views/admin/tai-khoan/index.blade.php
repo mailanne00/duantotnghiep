@@ -47,7 +47,7 @@
                                     {!! $taiKhoan->bi_cam==0 ? '<span class="badge text-bg-success">Mở</span>' : '<span class="badge text-bg-danger">Cấm</span>'!!}
                                 </td>
                                 <td>
-                                    <button class="btn btn-info">Xem chi tiết</button>
+                                    <a href="{{route('admin.tai-khoans.show', $taiKhoan->id)}}" class="btn btn-info">Xem chi tiết</a>
                                 </td>
                             </tr>
                             @endforeach
