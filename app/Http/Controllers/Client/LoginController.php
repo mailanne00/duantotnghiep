@@ -9,6 +9,6 @@ class LoginController extends Controller
     public function index()
     {
 
-        return view('client.login.index');
+        return view('client.dang-nhap.index');
     }
 }

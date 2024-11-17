@@ -8,6 +8,6 @@ class ChiTietPlayerController extends Controller
 {
     public function index()
     {
-        return view('client.players.index');
+        return view('client.chi-tiet-player.index');
     }
 }
