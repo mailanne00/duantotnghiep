@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
     Route::resource('lich-su-don-thues', \App\Http\Controllers\Admin\LichSuThueController::class);
 
     Route::resource('to-caos', \App\Http\Controllers\Admin\ToCaoController::class);
+    Route::resource('danh-mucs', \App\Http\Controllers\Admin\DanhMucController::class);

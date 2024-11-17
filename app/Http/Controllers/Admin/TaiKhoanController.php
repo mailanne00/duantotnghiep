@@ -14,4 +14,12 @@ class TaiKhoanController extends Controller
 
          return view('admin.tai-khoan.index', compact('taiKhoans'));
      }
+
+     public function create(){}
+    public function store(Request $request){}
+    public function show(int $id)
+    {
+        $taiKhoan = TaiKhoan::query()->findOrFail($id);
+        return view('admin.tai-khoan.show', compact('taiKhoan'));
+    }
 }
