@@ -78,6 +78,17 @@
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
+                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                    class="nav-item pcoded-hasmenu">
+                    <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-images"></i></span><span
+                            class="pcoded-mtext">Quản lý banner</span></a>
+                    <ul class="pcoded-submenu">
+                        <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách banner</a></li>
+                        <li class=""><a href="{{route('admin.banners.create')}}" class="">Thêm banner</a></li>
+                    </ul>
+                </li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.dang-tins.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a></li>
             </ul>
 
         </div>
