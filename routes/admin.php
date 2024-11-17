@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
     Route::resource('tai-khoans', \App\Http\Controllers\Admin\TaiKhoanController::class);
 
     Route::resource('lich-su-don-thues', \App\Http\Controllers\Admin\LichSuThueController::class);
+
+    Route::resource('to-caos', \App\Http\Controllers\Admin\ToCaoController::class);

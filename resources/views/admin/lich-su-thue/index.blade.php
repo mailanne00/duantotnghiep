@@ -2,14 +2,14 @@
 @section('script-header')
     <link rel="stylesheet" href="{{asset('assets/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
-@section('title', 'Quản lí tài khoản')
+@section('title', 'Quản lí đơn thuê')
 @section('content')
 
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Zero Configuration</h5>
+                    <h5>Quản lý đơn thuê</h5>
                 </div>
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
@@ -22,6 +22,7 @@
                                 <th>Giá thuê 1h</th>
                                 <th>giờ thuê</th>
                                 <th>Lợi nhuận</th>
+                                <th>Thời gian bắt đầu</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>
@@ -32,9 +33,14 @@
                                        <td>{{$loop->iteration}}</td>
                                        <td>{{$lichSuThue->nguoiThue->ten}}</td>
                                        <td>{{$lichSuThue->nguoiDuocThue->ten}}</td>
-                                       <td>{{$lichSuThue->gia_thue}}</td>
+                                       <td>{{number_format($lichSuThue->gia_thue, 0, ',')}} VNĐ</td>
                                        <td>{{$lichSuThue->gio_thue}}</td>
+                                       <td>{{number_format($lichSuThue->gio_thue*$lichSuThue->gia_thue*$lichSuThue->nguoiDuocThue->loi_nhuan/100, 0 ,',')}} VNĐ</td>
+                                       <td>{{$lichSuThue->created_at}}</td>
                                        <td><span class="badge text-bg-{{$lichSuThue->mau}}">{{$lichSuThue->trangThai2}}</span></td>
+                                       <td>
+                                           <a class="btn btn-info">Xem chi tiết</a>
+                                       </td>
                                    </tr>
                                @endforeach
                             </tbody>
@@ -46,6 +52,7 @@
                                 <th>Giá thuê 1h</th>
                                 <th>giờ thuê</th>
                                 <th>Lợi nhuận</th>
+                                <th>Thời gian bắt đầu</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>

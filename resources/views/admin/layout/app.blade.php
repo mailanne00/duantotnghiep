@@ -34,6 +34,7 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('script-header')
 
 </head>
@@ -76,6 +77,8 @@
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.to-caos.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
             </ul>
 
         </div>
@@ -611,6 +614,7 @@
         </div>
     </div>
 </div>
+<div class="overlay-image"></div>
 <!-- [ Main Content ] end -->
 
 <!-- Warning Section start -->
