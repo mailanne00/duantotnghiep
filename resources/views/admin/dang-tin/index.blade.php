@@ -17,40 +17,40 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên</th>
-                                <th>Ảnh đại diện</th>
-                                <th>Chức năng</th>
+                                <th>Tên tài khoản</th>
+                                <th>Video</th>
+                                <th>Số lượt thả tym</th>
+                                <th>Nội dung</th>
+                                <th>Ngày tạo</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($danhMucs as $danhMuc)
+                            @foreach($dangTins as $dangTin)
                                 <tr>
                                     <th>
                                         {{$loop->iteration}}
                                     </th>
                                     <td>
-                                        {{$danhMuc->ten}}
+                                        {{$dangTin->taiKhoan->ten}}
                                     </td>
                                     <td>
-                                        <img src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" style="width: 80px; border-radius: 10px;" alt="">
+                                        <video width="215" height="130" controls>
+                                            <source src="{{ \Illuminate\Support\Facades\Storage::url($dangTin->video) }}" type="video/mp4">
+                                        </video>
                                     </td>
-                                    <td style="display: flex">
-                                        <form action="{{route('admin.danh-mucs.destroy', $danhMuc->id)}}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger" onclick="return confirm('Bạn có muốn xoá không?')">Xoá</button>
-                                        </form>
-                                        <a href="{{route('admin.danh-mucs.edit', $danhMuc->id)}}" class="btn btn-warning">Chỉnh sửa</a>
-                                    </td>
+                                    <td>99</td>
+                                    <td>{{$dangTin->noi_dung}}</td>
+                                    <td>{{$dangTin->created_at}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên</th>
-                                <th>Ảnh đại diện</th>
-                                <th>Chức năng</th>
+                                <th>Tên tài khoản</th>
+                                <th>Video</th>
+                                <th>Nội dung</th>
+                                <th>Ngày tạo</th>
                             </tr>
                             </tfoot>
                         </table>
