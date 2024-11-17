@@ -77,10 +77,8 @@
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
-<<<<<<< HEAD
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.to-caos.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-list"></i></span><span class="pcoded-mtext">Quản lý tố cáo</span></a></li>
-=======
                 <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
@@ -90,7 +88,6 @@
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
->>>>>>> 31c8c0bedd2fa628aa1e7677bf79fc2ed107279a
             </ul>
 
         </div>

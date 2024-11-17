@@ -3,7 +3,6 @@
 @section('title', 'Chi tiết tài khoản')
 
 @section('content')
-<<<<<<< HEAD
     <div class="row mb-n4">
         <div class="col-xl-6 col-md-6">
             <div class="card user-card user-card-1">
@@ -54,15 +53,6 @@
                             xvfjvhbx vhfbvxnvjfnvhbvjxnknjnvfvfvh jvnvnkjxfnvfk vnxfkvnxjkfvn vfjkvnfjvnfxlk
                             nvxfkjvnjxnv vjfvbfkdvnjfv vjfnvjnfjvnxf jfbvjxnvkxnfvkjv jkfvnxkvnx</p>
                     </div>
-=======
-<div class="row mb-n4">
-    <div class="col-xl-6 col-md-6">
-        <div class="card user-card user-card-1">
-            <div class="card-header border-0 p-2 pb-0">
-                <div class="cover-img-block">
-                    <img src="{{asset('assets/images/widget/slider5.jpg')}}" alt=""
-                        class="img-fluid">
->>>>>>> c1a921e4503dc25f3ab09800a5ad037b96386fc6
                 </div>
             </div>
             <div class="card-body pt-0">
@@ -97,7 +87,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col mt-3">
                     <div class="row">
                         <div class="col-4">
@@ -187,16 +176,6 @@
                             </div>
                         </div>
                     </div>
-=======
-                <hr class="wid-80 b-wid-3 my-4 m-auto">
-                <div class="text-center">
-                    <h6 class="mb-1">Thông tin client</h6>
-                    <p class="mb-1">
-                        anccdncdjcndjncjdncsjnckjnjnvdfnvxnvjvndfnvfdjnzvlvnlvnflvndjfvndkzjnvznvdjkvndznvdkz
-                        fjdzjkvbzjkbdjvbdzjjhvbjdhvbhdj vh jdbjfhvbdfhvbhfbvjhfbvhjbdvhbvjbnckxjncjk
-                        xvfjvhbx vhfbvxnvjfnvhbvjxnknjnvfvfvh jvnvnkjxfnvfk vnxfkvnxjkfvn vfjkvnfjvnfxlk
-                        nvxfkjvnjxnv vjfvbfkdvnjfv vjfnvjnfjvnxf jfbvjxnvkxnfvkjv jkfvnxkvnx</p>
->>>>>>> c1a921e4503dc25f3ab09800a5ad037b96386fc6
                 </div>
             </div>
         </div>
@@ -324,7 +303,6 @@
             am4core.useTheme(am4themes_animated);
             // Themes end
 
-<<<<<<< HEAD
                 // Create chart instance
                 var chart = am4core.create("process2", am4charts.XYChart);
                 // Add data
@@ -362,33 +340,6 @@
                     "date": "2018-01-16",
                     "price": 175
                 }];
-=======
-            // Create chart instance
-            var chart = am4core.create("process2", am4charts.XYChart);
-            // Add data
-            chart.data = [{
-                "date": "2018-01-6",
-                "price": 0
-            }, {
-                "date": "2018-01-7",
-                "price": 0
-            }, {
-                "date": "2018-01-8",
-                "price": 0
-            }, {
-                "date": "2018-01-9",
-                "price": 0
-            }, {
-                "date": "2018-01-10",
-                "price": 0
-            }, {
-                "date": "2018-01-11",
-                "price": 0
-            }, {
-                "date": "2018-01-12",
-                "price": 0
-            }];
->>>>>>> c1a921e4503dc25f3ab09800a5ad037b96386fc6
 
             // Create axes
             var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -406,7 +357,6 @@
             valueAxis.renderer.inside = true;
             valueAxis.renderer.labels.template.disabled = true;
 
-<<<<<<< HEAD
                 // Create series
                 var series = chart.series.push(new am4charts.LineSeries());
                 series.dataFields.valueY = "price";
@@ -507,19 +457,6 @@
                 chart.cursor.lineX.fillOpacity = 0;
                 chart.padding(0, 0, 0, 0);
             });
-=======
-            // Create series
-            var series = chart.series.push(new am4charts.LineSeries());
-            series.dataFields.valueY = "price";
-            series.dataFields.dateX = "date";
-            series.strokeWidth = 3;
-            series.fillOpacity = 0.1;
-            series.tensionX = 0.77;
-            series.tooltipText = "{valueY.value}";
-            series.fill = am4core.color("#19BCBF");
-            series.stroke = am4core.color("#19BCBF");
-            series.strokeWidth = 3;
->>>>>>> c1a921e4503dc25f3ab09800a5ad037b96386fc6
 
             // Add cursor
             chart.cursor = new am4charts.XYCursor();
@@ -609,7 +546,5 @@
             chart.cursor.lineX.fillOpacity = 0;
             chart.padding(0, 0, 0, 0);
         });
-
-    });
 </script>
 @endsection
