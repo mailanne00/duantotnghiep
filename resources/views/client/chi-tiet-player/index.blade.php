@@ -1,4 +1,4 @@
-@extends('client.layouts.app')
+@extends('client.layouts.app'
 
 @section('content')
     <section class="flat-title-page inner">
