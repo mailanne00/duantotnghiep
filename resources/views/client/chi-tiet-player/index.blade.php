@@ -11,7 +11,7 @@
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chu</a></li>
                             <li><a href="#">Explore</a></li>
                             <li>Item Details 1</li>
                         </ul>
