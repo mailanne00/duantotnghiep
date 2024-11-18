@@ -25,3 +25,5 @@ use Illuminate\Support\Facades\Route;
     Route::resource('banners', \App\Http\Controllers\Admin\BannerController::class);
 
     Route::resource('dang-tins', \App\Http\Controllers\Admin\DangTinController::class);
+
+    Route::resource('danh-gias', \App\Http\Controllers\Admin\DanhGiaController::class);
