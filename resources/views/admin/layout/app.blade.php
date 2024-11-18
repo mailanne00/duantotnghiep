@@ -52,7 +52,7 @@
     <div
         class="navbar-wrapper ">
         <div class="navbar-brand header-logo">
-            <a href="index.html" class="b-brand">
+            <a href="admin/" class="b-brand">
 
                 <img src="https://files.playerduo.net/production/static-files/logo.png" style="width: 36px; height: 36px" alt="logo" class="logo images">
                 <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER DUO</h6>
