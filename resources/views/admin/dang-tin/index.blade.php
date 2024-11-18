@@ -38,7 +38,7 @@
                                             <source src="{{ \Illuminate\Support\Facades\Storage::url($dangTin->video) }}" type="video/mp4">
                                         </video>
                                     </td>
-                                    <td>99</td>
+                                    <td>{{$dangTin->count}}</td>
                                     <td>{{$dangTin->noi_dung}}</td>
                                     <td>{{$dangTin->created_at}}</td>
                                 </tr>
@@ -49,6 +49,7 @@
                                 <th>STT</th>
                                 <th>Tên tài khoản</th>
                                 <th>Video</th>
+                                <th>Số lượt thả tym</th>
                                 <th>Nội dung</th>
                                 <th>Ngày tạo</th>
                             </tr>
