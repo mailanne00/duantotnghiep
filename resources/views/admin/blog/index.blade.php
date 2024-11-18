@@ -2,14 +2,14 @@
 @section('script-header')
     <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
-@section('title', 'Quản lí đánh giá')
+@section('title', 'Quản lí bảng tin')
 @section('content')
 
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Danh sách đánh giá</h5>
+                    <h5>Danh sách bảng tin</h5>
                 </div>
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
@@ -17,46 +17,38 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên người thuê</th>
-                                <th>Tên người được thuê</th>
-                                <th>Đánh giá</th>
-                                <th>Nội dung đánh giá</th>
+                                <th>Tên đăng</th>
+                                <th>Ảnh</th>
+                                <th>Nội dung</th>
                                 <th>Chức năng</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($danhGias as $danhGia)
+                            @foreach($blogs as $blog)
                                 <tr>
                                     <th>
                                         {{$loop->iteration}}
                                     </th>
                                     <td>
-                                        {{$danhGia->nguoiThue->ten}}
+                                        {{$blog->taiKhoan->ten}}
                                     </td>
                                     <td>
-                                        {{$danhGia->nguoiDuocThue->ten}}
+                                        <img src="{{\Illuminate\Support\Facades\Storage::url($blog->anh)}}" style="width: 200px">
                                     </td>
+                                    <td>{{$blog->noi_dung}}</td>
                                     <td>
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($i <= $danhGia->danh_gia)
-                                                <a href="#!"><i class="fa fa-star f-14 text-c-yellow"></i></a>
-                                            @else
-                                                <a href="#!"><i class="fa fa-star f-14 text-muted"></i></a>
-                                            @endif
-                                        @endfor
+                                        <button class="btn btn-danger">Gỡ bài đăng</button>
+                                        <a href="" class="btn btn-primary">Xem chi tiết</a>
                                     </td>
-                                    <td>{{$danhGia->noi_dung}}</td>
-                                    <td></td>
                                 </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên người thuê</th>
-                                <th>Tên người được thuê</th>
-                                <th>Đánh giá</th>
-                                <th>Nội dung đánh giá</th>
+                                <th>Tên đăng</th>
+                                <th>Ảnh</th>
+                                <th>Nội dung</th>
                                 <th>Chức năng</th>
                             </tr>
                             </tfoot>
