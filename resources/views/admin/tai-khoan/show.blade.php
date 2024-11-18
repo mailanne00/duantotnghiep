@@ -43,7 +43,7 @@
                             <div class="col-4 text-center">
                                 <i class="fas fa-star text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
                                    data-bs-title="Đánh giá"></i>
-                                <h6 class="text-white mt-2 mb-0">4.7</h6>
+                                <h6 class="text-white mt-2 mb-0">{{$taiKhoan->countDanhGia}}</h6>
                             </div>
                             <div class="col-4 text-center">
                                 <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"

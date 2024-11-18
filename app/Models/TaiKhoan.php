@@ -49,4 +49,12 @@ class TaiKhoan extends Model
             ->count();
         return $count;
     }
+    public function getCountDanhGiaAttribute()
+    {
+        $averageRating = DanhGia::query()
+            ->where('nguoi_duoc_thue_id', $this->id)
+            ->avg('danh_gia');
+
+        return number_format($averageRating, 1);
+    }
 }
