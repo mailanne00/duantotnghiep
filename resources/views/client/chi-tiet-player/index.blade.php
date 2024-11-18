@@ -102,7 +102,7 @@
                                     <span class="heading">Price</span>
                                     <div class="price">
                                         <div class="price-box">
-                                            <h5>100.000 đ</h5>
+                                            <h5>80.000 đ</h5>
                                         </div>
                                     </div>
                                 </div>
