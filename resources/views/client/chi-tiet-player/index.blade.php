@@ -35,7 +35,7 @@
                 <div class="col-xl-6 col-md-12">
                     <div class="content-right">
                         <div class="sc-item-details">
-                            <h2 class="style2">Nguyễn Như Hoàng Đẹp Trai</h2>
+                            <h2 class="style2">Nguyễn Quý Bền</h2>
                             <div class="meta-item">
                                 <div class="left">
                                     <span class="viewed eye">225</span>
