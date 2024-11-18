@@ -2,14 +2,14 @@
 @section('script-header')
     <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
-@section('title', 'Quản lí đăng tin')
+@section('title', 'Quản lí đánh giá')
 @section('content')
 
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Danh sách đăng tin</h5>
+                    <h5>Danh sách đánh giá</h5>
                 </div>
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
@@ -17,41 +17,47 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên tài khoản</th>
-                                <th>Video</th>
-                                <th>Số lượt thả tym</th>
-                                <th>Nội dung</th>
-                                <th>Ngày tạo</th>
+                                <th>Tên người thuê</th>
+                                <th>Tên người được thuê</th>
+                                <th>Đánh giá</th>
+                                <th>Nội dung đánh giá</th>
+                                <th>Chức năng</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($dangTins as $dangTin)
+                            @foreach($danhGias as $danhGia)
                                 <tr>
                                     <th>
                                         {{$loop->iteration}}
                                     </th>
                                     <td>
-                                        {{$dangTin->taiKhoan->ten}}
+                                        {{$danhGia->nguoiThue->ten}}
                                     </td>
                                     <td>
-                                        <video width="215" height="130" controls>
-                                            <source src="{{ \Illuminate\Support\Facades\Storage::url($dangTin->video) }}" type="video/mp4">
-                                        </video>
+                                        {{$danhGia->nguoiDuocThue->ten}}
                                     </td>
-                                    <td>{{$dangTin->count}}</td>
-                                    <td>{{$dangTin->noi_dung}}</td>
-                                    <td>{{$dangTin->created_at}}</td>
+                                    <td>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $danhGia->danh_gia)
+                                                <a href="#!"><i class="fa fa-star f-14 text-c-yellow"></i></a>
+                                            @else
+                                                <a href="#!"><i class="fa fa-star f-14 text-muted"></i></a>
+                                            @endif
+                                        @endfor
+                                    </td>
+                                    <td>{{$danhGia->noi_dung}}</td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên tài khoản</th>
-                                <th>Video</th>
-                                <th>Số lượt thả tym</th>
-                                <th>Nội dung</th>
-                                <th>Ngày tạo</th>
+                                <th>Tên người thuê</th>
+                                <th>Tên người được thuê</th>
+                                <th>Đánh giá</th>
+                                <th>Nội dung đánh giá</th>
+                                <th>Chức năng</th>
                             </tr>
                             </tfoot>
                         </table>

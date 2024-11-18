@@ -160,7 +160,7 @@
                             <div class="card seo-card">
                                 <div class="card-body seo-statustic">
                                     <i class="fas fa-user text-c-red f-16 mb-2"></i>
-                                    <h5 class="m-0">187</h5>
+                                    <h5 class="m-0">{{$taiKhoan->count}}</h5>
                                     <p class="m-0">Người theo dõi</p>
                                 </div>
                                 <div class="process">
@@ -406,40 +406,7 @@
                 // Create chart instance
                 var chart = am4core.create("process3", am4charts.XYChart);
                 // Add data
-                chart.data = [{
-                    "date": "2018-01-6",
-                    "price": 190
-                }, {
-                    "date": "2018-01-7",
-                    "price": 158
-                }, {
-                    "date": "2018-01-8",
-                    "price": 200
-                }, {
-                    "date": "2018-01-9",
-                    "price": 90
-                }, {
-                    "date": "2018-01-10",
-                    "price": 175
-                }, {
-                    "date": "2018-01-11",
-                    "price": 228
-                }, {
-                    "date": "2018-01-12",
-                    "price": 168
-                }, {
-                    "date": "2018-01-13",
-                    "price": 200
-                }, {
-                    "date": "2018-01-14",
-                    "price": 187
-                }, {
-                    "date": "2018-01-15",
-                    "price": 243
-                }, {
-                    "date": "2018-01-16",
-                    "price": 222
-                }];
+                chart.data = <?php echo $a; ?> ;
 
                 // Create axes
                 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -459,7 +426,7 @@
 
                 // Create series
                 var series = chart.series.push(new am4charts.LineSeries());
-                series.dataFields.valueY = "price";
+                series.dataFields.valueY = "follower";
                 series.dataFields.dateX = "date";
                 series.strokeWidth = 3;
                 series.fillOpacity = 0.1;

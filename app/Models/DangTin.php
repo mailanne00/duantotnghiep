@@ -12,4 +12,12 @@ class DangTin extends Model
     public function taiKhoan() {
         return $this->belongsTo(TaiKhoan::class);
     }
+    public function getCountAttribute()
+    {
+        $count = LuotThichDangTin::query()
+            ->where('dang_tin_id', $this->id)
+            ->get()
+            ->count();
+        return $count;
+    }
 }

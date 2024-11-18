@@ -41,4 +41,12 @@ class TaiKhoan extends Model
             }
         }
     }
+
+    public function getCountAttribute()
+    {
+        $count = NguoiTheoDoi::query()
+            ->where('nguoi_duoc_theo_doi_id', $this->id)
+            ->count();
+        return $count;
+    }
 }
