@@ -23,9 +23,9 @@
                         <div class="row align-items-end">
                             <div class="col"></div>
                             <div class="col"><img
-                                        class="img-radius img-fluid wid-80"
-                                        src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
-                                        alt="User image"></div>
+                                    class="img-radius img-fluid wid-80"
+                                    src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
+                                    alt="User image"></div>
                             <div class="col"></div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             <div class="col-4 text-center">
                                 <i class="fas fa-star text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
                                    data-bs-title="Đánh giá"></i>
-                                <h6 class="text-white mt-2 mb-0">4.7</h6>
+                                <h6 class="text-white mt-2 mb-0">{{$taiKhoan->countDanhGia}}</h6>
                             </div>
                             <div class="col-4 text-center">
                                 <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -182,25 +182,29 @@
                                         aria-expanded="false">
                                     <i class="feather icon-more-horizontal"></i>
                                 </button>
-                                <ul
-                                        class="list-unstyled card-option dropdown-menu dropdown-menu-end">
-                                    <li class="dropdown-item full-card"><a
-                                                href="#!"><span><i
-                                                        class="feather icon-maximize"></i>
-                                                                            maximize</span><span style="display:none"><i
-                                                        class="feather icon-minimize"></i>
-                                                                            Restore</span></a></li>
-                                    <li class="dropdown-item minimize-card"><a
-                                                href="#!"><span><i
-                                                        class="feather icon-minus"></i>
-                                                                            collapse</span><span style="display:none"><i
-                                                        class="feather icon-plus"></i>
-                                                                            expand</span></a></li>
-                                    <li class="dropdown-item reload-card"><a href="#!"><i
-                                                    class="feather icon-refresh-cw"></i>
-                                            reload</a></li>
-                                    <li class="dropdown-item close-card"><a href="#!"><i
-                                                    class="feather icon-trash"></i> remove</a>
+                                <ul class="list-unstyled card-option dropdown-menu dropdown-menu-end">
+                                    <li class="dropdown-item full-card">
+                                        <a href="#!">
+                                            <span><i class="feather icon-maximize"></i>maximize</span>
+                                            <span style="display:none"><i
+                                                    class="feather icon-minimize"></i>Restore</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item minimize-card">
+                                        <a href="#!">
+                                            <span><i class="feather icon-minus"></i>collapse</span>
+                                            <span style="display:none"><i class="feather icon-plus"></i>expand</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item reload-card">
+                                        <a href="#!">
+                                            <i class="feather icon-refresh-cw"></i>reload
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item close-card">
+                                        <a href="#!">
+                                            <i class="feather icon-trash"></i> remove
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -210,79 +214,35 @@
                         <div class="row align-items-center justify-content-center m-b-20">
                             <div class="col-6">
                                 <h2
-                                        class="f-w-300 d-flex align-items-center float-start m-0">
-                                    4.7 <i
-                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                    class="f-w-300 d-flex align-items-center float-start m-0">
+                                    {{$taiKhoan->countDanhGia}} <i
+                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
                                 </h2>
                             </div>
                             <div class="col-6"></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-xl-12">
-                                <h6 class="align-items-center float-start"><i
-                                            class="fas fa-star f-10 m-r-10 text-c-yellow"></i>5
-                                </h6>
-                                <h6 class="align-items-center float-end">384</h6>
-                                <div class="progress m-t-30 m-b-20" style="height: 6px;">
-                                    <div class="progress-bar progress-primary"
-                                         role="progressbar" style="width: 70%;"
-                                         aria-valuenow="70" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <h6 class="align-items-center float-start"><i
-                                            class="fas fa-star f-10 m-r-10 text-c-yellow"></i>4
-                                </h6>
-                                <h6 class="align-items-center float-end">145</h6>
-                                <div class="progress m-t-30  m-b-15" style="height: 6px;">
-                                    <div class="progress-bar progress-primary"
-                                         role="progressbar" style="width: 35%;"
-                                         aria-valuenow="35" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <h6 class="align-items-center float-start"><i
-                                            class="fas fa-star f-10 m-r-10 text-c-yellow"></i>3
-                                </h6>
-                                <h6 class="align-items-center float-end">24</h6>
-                                <div class="progress m-t-30  m-b-15" style="height: 6px;">
-                                    <div class="progress-bar progress-primary"
-                                         role="progressbar" style="width: 25%;"
-                                         aria-valuenow="25" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12">
-                                <h6 class="align-items-center float-start"><i
-                                            class="fas fa-star f-10 m-r-10 text-c-yellow"></i>2
-                                </h6>
-                                <h6 class="align-items-center float-end">1</h6>
-                                <div class="progress m-t-30  m-b-15" style="height: 6px;">
-                                    <div class="progress-bar progress-primary"
-                                         role="progressbar" style="width: 10%;"
-                                         aria-valuenow="10" aria-valuemin="0"
-                                         aria-valuemax="100">
-
+                            @foreach([5, 4, 3, 2, 1] as $star)
+                                <div class="col-xl-12">
+                                    <h6 class="align-items-center float-start">
+                                        <i class="fas fa-star f-10 m-r-10 text-c-yellow"></i>{{ $star }}
+                                    </h6>
+                                    <h6 class="align-items-center float-end rating-summary">{{ $taiKhoan->raiting_count["{$star}_sao"] }}</h6>
+                                    <div class="progress m-t-30 m-b-20" style="height: 6px;">
+                                        @php
+                                            $totalRatings = array_sum($taiKhoan->raiting_count);
+                                            $percentage = $totalRatings > 0 ? ($taiKhoan->raiting_count["{$star}_sao"] / $totalRatings) * 100 : 0;
+                                        @endphp
+                                        <div class="progress-bar progress-primary"
+                                             role="progressbar"
+                                             style="width: {{ $percentage }}%;"
+                                             aria-valuenow="{{ $percentage }}"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-12">
-                                <h6 class="align-items-center float-start"><i
-                                            class="fas fa-star f-10 m-r-10 text-c-yellow"></i>1
-                                </h6>
-                                <h6 class="align-items-center float-end">0</h6>
-                                <div class="progress m-t-30  m-b-0" style="height: 6px;">
-                                    <div class="progress-bar" role="progressbar"
-                                         style="width:0;" aria-valuenow="0" aria-valuemin="0"
-                                         aria-valuemax="100"></div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -293,11 +253,11 @@
                         <div class="row d-flex align-items-center">
                             <div class="col-6 p-r-0">
                                                         <span class="d-block mb-1"><i class="fas fa-circle f-10 m-r-5"
-                                                                                      style="color:#a367dc;"></i>Thành công [56]</span>
+                                                                                      style="color:#a367dc;"></i>Thành công [{{ isset($taiKhoan->rent['1']) ? $taiKhoan->rent['1'] : 0 }}]</span>
                                 <span class="d-block mb-1"><i class="fas fa-circle f-10 m-r-5"
-                                                              style="color:#67b7dc;"></i>Đang kiểm duyệt [9]</span>
+                                                              style="color:#67b7dc;"></i>Đang kiểm duyệt [{{ isset($taiKhoan->rent['0']) ? $taiKhoan->rent['0'] : 0 }}]</span>
                                 <span class="d-block"><i class="fas fa-circle f-10 m-r-5"
-                                                         style="color:#6771dc;"></i>Từ chối [12]</span>
+                                                         style="color:#6771dc;"></i>Từ chối [{{ isset($taiKhoan->rent['2']) ? $taiKhoan->rent['2'] : 0 }}]</span>
                             </div>
                             <div class="col-6">
                                 <div id="device-chart" style="height:140px;"></div>
@@ -316,9 +276,9 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $(function() {
+            $(function () {
                 // Themes begin
                 am4core.useTheme(am4themes_animated);
                 // Themes end
@@ -398,7 +358,7 @@
                 chart.padding(0, 0, 0, 0);
             });
 
-            $(function() {
+            $(function () {
                 // Themes begin
                 am4core.useTheme(am4themes_animated);
                 // Themes end
@@ -446,25 +406,27 @@
             });
 
 
-            $(function() {
+            $(function () {
                 // Themes begin am4core.useTheme(am4themes_animated);
                 // Themes end
                 // Create chart instance
                 var chart = am4core.create("device-chart", am4charts.PieChart);
                 // Add data
-                chart.data = [{
-                    "sector": "Thành công",
-                    "size": 56
-                },
+                var rentData = [
                     {
-                        "sector": "Từ chối",
-                        "size": 12
+                        "sector": "Thành công",
+                        "size": <?php echo isset ($taiKhoan->rent['1']) ? ($taiKhoan->rent['1']) : 0; ?>
                     },
                     {
-                        "sector": "Đang kểm duyệt",
-                        "size": 9
+                        "sector": "Từ chối",
+                        "size": <?php echo isset ($taiKhoan->rent['2']) ? ($taiKhoan->rent['2']) : 0; ?>
+                    },
+                    {
+                        "sector": "Đang kiểm duyệt",
+                        "size": <?php echo isset ($taiKhoan->rent['0']) ? ($taiKhoan->rent['0']) : 0; ?>
                     }
                 ];
+                chart.data = rentData;
                 // Add label
                 chart.innerRadius = 30;
 
