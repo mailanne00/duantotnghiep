@@ -36,7 +36,15 @@
                                     <td>
                                         {{$danhGia->nguoiDuocThue->ten}}
                                     </td>
-                                    <td>{{$danhGia->danh_gia}}</td>
+                                    <td>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $danhGia->danh_gia)
+                                                <a href="#!"><i class="fa fa-star f-14 text-c-yellow"></i></a>
+                                            @else
+                                                <a href="#!"><i class="fa fa-star f-14 text-muted"></i></a>
+                                            @endif
+                                        @endfor
+                                    </td>
                                     <td>{{$danhGia->noi_dung}}</td>
                                 </tr>
                             @endforeach
