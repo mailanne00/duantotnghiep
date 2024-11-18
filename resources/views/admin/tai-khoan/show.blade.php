@@ -253,11 +253,11 @@
                         <div class="row d-flex align-items-center">
                             <div class="col-6 p-r-0">
                                                         <span class="d-block mb-1"><i class="fas fa-circle f-10 m-r-5"
-                                                                                      style="color:#a367dc;"></i>Thành công [56]</span>
+                                                                                      style="color:#a367dc;"></i>Thành công [{{ isset($taiKhoan->rent['1']) ? $taiKhoan->rent['1'] : 0 }}]</span>
                                 <span class="d-block mb-1"><i class="fas fa-circle f-10 m-r-5"
-                                                              style="color:#67b7dc;"></i>Đang kiểm duyệt [9]</span>
+                                                              style="color:#67b7dc;"></i>Đang kiểm duyệt [{{ isset($taiKhoan->rent['0']) ? $taiKhoan->rent['0'] : 0 }}]</span>
                                 <span class="d-block"><i class="fas fa-circle f-10 m-r-5"
-                                                         style="color:#6771dc;"></i>Từ chối [12]</span>
+                                                         style="color:#6771dc;"></i>Từ chối [{{ isset($taiKhoan->rent['2']) ? $taiKhoan->rent['2'] : 0 }}]</span>
                             </div>
                             <div class="col-6">
                                 <div id="device-chart" style="height:140px;"></div>
@@ -412,19 +412,21 @@
                 // Create chart instance
                 var chart = am4core.create("device-chart", am4charts.PieChart);
                 // Add data
-                chart.data = [{
-                    "sector": "Thành công",
-                    "size": 56
-                },
+                var rentData = [
                     {
-                        "sector": "Từ chối",
-                        "size": 12
+                        "sector": "Thành công",
+                        "size": <?php echo isset ($taiKhoan->rent['1']) ? ($taiKhoan->rent['1']) : 0; ?>
                     },
                     {
-                        "sector": "Đang kểm duyệt",
-                        "size": 9
+                        "sector": "Từ chối",
+                        "size": <?php echo isset ($taiKhoan->rent['2']) ? ($taiKhoan->rent['2']) : 0; ?>
+                    },
+                    {
+                        "sector": "Đang kiểm duyệt",
+                        "size": <?php echo isset ($taiKhoan->rent['0']) ? ($taiKhoan->rent['0']) : 0; ?>
                     }
                 ];
+                chart.data = rentData;
                 // Add label
                 chart.innerRadius = 30;
 

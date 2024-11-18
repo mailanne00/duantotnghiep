@@ -79,5 +79,34 @@ class TaiKhoan extends Model
         return $ratingSummary;
     }
 
+    public function getRentAttribute()
+    {
+        $rentCounts = LichSuThue::query()
+            ->where('nguoi_duoc_thue', $this->id)
+            ->select('trang_thai', DB::raw('count(*) as count'))
+            ->groupBy('trang_thai')
+            ->get();
 
+        $rentStatus = [
+            '0' => 0,
+            '1' => 0,
+            '2' => 0,
+        ];
+
+        foreach ($rentCounts as $rentCount) {
+            switch ($rentCount->trang_thai) {
+                case 0:
+                    $rentStatus['0'] = $rentCount->count;
+                    break;
+                case 1:
+                    $rentStatus['1'] = $rentCount->count;
+                    break;
+                case 2:
+                    $rentStatus['2'] = $rentCount->count;
+                    break;
+            }
+        }
+
+        return $rentStatus;
+    }
 }
