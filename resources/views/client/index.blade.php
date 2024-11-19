@@ -114,7 +114,7 @@
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-22">
                             Hot Players</h2>
-                        <a href="explore-3.html" class="exp style2">Xem tất cả</a>
+                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -126,7 +126,7 @@
                                         <div class="sc-card-product menu_card style-h7">
 
                                             <div class="card-media">
-                                                <a href="{{ route('client.chitietplayer') }}"><img
+                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                         src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
                                                         alt="Image"></a>
                                                 <div class="featured-countdown">
@@ -136,18 +136,20 @@
                                                 </div>
                                                 <div class="button-place-bid">
                                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
+                                                            Bid</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
-                                                <h5><a href="{{ route('client.chitietplayer') }}">{{ $value->ten }}</a>
+                                                <h5><a
+                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
                                                 </h5>
                                             </div>
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
                                                         <span>{{ $value->bien_danh }}</span>
-                                                        <span class="pricing">90.000 VNĐ</span>
+                                                        <span class="pricing">4.89 ETH</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
@@ -167,7 +169,7 @@
         </div>
     </section>
 
-    <!-- Danh mục -->
+    <!-- Danh Mục -->
     <section class="tf-section category">
         <div class="themesflat-container">
             <div class="row">
@@ -205,15 +207,15 @@
         </div>
     </section>
 
-    <!-- Top Seller -->
+    <!-- Top Player -->
     <section class="tf-section top-seller home7 bg-style">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-23">
-                            Top Seller</h2>
-                        <a href="explore-3.html" class="exp style2 see-all">SEE ALL</a>
+                            Top Player</h2>
+                        <a href="explore-3.html" class="exp style2 see-all">XEM TẤT CẢ</a>
                     </div>
                     <div class="flat-tabs seller-tab style2">
                         <ul class="menu-tab">
@@ -887,15 +889,15 @@
         </div>
     </section>
 
-    <!-- Players -->
+    <!-- Top Picks -->
     <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
-                            Players</h2>
-                        <a href="explore-3.html" class="exp style2">EXPLORE MORE</a>
+                            Top Picks</h2>
+                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -922,12 +924,12 @@
                                             stroke="white" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <span class="inner">Danh Mục</span>
+                                    <span class="inner">Category</span>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">
                                         <div class='sort-filter active'>
-                                            <span><img src="assets/images/icon/menu.png" alt="" /> Tất cả</span>
+                                            <span><img src="assets/images/icon/menu.png" alt="" /> All</span>
                                             <i class="fal fa-check"></i>
                                         </div>
                                     </a>
@@ -1138,7 +1140,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-46.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1147,7 +1149,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1178,7 +1181,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-37.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1187,7 +1190,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1218,7 +1222,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-38.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1227,7 +1231,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1258,7 +1263,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-39.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1267,7 +1272,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1298,7 +1304,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-40.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1307,7 +1313,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1338,7 +1345,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-41.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1347,7 +1354,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1378,7 +1386,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-42.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1387,7 +1395,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1418,7 +1427,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-43.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1427,7 +1436,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1458,7 +1468,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-44.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1467,7 +1477,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1498,7 +1509,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-45.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1507,7 +1518,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1532,6 +1544,7 @@
             </div>
         </div>
     </section>
+
     <!-- Creat NFT -->
     <section class="tf-box-icon live-auctions tf-section style7 bg-style">
         <div class="themesflat-container">
@@ -1638,6 +1651,7 @@
             </div>
         </div>
     </section>
+
     <!-- Popular Collection -->
     <section class="tf-section live-auctions style4 home4 live-auctions-style7">
         <div class="themesflat-container">
@@ -1843,5 +1857,3 @@
         </div>
     </section>
 @endsection
-
-
