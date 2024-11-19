@@ -107,7 +107,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Biệt danh</h4>
-                                        <input type="text" placeholder="Tên đăng nhập"
+                                        <input type="text" placeholder="Biệt danh"
                                             class="form-control text-white bg-dark" name="biet_danh"
                                             value="{{ old('biet_danh', $user->biet_danh) }}" required>
 
@@ -135,6 +135,7 @@
                                                 @endif
                                             @endforeach
                                         </div>
+
                                         <div id="categoryList">
                                             @foreach ($categories as $category)
                                                 @if (!in_array($category->id, $selectedCategories))
@@ -198,13 +199,14 @@
             // Cập nhật giá trị của input ẩn
             function updateSelectedCategories() {
                 selectedCategoriesInput.value = selectedCategories.join(
-                ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
+                    ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
             }
 
             // Hàm hiển thị lại danh mục trong categoryList nếu không có trong selectedCategories
             function updateCategoryList() {
-                const existingCategoryButtons = document.querySelectorAll('.category-btn');
-                existingCategoryButtons.forEach(button => {
+                // Lọc các game đã chọn và ẩn chúng trong categoryList
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach(button => {
                     const categoryId = button.getAttribute('data-id');
                     // Nếu danh mục chưa được chọn thì hiển thị lại nó trong categoryList
                     if (!selectedCategories.includes(categoryId)) {
