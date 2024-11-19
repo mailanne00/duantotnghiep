@@ -28,8 +28,6 @@ Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
 Route::get('/chi-tiet-player/{id}', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
 
-Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
-
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
 Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
@@ -46,3 +44,6 @@ Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe'
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
+
+Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
+Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');

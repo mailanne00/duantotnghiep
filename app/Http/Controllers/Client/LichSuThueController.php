@@ -13,7 +13,15 @@ class LichSuThueController extends Controller
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
             ->get();
-        
+
         return view('client.lich-su-thue.index', compact('users'));
+    }
+
+    public function lichSuDuocThue()
+    {
+        $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+            ->get();
+
+        return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
 }
