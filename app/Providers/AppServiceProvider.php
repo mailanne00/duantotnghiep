@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\DanhMuc;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (Auth::check()) {
+            View::share('authUser', Auth::user());
+        }
+
+        // Chia sẻ danh mục
+        View::share('danhMucs', DanhMuc::take(5)->get());
     }
 }

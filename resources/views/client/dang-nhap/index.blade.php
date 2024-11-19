@@ -54,12 +54,19 @@
                             <h5>Or login with email</h5>
                         </div>
 
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <div class="form-inner">
-                            <form action="#" id="contactform">
-                                <input id="name" name="name" tabindex="1" value="" aria-required="true"
-                                    required type="text" placeholder="Your Full Name">
-                                <input id="email" name="email" tabindex="2" value="" aria-required="true"
-                                    type="email" placeholder="Your Email Address" required>
+                            <form action="{{ route('dangnhap.store') }}" method="POST" id="contactform">
+                                @csrf
+                                <input id="name" name="email" type="email" tabindex="1" value=""
+                                    aria-required="true" required type="text" placeholder="Email">
+                                <input id="email" name="pass" type="password" tabindex="2" value=""
+                                    aria-required="true" type="email" placeholder="Mật khẩu" required>
                                 <div class="row-form style-1">
                                     <label>Remember me
                                         <input type="checkbox">
@@ -68,7 +75,7 @@
                                     <a href="#" class="forgot-pass">Forgot Password ?</a>
                                 </div>
 
-                                <button class="submit mb-5">Login</button>
+                                <button type="submit" class="submit mb-5">Login</button>
                             </form>
                         </div>
 

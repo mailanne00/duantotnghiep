@@ -25,10 +25,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/chi-tiet-player', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
+
+
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
+Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
+Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
+
+
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
+Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
+
+
+
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
+Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
