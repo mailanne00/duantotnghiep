@@ -14,7 +14,6 @@ class LoginController extends Controller
     {
         return view('client.dang-nhap.index');
     }
-
     // Xử lý đăng nhập
     public function store(Request $request)
     {
