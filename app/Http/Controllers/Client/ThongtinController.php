@@ -73,6 +73,7 @@ class ThongtinController extends Controller
         $user->dia_chi = $request->input('dia_chi');
         $user->sdt = $request->input('sdt');
         $user->anh_dai_dien = $dai_dien;
+        $user->biet_danh = $request->input('biet_danh');
         $user->selected_categories = $request->input('selected_categories');
 
 
