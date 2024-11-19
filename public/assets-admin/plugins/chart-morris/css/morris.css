@@ -1,6 +1,6 @@
 .morris-hover {
-    position: absolute;
-    z-index: 1000
+    position: absolute !important;
+    z-index: 1000 !important;
 }
 
 .morris-hover.morris-default-style {

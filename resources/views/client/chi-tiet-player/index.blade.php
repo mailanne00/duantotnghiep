@@ -7,13 +7,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-title-heading mg-bt-12">
-                        <h1 class="heading text-center">Item Details 1</h1>
+                        <h1 class="heading text-center">{{ $user->ten }}</h1>
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
                             <li><a href="index-2.html">Home</a></li>
-                            <li><a href="#">Explore</a></li>
-                            <li>Item Details 1</li>
+                            <li>{{ $user->ten }}</li>
                         </ul>
                     </div>
                 </div>
@@ -28,14 +27,15 @@
                 <div class="col-xl-6 col-md-12">
                     <div class="content-left">
                         <div class="media">
-                            <img src="assets/images/box-item/images-item-details.jpg" alt="">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}" alt=""
+                                width="1000" height="400">
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-12">
                     <div class="content-right">
                         <div class="sc-item-details">
-                            <h2 class="style2">Nguyễn Quý Bền</h2>
+                            <h2 class="style2">{{ $user->ten }}</h2>
                             <div class="meta-item">
                                 <div class="left">
                                     <span class="viewed eye">225</span>
@@ -48,51 +48,23 @@
                                 </div>
                             </div>
                             <div class="client-infor sc-card-product">
-                                <div class="meta-info">
-                                    <div class="author">
-                                        <div class="avatar">
-                                            <img src="assets/images/avatar/avt-8.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <h6> <a href="author02.html">Liên Quân</a> </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="meta-info">
-                                    <div class="author">
-                                        <div class="avatar">
-                                            <img src="assets/images/avatar/avt-2.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <h6> <a href="author02.html">Liên Minh Huyền Thoại</a> </h6>
+                                @foreach ($selectedCategories as $category)
+                                    <div class="meta-info">
+                                        <div class="author">
+                                            <div class="avatar">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
+                                                    alt="{{ $category->ten }}">
+                                            </div>
+                                            <div class="info">
+                                                <h6>
+                                                    <a href="#">{{ $category->ten }}</a>
+                                                </h6>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                @endforeach
                             </div>
-                            <div class="client-infor sc-card-product">
-                                <div class="meta-info">
-                                    <div class="author">
-                                        <div class="avatar">
-                                            <img src="assets/images/avatar/avt-8.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <h6> <a href="author02.html">Valorate</a> </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="meta-info">
-                                    <div class="author">
-                                        <div class="avatar">
-                                            <img src="assets/images/avatar/avt-2.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <h6> <a href="author02.html">CSGO</a> </h6>
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
                             <p>Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
                                 Facilisi lobortisal morbi fringilla urna amet sed ipsum vitae ipsum malesuada.
                                 Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
@@ -357,314 +329,52 @@
                 <div class="col-md-12">
                     <div class="swiper-container show-shadow carousel pad-t-24 auctions">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-11.jpg" alt="Image">
+                            @foreach ($users as $value)
+                                <div class="swiper-slide">
+                                    <div class="slider-item">
+                                        <div class="sc-card-product">
+                                            <div class="card-media">
+                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
+                                                        alt="Image"></a>
+                                                <button class="wishlist-button heart"><span class="number-like">
+                                                        100</span></button>
+                                                <div class="featured-countdown">
+                                                    <span class="slogan"></span>
+                                                    <span class="js-countdown" data-timer="516400"
+                                                        data-labels=" :  ,  : , : , "></span>
                                                 </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">SalvadorDali
-                                                        </a> </h6>
+                                                <div class="button-place-bid">
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
+                                                            Bid</span></a>
                                                 </div>
                                             </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
+                                            <div class="card-title">
+                                                <h5><a
+                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
+                                                </h5>
+                                                <div class="tags">bsc</div>
+                                            </div>
+                                            <div class="meta-info">
+
+
                                                 <h5> 4.89 ETH</h5>
+
                                             </div>
                                         </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media active">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-10.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    220</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="81640"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5 class="style2"><a href="{{ route('client.chitietplayer') }}">"Triumphant
-                                                    Awakening
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-12.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Trista Francis</a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-11.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    90</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="316400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5 class="style2"><a href="{{ route('client.chitietplayer') }}">"Living Vase
-                                                    01 by Lanza
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-13.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Freddie Carpenter</a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-21.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    145</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="716400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5 class="style2"><a href="{{ route('client.chitietplayer') }}">"Flame Dress'
-                                                    by Balmain
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-14.jpg" alt="">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-11.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">SalvadorDali
-                                                        </a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-10.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    220</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="81640"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5 class="style2"><a href="{{ route('client.chitietplayer') }}">"Triumphant
-                                                    Awakening
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-12.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Trista Francis</a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product">
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-11.jpg" alt="Image"></a>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    90</span></button>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="316400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5 class="style2"><a href="{{ route('client.chitietplayer') }}">"Living Vase
-                                                    01 by Lanza
-                                                    Contemplates "</a></h5>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-13.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Freddie Carpenter</a> </h6>
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                <span>Current Bid</span>
-                                                <h5> 4.89 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
+                                    </div><!-- item-->
+                                </div>
+                            @endforeach
+
                         </div>
-                        <div class="swiper-pagination mg-t-12"></div>
-                        <div class="swiper-button-next btn-slide-next active"></div>
-                        <div class="swiper-button-prev btn-slide-prev"></div>
                     </div>
+                    <div class="swiper-pagination mg-t-12"></div>
+                    <div class="swiper-button-next btn-slide-next active"></div>
+                    <div class="swiper-button-prev btn-slide-prev"></div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection

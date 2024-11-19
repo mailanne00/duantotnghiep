@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
-Route::get('/chi-tiet-player', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
+Route::get('/chi-tiet-player/{id}', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
 
 
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
