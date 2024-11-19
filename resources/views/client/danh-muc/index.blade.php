@@ -67,7 +67,7 @@
                             <div class="content-inner">
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-3.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -77,7 +77,8 @@
                                         <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates Yorick's
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
+                                                Yorick's
                                                 SalvadorDali"</a></h5>
                                     </div>
                                     <div class="meta-info">
@@ -105,13 +106,14 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-4.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -137,7 +139,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-2.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -147,7 +149,8 @@
                                         <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -174,7 +177,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-7.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -185,7 +188,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -212,7 +216,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -223,7 +227,7 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
                                                 Yorick's...</a></h5>
                                     </div>
                                     <div class="meta-info">
@@ -251,7 +255,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-9.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <div class="button-place-bid">
@@ -263,7 +267,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -291,13 +296,14 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-6.jpg" alt="Image"></a>
                                         <button class="wishlist-button heart"><span class="number-like">
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -323,7 +329,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-11.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -334,7 +340,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -364,14 +371,15 @@
                             <div class="content-inner">
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-4.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <button class="wishlist-button heart"><span class="number-like">
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -398,7 +406,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-2.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -409,7 +417,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -436,7 +445,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -447,7 +456,7 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
                                                 Yorick's...</a></h5>
                                     </div>
                                     <div class="meta-info">
@@ -475,7 +484,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-9.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <div class="button-place-bid">
@@ -487,7 +496,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -515,13 +525,14 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-6.jpg" alt="Image"></a>
                                         <button class="wishlist-button heart"><span class="number-like">
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -547,7 +558,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-11.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -558,7 +569,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -588,7 +600,7 @@
                             <div class="content-inner">
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-3.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -599,7 +611,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates Yorick's
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
+                                                Yorick's
                                                 SalvadorDali"</a>
                                         </h5>
                                     </div>
@@ -628,7 +641,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-7.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -639,7 +652,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -666,7 +680,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -677,7 +691,7 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
                                                 Yorick's...</a></h5>
                                     </div>
                                     <div class="meta-info">
@@ -705,7 +719,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-9.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <div class="button-place-bid">
@@ -717,7 +731,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -748,14 +763,15 @@
                             <div class="content-inner">
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-4.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <button class="wishlist-button heart"><span class="number-like">
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -782,7 +798,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-2.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -793,7 +809,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -820,7 +837,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-7.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -831,7 +848,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -858,7 +876,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item8.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -869,7 +887,7 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
                                                 Yorick's...</a></h5>
                                     </div>
                                     <div class="meta-info">
@@ -897,7 +915,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-9.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <div class="button-place-bid">
@@ -909,7 +927,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -937,13 +956,14 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-6.jpg" alt="Image"></a>
                                         <button class="wishlist-button heart"><span class="number-like">
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -972,7 +992,7 @@
                             <div class="content-inner">
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-3.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -983,7 +1003,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Contemplates Yorick's
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Hamlet Contemplates
+                                                Yorick's
                                                 SalvadorDali"</a>
                                         </h5>
                                     </div>
@@ -1012,7 +1033,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-2.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1023,7 +1044,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"CyberPrimal 042 LAN"</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"CyberPrimal 042
+                                                LAN"</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
@@ -1050,7 +1072,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/card-item-9.jpg" alt="Image"></a>
                                         <div class="coming-soon">coming soon</div>
                                         <div class="button-place-bid">
@@ -1062,7 +1084,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Space babe - Night 2/25"</a>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Space babe - Night
+                                                2/25"</a>
                                         </h5>
                                     </div>
                                     <div class="meta-info">
@@ -1090,7 +1113,7 @@
                                 </div>
                                 <div class="sc-card-product explode style2 mg-bt">
                                     <div class="card-media">
-                                        <a href="{{ route('client.chitietplayer') }}"><img
+                                        <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                                 src="assets/images/box-item/image-box-11.jpg" alt="Image"></a>
                                         <div class="button-place-bid">
                                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1101,7 +1124,8 @@
                                                 100</span></button>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a href="{{ route('client.chitietplayer') }}">"Crypto Egg Stamp #5</a></h5>
+                                        <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Crypto Egg Stamp
+                                                #5</a></h5>
                                     </div>
                                     <div class="meta-info">
                                         <div class="author">
