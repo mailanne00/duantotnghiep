@@ -113,8 +113,8 @@
                 <div class="col-md-12">
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-22">
-                            Live Auctions</h2>
-                        <a href="explore-3.html" class="exp style2">EXPLORE MORE</a>
+                            Hot Players</h2>
+                        <a href="explore-3.html" class="exp style2">Xem tất cả</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -136,8 +136,7 @@
                                                 </div>
                                                 <div class="button-place-bid">
                                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                            Bid</span></a>
+                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
@@ -148,7 +147,7 @@
                                                 <div class="author">
                                                     <div class="info">
                                                         <span>{{ $value->bien_danh }}</span>
-                                                        <span class="pricing">4.89 ETH</span>
+                                                        <span class="pricing">90.000 VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
@@ -168,6 +167,7 @@
         </div>
     </section>
 
+    <!-- Danh mục -->
     <section class="tf-section category">
         <div class="themesflat-container">
             <div class="row">
@@ -205,6 +205,7 @@
         </div>
     </section>
 
+    <!-- Top Seller -->
     <section class="tf-section top-seller home7 bg-style">
         <div class="themesflat-container">
             <div class="row">
@@ -886,6 +887,7 @@
         </div>
     </section>
 
+    <!-- Players -->
     <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
         <div class="themesflat-container">
             <div class="row">
@@ -1530,7 +1532,7 @@
             </div>
         </div>
     </section>
-
+    <!-- Creat NFT -->
     <section class="tf-box-icon live-auctions tf-section style7 bg-style">
         <div class="themesflat-container">
             <div class="row">
@@ -1636,7 +1638,7 @@
             </div>
         </div>
     </section>
-
+    <!-- Popular Collection -->
     <section class="tf-section live-auctions style4 home4 live-auctions-style7">
         <div class="themesflat-container">
             <div class="row">
@@ -1840,4 +1842,62 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('modal-popup-bid')
+<div class="modal fade popup" id="popup_bid_success" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3 class="text-center">Your Bidding
+                            Successfuly Added</h3>
+                        <p class="text-center">your bid <span class="price color-popup">(4ETH) </span> has been
+                            listing to our database</p>
+                        <a href class="btn btn-primary"> Watch the listings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3>Thuê người chơi</h3>
+                        <p class="text-center">Người chơi tên là: <span class="price color-popup">{{ $value -> ten }}</span>
+                        </p>
+
+                        <p>Số giờ chơi
+                        </p>
+                        <input type="number" class="form-control" placeholder="0.00 ETH" min="1"
+                            max="24" step="1">
+                        <p>Nội Dung
+                        </p>
+                        <textarea class="form-control quantity styled-textarea" rows="4" placeholder="Nhập nội dung..."></textarea>
+                        <div class="hr"></div>
+                        <div class="d-flex justify-content-between">
+                            <p> Tổng chi phí:</p>
+                            <p class="text-right price color-popup"> 100$ </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Số dữ của bạn:</p>
+                            <p class="text-right price color-popup"> 2000$ </p>
+                        </div>
+                        {{-- <div class="d-flex justify-content-between">
+                            <p> Total bid amount:</p>
+                            <p class="text-right price color-popup"> 4 ETH </p>
+                        </div> --}}
+                        <a href="#" class="btn btn-primary" data-toggle="modal"
+                            data-target="#popup_bid_success" data-dismiss="modal" aria-label="Close"> Thuê</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
