@@ -503,156 +503,29 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-live-auctions">
-                        <h2 class="tf-title pb-39">All Catergories</h2>
+                        <h2 class="tf-title pb-39">Danh Mục</h2>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="swiper-container carousel11">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category1.jpg" alt="Image">
+                            @foreach ($danhMucs as $value)
+                                <div class="swiper-slide">
+                                    <div class="slider-item">
+                                        <div class="sc-categoty">
+                                            <div class="card-media">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($value->anh) }}"
+                                                    alt="Image" height="200px">
+                                            </div>
+                                            <div class="card-title">
+                                                <h4>{{ $value->ten }}</h4>
+                                            </div>
                                         </div>
-                                        <div class="card-title">
-                                            <h4>Digital Art</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category2.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Style</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category3.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Music</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category4.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Domain Name</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category5.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Sports</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category6.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Utilities</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category1.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Digital Art</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category2.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Style</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category3.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Music</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category4.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Domain Name</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category5.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Sports</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category6.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Utilities</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
+                                    </div><!-- item-->
+                                </div>
+                            @endforeach
+
+
                         </div>
                     </div>
                     <div class="swiper-button-next btn-slide-next active"></div>
@@ -1409,9 +1282,8 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path
@@ -1443,9 +1315,8 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="18" height="22" viewBox="0 0 18 22" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path

@@ -55,13 +55,14 @@
                         </div>
 
                         <div class="form-inner">
-                            <form action="#" id="contactform">
-                                <input id="name" name="name" tabindex="1" value="" aria-required="true"
+                            <form action="{{ route('dangky.store') }}" method="POST" id="contactform">
+                                @csrf
+                                <input id="ten" name="ten" tabindex="1" value="" aria-required="true"
                                     required type="text" placeholder="Your Full Name">
                                 <input id="email" name="email" tabindex="2" value="" aria-required="true"
                                     type="email" placeholder="Your Email Address" required>
-                                <input id="pass" name="pass" tabindex="3" value="" aria-required="true"
-                                    type="text" placeholder="Set Your Password" required>
+                                <input id="pass" name="password" tabindex="3" value="" aria-required="true"
+                                    type="password" placeholder="Set Your Password" required>
                                 <div class="row-form style-1">
                                     <label>Remember me
                                         <input type="checkbox">
@@ -69,9 +70,9 @@
                                     </label>
                                     <a href="#" class="forgot-pass">Forgot Password ?</a>
                                 </div>
-
-                                <button class="submit">Login</button>
+                                <button class="submit" type="submit">Đăng ký</button>
                             </form>
+
                         </div>
 
                     </div>
