@@ -11,4 +11,6 @@ class LoginController extends Controller
 
         return view('client.dang-nhap.index');
     }
+
+    
 }

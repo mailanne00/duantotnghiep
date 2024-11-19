@@ -1349,7 +1349,7 @@
                 <div class="col-md-12">
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
-                            Top Picks</h2>
+                            Players</h2>
                         <a href="explore-3.html" class="exp style2">EXPLORE MORE</a>
                     </div>
                 </div>
@@ -1377,12 +1377,12 @@
                                             stroke="white" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <span class="inner">Category</span>
+                                    <span class="inner">Danh Mục</span>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">
                                         <div class='sort-filter active'>
-                                            <span><img src="assets/images/icon/menu.png" alt="" /> All</span>
+                                            <span><img src="assets/images/icon/menu.png" alt="" /> Tất cả</span>
                                             <i class="fal fa-check"></i>
                                         </div>
                                     </a>
