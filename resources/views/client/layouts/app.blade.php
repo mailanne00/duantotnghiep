@@ -378,7 +378,8 @@
                                                             <div class="divider"></div>
                                                             <div class="hr"></div>
                                                             <div class="links mt-20">
-                                                                <a href="{{ route('client.thongtincanhan') }}">
+                                                                <a
+                                                                    href="{{ route('client.thongtincanhan', Auth::user()->id) }}">
                                                                     <svg width="20" height="20"
                                                                         viewBox="0 0 20 20" fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
