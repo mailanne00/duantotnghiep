@@ -87,6 +87,10 @@
                                                 <a href="{{ route('client.lienhe') }}">Liên hệ</a>
 
                                             </li>
+                                            <li class="">
+                                                <a href="{{ route('client.lichSuThue') }}">Lịch sử thuê</a>
+
+                                            </li>
                                         </ul>
                                     </nav><!-- /#main-nav -->
                                     <div class="flat-search-btn flex">
@@ -590,62 +594,9 @@
         <!-- /#page -->
 
         <!-- Modal Popup Bid -->
-        <div class="modal fade popup" id="popup_bid_success" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <div class="modal-body space-y-20 pd-40">
-                        <h3 class="text-center">Đặt đơn thuê thành công</h3>
-                        <p class="text-center">your bid <span class="price color-popup">(4ETH) </span> has been
-                            listing to our database</p>
-                        <a href class="btn btn-primary"> Watch the listings</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @yield('modal_user')
 
 
-        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <form action="" method="post">
-                        <div class="modal-body space-y-20 pd-40">
-                            <h3>Thuê người chơi</h3>
-                            <p class="text-center">Người chơi tên là: <span class="price color-popup" id="user_name"></span>
-                            </p>
-
-                            <p>Số giờ chơi
-                            </p>
-                            <input type="number" class="form-control" min="1" max="24" step="1" value="1" name="gio_thue">
-                            <p>Nội Dung
-                            </p>
-                            <textarea class="form-control quantity styled-textarea" rows="4"
-                                placeholder="Nhập nội dung..." name="noi_dung"></textarea>
-                            <div class="hr"></div>
-                            <div class="d-flex justify-content-between">
-                                <p> Tổng chi phí:</p>
-                                <p class="text-right price color-popup" id="user_gia_tien" name="gia_tien"></p>
-                            </div>
-                            <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
-                            {{-- <div class="d-flex justify-content-between">
-                                <p> Total bid amount:</p>
-                                <p class="text-right price color-popup"> 4 ETH </p>
-                            </div> --}}
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_bid_success"
-                                data-dismiss="modal" aria-label="Close"> Thuê</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- /#wrapper -->
 
@@ -667,36 +618,8 @@
     <script src="{{ asset('assets/js/web3.min.js') }}"></script>
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            // Khi modal popup được mở
-            $('#popup_bid').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget); // Lấy nút "Thuê" đã được click
-                var userId = button.data('id'); // Lấy ID người dùng từ thuộc tính data-id
-
-                // Gửi AJAX để lấy dữ liệu người dùng
-                $.ajax({
-                    url: '/modal-user/' + userId,  // Đường dẫn tới API lấy thông tin người dùng
-                    method: 'GET',
-                    success: function (data) {
-                        // Cập nhật thông tin trong modal với dữ liệu trả về
-                        $('#user_name').text(data.ten);
-                        $('#user_biet_danh').text(data.biet_danh);
-                        $('#user_ngay_sinh').text(data.ngay_sinh);
-                        $('#user_gioi_tinh').text(data.gioi_tinh);
-                        $('#user_dia_chi').text(data.dia_chi);
-                        $('#user_email').text(data.email);
-                        $('#user_sdt').text(data.sdt);
-                        $('#user_gia_tien').text(data.gia_tien);
-                        $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
-                    },
-                    error: function () {
-                        alert('Không thể tải thông tin người dùng.');
-                    }
-                });
-            });
-        });
-    </script>
+   
+    @yield('script_footer')
 </body>
 
 
