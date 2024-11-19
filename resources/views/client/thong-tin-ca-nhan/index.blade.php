@@ -51,12 +51,9 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 col-md-12 col-12">
                         <div class="form-upload-profile">
-
-
-
                             <div class="form-infor-profile">
                                 <div class="info-account">
-                                    <h4 class="title-create-item">Thông tin cả nhân</h4>
+                                    <h4 class="title-create-item">Thông tin cá nhân</h4>
                                     <fieldset>
                                         <h4 class="title-infor-account">Tên</h4>
                                         <input type="text" name="ten" placeholder="Tên đăng nhập"
@@ -104,6 +101,16 @@
                                             <option value="Khác" {{ $user->gioi_tinh == 'Khác' ? 'selected' : '' }}
                                                 class="text-white bg-dark">Khác</option>
                                         </select>
+                                    </fieldset>
+                                    <fieldset>
+                                        <h4 class="title-infor-account">Giá tiền</h4>
+                                        <input type="text" placeholder="Giá"
+                                            class="form-control text-white bg-dark" name="gia_tien"
+                                            value="{{ old('gia_tien', $user->gia_tien) }}">
+
+                                        @error('ten')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Biệt danh</h4>

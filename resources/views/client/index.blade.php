@@ -106,7 +106,7 @@
         <div class="swiper-button-next btn-slide-next active"></div>
         <div class="swiper-button-prev btn-slide-prev"></div>
     </section>
-
+    <!-- Hot Players -->
     <section class="tf-section live-auctions home7">
         <div class="themesflat-container">
             <div class="row">
@@ -135,9 +135,8 @@
                                                         data-labels=" :  ,  : , : , "></span>
                                                 </div>
                                                 <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                            Bid</span></a>
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $value -> id }}"
+                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
@@ -149,7 +148,7 @@
                                                 <div class="author">
                                                     <div class="info">
                                                         <span>{{ $value->bien_danh }}</span>
-                                                        <span class="pricing">4.89 ETH</span>
+                                                        <span class="pricing">{{ $value->gia_tien }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>

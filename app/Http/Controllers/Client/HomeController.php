@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
 use App\Models\TaiKhoan;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,7 @@ class HomeController extends Controller
             ->whereNotNull('dia_chi')
             ->whereNotNull('email')
             ->whereNotNull('sdt')
+            ->whereNotNull('gia_tien')
             ->whereNotNull('selected_categories')
             ->whereNotNull('anh_dai_dien')
             ->whereNotNull('biet_danh')
@@ -28,6 +30,25 @@ class HomeController extends Controller
 
         return view('client.index', compact('danhMucs', 'users'));
     }
-    
-    
+
+    public function modalUser($id)
+    {
+        $user = TaiKhoan::findOrFail($id);  // Tìm người dùng theo ID
+
+        // Trả về dữ liệu người dùng dưới dạng JSON
+        return response()->json([
+            'ten' => $user->ten,
+            'biet_danh' => $user->biet_danh,
+            'ngay_sinh' => $user->ngay_sinh,
+            'gioi_tinh' => $user->gioi_tinh,
+            'dia_chi' => $user->dia_chi,
+            'email' => $user->email,
+            'sdt' => $user->sdt,
+            'gia_tien' => $user->gia_tien,
+            'anh_dai_dien' => Storage::url($user->anh_dai_dien),
+        ]);
+    }
 }
+
+
+
