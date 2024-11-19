@@ -52,14 +52,14 @@
     <div
         class="navbar-wrapper ">
         <div class="navbar-brand header-logo">
-            <a href="index.html" class="b-brand">
+            <a href="admin/" class="b-brand">
 
                 <img src="https://files.playerduo.net/production/static-files/logo.png" style="width: 36px; height: 36px" alt="logo" class="logo images">
                 <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER DUO</h6>
             </a>
         </div>
-        <div class="navbar-content scroll-div   "
-             id="layout-sidenav" >
+        <div class="navbar-content scroll-div" id="layout-sidenav" >
+            <p class="mt-3 mb-2" style="margin-left: 30px">Menu</p>
             <ul class="nav pcoded-inner-navbar sidenav-inner">
                 <li data-username="table foo" class="nav-item"><a href="/admin" class="nav-link"><span class="pcoded-micon"><i
                                 class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a></li>
@@ -89,6 +89,12 @@
                 </li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.dang-tins.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.danh-gias.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-star-half-alt"></i></span><span class="pcoded-mtext">Quản lý đánh giá</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.binh-luans.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý bình luận</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.blogs.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-newspaper"></i></span><span class="pcoded-mtext">Quản lý bảng tin</span></a></li>
             </ul>
 
         </div>

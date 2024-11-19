@@ -2,14 +2,14 @@
 @section('script-header')
     <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
-@section('title', 'Quản lí đăng tin')
+@section('title', 'Quản lí bình luận')
 @section('content')
 
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Danh sách đăng tin</h5>
+                    <h5>Danh sách bình luận</h5>
                 </div>
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
@@ -18,29 +18,26 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên tài khoản</th>
-                                <th>Video</th>
-                                <th>Số lượt thả tym</th>
                                 <th>Nội dung</th>
-                                <th>Ngày tạo</th>
+                                <th>Bài viết</th>
+                                <th>Chức năng</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($dangTins as $dangTin)
+                            @foreach($binhLuans as $binhLuan)
                                 <tr>
                                     <th>
                                         {{$loop->iteration}}
                                     </th>
                                     <td>
-                                        {{$dangTin->taiKhoan->ten}}
+                                        {{$binhLuan->taiKhoan->ten}}
                                     </td>
+                                    <td>{{$binhLuan->noi_dung}}</td>
+                                    <td>{{ Str::limit($binhLuan->blog->noi_dung, 20, '...') }}</td>
                                     <td>
-                                        <video width="215" height="130" controls>
-                                            <source src="{{ \Illuminate\Support\Facades\Storage::url($dangTin->video) }}" type="video/mp4">
-                                        </video>
+                                        <button class="btn btn-danger">Gỡ bình luận</button>
+                                        <a href="" class="btn btn-primary">Xem chi tiết</a>
                                     </td>
-                                    <td>{{$dangTin->count}}</td>
-                                    <td>{{$dangTin->noi_dung}}</td>
-                                    <td>{{$dangTin->created_at}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -48,10 +45,9 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên tài khoản</th>
-                                <th>Video</th>
-                                <th>Số lượt thả tym</th>
                                 <th>Nội dung</th>
-                                <th>Ngày tạo</th>
+                                <th>Bài viết</th>
+                                <th>Chức năng</th>
                             </tr>
                             </tfoot>
                         </table>

@@ -198,18 +198,17 @@
             // Cập nhật giá trị của input ẩn
             function updateSelectedCategories() {
                 selectedCategoriesInput.value = selectedCategories.join(
-                    ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
+                ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
             }
 
-            // Hàm để hiển thị lại các nút .category-btn nếu chưa có trong selectedCategories
+            // Hàm hiển thị lại danh mục trong categoryList nếu không có trong selectedCategories
             function updateCategoryList() {
-                // Duyệt qua tất cả các category-btn và kiểm tra xem nó có được chọn chưa
-                const categoryBtns = document.querySelectorAll('.category-btn');
-                categoryBtns.forEach(button => {
+                const existingCategoryButtons = document.querySelectorAll('.category-btn');
+                existingCategoryButtons.forEach(button => {
                     const categoryId = button.getAttribute('data-id');
-                    if (selectedCategories.includes(categoryId)) {
-                        // Nếu đã chọn thì loại bỏ khỏi categoryList
-                        button.style.display = 'none'; // Ẩn nút này đi
+                    // Nếu danh mục chưa được chọn thì hiển thị lại nó trong categoryList
+                    if (!selectedCategories.includes(categoryId)) {
+                        button.style.display = 'block';
                     }
                 });
             }
