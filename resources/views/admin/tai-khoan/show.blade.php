@@ -2,7 +2,7 @@
 
 @section('title', 'Chi tiết tài khoản')
 
-@section('header')
+@section('script-header')
     <link rel="stylesheet" href="{{asset('assets-admin/plugins/ratting/css/bars-1to10.css')}}">
 @endsection
 

@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
-@section('header')
-    <link rel="stylesheet" href="{{asset('assets-admin/plugins/chart-morris/css/morris.css')}}">
+@section('script-header')
+        <link rel="stylesheet" href="{{asset('assets-admin/plugins/chart-morris/css/morris.css')}}">
 @endsection
 
 @section('content')
@@ -108,7 +108,8 @@
                     <h5>Tình trạng đơn thuê</h5>
                 </div>
                 <div class="card-body">
-                    <div id="morris-bar-stacked-chart" style="height:300px; width: 100%"></div>
+                    <div id="morris-bar-stacked-chart" style="height:300px; width: 100%">
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +122,7 @@
 
     <script>
         // [ site-visitor-chart ] start
-        $(function() {
+        $(function () {
             // Themes begin
             am4core.useTheme(am4themes_animated);
             // Themes end
@@ -177,7 +178,7 @@
             series.stroke = am4core.color("#FF425C");
             series.strokeWidth = 2;
 
-            chart.events.on("datavalidated", function() {
+            chart.events.on("datavalidated", function () {
                 dateAxis.zoom({
                     start: 1 / 15,
                     end: 1.2
@@ -187,7 +188,7 @@
             dateAxis.interpolationDuration = 500;
             dateAxis.rangeChangeDuration = 500;
 
-            document.addEventListener("visibilitychange", function() {
+            document.addEventListener("visibilitychange", function () {
                 if (document.hidden) {
                     if (interval) {
                         clearInterval(interval);
@@ -201,7 +202,7 @@
             var interval;
 
             function startInterval() {
-                interval = setInterval(function() {
+                interval = setInterval(function () {
                     visits =
                         visits + Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 5);
                     var lastdataItem = series.dataItems.getIndex(series.dataItems.length - 1);
@@ -212,7 +213,7 @@
                 }, 1000);
             }
 
-            setTimeout(function() {
+            setTimeout(function () {
                 startInterval();
             }, 100);
 
@@ -225,20 +226,20 @@
             series.fill = gradient;
 
             // this makes date axis labels to fade out  FF9764
-            dateAxis.renderer.labels.template.adapter.add("fillOpacity", function(fillOpacity, target) {
+            dateAxis.renderer.labels.template.adapter.add("fillOpacity", function (fillOpacity, target) {
                 var dataItem = target.dataItem;
                 return dataItem.position;
             })
 
             // need to set this, otherwise fillOpacity is not changed and not set
-            dateAxis.events.on("datarangechanged", function() {
-                am4core.iter.each(dateAxis.renderer.labels.iterator(), function(label) {
+            dateAxis.events.on("datarangechanged", function () {
+                am4core.iter.each(dateAxis.renderer.labels.iterator(), function (label) {
                     label.fillOpacity = label.fillOpacity;
                 })
             })
 
             // this makes date axis labels which are at equal minutes to be rotated
-            dateAxis.renderer.labels.template.adapter.add("rotation", function(rotation, target) {
+            dateAxis.renderer.labels.template.adapter.add("rotation", function (rotation, target) {
                 var dataItem = target.dataItem;
                 if (dataItem.date && dataItem.date.getTime() == am4core.time.round(new Date(dataItem.date.getTime()), "minute").getTime()) {
                     target.verticalCenter = "middle";
@@ -258,7 +259,7 @@
             bullet.fill = am4core.color("#FF425C");
             bullet.isMeasured = false;
 
-            series.events.on("validated", function() {
+            series.events.on("validated", function () {
                 bullet.moveTo(series.dataItems.last.point);
                 bullet.validatePosition();
             });
