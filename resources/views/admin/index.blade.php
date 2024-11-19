@@ -108,7 +108,7 @@
                     <h5>Tình trạng đơn thuê</h5>
                 </div>
                 <div class="card-body">
-                    <div id="morris-bar-chart" style="height:300px"></div>
+                    <div id="morris-bar-stacked-chart" style="height:300px; width: 100%"></div>
                 </div>
             </div>
         </div>
@@ -282,22 +282,19 @@
             {
                 y: 'Tháng {{ $month }}',
                 a: {{ $status[0] }},
-                b: {{ $status[1] }},
-                c: {{ $status[2] }},
+                b: {{ $status[2] }},
+                c: {{ $status[1] }},
             },
             @endforeach
         ];
         Morris.Bar({
-            element: 'morris-bar-chart',
-            data:rentData,
+            element: 'morris-bar-stacked-chart',
+            data: rentData,
             xkey: 'y',
-            barSizeRatio: 0.70,
-            barGap: 3,
-            resize: true,
-            responsive: true,
+            stacked: true,
             ykeys: ['a', 'b', 'c'],
-            labels: ['Kiểm duyệt', 'Thành công', 'Từ chối'],
-            barColors: ["#19BCBF", "#463699", "#13bd8a"]
+            labels: ['Kiểm duyệt', 'Từ chối', 'Thành công'],
+            barColors: ["#FF9764", "#FF425C", "#19BCBF"]
         });
 
     </script>
