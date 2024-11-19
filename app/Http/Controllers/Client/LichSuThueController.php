@@ -24,4 +24,12 @@ class LichSuThueController extends Controller
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
+
+    public function suaTrangThaiDonThue($id)
+    {
+        $trangThais = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+            ->get();
+
+        return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
+    }
 }

@@ -29,11 +29,11 @@
                         <div class="column1" style="width:300px">
                             <h3>Số thứ tự</h3>
                         </div>
-                        <div class="column" style="width:300px">
-                            <h3>Người Được Thuê</h3>
+                        <div class="column" style="width:200px">
+                            <h3>Người Thuê</h3>
                         </div>
                         <div class="column" style="width:100px">
-                            <h3>Số giờ thuê</h3>
+                            <h3>Giờ thuê</h3>
                         </div>
                         <div class="column" style="width:200px">
                             <h3>Giá thuê</h3>
@@ -44,16 +44,19 @@
                         <div class="column" style="width:200px">
                             <h3>Trạng thái</h3>
                         </div>
+                        <div class="column" style="width:200px">
+                            <h3>Action</h3>
+                        </div>
                     </div>
                     @foreach ($users as $user)
                         <div class="fl-blog fl-item2">
                             <div class="item flex">
                                 <div class="infor-item flex column1" style="width:300px">
                                     <div class="media">
-                                        <img src="{{ Storage::url($user->nguoiDuocThue->anh_dai_dien) }}" alt="Images">
+                                        <img src="{{ Storage::url($user->nguoiThue->anh_dai_dien) }}" alt="Images">
                                     </div>
                                     <div class="content-collection pad-t-4">
-                                        <h5 class="title mb-15"><a href="item-details.html">{{ $user->nguoiDuocThue->ten }}</a></h5>
+                                        <h5 class="title mb-15"><a href="item-details.html">{{ $user->nguoiThue->ten }}</a></h5>
                                         <div class="author flex">
                                             <!-- <div class="author-avatar">
                                                 <img src="assets/images/avatar/author_rank.jpg" alt="Images">
@@ -61,13 +64,13 @@
                                             </div> -->
                                             <div class="content">
                                                 <!-- <p>{{ $user->nguoiDuocThue->biet_danh }}</p> -->
-                                                <h6><a href="#">{{ $user->nguoiDuocThue->biet_danh }}</a></h6>
+                                                <h6><a href="#">{{ $user->nguoiThue->biet_danh }}</a></h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="column" style="width:300px">
-                                    <span>{{ $user->nguoiDuocThue->ten }}</span>
+                                <div class="column" style="width:200px">
+                                    <span>{{ $user->nguoiThue->ten }}</span>
                                 </div>
                                 <div class="column td2" style="width:100px">
                                     <span>{{ $user->gio_thue }}</span>
@@ -81,6 +84,18 @@
                                 <div class="column td5" style="width:200px">
                                     <span class="badge text-bg-{{$user->mau}}">{{$user->trangThai2}}</span>
                                 </div>
+                                <form action="{{ route('client') }}">
+                                <div class="column td6" style="width:200px">
+                                    <span>
+                                    <select name="trang_thai" id="">
+                                        <option value="0">Đang chờ xử lí</option>
+                                        <option value="3">Đang thực hiện</option>
+                                        <option value="2">Bị huỷ</option>
+                                        <option value="1">Thành công</option>
+                                    </select>
+                                    </span>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     @endforeach
