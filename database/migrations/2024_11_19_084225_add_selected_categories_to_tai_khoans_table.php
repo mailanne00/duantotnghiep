@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tai_khoans', function (Blueprint $table) {
-            $table->string('anh_dai_dien')->default('public/images/SZq6S80f2i7LhbckKHCZVuDrUqpSCMUQtuXmAFdM.png')->change();
+            $table->string('selected_categories')->nullable()->after('so_du');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tai_khoans', function (Blueprint $table) {
-            //
+            $table->dropColumn('selected_categories');
         });
     }
 };

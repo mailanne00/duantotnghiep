@@ -344,6 +344,105 @@ ol {
     padding: 0;
 }
 
+#selectedCategoriesContainer {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các mục được chọn nằm xuống dòng nếu cần */
+    gap: 10px; /* Khoảng cách giữa các thẻ */
+    align-items: center;
+    min-height: 50px; /* Giới hạn chiều cao tối thiểu */
+    padding: 8px;
+    border: 1px solid #adb5bd;
+    border-radius: 10px;
+    background-color: #343a40;
+    width: 100%; /* Chiều rộng tự động theo bố cục */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+    height: auto;
+}
+
+/* Placeholder */
+#selectedCategoriesContainer #placeholder {
+    font-size: 0.9rem;
+    color: #adb5bd;
+}
+
+/* Tag for selected categories */
+.selected-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    background-color: #495057;
+    border: 1px solid #adb5bd;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.selected-tag .remove-tag {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.selected-tag .remove-tag:hover {
+    color: #ff6b6b;
+}
+
+#categoryList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 10px;
+}
+
+#categoryList .category-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa hình ảnh và chữ */
+    padding: 8px 12px;
+    font-size: 0.85rem; /* Chữ nhỏ hơn */
+    color: #fff;
+    background-color: #343a40; /* Màu xám đậm */
+    border: 1px solid #6c757d; /* Màu viền */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#categoryList .category-btn:hover {
+    background-color: #495057; /* Màu sáng hơn khi hover */
+    border-color: #adb5bd; /* Viền sáng hơn khi hover */
+}
+
+#categoryList .category-btn img {
+    border-radius: 50%; /* Ảnh dạng tròn */
+    object-fit: cover;
+}
+
+#categoryList .category-btn span {
+    font-size: 1.25rem; /* Giảm kích thước chữ */
+    font-weight: 500; /* Tăng độ đậm một chút */
+    white-space: nowrap; /* Không xuống dòng chữ */
+}
+
+.btn-login {
+    display: inline-block;
+    background-color: #8e44ad; /* Màu tím */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-login:hover {
+    background-color: #732d91; /* Màu tím đậm khi hover */
+}
+
 ul {
     list-style: disc;
 }

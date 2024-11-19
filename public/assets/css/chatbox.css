@@ -163,6 +163,9 @@ button i {
     border-bottom: 1px solid #ddd;
 }
 
+#text-title-chatbox {
+    color: #007bff;
+}
 #messageInput {
     border-radius: 30px; /* Rounded corners */
     padding: 15px 20px; /* More padding inside the input */

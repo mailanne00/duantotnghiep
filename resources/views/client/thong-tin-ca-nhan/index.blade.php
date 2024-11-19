@@ -22,88 +22,268 @@
     </section>
 
     <div class="tf-create-item tf-section">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="themesflat-container">
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                    <div class="sc-card-profile text-center">
-                        <div class="card-media">
-                            <img id="profileimg" src="assets/images/avatar/avata_profile.jpg" alt="Image">
+            <form action="{{ route('client.thong-tin-ca-nhan.update') }}" method="POST" class="form-profile"
+                enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                        <div class="sc-card-profile text-center">
+                            <div class="card-media">
+                                <img id="profileimg"
+                                    src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}"
+                                    alt="Image">
+                            </div>
+                            <div id="upload-profile">
+                                <a href="#" class="btn-upload">
+                                    Upload New Photo </a>
+                                <input id="tf-upload-img" type="file" name="anh_dai_dien" required="">
+                            </div>
+                            {{-- <a href="#" class="btn-upload style2">
+                                Delete</a> --}}
                         </div>
-                        <div id="upload-profile">
-                            <a href="#" class="btn-upload">
-                                Upload New Photo </a>
-                            <input id="tf-upload-img" type="file" name="profile" required="">
-                        </div>
-                        <a href="#" class="btn-upload style2">
-                            Delete</a>
                     </div>
-                </div>
-                <div class="col-xl-9 col-lg-8 col-md-12 col-12">
-                    <div class="form-upload-profile">
-                        <h4 class="title-create-item">Choice your Cover image</h4>
-                        <div class="option-profile clearfix">
-                            <form action="#">
-                                <label class="uploadFile">
-                                    <input type="file" class="inputfile form-control" name="file">
-                                </label>
-                            </form>
-                            <div class="image">
-                                <img src="assets/images/backgroup-secsion/option1_bg_profile.jpg" alt="">
-                            </div>
-                            <div class="image style2">
-                                <img src="assets/images/backgroup-secsion/option2_bg_profile.jpg" alt="">
-                            </div>
-                        </div>
+                    <div class="col-xl-9 col-lg-8 col-md-12 col-12">
+                        <div class="form-upload-profile">
 
-                        <form action="#" class="form-profile">
+
+
                             <div class="form-infor-profile">
                                 <div class="info-account">
-                                    <h4 class="title-create-item">Account info</h4>
+                                    <h4 class="title-create-item">Thông tin cả nhân</h4>
                                     <fieldset>
-                                        <h4 class="title-infor-account">Display name</h4>
-                                        <input type="text" placeholder="Trista Francis" required>
+                                        <h4 class="title-infor-account">Tên</h4>
+                                        <input type="text" name="ten" placeholder="Tên đăng nhập"
+                                            class="form-control text-white bg-dark" value="{{ old('ten', $user->ten) }}"
+                                            required>
+
+                                        @error('ten')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </fieldset>
                                     <fieldset>
-                                        <h4 class="title-infor-account">Custom URL</h4>
-                                        <input type="text" placeholder="Axies.Trista Francis.com/" required>
+                                        <h4 class="title-infor-account">Số điện thoại</h4>
+                                        <input type="text" placeholder="Số điện thoại"
+                                            class="form-control text-white bg-dark" name="sdt"
+                                            value="{{ old('sdt', $user->sdt) }}" required>
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Email</h4>
-                                        <input type="email" placeholder="Enter your email" required>
+                                        <input type="email" placeholder="Nhập email"
+                                            class="form-control text-white bg-dark" name="email"
+                                            value="{{ old('email', $user->email) }}" required>
                                     </fieldset>
                                     <fieldset>
-                                        <h4 class="title-infor-account">Bio</h4>
-                                        <textarea tabindex="4" rows="5" required></textarea>
+                                        <h4 class="title-infor-account">Ngày sinh</h4>
+                                        <input type="date" class="form-control text-white bg-dark"
+                                            placeholder="Ngày tháng năm sinh" name="ngay_sinh"
+                                            value="{{ old('ngay_sinh', $user->ngay_sinh) }}" required>
                                     </fieldset>
+                                    <fieldset>
+                                        <h4 class="title-infor-account">Địa chỉ</h4>
+                                        <input type="text" placeholder="Địa chỉ" name="dia_chi"
+                                            value="{{ old('dia_chi', $user->dia_chi) }}"
+                                            class="form-control text-white bg-dark" required>
+                                    </fieldset>
+                                    <fieldset class="mb-3">
+                                        <h4 class="title-infor-account text-white mb-2">Giới tính</h4>
+                                        <select class="form-select text-white bg-dark border-0 rounded-2 p-2"
+                                            name="gioi_tinh" required>
+                                            <option value="" class="text-white bg-dark" disabled selected>Chọn giới
+                                                tính</option>
+                                            <option value="male" {{ $user->gioi_tinh == 'male' ? 'selected' : '' }}
+                                                class="text-white bg-dark">Nam</option>
+                                            <option value="female" {{ $user->gioi_tinh == 'female' ? 'selected' : '' }}
+                                                class="text-white bg-dark">Nữ</option>
+                                            <option value="other" {{ $user->gioi_tinh == 'other' ? 'selected' : '' }}
+                                                class="text-white bg-dark">Khác</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset>
+                                        <h4 class="title-infor-account">Biệt danh</h4>
+                                        <input type="text" placeholder="Tên đăng nhập"
+                                            class="form-control text-white bg-dark" name="biet_danh"
+                                            value="{{ old('biet_danh', $user->biet_danh) }}" required>
+
+                                        @error('ten')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <h4 class="title-infor-account">Danh mục game</h4>
+                                        <input type="hidden" name="selected_categories" id="selectedCategoriesInput">
+
+                                        <div id="selectedCategoriesContainer"
+                                            class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"
+                                            style="min-height: 50px;">
+                                            @foreach ($selectedCategories as $categoryId)
+                                                @php
+                                                    $category = $categories->firstWhere('id', $categoryId);
+                                                @endphp
+                                                @if ($category)
+                                                    <div class="selected-tag" data-id="{{ $category->id }}">
+                                                        <span>{{ $category->ten }}</span>
+                                                        <button type="button" class="remove-tag">&times;</button>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div id="categoryList">
+                                            @foreach ($categories as $category)
+                                                @if (!in_array($category->id, $selectedCategories))
+                                                    <div class="category-btn" data-id="{{ $category->id }}">
+                                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
+                                                            alt="" width="30" height="30">
+                                                        <span>{{ $category->ten }}</span>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </fieldset>
+
                                 </div>
                                 <div class="info-social">
                                     <h4 class="title-create-item">Your Social media</h4>
                                     <fieldset>
                                         <h4 class="title-infor-account">Facebook</h4>
-                                        <input type="text" placeholder="Facebook username" required>
+                                        <input type="text" placeholder="Facebook username"
+                                            class="form-control text-white bg-dark" required>
                                         <a href="#" class="connect"><i class="fab fa-facebook"></i>Connect to face
                                             book</a>
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Twitter</h4>
-                                        <input type="text" placeholder="Twitter username" required>
+                                        <input type="text" placeholder="Twitter username"
+                                            class="form-control text-white bg-dark" required>
                                         <a href="#" class="connect"><i class="fab fa-twitter"></i>Connect to
                                             Twitter</a>
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Discord</h4>
-                                        <input type="text" placeholder="Discord username" required>
-                                        <a href="#" class="connect"><i class="icon-fl-vt"></i>Connect to Discord</a>
+                                        <input type="text" placeholder="Discord username"
+                                            class="form-control text-white bg-dark" required>
+                                        <a href="#" class="connect"><i class="icon-fl-vt"></i>Connect to
+                                            Discord</a>
                                     </fieldset>
                                 </div>
                             </div>
                             <button class="tf-button-submit mg-t-15" type="submit">
                                 Cập nhật thông tin
                             </button>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedCategoriesContainer = document.getElementById('selectedCategoriesContainer');
+            const selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categoryList = document.getElementById('categoryList');
+
+            // Lấy danh mục đã chọn từ PHP (truyền từ server)
+            let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
+
+            // Cập nhật giá trị của input ẩn
+            function updateSelectedCategories() {
+                selectedCategoriesInput.value = selectedCategories.join(
+                    ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
+            }
+
+            // Hàm để hiển thị lại các nút .category-btn nếu chưa có trong selectedCategories
+            function updateCategoryList() {
+                // Duyệt qua tất cả các category-btn và kiểm tra xem nó có được chọn chưa
+                const categoryBtns = document.querySelectorAll('.category-btn');
+                categoryBtns.forEach(button => {
+                    const categoryId = button.getAttribute('data-id');
+                    if (selectedCategories.includes(categoryId)) {
+                        // Nếu đã chọn thì loại bỏ khỏi categoryList
+                        button.style.display = 'none'; // Ẩn nút này đi
+                    }
+                });
+            }
+
+            // Thêm danh mục vào danh sách đã chọn
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryId = this.dataset.id;
+                    const categoryName = this.querySelector('span').textContent.trim();
+
+                    // Nếu danh mục chưa được chọn
+                    if (!selectedCategories.includes(categoryId)) {
+                        selectedCategories.push(categoryId);
+
+                        // Tạo thẻ để hiển thị danh mục đã chọn
+                        const tag = document.createElement('div');
+                        tag.classList.add('selected-tag');
+                        tag.setAttribute('data-id', categoryId);
+                        tag.innerHTML = `
+                    <span>${categoryName}</span>
+                    <button type="button" class="remove-tag">&times;</button>
+                `;
+
+                        // Thêm sự kiện để xóa danh mục
+                        tag.querySelector('.remove-tag').addEventListener('click', function() {
+                            // Xóa danh mục khỏi danh sách đã chọn
+                            selectedCategories = selectedCategories.filter(id => id !==
+                                categoryId);
+                            tag.remove();
+                            updateSelectedCategories(); // Cập nhật lại input ẩn
+
+                            // Hiển thị lại nút thêm danh mục vào danh sách categoryList
+                            const restoredButton = document.querySelector(
+                                `.category-btn[data-id="${categoryId}"]`);
+                            if (restoredButton) {
+                                restoredButton.style.display = 'block'; // Hiển thị lại nút
+                            }
+                        });
+
+                        // Thêm thẻ vào container
+                        selectedCategoriesContainer.appendChild(tag);
+
+                        // Ẩn nút thêm danh mục khỏi danh sách
+                        this.style.display = 'none';
+
+                        // Cập nhật lại giá trị trong input ẩn
+                        updateSelectedCategories();
+                    }
+                });
+            });
+
+            // Xử lý sự kiện xóa danh mục đã chọn
+            selectedCategoriesContainer.addEventListener('click', function(event) {
+                if (event.target && event.target.classList.contains('remove-tag')) {
+                    const tag = event.target.closest('.selected-tag');
+                    const categoryId = tag.getAttribute('data-id');
+                    // Loại bỏ danh mục khỏi danh sách đã chọn
+                    selectedCategories = selectedCategories.filter(id => id !== categoryId);
+                    tag.remove(); // Xóa thẻ khỏi giao diện
+                    updateSelectedCategories(); // Cập nhật lại giá trị input ẩn
+
+                    // Hiển thị lại nút thêm danh mục vào danh sách categoryList
+                    const restoredButton = document.querySelector(`.category-btn[data-id="${categoryId}"]`);
+                    if (restoredButton) {
+                        restoredButton.style.display = 'block'; // Hiển thị lại nút
+                    }
+                }
+            });
+
+            // Cập nhật danh mục ban đầu cho categoryList
+            updateCategoryList();
+
+            // Cập nhật giá trị ban đầu cho input ẩn từ danh mục đã chọn (có thể lấy từ server)
+            updateSelectedCategories();
+        });
+    </script>
 @endsection
