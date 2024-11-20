@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tai_khoans', function (Blueprint $table) {
-            $table->string('anh_dai_dien')->default('public/images/SZq6S80f2i7LhbckKHCZVuDrUqpSCMUQtuXmAFdM.png')->change();
+            $table->string('ngay_sinh')->nullable()->change();
+            $table->string('gioi_tinh')->nullable()->change();
+            $table->string('dia_chi')->nullable()->change();
+            $table->unsignedBigInteger('phan_quyen_id')->default(2)->change();
         });
     }
 

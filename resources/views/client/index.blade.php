@@ -106,388 +106,59 @@
         <div class="swiper-button-next btn-slide-next active"></div>
         <div class="swiper-button-prev btn-slide-prev"></div>
     </section>
-
+    <!-- Hot Players -->
     <section class="tf-section live-auctions home7">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-22">
-                            Live Auctions</h2>
-                        <a href="explore-3.html" class="exp style2">EXPLORE MORE</a>
+                            Hot Players</h2>
+                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/author_rank.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-32.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by
-                                                    Balmain...</a></h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
+                            @foreach ($users as $value)
+                                <div class="swiper-slide">
+                                    <div class="slider-item">
+                                        <div class="sc-card-product menu_card style-h7">
+
+                                            <div class="card-media">
+                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
+                                                        alt="Image"
+                                                        style="height: 224px;"></a>
+                                                <!-- <div class="featured-countdown">
+                                                    <span class="slogan"></span>
+                                                    <span class="js-countdown" data-timer="516400"
+                                                        data-labels=" :  ,  : , : , "></span>
+                                                </div> -->
+                                                <div class="button-place-bid">
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $value -> id }}"
+                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-3.jpg" alt="Image">
+                                            <div class="card-title">
+                                                <h5><a
+                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
+                                                </h5>
+                                            </div>
+                                            <div class="meta-info">
+                                                <div class="author">
+                                                    <div class="info">
+                                                        <span>{{ $value->bien_danh }}</span>
+                                                        <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                    </div>
                                                 </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Freddie Carpeter</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-33.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
+                                                <div class="tags">bsc</div>
                                             </div>
                                         </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Hamlet Comtemplates...</a>
-                                            </h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-27.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-34.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Loving Vase 01 by
-                                                    Lanza...</a></h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-10.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-35.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Triumphant awakening...</a>
-                                            </h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-5.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-36.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by
-                                                    Balmain...</a></h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/author_rank.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-32.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by
-                                                    Balmain...</a></h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-27.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-34.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Loving Vase 01 by
-                                                    Lanza...</a></h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-card-product menu_card style-h7">
-                                        <div class="meta-info style">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/avatar/avt-10.jpg" alt="Image">
-                                                </div>
-                                                <div class="info">
-                                                    <span>Creator</span>
-                                                    <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                                </div>
-                                            </div>
-                                            <button class="wishlist-button heart"><span class="number-like">
-                                                    100</span></button>
-                                        </div>
-                                        <div class="card-media">
-                                            <a href="{{ route('client.chitietplayer') }}"><img
-                                                    src="assets/images/box-item/image-box-35.jpg" alt="Image"></a>
-                                            <div class="featured-countdown">
-                                                <span class="slogan"></span>
-                                                <span class="js-countdown" data-timer="516400"
-                                                    data-labels=" :  ,  : , : , "></span>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                    class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                        Bid</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="card-title">
-                                            <h5><a href="{{ route('client.chitietplayer') }}">"Triumphant awakening...</a>
-                                            </h5>
-                                        </div>
-                                        <div class="meta-info">
-                                            <div class="author">
-                                                <div class="info">
-                                                    <span>Current Bid</span>
-                                                    <span class="pricing">4.89 ETH</span>
-                                                </div>
-                                            </div>
-                                            <div class="tags">bsc</div>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
+                                    </div><!-- item-->
+                                </div>
+                            @endforeach
+
                         </div>
                         <div class="swiper-pagination mg-t-13"></div>
                         <div class="swiper-button-next btn-slide-next active"></div>
@@ -498,178 +169,53 @@
         </div>
     </section>
 
-    <section class="tf-section category">
-        <div class="themesflat-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-live-auctions">
-                        <h2 class="tf-title pb-39">All Catergories</h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="swiper-container carousel11">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category1.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Digital Art</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category2.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Style</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category3.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Music</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category4.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Domain Name</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category5.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Sports</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category6.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Utilities</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category1.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Digital Art</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category2.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Style</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category3.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Music</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category4.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Domain Name</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category5.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Sports</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="slider-item">
-                                    <div class="sc-categoty">
-                                        <div class="card-media">
-                                            <img src="assets/images/box-item/img_category6.jpg" alt="Image">
-                                        </div>
-                                        <div class="card-title">
-                                            <h4>Utilities</h4>
-                                        </div>
-                                    </div>
-                                </div><!-- item-->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-next btn-slide-next active"></div>
-                    <div class="swiper-button-prev btn-slide-prev"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Danh Mục -->
+{{--    <section class="tf-section category">--}}
+{{--        <div class="themesflat-container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="heading-live-auctions">--}}
+{{--                        <h2 class="tf-title pb-39">Danh Mục</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-12">--}}
+{{--                    <div class="swiper-container carousel11">--}}
+{{--                        <div class="swiper-wrapper">--}}
+{{--                            @foreach ($danhMucs as $value)--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <div class="slider-item">--}}
+{{--                                        <div class="sc-categoty">--}}
+{{--                                            <div class="card-media">--}}
+{{--                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($value->anh) }}"--}}
+{{--                                                    alt="Image" height="200px">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="card-title">--}}
+{{--                                                <h4>{{ $value->ten }}</h4>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div><!-- item-->--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
 
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="swiper-button-next btn-slide-next active"></div>--}}
+{{--                    <div class="swiper-button-prev btn-slide-prev"></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+    <!-- Top Player -->
     <section class="tf-section top-seller home7 bg-style">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-23">
-                            Top Seller</h2>
-                        <a href="explore-3.html" class="exp style2 see-all">SEE ALL</a>
+                            Top Player</h2>
+                        <a href="explore-3.html" class="exp style2 see-all">XEM TẤT CẢ</a>
                     </div>
                     <div class="flat-tabs seller-tab style2">
                         <ul class="menu-tab">
@@ -1343,6 +889,7 @@
         </div>
     </section>
 
+    <!-- Top Picks -->
     <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
         <div class="themesflat-container">
             <div class="row">
@@ -1350,7 +897,7 @@
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
                             Top Picks</h2>
-                        <a href="explore-3.html" class="exp style2">EXPLORE MORE</a>
+                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -1409,9 +956,8 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path
@@ -1443,9 +989,8 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="18" height="22" viewBox="0 0 18 22" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path
@@ -1483,9 +1028,8 @@
                                 </div>
                             </div>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path d="M3.16992 7.44043L11.9999 12.5504L20.7699 7.47043" stroke="white"
@@ -1523,15 +1067,13 @@
                         </div>
                         <div class="soft-right">
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="../../../www.w3.org/2000/svg.html">
                                         <path d="M3 7H21" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M6 12H18" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                                        <path d="M10 17H14" stroke="white" stroke-width="1.5"
-                                            stroke-linecap="round" />
+                                        <path d="M10 17H14" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
                                     <span>Sort By: Recently Added</span>
                                 </button>
@@ -1598,7 +1140,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-46.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1607,7 +1149,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1638,7 +1181,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-37.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1647,7 +1190,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1678,7 +1222,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-38.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1687,7 +1231,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1718,7 +1263,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-39.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1727,7 +1272,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1758,7 +1304,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-40.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1767,7 +1313,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1798,7 +1345,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-41.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1807,7 +1354,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1838,7 +1386,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-42.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1847,7 +1395,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1878,7 +1427,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-43.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1887,7 +1436,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1918,7 +1468,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-44.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1927,7 +1477,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1958,7 +1509,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer') }}"><img
+                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
                                         src="assets/images/box-item/image-box-45.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1967,7 +1518,8 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer') }}">"Flame Dress' by Balmain...</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                        Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1993,6 +1545,7 @@
         </div>
     </section>
 
+    <!-- Creat NFT -->
     <section class="tf-box-icon live-auctions tf-section style7 bg-style">
         <div class="themesflat-container">
             <div class="row">
@@ -2099,6 +1652,7 @@
         </div>
     </section>
 
+    <!-- Popular Collection -->
     <section class="tf-section live-auctions style4 home4 live-auctions-style7">
         <div class="themesflat-container">
             <div class="row">
@@ -2302,4 +1856,79 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('modal_user')
+<div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <form action="" method="post">
+                <div class="modal-body space-y-20 pd-40">
+                    <h3>Thuê người chơi</h3>
+                    <p class="text-center">Người chơi tên là: <span class="price color-popup" id="user_name"></span>
+                    </p>
+
+                    <p>Số giờ chơi
+                    </p>
+                    <input type="number" class="form-control" min="1" max="24" step="1" value="1" name="gio_thue">
+                    <p>Nội Dung
+                    </p>
+                    <textarea class="form-control quantity styled-textarea" rows="4" placeholder="Nhập nội dung..."
+                        name="noi_dung"></textarea>
+                    <div class="hr"></div>
+                    <div class="d-flex justify-content-between">
+                        <p> Tổng chi phí:</p>
+                        <p class="text-right price color-popup" id="user_gia_tien" name="gia_tien"></p>
+                    </div>
+                    <!-- <div class="d-flex justify-content-between">
+                                <p> Số dữ của bạn:</p>
+                                <p class="text-right price color-popup"></p>
+                            </div> -->
+                    {{-- <div class="d-flex justify-content-between">
+                        <p> Total bid amount:</p>
+                        <p class="text-right price color-popup"> 4 ETH </p>
+                    </div> --}}
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_bid_success"
+                        data-dismiss="modal" aria-label="Close"> Thuê</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('script_footer')
+<script>
+    $(document).ready(function () {
+        // Khi modal popup được mở
+        $('#popup_bid').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Lấy nút "Thuê" đã được click
+            var userId = button.data('id'); // Lấy ID người dùng từ thuộc tính data-id
+
+            // Gửi AJAX để lấy dữ liệu người dùng
+            $.ajax({
+                url: '/modal-user/' + userId,  // Đường dẫn tới API lấy thông tin người dùng
+                method: 'GET',
+                success: function (data) {
+                    // Cập nhật thông tin trong modal với dữ liệu trả về
+                    $('#user_name').text(data.ten);
+                    $('#user_biet_danh').text(data.biet_danh);
+                    $('#user_ngay_sinh').text(data.ngay_sinh);
+                    $('#user_gioi_tinh').text(data.gioi_tinh);
+                    $('#user_dia_chi').text(data.dia_chi);
+                    $('#user_email').text(data.email);
+                    $('#user_sdt').text(data.sdt);
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien)+' VNĐ');
+                    $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
+                },
+                error: function () {
+                    alert('Không thể tải thông tin người dùng.');
+                }
+            });
+        });
+    });
+</script>
 @endsection

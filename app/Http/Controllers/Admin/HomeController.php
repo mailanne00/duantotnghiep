@@ -20,19 +20,20 @@ class HomeController extends Controller
              return ($lichSuThue->gio_thue * $lichSuThue->gia_thue * $lichSuThue->nguoiDuocThue->loi_nhuan) / 100;
          });
 
+
          $topPlayers = LichSuThue::select('nguoi_duoc_thue', LichSuThue::raw('COUNT(*) as total_rents'))
              ->groupBy('nguoi_duoc_thue')
              ->orderBy('total_rents', 'desc')
              ->with('nguoiDuocThue')
              ->limit(10)
              ->get();
-
          $chartData = $topPlayers->map(function ($player) {
              return [
                  'name' => $player->nguoiDuocThue->ten ?? 'Không xác định',
                  'count' => $player->total_rents,
              ];
          })->toArray();
+
 
          $rentStatusByMonth = LichSuThue::select(
              LichSuThue::raw('MONTH(created_at) as month'), 'trang_thai',
@@ -41,14 +42,12 @@ class HomeController extends Controller
              ->whereYear('created_at', now()->year)
              ->groupBy('month', 'trang_thai')
              ->get();
-
          $rentData = [];
          foreach ($rentStatusByMonth as $item) {
              $month = $item->month;
              $status = $item->trang_thai;
              $rentData[$month][$status] = $item->total;
          }
-
          for ($i = 1; $i <= 12; $i++) {
              $rentData[$i] = [
                  0 => $rentData[$i][0] ?? 0,
@@ -58,6 +57,38 @@ class HomeController extends Controller
          }
          ksort($rentData);
 
-         return view('admin.index', compact('taiKhoan', 'countPhanQuyen1', 'countPhanQuyen2', 'countRent', 'totalProfit', 'chartData','rentData'));
+        $months = ['01','02','03','04','05', '06', '07', '08', '09', '10', '11', '12'];
+         $lichSuThue = LichSuThue::all();
+         $totalProfitByMonth = $lichSuThue->groupBy(function ($item) {
+             return $item->created_at->format('m'); // Nhóm theo tháng
+         })->map(function ($group) {
+             return $group->sum(function ($lichSuThue) {
+                 return ($lichSuThue->gio_thue * $lichSuThue->gia_thue * $lichSuThue->nguoiDuocThue->loi_nhuan) / 100;
+             });
+         });
+         $a = [];
+         foreach ($months as $month) {
+             $flag = 0;
+        foreach ($totalProfitByMonth as $item => $value) {
+            if ($item == $month) {
+                $flag = 1;
+                $a[] = [
+                    'y' => $month,
+                    'a' => $value
+                ];
+                break;
+            }
+            }
+        if ($flag == 0) {
+            $a[] = [
+                'y' => $month,
+                'a' => 0
+            ];
+        }
+
+        }
+        $dataForChart  = json_encode($a);
+
+         return view('admin.index', compact('taiKhoan', 'countPhanQuyen1', 'countPhanQuyen2', 'countRent', 'totalProfit', 'chartData','rentData', 'dataForChart'));
      }
 }

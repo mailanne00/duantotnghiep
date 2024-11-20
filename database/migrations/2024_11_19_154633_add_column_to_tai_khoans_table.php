@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tai_khoans', function (Blueprint $table) {
-            $table->string('anh_dai_dien')->default('public/images/SZq6S80f2i7LhbckKHCZVuDrUqpSCMUQtuXmAFdM.png')->change();
+            $table->integer('gia_tien')->after('sdt')->default(0);
         });
     }
 

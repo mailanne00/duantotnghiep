@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'tai_khoans', // Đổi 'users' thành 'tai_khoans'
         ],
     ],
 
@@ -60,15 +60,10 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'tai_khoans' => [
             'driver' => 'eloquent',
-            'model' => App\Models\TaiKhoan::class,
+            'model' => App\Models\TaiKhoan::class, // Đảm bảo model là TaiKhoan
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
