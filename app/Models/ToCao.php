@@ -9,24 +9,53 @@ class ToCao extends Model
 {
     use HasFactory;
 
-    protected $table = 'to_caos';
-    protected $fillable = [
-        'id_nguoi_dung',
-        'id_player',
-        'id_tin_nhan',
-        'tieu_de_to_cao',
-        'noi_dung_to_cao',
-        'image_path',
-        'trang_thai'
+    const TRANGTHAITOCAO = [
+        [
+            'color' => 'warning',
+            'status'=> 'Đang chờ xử lí',
+        ],
+        [
+            'color' => 'success',
+            'status'=>'Thành công'
+        ],
+        [
+            'color' => 'danger',
+            'status' => 'Bị huỷ'
+        ],
+        [
+            'color' => 'primary',
+            'status'=> 'Đang thực hiện'
+        ]
     ];
 
-    public function user()
+    public function getMauAttribute()
     {
-        return $this->belongsTo(TaiKhoan::class, 'id_nguoi_dung');
+        foreach (self::TRANGTHAITOCAO as $key => $tocao) {
+            if ($this->trang_thai == $key) {
+                return $tocao['color'];
+            }
+        }
     }
 
-    public function player()
+    public function getTrangThai2Attribute()
     {
-        return $this->belongsTo(TaiKhoan::class, 'id_player');
+        foreach (self::TRANGTHAITOCAO as $key => $tocao) {
+            if ($this->trang_thai == $key) {
+                return $tocao['status'];
+            }
+        }
+    }
+    public function nguoiToCao()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'nguoi_to_cao', 'id');
+    }
+
+    public function nguoiBiToCao()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'nguoi_bi_to_cao', 'id');
+    }
+
+    public function donThue() {
+        return $this->belongsTo(LichSuThue::class, 'lich_su_thue_id', 'id');
     }
 }

@@ -1,9 +1,18 @@
 <?php
 
-use App\Http\Controllers\Client\ChinhSachController;
+use App\Http\Controllers\Admin\DangTinController;
+use App\Http\Controllers\Admin\TaiKhoanController;
+use App\Http\Controllers\Client\BangxephangController;
+use App\Http\Controllers\Client\ChinhsachController;
+use App\Http\Controllers\Client\ChiTietPlayerController;
+use App\Http\Controllers\Client\DangKyController;
+use App\Http\Controllers\Client\DanhmucController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\LichSuThueController;
+use App\Http\Controllers\Client\LienheController;
+use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\PlayerController;
-use App\Http\Controllers\Client\DangTinController;
-use App\Http\Controllers\Client\TaiKhoanController;
+use App\Http\Controllers\Client\ThongtinController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +26,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-});
+
+Route::get('/', [HomeController::class, 'index'])->name('client.index');
+Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
+Route::get('/chi-tiet-player/{id}', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
+
+Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
+Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
+Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
 
 //Player
 Route::get('/players/index',[PlayerController::class,'index'])->name('players.index');

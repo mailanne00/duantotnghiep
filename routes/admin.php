@@ -1,18 +1,14 @@
 <?php
 
-use App\Http\Controllers\DoanhThuController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BinhLuanController;
-use App\Http\Controllers\DangTinController;
-use App\Http\Controllers\DanhMucController;
-use App\Http\Controllers\PhanQuyenController;
-use App\Http\Controllers\PhuongThucThanhToanController;
-use App\Http\Controllers\PlayerController;
-use App\Http\Controllers\TaiKhoanController;
-use App\Http\Controllers\ThongKeUserController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ToCaoController;
+use App\Http\Controllers\Admin\DangTinController;
+use App\Http\Controllers\Admin\PhuongThucThanhToanController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BinhLuanController;
+use App\Http\Controllers\Admin\DanhMucController;
+use App\Http\Controllers\Admin\TaiKhoanController;
+use App\Http\Controllers\Client\PlayerController;
 use App\Http\Controllers\TopPlayerController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +20,24 @@ use App\Http\Controllers\TopPlayerController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    // Home
+    Route::get('/', [\App\Http\Controllers\Admin\HomeController::class, 'index']);
 
-Route::get('/to-caos', [ToCaoController::class, 'index'])->name('tocao.index');
-Route::delete('/to-caos/{complaint}', [ToCaoController::class, 'destroy'])->name('tocaos.destroy');
-Route::patch('/to-caos/{complaint}', [ToCaoController::class, 'updateStatus'])->name('tocao.updateStatus');
-Route::get('/to-caos/add', [ToCaoController::class, 'create'])->name('tocao.add');
-Route::post('/to-caos/add', [ToCaoController::class, 'store'])->name('tocao.store');
-Route::get('/to-caos/{complaint}', [ToCaoController::class, 'show'])->name('tocao.show');
+    Route::resource('tai-khoans', \App\Http\Controllers\Admin\TaiKhoanController::class);
+
+    Route::resource('lich-su-don-thues', \App\Http\Controllers\Admin\LichSuThueController::class);
+
+    Route::resource('to-caos', \App\Http\Controllers\Admin\ToCaoController::class);
+    Route::resource('danh-mucs', \App\Http\Controllers\Admin\DanhMucController::class);
+
+    Route::resource('banners', \App\Http\Controllers\Admin\BannerController::class);
+
+    Route::resource('dang-tins', \App\Http\Controllers\Admin\DangTinController::class);
+
+    Route::resource('danh-gias', \App\Http\Controllers\Admin\DanhGiaController::class);
+
+    Route::resource('binh-luans', \App\Http\Controllers\Admin\BinhLuanController::class);
+    Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
 
 
 Route::get('/dangtins', [DangTinController::class, 'index'])->name('dangtins.index');

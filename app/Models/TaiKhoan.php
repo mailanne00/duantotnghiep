@@ -2,78 +2,149 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; // Sử dụng lớp Authenticatable
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
-class TaiKhoan extends Authenticatable // Kế thừa từ Authenticatable
+class TaiKhoan extends Model implements Authenticatable
 {
+    use HasFactory, Notifiable;
 
-    use HasFactory, Notifiable; // Thêm Notifiable để sử dụng thông báo
+    protected $fillable = ['ten', 'email', 'password'];
+
+    // Các phương thức cần thiết để sử dụng với Laravel Authentication
+    public function getAuthIdentifierName()
+    {
+        return 'id'; // Hoặc 'email' nếu bạn xác thực qua email
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey(); // Trả về 'id' của người dùng
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password; // Trả về mật khẩu đã mã hóa
+    }
+
+    // Các phương thức liên quan đến Remember Me
+    public function getRememberToken()
+    {
+        return $this->remember_token; // Trả về giá trị remember_token của user
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value; // Gán giá trị remember_token vào model
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token'; // Tên của trường lưu remember_token trong database
+    }
 
 
 
-    protected $table = 'tai_khoans';
-
-    protected $fillable = [
-        'ten',
-        'ngay_sinh',
-        'biet_danh',
-        'gioi_tinh',
-        'que_quan',
-        'email',
-        'sdt',
-        'cccd',
-        'password',
-        'so_du',
-        'anh_dai_dien',
-        'uid',
-        'banned_at',
-        'phan_quyen_id',
+    const TRANGTHAITHUE = [
+        [
+            'color' => 'primary',
+            'status' => 'Đang được thuê',
+        ],
+        [
+            'color' => 'success',
+            'status' => 'Đang online'
+        ],
+        [
+            'color' => 'danger',
+            'status' => 'Ngừng nhận yêu cầu'
+        ]
     ];
 
-
-    protected $hidden = [
-        'password', // Ẩn mật khẩu trong kết quả truy vấn
-    ];
-
-
-    public function player()
+    public function getTrangThai2Attribute()
     {
-        return $this->hasOne(Player::class, 'tai_khoan_id');
+        foreach (self::TRANGTHAITHUE as $key => $thue) {
+            if ($this->trang_thai == $key) {
+                return $thue['status'];
+            }
+        }
     }
 
-    public function phanQuyen()
+    public function getMauAttribute()
     {
-        return $this->belongsTo(PhanQuyen::class, 'phan_quyen_id');
+        foreach (self::TRANGTHAITHUE as $key => $thue) {
+            if ($this->trang_thai == $key) {
+                return $thue['color'];
+            }
+        }
     }
 
-    public function isAdmin()
+    public function getCountAttribute()
     {
-        return $this->phanQuyen && $this->phanQuyen->ten === 'admin';
+        $count = NguoiTheoDoi::query()
+            ->where('nguoi_duoc_theo_doi_id', $this->id)
+            ->count();
+        return $count;
+    }
+    public function getCountDanhGiaAttribute()
+    {
+        $averageRating = DanhGia::query()
+            ->where('nguoi_duoc_thue_id', $this->id)
+            ->avg('danh_gia');
+        return number_format($averageRating, 1);
     }
 
-    public function isBanned()
+    public function getRaitingCountAttribute()
     {
-        return !is_null($this->banned_at);
+        $raitingCounts = DanhGia::query()
+            ->where('nguoi_duoc_thue_id', $this->id)
+            ->select('danh_gia', DB::raw('count(*) as count'))
+            ->groupBy('danh_gia')
+            ->get();
+        $ratingSummary = [
+            '5_sao' => 0,
+            '4_sao' => 0,
+            '3_sao' => 0,
+            '2_sao' => 0,
+            '1_sao' => 0,
+        ];
+        foreach ($raitingCounts as $ratingCount) {
+            $ratingSummary[$ratingCount->danh_gia . '_sao'] = $ratingCount->count;
+        }
+
+        return $ratingSummary;
     }
-    public function generateAccountId()
+
+    public function getRentAttribute()
     {
-        $lastId = TaiKhoan::orderBy('id', 'desc')->first();
-        $newId = $lastId ? $lastId->id + 1 : 1;
+        $rentCounts = LichSuThue::query()
+            ->where('nguoi_duoc_thue', $this->id)
+            ->select('trang_thai', DB::raw('count(*) as count'))
+            ->groupBy('trang_thai')
+            ->get();
 
-        return 'TK' . str_pad($newId, 5, '0', STR_PAD_LEFT);
-    }
+        $rentStatus = [
+            '0' => 0,
+            '1' => 0,
+            '2' => 0,
+        ];
 
+        foreach ($rentCounts as $rentCount) {
+            switch ($rentCount->trang_thai) {
+                case 0:
+                    $rentStatus['0'] = $rentCount->count;
+                    break;
+                case 1:
+                    $rentStatus['1'] = $rentCount->count;
+                    break;
+                case 2:
+                    $rentStatus['2'] = $rentCount->count;
+                    break;
+            }
+        }
 
-    public function lichSuThue()
-    {
-        return $this->hasMany(LichSuThuePlayer::class, 'tai_khoan_id');
-    }
-
-    public function theoDoiPlayer()
-    {
-        return $this->hasOne(TheoDoiPlayer::class, 'tai_khoan_id');
+        return $rentStatus;
     }
 }
