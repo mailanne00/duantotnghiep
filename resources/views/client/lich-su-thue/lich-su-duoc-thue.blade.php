@@ -84,7 +84,7 @@
                                 <div class="column td5" style="width:200px">
                                     <span class="badge text-bg-{{$user->mau}}">{{$user->trangThai2}}</span>
                                 </div>
-                                <form action="{{ route('client') }}">
+                                <form action="{{ route('client.suaTrangThaiDonThue', $user->nguoiDuocThue->id) }}">
                                 <div class="column td6" style="width:200px">
                                     <span>
                                     <select name="trang_thai" id="">

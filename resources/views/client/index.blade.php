@@ -1865,9 +1865,12 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form action="" method="post">
+            <form action="{{ route('client.themDonThue') }}" method="post">
+                @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
+                    <span class="price color-popup" id="user_id"></span>
+                    <input type="text" name="user_id" id="user_id">
                     <p class="text-center">Người chơi tên là: <span class="price color-popup" id="user_name"></span>
                     </p>
 
@@ -1881,7 +1884,7 @@
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
-                        <p class="text-right price color-popup" id="user_gia_tien" name="gia_tien"></p>
+                        <p class="text-right price color-popup" id="user_gia_tien" name="gia_thue"></p>
                     </div>
                     <!-- <div class="d-flex justify-content-between">
                                 <p> Số dữ của bạn:</p>
@@ -1891,8 +1894,7 @@
                         <p> Total bid amount:</p>
                         <p class="text-right price color-popup"> 4 ETH </p>
                     </div> --}}
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_bid_success"
-                        data-dismiss="modal" aria-label="Close"> Thuê</a>
+                    <button type="submit" class="btn btn-primary">Thuê</button>
                 </div>
             </form>
         </div>
@@ -1914,6 +1916,7 @@
                 method: 'GET',
                 success: function (data) {
                     // Cập nhật thông tin trong modal với dữ liệu trả về
+                    $('#user_id').text(data.id);
                     $('#user_name').text(data.ten);
                     $('#user_biet_danh').text(data.biet_danh);
                     $('#user_ngay_sinh').text(data.ngay_sinh);

@@ -46,5 +46,6 @@ Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('cl
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
 
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
+Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
