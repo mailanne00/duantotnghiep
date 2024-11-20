@@ -120,14 +120,14 @@
                 <div class="col-md-12">
                     <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
                         <div class="swiper-wrapper">
-                            @foreach ($users as $value)
+                            @foreach ($users as $user)
                                 <div class="swiper-slide">
                                     <div class="slider-item">
                                         <div class="sc-card-product menu_card style-h7">
 
                                             <div class="card-media">
-                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
+                                                <a href="{{ route('client.chitietplayer', $user->id) }}"><img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}"
                                                         alt="Image"
                                                         style="height: 224px;"></a>
                                                 <!-- <div class="featured-countdown">
@@ -136,20 +136,20 @@
                                                         data-labels=" :  ,  : , : , "></span>
                                                 </div> -->
                                                 <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $value -> id }}"
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $user -> id }}"
                                                         class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
                                                 <h5><a
-                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
+                                                        href="{{ route('client.chitietplayer', $user->id) }}">{{ $user->ten }}</a>
                                                 </h5>
                                             </div>
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $value->bien_danh }}</span>
-                                                        <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                        <span>{{ $user->biet_danh }}</span>
+                                                        <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
@@ -181,16 +181,16 @@
                 <div class="col-md-12">
                     <div class="swiper-container carousel11">
                         <div class="swiper-wrapper">
-                            @foreach ($danhMucs as $value)
+                            @foreach ($danhMucs as $danhMuc)
                                 <div class="swiper-slide">
                                     <div class="slider-item">
                                         <div class="sc-categoty">
                                             <div class="card-media">
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($value->anh) }}"
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
                                                     alt="Image" height="200px">
                                             </div>
                                             <div class="card-title">
-                                                <h4>{{ $value->ten }}</h4>
+                                                <h4>{{ $danhMuc->ten }}</h4>
                                             </div>
                                         </div>
                                     </div><!-- item-->
@@ -1140,7 +1140,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-46.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1149,7 +1149,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1181,7 +1181,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-37.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1190,7 +1190,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1222,7 +1222,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-38.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1231,7 +1231,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1263,7 +1263,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-39.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1272,7 +1272,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1304,7 +1304,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-40.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1313,7 +1313,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1345,7 +1345,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-41.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1354,7 +1354,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1386,7 +1386,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-42.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1395,7 +1395,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1427,7 +1427,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-43.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1436,7 +1436,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1468,7 +1468,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-44.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1477,7 +1477,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1509,7 +1509,7 @@
                                 <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
                             </div>
                             <div class="card-media">
-                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
+                                <a href=""><img
                                         src="assets/images/box-item/image-box-45.jpg" alt="Image"></a>
                                 <div class="button-place-bid">
                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -1518,7 +1518,7 @@
                                 </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="{{ route('client.chitietplayer', $value->id) }}">"Flame Dress' by
+                                <h5><a href="">"Flame Dress' by
                                         Balmain...</a></h5>
                             </div>
                             <div class="meta-info">
@@ -1884,7 +1884,8 @@
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
-                        <p class="text-right price color-popup" id="user_gia_tien" name="gia_thue"></p>
+                        <p class="text-right price color-popup" id="user_gia_tien"></p>
+                        <input type="text" name="gia_thue" id="giaThue">
                     </div>
                     <!-- <div class="d-flex justify-content-between">
                                 <p> Số dữ của bạn:</p>
@@ -1926,6 +1927,7 @@
                     $('#user_sdt').text(data.sdt);
                     $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien)+' VNĐ');
                     $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
+                    document.getElementById('giaThue').value = data.gia_tien
                 },
                 error: function () {
                     alert('Không thể tải thông tin người dùng.');
