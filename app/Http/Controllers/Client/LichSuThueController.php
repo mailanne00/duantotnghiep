@@ -17,6 +17,18 @@ class LichSuThueController extends Controller
         return view('client.lich-su-thue.index', compact('users'));
     }
 
+    public function themDonThue(Request $request)
+    {
+        $users = LichSuThue::create([
+            'nguoi_thue' => auth()->user()->id,
+            'nguoi_duoc_thue' => $request->user_id,
+            'gia_thue' => $request->gia_thue,
+            'gio_thue' => $request->gio_thue,
+        ]);
+
+        return view('client.lich-su-thue.index');
+    }
+
     public function lichSuDuocThue()
     {
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)

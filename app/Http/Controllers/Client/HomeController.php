@@ -34,6 +34,7 @@ class HomeController extends Controller
 
         // Trả về dữ liệu người dùng dưới dạng JSON
         return response()->json([
+            'id' => $user->id,
             'ten' => $user->ten,
             'biet_danh' => $user->biet_danh,
             'ngay_sinh' => $user->ngay_sinh,

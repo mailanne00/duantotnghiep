@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class LichSuThue extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nguoi_thue',
+        'nguoi_duoc_thue',
+        'gia_thue',
+        'gio_thue',
+        'trang_thai',
+    ];
+
     const TRANGTHAITHUE = [
         [
             'color' => 'warning',
