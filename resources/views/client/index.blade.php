@@ -120,14 +120,14 @@
                 <div class="col-md-12">
                     <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
                         <div class="swiper-wrapper">
-                            @foreach ($users as $value)
+                            @foreach ($users as $user)
                                 <div class="swiper-slide">
                                     <div class="slider-item">
                                         <div class="sc-card-product menu_card style-h7">
 
                                             <div class="card-media">
-                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
+                                                <a href="{{ route('client.chitietplayer', $user->id) }}"><img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}"
                                                         alt="Image"
                                                         style="height: 224px;"></a>
                                                 <!-- <div class="featured-countdown">
@@ -136,20 +136,20 @@
                                                         data-labels=" :  ,  : , : , "></span>
                                                 </div> -->
                                                 <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $value -> id }}"
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $user -> id }}"
                                                         class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
                                                 <h5><a
-                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
+                                                        href="{{ route('client.chitietplayer', $user->id) }}">{{ $user->ten }}</a>
                                                 </h5>
                                             </div>
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $value->bien_danh }}</span>
-                                                        <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                        <span>{{ $user->bien_danh }}</span>
+                                                        <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
@@ -168,44 +168,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Danh Mục -->
-{{--    <section class="tf-section category">--}}
-{{--        <div class="themesflat-container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="heading-live-auctions">--}}
-{{--                        <h2 class="tf-title pb-39">Danh Mục</h2>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="swiper-container carousel11">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            @foreach ($danhMucs as $value)--}}
-{{--                                <div class="swiper-slide">--}}
-{{--                                    <div class="slider-item">--}}
-{{--                                        <div class="sc-categoty">--}}
-{{--                                            <div class="card-media">--}}
-{{--                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($value->anh) }}"--}}
-{{--                                                    alt="Image" height="200px">--}}
-{{--                                            </div>--}}
-{{--                                            <div class="card-title">--}}
-{{--                                                <h4>{{ $value->ten }}</h4>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div><!-- item-->--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="swiper-button-next btn-slide-next active"></div>--}}
-{{--                    <div class="swiper-button-prev btn-slide-prev"></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
 
     <!-- Top Player -->
     <section class="tf-section top-seller home7 bg-style">
