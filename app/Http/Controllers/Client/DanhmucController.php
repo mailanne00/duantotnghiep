@@ -16,10 +16,10 @@ class DanhmucController extends Controller
         return view('client.danh-muc.index', compact( 'danhMucs','danhMucss'));
     }
     public function show(int $id)
-    {
+    {   $danhMucs = DanhMuc::query()->limit(5)->get();
         $danhMuc = DanhMuc::query()->findOrFail($id);
         $taiKhoans = DanhMucTaiKhoan::query()->where('danh_muc_id', $id)->get();
 
-        return view('client.danh-muc.show', compact('danhMuc', 'taiKhoans'));
+        return view('client.danh-muc.show', compact('danhMucs','danhMuc', 'taiKhoans'));
     }
 }
