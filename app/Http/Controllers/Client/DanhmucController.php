@@ -14,7 +14,6 @@ class DanhmucController extends Controller
         $danhMucs = Danhmuc::all();
         return view('client.danh-muc.index', compact('danhMucs'));
     }
-
     public function show(int $id)
     {
         $danhMuc = DanhMuc::query()->findOrFail($id);

@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Chia sẻ danh mục
-        View::share('danhMucs', DanhMuc::take(5)->get());
+        
     }
 }

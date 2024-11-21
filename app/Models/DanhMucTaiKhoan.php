@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DanhMucTaiKhoan extends Model
 {
     use HasFactory;
-
     public function taiKhoan()
     {
         return $this->belongsTo(TaiKhoan::class);
