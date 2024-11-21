@@ -147,4 +147,5 @@ class TaiKhoan extends Model implements Authenticatable
 
         return $rentStatus;
     }
+
 }

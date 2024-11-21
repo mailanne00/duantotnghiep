@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $danhMucs = DanhMuc::all();
+        $danhMucs = DanhMuc::query()->limit(5)->get();
         $users = TaiKhoan::where('bi_cam', 0)
             ->where('trang_thai', 1)
             ->whereNotNull('ten')
@@ -25,9 +25,6 @@ class HomeController extends Controller
             ->whereNotNull('anh_dai_dien')
             ->whereNotNull('biet_danh')
             ->get();
-
-
-
         return view('client.index', compact('danhMucs', 'users'));
     }
 

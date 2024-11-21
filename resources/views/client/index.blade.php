@@ -148,8 +148,8 @@
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $user->biet_danh }}</span>
-                                                        <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                        <span>{{ $value->bien_danh }}</span>
+                                                        <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
@@ -164,44 +164,6 @@
                         <div class="swiper-button-next btn-slide-next active"></div>
                         <div class="swiper-button-prev btn-slide-prev"></div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Danh Mục -->
-    <section class="tf-section category">
-        <div class="themesflat-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-live-auctions">
-                        <h2 class="tf-title pb-39">Danh Mục</h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="swiper-container carousel11">
-                        <div class="swiper-wrapper">
-                            @foreach ($danhMucs as $danhMuc)
-                                <div class="swiper-slide">
-                                    <div class="slider-item">
-                                        <div class="sc-categoty">
-                                            <div class="card-media">
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                    alt="Image" height="200px">
-                                            </div>
-                                            <div class="card-title">
-                                                <h4>{{ $danhMuc->ten }}</h4>
-                                            </div>
-                                        </div>
-                                    </div><!-- item-->
-                                </div>
-                            @endforeach
-
-
-                        </div>
-                    </div>
-                    <div class="swiper-button-next btn-slide-next active"></div>
-                    <div class="swiper-button-prev btn-slide-prev"></div>
                 </div>
             </div>
         </div>

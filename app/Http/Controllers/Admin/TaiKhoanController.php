@@ -50,8 +50,6 @@ class TaiKhoanController extends Controller
             }
         }
         $a = json_encode($a);
-//        var_dump($a);
-//        die;
         return view('admin.tai-khoan.show', compact('taiKhoan', 'a'));
     }
 }
