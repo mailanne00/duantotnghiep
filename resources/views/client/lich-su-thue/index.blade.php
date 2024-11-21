@@ -11,7 +11,7 @@
                 </div>
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="index-2.html">Trang chủ</a></li>
+                        <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
                         <li>Lịch Sử Thuê</li>
                     </ul>
                 </div>
@@ -48,9 +48,9 @@
                     @foreach ($users as $user)
                         <div class="fl-blog fl-item2">
                             <div class="item flex">
-                                <div class="infor-item flex column1" style="width:300px">
+                                <div class="infor-item flex column1">
                                     <div class="media">
-                                        <img src="{{ Storage::url($user->nguoiDuocThue->anh_dai_dien) }}" alt="Images">
+                                        <img src="{{ Storage::url($user->nguoiDuocThue->anh_dai_dien) }}" alt="Images" style="height:80px">
                                     </div>
                                     <div class="content-collection pad-t-4">
                                         <h5 class="title mb-15"><a href="item-details.html">{{ $user->nguoiDuocThue->ten }}</a></h5>

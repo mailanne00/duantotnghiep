@@ -106,14 +106,15 @@
         <div class="swiper-button-next btn-slide-next active"></div>
         <div class="swiper-button-prev btn-slide-prev"></div>
     </section>
-    <!-- Hot Players -->
+    
+    <!-- Người chơi đã thuê -->
     <section class="tf-section live-auctions home7">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-22">
-                            Hot Players</h2>
+                            Người chơi đã thuê</h2>
                         <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
@@ -924,12 +925,12 @@
                                             stroke="white" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <span class="inner">Category</span>
+                                    <span class="inner">Danh mục</span>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">
                                         <div class='sort-filter active'>
-                                            <span><img src="assets/images/icon/menu.png" alt="" /> All</span>
+                                            <span><img src="assets/images/icon/menu.png" alt="" /> Tất cả</span>
                                             <i class="fal fa-check"></i>
                                         </div>
                                     </a>
@@ -1075,10 +1076,10 @@
                                         <path d="M6 12H18" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                         <path d="M10 17H14" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
-                                    <span>Sort By: Recently Added</span>
+                                    <span>Lọc: Recently Added</span>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <h6>Sort by</h6>
+                                    <h6>Lọc</h6>
                                     <a href="#" class="dropdown-item">
                                         <div class="sort-filer" href="#">
                                             <span>Recently added</span>
@@ -1087,13 +1088,13 @@
                                     </a>
                                     <a href="#" class="dropdown-item">
                                         <div class="sort-filer active" href="#">
-                                            <span>Price: Low to High</span>
+                                            <span>Giá: Thấp lên cao</span>
                                             <i class="fal fa-check"></i>
                                         </div>
                                     </a>
                                     <a href="#" class="dropdown-item">
                                         <div class="sort-filer" href="#">
-                                            <span>Price: High to Low</span>
+                                            <span>Giá: Cao xuống thấp</span>
                                             <i class="fal fa-check"></i>
                                         </div>
                                     </a>
@@ -1142,15 +1143,9 @@
                             <div class="card-media">
                                 <a href=""><img
                                         src="assets/images/box-item/image-box-46.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
                             </div>
                             <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
+                                <h5><a href="">Tên</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
@@ -1161,11 +1156,11 @@
                                 </div>
                                 <div class="tags">bsc</div>
                             </div>
-                            <div class="card-bottom">
+                            <!-- <div class="card-bottom">
                                 <a href="#" data-toggle="modal" data-target="#popup_bid"
                                     class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
                                 <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="sc-card-product menu_card style-h7">
                             <div class="meta-info style">
@@ -1183,339 +1178,6 @@
                             <div class="card-media">
                                 <a href=""><img
                                         src="assets/images/box-item/image-box-37.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-32.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-38.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-2.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-39.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-7.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-40.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-9.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-41.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-3.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-42.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-1.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-43.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-2.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-44.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
-                            </div>
-                            <div class="card-title">
-                                <h5><a href="">"Flame Dress' by
-                                        Balmain...</a></h5>
-                            </div>
-                            <div class="meta-info">
-                                <div class="author">
-                                    <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
-                                    </div>
-                                </div>
-                                <div class="tags">bsc</div>
-                            </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
-                        </div>
-                        <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-10.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-45.jpg" alt="Image"></a>
-                                <div class="button-place-bid">
-                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                            Bid</span></a>
-                                </div>
                             </div>
                             <div class="card-title">
                                 <h5><a href="">"Flame Dress' by
@@ -1869,32 +1531,35 @@
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
-                    <span class="price color-popup" id="user_id"></span>
-                    <input type="text" name="user_id" id="user_id">
+                    <input type="hidden" name="user_id" id="id">
                     <p class="text-center">Người chơi tên là: <span class="price color-popup" id="user_name"></span>
                     </p>
 
                     <p>Số giờ chơi
                     </p>
-                    <input type="number" class="form-control" min="1" max="24" step="1" value="1" name="gio_thue">
-                    <p>Nội Dung
-                    </p>
-                    <textarea class="form-control quantity styled-textarea" rows="4" placeholder="Nhập nội dung..."
+                    <input type="number" class="form-control" 
+                        min="1" max="24" step="1" value="1" 
+                        name="gio_thue" id="gio_thue" 
+                        oninput="kiemTraGiaTri(this)"
+                        onkeyup="tinhTongChiPhi()">
+                    @error('gio_thue')
+                        <div class="text-danger mt-1">{{ $message }}</div>
+                    @enderror
+
+                    <p>Nội Dung</p>
+                    <textarea class="form-control quantity styled-textarea" rows="4" 
+                        placeholder="Nhập nội dung..."
                         name="noi_dung"></textarea>
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
-                        <input type="text" name="gia_thue" id="giaThue">
+                        <input type="hidden" name="gia_thue" id="gia_thue">
                     </div>
                     <!-- <div class="d-flex justify-content-between">
                                 <p> Số dữ của bạn:</p>
                                 <p class="text-right price color-popup"></p>
                             </div> -->
-                    {{-- <div class="d-flex justify-content-between">
-                        <p> Total bid amount:</p>
-                        <p class="text-right price color-popup"> 4 ETH </p>
-                    </div> --}}
                     <button type="submit" class="btn btn-primary">Thuê</button>
                 </div>
             </form>
@@ -1905,6 +1570,7 @@
 
 @section('script_footer')
 <script>
+    let giaMoiGio = 0;
     $(document).ready(function () {
         // Khi modal popup được mở
         $('#popup_bid').on('show.bs.modal', function (event) {
@@ -1927,7 +1593,10 @@
                     $('#user_sdt').text(data.sdt);
                     $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien)+' VNĐ');
                     $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
-                    document.getElementById('giaThue').value = data.gia_tien
+                    document.getElementById('id').value = data.id
+                    document.getElementById('gia_thue').value = data.gia_tien
+
+                    giaMoiGio = data.gia_tien;
                 },
                 error: function () {
                     alert('Không thể tải thông tin người dùng.');
@@ -1935,5 +1604,31 @@
             });
         });
     });
+
+    function tinhTongChiPhi() {
+        // Lấy giá trị số giờ thuê
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+
+        // Tính tổng chi phí
+        const tongChiPhi = gioThue * giaMoiGio;
+
+        // Cập nhật hiển thị tổng chi phí
+        document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
+    }
+
+    function kiemTraGiaTri(input) {
+    // Lấy giá trị hiện tại của input
+    let value = parseInt(input.value);
+
+    // Nếu giá trị nhỏ hơn min, đặt về giá trị tối thiểu
+    if (value < 1) {
+        input.value = 1;
+    }
+
+    // Nếu giá trị lớn hơn max, đặt về giá trị tối đa
+    if (value > 24) {
+        input.value = 24;
+    }
+}
 </script>
 @endsection
