@@ -11,8 +11,9 @@ class DanhmucController extends Controller
 {
     public function index()
     {
-        $danhMucs = Danhmuc::all();
-        return view('client.danh-muc.index', compact('danhMucs'));
+
+        $danhMucss = Danhmuc::all();
+        return view('client.danh-muc.index', compact( 'danhMucss'));
     }
     public function show(int $id)
     {

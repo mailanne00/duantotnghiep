@@ -68,7 +68,7 @@
                                                 <ul class="sub-menu">
                                                     @foreach ($danhMucs as $danhMuc)
                                                         <li class="menu-item"><a
-                                                                href="{{ route('client.danhmuc') }}">{{ $danhMuc->ten }}</a>
+                                                                href="{{route('client.danhmuc.show', $danhMuc->id)}}">{{ $danhMuc->ten }}</a>
                                                         </li>
                                                     @endforeach
                                                     <li class="menu-item"><a href="{{ route('client.danhmuc') }}">Xem
