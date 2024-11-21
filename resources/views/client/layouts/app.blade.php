@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/icon/Favicon.png">
+    <link rel="shortcut icon" href="{{asset('assets/icon/Favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
@@ -50,7 +50,7 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="assets/images/logo/logo_dark.png"
+                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
                                                     alt="nft-gaming" width="133" height="56"
                                                     data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
                                                     data-height="56">
@@ -634,7 +634,7 @@
     <script src="{{ asset('assets/js/web3.min.js') }}"></script>
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
-   
+
     @yield('script_footer')
 </body>
 

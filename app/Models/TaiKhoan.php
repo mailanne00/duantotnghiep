@@ -148,7 +148,4 @@ class TaiKhoan extends Model implements Authenticatable
         return $rentStatus;
     }
 
-    public function danhMuc() {
-        return $this->belongsTo(DanhMuc::class);
-    }
 }

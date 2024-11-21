@@ -41,7 +41,7 @@
                                 @foreach($danhMucs as $danhMuc)
                                     <div class="col-2 sc-card-product explode style2 mg-bt">
                                         <div class="card-media">
-                                            <a href=""><img
+                                            <a href="{{route('client.danhmuc.show', $danhMuc->id)}}"><img
                                                     src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" alt="Image"></a>
                                         </div>
                                         <div class="card-title">
