@@ -148,8 +148,8 @@
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $value->biet_danh }}</span>
-                                                        <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                        <span>{{ $user->biet_danh }}</span>
+                                                        <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
