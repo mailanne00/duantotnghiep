@@ -1142,7 +1142,8 @@
                                         </div>
                                     </div>
                                     <div class="tags">{{$taiKhoan->countDanhGia}} <i
-                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i></div>
+                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                        ({{$taiKhoan->countRent}})</div>
                                 </div>
                             </div>
                         @endforeach
@@ -1408,7 +1409,10 @@
                                             <span class="pricing">{{number_format($taiKhoan ->gia_tien, 0, ',')}} VNĐ</span>
                                         </div>
                                     </div>
-                                    <div class="tags">{{$taiKhoan->countRent}}<i class="fas fa-start"></i> </div>
+                                    <div class="tags">{{$taiKhoan->countDanhGia}}
+                                        <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                        ({{$taiKhoan->countRent}})
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
