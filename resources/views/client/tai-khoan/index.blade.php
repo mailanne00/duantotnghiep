@@ -13,7 +13,6 @@
                         <ul>
                             <li><a href="{{route('client.index')}}">Trang chủ</a></li>
                             <li><a href="{{route('client.taikhoan')}}">Tài Khoản</a></li>
-{{--                            <li><a href="">{{$danhMuc->ten}}</a></li>--}}
                         </ul>
                     </div>
                 </div>

@@ -152,7 +152,8 @@
                                                         <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
-                                                <div class="tags">bsc</div>
+                                                <div class="tags">{{$user->countDanhGia}}<i
+                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})</div>
                                             </div>
                                         </div>
                                     </div><!-- item-->
@@ -896,7 +897,7 @@
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
                             Top Picks</h2>
-                        <a href="{{route('client.taikhoan')}}" class="exp style2">XEM TẤT CẢ</a>
+                        <a href="{{route('client.topDanhGia')}}" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -905,7 +906,7 @@
                             <div class="sc-card-product menu_card style-h7">
                                 <div class="card-media">
                                     <a href="{{route('client.chitietplayer', $taiKhoan->id)}}"><img
-                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image"></a>
+                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image" style="height: 220px; object-fit: cover"></a>
                                 </div>
                                 <div class="card-title">
                                     <h5><a href="">{{$taiKhoan->ten}}</a></h5>
@@ -940,7 +941,7 @@
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
                             Hot Player</h2>
-                        <a href="{{route('client.taikhoan')}}" class="exp style2">XEM TẤT CẢ</a>
+                        <a href="{{route('client.topHot')}}" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">

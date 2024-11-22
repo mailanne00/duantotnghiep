@@ -13,4 +13,24 @@ class TaiKhoanController extends Controller
         $taiKhoans = TaiKhoan::all();
         return view('client.tai-khoan.index', compact('taiKhoans'));
     }
+
+    public function topDanhGia()
+    {
+        $taiKhoans = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countDanhGia;
+            });
+
+        return view('client.tai-khoan.index', compact('taiKhoans'));
+    }
+
+    public function topHot()
+    {
+        $taiKhoans = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            });
+
+        return view('client.tai-khoan.index', compact('taiKhoans'));
+    }
 }
