@@ -148,7 +148,7 @@
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $value->bien_danh }}</span>
+                                                        <span>{{ $value->biet_danh }}</span>
                                                         <span class="pricing">{{number_format($value->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
