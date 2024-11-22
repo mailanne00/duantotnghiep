@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $danhMucs = DanhMuc::query()->limit(5)->get();
+        $danhMucs = DanhMuc::all()->take(10);
         $users = TaiKhoan::where('bi_cam', 0)
             ->where('trang_thai', 1)
             ->whereNotNull('ten')
@@ -25,7 +25,20 @@ class HomeController extends Controller
             ->whereNotNull('anh_dai_dien')
             ->whereNotNull('biet_danh')
             ->get();
-        return view('client.index', compact('danhMucs', 'users'));
+
+        $taiKhoans = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+            return $taiKhoan->countDanhGia;
+        })
+        ->take(10);
+
+        $taiKhoans2 = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->take(10);
+
+        return view('client.index', compact( 'danhMucs','users', 'taiKhoans', 'taiKhoans2'));
     }
 
     public function modalUser($id)

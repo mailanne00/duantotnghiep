@@ -83,8 +83,16 @@ class TaiKhoan extends Model implements Authenticatable
 
     public function getCountAttribute()
     {
-        $count = NguoiTheoDoi::query()
+        $count = TaiKhoan::query()
             ->where('nguoi_duoc_theo_doi_id', $this->id)
+            ->count();
+        return $count;
+    }
+
+    public function getCountRentAttribute()
+    {
+        $count = LichSuThue::query()
+            ->where('nguoi_duoc_thue', $this->id)
             ->count();
         return $count;
     }

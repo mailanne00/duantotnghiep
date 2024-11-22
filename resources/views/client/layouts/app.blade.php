@@ -34,9 +34,9 @@
 <body class="body header-fixed is_dark connect-wal">
 
     <!-- preloade -->
-    <div class="preload preload-container">
-        <div class="preload-logo"></div>
-    </div>
+{{--    <div class="preload preload-container">--}}
+{{--        <div class="preload-logo"></div>--}}
+{{--    </div>--}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -62,19 +62,6 @@
                                         <ul id="menu-primary-menu" class="menu">
                                             <li class="">
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Danh mục</a>
-                                                <ul class="sub-menu">
-                                                    @foreach ($danhMucs as $danhMuc)
-                                                        <li class="menu-item"><a
-                                                                href="{{route('client.danhmuc.show', $danhMuc->id)}}">{{ $danhMuc->ten }}</a>
-                                                        </li>
-                                                    @endforeach
-                                                    <li class="menu-item"><a href="{{ route('client.danhmuc') }}">Xem
-                                                            thêm</a>
-                                                    </li>
-                                                </ul>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.bangxephang') }}">Bảng xếp hạng</a>
