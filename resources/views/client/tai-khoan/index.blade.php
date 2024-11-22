@@ -7,13 +7,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-title-heading mg-bt-12">
-                        <h1 class="heading text-center">{{$danhMuc->ten}}</h1>
+                        <h1 class="heading text-center">Tài Khoản</h1>
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
                             <li><a href="{{route('client.index')}}">Trang chủ</a></li>
-                            <li><a href="{{route('client.danhmuc')}}">Danh Mục</a></li>
-                            <li><a href="">{{$danhMuc->ten}}</a></li>
+                            <li><a href="{{route('client.taikhoan')}}">Tài Khoản</a></li>
+{{--                            <li><a href="">{{$danhMuc->ten}}</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -201,20 +201,20 @@
                         @foreach($taiKhoans as $taiKhoan)
                             <div class="sc-card-product menu_card style-h7">
                                 <div class="card-media">
-                                    <a href="{{route('client.chitietplayer', $taiKhoan->taiKhoan->id)}}"><img
-                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan ->taiKhoan -> anh_dai_dien)}}" alt="Image"></a>
+                                    <a href="{{route('client.chitietplayer', $taiKhoan->id)}}"><img
+                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image"></a>
                                 </div>
                                 <div class="card-title">
-                                    <h5><a href="">{{$taiKhoan ->taiKhoan->ten}}</a></h5>
+                                    <h5><a href="">{{$taiKhoan ->ten}}</a></h5>
                                 </div>
                                 <div class="meta-info">
                                     <div class="author">
                                         <div class="info style2">
                                             <span>Giá</span>
-                                            <span class="pricing">{{number_format($taiKhoan->taiKhoan ->gia_tien, 0, ',')}} VNĐ</span>
+                                            <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</span>
                                         </div>
                                     </div>
-                                    <div class="tags">{{$taiKhoan->taiKhoan->countDanhGia}} <i
+                                    <div class="tags">{{$taiKhoan->countDanhGia}} <i
                                             class="fas fa-star f-10 m-l-10 text-c-yellow"></i></div>
                                 </div>
                             </div>

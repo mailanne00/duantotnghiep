@@ -10,7 +10,7 @@ class TaiKhoanController extends Controller
 {
     public function index()
     {
-        $taiKhoan = TaiKhoan::all();
-        return view('client.tai-khoan.index', compact('taiKhoan'));
+        $taiKhoans = TaiKhoan::all();
+        return view('client.tai-khoan.index', compact('taiKhoans'));
     }
 }

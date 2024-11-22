@@ -896,7 +896,7 @@
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
                             Top Picks</h2>
-                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
+                        <a href="{{route('client.taikhoan')}}" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -940,7 +940,7 @@
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
                             Hot Player</h2>
-                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
+                        <a href="{{route('client.taikhoan')}}" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">

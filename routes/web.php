@@ -40,6 +40,7 @@ Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('cli
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
+Route::get('/tai-khoan', [\App\Http\Controllers\Client\TaiKhoanController::class, 'index'])->name('client.taikhoan');
 Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
