@@ -98,7 +98,7 @@
                                     Facebook.
                                     <br>
                                     2.2. Khi truy cập trang web, máy chủ sẽ ghi nhận thông tin như loại trình duyệt, ngày
-                                    giờ truy cập, v.v.
+                                    giờ truy cập,...
                                     <br>
                                     2.3. PlayerDuo có thể lưu trữ và sử dụng thông tin email để cải thiện chất lượng dịch
                                     vụ.
