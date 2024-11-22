@@ -36,8 +36,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout')
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
 Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
 
-
-
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');

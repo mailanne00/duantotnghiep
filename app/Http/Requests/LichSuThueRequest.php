@@ -22,7 +22,7 @@ class LichSuThueRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:players,id',
+            'user_id' => 'required|exists:tai_khoans,id',
             'gio_thue' => 'required|integer|min:1|max:24', // Giờ thuê từ 1 đến 24
             'noi_dung' => 'nullable|string|max:500',
         ];
@@ -31,8 +31,8 @@ class LichSuThueRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required' => 'ID người chơi là bắt buộc.',
-            'id.exists' => 'Người chơi không tồn tại.',
+            'user_id.required' => 'ID người chơi là bắt buộc.',
+            'user_id.exists' => 'Người chơi không tồn tại.',
             'gio_thue.required' => 'Số giờ thuê là bắt buộc.',
             'gio_thue.integer' => 'Số giờ thuê phải là số nguyên.',
             'gio_thue.min' => 'Số giờ thuê ít nhất là 1.',

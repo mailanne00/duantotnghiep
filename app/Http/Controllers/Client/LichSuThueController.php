@@ -30,7 +30,7 @@ class LichSuThueController extends Controller
             'gio_thue' => $validatedData['gio_thue'],
         ]);
 
-        return redirect()->route('client.lichSuThue');
+        return response()->json(['success' => true]);
     }
 
     public function lichSuDuocThue()

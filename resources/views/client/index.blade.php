@@ -1,10 +1,14 @@
 @extends('client.layouts.app')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+@endsection
+
 @section('content')
     <section class="flat-title-page style3">
-        <img class="bgr-gradient gradient1" src="assets/images/backgroup-secsion/bg-gradient1.png" alt="">
-        <img class="bgr-gradient gradient2" src="assets/images/backgroup-secsion/bg-gradient2.png" alt="">
-        <img class="bgr-gradient gradient3" src="assets/images/backgroup-secsion/bg-gradient3.png" alt="">
+        <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png')  }}" alt="">
+        <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png')  }}" alt="">
+        <img class="bgr-gradient gradient3" src="{{ asset('assets/images/backgroup-secsion/bg-gradient3.png')  }}" alt="">
         <div class="overlay"></div>
         <div class="swiper-container mainslider home auctions">
             <div class="swiper-wrapper">
@@ -22,17 +26,17 @@
                                         fungible token NFTs
                                     </p>
                                     <div class="flat-bt-slider flex style2">
-                                        <a href="explore-1.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 rocket fl-button pri-1"><span>Explore
                                             </span></a>
-                                        <a href="create-item.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 note fl-button pri-1"><span>Create
                                             </span></a>
                                     </div>
                                 </div>
                                 <div class="wrap-image">
                                     <div class="overlay-style2"></div>
-                                    <img src="assets/images/backgroup-secsion/img_sliderhome7.png" alt="Image">
+                                    <img src="{{asset('/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
                                 </div>
                             </div>
 
@@ -53,10 +57,10 @@
                                         fungible token NFTs
                                     </p>
                                     <div class="flat-bt-slider flex style2">
-                                        <a href="explore-1.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 rocket fl-button pri-1"><span>Explore
                                             </span></a>
-                                        <a href="create-item.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 note fl-button pri-1"><span>Create
                                             </span></a>
                                     </div>
@@ -106,7 +110,7 @@
         <div class="swiper-button-next btn-slide-next active"></div>
         <div class="swiper-button-prev btn-slide-prev"></div>
     </section>
-    
+
     <!-- Người chơi đã thuê -->
     <section class="tf-section live-auctions home7">
         <div class="themesflat-container">
@@ -1537,19 +1541,21 @@
 
                     <p>Số giờ chơi
                     </p>
-                    <input type="number" class="form-control" 
-                        min="1" max="24" step="1" value="1" 
-                        name="gio_thue" id="gio_thue" 
-                        oninput="kiemTraGiaTri(this)"
-                        onkeyup="tinhTongChiPhi()">
-                    @error('gio_thue')
-                        <div class="text-danger mt-1">{{ $message }}</div>
-                    @enderror
+                    <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
+                            class="form-control no-scroll"
+                            name="gio_thue" id="gio_thue"
+                            onchange="tinhTongChiPhi()">
+                        @for($i=1;$i<=24;$i++)
+                            <option value="{{ $i }}" style="font-size: 16px;">
+                                {{ $i }} giờ
+                            </option>
+                        @endfor
+                    </select>
 
                     <p>Nội Dung</p>
-                    <textarea class="form-control quantity styled-textarea" rows="4" 
+                    <textarea class="form-control quantity styled-textarea" style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
                         placeholder="Nhập nội dung..."
-                        name="noi_dung"></textarea>
+                        name="noi_dung">{{ old('noi_dung') }}</textarea>
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
@@ -1615,20 +1621,5 @@
         // Cập nhật hiển thị tổng chi phí
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
     }
-
-    function kiemTraGiaTri(input) {
-    // Lấy giá trị hiện tại của input
-    let value = parseInt(input.value);
-
-    // Nếu giá trị nhỏ hơn min, đặt về giá trị tối thiểu
-    if (value < 1) {
-        input.value = 1;
-    }
-
-    // Nếu giá trị lớn hơn max, đặt về giá trị tối đa
-    if (value > 24) {
-        input.value = 24;
-    }
-}
 </script>
 @endsection
