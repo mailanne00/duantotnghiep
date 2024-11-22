@@ -20,10 +20,16 @@
                                     <div class="col">
                                         <label class="form-label">Tên danh mục</label>
                                         <input type="text" class="form-control" name="ten" placeholder="Tên danh mục">
+                                        @error('ten')
+                                        <p class="mt-2 text-danger" style="margin-bottom: unset">{{$message}}</p>
+                                        @enderror()
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Ảnh danh mục</label>
                                         <input type="file" class="form-control" name="anh">
+                                        @error('anh')
+                                        <p class="mt-2 text-danger" style="margin-bottom: unset">{{$message}}</p>
+                                        @enderror()
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success mt-4">Submit</button>

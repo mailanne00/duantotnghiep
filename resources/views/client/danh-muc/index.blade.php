@@ -11,8 +11,8 @@
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Trang chủ</a></li>
-                            <li><a href="#">Danh Mục</a></li>
+                            <li><a href="{{route('client.index')}}">Trang chủ</a></li>
+                            <li><a href="{{route('client.danhmuc')}}">Danh Mục</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         </ul>
                         <div class="content-tab mg-t-40">
                             <div class="row content-inner" style="margin-left: 40px">
-                                @foreach($danhMucss as $danhMuc)
+                                @foreach($danhMucs as $danhMuc)
                                     <div class="col-2 sc-card-product explode style2 mg-bt">
                                         <div class="card-media">
                                             <a href="{{route('client.danhmuc.show', $danhMuc->id)}}"><img
