@@ -377,4 +377,20 @@
         </div>
         </div>
     </section>
+    <!-- Phần đánh giá -->
+    <div class="danh-gia-list">
+        <h2>Đánh giá của {{ $player->ten }}</h2>
+
+        <ul>
+            @foreach($danhGias as $danhGia)
+                <li>
+                    <strong>{{ $danhGia->danh_gia }} sao</strong>
+                    <p>{{ $danhGia->noi_dung }}</p>
+                    <small>Đánh giá bởi: {{ $danhGia->nguoiThue->ten }}</small>
+                </li>
+            @endforeach
+        </ul>
+
+        <!-- <a href="{{ route('client.danh-gia.create', $player->id) }}" class="btn btn-primary">Đánh giá ngay</a> -->
+    </div>
 @endsection

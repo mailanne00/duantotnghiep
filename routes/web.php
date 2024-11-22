@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\BangxephangController;
 use App\Http\Controllers\Client\ChinhsachController;
 use App\Http\Controllers\Client\ChiTietPlayerController;
 use App\Http\Controllers\Client\DangKyController;
+use App\Http\Controllers\Client\DanhGiaController;
 use App\Http\Controllers\Client\DanhmucController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
@@ -48,3 +49,7 @@ Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('clien
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
+
+
+Route::get('/player/{playerId}/danh-gia', [DanhGiaController::class, 'index'])->name('danh-gia.index');
+    
