@@ -67,7 +67,7 @@
                                                 <a href="{{ route('client.bangxephang') }}">Bảng xếp hạng</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ route('client.chinhsach') }}">Chinh sách</a>
+                                                <a href="{{ route('client.chinhsach') }}">Chính sách</a>
                                             </li>
 
                                             <li class="">
