@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DanhMucStoreRequest;
+use App\Http\Requests\DanhMucUpdateRequest;
 use App\Models\DanhMuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +23,9 @@ class DanhMucController extends Controller
         return view('admin.danh-muc.create');
     }
 
-    public function store(Request $request)
+    public function store(DanhMucStoreRequest $request)
     {
+        $validated = $request->validated();
         $data = $request->except('anh');
 
         if($request->hasFile('anh')){
@@ -41,7 +44,9 @@ class DanhMucController extends Controller
         return view('admin.danh-muc.edit', compact('danhMuc'));
     }
 
-    public function update(Request $request, $id){
+    public function update(DanhMucUpdateRequest $request, $id){
+        $validated = $request->validated();
+
         $danhMuc = DanhMuc::query()->findOrFail($id);
         $data = $request->except('anh');
 
