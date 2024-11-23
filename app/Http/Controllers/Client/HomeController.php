@@ -43,10 +43,15 @@ class HomeController extends Controller
                 ->whereNotNull('biet_danh')
                 ->where('id', '!=', auth()->user()->id)
                 ->get();
+        }
 
-            $userDaThues = LichSuThue::where("nguoi_thue", auth()->user()->id)
+        if (auth()->check()) {
+            $userDaThues = LichSuThue::where("nguoi_thue", 10)
                 ->where('trang_thai', 1)
                 ->get();
+
+        }else{
+            $userDaThues = null;
         }
 
         return view('client.index', compact('danhMucs', 'users', 'userDaThues'));
