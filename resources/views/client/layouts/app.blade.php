@@ -456,11 +456,7 @@
                 </div>
             </header>
 
-
-
             @yield('content')
-
-
 
             <!-- Nạp tiền player duo -->
 

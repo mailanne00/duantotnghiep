@@ -129,12 +129,11 @@
                                 <div class="swiper-slide">
                                     <div class="slider-item">
                                         <div class="sc-card-product menu_card style-h7">
-
-                                            <div class="card-media">
+                                            <div class="card-media" style="width: 224px; height: 224px;">
                                                 <a href="{{ route('client.chitietplayer', $userDaThue->nguoiDuocThue->id) }}"><img
                                                         src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
                                                         alt="Image"
-                                                        style="height: 224px;"></a>
+                                                        style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
                                                 <!-- <div class="featured-countdown">
                                                     <span class="slogan"></span>
                                                     <span class="js-countdown" data-timer="516400"
@@ -894,20 +893,21 @@
         </div>
     </section>
 
-    <!-- Top Picks -->
+    <!-- Người chơi mới nhất -->
     <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-live-auctions mg-bt-24">
                         <h2 class="tf-title">
-                            Top Picks</h2>
-                        <a href="explore-3.html" class="exp style2">XEM TẤT CẢ</a>
+                            Người chơi mới nhất</h2>
+                        <a href="" class="exp style2">XEM TẤT CẢ</a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="tf-soft">
                         <div class="soft-left">
+                            {{--dropdown danh mục--}}
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -931,6 +931,7 @@
                                     </svg>
                                     <span class="inner">Danh mục</span>
                                 </button>
+
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">
                                         <div class='sort-filter active'>
@@ -960,6 +961,8 @@
                                     </a>
                                 </div>
                             </div>
+
+                            {{--dropdown-price--}}
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -1070,6 +1073,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{--dropdown-lọc--}}
                         <div class="soft-right">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4"
@@ -1131,57 +1135,31 @@
                 </div>
                 <div class="col-md-12">
                     <div class="top-pick-box">
+                        @foreach ($users as $user)
                         <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-10.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-46.jpg" alt="Image"></a>
+                            <div class="card-media" style="width: 224px; height: 224px;">
+                                <a href="{{ route('client.chitietplayer', $user->id) }}">
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}" alt="Ảnh đại diện"
+                                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
                             </div>
                             <div class="card-title">
-                                <h5><a href="">Tên</a></h5>
+                                <h5><a href="{{ route('client.chitietplayer', $user->id) }}">{{ $user->ten }}</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span>Current Bid</span>
-                                        <span class="pricing">4.89 ETH</span>
+                                        <span class="pricing">{{ $user->gia_tien }}</span>
                                     </div>
                                 </div>
-                                <div class="tags">bsc</div>
+                                <div class="tags">*</div>
                             </div>
-                            <!-- <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div> -->
                         </div>
+                        @endforeach
                         <div class="sc-card-product menu_card style-h7">
-                            <div class="meta-info style">
-                                <div class="author">
-                                    <div class="avatar">
-                                        <img src="assets/images/avatar/avt-8.jpg" alt="Image">
-                                    </div>
-                                    <div class="info">
-                                        <span>Creator</span>
-                                        <h6> <a href="author02.html">Tyler Covington</a> </h6>
-                                    </div>
-                                </div>
-                                <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                            </div>
-                            <div class="card-media">
-                                <a href=""><img
-                                        src="assets/images/box-item/image-box-37.jpg" alt="Image"></a>
+                            <div class="card-media" style="width: 224px; height: 224px;">
+                                <a href="#"><img
+                                        src="assets/images/box-item/image-box-37.jpg" alt="Image"
+                                        style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
                             </div>
                             <div class="card-title">
                                 <h5><a href="">"Flame Dress' by
@@ -1196,16 +1174,11 @@
                                 </div>
                                 <div class="tags">bsc</div>
                             </div>
-                            <div class="card-bottom">
-                                <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                    class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
-                                <a href="activity1.html" class="view-history reload">View History</a>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 wrap-inner load-more text-center mg-t17">
-                    <a href="#" class="sc-button loadmore fl-button pri-3"><span>Load More</span></a>
+                    <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
                 </div>
             </div>
         </div>
