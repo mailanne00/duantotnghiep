@@ -88,17 +88,17 @@
                                         fungible token NFTs
                                     </p>
                                     <div class="flat-bt-slider flex style2">
-                                        <a href="explore-1.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 rocket fl-button pri-1"><span>Explore
                                             </span></a>
-                                        <a href="create-item.html"
+                                        <a href=""
                                             class="sc-button header-slider style style-1 note fl-button pri-1"><span>Create
                                             </span></a>
                                     </div>
                                 </div>
                                 <div class="wrap-image">
                                     <div class="overlay-style2"></div>
-                                    <img src="assets/images/backgroup-secsion/img_sliderhome7.png" alt="Image">
+                                    <img src="" alt="Image">
                                 </div>
                             </div>
 
