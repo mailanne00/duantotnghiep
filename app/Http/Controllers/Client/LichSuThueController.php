@@ -21,13 +21,15 @@ class LichSuThueController extends Controller
 
     public function themDonThue(LichSuThueRequest $request)
     {
-        $validatedData = $request->validated();
+        if (!auth()->check()) {
+            return redirect()->route('client.login');
+        }
 
         $users = LichSuThue::create([
             'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $validatedData['user_id'],
-            'gia_thue' => $validatedData['gia_thue'],
-            'gio_thue' => $validatedData['gio_thue'],
+            'nguoi_duoc_thue' => $request->user_id,
+            'gia_thue' => $request->gia_thue,
+            'gio_thue' => $request->gio_thue,
         ]);
 
         return response()->json(['success' => true]);

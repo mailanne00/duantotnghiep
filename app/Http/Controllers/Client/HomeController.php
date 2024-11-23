@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
+use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use Storage;
 
@@ -12,23 +13,43 @@ class HomeController extends Controller
     public function index()
     {
         $danhMucs = DanhMuc::all();
-        $users = TaiKhoan::where('bi_cam', 0)
-            ->where('trang_thai', 1)
-            ->whereNotNull('ten')
-            ->whereNotNull('ngay_sinh')
-            ->whereNotNull('gioi_tinh')
-            ->whereNotNull('dia_chi')
-            ->whereNotNull('email')
-            ->whereNotNull('sdt')
-            ->whereNotNull('gia_tien')
-            ->whereNotNull('selected_categories')
-            ->whereNotNull('anh_dai_dien')
-            ->whereNotNull('biet_danh')
-            ->get();
 
+        if (!auth()->check()) {
+            $users = TaiKhoan::where('bi_cam', 0)
+                ->where('trang_thai', 1)
+                ->whereNotNull('ten')
+                ->whereNotNull('ngay_sinh')
+                ->whereNotNull('gioi_tinh')
+                ->whereNotNull('dia_chi')
+                ->whereNotNull('email')
+                ->whereNotNull('sdt')
+                ->whereNotNull('gia_tien')
+                ->whereNotNull('selected_categories')
+                ->whereNotNull('anh_dai_dien')
+                ->whereNotNull('biet_danh')
+                ->get();
+        }else{
+            $users = TaiKhoan::where('bi_cam', 0)
+                ->where('trang_thai', 1)
+                ->whereNotNull('ten')
+                ->whereNotNull('ngay_sinh')
+                ->whereNotNull('gioi_tinh')
+                ->whereNotNull('dia_chi')
+                ->whereNotNull('email')
+                ->whereNotNull('sdt')
+                ->whereNotNull('gia_tien')
+                ->whereNotNull('selected_categories')
+                ->whereNotNull('anh_dai_dien')
+                ->whereNotNull('biet_danh')
+                ->where('id', '!=', auth()->user()->id)
+                ->get();
 
+            $userDaThues = LichSuThue::where("nguoi_thue", auth()->user()->id)
+                ->where('trang_thai', 1)
+                ->get();
+        }
 
-        return view('client.index', compact('danhMucs', 'users'));
+        return view('client.index', compact('danhMucs', 'users', 'userDaThues'));
     }
 
     public function modalUser($id)

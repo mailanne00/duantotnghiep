@@ -125,14 +125,14 @@
                 <div class="col-md-12">
                     <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
                         <div class="swiper-wrapper">
-                            @foreach ($users as $user)
+                            @foreach ($userDaThues as $userDaThue)
                                 <div class="swiper-slide">
                                     <div class="slider-item">
                                         <div class="sc-card-product menu_card style-h7">
 
                                             <div class="card-media">
-                                                <a href="{{ route('client.chitietplayer', $user->id) }}"><img
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}"
+                                                <a href="{{ route('client.chitietplayer', $userDaThue->nguoiDuocThue->id) }}"><img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
                                                         alt="Image"
                                                         style="height: 224px;"></a>
                                                 <!-- <div class="featured-countdown">
@@ -141,20 +141,20 @@
                                                         data-labels=" :  ,  : , : , "></span>
                                                 </div> -->
                                                 <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $user -> id }}"
+                                                    <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $userDaThue->nguoiDuocThue->id }}"
                                                         class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                 </div>
                                             </div>
                                             <div class="card-title">
                                                 <h5><a
-                                                        href="{{ route('client.chitietplayer', $user->id) }}">{{ $user->ten }}</a>
+                                                        href="{{ route('client.chitietplayer', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
                                                 </h5>
                                             </div>
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info">
-                                                        <span>{{ $user->biet_danh }}</span>
-                                                        <span class="pricing">{{number_format($user->gia_tien, 0 ,',','.')}} VNĐ</span>
+                                                        <span>{{ $userDaThue->nguoiDuocThue->biet_danh }}</span>
+                                                        <span class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0 ,',','.')}} VNĐ</span>
                                                     </div>
                                                 </div>
                                                 <div class="tags">bsc</div>
