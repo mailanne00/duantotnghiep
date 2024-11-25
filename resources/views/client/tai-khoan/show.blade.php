@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-title-heading mg-bt-12">
-                        <h1 class="heading text-center">{{ $user->ten }}</h1>
+                        <h1 class="heading text-center">{{ $player->ten }}</h1>
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
                             <li><a href="index-2.html">Home</a></li>
-                            <li>{{ $user->ten }}</li>
+                            <li>{{ $player->ten }}</li>
                         </ul>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="col-xl-6 col-md-12">
                     <div class="content-left">
                         <div class="media">
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}" alt=""
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($player->anh_dai_dien) }}" alt=""
                                 width="1000" height="400">
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="col-xl-6 col-md-12">
                     <div class="content-right">
                         <div class="sc-item-details">
-                            <h2 class="style2">{{ $user->ten }}</h2>
+                            <h2 class="style2">{{ $player->ten }}</h2>
                             <div class="meta-item">
                                 <div class="left">
                                     <span class="viewed eye">225</span>
@@ -74,7 +74,7 @@
                                     <span class="heading">Price</span>
                                     <div class="price">
                                         <div class="price-box">
-                                            <h5>80.000 đ</h5>
+                                            <h5>{{number_format($player->gia_tien, 0 , ',')}} VNĐ</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -316,67 +316,6 @@
     </div>
     <!-- /tf item details -->
 
-    <section class="tf-section live-auctions item-details pad-b-74 mobie-style">
-        <div class="themesflat-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-live-auctions">
-                        <h2 class="tf-title">
-                            Live Auctions</h2>
-                        <a href="explore-3.html" class="exp">EXPLORE MORE</a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="swiper-container show-shadow carousel pad-t-24 auctions">
-                        <div class="swiper-wrapper">
-                            @foreach ($users as $value)
-                                <div class="swiper-slide">
-                                    <div class="slider-item">
-                                        <div class="sc-card-product">
-                                            <div class="card-media">
-                                                <a href="{{ route('client.chitietplayer', $value->id) }}"><img
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($value->anh_dai_dien) }}"
-                                                        alt="Image"></a>
-                                                <button class="wishlist-button heart"><span class="number-like">
-                                                        100</span></button>
-                                                <div class="featured-countdown">
-                                                    <span class="slogan"></span>
-                                                    <span class="js-countdown" data-timer="516400"
-                                                        data-labels=" :  ,  : , : , "></span>
-                                                </div>
-                                                <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Place
-                                                            Bid</span></a>
-                                                </div>
-                                            </div>
-                                            <div class="card-title">
-                                                <h5><a
-                                                        href="{{ route('client.chitietplayer', $value->id) }}">{{ $value->ten }}</a>
-                                                </h5>
-                                                <div class="tags">bsc</div>
-                                            </div>
-                                            <div class="meta-info">
-
-
-                                                <h5> 4.89 ETH</h5>
-
-                                            </div>
-                                        </div>
-                                    </div><!-- item-->
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-                    <div class="swiper-pagination mg-t-12"></div>
-                    <div class="swiper-button-next btn-slide-next active"></div>
-                    <div class="swiper-button-prev btn-slide-prev"></div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
     <!-- Phần đánh giá -->
     <div class="danh-gia-list">
         <h2>Đánh giá của {{ $player->ten }}</h2>
@@ -390,7 +329,5 @@
                 </li>
             @endforeach
         </ul>
-
-        <a href="{{ route('client.danh-gia.create', $player->id) }}" class="btn btn-primary">Đánh giá ngay</a>
     </div>
 @endsection
