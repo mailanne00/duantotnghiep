@@ -157,9 +157,9 @@
                                                     </div>
                                                 </div>
 
-{{--                                                <div class="tags">{{$user->countDanhGia}}<i--}}
-{{--                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
-{{--                                                </div>--}}
+                                                {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
+                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
+                                                        {{-- </div>--}}
                                             </div>
                                         </div>
                                     </div><!-- item-->
@@ -179,6 +179,43 @@
 @else
     <div style="height: 50px; background: #14141F"></div>
 @endif
+
+<!-- Danh mục -->
+<section class="tf-section category">
+    <div class="themesflat-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-live-auctions">
+                    <h2 class="tf-title pb-39">Danh Mục</h2>
+                    <a href="{{route('client.danhmuc')}}" class="exp style2">XEM TẤT CẢ</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="swiper-container carousel11">
+                    <div class="swiper-wrapper">
+                        @foreach ($danhMucs as $danhMuc)
+                            <div class="swiper-slide">
+                                <div class="slider-item">
+                                    <div class="sc-categoty">
+                                        <div class="card-media">
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
+                                                alt="Image" style="min-height:220px">
+                                        </div>
+                                        <div class="card-title">
+                                            <h4>{{ $danhMuc->ten }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="swiper-button-next btn-slide-next active"></div>
+                <div class="swiper-button-prev btn-slide-prev"></div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Top Player -->
 <section class="tf-section top-seller home7 bg-style">
