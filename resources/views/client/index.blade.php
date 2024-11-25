@@ -900,6 +900,51 @@
     </div>
 </section>
 
+<!-- Top Pick -->
+<section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
+    <div class="themesflat-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-live-auctions mg-bt-24">
+                    <h2 class="tf-title">
+                        Top Pick</h2>
+                    <a href="{{route('client.topDanhGia')}}" class="exp style2">XEM TẤT CẢ</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="top-pick-box">
+                    @foreach($taiKhoans as $taiKhoan)
+                        <div class="sc-card-product menu_card style-h7">
+                            <div class="card-media">
+                                <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
+                                        src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
+                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
+                            </div>
+                            <div class="card-title">
+                                <h5><a href="">{{$taiKhoan->ten}}</a></h5>
+                            </div>
+                            <div class="meta-info">
+                                <div class="author">
+                                    <div class="info style2">
+                                        <span style="color: #FFFFFF;">Giá</span>
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="tags">{{$taiKhoan->countDanhGia}}
+                                    <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                    ({{$taiKhoan->countRent}})
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-md-12 wrap-inner load-more text-center mg-t17">
+                <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Hot Player -->
 <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
     <div class="themesflat-container">
