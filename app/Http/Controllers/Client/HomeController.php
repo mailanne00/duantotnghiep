@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
+use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use Storage;
 
@@ -12,33 +13,46 @@ class HomeController extends Controller
     public function index()
     {
         $danhMucs = DanhMuc::all()->take(10);
-        $users = TaiKhoan::where('bi_cam', 0)
-            ->where('trang_thai', 1)
-            ->whereNotNull('ten')
-            ->whereNotNull('ngay_sinh')
-            ->whereNotNull('gioi_tinh')
-            ->whereNotNull('dia_chi')
-            ->whereNotNull('email')
-            ->whereNotNull('sdt')
-            ->whereNotNull('gia_tien')
-            ->whereNotNull('selected_categories')
-            ->whereNotNull('anh_dai_dien')
-            ->whereNotNull('biet_danh')
-            ->get();
 
-        $taiKhoans = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-            return $taiKhoan->countDanhGia;
-        })
-        ->take(10);
+        if (auth()->check()) {
+            $userDaThues = LichSuThue::where("nguoi_thue", 10)
+                ->where('trang_thai', 1)
+                ->take(10)
+                ->get();
 
-        $taiKhoans2 = TaiKhoan::all()
+        } else {
+            $userDaThues = null;
+        }
+
+        if (!auth()->check()) {
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
+                ->take(10);
+
+            $taiKhoans2 = TaiKhoan::all()
             ->sortByDesc(function ($taiKhoan) {
                 return $taiKhoan->countRent;
             })
             ->take(10);
+        } else {
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
+                ->where('id', '!=', auth()->user()->id)
+                ->take(10);
 
-        return view('client.index', compact( 'danhMucs','users', 'taiKhoans', 'taiKhoans2'));
+            $taiKhoans2 = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->where('id', '!=', auth()->user()->id)
+            ->take(10);
+        }
+
+        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2'));
     }
 
     public function modalUser($id)

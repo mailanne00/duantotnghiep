@@ -29,6 +29,8 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
+    @yield('css')
+
 </head>
 
 <body class="body header-fixed is_dark connect-wal">
@@ -441,11 +443,7 @@
                 </div>
             </header>
 
-
-
             @yield('content')
-
-
 
             <!-- Nạp tiền player duo -->
 

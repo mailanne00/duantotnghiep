@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-title-heading mg-bt-12">
-                        <h1 class="heading text-center">FAQ</h1>
+                        <h1 class="heading text-center">Chính sách</h1>
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Trang chủ</a></li>
+                            <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
                             <li><a href="#">Chính sách</a></li>
                             <li>FAQ</li>
                         </ul>
@@ -29,13 +29,14 @@
                     <h2 class="tf-title-heading ct style-2 fs-30 mg-bt-10">
                         Điều Khoản Tham Gia PlayerDuo.net
                     </h2>
-                    <h5 class="sub-title help-center mg-bt-32" style="text-align: justify;">
+                    <h5 class="sub-title mg-bt-10">
                         Chào mừng bạn đến với trang web PlayerDuo.net được điều hành bởi Dịch Vụ Giải Pháp Trực Tuyến.
                         PlayerDuo là một hệ thống trợ giúp việc tìm gamer với mục tiêu. Bạn chỉ cần chơi game, mọi thứ khác
                         PlayerDuo sẽ lo giúp bạn. Vui lòng đọc kỹ các điều khoản sau đây trước khi sử dụng PlayerDuo.net để
                         bạn biết được các quyền lợi và nghĩa vụ hợp pháp của mình liên quan đến Công ty cổ phần Dịch Vụ Giải
                         Pháp Trực Tuyến Mideman.
-                        <br>
+                    </h5>
+                    <h5 class="sub-title mg-bt-32">
                         Các điều khoản dưới đây là những quy định chung về hình thức hoạt động của PlayerDuo.net, trách
                         nhiệm và quyền lợi của người tham gia PlayerDuo.net. Bằng cách chấp nhận các điều khoản này, các bên
                         tham gia cùng nhau cam kết tuân thủ thực hiện đúng theo bản điều khoản này nêu ra. Điều khoản này có
