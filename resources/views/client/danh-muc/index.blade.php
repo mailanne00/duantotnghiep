@@ -37,15 +37,15 @@
                             </li>
                         </ul>
                         <div class="content-tab mg-t-40">
-                            <div class="row content-inner" style="margin-left: 40px">
+                            <div class="row content-inner" style="">
                                 @foreach($danhMucs as $danhMuc)
                                     <div class="col-2 sc-card-product explode style2 mg-bt">
                                         <div class="card-media">
                                             <a href="{{route('client.danhmuc.show', $danhMuc->id)}}"><img
                                                     src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" alt="Image"></a>
                                         </div>
-                                        <div class="card-title">
-                                            <h5>{{$danhMuc->ten}}</h5>
+                                        <div class="card-title" style="">
+                                            <h5 style="margin: 0 auto">{{$danhMuc->ten}}</h5>
                                         </div>
                                     </div>
                                 @endforeach

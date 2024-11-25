@@ -107,8 +107,6 @@
             </div>
         </div>
     </div>
-    <div class="swiper-button-next btn-slide-next active"></div>
-    <div class="swiper-button-prev btn-slide-prev"></div>
 </section>
 
 <!-- Người chơi đã thuê -->
@@ -187,7 +185,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-live-auctions">
-                    <h2 class="tf-title pb-39">Danh Mục</h2>
+                    <h2 class="tf-title pb-39">Danh mục</h2>
                     <a href="{{route('client.danhmuc')}}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>

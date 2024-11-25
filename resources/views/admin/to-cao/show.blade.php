@@ -18,7 +18,6 @@
                 <div class="card-body">
                     <div class="dt-responsive table-responsive">
 
-
                        <div class="row" style="margin-left: unset; margin-right: unset;">
                            <div class="col-xl-4 col-md-6">
                                <h6 class="text-center">Người tố cáo</h6>

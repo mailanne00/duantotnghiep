@@ -30,7 +30,48 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
     @yield('css')
+    <style>
+        .flat-title-page.style3 .heading{
+            font-size: 39px;
+            line-height: 47px
+        }
 
+        h2 {
+            font-size: 23px !important;
+        }
+
+        h4 {
+            font-size: 16px !important;
+        }
+
+        .sc-button.loadmore {
+            padding: 12px 22px;
+        }
+
+        h3 {
+            font-size: 18px !important;
+        }
+
+        h1{
+            font-size: 30px;
+        }
+
+        h5 {
+            font-size: 15px;
+        }
+        .tf-section.wrap-accordion .container{
+            width: 1410px;
+            max-width: 1410px;
+        }
+
+        h6 {
+            font-size: 15px !important;
+        }
+
+        .flat-accordion2 .flat-toggle2 .toggle-content p{
+            font-size: 13px;
+        }
+    </style>
 </head>
 
 <body class="body header-fixed is_dark connect-wal">
