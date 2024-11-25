@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\BangxephangController;
 use App\Http\Controllers\Client\ChinhsachController;
 use App\Http\Controllers\Client\ChiTietPlayerController;
 use App\Http\Controllers\Client\DangKyController;
+use App\Http\Controllers\Client\DanhGiaController;
 use App\Http\Controllers\Client\DanhmucController;
 use App\Http\Controllers\Client\TaiKhoanController;
 use App\Http\Controllers\Client\HomeController;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
-Route::get('/chi-tiet-player/{id}', [ChiTietPlayerController::class, 'index'])->name('client.chitietplayer');
+Route::get('/tai-khoan/{id}', [TaiKhoanController::class, 'show'])->name('client.taikhoan.show');
 
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
 Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
@@ -52,3 +53,6 @@ Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('clien
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
+
+
+    

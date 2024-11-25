@@ -132,15 +132,10 @@
                                     <div class="slider-item">
                                         <div class="sc-card-product menu_card style-h7">
                                             <div class="card-media" style="width: 224px; height: 224px;">
-                                                <a href="{{ route('client.chitietplayer', $userDaThue->nguoiDuocThue->id) }}"><img
+                                                <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
                                                         src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
                                                         alt="Image"
                                                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
-                                                <!-- <div class="featured-countdown">
-                                                                <span class="slogan"></span>
-                                                                <span class="js-countdown" data-timer="516400"
-                                                                    data-labels=" :  ,  : , : , "></span>
-                                                            </div> -->
                                                 <div class="button-place-bid">
                                                     <a href="#" data-toggle="modal" data-target="#popup_bid"
                                                         data-id="{{ $userDaThue->nguoiDuocThue->id }}"
@@ -149,22 +144,22 @@
                                             </div>
                                             <div class="card-title">
                                                 <h5><a
-                                                        href="{{ route('client.chitietplayer', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
+                                                        href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
                                                 </h5>
                                             </div>
                                             <div class="meta-info">
                                                 <div class="author">
-                                                    <div class="info">
-                                                        <span>{{ $userDaThue->nguoiDuocThue->biet_danh }}</span>
+                                                    <div class="info style2">
+                                                        <span style="color: #FFFFFF;">Giá</span>
                                                         <span
                                                             class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
                                                             VNĐ</span>
                                                     </div>
                                                 </div>
 
-{{--                                                <div class="tags">{{$user->countDanhGia}}<i--}}
-{{--                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
-{{--                                                </div>--}}
+                                                <div class="tags">{{$userDaThue->nguoiDuocThue->countDanhGia}}<i
+                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$userDaThue->nguoiDuocThue->countRent}})
+                                                </div>
                                             </div>
                                         </div>
                                     </div><!-- item-->
@@ -205,7 +200,7 @@
                                     <div class="sc-categoty">
                                         <div class="card-media">
                                             <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                alt="Image" style="min-height:220px">
+                                                 alt="Image" style="min-height:220px">
                                         </div>
                                         <div class="card-title">
                                             <h4>{{ $danhMuc->ten }}</h4>
@@ -254,7 +249,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-31.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -276,7 +271,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -298,7 +293,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-7.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -322,7 +317,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -344,7 +339,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-8.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -366,7 +361,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-10.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -390,7 +385,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -412,7 +407,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -434,7 +429,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-32.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -458,7 +453,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-3.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -480,7 +475,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-9.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -502,7 +497,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -530,7 +525,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-31.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -552,7 +547,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -576,7 +571,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -598,7 +593,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-8.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -622,7 +617,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -644,7 +639,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -668,7 +663,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-3.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -690,7 +685,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -718,7 +713,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-7.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -740,7 +735,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -764,7 +759,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -786,7 +781,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-10.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -810,7 +805,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -832,7 +827,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -856,7 +851,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-9.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -878,7 +873,7 @@
                                             <div class="author-avatar">
                                                 <a href="#">
                                                     <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
+                                                         class="avatar">
                                                 </a>
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
@@ -921,7 +916,7 @@
                     @foreach($taiKhoans2 as $taiKhoan)
                         <div class="sc-card-product menu_card style-h7">
                             <div class="card-media">
-                                <a href="{{route('client.chitietplayer', $taiKhoan->id)}}"><img
+                                <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
                                         src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
                                         alt="Image" style="min-height: 220px; object-fit:cover"></a>
                             </div>
@@ -931,8 +926,8 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span>Giá</span>
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</span>
+                                        <span style="color: #FFFFFF;">Giá</span>
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
                                     </div>
                                 </div>
                                 <div class="tags">{{$taiKhoan->countDanhGia}}
