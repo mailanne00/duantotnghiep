@@ -12,7 +12,7 @@
                     <div class="breadcrumbs style2">
                         <ul>
                             <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
-                            <li>Chính sách</li>
+                            <li><a href="#">Chính sách</a></li>
                             <li>FAQ</li>
                         </ul>
                     </div>

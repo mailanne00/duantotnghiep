@@ -14,12 +14,28 @@ class HomeController extends Controller
     {
         $danhMucs = DanhMuc::all()->take(10);
 
+        if (auth()->check()) {
+            $userDaThues = LichSuThue::where("nguoi_thue", 10)
+                ->where('trang_thai', 1)
+                ->take(10)
+                ->get();
+
+        } else {
+            $userDaThues = null;
+        }
+
         if (!auth()->check()) {
             $taiKhoans = TaiKhoan::all()
                 ->sortByDesc(function ($taiKhoan) {
                     return $taiKhoan->countDanhGia;
                 })
                 ->take(10);
+
+            $taiKhoans2 = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->take(10);
         } else {
             $taiKhoans = TaiKhoan::all()
                 ->sortByDesc(function ($taiKhoan) {
@@ -27,24 +43,7 @@ class HomeController extends Controller
                 })
                 ->where('id', '!=', auth()->user()->id)
                 ->take(10);
-        }
 
-        if (auth()->check()) {
-            $userDaThues = LichSuThue::where("nguoi_thue", 10)
-                ->where('trang_thai', 1)
-                ->take(10);
-
-        } else {
-            $userDaThues = null;
-        }
-
-        if (!auth()->check()) {
-            $taiKhoans2 = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->countRent;
-            })
-            ->take(10);
-        } else {
             $taiKhoans2 = TaiKhoan::all()
             ->sortByDesc(function ($taiKhoan) {
                 return $taiKhoan->countRent;
@@ -53,7 +52,7 @@ class HomeController extends Controller
             ->take(10);
         }
 
-        return view('client.index', compact('danhMucs', 'users', 'userDaThues', 'taiKhoans', 'taiKhoans2'));
+        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2'));
     }
 
     public function modalUser($id)
