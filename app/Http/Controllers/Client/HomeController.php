@@ -58,6 +58,7 @@ class HomeController extends Controller
     public function modalUser($id)
     {
         $user = TaiKhoan::findOrFail($id);  // Tìm người dùng theo ID
+        $khach = auth()->user();
 
         // Trả về dữ liệu người dùng dưới dạng JSON
         return response()->json([
@@ -70,6 +71,7 @@ class HomeController extends Controller
             'email' => $user->email,
             'sdt' => $user->sdt,
             'gia_tien' => $user->gia_tien,
+            'so_du' => $khach->so_du,
             'anh_dai_dien' => Storage::url($user->anh_dai_dien),
         ]);
     }
