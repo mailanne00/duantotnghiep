@@ -5,6 +5,7 @@ use App\Http\Controllers\Client\ChinhsachController;
 use App\Http\Controllers\Client\ChiTietPlayerController;
 use App\Http\Controllers\Client\DangKyController;
 use App\Http\Controllers\Client\DanhmucController;
+use App\Http\Controllers\Client\TaiKhoanController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
@@ -40,6 +41,10 @@ Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('cli
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
+Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.taikhoan');
+Route::get('/tai-khoan/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
+Route::get('/tai-khoan/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
+Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
 

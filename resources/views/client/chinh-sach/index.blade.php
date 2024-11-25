@@ -13,6 +13,7 @@
                         <ul>
                             <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
                             <li>Chính sách</li>
+                            <li>FAQ</li>
                         </ul>
                     </div>
                 </div>
@@ -30,7 +31,7 @@
                     </h2>
                     <h5 class="sub-title mg-bt-10">
                         Chào mừng bạn đến với trang web PlayerDuo.net được điều hành bởi Dịch Vụ Giải Pháp Trực Tuyến.
-                        PlayerDuo là 1 hệ thống trợ giúp việc tìm gamer với mục tiêu. Bạn chỉ cần chơi game, mọi thứ khác
+                        PlayerDuo là một hệ thống trợ giúp việc tìm gamer với mục tiêu. Bạn chỉ cần chơi game, mọi thứ khác
                         PlayerDuo sẽ lo giúp bạn. Vui lòng đọc kỹ các điều khoản sau đây trước khi sử dụng PlayerDuo.net để
                         bạn biết được các quyền lợi và nghĩa vụ hợp pháp của mình liên quan đến Công ty cổ phần Dịch Vụ Giải
                         Pháp Trực Tuyến Mideman.
@@ -47,17 +48,20 @@
                 <div class="col-md-12">
                     <div class="flat-accordion2">
                         <div class="flat-toggle2">
-                            <h6 class="toggle-title active">1. Điều Khoản Sử Dụng</h6>
+                            <h6 class="toggle-title">1. Điều Khoản Sử Dụng</h6>
                             <div class="toggle-content">
                                 <p>1.1. Thành viên hoặc người dùng PlayerDuo.net phải đảm bảo đã đọc rõ và hiểu các điều
                                     khoản liên quan đến việc sử dụng công cụ của PlayerDuo.net cùng các điều khoản về bảo
                                     mật thông tin sẽ được liệt kê dưới đây.
+                                    <br>
                                     1.2. Khi muốn tham gia hệ thống PlayerDuo.net, người dùng có thể tạo tài khoản hoặc đăng
                                     nhập bằng tài khoản Facebook, xác nhận cho phép PlayerDuo truy cập thông tin cơ bản.
+                                    <br>
                                     1.3. Người dùng cam kết sử dụng các công cụ của PlayerDuo.net không vì mục đích chính
                                     trị, tôn giáo hoặc vi phạm các quy định pháp luật hiện hành trên môi trường Internet.
                                     Trong trường hợp vi phạm, PlayerDuo.net có quyền xóa người dùng ngay lập tức mà không
                                     cần báo trước.
+                                    <br>
                                     1.4. Việc bạn truy cập đến và sử dụng Dịch Vụ phải tuân thủ các Điều Khoản này và tất cả
                                     pháp luật và quy định hiện hành. BẠN KHÔNG ĐƯỢC:
                                     Không sử dụng công cụ của PlayerDuo.net vào mục đích phá hoại, lôi kéo, bôi nhọ uy tín,
@@ -73,7 +77,9 @@
                                     Không sử dụng từ ngữ, hình ảnh phản cảm, trái với thuần phong mỹ tục Việt Nam.
                                     Không gây ảnh hưởng xấu đến bất kỳ cá nhân, tổ chức, doanh nghiệp nào.
                                     Không gây hiềm khích đối với thành viên khác của PlayerDuo.net.
+                                    <br>
                                     1.5. Cung cấp thông tin cá nhân chính xác giúp PlayerDuo.net hỗ trợ tốt người dùng.
+                                    <br>
                                     1.6. Đối với Player:
                                     Đăng ký tài khoản miễn phí.
                                     Thông tin đăng tải phải chính xác. Vi phạm sẽ dẫn đến khóa tài khoản.
@@ -91,8 +97,10 @@
                             <div class="toggle-content">
                                 <p>2.1. Khi đăng ký, bạn đồng ý cung cấp thông tin cơ bản và cho phép truy xuất dữ liệu qua
                                     Facebook.
+                                    <br>
                                     2.2. Khi truy cập trang web, máy chủ sẽ ghi nhận thông tin như loại trình duyệt, ngày
-                                    giờ truy cập, v.v.
+                                    giờ truy cập,...
+                                    <br>
                                     2.3. PlayerDuo có thể lưu trữ và sử dụng thông tin email để cải thiện chất lượng dịch
                                     vụ.
                                 </p>
@@ -103,7 +111,9 @@
                             <div class="toggle-content">
                                 <p>3.1. Player có 5 phút để xác nhận yêu cầu thuê. Sau 5 phút, bạn có thể hủy và nhận lại
                                     tiền.
+                                    <br>
                                     3.2. Trong thời gian Duo, bạn có thể khiếu nại và admin sẽ xem xét để hủy Duo nếu cần.
+                                    <br>
                                     3.3. Kết thúc Duo sớm sẽ không được hoàn tiền.
                                 </p>
                             </div>

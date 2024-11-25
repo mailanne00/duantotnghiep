@@ -88,6 +88,14 @@ class TaiKhoan extends Model implements Authenticatable
             ->count();
         return $count;
     }
+
+    public function getCountRentAttribute()
+    {
+        $count = LichSuThue::query()
+            ->where('nguoi_duoc_thue', $this->id)
+            ->count();
+        return $count;
+    }
     public function getCountDanhGiaAttribute()
     {
         $averageRating = DanhGia::query()
@@ -147,4 +155,5 @@ class TaiKhoan extends Model implements Authenticatable
 
         return $rentStatus;
     }
+
 }

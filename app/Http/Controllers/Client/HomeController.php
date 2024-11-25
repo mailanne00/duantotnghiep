@@ -12,49 +12,48 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $danhMucs = DanhMuc::all();
+        $danhMucs = DanhMuc::all()->take(10);
 
         if (!auth()->check()) {
-            $users = TaiKhoan::where('bi_cam', 0)
-                ->where('trang_thai', 1)
-                ->whereNotNull('ten')
-                ->whereNotNull('ngay_sinh')
-                ->whereNotNull('gioi_tinh')
-                ->whereNotNull('dia_chi')
-                ->whereNotNull('email')
-                ->whereNotNull('sdt')
-                ->whereNotNull('gia_tien')
-                ->whereNotNull('selected_categories')
-                ->whereNotNull('anh_dai_dien')
-                ->whereNotNull('biet_danh')
-                ->get();
-        }else{
-            $users = TaiKhoan::where('bi_cam', 0)
-                ->where('trang_thai', 1)
-                ->whereNotNull('ten')
-                ->whereNotNull('ngay_sinh')
-                ->whereNotNull('gioi_tinh')
-                ->whereNotNull('dia_chi')
-                ->whereNotNull('email')
-                ->whereNotNull('sdt')
-                ->whereNotNull('gia_tien')
-                ->whereNotNull('selected_categories')
-                ->whereNotNull('anh_dai_dien')
-                ->whereNotNull('biet_danh')
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
+                ->take(10);
+        } else {
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
                 ->where('id', '!=', auth()->user()->id)
-                ->get();
+                ->take(10);
         }
 
         if (auth()->check()) {
             $userDaThues = LichSuThue::where("nguoi_thue", 10)
                 ->where('trang_thai', 1)
-                ->get();
+                ->take(10);
 
-        }else{
+        } else {
             $userDaThues = null;
         }
 
-        return view('client.index', compact('danhMucs', 'users', 'userDaThues'));
+        if (!auth()->check()) {
+            $taiKhoans2 = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->take(10);
+        } else {
+            $taiKhoans2 = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->where('id', '!=', auth()->user()->id)
+            ->take(10);
+        }
+
+        return view('client.index', compact('danhMucs', 'users', 'userDaThues', 'taiKhoans', 'taiKhoans2'));
     }
 
     public function modalUser($id)

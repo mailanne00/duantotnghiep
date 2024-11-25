@@ -22,10 +22,16 @@
                                         <div class="">
                                             <label class="form-label">Tên danh mục</label>
                                             <input type="text" class="form-control" name="ten" placeholder="Tên danh mục" value="{{$danhMuc->ten}}">
+                                            @error('ten')
+                                            <p class="mt-2 text-danger" style="margin-bottom: unset">{{$message}}</p>
+                                            @enderror()
                                         </div>
                                         <div class="mt-3">
                                             <label class="form-label">Ảnh danh mục</label>
                                             <input type="file" class="form-control mb-3" name="anh">
+                                            @error('anh')
+                                            <p class="mt-2 text-danger" style="margin-bottom: unset">{{$message}}</p>
+                                            @enderror()
                                             <img src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" alt="" style="width: 100px; border-radius: 10px">
                                         </div>
                                     </div>

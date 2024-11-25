@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/icon/Favicon.png">
+    <link rel="shortcut icon" href="{{asset('assets/icon/Favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
@@ -36,9 +36,9 @@
 <body class="body header-fixed is_dark connect-wal">
 
     <!-- preloade -->
-    <div class="preload preload-container">
-        <div class="preload-logo"></div>
-    </div>
+{{--    <div class="preload preload-container">--}}
+{{--        <div class="preload-logo"></div>--}}
+{{--    </div>--}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -52,7 +52,7 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="assets/images/logo/logo_dark.png"
+                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
                                                     alt="nft-gaming" width="133" height="56"
                                                     data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
                                                     data-height="56">
@@ -64,19 +64,6 @@
                                         <ul id="menu-primary-menu" class="menu">
                                             <li class="">
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Danh mục</a>
-                                                <ul class="sub-menu">
-                                                    @foreach ($danhMucs as $danhMuc)
-                                                        <li class="menu-item"><a
-                                                                href="{{ route('client.danhmuc') }}">{{ $danhMuc->ten }}</a>
-                                                        </li>
-                                                    @endforeach
-                                                    <li class="menu-item"><a href="{{ route('client.danhmuc') }}">Xem
-                                                            thêm</a>
-                                                    </li>
-                                                </ul>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.bangxephang') }}">Bảng xếp hạng</a>
