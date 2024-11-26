@@ -316,18 +316,88 @@
     </div>
     <!-- /tf item details -->
 
-    <!-- Phần đánh giá -->
     <div class="danh-gia-list">
-        <h2>Đánh giá của {{ $player->ten }}</h2>
-    
-        <ul>
-            @foreach($danhGias as $danhGia)
-                <li>
-                    <strong>{{ $danhGia->danh_gia }} sao</strong>
-                    <p>{{ $danhGia->noi_dung }}</p>
-                    <small>Đánh giá bởi: {{ $danhGia->nguoiThue->ten }}</small>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+    @foreach ($danhGias as $danhGia)
+        <div class="danh-gia-item p-3 mb-4 border rounded bg-white shadow-sm">
+            <!-- Thông tin ngôi sao -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="danh-gia-stars me-2">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $danhGia->danh_gia)
+                            <i class="fas fa-star text-warning"></i>
+                        @else
+                            <i class="far fa-star text-muted"></i>
+                        @endif
+                    @endfor
+                </div>
+                <!-- <strong class="text-muted fs-6">{{ $danhGia->danh_gia }} sao</strong> -->
+            </div>
+
+            <!-- Nội dung bình luận -->
+            <p class="mb-2 text-secondary" style="line-height: 1.6;">
+                {{ $danhGia->noi_dung }}
+            </p>
+
+            <!-- Tên người dùng và ngày -->
+            <div class="d-flex justify-content-between text-muted fs-6">
+                <span>Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></span>
+                <!--  -->
+            </div>
+        </div>
+    @endforeach
+
+    @if ($danhGias->isEmpty())
+        <p class="text-center text-muted">Chưa có đánh giá nào.</p>
+    @endif
+</div>
+
+<style>
+    .danh-gia-item {
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Màu viền trắng nhạt */
+    border-radius: 5px; /* Góc bo tròn */
+    margin-bottom: 15px;
+    background-color: inherit; /* Sử dụng màu nền của trang */
+    color: white; /* Màu chữ trắng */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Bóng đổ nhẹ */
+}
+
+.danh-gia-list {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    color: white; /* Màu chữ trắng cho toàn danh sách */
+}
+
+.danh-gia-stars i {
+    font-size: 18px;
+}
+
+.danh-gia-stars .text-warning {
+    color: #ffcc00; /* Màu sao vàng */
+}
+
+.danh-gia-stars .text-muted {
+    color: rgba(255, 255, 255, 0.5); /* Màu sao trống trắng nhạt */
+}
+
+.danh-gia-item p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: white; /* Màu chữ trắng */
+}
+
+.danh-gia-item .text-muted {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7); /* Màu chữ trắng nhạt */
+}
+
+
+
+
+</style>
+
+
+
+</div>
+
 @endsection
