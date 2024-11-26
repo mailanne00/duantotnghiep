@@ -193,15 +193,15 @@
                 <div class="swiper-container carousel11">
                     <div class="swiper-wrapper">
                         @foreach ($danhMucs as $danhMuc)
-                            <div class="swiper-slide">
-                                <div class="slider-item">
+                            <div class="swiper-slide" style="max-width: 160px">
+                                <div class="slider-item" style="width: 160px">
                                     <div class="sc-categoty">
                                         <div class="card-media">
                                             <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                 alt="Image" style="min-height:150px">
+                                                 alt="Image" style="min-height:160px">
                                         </div>
                                         <div class="card-title">
-                                            <h4>{{ $danhMuc->ten }}</h4>
+                                            <h4 style="font-size: 14px">{{ $danhMuc->ten }}</h4>
                                         </div>
                                     </div>
                                 </div>
