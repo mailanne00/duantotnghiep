@@ -201,7 +201,7 @@
                         @foreach($taiKhoans as $taiKhoan)
                             <div class="sc-card-product menu_card style-h7">
                                 <div class="card-media">
-                                    <a href="{{route('client.chitietplayer', $taiKhoan->taiKhoan->id)}}"><img
+                                    <a href="{{route('client.taikhoan.show', $taiKhoan->taiKhoan->id)}}"><img
                                             src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan ->taiKhoan -> anh_dai_dien)}}" alt="Image"></a>
                                 </div>
                                 <div class="card-title">

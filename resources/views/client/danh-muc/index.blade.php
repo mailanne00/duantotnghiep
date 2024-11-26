@@ -39,7 +39,7 @@
                         <div class="content-tab mg-t-40">
                             <div class="row content-inner" style="">
                                 @foreach($danhMucs as $danhMuc)
-                                    <div class="col-2 sc-card-product explode style2 mg-bt">
+                                    <div class="col sc-card-product explode style2 mg-bt" style="min-width: 200px; right: 8px">
                                         <div class="card-media">
                                             <a href="{{route('client.danhmuc.show', $danhMuc->id)}}"><img
                                                     src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" alt="Image"></a>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -154,6 +155,33 @@ class TaiKhoan extends Model implements Authenticatable
         }
 
         return $rentStatus;
+    }
+
+
+    public function getDaiGiaAttribute()
+    {
+        $total24h = LichSuThue::query()
+            ->where('nguoi_thue', $this->id)
+            ->where('created_at', '>=', Carbon::now()->subDay())
+            ->sum('gia_thue');
+
+        // Tổng giá trị trong 1 tuần
+        $totalWeek = LichSuThue::query()
+            ->where('nguoi_thue', $this->id)
+            ->where('created_at', '>=', Carbon::now()->subWeek())
+            ->sum('gia_thue');
+
+        // Tổng giá trị trong 1 tháng
+        $totalMonth = LichSuThue::query()
+            ->where('nguoi_thue', $this->id)
+            ->where('created_at', '>=', Carbon::now()->subMonth())
+            ->sum('gia_thue');
+
+        return [
+            '24h' => $total24h,
+            'week' => $totalWeek,
+            'month' => $totalMonth,
+        ];
     }
 
 }
