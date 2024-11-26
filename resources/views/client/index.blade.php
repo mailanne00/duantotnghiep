@@ -390,9 +390,6 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-md-12 wrap-inner load-more text-center mg-t17">
-                <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
-            </div>
         </div>
     </div>
 </section>
@@ -434,9 +431,6 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-            <div class="col-md-12 wrap-inner load-more text-center mg-t17">
-                <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
             </div>
         </div>
     </div>
