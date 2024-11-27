@@ -111,68 +111,72 @@
 
 <!-- Người chơi đã thuê -->
 @if(auth()->check())
-    <section class="tf-section live-auctions home7">
-        <div class="themesflat-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="heading-live-auctions">
-                        <h2 class="tf-title pb-22">
-                            Người chơi đã thuê</h2>
-                        <a href="" class="exp style2">XEM TẤT CẢ</a>
+    @if(!empty($userDaThues))
+        <section class="tf-section live-auctions home7">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-live-auctions">
+                            <h2 class="tf-title pb-22">
+                                Người chơi đã thuê</h2>
+                            <a href="" class="exp style2">XEM TẤT CẢ</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-12">
-                    <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
-                        <div class="swiper-wrapper">
-                            @foreach ($userDaThues as $userDaThue)
-                                <div class="swiper-slide">
-                                    <div class="slider-item">
-                                        <div class="sc-card-product menu_card style-h7">
-                                            <div class="card-media" style="width: 224px; height: 224px;">
-                                                <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
-                                                        alt="Image"
-                                                        style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
-                                                <div class="button-place-bid">
-                                                    <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                        data-id="{{ $userDaThue->nguoiDuocThue->id }}"
-                                                        class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                    <div class="col-md-12">
+                        <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
+                            <div class="swiper-wrapper">
+                                @foreach ($userDaThues as $userDaThue)
+                                    <div class="swiper-slide">
+                                        <div class="slider-item">
+                                            <div class="sc-card-product menu_card style-h7">
+                                                <div class="card-media" style="width: 224px; height: 224px;">
+                                                    <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
+                                                            src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
+                                                            alt="Image"
+                                                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
+                                                    <div class="button-place-bid">
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                                           data-id="{{ $userDaThue->nguoiDuocThue->id }}"
+                                                           class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="card-title">
-                                                <h5><a
-                                                        href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
-                                                </h5>
-                                            </div>
-                                            <div class="meta-info">
-                                                <div class="author">
-                                                    <div class="info style2">
+                                                <div class="card-title">
+                                                    <h5><a
+                                                            href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
+                                                    </h5>
+                                                </div>
+                                                <div class="meta-info">
+                                                    <div class="author">
+                                                        <div class="info style2">
                                                         <span
                                                             class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
                                                             VNĐ</span>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
+                                                    {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
                                                         class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
-                                                        {{-- </div>--}}
+                                                    {{-- </div>--}}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div><!-- item-->
-                                </div>
-                            @endforeach
+                                        </div><!-- item-->
+                                    </div>
+                                @endforeach
 
+                            </div>
+                            <div class="swiper-pagination mg-t-13"></div>
+                            <div class="swiper-button-next btn-slide-next active"></div>
+                            <div class="swiper-button-prev btn-slide-prev"></div>
                         </div>
-                        <div class="swiper-pagination mg-t-13"></div>
-                        <div class="swiper-button-next btn-slide-next active"></div>
-                        <div class="swiper-button-prev btn-slide-prev"></div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @else
+        <div style="height: 50px; background: #14141F"></div>
+    @endif
 @else
     <div style="height: 50px; background: #14141F"></div>
 @endif

@@ -15,13 +15,10 @@ class HomeController extends Controller
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::where("nguoi_thue", 10)
+            $userDaThues = LichSuThue::query()->where("nguoi_thue", 10)
                 ->where('trang_thai', 1)
                 ->take(10)
-                ->get();
-
-        } else {
-            $userDaThues = null;
+                ->get()->toArray();
         }
 
         if (!auth()->check()) {
