@@ -245,28 +245,30 @@
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
                                     <div class="box-item">
                                         @foreach($chunk as $taiKhoanDaiGia)
-                                            <div class="sc-author-box style-3">
-                                                <div class="author-style2 flex">
-                                                    <div class="author-avatar">
-                                                        <a href="#">
-                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                 class="avatar">
-                                                        </a>
-                                                        <div class="badge"><i class="ripple"></i></div>
+                                           @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                     class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h']), 0, ','}} VND</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="author-infor">
-                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h']), 0, ','}} VND</span>
+                                                    <div class="action">
+                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="action">
-                                                    <div class="number">#{{$index++}}</div>
-                                                    <div class="btn-follow">
-                                                        <a href="#">Follow</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -278,30 +280,33 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                    <div class="box-item">
-                                        @foreach($chunk as $taiKhoanDaiGia)
-                                            <div class="sc-author-box style-3">
-                                                <div class="author-style2 flex">
-                                                    <div class="author-avatar">
-                                                        <a href="#">
-                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                 class="avatar">
-                                                        </a>
-                                                        <div class="badge"><i class="ripple"></i></div>
+                                        <div class="box-item">
+                                            @foreach($chunk as $taiKhoanDaiGia)
+                                                @if($taiKhoanDaiGia->daiGia['week'] !== 0)
+
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                     class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week']), 0, ','}} VND</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="author-infor">
-                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week']), 0, ','}} VND</span>
+                                                    <div class="action">
+                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="action">
-                                                    <div class="number">#{{$index++}}</div>
-                                                    <div class="btn-follow">
-                                                        <a href="#">Follow</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -313,30 +318,32 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                    <div class="box-item">
-                                        @foreach($chunk as $taiKhoanDaiGia)
-                                            <div class="sc-author-box style-3">
-                                                <div class="author-style2 flex">
-                                                    <div class="author-avatar">
-                                                        <a href="#">
-                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                 class="avatar">
-                                                        </a>
-                                                        <div class="badge"><i class="ripple"></i></div>
+                                        <div class="box-item">
+                                            @foreach($chunk as $taiKhoanDaiGia)
+                                                @if($taiKhoanDaiGia->daiGia['month'] !== 0)
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                     class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month']), 0, ','}} VND</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="author-infor">
-                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month']), 0, ','}} VND</span>
+                                                    <div class="action">
+                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="action">
-                                                    <div class="number">#{{$index++}}</div>
-                                                    <div class="btn-follow">
-                                                        <a href="#">Follow</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    @endif
                                         @endforeach
                                     </div>
                                 @endforeach

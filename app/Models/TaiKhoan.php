@@ -163,21 +163,22 @@ class TaiKhoan extends Model implements Authenticatable
         $total24h = LichSuThue::query()
             ->where('nguoi_thue', $this->id)
             ->where('created_at', '>=', Carbon::now()->subDay())
-            ->sum('gia_thue');
+            ->sum(DB::raw('gia_thue * gio_thue'));
 
         // Tổng giá trị trong 1 tuần
         $totalWeek = LichSuThue::query()
             ->where('nguoi_thue', $this->id)
             ->where('created_at', '>=', Carbon::now()->subWeek())
-            ->sum('gia_thue');
+            ->sum(DB::raw('gia_thue * gio_thue'));
 
         // Tổng giá trị trong 1 tháng
         $totalMonth = LichSuThue::query()
             ->where('nguoi_thue', $this->id)
             ->where('created_at', '>=', Carbon::now()->subMonth())
-            ->sum('gia_thue');
+            ->sum(DB::raw('gia_thue * gio_thue'));
 
         return [
+            'id'=> $this->id,
             '24h' => $total24h,
             'week' => $totalWeek,
             'month' => $totalMonth,

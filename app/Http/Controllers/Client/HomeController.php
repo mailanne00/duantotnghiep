@@ -53,8 +53,11 @@ class HomeController extends Controller
         }
 
         $taiKhoanDaiGias = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->daiGia;
+            ->filter(function ($taiKhoanDaiGia) {
+                return $taiKhoanDaiGia->daiGia['24h'] > 0 || $taiKhoanDaiGia->daiGia['week'] > 0 || $taiKhoanDaiGia->daiGia['month'] > 0;
+            })
+            ->sortByDesc(function ($taiKhoanDaiGia) {
+                return $taiKhoanDaiGia->daiGia;
             })
             ->take(10);
 
