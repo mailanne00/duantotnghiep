@@ -98,7 +98,7 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="" alt="Image">
+                                <img src="{{asset('/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
                             </div>
                         </div>
 
@@ -107,8 +107,6 @@
             </div>
         </div>
     </div>
-    <div class="swiper-button-next btn-slide-next active"></div>
-    <div class="swiper-button-prev btn-slide-prev"></div>
 </section>
 
 <!-- Người chơi đã thuê -->
@@ -185,7 +183,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-live-auctions">
-                    <h2 class="tf-title pb-39">Danh Mục</h2>
+                    <h2 class="tf-title pb-39">Danh mục</h2>
                     <a href="{{route('client.danhmuc')}}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>
@@ -193,15 +191,15 @@
                 <div class="swiper-container carousel11">
                     <div class="swiper-wrapper">
                         @foreach ($danhMucs as $danhMuc)
-                            <div class="swiper-slide">
-                                <div class="slider-item">
+                            <div class="swiper-slide" style="max-width: 160px">
+                                <div class="slider-item" style="width: 160px">
                                     <div class="sc-categoty">
                                         <div class="card-media">
                                             <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                alt="Image" style="min-height:220px">
+                                                 alt="Image" style="min-height:160px">
                                         </div>
                                         <div class="card-title">
-                                            <h4>{{ $danhMuc->ten }}</h4>
+                                            <h4 style="font-size: 14px">{{ $danhMuc->ten }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -216,14 +214,14 @@
     </div>
 </section>
 
-<!-- Top Player -->
+<!-- Top Đại Gia -->
 <section class="tf-section top-seller home7 bg-style">
     <div class="themesflat-container">
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="heading-live-auctions">
                     <h2 class="tf-title pb-23">
-                        Top Player</h2>
+                        Top Đại Gia</h2>
                     <a href="explore-3.html" class="exp style2 see-all">XEM TẤT CẢ</a>
                 </div>
                 <div class="flat-tabs seller-tab style2">
@@ -241,654 +239,107 @@
                     <div class="content-tab mg-t-16">
                         <div class="content-inner">
                             <div class="tf-box">
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-31.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
+                                @php
+                                    $index = 1;
+                                @endphp
+                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            <div class="sc-author-box style-3">
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h']), 0, ','}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="number">#{{$index++}}</div>
+                                                    <div class="btn-follow">
+                                                        <a href="#">Follow</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#1</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#2</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-7.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#3</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#4</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-8.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#5</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-10.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#6</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#7</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#8</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-32.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#9</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-3.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#10</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-9.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#11</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#12</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="content-inner">
                             <div class="tf-box">
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-31.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
+                                @php
+                                    $index = 1;
+                                @endphp
+                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            <div class="sc-author-box style-3">
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week']), 0, ','}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="number">#{{$index++}}</div>
+                                                    <div class="btn-follow">
+                                                        <a href="#">Follow</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#1</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#2</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#3</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-8.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#4</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#5</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#6</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-3.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#7</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#8</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="content-inner">
                             <div class="tf-box">
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-7.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
+                                @php
+                                    $index = 1;
+                                @endphp
+                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            <div class="sc-author-box style-3">
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
+                                                        <div class="tag">{{$taiKhoanDaiGia->email}}</div>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month']), 0, ','}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="number">#{{$index++}}</div>
+                                                    <div class="btn-follow">
+                                                        <a href="#">Follow</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#1</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-5.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#2</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avata_profile.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#3</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-10.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#4</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-4.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#5</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-6.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#6</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-item">
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-9.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#7</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="assets/images/avatar/avt-33.jpg" alt="Image"
-                                                        class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">Windsor Lane</a></h5>
-                                                <div class="tag">@windsorlandhh</div>
-                                                <span class="price">120.7 ETH</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#8</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -936,9 +387,6 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-md-12 wrap-inner load-more text-center mg-t17">
-                <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
-            </div>
         </div>
     </div>
 </section>
@@ -979,9 +427,6 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-            <div class="col-md-12 wrap-inner load-more text-center mg-t17">
-                <a href="#" class="sc-button loadmore fl-button pri-3"><span>XEM TẤT CẢ</span></a>
             </div>
         </div>
     </div>

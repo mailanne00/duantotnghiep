@@ -52,7 +52,13 @@ class HomeController extends Controller
             ->take(10);
         }
 
-        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2'));
+        $taiKhoanDaiGias = TaiKhoan::all()
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->daiGia;
+            })
+            ->take(10);
+
+        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2', 'taiKhoanDaiGias'));
     }
 
     public function modalUser($id)
