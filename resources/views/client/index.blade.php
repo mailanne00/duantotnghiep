@@ -148,16 +148,15 @@
                                             <div class="meta-info">
                                                 <div class="author">
                                                     <div class="info style2">
-                                                        <span style="color: #FFFFFF;">Giá</span>
                                                         <span
                                                             class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
                                                             VNĐ</span>
                                                     </div>
                                                 </div>
 
-                                                <div class="tags">{{$userDaThue->nguoiDuocThue->countDanhGia}}<i
-                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$userDaThue->nguoiDuocThue->countRent}})
-                                                </div>
+                                                {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
+                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
+                                                        {{-- </div>--}}
                                             </div>
                                         </div>
                                     </div><!-- item-->
@@ -178,8 +177,7 @@
     <div style="height: 50px; background: #14141F"></div>
 @endif
 
-
-{{-- danh mục--}}
+<!-- Danh mục -->
 <section class="tf-section category">
     <div class="themesflat-container">
         <div class="row">
@@ -216,7 +214,7 @@
     </div>
 </section>
 
-<!-- Top Player -->
+<!-- Top Đại Gia -->
 <section class="tf-section top-seller home7 bg-style">
     <div class="themesflat-container">
         <div class="row">
@@ -377,7 +375,6 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span style="color: #FFFFFF;">Giá</span>
                                         <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
                                     </div>
                                 </div>
@@ -419,8 +416,7 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span style="color: #FFFFFF;">Giá</span>
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</span>
                                     </div>
                                 </div>
                                 <div class="tags">{{$taiKhoan->countDanhGia}}
@@ -755,11 +751,11 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form action="{{ route('client.themDonThue') }}" method="post">
+            <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
-                    <input type="hidden" name="user_id" id="id">
+                    <input type="text" name="user_id" id="userId">
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
@@ -784,11 +780,16 @@
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
                         <input type="hidden" name="gia_thue" id="gia_thue">
                     </div>
+                    <div class="d-flex justify-content-between">
+                        <p> Số dư:</p>
+                        <p class="text-right price color-popup" id="so_du_auth"></p>
+                        <input type="hidden" name="so_du_auth" id="soDuAuth">
+                    </div>
                     <!-- <div class="d-flex justify-content-between">
                                 <p> Số dữ của bạn:</p>
                                 <p class="text-right price color-popup"></p>
                             </div> -->
-                    <button type="submit" class="btn btn-primary">Thuê</button>
+                    <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
         </div>
@@ -820,8 +821,10 @@
                     $('#user_email').text(data.email);
                     $('#user_sdt').text(data.sdt);
                     $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    document.getElementById('soDuAuth').value = data.so_du
                     $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
-                    document.getElementById('id').value = data.id
+                    document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
 
                     giaMoiGio = data.gia_tien;
@@ -843,5 +846,27 @@
         // Cập nhật hiển thị tổng chi phí
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
     }
+
+    function themDonThue(){
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+        const tongChiPhi = gioThue * giaMoiGio;
+
+        const user_id = document.getElementById('userId').value;
+        const so_du_auth = document.getElementById('soDuAuth').value;
+
+        if (user_id == null){
+            alert("Người chơi không tồn tại")
+            return false;
+        }
+
+        if (so_du_auth < tongChiPhi){
+            alert("Số dư của bạn không đủ")
+            return false;
+        }
+
+        return true;
+
+    }
+
 </script>
 @endsection
