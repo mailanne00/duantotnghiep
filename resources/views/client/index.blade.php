@@ -1306,11 +1306,11 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form action="{{ route('client.themDonThue')  }}" onsubmit="return themDonThue()" method="post">
+            <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
-                    <input type="text" name="user_id" id="id">
+                    <input type="text" name="user_id" id="userId">
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
@@ -1338,12 +1338,13 @@
                     <div class="d-flex justify-content-between">
                         <p> Số dư:</p>
                         <p class="text-right price color-popup" id="so_du_auth"></p>
+                        <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
                     <!-- <div class="d-flex justify-content-between">
                                 <p> Số dữ của bạn:</p>
                                 <p class="text-right price color-popup"></p>
                             </div> -->
-                    <button type="submit" class="btn btn-primary">Thuê</button>
+                    <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
         </div>
@@ -1376,8 +1377,9 @@
                     $('#user_sdt').text(data.sdt);
                     $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
                     $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    document.getElementById('soDuAuth').value = data.so_du
                     $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
-                    document.getElementById('id').value = data.id
+                    document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
 
                     giaMoiGio = data.gia_tien;
@@ -1404,11 +1406,10 @@
         const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
         const tongChiPhi = gioThue * giaMoiGio;
 
-        const user_id = document.getElementById('user_id');
-        const user_gia_tien = document.getElementById('user_gia_tien').value;
-        const so_du_auth = document.getElementById('so_du_auth').value;
+        const user_id = document.getElementById('userId').value;
+        const so_du_auth = document.getElementById('soDuAuth').value;
 
-        if (user_id == false){
+        if (user_id == null){
             alert("Người chơi không tồn tại")
             return false;
         }
@@ -1418,12 +1419,8 @@
             return false;
         }
 
+        return true;
 
-
-        console.log(document.getElementsByName('gia_thue')[0].value);
-        console.log(tongChiPhi);
-
-        return false
     }
 
 </script>
