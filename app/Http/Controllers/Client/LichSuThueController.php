@@ -24,15 +24,17 @@ class LichSuThueController extends Controller
         if (!auth()->check()) {
             return redirect()->route('client.login');
         }
+        
+        $validateData = $request->validated();
 
         $users = LichSuThue::create([
             'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $request->user_id,
-            'gia_thue' => $request->gia_thue,
-            'gio_thue' => $request->gio_thue,
+            'nguoi_duoc_thue' => $validateData["user_id"],
+            'gia_thue' => $validateData["gia_thue"],
+            'gio_thue' => $validateData["gio_thue"],
         ]);
 
-        return response()->json(['success' => true]);
+        return redirect()->route('client.lichSuThue');
     }
 
     public function lichSuDuocThue()
