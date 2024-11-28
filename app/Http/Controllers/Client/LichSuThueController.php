@@ -25,14 +25,22 @@ class LichSuThueController extends Controller
             return redirect()->route('client.login');
         }
         
-        $validateData = $request->validated();
+        // $validateData = $request->validated();
 
         $users = LichSuThue::create([
             'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $validateData["user_id"],
-            'gia_thue' => $validateData["gia_thue"],
-            'gio_thue' => $validateData["gio_thue"],
+            'nguoi_duoc_thue' => $request->user_id,
+            'gia_thue' => $request->gia_thue,
+            'gio_thue' => $request->gio_thue,
         ]);
+        // $users = LichSuThue::create([
+        //     'nguoi_thue' => auth()->user()->id,
+        //     'nguoi_duoc_thue' => $validateData["user_id"],
+        //     'gia_thue' => $validateData["gia_thue"],
+        //     'gio_thue' => $validateData["gio_thue"],
+        // ]);
+
+        // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
 
         return redirect()->route('client.lichSuThue');
     }
