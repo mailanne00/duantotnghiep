@@ -257,7 +257,7 @@
                                                     <div class="author-infor">
                                                         <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                         <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.'}} VND</span>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.')}} VND</span>
                                                     </div>
                                                 </div>
                                                 <div class="action">
@@ -292,7 +292,7 @@
                                                     <div class="author-infor">
                                                         <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                         <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week']), 0, ','}} VND</span>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week'], 0, ',', '.')}} VND</span>
                                                     </div>
                                                 </div>
                                                 <div class="action">
@@ -327,7 +327,7 @@
                                                     <div class="author-infor">
                                                         <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                         <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month']), 0, ','}} VND</span>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month'], 0, ',', '.')}} VND</span>
                                                     </div>
                                                 </div>
                                                 <div class="action">
@@ -416,7 +416,7 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</span>
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
                                     </div>
                                 </div>
                                 <div class="tags">{{$taiKhoan->countDanhGia}}
