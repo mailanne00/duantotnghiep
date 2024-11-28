@@ -312,18 +312,44 @@
     </div>
     <!-- /tf item details -->
 
-    <!-- Phần đánh giá -->
     <div class="danh-gia-list">
-        <h2>Đánh giá của {{ $player->ten }}</h2>
+    @foreach ($danhGias as $danhGia)
+        <div class="danh-gia-item p-3 mb-4 border rounded bg-white shadow-sm">
+            <!-- Thông tin ngôi sao -->
+            <div class="d-flex align-items-center mb-2">
+                <div class="danh-gia-stars me-2">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $danhGia->danh_gia)
+                            <i class="fas fa-star text-warning"></i>
+                        @else
+                            <i class="far fa-star text-muted"></i>
+                        @endif
+                    @endfor
+                </div>
+                <!-- <strong class="text-muted fs-6">{{ $danhGia->danh_gia }} sao</strong> -->
+            </div>
 
-        <ul>
-            @foreach($danhGias as $danhGia)
-                <li>
-                    <strong>{{ $danhGia->danh_gia }} sao</strong>
-                    <p>{{ $danhGia->noi_dung }}</p>
-                    <small>Đánh giá bởi: {{ $danhGia->nguoiThue->ten }}</small>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+            <!-- Nội dung bình luận -->
+            <p class="mb-2 text-secondary" style="line-height: 1.6;">
+                {{ $danhGia->noi_dung }}
+            </p>
+
+            <!-- Tên người dùng và ngày -->
+            <div class="d-flex justify-content-between text-muted fs-6">
+                <span>Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></span>
+                <!--  -->
+            </div>
+        </div>
+    @endforeach
+
+    @if ($danhGias->isEmpty())
+        <p class="text-center text-muted">Chưa có đánh giá nào.</p>
+    @endif
+</div>
+
+
+
+
+</div>
+
 @endsection
