@@ -3559,39 +3559,41 @@ span.type::after {
     }
 }
 .danh-gia-list {
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
+    max-width: 1411px; 
+    margin: 0 auto; /* Căn giữa phần danh sách */
+    padding: 20px; /* Khoảng cách bên trong */
+    background-color: #f9f9f9; /* Màu nền nhẹ */
+    border-radius: 8px; /* Bo góc */
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .danh-gia-item {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    background-color: #fff;
+    margin-bottom: 20px; /* Khoảng cách giữa các bình luận */
+    padding: 15px; /* Khoảng cách bên trong mỗi bình luận */
+    border-bottom: 1px solid #ddd; /* Đường ngăn cách */
 }
 
-.danh-gia-stars i {
-    font-size: 18px;
+.danh-gia-item:last-child {
+    border-bottom: none; /* Xóa đường ngăn cách ở bình luận cuối */
 }
 
-.danh-gia-stars .text-warning {
-    color: #ffcc00;
+.danh-gia-content {
+    width: calc(100% - 70px); /* Giảm kích thước để không bị tràn */
 }
 
-.danh-gia-stars .text-muted {
-    color: #cccccc;
+.rating i {
+    font-size: 14px; /* Kích thước sao */
 }
 
-.danh-gia-item p {
+p {
+    line-height: 1.5; /* Điều chỉnh khoảng cách dòng */
     margin: 10px 0;
-    font-size: 14px;
-    color: #555;
 }
 
-.danh-gia-item .text-muted {
-    font-size: 12px;
+small {
+    font-size: 12px; /* Kích thước nhỏ cho thông tin bổ sung */
 }
+
 
 
 

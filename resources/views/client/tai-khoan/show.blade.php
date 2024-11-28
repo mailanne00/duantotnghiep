@@ -314,10 +314,17 @@
 
     <div class="danh-gia-list">
     @foreach ($danhGias as $danhGia)
-        <div class="danh-gia-item p-3 mb-4 border rounded bg-white shadow-sm">
-            <!-- Thông tin ngôi sao -->
-            <div class="d-flex align-items-center mb-2">
-                <div class="danh-gia-stars me-2">
+        <div class="danh-gia-item d-flex align-items-start mb-4">
+            <!-- Ảnh đại diện -->
+            <img src="{{ $danhGia->nguoiThue->anh_dai_dien ?? '/path/to/default-avatar.jpg' }}" 
+                 alt="Ảnh đại diện" 
+                 class="rounded-circle me-3" 
+                 style="width: 50px; height: 50px; object-fit: cover;">
+            
+            <!-- Nội dung đánh giá -->
+            <div class="danh-gia-content">
+                <!-- Sao đánh giá -->
+                <div class="mb-2">
                     @for ($i = 1; $i <= 5; $i++)
                         @if ($i <= $danhGia->danh_gia)
                             <i class="fas fa-star text-warning"></i>
@@ -326,27 +333,29 @@
                         @endif
                     @endfor
                 </div>
-                <!-- <strong class="text-muted fs-6">{{ $danhGia->danh_gia }} sao</strong> -->
+                
+                <!-- Điểm số đánh giá -->
+                <!-- <strong class="fs-5">{{ $danhGia->danh_gia }} sao</strong> -->
+                
+                <!-- Nội dung bình luận -->
+                <p class="mb-2 text-secondary" style="line-height: 1.8;">
+                    {{ $danhGia->noi_dung }}
+                </p>
+                
+                <!-- Thông tin thêm -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></small>
+                   
+                </div>
             </div>
-
-            <!-- Nội dung bình luận -->
-            <p class="mb-2 text-secondary" style="line-height: 1.6;">
-                {{ $danhGia->noi_dung }}
-            </p>
-
-            <!-- Tên người dùng và ngày -->
-            <div class="d-flex justify-content-between text-muted fs-6">
-                <span>Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></span>
-                <!--  -->
-            </div>
-            
         </div>
     @endforeach
 
-    @if ($danhGias->isEmpty())
+    @if($danhGias->isEmpty())
         <p class="text-center text-muted">Chưa có đánh giá nào.</p>
     @endif
 </div>
+
 <script>
     
 </script>
