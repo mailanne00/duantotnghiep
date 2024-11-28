@@ -19,6 +19,8 @@ class HomeController extends Controller
                 ->where('trang_thai', 1)
                 ->take(10)
                 ->get()->toArray();
+        }else {
+            $userDaThues= null;
         }
 
         if (!auth()->check()) {

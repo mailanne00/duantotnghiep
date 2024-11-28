@@ -70,17 +70,13 @@
                                 Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
                                 Facilisi lobortisal morbi fringilla urna amet sed ipsum</p>
                             <div class="meta-item-details style2">
-                                <div class="item meta-price">
+                                <div class="item meta-price w-100">
                                     <span class="heading">Price</span>
                                     <div class="price">
                                         <div class="price-box">
                                             <h5>{{number_format($player->gia_tien, 0 , ',')}} VNĐ</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="item count-down">
-                                    <span class="heading style-2">Countdown</span>
-                                    <span class="js-countdown" data-timer="416400" data-labels=" :  ,  : , : , "></span>
                                 </div>
                             </div>
                             <a href="#" data-toggle="modal" data-target="#popup_bid"
@@ -319,7 +315,7 @@
     <!-- Phần đánh giá -->
     <div class="danh-gia-list">
         <h2>Đánh giá của {{ $player->ten }}</h2>
-    
+
         <ul>
             @foreach($danhGias as $danhGia)
                 <li>
