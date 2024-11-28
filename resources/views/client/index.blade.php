@@ -427,7 +427,7 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',')}} VNĐ</span>
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
                                     </div>
                                 </div>
                                 <div class="tags">{{$taiKhoan->countDanhGia}}
@@ -766,7 +766,7 @@
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
-                    <input type="text" name="user_id" id="userId">
+                    <input type="hidden" name="user_id" id="userId">
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
