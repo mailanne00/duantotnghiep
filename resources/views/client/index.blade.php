@@ -257,7 +257,7 @@
                                                     <div class="author-infor">
                                                         <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                         <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h']), 0, ','}} VND</span>
+                                                        <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.'}} VND</span>
                                                     </div>
                                                 </div>
                                                 <div class="action">
@@ -755,7 +755,7 @@
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
-                    <input type="text" name="user_id" id="userId">
+                    <input type="hidden" name="user_id" id="userId">
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
