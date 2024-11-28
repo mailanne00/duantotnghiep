@@ -107,7 +107,7 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ route('client.bangxephang') }}">Bảng xếp hạng</a>
+                                                <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>
@@ -473,15 +473,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="mode_switcher">
-                    <h6>Dark mode <strong>Available</strong></h6>
-                    <a href="#" class="light d-flex align-items-center">
-                        <img src="assets/images/icon/sun.png" alt="">
-                    </a>
-                    <a href="#" class="dark d-flex align-items-center is_active">
-                        <img id="moon_dark" src="assets/images/icon/moon-2.png" alt="">
-                    </a>
-                </div>
             </header>
 
             @yield('content')
@@ -493,7 +484,7 @@
                     onclick="toggleChatbox()">
                     <div>
                         <i class="fas fa-comment-dots"></i>
-                        Chat with Us
+                        Chat với chúng tôi
                     </div>
                     <div>
                         <i class="fas fa-chevron-up" id="toggleIcon"></i>

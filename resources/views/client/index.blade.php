@@ -36,7 +36,7 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="{{asset('/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
+                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="assets/images/backgroup-secsion/img_sliderhome7.png" alt="Image">
+                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="{{asset('/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
+                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
                             </div>
                         </div>
 

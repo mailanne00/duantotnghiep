@@ -18,7 +18,7 @@ class HomeController extends Controller
             $userDaThues = LichSuThue::query()->where("nguoi_thue", 10)
                 ->where('trang_thai', 1)
                 ->take(10)
-                ->get()->toArray();
+                ->get();
         }else {
             $userDaThues= null;
         }
