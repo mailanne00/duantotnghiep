@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
+use Illuminate\Support\Facades\Auth;
 use Storage;
 
 class HomeController extends Controller
@@ -15,10 +16,10 @@ class HomeController extends Controller
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::query()->where("nguoi_thue", 10)
+            $userDaThues = LichSuThue::query()->where("nguoi_thue", Auth::id())
                 ->where('trang_thai', 1)
                 ->take(10)
-                ->get();
+                ->get()php ar    ;
         }else {
             $userDaThues= null;
         }
