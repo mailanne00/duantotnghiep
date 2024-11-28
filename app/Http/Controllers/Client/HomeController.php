@@ -15,13 +15,12 @@ class HomeController extends Controller
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::where("nguoi_thue", 10)
+            $userDaThues = LichSuThue::query()->where("nguoi_thue", 10)
                 ->where('trang_thai', 1)
                 ->take(10)
-                ->get();
-
-        } else {
-            $userDaThues = null;
+                ->get()->toArray();
+        }else {
+            $userDaThues= null;
         }
 
         if (!auth()->check()) {
@@ -53,8 +52,11 @@ class HomeController extends Controller
         }
 
         $taiKhoanDaiGias = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->daiGia;
+            ->filter(function ($taiKhoanDaiGia) {
+                return $taiKhoanDaiGia->daiGia['24h'] > 0 || $taiKhoanDaiGia->daiGia['week'] > 0 || $taiKhoanDaiGia->daiGia['month'] > 0;
+            })
+            ->sortByDesc(function ($taiKhoanDaiGia) {
+                return $taiKhoanDaiGia->daiGia;
             })
             ->take(10);
 

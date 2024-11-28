@@ -92,7 +92,7 @@
                                     <span style="color: lightblue">{{number_format($user->gio_thue*$user->gia_thue, 0 , ',','.')}} VNĐ</span>
                                 </div>
                                 <div class="column td5" style="width:200px; text-align: unset;">
-                                    <span style="font-size: 15px; " class="badge badge-{{$user->mau}}">{{$user->trangThai2}}</span>
+                                    <span style="font-size: 15px;" class="badge badge-{{$user->mau}}">{{$user->trangThai2}}</span>
                                 </div>
                                 <div class="column td6" style="width:200px">
                                     <span class="badge text-bg-{{$user->mau}}">Nhận</span>
