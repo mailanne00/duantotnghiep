@@ -339,6 +339,7 @@
                 <span>Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></span>
                 <!--  -->
             </div>
+            
         </div>
     @endforeach
 
@@ -346,10 +347,13 @@
         <p class="text-center text-muted">Chưa có đánh giá nào.</p>
     @endif
 </div>
+<script>
+    
+</script>
 
 
 
 
-</div>
+
 
 @endsection
