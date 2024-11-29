@@ -158,7 +158,7 @@
                     <div class="heading-live-auctions">
                         <h2 class="tf-title pb-22">
                             Hot Players</h2>
-                        <a href="explore-3.html" class="exp style2">XEM </a>
+                        <a href="explore-3.html" class="exp style2">XEM TẤT</a>
                     </div>
                 </div>
                 <div class="col-md-12">
