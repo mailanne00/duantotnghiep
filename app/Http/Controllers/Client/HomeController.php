@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\DangTin;
 use App\Models\DanhMuc;
 use App\Models\TaiKhoan;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
 use Storage;
 
 class HomeController extends Controller
@@ -26,9 +28,10 @@ class HomeController extends Controller
             ->whereNotNull('biet_danh')
             ->get();
 
+        $dangTins = DangTin::all();
 
 
-        return view('client.index', compact('danhMucs', 'users'));
+        return view('client.index', compact('danhMucs', 'users', 'dangTins'));
     }
 
     public function modalUser($id)

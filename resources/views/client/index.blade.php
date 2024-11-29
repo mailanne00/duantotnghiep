@@ -106,6 +106,50 @@
         <div class="swiper-button-next btn-slide-next active"></div>
         <div class="swiper-button-prev btn-slide-prev"></div>
     </section>
+
+
+    <section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
+    <div class="themesflat-container">
+        <div class="row">    
+            <div class="sc-card-product menu_card style-h7">
+                <div class="meta-info style">
+                    <div class="author">
+                        <div class="avatar">
+                            <img src="assets/images/avatar/avt-10.jpg" alt="Image">
+                        </div>
+                        @foreach ( $dangTins as $dangTin )
+                        <div class="info">
+                            <h6> {{$dangTin->taiKhoan->ten}}</h6>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-media">
+                  
+                   <video width="215" height="130" controls>
+                            <source src="{{ \Illuminate\Support\Facades\Storage::url($dangTin->video) }}" type="video/mp4">
+                   @endforeach
+                        
+                  
+                    <div class="button-place-bid">
+                        <a href="#" data-toggle="modal" data-target="#popup_bid"
+                           class="sc-button style-place-bid style bag fl-button pri-3">
+                            <span>Xem tin</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+    
+
+
+
+
     <!-- Hot Players -->
     <section class="tf-section live-auctions home7">
         <div class="themesflat-container">
