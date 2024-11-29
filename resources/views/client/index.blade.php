@@ -75,11 +75,11 @@
                         <div class="themesflat-container ">
                             <div class="wrap-heading flat-slider flex">
                                 <div class="content">
-                                    <h2 class="heading m-t-15">Discover,
+                                    <h2 class="heading m-t-15">Discover, find,
                                     </h2>
                                     <h1 class="heading mb-style"><span class="tf-text s1">Sell extraordinary</span>
                                     </h1>
-                                    <h1 class="heading">Monster NFTs</h1>
+                                    <h1 class="heading">Monster</h1>
                                     <p class="sub-heading mg-t-19 mg-bt-40">Marketplace for monster character cllections non
                                         fungible token NFTs
                                     </p>
