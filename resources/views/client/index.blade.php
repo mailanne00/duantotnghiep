@@ -79,7 +79,7 @@
                                     </h2>
                                     <h1 class="heading mb-style"><span class="tf-text s1">Sell extraordinary</span>
                                     </h1>
-                                    <h1 class="heading">Monster</h1>
+                                    <h1 class="heading">Monster NFTs</h1>
                                     <p class="sub-heading mg-t-19 mg-bt-40">Marketplace for monster character cllections non
                                         fungible token NFTs
                                     </p>
@@ -134,7 +134,7 @@
                     <div class="button-place-bid">
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
                            class="sc-button style-place-bid style bag fl-button pri-3">
-                            <span>Xem tin</span>
+                            <span></span>
                         </a>
                     </div>
                 </div>
