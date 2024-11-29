@@ -134,7 +134,7 @@
                     <div class="button-place-bid">
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
                            class="sc-button style-place-bid style bag fl-button pri-3">
-                            <span></span>
+                            <span>Xem </span>
                         </a>
                     </div>
                 </div>
