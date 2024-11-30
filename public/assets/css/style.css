@@ -3558,41 +3558,6 @@ span.type::after {
         opacity: 1;
     }
 }
-.danh-gia-list {
-    max-width: 1411px; 
-    margin: 0 auto; /* Căn giữa phần danh sách */
-    padding: 20px; /* Khoảng cách bên trong */
-    background-color: #f9f9f9; /* Màu nền nhẹ */
-    border-radius: 8px; /* Bo góc */
-    font-family: 'Roboto', Arial, sans-serif;
-}
-
-.danh-gia-item {
-    margin-bottom: 20px; /* Khoảng cách giữa các bình luận */
-    padding: 15px; /* Khoảng cách bên trong mỗi bình luận */
-    border-bottom: 1px solid #ddd; /* Đường ngăn cách */
-}
-
-.danh-gia-item:last-child {
-    border-bottom: none; /* Xóa đường ngăn cách ở bình luận cuối */
-}
-
-.danh-gia-content {
-    width: calc(100% - 70px); /* Giảm kích thước để không bị tràn */
-}
-
-.rating i {
-    font-size: 14px; /* Kích thước sao */
-}
-
-p {
-    line-height: 1.5; /* Điều chỉnh khoảng cách dòng */
-    margin: 10px 0;
-}
-
-small {
-    font-size: 12px; /* Kích thước nhỏ cho thông tin bổ sung */
-}
 
 
 
