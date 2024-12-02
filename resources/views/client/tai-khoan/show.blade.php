@@ -15,7 +15,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="{{route('client.index')}}">Home</a></li>
                         <li>{{ $player->ten }}</li>
                     </ul>
                 </div>
@@ -312,45 +312,46 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="danh-gia-list">
-    <h1>Đánh giá</h1>
-    @foreach ($danhGias as $danhGia)
-    
-        <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
-            <!-- Ảnh đại diện -->
-            <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+        <div class="danh-gia-list">
+            <h1>Đánh giá</h1>
+            @foreach ($danhGias as $danhGia)
 
-            <!-- Nội dung đánh giá -->
-            <div class="danh-gia-content w-100 d-flex justify-content-between">
-                <!-- Phần bên trái -->
-                <div class="danh-gia-left flex-grow-1">
-                    <strong class="text-dark">{{ $danhGia->nguoiThue->ten }}</strong>
-                    <small class="text-muted d-block">{{ $danhGia->created_at }}</small>
-                    <p class="mb-2 text-secondary">
-                        {{ $danhGia->noi_dung }}
-                    </p>
-                </div>
+            <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
+                <!-- Ảnh đại diện -->
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
 
-                <!-- Phần sao đánh giá -->
-                <div class="danh-gia-stars text-end flex-shrink-0">
-                    @for ($i = 1; $i <= 5; $i++)
-                        @if ($i <= $danhGia->danh_gia)
+                <!-- Nội dung đánh giá -->
+                <div class="danh-gia-content w-100 d-flex justify-content-between">
+                    <!-- Phần bên trái -->
+                    <div class="danh-gia-left flex-grow-1">
+                        <strong class="text-dark">{{ $danhGia->nguoiThue->ten }}</strong>
+                        <small class="text-muted d-block">{{ $danhGia->created_at }}</small>
+                        <p class="mb-2 text-secondary">
+                            {{ $danhGia->noi_dung }}
+                        </p>
+                    </div>
+
+                    <!-- Phần sao đánh giá -->
+                    <div class="danh-gia-stars text-end flex-shrink-0">
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <=$danhGia->danh_gia)
                             <i class="fas fa-star text-warning"></i>
-                        @else
+                            @else
                             <i class="far fa-star text-muted"></i>
-                        @endif
-                    @endfor
+                            @endif
+                        @endfor
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+            @endforeach
 
-    @if($danhGias->isEmpty())
-        <p class="text-center text-muted">Chưa có đánh giá nào...</p>
-    @endif
+            @if($danhGias->isEmpty())
+            <p class="text-center text-muted">Chưa có đánh giá nào...</p>
+            @endif
+        </div>
+    </div>
 </div>
+
 
 
 
@@ -358,115 +359,122 @@
 <style>
     /* Container chung */
     h1 {
-    margin-bottom: 20px;
-    margin-left: 20px;
-    font-size: 48px; /* Kích thước lớn vừa phải */
-    font-weight: 700; /* Đậm nhưng không quá nặng */
-    color: #2c3e50; /* Màu xanh đậm thanh lịch */
-    border-left: 5px solid #3498db; /* Thêm viền bên trái làm điểm nhấn */
-    padding-left: 15px; /* Tạo khoảng cách giữa viền và chữ */
-    background: linear-gradient(to right, #3498db, #2ecc71); /* Hiệu ứng gradient */
-    -webkit-background-clip: text; /* Gradient chỉ áp dụng cho chữ */
-    -webkit-text-fill-color: transparent; /* Giữ phần chữ trong suốt để hiện gradient */
-    letter-spacing: 0.5px; /* Nhẹ nhàng tăng khoảng cách giữa chữ */
-    line-height: 1.3; /* Cân bằng khoảng cách dòng */
-    transition: transform 0.2s ease, opacity 0.3s ease; /* Hiệu ứng hover */
-}
-
-h1:hover {
-    transform: translateX(10px); /* Di chuyển nhẹ sang phải */
-    opacity: 0.9; /* Giảm độ trong suốt nhẹ khi hover */
-}
-
-
-.danh-gia-list {
-    margin-top: 30px;
-}
-
-/* Mỗi item đánh giá */
-.danh-gia-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: start;
-    padding: 15px;
-    
-}
-
-.danh-gia-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Ảnh đại diện */
-.danh-gia-item img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-/* Nội dung đánh giá */
-.danh-gia-content {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-/* Nội dung bên trái */
-.danh-gia-left {
-    flex-grow: 1; /* Đảm bảo phần nội dung bên trái chiếm không gian */
-    margin-right: 15px;
-    word-wrap: break-word;
-}
-
-.danh-gia-left strong {
-    font-size: 20px; /* Hiển thị tên rõ ràng */
-    color: #333;
-    white-space: nowrap; /* Giữ tên trên một dòng */
-    overflow: hidden; /* Cắt nếu tên quá dài */
-    text-overflow: ellipsis; /* Thêm "..." nếu bị cắt */
-}
-
-.danh-gia-left p {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
-}
-
-/* Sao đánh giá */
-.danh-gia-stars {
-    min-width: 100px; /* Đảm bảo phần sao không thu nhỏ */
-    text-align: right; /* Căn phải sao đánh giá */
-    flex-shrink: 0; /* Không cho phép bị thu nhỏ */
-}
-
-.danh-gia-stars i {
-    font-size: 18px;
-    margin-left: 2px;
-}
-
-/* Ngày tháng nhỏ hơn */
-.danh-gia-left small {
-    font-size: 13px;
-    color: #888;
-    margin-top: 5px;
-}
-
-/* Hiển thị thông báo khi không có đánh giá */
-.text-center.text-muted {
-    font-size: 16px;
-    color: #999;
-    padding: 20px;
-}
+        margin-bottom: 20px;
+        margin-left: 20px;
+        font-size: 48px;
+        /* Kích thước lớn vừa phải */
+        font-weight: 700;
+        /* Đậm nhưng không quá nặng */
+        color: #2c3e50;
+        /* Màu xanh đậm thanh lịch */
+        
+        padding-left: 15px;
+        /* Tạo khoảng cách giữa viền và chữ */
+        background: linear-gradient(to right, #3498db, #2ecc71);
+        /* Hiệu ứng gradient */
+        -webkit-background-clip: text;
+        /* Gradient chỉ áp dụng cho chữ */
+        -webkit-text-fill-color: transparent;
+        /* Giữ phần chữ trong suốt để hiện gradient */
+        letter-spacing: 0.5px;
+        /* Nhẹ nhàng tăng khoảng cách giữa chữ */
+        line-height: 1.3;
+        /* Cân bằng khoảng cách dòng */
+        transition: transform 0.2s ease, opacity 0.3s ease;
+        /* Hiệu ứng hover */
+    }
 
 
 
+    .danh-gia-list {
+        margin-top: 30px;
+    }
+
+    /* Mỗi item đánh giá */
+    .danh-gia-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: start;
+        padding: 15px;
+
+    }
+
+
+    /* Ảnh đại diện */
+    .danh-gia-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    /* Nội dung đánh giá */
+    .danh-gia-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* Nội dung bên trái */
+    .danh-gia-left {
+        flex-grow: 1;
+        /* Đảm bảo phần nội dung bên trái chiếm không gian */
+        margin-right: 15px;
+        word-wrap: break-word;
+    }
+
+    .danh-gia-left strong {
+        font-size: 20px;
+        /* Hiển thị tên rõ ràng */
+        color: #333;
+        white-space: nowrap;
+        /* Giữ tên trên một dòng */
+        overflow: hidden;
+        /* Cắt nếu tên quá dài */
+        text-overflow: ellipsis;
+        /* Thêm "..." nếu bị cắt */
+    }
+
+    .danh-gia-left p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    /* Sao đánh giá */
+    .danh-gia-stars {
+        min-width: 100px;
+        /* Đảm bảo phần sao không thu nhỏ */
+        text-align: right;
+        /* Căn phải sao đánh giá */
+        flex-shrink: 0;
+        /* Không cho phép bị thu nhỏ */
+    }
+
+    .danh-gia-stars i {
+        font-size: 18px;
+        margin-left: 2px;
+    }
+
+    /* Ngày tháng nhỏ hơn */
+    .danh-gia-left small {
+        font-size: 13px;
+        color: #888;
+        margin-top: 5px;
+    }
+
+    /* Hiển thị thông báo khi không có đánh giá */
+    .text-center.text-muted {
+        font-size: 16px;
+        color: #999;
+        padding: 20px;
+    }
 </style>
 
 
@@ -502,9 +510,9 @@ h1:hover {
                         class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
                         @for($i = 1; $i <= 24; $i++)
                             <option value="{{ $i }}" style="font-size: 16px;">
-                                {{ $i }} giờ
+                            {{ $i }} giờ
                             </option>
-                        @endfor
+                            @endfor
                     </select>
 
                     <p>Nội Dung</p>
@@ -537,17 +545,17 @@ h1:hover {
 @section('script_footer')
 <script>
     let giaMoiGio = 0;
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Khi modal popup được mở
-        $('#popup_bid').on('show.bs.modal', function (event) {
+        $('#popup_bid').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget); // Lấy nút "Thuê" đã được click
             var userId = button.data('id'); // Lấy ID người dùng từ thuộc tính data-id
 
             // Gửi AJAX để lấy dữ liệu người dùng
             $.ajax({
-                url: '/modal-user/' + userId,  // Đường dẫn tới API lấy thông tin người dùng
+                url: '/modal-user/' + userId, // Đường dẫn tới API lấy thông tin người dùng
                 method: 'GET',
-                success: function (data) {
+                success: function(data) {
                     // Cập nhật thông tin trong modal với dữ liệu trả về
                     $('#user_id').text(data.id);
                     $('#user_name').text(data.ten);
@@ -560,13 +568,13 @@ h1:hover {
                     $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
                     $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
                     document.getElementById('soDuAuth').value = data.so_du
-                    $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
+                    $('#user_image').attr('src', data.anh_dai_dien); // Cập nhật ảnh đại diện
                     document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
 
                     giaMoiGio = data.gia_tien;
                 },
-                error: function () {
+                error: function() {
                     alert('Không thể tải thông tin người dùng.');
                 }
             });
@@ -584,19 +592,19 @@ h1:hover {
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
     }
 
-    function themDonThue(){
+    function themDonThue() {
         const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;
         const so_du_auth = document.getElementById('soDuAuth').value;
 
-        if (user_id == null){
+        if (user_id == null) {
             alert("Người chơi không tồn tại")
             return false;
         }
 
-        if (so_du_auth < tongChiPhi){
+        if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
@@ -604,6 +612,5 @@ h1:hover {
         return true;
 
     }
-
 </script>
 @endsection
