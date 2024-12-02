@@ -310,59 +310,123 @@
         </div>
     </div>
 </div>
-<!-- /tf item details -->
-
 <div class="danh-gia-list">
     @foreach ($danhGias as $danhGia)
-    <div class="danh-gia-item d-flex align-items-start mb-4">
-        <!-- Ảnh đại diện -->
-        <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien)  }}"
-            alt="Ảnh đại diện"
-            class="rounded-circle me-3"
-            style="width: 50px; height: 50px; object-fit: cover;margin-right:20px;">
+        <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
+            <!-- Ảnh đại diện -->
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
 
-        <!-- Nội dung đánh giá -->
-        <div class="danh-gia-content">
-            <!-- Sao đánh giá -->
-            <div class="mb-2">
-                @for ($i = 1; $i <= 5; $i++)
-                    @if ($i <=$danhGia->danh_gia)
-                    <i class="fas fa-star text-warning"></i>
-                    @else
-                    <i class="far fa-star text-muted"></i>
-                    @endif
+            <!-- Nội dung đánh giá -->
+            <div class="danh-gia-content w-100">
+                <div class="d-flex justify-content-between mb-2">
+                    <!-- Tên người bình luận -->
+                    <strong class="text-dark">{{ $danhGia->nguoiThue->ten }}</strong>
+                </div>
+
+                <!-- Sao đánh giá (Di chuyển lên trên ngày giờ) -->
+                <div class="mb-2">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $danhGia->danh_gia)
+                            <i class="fas fa-star text-warning"></i>
+                        @else
+                            <i class="far fa-star text-muted"></i>
+                        @endif
                     @endfor
-            </div>
+                </div>
 
-            <!-- Điểm số đánh giá -->
-            <!-- <strong class="fs-5">{{ $danhGia->danh_gia }} sao</strong> -->
+                <!-- Ngày đánh giá (Di chuyển xuống dưới số sao) -->
+                <div class="d-flex justify-content-between">
+                    <small class="text-muted">{{ $danhGia->created_at }}</small>
+                </div>
 
-            <!-- Nội dung bình luận -->
-            <p class="mb-2 text-secondary" style="line-height: 1.8;">
-                {{ $danhGia->noi_dung }}
-            </p>
-
-            <!-- Thông tin thêm -->
-            <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">Đánh giá bởi: <strong>{{ $danhGia->nguoiThue->ten }}</strong></small>
-
+                <!-- Nội dung bình luận -->
+                <p class="mb-2 text-secondary" style="line-height: 1.6;">
+                    {{ $danhGia->noi_dung }}
+                </p>
             </div>
         </div>
-    </div>
     @endforeach
 
     @if($danhGias->isEmpty())
-    <p class="text-center text-muted">Chưa có đánh giá nào.</p>
+        <p class="text-center text-muted">Chưa có đánh giá nào...</p>
     @endif
-
-    <style>
-        .danh-gia-list{
-            margin-top: 50px;
-            
-        }
-        
-    </style>
 </div>
+
+
+<style>
+    /* Container chung */
+.danh-gia-list {
+    margin-top: 30px;
+}
+
+/* Mỗi item đánh giá */
+.danh-gia-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: start;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.danh-gia-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Ảnh đại diện người dùng */
+.danh-gia-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Nội dung đánh giá */
+.danh-gia-content {
+    width: 100%;
+}
+
+.danh-gia-content .d-flex {
+    justify-content: space-between;
+}
+
+/* Tên người bình luận */
+.danh-gia-content strong {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Ngày tháng bình luận */
+.danh-gia-content small {
+    font-size: 14px;
+}
+
+/* Sao đánh giá */
+.danh-gia-content i {
+    font-size: 18px;
+}
+
+/* Nội dung bình luận */
+.danh-gia-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* Hiển thị thông báo khi không có đánh giá */
+.text-center.text-muted {
+    font-size: 16px;
+    color: #999;
+    padding: 20px;
+}
+
+</style>
+
 
 <script>
 
