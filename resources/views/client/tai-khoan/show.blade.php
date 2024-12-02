@@ -1,5 +1,9 @@
 @extends('client.layouts.app')
 
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+@endsection
+
 @section('content')
 <section class="flat-title-page inner">
     <div class="overlay"></div>
@@ -437,4 +441,131 @@
 
 
 
+@endsection
+
+@section('modal_user')
+<div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
+                @csrf
+                <div class="modal-body space-y-20 pd-40">
+                    <h3>Thuê người chơi</h3>
+                    <input type="hidden" name="user_id" id="userId">
+                    <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
+                    </p>
+
+                    <p>Số giờ thuê
+                    </p>
+                    <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
+                        class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
+                        @for($i = 1; $i <= 24; $i++)
+                            <option value="{{ $i }}" style="font-size: 16px;">
+                                {{ $i }} giờ
+                            </option>
+                        @endfor
+                    </select>
+
+                    <p>Nội Dung</p>
+                    <textarea class="form-control quantity styled-textarea"
+                        style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
+                        placeholder="Nhập nội dung..." name="noi_dung">{{ old('noi_dung') }}</textarea>
+                    <div class="hr"></div>
+                    <div class="d-flex justify-content-between">
+                        <p> Tổng chi phí:</p>
+                        <p class="text-right price color-popup" id="user_gia_tien"></p>
+                        <input type="hidden" name="gia_thue" id="gia_thue">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p> Số dư:</p>
+                        <p class="text-right price color-popup" id="so_du_auth"></p>
+                        <input type="hidden" name="so_du_auth" id="soDuAuth">
+                    </div>
+                    <!-- <div class="d-flex justify-content-between">
+                                <p> Số dữ của bạn:</p>
+                                <p class="text-right price color-popup"></p>
+                            </div> -->
+                    <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('script_footer')
+<script>
+    let giaMoiGio = 0;
+    $(document).ready(function () {
+        // Khi modal popup được mở
+        $('#popup_bid').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Lấy nút "Thuê" đã được click
+            var userId = button.data('id'); // Lấy ID người dùng từ thuộc tính data-id
+
+            // Gửi AJAX để lấy dữ liệu người dùng
+            $.ajax({
+                url: '/modal-user/' + userId,  // Đường dẫn tới API lấy thông tin người dùng
+                method: 'GET',
+                success: function (data) {
+                    // Cập nhật thông tin trong modal với dữ liệu trả về
+                    $('#user_id').text(data.id);
+                    $('#user_name').text(data.ten);
+                    $('#user_biet_danh').text(data.biet_danh);
+                    $('#user_ngay_sinh').text(data.ngay_sinh);
+                    $('#user_gioi_tinh').text(data.gioi_tinh);
+                    $('#user_dia_chi').text(data.dia_chi);
+                    $('#user_email').text(data.email);
+                    $('#user_sdt').text(data.sdt);
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    document.getElementById('soDuAuth').value = data.so_du
+                    $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
+                    document.getElementById('userId').value = data.id
+                    document.getElementById('gia_thue').value = data.gia_tien
+
+                    giaMoiGio = data.gia_tien;
+                },
+                error: function () {
+                    alert('Không thể tải thông tin người dùng.');
+                }
+            });
+        });
+    });
+
+    function tinhTongChiPhi() {
+        // Lấy giá trị số giờ thuê
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+
+        // Tính tổng chi phí
+        const tongChiPhi = gioThue * giaMoiGio;
+
+        // Cập nhật hiển thị tổng chi phí
+        document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
+    }
+
+    function themDonThue(){
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+        const tongChiPhi = gioThue * giaMoiGio;
+
+        const user_id = document.getElementById('userId').value;
+        const so_du_auth = document.getElementById('soDuAuth').value;
+
+        if (user_id == null){
+            alert("Người chơi không tồn tại")
+            return false;
+        }
+
+        if (so_du_auth < tongChiPhi){
+            alert("Số dư của bạn không đủ")
+            return false;
+        }
+
+        return true;
+
+    }
+
+</script>
 @endsection
