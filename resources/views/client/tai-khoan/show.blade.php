@@ -313,7 +313,7 @@
             </div>
         </div>
         <div class="danh-gia-list">
-            <h1>Đánh giá</h1>
+            <h1 class="container">Đánh giá</h1>
             @foreach ($danhGias as $danhGia)
 
             <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
@@ -339,7 +339,9 @@
                             @else
                             <i class="far fa-star text-muted"></i>
                             @endif
-                        @endfor
+                            @endfor
+                            <p> (Thuê {{ $danhGia->lichSuThue->gio_thue }}h)</p>
+
                     </div>
                 </div>
             </div>
@@ -357,124 +359,103 @@
 
 
 <style>
-    /* Container chung */
-    h1 {
-        margin-bottom: 20px;
-        margin-left: 20px;
-        font-size: 48px;
-        /* Kích thước lớn vừa phải */
-        font-weight: 700;
-        /* Đậm nhưng không quá nặng */
-        color: #2c3e50;
-        /* Màu xanh đậm thanh lịch */
-        
-        padding-left: 15px;
-        /* Tạo khoảng cách giữa viền và chữ */
-        background: linear-gradient(to right, #3498db, #2ecc71);
-        /* Hiệu ứng gradient */
-        -webkit-background-clip: text;
-        /* Gradient chỉ áp dụng cho chữ */
-        -webkit-text-fill-color: transparent;
-        /* Giữ phần chữ trong suốt để hiện gradient */
-        letter-spacing: 0.5px;
-        /* Nhẹ nhàng tăng khoảng cách giữa chữ */
-        line-height: 1.3;
-        /* Cân bằng khoảng cách dòng */
-        transition: transform 0.2s ease, opacity 0.3s ease;
-        /* Hiệu ứng hover */
-    }
+/* Phần danh sách đánh giá */
+.danh-gia-list {
+    background-color: #f9f9f9; /* Nền nhẹ */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto; /* Canh giữa */
+    width: 100%; /* Chiều rộng tự nhiên */
+}
+
+/* Tiêu đề */
+.danh-gia-list h1 {
+    font-size: 50px; /* Giữ kích thước lớn */
+    font-weight: bold;
+    color: #007bff; /* Màu nổi bật */
+    text-align: center;
+    margin-bottom: 30px; /* Khoảng cách lớn hơn */
+}
+
+/* Mỗi đánh giá */
+.danh-gia-item {
+    display: flex; /* Sắp xếp ngang */
+    align-items: center; /* Canh giữa theo trục dọc */
+    background-color: #ffffff; /* Nền trắng */
+    border: 1px solid #ddd;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-bottom: 20px; /* Khoảng cách giữa các đánh giá */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    width: 100%; /* Chiều rộng tự động */
+}
+
+/* Ảnh đại diện */
+.danh-gia-item img {
+    flex-shrink: 0; /* Không co ảnh */
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Ảnh luôn vừa khung */
+    border: 2px solid #007bff;
+    border-radius: 50%; /* Bo tròn */
+    margin-right: 15px; /* Khoảng cách bên phải */
+}
+
+/* Nội dung đánh giá */
+.danh-gia-content {
+    display: flex; /* Sắp xếp ngang */
+    justify-content: space-between; /* Phân bố đều giữa các phần */
+    align-items: flex-start; /* Canh trên cùng */
+    border-left: 2px dashed #ccc;
+    padding-left: 15px;
+    width: calc(100% - 70px); /* Trừ đi phần chiều rộng của ảnh + margin */
+}
+
+/* Phần trái (Nội dung chính) */
+.danh-gia-left {
+    flex-grow: 1; /* Chiếm tối đa không gian còn lại */
+}
+
+.danh-gia-left strong {
+    font-size: 20px; /* Kích thước lớn */
+    color: #343a40;
+}
+
+.danh-gia-left small {
+    font-size: 0.9rem; /* Nhỏ hơn một chút */
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.danh-gia-left p {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: #555; /* Màu chữ mềm hơn */
+}
+
+/* Phần sao đánh giá */
+.danh-gia-stars {
+    flex-shrink: 0; /* Không thu nhỏ phần này */
+    text-align: right; /* Canh phải */
+    white-space: nowrap; /* Không xuống dòng */
+}
+
+.danh-gia-stars i {
+    font-size: 1.2rem;
+    margin-right: 2px;
+}
+
+.danh-gia-stars p {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    color: #6c757d;
+    font-style: italic;
+}
 
 
 
-    .danh-gia-list {
-        margin-top: 30px;
-    }
 
-    /* Mỗi item đánh giá */
-    .danh-gia-item {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: start;
-        padding: 15px;
-
-    }
-
-
-    /* Ảnh đại diện */
-    .danh-gia-item img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin-right: 15px;
-    }
-
-    /* Nội dung đánh giá */
-    .danh-gia-content {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    /* Nội dung bên trái */
-    .danh-gia-left {
-        flex-grow: 1;
-        /* Đảm bảo phần nội dung bên trái chiếm không gian */
-        margin-right: 15px;
-        word-wrap: break-word;
-    }
-
-    .danh-gia-left strong {
-        font-size: 20px;
-        /* Hiển thị tên rõ ràng */
-        color: #333;
-        white-space: nowrap;
-        /* Giữ tên trên một dòng */
-        overflow: hidden;
-        /* Cắt nếu tên quá dài */
-        text-overflow: ellipsis;
-        /* Thêm "..." nếu bị cắt */
-    }
-
-    .danh-gia-left p {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        word-break: break-word;
-        white-space: normal;
-    }
-
-    /* Sao đánh giá */
-    .danh-gia-stars {
-        min-width: 100px;
-        /* Đảm bảo phần sao không thu nhỏ */
-        text-align: right;
-        /* Căn phải sao đánh giá */
-        flex-shrink: 0;
-        /* Không cho phép bị thu nhỏ */
-    }
-
-    .danh-gia-stars i {
-        font-size: 18px;
-        margin-left: 2px;
-    }
-
-    /* Ngày tháng nhỏ hơn */
-    .danh-gia-left small {
-        font-size: 13px;
-        color: #888;
-        margin-top: 5px;
-    }
-
-    /* Hiển thị thông báo khi không có đánh giá */
-    .text-center.text-muted {
-        font-size: 16px;
-        color: #999;
-        padding: 20px;
-    }
 </style>
 
 
