@@ -64,6 +64,9 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
+                                                <a href="{{ route('client.danhmuc') }}">Danh mục</a>
+                                            </li>
+                                            <li class="">
                                                 <a href="{{ route('client.bangxephang') }}">Bảng xếp hạng</a>
                                             </li>
                                             <li class="">
