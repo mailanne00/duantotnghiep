@@ -189,7 +189,7 @@
             ykeys: ['b'],
             labels: ['Số lượng'],
             barColors: ["#463699"]
-        });
+        })
 
 
     </script>
