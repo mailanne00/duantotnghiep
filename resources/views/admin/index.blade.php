@@ -186,7 +186,7 @@
             barGap: 3,
             resize: true,
             responsive: true,
-            ykeys: ['b'],
+           
             labels: ['Số lượng'],
             barColors: ["#463699"]
         });
