@@ -3558,42 +3558,8 @@ span.type::after {
         opacity: 1;
     }
 }
-.danh-gia-item {
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Màu viền trắng nhạt */
-    border-radius: 5px; /* Góc bo tròn */
-    margin-bottom: 15px;
-    background-color: inherit; /* Sử dụng màu nền của trang */
-    color: white; /* Màu chữ trắng */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Bóng đổ nhẹ */
-}
 
-.danh-gia-list {
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-    color: white; /* Màu chữ trắng cho toàn danh sách */
-}
 
-.danh-gia-stars i {
-    font-size: 18px;
-}
 
-.danh-gia-stars .text-warning {
-    color: #ffcc00; /* Màu sao vàng */
-}
 
-.danh-gia-stars .text-muted {
-    color: rgba(255, 255, 255, 0.5); /* Màu sao trống trắng nhạt */
-}
-
-.danh-gia-item p {
-    margin: 10px 0;
-    font-size: 14px;
-    color: white; /* Màu chữ trắng */
-}
-
-.danh-gia-item .text-muted {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.7); /* Màu chữ trắng nhạt */
-}
 

@@ -74,7 +74,7 @@
     </style>
 </head>
 
-<body class="body header-fixed is_dark connect-wal">
+<body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
 
     <!-- preloade -->
 {{--    <div class="preload preload-container">--}}
