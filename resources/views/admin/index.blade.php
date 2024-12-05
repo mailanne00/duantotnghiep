@@ -177,6 +177,20 @@
             labels: ['Doanh thu',],
             lineColors: ['#463699', '#19BCBF']
         });
+        var chartData = @json($data);
+        Morris.Bar({
+            element: 'morris-bar-chart',
+            data: chartData,
+            xkey: 'y',
+            barSizeRatio: 0.70,
+            barGap: 3,
+            resize: true,
+            responsive: true,
+            ykeys: ['b'],
+            labels: ['Số lượng'],
+            barColors: ["#463699"]
+        });
+
 
     </script>
 @endsection
