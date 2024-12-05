@@ -95,6 +95,8 @@
                                 class="fas fa-comment-dots"></i></span><span class="pcoded-mtext">Quản lý bình luận</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.blogs.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-newspaper"></i></span><span class="pcoded-mtext">Quản lý bảng tin</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.lien-he.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-newspaper"></i></span><span class="pcoded-mtext">Quản lý liên hệ</span></a></li>
             </ul>
 
         </div>

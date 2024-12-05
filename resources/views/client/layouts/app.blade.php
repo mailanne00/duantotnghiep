@@ -93,9 +93,9 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
-                                                    alt="nft-gaming" width="133" height="56"
-                                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
+                                                <img id="logo_header" src="https://files.playerduo.net/production/static-files/logo.png"
+                                                    alt="nft-gaming" width="50" height="50"
+                                                    data-retina="https://files.playerduo.net/production/static-files/logo.png" data-width="133"
                                                     data-height="56">
                                             </a>
                                         </div>
@@ -108,6 +108,9 @@
                                             </li>
                                             <li class="">
                                                 <a href="">Đăng tin</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="">Bài viết</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>

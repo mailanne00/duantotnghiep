@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
-                    <h2 class="tf-title-heading style-2 mg-bt-12">
+                    <h2 class="tf-title-heading style-2 mg-bt-24 text-center">
                         Player Duo xin hân hạnh được hỗ trợ
                     </h2>
                     <div class="form-inner">
@@ -41,8 +41,6 @@
                                 type="text" placeholder="Họ và tên">
                             <input id="email" name="email" tabindex="2" value="" aria-required="true" required
                                 type="email" placeholder="Email">
-                            <input id="email" name="email" tabindex="2" value="" aria-required="true" required
-                                   type="text" placeholder="Tiêu đề">
                             <textarea id="message" name="message" tabindex="3" aria-required="true" required placeholder="Nội dung"></textarea>
                             <button class="submit">Send message</button>
                         </form>
