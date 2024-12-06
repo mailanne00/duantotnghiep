@@ -130,34 +130,6 @@
                                                                 </td>
                                                             </tr>
                                                         @endforeach
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div
-                                                                        class="form-group d-inline">
-                                                                        <div
-                                                                            class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input
-                                                                                type="checkbox"
-                                                                                name="checkbox-s-in-1"
-                                                                                id="checkbox-s-infill-1">
-                                                                            <label
-                                                                                for="checkbox-s-infill-1"
-                                                                                class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i
-                                                                            class="feather icon-star ms-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="#"
-                                                                   class="email-name waves-effect">John
-                                                                    Doe</a></td>
-                                                            <td><a href="#"
-                                                                   class="email-name waves-effect">Coming
-                                                                    Up Next Week</a></td>
-                                                            <td class="email-time">13:02 PM</td>
-                                                        </tr>
                                                         <tr class="read">
                                                             <td>
                                                                 <div class="check-star">

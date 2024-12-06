@@ -37,11 +37,11 @@
                     <div class="form-inner">
                         <form action="https://themesflat.co/html/axiesv/contact/contact-process2.php" method="post"
                             id="contactform" novalidate="novalidate" class="form-submit">
-                            <input id="name" name="name" tabindex="1" value="" aria-required="true" required
+                            <input id="name" name="name" tabindex="1" value="" aria-required="true"
                                 type="text" placeholder="Họ và tên">
-                            <input id="email" name="email" tabindex="2" value="" aria-required="true" required
+                            <input id="email" name="email" tabindex="2" value="" aria-required="true"
                                 type="email" placeholder="Email">
-                            <textarea id="message" name="message" tabindex="3" aria-required="true" required placeholder="Nội dung"></textarea>
+                            <textarea id="message" name="message" tabindex="3" aria-required="true"  placeholder="Nội dung"></textarea>
                             <button class="submit">Send message</button>
                         </form>
                     </div>
