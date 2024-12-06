@@ -80,7 +80,7 @@
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-clipboard-list"></i></span><span
                             class="pcoded-mtext">Quản lý danh mục</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh </a></li>
+                        <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh mục</a></li>
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
