@@ -21,7 +21,9 @@ class LienHeController extends Controller
 
     public function store(Request $request)
     {
+        $this->create($request->all());
 
+        return redirect()->route('client.lienhe.index')->with(['success' => 1]);
     }
 
     public function show($id)
