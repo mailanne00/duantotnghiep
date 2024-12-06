@@ -43,7 +43,7 @@
                             <div id="upload-profile">
                                 <a href="#" class="btn-upload">
                                     Upload New Photo </a>
-                                <input id="tf-upload-img" type="file" name="anh_dai_dien" required>
+                                <input id="tf-upload-img" type="file" name="anh_dai_dien">
                             </div>
                             {{-- <a href="#" class="btn-upload style2">
                                 Delete</a> --}}
@@ -58,7 +58,7 @@
                                         <h4 class="title-infor-account">Tên</h4>
                                         <input type="text" name="ten" placeholder="Tên đăng nhập"
                                             class="form-control text-white bg-dark" value="{{ old('ten', $user->ten) }}"
-                                            required>
+                                            >
 
                                         @error('ten')
                                             <div class="text-danger">{{ $message }}</div>
@@ -68,30 +68,30 @@
                                         <h4 class="title-infor-account">Số điện thoại</h4>
                                         <input type="text" placeholder="Số điện thoại"
                                             class="form-control text-white bg-dark" name="sdt"
-                                            value="{{ old('sdt', $user->sdt) }}" required>
+                                            value="{{ old('sdt', $user->sdt) }}" >
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Email</h4>
                                         <input type="email" placeholder="Nhập email"
                                             class="form-control text-white bg-dark" name="email"
-                                            value="{{ old('email', $user->email) }}" required>
+                                            value="{{ old('email', $user->email) }}" >
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Ngày sinh</h4>
                                         <input type="date" class="form-control text-white bg-dark"
                                             placeholder="Ngày tháng năm sinh" name="ngay_sinh"
-                                            value="{{ old('ngay_sinh', $user->ngay_sinh) }}" required>
+                                            value="{{ old('ngay_sinh', $user->ngay_sinh) }}" >
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Địa chỉ</h4>
                                         <input type="text" placeholder="Địa chỉ" name="dia_chi"
                                             value="{{ old('dia_chi', $user->dia_chi) }}"
-                                            class="form-control text-white bg-dark" required>
+                                            class="form-control text-white bg-dark" >
                                     </fieldset>
                                     <fieldset class="mb-3">
                                         <h4 class="title-infor-account text-white mb-2">Giới tính</h4>
                                         <select class="form-select text-white bg-dark border-0 rounded-2 p-2"
-                                            name="gioi_tinh" required>
+                                            name="gioi_tinh" >
                                             <option value="" class="text-white bg-dark" disabled selected>Chọn giới
                                                 tính</option>
                                             <option value="Nam" {{ $user->gioi_tinh == 'Nam' ? 'selected' : '' }}

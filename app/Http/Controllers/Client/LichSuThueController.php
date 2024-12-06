@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
@@ -12,21 +13,36 @@ class LichSuThueController extends Controller
     public function index()
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
+            ->orderByDesc("created_at")
             ->get();
 
         return view('client.lich-su-thue.index', compact('users'));
     }
 
-    public function themDonThue(Request $request)
+    public function themDonThue(LichSuThueRequest $request)
     {
+        if (!auth()->check()) {
+            return redirect()->route('client.login');
+        }
+        
+        // $validateData = $request->validated();
+
         $users = LichSuThue::create([
             'nguoi_thue' => auth()->user()->id,
             'nguoi_duoc_thue' => $request->user_id,
             'gia_thue' => $request->gia_thue,
             'gio_thue' => $request->gio_thue,
         ]);
+        // $users = LichSuThue::create([
+        //     'nguoi_thue' => auth()->user()->id,
+        //     'nguoi_duoc_thue' => $validateData["user_id"],
+        //     'gia_thue' => $validateData["gia_thue"],
+        //     'gio_thue' => $validateData["gio_thue"],
+        // ]);
 
-        return view('client.lich-su-thue.index');
+        // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
+
+        return redirect()->route('client.lichSuThue');
     }
 
     public function lichSuDuocThue()
