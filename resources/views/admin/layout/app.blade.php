@@ -23,7 +23,7 @@
     <meta name="author" content="Phoenixcoded" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="https://files.playerduo.net/production/static-files/logo.png" type="image/x-icon">
+    <link rel="icon" href="assets/images/logo/PLAYERDUO.png" >
     <!-- fontawesome icon -->
     <link rel="stylesheet" href="{{asset('assets-admin/fonts/fontawesome/css/fontawesome-all.min.css')}}">
     <!-- animation css -->
@@ -54,7 +54,13 @@
         <div class="navbar-brand header-logo">
             <a href="admin/" class="b-brand">
 
-                <img src="https://files.playerduo.net/production/static-files/logo.png" style="width: 36px; height: 36px" alt="logo" class="logo images">
+            <img id="logo_header" src="assets/images/logo/PLAYERDUO.png" 
+         alt="nft-gaming" style="
+         width: 100%; 
+         height: auto; 
+         max-width: 40px; 
+         border-radius: 30px; 
+         transition: transform 0.3s ease, box-shadow 0.3s ease;">
                 <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER DUO</h6>
             </a>
         </div>

@@ -11,7 +11,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Axies | NFT Marketplace HTML Template</title>
+    <title>Play duo</title>
 
     <meta name="author" content="themesflat.com">
 
@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{asset('assets/icon/Favicon.png')}}">
+    <link rel="shortcut icon" href="assets/images/logo/PLAYERDUO.png" >
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
@@ -92,12 +92,16 @@
                                 <div class="wrap-box flex">
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
-                                            <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
-                                                    alt="nft-gaming" width="133" height="56"
-                                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
-                                                    data-height="56">
-                                            </a>
+                                        <a href="{{ route('client.index') }}" rel="home" class="main-logo">
+    <img id="logo_header" src="assets/images/logo/PLAYERDUO.png" 
+         alt="nft-gaming" style="
+         width: 100%; 
+         height: auto; 
+         max-width: 70px; 
+         border-radius: 30px; 
+         transition: transform 0.3s ease, box-shadow 0.3s ease;">
+</a>
+
                                         </div>
                                     </div>
                                     <div class="mobile-button"><span></span></div><!-- /.mobile-button -->
