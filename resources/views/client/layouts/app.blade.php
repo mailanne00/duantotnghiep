@@ -49,12 +49,19 @@
                                 <div class="wrap-box flex">
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
-                                            <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="assets/images/logo/logo_dark.png"
-                                                    alt="nft-gaming" width="133" height="56"
-                                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
-                                                    data-height="56">
-                                            </a>
+                                        <a href="{{ route('client.index') }}" rel="home" class="main-logo">
+                                            <img id="logo_header" src="assets/images/logo/PLAYERDUO.png" 
+                                                        alt="nft-gaming" style="
+                                                        width: 100%; 
+                                                        height: auto; 
+                                                        max-width: 50px; 
+                                                        border-radius: 30px; 
+                                                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                                            "
+                                                        
+                                                        >
+                                        </a>
+
                                         </div>
                                     </div>
                                     <div class="mobile-button"><span></span></div><!-- /.mobile-button -->
