@@ -107,6 +107,9 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
+                                                <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
+                                            </li>
+                                            <li class="">
                                                 <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
