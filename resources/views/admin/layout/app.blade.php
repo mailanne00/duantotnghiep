@@ -61,7 +61,7 @@
          max-width: 40px; 
          border-radius: 30px; 
          transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <h6 style="margin-top: 10px; margin-left: 6px; color: #fff"> DUO</h6>
+                <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER DUO</h6>
             </a>
         </div>
         <div class="navbar-content scroll-div" id="layout-sidenav" >
@@ -80,7 +80,7 @@
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-clipboard-list"></i></span><span
                             class="pcoded-mtext">Quản lý danh mục</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh mục</a></li>
+                        <li class=""><a href="{{route('admin.danh-mucs.index')}}" class="">Danh sách danh </a></li>
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
