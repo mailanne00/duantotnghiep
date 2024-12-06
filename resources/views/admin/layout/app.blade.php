@@ -61,7 +61,7 @@
          max-width: 40px; 
          border-radius: 30px; 
          transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER</h6>
+                <h6 style="margin-top: 10px; margin-left: 6px; color: #fff"> DUO</h6>
             </a>
         </div>
         <div class="navbar-content scroll-div" id="layout-sidenav" >
