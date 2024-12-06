@@ -89,7 +89,7 @@
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-images"></i></span><span
                             class="pcoded-mtext">Quản lý banner</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách </a></li>
+                        <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách banner</a></li>
                         <li class=""><a href="{{route('admin.banners.create')}}" class="">Thêm banner</a></li>
                     </ul>
                 </li>
@@ -145,7 +145,7 @@
                             class="icon feather icon-bell"></i></a>
                     <div class="dropdown-menu dropdown-menu-end notification">
                         <div class="noti-head">
-                            <h6 class="d-inline-block m-b-0">Notifications</h6>
+                            <h6 class="d-inline-block m-b-0"></h6>
                             <div class="float-end">
                                 <a href="#!" class="m-r-10">mark as read</a>
                                 <a href="#!">clear all</a>
