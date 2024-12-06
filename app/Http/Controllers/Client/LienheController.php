@@ -21,6 +21,6 @@ class LienheController extends Controller
     {
         $this->create($request->all());
 
-        return redirect()->route('client.lienhe')->with(['success' => 1]);
+        return redirect()->route('client.lienhe.create')->with(['success' => 1]);
     }
 }

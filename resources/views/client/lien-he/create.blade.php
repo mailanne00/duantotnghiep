@@ -35,8 +35,7 @@
                         Player Duo xin hân hạnh được hỗ trợ
                     </h2>
                     <div class="form-inner">
-                        <form action="{{route('client.lienhe.store')}}" method="post"
-                              id="contactform" novalidate="novalidate" class="form-submit">
+                        <form action="{{route('client.lienhe.store')}}" method="post" id="contactform" novalidate="novalidate" class="form-submit">
                             @csrf
                             <input id="name" name="ten" tabindex="1" value="" aria-required="true"
                                    type="text" placeholder="Họ và tên">

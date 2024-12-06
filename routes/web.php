@@ -41,6 +41,7 @@ Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');
+Route::get('/lien-he/create', [LienheController::class, 'create'])->name('client.lienhe.create');
 Route::post('/lien-he', [LienheController::class, 'store'])->name('client.lienhe.store');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
 Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.taikhoan');

@@ -117,7 +117,7 @@
                                             </li>
 
                                             <li class="">
-                                                <a href="{{ route('client.lienhe') }}">Liên hệ</a>
+                                                <a href="{{ route('client.lienhe.create') }}">Liên hệ</a>
 
                                             </li>
                                         </ul>
