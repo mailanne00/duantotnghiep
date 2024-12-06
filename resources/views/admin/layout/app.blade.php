@@ -89,7 +89,7 @@
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-images"></i></span><span
                             class="pcoded-mtext">Quản lý banner</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách banner</a></li>
+                        <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách </a></li>
                         <li class=""><a href="{{route('admin.banners.create')}}" class="">Thêm banner</a></li>
                     </ul>
                 </li>
