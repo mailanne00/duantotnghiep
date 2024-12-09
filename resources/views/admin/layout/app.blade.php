@@ -162,7 +162,7 @@
                                     <div class="flex-grow-1">
                                         <p><strong>John Doe</strong><span class="n-time text-muted"><i
                                                     class="icon feather icon-clock m-r-10"></i>5 min</span></p>
-                                        <p>New ticket Added</p>
+                                        <p>New ticket </p>
                                     </div>
                                 </div>
                             </li>
