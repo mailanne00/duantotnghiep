@@ -147,13 +147,13 @@
                         <div class="noti-head">
                             <h6 class="d-inline-block m-b-0">Notifications</h6>
                             <div class="float-end">
-                                <a href="#!" class="m-r-10">mark as </a>
+                                <a href="#!" class="m-r-10">mark as read</a>
                                 <a href="#!">clear all</a>
                             </div>
                         </div>
                         <ul class="noti-body">
                             <li class="n-title">
-                                <p class="m-b-0">NEW</p>
+                                <p class="m-b-0"></p>
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
