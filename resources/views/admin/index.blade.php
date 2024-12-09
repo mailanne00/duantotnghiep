@@ -111,7 +111,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Tình trạng đơn thuê</h5>
+                    <h5>Tình trạng đơn </h5>
                 </div>
                 <div class="card-body">
                     <div id="morris-bar-stacked-chart" style="height:300px; width: 100%">

@@ -153,7 +153,7 @@
                         </div>
                         <ul class="noti-body">
                             <li class="n-title">
-                                <p class="m-b-0"></p>
+                                <p class="m-b-0">NEW</p>
                             </li>
                             <li class="notification">
                                 <div class="d-flex">
