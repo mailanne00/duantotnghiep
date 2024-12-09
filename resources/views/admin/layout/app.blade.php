@@ -147,7 +147,7 @@
                         <div class="noti-head">
                             <h6 class="d-inline-block m-b-0">Notifications</h6>
                             <div class="float-end">
-                                <a href="#!" class="m-r-10">mark as read</a>
+                                <a href="#!" class="m-r-10">mark as </a>
                                 <a href="#!">clear all</a>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                     <div class="flex-grow-1">
                                         <p><strong>John Doe</strong><span class="n-time text-muted"><i
                                                     class="icon feather icon-clock m-r-10"></i>5 min</span></p>
-                                        <p>New ticket </p>
+                                        <p>New ticket Added</p>
                                     </div>
                                 </div>
                             </li>
