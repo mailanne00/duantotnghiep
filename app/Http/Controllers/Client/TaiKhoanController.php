@@ -10,11 +10,19 @@ use Illuminate\Http\Request;
 
 class TaiKhoanController extends Controller
 {
-    public function index()
-    {
-        $taiKhoans = TaiKhoan::all();
-        return view('client.tai-khoan.index', compact('taiKhoans'));
+    public function index(Request $request)
+{
+    $gioiTinh = $request->input('gioi_tinh'); // Nhận giá trị lọc từ request
+    $taiKhoans = TaiKhoan::query();
+
+    if (!empty($gioiTinh) && in_array($gioiTinh, ['Nam', 'Nữ', 'Khác'])) {
+        $taiKhoans->where('gioi_tinh', $gioiTinh);
     }
+
+    $taiKhoans = $taiKhoans->get(); // Thực hiện query
+
+    return view('client.tai-khoan.index', compact('taiKhoans', 'gioiTinh'));
+}
     public function show($id){
         {
             // Lấy thông tin của player từ bảng tai_khoans

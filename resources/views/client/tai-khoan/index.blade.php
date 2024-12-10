@@ -41,6 +41,7 @@
                         <div id="buy" class="dropdown">
                             <a href="#" class="btn-selector nolink">Giới tính</a>
                             <ul>
+                                <li><span>Giới tính</span></li>
                                 <li><span>Nam</span></li>
                                 <li><span>Nữ</span></li>
                                 <li><span>Khác</span></li>
