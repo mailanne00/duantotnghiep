@@ -41,10 +41,10 @@
                         <div id="buy" class="dropdown">
                             <a href="#" class="btn-selector nolink">Giới tính</a>
                             <ul>
-                                <li><span>Giới tính</span></li>
-                                <li><span>Nam</span></li>
-                                <li><span>Nữ</span></li>
-                                <li><span>Khác</span></li>
+                                <li><a href="{{ route('client.taikhoan') }}"><span>Giới tính</span></a></li>
+                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Nam']) }}"><span>Nam</span></a></li>
+                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Nữ']) }}"><span>Nữ</span></a></li>
+                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Khác']) }}"><span>Khác</span></a></li>
                             </ul>
                         </div>
                         <div id="all-items" class="dropdown">
