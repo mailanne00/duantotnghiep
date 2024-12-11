@@ -77,6 +77,16 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header">
+                    <h5>Lượng nguời tham gia website</h5>
+                </div>
+                <div class="card-body">
+                    <div id="morris-bar-chart" style="height:300px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
                     <h5>Doanh thu</h5>
                 </div>
                 <div class="card-body">
@@ -152,6 +162,21 @@
             },
             @endforeach
         ];
+
+        var chartData = @json($data);
+        Morris.Bar({
+            element: 'morris-bar-chart',
+            data: chartData,
+            xkey: 'y',
+            barSizeRatio: 0.70,
+            barGap: 3,
+            resize: true,
+            responsive: true,
+            ykeys: ['b'],
+            labels: ['Số lượng'],
+            barColors: ["#463699"]
+        });
+
         Morris.Bar({
             element: 'morris-bar-stacked-chart',
             data: rentData,

@@ -93,9 +93,9 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
-                                                    alt="nft-gaming" width="133" height="56"
-                                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
+                                                <img id="logo_header" src="https://files.playerduo.net/production/static-files/logo.png"
+                                                    alt="nft-gaming" width="50" height="50"
+                                                    data-retina="https://files.playerduo.net/production/static-files/logo.png" data-width="133"
                                                     data-height="56">
                                             </a>
                                         </div>
@@ -110,11 +110,14 @@
                                                 <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
+                                                <a href="">Bài viết</a>
+                                            </li>
+                                            <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>
                                             </li>
 
                                             <li class="">
-                                                <a href="{{ route('client.lienhe') }}">Liên hệ</a>
+                                                <a href="{{ route('client.lienhe.create') }}">Liên hệ</a>
 
                                             </li>
                                         </ul>
@@ -424,7 +427,7 @@
                                                                     </svg>
                                                                     <span>Lịch sử thuê</span>
                                                                 </a>
-                                                                <a class="mt-10" href="profile.html">
+                                                                <a class="mt-10" href="{{route('client.napTien')}}">
                                                                     <svg width="20" height="18" viewBox="0 0 20 18"
                                                                         fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
