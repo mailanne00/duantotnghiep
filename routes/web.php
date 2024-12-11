@@ -41,6 +41,8 @@ Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
 Route::get('/lien-he', [LienheController::class, 'index'])->name('client.lienhe');
+Route::get('/lien-he/create', [LienheController::class, 'create'])->name('client.lienhe.create');
+Route::post('/lien-he', [LienheController::class, 'store'])->name('client.lienhe.store');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
 Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.taikhoan');
 Route::get('/tai-khoan/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
@@ -54,5 +56,5 @@ Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
-
-    
+Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
+Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');

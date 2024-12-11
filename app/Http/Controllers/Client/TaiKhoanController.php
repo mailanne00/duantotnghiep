@@ -49,7 +49,7 @@ class TaiKhoanController extends Controller
             $danhGias = DanhGia::where('nguoi_duoc_thue_id', $id)
                 ->with('nguoiThue') // Để lấy thông tin người thuê (nguoi_thue_id)
                 ->get();
-    
+            
             return view('client.tai-khoan.show', compact('player','selectedCategories', 'danhGias'));
         }
     }
