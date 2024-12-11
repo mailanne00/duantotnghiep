@@ -88,6 +88,14 @@ class HomeController extends Controller
 
         }
         $dataForChart  = json_encode($a);
+        $taiKhoanMoi = TaiKhoan::query()
+             ->selectRaw('MONTH(created_at) as thang, COUNT(*) as so_luong')
+             ->groupByRaw('MONTH(created_at)')
+             ->orderByRaw('thang')
+             ->get()
+             ->mapWithKeys(function ($item) {
+                 return [$item->thang => $item->so_luong];
+             });
 
          $taiKhoanMoi = TaiKhoan::query()
              ->selectRaw('MONTH(created_at) as thang, COUNT(*) as so_luong')
@@ -111,4 +119,5 @@ class HomeController extends Controller
 
          return view('admin.index', compact('taiKhoan', 'countPhanQuyen1', 'countPhanQuyen2', 'countRent', 'totalProfit', 'chartData','rentData', 'dataForChart', 'data'));
      }
+
 }
