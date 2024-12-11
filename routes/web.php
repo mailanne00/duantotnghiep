@@ -56,4 +56,5 @@ Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
-
+Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
+Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');

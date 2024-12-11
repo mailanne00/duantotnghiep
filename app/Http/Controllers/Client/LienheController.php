@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LienHeStoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LienheController extends Controller
 {
@@ -14,12 +16,18 @@ class LienheController extends Controller
 
     public function create()
     {
-        return view('client.lien-he.create');
+        if (auth()->check()) {
+            $taiKhoan = auth()->user();
+        }else {
+            $taiKhoan= null;
+        }
+        return view('client.lien-he.create', compact('taiKhoan'));
     }
 
-    public function store(Request $request)
+    public function store(LienHeStoreRequest $request)
     {
-        $this->create($request->all());
+        $validated = $request->validated();
+        $this->create($validated);
 
         return redirect()->route('client.lienhe.create')->with(['success' => 1]);
     }

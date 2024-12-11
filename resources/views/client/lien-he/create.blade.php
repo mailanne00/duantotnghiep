@@ -37,12 +37,23 @@
                     <div class="form-inner">
                         <form action="{{route('client.lienhe.store')}}" method="post" id="contactform" novalidate="novalidate" class="form-submit">
                             @csrf
-                            <input id="name" name="ten" tabindex="1" value="" aria-required="true"
-                                   type="text" placeholder="Họ và tên">
-                            <input id="email" name="email" tabindex="2" value="" aria-required="true"
-                                   type="email" placeholder="Email">
+                            <input id="name" name="ten" tabindex="1" aria-required="true"
+                                   type="text" placeholder="{{$taiKhoan->ten}}" disabled>
+                            @error('ten')
+                            <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
+                            @enderror()
+                            <input id="email" name="email" tabindex="2" aria-required="true"
+                                   type="email" placeholder="{{$taiKhoan->email}}" disabled>
+                            @error('email')
+                            <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
+                            @enderror()
                             <textarea id="message" name="noi_dung" tabindex="3" aria-required="true"  placeholder="Nội dung"></textarea>
-                            <button class="submit">Send message</button>
+                            @error('noi_dung')
+                            <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -35px">{{$message}}</p>
+                            @enderror()
+                            <input id="anh" name="anh" tabindex="2" aria-required="true"
+                                   type="file" placeholder="">
+                            <div class="text-center"><button class="submit" style="width: 40%;">Send message</button></div>
                         </form>
                     </div>
                 </div>
