@@ -39,19 +39,35 @@
                             </ul>
                         </div>
                         <div id="buy" class="dropdown">
-                            <a href="#" class="btn-selector nolink">Giới tính</a>
+                            <a href="#" class="btn-selector nolink">{{ request('gioi_tinh') ?? 'Giới tính' }}</a>
                             <ul>
-                                <li><a href="{{ route('client.taikhoan') }}"><span>Giới tính</span></a></li>
-                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Nam']) }}"><span>Nam</span></a></li>
-                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Nữ']) }}"><span>Nữ</span></a></li>
-                                <li><a href="{{ route('client.taikhoan', ['gioi_tinh' => 'Khác']) }}"><span>Khác</span></a></li>
+                                <li>
+                                    <a href="{{ request()->fullUrlWithoutQuery(['gioi_tinh']) }}"><span>Giới
+                                            tính</span></a>
+                                </li>
+                                <li><a
+                                        href="{{ request()->fullUrlWithQuery(['gioi_tinh' => 'Nam']) }}"><span>Nam</span></a>
+                                </li>
+                                <li><a
+                                        href="{{ request()->fullUrlWithQuery(['gioi_tinh' => 'Nữ']) }}"><span>Nữ</span></a>
+                                </li>
+                                <li><a
+                                        href="{{ request()->fullUrlWithQuery(['gioi_tinh' => 'Khác']) }}"><span>Khác</span></a>
+                                </li>
                             </ul>
                         </div>
                         <div id="all-items" class="dropdown">
-                            <a href="#" class="btn-selector nolink">All Items</a>
+                            <a href="#" class="btn-selector nolink">{{ request('gia') ?? 'Giá' }}</a>
                             <ul>
-                                <li><span>Single Items</span></li>
-                                <li><span>Bundles</span></li>
+                                <li><a href="{{ request()->fullUrlWithoutQuery(['gia']) }}"><span>Giá</span></a></li>
+                                <li><a href="{{ request()->fullUrlWithQuery(['gia' => '0-100.000']) }}"><span>0 -
+                                            100.000 VNĐ</span></a></li>
+                                <li><a href="{{ request()->fullUrlWithQuery(['gia' => '100.000-300.000']) }}"><span>100.000
+                                            - 300.000 VNĐ</span></a></li>
+                                <li><a href="{{ request()->fullUrlWithQuery(['gia' => '300.000-500.000']) }}"><span>300.000
+                                            - 500.000 VNĐ</span></a></li>
+                                <li><a href="{{ request()->fullUrlWithQuery(['gia' => '>500.000']) }}"><span>Trên
+                                            500.000 VNĐ</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -78,32 +94,31 @@
                 </div>
             </div>
             @foreach ($taiKhoans as $taiKhoan)
-            <div class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="sc-card-product">
-                    <div class="card-media" style="width: 224px; height: 224px;">
-                        <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}">
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}" 
-                            alt="Ảnh"
-                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                        </a>
-                        <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
-                    </div>
-                    <div class="card-title">
-                        <h5 class="style2"><a href="item-details.html">{{ $taiKhoan->ten }}</a></h5>
-                    </div>
-                    <div class="meta-info">
-                        <div class="price">
-                            <h5>{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</h5>
+                <div class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="sc-card-product">
+                        <div class="card-media" style="width: 224px; height: 224px;">
+                            <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}" alt="Ảnh"
+                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                            </a>
+                            <!-- <button class="wishlist-button heart"><span class="number-like"> 100</span></button> -->
                         </div>
-                        <div class="author">
-                            <div class="info">
-                                <h6> <a href="author02.html">SalvadorDali</a> </h6>
+                        <div class="card-title">
+                            <h5 class="style2"><a href="item-details.html">{{ $taiKhoan->ten }}</a></h5>
+                        </div>
+                        <div class="meta-info">
+                            <div class="price">
+                                <h5>{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</h5>
+                            </div>
+                            <div class="author">
+                                <div class="info">
+                                    <h6> <a href="author02.html">SalvadorDali</a> </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                
-            </div>
             @endforeach
             <div class="col-md-12 wrap-inner load-more text-center">
                 <a href="#" id="loadmore" class="sc-button loadmore fl-button pri-3"><span>XEM THÊM</span></a>
@@ -111,4 +126,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script_footer')
+<script>
+
+</script>
 @endsection
