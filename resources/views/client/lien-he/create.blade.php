@@ -35,6 +35,11 @@
                         Player Duo xin hân hạnh được hỗ trợ
                     </h2>
                     <div class="form-inner">
+                        @if(session('success'))
+                            <div class="alert alert-success">Gửi liên hệ thành công!</div>
+                        @elseif(session('error'))
+                            <div class="alert alert-danger">Có lỗi xảy ra, vui lòng thử lại!</div>
+                        @endif
                         <form action="{{route('client.lienhe.store')}}" method="post" id="contactform" novalidate="novalidate" class="form-submit">
                             @csrf
                             <input id="name" name="ten" tabindex="1" aria-required="true"
