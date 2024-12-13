@@ -36,6 +36,37 @@
             border-radius: 10%;
         }
 
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1D1E2D;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .history-table th, .history-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #2c2f44;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .history-table tr, .history-table td {
+            border: 1px solid #1D1E2D;
+            line-height: 20px;
+            border-bottom: 1px solid #2c2f44;
+        }
+
+        .history-table th {
+            background-color: #2c2f44;
+            font-weight: bold;
+        }
+
+        .history-table .status {
+            font-weight: 600;
+        }
+
     </style>
 @endsection
 
@@ -150,32 +181,38 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="momo">
-                            <div class="tf-box">
-                                <div class="box-item">
-                                    @foreach($nguoiTheoDoi as $item)
-                                            <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 20px ; justify-content: space-between" >
-                                                <div class="author-style2 flex">
-                                                    <div class="author-avatar">
-                                                        <a href="#">
-                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}" alt="Image"
-                                                                 class="avatar" style="width: 50px; height: 50px">
-                                                        </a>
-                                                        <div class="badge"><i class="ripple"></i></div>
-                                                    </div>
-                                                    <div class="author-infor">
-                                                        <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
-                                                        <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
-                                                        <span class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}} VND</span>
-                                                    </div>
-                                                </div>
-                                                <div class="action">
-                                                    <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                        <a href="#">Đã theo dõi</a>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+                            <div class="table-container">
+                                <table class="history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ngân hàng</th>
+                                            <th>Trạng thái</th>
+                                            <th>Số tiền</th>
+                                            <th>Thời gian</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="group">
+                                            <td>Vietcombank</td>
+                                            <td><span class="status text-danger">Thất bại</span></td>
+                                            <td>100.000 VND</td>
+                                            <td>11/12/2024 - 02:26:25</td>
+                                        </tr>
+                                        <tr class="group">
+                                            <td>TP bank</td>
+                                            <td><span class="status text-success">Thành công</span>
+                                            </td>
+                                            <td>100.000 VND</td>
+                                            <td>11/12/2024 - 02:26:25</td>
+                                        </tr>
+                                        <tr class="group">
+                                            <td>MB bank</td>
+                                            <td><span class="status text-warning">Chờ xử lý</span></td>
+                                            <td>100.000 VND</td>
+                                            <td>11/12/2024 - 02:26:25</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
