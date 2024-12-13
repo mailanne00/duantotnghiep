@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -96,7 +98,7 @@
 
         .posts-list {
             width: 60%;
-            height: 620px;
+            height: 650px;
             overflow: auto;
         }
 
@@ -132,8 +134,8 @@
         .comment-btn,
         .share-btn {
             padding: 8px 15px;
-            border: none;
             border-radius: 5px;
+            border: 1px solid #EFF2F5;
             background-color: #f0f2f5;
             color: #65676b;
             cursor: pointer;
@@ -178,7 +180,7 @@
             @endif
 
             <!-- Danh sách bài viết -->
-            <div class="col-12 @if(auth()->check()) col-7 @endif posts-list">
+            <div @if(auth()->check()) class="col-7 posts-list" @else class="col-9 posts-list mx-auto" @endif>
                 @foreach($baiViet as $item)
                     <div class="post">
                         <div class="post-header">
@@ -193,9 +195,9 @@
                             <img src="{{\Illuminate\Support\Facades\Storage::url($item->anh)}}" alt="">
                         </div>
                         <div class="post-footer">
-                            <button class="like-btn">Thích</button>
-                            <button class="comment-btn">Bình luận</button>
-                            <button class="share-btn">Chia sẻ</button>
+                            <button class="like-btn"><i class="fa-solid fa-thumbs-up" style="color: #1877F2"></i> Thích</button>
+                            <button class="comment-btn"><i class="fa-solid fa-comment" style="color: #1877F2"></i></i> Bình luận</button>
+                            <button class="share-btn"><i class="fa-solid fa-share" style="color: #1877F2"></i> Chia sẻ</button>
                         </div>
                     </div>
                 @endforeach
