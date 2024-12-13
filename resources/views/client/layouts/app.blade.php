@@ -115,7 +115,7 @@
                                                 <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
-                                                <a href="">Bài viết</a>
+                                                <a href="{{route('client.baiViet')}}">Bài viết</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>

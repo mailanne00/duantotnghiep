@@ -40,7 +40,7 @@
                         @elseif(session('error'))
                             <div class="alert alert-danger">Có lỗi xảy ra, vui lòng thử lại!</div>
                         @endif
-                        <form action="{{route('client.lienhe.store')}}" method="post" id="contactform" novalidate="novalidate" class="form-submit">
+                        <form action="{{route('client.lienhe.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input id="name" name="ten" tabindex="1" aria-required="true"
                                    type="text" placeholder="{{$taiKhoan->ten}}" disabled>
@@ -56,8 +56,8 @@
                             @error('noi_dung')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -35px">{{$message}}</p>
                             @enderror()
-                            <input id="anh" name="anh" tabindex="2" aria-required="true"
-                                   type="file" placeholder="">
+                            <input id="anh" name="anh" tabindex="2"
+                                   type="file" placeholder="" class="form-control" style="color: #828196; background-color: #14141F;">
                             <div class="text-center"><button class="submit" style="width: 40%;">Send message</button></div>
                         </form>
                     </div>

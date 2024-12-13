@@ -9,7 +9,9 @@ class Blog extends Model
 {
     use HasFactory;
 
+    public $fillable = ['noi_dung', 'anh', 'tai_khoan_id'];
+
     public function taiKhoan() {
-        return $this->belongsTo(TaiKhoan::class);
+        return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');
     }
 }
