@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class NguoiTheoDoi extends Model
 {
     use HasFactory;
+
+    public function nguoiTheoDoi()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'nguoi_theo_doi_id');
+    }
+
+    public function nguoiDuocTheoDoi()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'nguoi_duoc_theo_doi_id');
+    }
 }

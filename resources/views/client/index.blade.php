@@ -203,7 +203,7 @@
                                                  alt="Image" style="min-height:160px">
                                         </div>
                                         <div class="card-title">
-                                            <h4 style="font-size: 14px">{{ $danhMuc->ten }}</h4>
+                                            <p style="font-size: 14px; color: #FFFFFF; font-weight: 600">{{ $danhMuc->ten }}</p>
                                         </div>
                                     </div>
                                 </div>
