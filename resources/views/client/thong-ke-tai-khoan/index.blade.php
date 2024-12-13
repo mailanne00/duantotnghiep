@@ -120,17 +120,62 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="bank">
-                            <div class="sc-box-icon">
-                                <img src="{{asset('assets/images/logo/bank3.jpg')}}" alt="Bank" width="50px">
-                                <h4>Tài khoản ngân hàng</h4>
-                                <p class="text-danger">Chưa hỗ trợ</p>
+                            <div class="tf-box">
+                                <div class="row">
+                                    @foreach($nguoiBiChan as $item)
+                                        <div class="col-md-6 col-lg-4 mb-4">
+                                            <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between" >
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiBiChan->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar" style="width: 50px; height: 50px">
+                                                        </a>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$item->nguoiBiChan->ten}}</a></h5>
+                                                        <div class="tag">{{$item->nguoiBiChan->email}}</div>
+                                                        <span class="price">{{number_format($item->nguoiBiChan->gia_tien, 0, ',')}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="btn-follow" style="width: 100px; margin-left: -5%">
+                                                        <a href="#">Đã chặn</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="momo">
-                            <div class="sc-box-icon">
-                                <img src="{{asset('assets/images/logo/momo.png')}}" alt="Momo" width="50px">
-                                <h4>Ví điện tử Momo</h4>
-                                <p class="text-danger">Chưa hỗ trợ</p>
+                            <div class="tf-box">
+                                <div class="box-item">
+                                    @foreach($nguoiTheoDoi as $item)
+                                            <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 20px ; justify-content: space-between" >
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar" style="width: 50px; height: 50px">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
+                                                        <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
+                                                        <span class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="btn-follow" style="width: 100px; margin-left: -5%">
+                                                        <a href="#">Đã theo dõi</a>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

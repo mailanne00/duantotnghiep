@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChanChat;
 use App\Models\NguoiTheoDoi;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
@@ -20,6 +21,22 @@ class ThongKeTaiKhoanController extends Controller
             $nguoiTheoDoi= null;
         }
 
-        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi'));
+        if (auth()->check()) {
+            $nguoiBiChan = ChanChat::with('nguoiBiChan')
+                ->where('nguoi_chan', Auth::id())
+                ->get();
+        }else {
+            $nguoiBiChan= null;
+        }
+
+        if (auth()->check()) {
+            $nguoiBiChan = ChanChat::with('nguoiBiChan')
+                ->where('nguoi_chan', Auth::id())
+                ->get();
+        }else {
+            $nguoiBiChan= null;
+        }
+
+        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi', 'nguoiBiChan'));
     }
 }
