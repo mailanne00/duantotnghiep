@@ -58,3 +58,8 @@ Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangTha
 
 Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
 Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');
+
+Route::get('/thong-ke-tai-khoan', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'index'])->name('client.thongKeTaiKhoan');
+
+Route::get('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'index'])->name('client.baiViet');
+Route::post('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'store'])->name('client.baiViet.store');

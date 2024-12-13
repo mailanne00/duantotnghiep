@@ -38,12 +38,12 @@
                             <div class="col-4 text-center">
                                 <i class="fas fa-calendar-check text-white f-20" data-bs-toggle="tooltip"
                                    data-bs-placement="top" data-bs-title="Số đơn hoàn thành"></i>
-                                <h6 class="text-white mt-2 mb-0">56</h6>
+                                <h6 class="text-white mt-2 mb-0">{{ isset($taiKhoan->rent['1']) ? $taiKhoan->rent['1'] : 0 }}</h6>
                             </div>
                             <div class="col-4 text-center">
-                                <i class="fas fa-star text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
-                                   data-bs-title="Đánh giá"></i>
-                                <h6 class="text-white mt-2 mb-0">{{$taiKhoan->countDanhGia}}</h6>
+                                <i class="fas fa-user text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-title="Số người đánh giá"></i>
+                                <h6 class="text-white mt-2 mb-0">{{$taiKhoan->count}}</h6>
                             </div>
                             <div class="col-4 text-center">
                                 <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -144,7 +144,7 @@
             <div class="card user-card user-card-1">
                 <div class="col mt-3">
                     <div class="row">
-                        <div class="col-5" style="margin-left: 30px;">
+                        <div class="col-11" style="margin-left: 30px;">
                             <div class="card seo-card">
                                 <div class="card-body seo-statustic">
                                     <i class="fas fa-money-bill-wave-alt text-c-blue f-16 mb-2"></i>
@@ -153,18 +153,6 @@
                                 </div>
                                 <div class="process">
                                     <div id="process2" style="height:87px"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-5">
-                            <div class="card seo-card">
-                                <div class="card-body seo-statustic">
-                                    <i class="fas fa-user text-c-red f-16 mb-2"></i>
-                                    <h5 class="m-0">{{$taiKhoan->count}}</h5>
-                                    <p class="m-0">Người theo dõi</p>
-                                </div>
-                                <div class="process">
-                                    <div id="process3" style="height:87px"></div>
                                 </div>
                             </div>
                         </div>
