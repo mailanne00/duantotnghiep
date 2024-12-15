@@ -81,8 +81,8 @@
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Trang chủ</a></li>
-                            <li><a href="#">Thông tin cá nhân</a></li>
+                            <li><a href="{{route('client.index')}}">Trang chủ</a></li>
+                            <li><a href="{{route('client.thongtincanhan')}}">Thông tin cá nhân</a></li>
                             <li>Thống kê tài khoản</li>
                         </ul>
                     </div>

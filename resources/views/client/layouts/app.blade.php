@@ -398,16 +398,8 @@
                                                             <div class="d-flex align-items-center mt-20 mg-bt-12">
                                                                 <div class="info">
                                                                     <p>Số dư</p>
-                                                                    <p class="style">{{ Auth::user()->so_du }}</p>
+                                                                    <p class="style">{{ number_format(Auth::user()->so_du, 0,',','.')}} VNĐ</p>
                                                                 </div>
-                                                            </div>
-                                                            <p>Id</p>
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-between mg-t-5 mg-bt-17">
-                                                                <p> {{ Auth::user()->id }}</p>
-                                                                <a href="index-2.html" class="ml-2">
-                                                                    <i class="fal fa-copy"></i>
-                                                                </a>
                                                             </div>
                                                             <div class="divider"></div>
                                                             <div class="hr"></div>

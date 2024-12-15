@@ -90,6 +90,7 @@
                             </div>
                         </div>
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
+                           data-id="{{ $player->id }}"
                            class="sc-button loadmore style  fl-button pri-3"> <i
                                 class="fa fa-user fa-2x"></i><span>Thuê</span></a>
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
