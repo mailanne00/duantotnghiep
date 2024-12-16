@@ -125,7 +125,7 @@
 
                                     <fieldset>
                                         <h4 class="title-infor-account">Danh mục game</h4>
-                                        <input type="hidden" name="selected_categories" id="selectedCategoriesInput">
+                                        <input type="hidden" name="danh_muc" id="selectedCategoriesInput">
 
                                         <div id="selectedCategoriesContainer"
                                             class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"

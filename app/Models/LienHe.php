@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class LienHe extends Model
 {
     use HasFactory;
-
-    public $fillable = ['noi_dung', 'anh', 'tai_khoan_id'];
-
+    protected $fillable = ['tai_khoan_id', 'noi_dung', 'anh'];
     public function taiKhoan() {
-        return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');
+        return $this->belongsTo(TaiKhoan::class);
     }
 }

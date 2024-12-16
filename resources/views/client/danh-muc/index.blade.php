@@ -45,7 +45,7 @@
                                                     src="{{\Illuminate\Support\Facades\Storage::url($danhMuc->anh)}}" alt="Image"></a>
                                         </div>
                                         <div class="card-title" style="">
-                                            <h5 style="margin: 0 auto">{{$danhMuc->ten}}</h5>
+                                            <h5 style="margin: 0 auto; color: #FFFFFF">{{$danhMuc->ten}}</h5>
                                         </div>
                                     </div>
                                 @endforeach

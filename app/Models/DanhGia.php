@@ -15,4 +15,8 @@ class DanhGia extends Model
     public function nguoiDuocThue() {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_duoc_thue_id');
     }
+    public function lichSuThue() {
+        return $this->belongsTo(LichSuThue::class,'nguoi_thue_id');
+    }
+
 }

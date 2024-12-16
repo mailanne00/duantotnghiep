@@ -95,7 +95,7 @@
                                     <span style="font-size: 15px;" class="badge badge-{{$user->mau}}">{{$user->trangThai2}}</span>
                                 </div>
                                 <div class="column td6" style="width:200px">
-                                    <span class="badge text-bg-{{$user->mau}}">Nhận</span>
+                                    <span class="badge text-bg-{{$user->mau}}">Huỷ</span>
                                 </div>
                             </div>
                         </div>
