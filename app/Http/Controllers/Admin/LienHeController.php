@@ -10,7 +10,8 @@ class LienHeController extends Controller
 {
     public function index()
     {
-        $lienHes = LienHe::all();
+        $lienHes = LienHe::query()
+            ->orderByDesc('id')->get();
         return view('admin.lien-he.index', compact('lienHes'));
     }
 

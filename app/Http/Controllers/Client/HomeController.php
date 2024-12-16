@@ -29,12 +29,14 @@ class HomeController extends Controller
                 ->sortByDesc(function ($taiKhoan) {
                     return $taiKhoan->countDanhGia;
                 })
+                ->where('phan_quyen_id', 2)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
             ->sortByDesc(function ($taiKhoan) {
                 return $taiKhoan->countRent;
             })
+                ->where('phan_quyen_id', 2)
             ->take(10);
         } else {
             $taiKhoans = TaiKhoan::all()
@@ -42,6 +44,7 @@ class HomeController extends Controller
                     return $taiKhoan->countDanhGia;
                 })
                 ->where('id', '!=', auth()->user()->id)
+                ->where('phan_quyen_id', 2)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
@@ -49,6 +52,7 @@ class HomeController extends Controller
                 return $taiKhoan->countRent;
             })
             ->where('id', '!=', auth()->user()->id)
+                ->where('phan_quyen_id', 2)
             ->take(10);
         }
 
@@ -59,6 +63,7 @@ class HomeController extends Controller
             ->sortByDesc(function ($taiKhoanDaiGia) {
                 return $taiKhoanDaiGia->daiGia;
             })
+            ->where('phan_quyen_id', 2)
             ->take(10);
 
         return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2', 'taiKhoanDaiGias'));

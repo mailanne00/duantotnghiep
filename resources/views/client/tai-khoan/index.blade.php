@@ -201,7 +201,8 @@
                             <div class="sc-card-product menu_card style-h7">
                                 <div class="card-media">
                                     <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
-                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image"></a>
+                                            src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image"
+                                        style="min-height: 220px; object-fit:cover"></a>
                                 </div>
                                 <div class="card-title">
                                     <h5><a href="">{{$taiKhoan ->ten}}</a></h5>
@@ -214,7 +215,7 @@
                                         </div>
                                     </div>
                                     <div class="tags">{{$taiKhoan->countDanhGia}} <i
-                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i></div>
+                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$taiKhoan->countRent}})</div>
                                 </div>
                             </div>
                         @endforeach
