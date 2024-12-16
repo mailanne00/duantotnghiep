@@ -13,7 +13,20 @@ class TaiKhoan extends Model implements Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['ten', 'email', 'password'];
+    protected $fillable = ['ten',
+        'email',
+        'password',
+        'ngay_sinh',
+        'dia_chi',
+        'sdt',
+        'gia_tien',
+        'phan_quyen_id',
+        'so_du',
+        'bi_cam',
+        'anh_dai_dien',
+        'loi_nhuan',
+        'biet_danh',
+        'trang_thai'];
 
     // Các phương thức cần thiết để sử dụng với Laravel Authentication
     public function getAuthIdentifierName()
@@ -46,8 +59,6 @@ class TaiKhoan extends Model implements Authenticatable
     {
         return 'remember_token'; // Tên của trường lưu remember_token trong database
     }
-
-
 
     const TRANGTHAITHUE = [
         [
