@@ -93,10 +93,7 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="{{asset('assets/images/logo/logo_dark.png')}}"
-                                                    alt="nft-gaming" width="133" height="56"
-                                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="133"
-                                                    data-height="56">
+                                                <img alt="logo_header" style="widows: 133px; height:56px" src="https://files.playerduo.net/production/static-files/logo.png">
                                             </a>
                                         </div>
                                     </div>
