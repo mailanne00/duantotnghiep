@@ -137,8 +137,8 @@
                                                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
                                                     <div class="button-place-bid">
                                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                           data-id="{{ $userDaThue->nguoiDuocThue->id }}"
-                                                           class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                            data-id="{{ $userDaThue->nguoiDuocThue->id }}"
+                                                            class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                     </div>
                                                 </div>
                                                 <div class="card-title">
@@ -149,15 +149,19 @@
                                                 <div class="meta-info">
                                                     <div class="author">
                                                         <div class="info style2">
-                                                        <span
-                                                            class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
-                                                            VNĐ</span>
+                                                            <span
+                                                                class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
+                                                                VNĐ</span>
+                                                        </div>
+                                                        <div class="tags">{{$userDaThue->countDanhGia}}
+                                                            <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                                            ({{$userDaThue->countRent}})
                                                         </div>
                                                     </div>
 
                                                     {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
-                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
-                                                    {{-- </div>--}}
+                                                            class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
+                                                            {{-- </div>--}}
                                                 </div>
                                             </div>
                                         </div><!-- item-->
@@ -200,7 +204,7 @@
                                     <div class="sc-categoty">
                                         <div class="card-media">
                                             <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                 alt="Image" style="min-height:160px">
+                                                alt="Image" style="min-height:160px">
                                         </div>
                                         <div class="card-title">
                                             <h4 style="font-size: 14px">{{ $danhMuc->ten }}</h4>
@@ -249,20 +253,22 @@
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
                                     <div class="box-item">
                                         @foreach($chunk as $taiKhoanDaiGia)
-                                           @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
+                                            @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
                                                             <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                             <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',')}} VND</span>
+                                                            <span
+                                                                class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',')}}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
@@ -272,7 +278,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                           @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -284,23 +290,25 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['week'] !== 0)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            @if($taiKhoanDaiGia->daiGia['week'] !== 0)
 
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
                                                             <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                             <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week'], 0, ',')}} VND</span>
+                                                            <span
+                                                                class="price">{{number_format($taiKhoanDaiGia->daiGia['week'], 0, ',')}}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
@@ -310,7 +318,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -322,22 +330,24 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['month'] !== 0)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            @if($taiKhoanDaiGia->daiGia['month'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
                                                             <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
                                                             <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month'], 0, ',')}} VND</span>
+                                                            <span
+                                                                class="price">{{number_format($taiKhoanDaiGia->daiGia['month'], 0, ',')}}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
@@ -347,7 +357,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -858,19 +868,19 @@
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
     }
 
-    function themDonThue(){
+    function themDonThue() {
         const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;
         const so_du_auth = document.getElementById('soDuAuth').value;
 
-        if (user_id == null){
+        if (user_id == null) {
             alert("Người chơi không tồn tại")
             return false;
         }
 
-        if (so_du_auth < tongChiPhi){
+        if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
