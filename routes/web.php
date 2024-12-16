@@ -45,8 +45,8 @@ Route::get('/lien-he/create', [LienheController::class, 'create'])->name('client
 Route::post('/lien-he', [LienheController::class, 'store'])->name('client.lienhe.store');
 Route::get('/danh-muc', [DanhmucController::class, 'index'])->name('client.danhmuc');
 Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.taikhoan');
-Route::get('/tai-khoan/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
-Route::get('/tai-khoan/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
+Route::get('/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
+Route::get('/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
 Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');

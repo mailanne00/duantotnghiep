@@ -24,7 +24,7 @@ class LichSuThueController extends Controller
         if (!auth()->check()) {
             return redirect()->route('client.login');
         }
-        
+
         // $validateData = $request->validated();
 
         $users = LichSuThue::create([
@@ -48,6 +48,7 @@ class LichSuThueController extends Controller
     public function lichSuDuocThue()
     {
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+            ->orderByDesc("id")
             ->get();
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));

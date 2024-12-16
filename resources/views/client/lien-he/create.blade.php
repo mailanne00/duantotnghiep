@@ -43,12 +43,12 @@
                         <form action="{{route('client.lienhe.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input id="name" name="ten" tabindex="1" aria-required="true"
-                                   type="text" placeholder="@if(auth()->check()) {{$taiKhoan->ten}} @else Họ và tên @endif" disabled>
+                                   type="text" value="@if(auth()->check()) {{$taiKhoan->ten}} @else Họ và tên @endif">
                             @error('ten')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
                             @enderror()
                             <input id="email" name="email" tabindex="2" aria-required="true"
-                                   type="email" placeholder="@if(auth()->check()) {{$taiKhoan->email}} @else Email @endif" disabled>
+                                   type="email" value="@if(auth()->check()) {{$taiKhoan->email}} @else Email @endif">
                             @error('email')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
                             @enderror()
