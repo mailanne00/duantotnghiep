@@ -592,10 +592,6 @@
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>

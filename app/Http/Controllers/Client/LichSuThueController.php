@@ -27,22 +27,35 @@ class LichSuThueController extends Controller
 
         // $validateData = $request->validated();
 
-        $users = LichSuThue::create([
-            'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $request->user_id,
-            'gia_thue' => $request->gia_thue,
-            'gio_thue' => $request->gio_thue,
-        ]);
-        // $users = LichSuThue::create([
-        //     'nguoi_thue' => auth()->user()->id,
-        //     'nguoi_duoc_thue' => $validateData["user_id"],
-        //     'gia_thue' => $validateData["gia_thue"],
-        //     'gio_thue' => $validateData["gio_thue"],
-        // ]);
+        $lichSuThue = LichSuThue::where('trang_thai', 0)
+            ->where('nguoi_duoc_thue', $request->user_id)
+            ->first();
 
-        // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
+        if ($lichSuThue) {
+            // Nếu tồn tại bản ghi, cập nhật giờ thuê và giá thuê
+            $lichSuThue->update([
+                'gio_thue' => $request->gio_thue,
+                'gia_thue' => $request->gia_thue,
+            ]);
+        } else {
 
-        return redirect()->route('client.lichSuThue');
+            $users = LichSuThue::create([
+                'nguoi_thue' => auth()->user()->id,
+                'nguoi_duoc_thue' => $request->user_id,
+                'gia_thue' => $request->gia_thue,
+                'gio_thue' => $request->gio_thue,
+            ]);
+            // $users = LichSuThue::create([
+            //     'nguoi_thue' => auth()->user()->id,
+            //     'nguoi_duoc_thue' => $validateData["user_id"],
+            //     'gia_thue' => $validateData["gia_thue"],
+            //     'gio_thue' => $validateData["gio_thue"],
+            // ]);
+
+            // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
+
+            return redirect()->route('client.lichSuThue');
+        }
     }
 
     public function lichSuDuocThue()
