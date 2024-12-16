@@ -98,10 +98,10 @@
                                             </div>
                                             <div>
                                                 <a href="#">
-                                                    <h6 class="user-name">{{$lienHe->ten}}</h6>
+                                                    <h6 class="user-name">{{$lienHe->taiKhoan->ten}}</h6>
                                                 </a>
                                                 <a class="user-mail txt-muted" href="#">
-                                                    <h6>From: {{$lienHe->email}}</h6>
+                                                    <h6>From: {{$lienHe->taiKhoan->email}}</h6>
                                                 </a>
                                             </div>
                                         </div>

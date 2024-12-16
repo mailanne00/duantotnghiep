@@ -19,7 +19,7 @@
         </div>
     </div>
 </section>
-
+<section class="tf-section live-auctions top-picks style3 home7 mobie-pb-70">
 <div class="tf-section sc-explore-1">
     <div class="themesflat-container">
         <div class="row">
@@ -93,39 +93,38 @@
                     </div>
                 </div>
             </div>
-            @foreach ($taiKhoans as $taiKhoan)
-                <div class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                    <div class="sc-card-product">
-                        <div class="card-media" style="width: 224px; height: 224px;">
-                            <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}" alt="Ảnh"
-                                    style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                            </a>
-                            <!-- <button class="wishlist-button heart"><span class="number-like"> 100</span></button> -->
-                        </div>
-                        <div class="card-title">
-                            <h5 class="style2"><a href="item-details.html">{{ $taiKhoan->ten }}</a></h5>
-                        </div>
-                        <div class="meta-info">
-                            <div class="price">
-                                <h5>{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</h5>
+            <div class="col-md-12">
+                <div class="top-pick-box">
+                    @foreach($taiKhoans as $taiKhoan)
+                        <div class="sc-card-product menu_card style-h7">
+                            <div class="card-media">
+                                <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
+                                        src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
+                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
                             </div>
-                            <div class="author">
-                                <div class="info">
-                                    <h6> <a href="author02.html">SalvadorDali</a> </h6>
+                            <div class="card-title">
+                                <h5><a href="">{{$taiKhoan->ten}}</a></h5>
+                            </div>
+                            <div class="meta-info">
+                                <div class="author">
+                                    <div class="info style2">
+                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
+                                    </div>
                                 </div>
+                                <div class="tags">{{$taiKhoan->countDanhGia}} <i
+                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$taiKhoan->countRent}})</div>
                             </div>
                         </div>
-                    </div>
-
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
             <div class="col-md-12 wrap-inner load-more text-center">
                 <a href="#" id="loadmore" class="sc-button loadmore fl-button pri-3"><span>XEM THÊM</span></a>
             </div>
         </div>
     </div>
 </div>
+</section>
 @endsection
 
 @section('script_footer')

@@ -35,15 +35,20 @@
                         Player Duo xin hân hạnh được hỗ trợ
                     </h2>
                     <div class="form-inner">
-                        <form action="{{route('client.lienhe.store')}}" method="post" id="contactform" novalidate="novalidate" class="form-submit">
+                        @if(session('success'))
+                            <div class="alert alert-success">Gửi liên hệ thành công!</div>
+                        @elseif(session('error'))
+                            <div class="alert alert-danger">Có lỗi xảy ra, vui lòng thử lại!</div>
+                        @endif
+                        <form action="{{route('client.lienhe.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input id="name" name="ten" tabindex="1" aria-required="true"
-                                   type="text" placeholder="{{$taiKhoan->ten}}" disabled>
+                                   type="text" value="@if(auth()->check()) {{$taiKhoan->ten}} @else Họ và tên @endif">
                             @error('ten')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
                             @enderror()
                             <input id="email" name="email" tabindex="2" aria-required="true"
-                                   type="email" placeholder="{{$taiKhoan->email}}" disabled>
+                                   type="email" value="@if(auth()->check()) {{$taiKhoan->email}} @else Email @endif">
                             @error('email')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -20px">{{$message}}</p>
                             @enderror()
@@ -51,8 +56,8 @@
                             @error('noi_dung')
                             <p class="text-danger" style="margin-bottom: 20px; font-size: 14px; margin-top: -35px">{{$message}}</p>
                             @enderror()
-                            <input id="anh" name="anh" tabindex="2" aria-required="true"
-                                   type="file" placeholder="">
+                            <input id="anh" name="anh" tabindex="2"
+                                   type="file" placeholder="" class="form-control" style="color: #828196; background-color: #14141F;">
                             <div class="text-center"><button class="submit" style="width: 40%;">Send message</button></div>
                         </form>
                     </div>

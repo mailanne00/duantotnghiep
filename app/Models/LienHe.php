@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LienHe extends Model
 {
     use HasFactory;
-    protected $fillable = ['ten', 'email', 'noi_dung'];
+    protected $fillable = ['tai_khoan_id', 'noi_dung', 'anh'];
     public function taiKhoan() {
         return $this->belongsTo(TaiKhoan::class);
     }

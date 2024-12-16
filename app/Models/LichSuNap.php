@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LichSuNap extends Model
 {
     use HasFactory;
+
+
 }
