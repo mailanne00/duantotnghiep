@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
-use App\Models\TaiKhoan;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class LichSuThueController extends Controller
 {
@@ -27,24 +26,26 @@ class LichSuThueController extends Controller
 
         // $validateData = $request->validated();
 
-            $lichSuThue = LichSuThue::create([
-                'nguoi_thue' => auth()->user()->id,
-                'nguoi_duoc_thue' => $request->user_id,
-                'gia_thue' => $request->gia_thue,
-                'gio_thue' => $request->gio_thue,
-            ]);
-            
-            // $users = LichSuThue::create([
-            //     'nguoi_thue' => auth()->user()->id,
-            //     'nguoi_duoc_thue' => $validateData["user_id"],
-            //     'gia_thue' => $validateData["gia_thue"],
-            //     'gio_thue' => $validateData["gio_thue"],
-            // ]);
+        $timeNow = Carbon::now();
+        $timePlus5Minutes = $timeNow->addMinutes(5);
+        $lichSuThue = LichSuThue::create([
+            'nguoi_thue' => auth()->user()->id,
+            'nguoi_duoc_thue' => $request->user_id,
+            'gia_thue' => $request->gia_thue,
+            'gio_thue' => $request->gio_thue,
+            'expired' => $timePlus5Minutes
+        ]);
 
-            // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
+        // $users = LichSuThue::create([
+        //     'nguoi_thue' => auth()->user()->id,
+        //     'nguoi_duoc_thue' => $validateData["user_id"],
+        //     'gia_thue' => $validateData["gia_thue"],
+        //     'gio_thue' => $validateData["gio_thue"],
+        // ]);
 
-            return redirect()->route('client.lichSuThue');
-        }
+        // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
+
+        return redirect()->route('client.lichSuThue');
     }
 
     public function lichSuDuocThue()
