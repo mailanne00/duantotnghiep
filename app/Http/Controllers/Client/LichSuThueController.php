@@ -27,33 +27,13 @@ class LichSuThueController extends Controller
 
         // $validateData = $request->validated();
 
-        $lichSuThue = LichSuThue::where('trang_thai', 0)
-        ->where('nguoi_thue', auth()->user()->id)
-            ->where('nguoi_duoc_thue', $request->user_id)
-            ->first();
-
-        if ($lichSuThue) {
-
-            $newGioThue = $lichSuThue->gio_thue + $request->gio_thue;
-            $newGiaThue = $lichSuThue->gia_thue + $request->gia_thue;
-
-            if($newGioThue > 24){
-               $newGioThue = 24;
-            }
-
-            // Nếu tồn tại bản ghi, cập nhật giờ thuê và giá thuê
-            $lichSuThue->update([
-                'gio_thue' => $newGioThue,
-                'gia_thue' => $newGiaThue,
-            ]);
-        } else {
-
             $lichSuThue = LichSuThue::create([
                 'nguoi_thue' => auth()->user()->id,
                 'nguoi_duoc_thue' => $request->user_id,
                 'gia_thue' => $request->gia_thue,
                 'gio_thue' => $request->gio_thue,
             ]);
+            
             // $users = LichSuThue::create([
             //     'nguoi_thue' => auth()->user()->id,
             //     'nguoi_duoc_thue' => $validateData["user_id"],
