@@ -2,6 +2,15 @@
 
 @section('css')
     <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        #body{
+            margin-right: -300px;
+            margin-left: 20px;
+        }
         .nav-tabs .nav-link {
             color: #fff;
             background-color: #1e1e2d;
@@ -97,60 +106,102 @@
                 <div class="col-md-3">
                     <ul class="nav flex-column nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#vnpay">Doanh thu</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#doanhthu">Doanh thu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#zalopay">Danh sách theo dõi User</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#theodoi">Danh sách theo dõi User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#bank">Danh sách chặn User</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#chan">Danh sách chặn User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#momo">Lịch sử nạp tiền</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#naptien">Lịch sử nạp tiền</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#ruttien">Lịch sử rút tiền</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-9">
                     <div class="tab-content">
-                        <div class="tab-pane fade show active" id="vnpay">
-                            <div class="sc-box-icon">
-                                <img src="{{asset('assets/images/logo/vnpay.jpg')}}" alt="VN Pay" width="50px">
-                                <h4>Ví điện tử VN Pay</h4>
-                                <p class="text-success">Không mất phí</p>
-                            </div>
+                        <div class="tab-pane fade show active" id="doanhthu">
+                            abc
                         </div>
-                        <div class="tab-pane fade" id="zalopay">
-                            <div class="tf-box">
-                                <div class="row">
+                        <div class="tab-pane fade" id="theodoi">
+                            <div class="row" style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
+                                <div class="col">
+                                    <h3 class="text-center mb-5">Người theo dõi</h3>
+                                    <div class="content-scroll" style="height: 400px;scrollbar-width: none; overflow-y: auto;">
                                         @foreach($nguoiTheoDoi as $item)
-                                            <div class="col-md-6 col-lg-4 mb-4">
-                                                <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between" >
-                                                    <div class="author-style2 flex">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar" style="width: 50px; height: 50px">
-                                                            </a>
-                                                            <div class="badge"><i class="ripple"></i></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
-                                                            <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
-                                                            <span class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}} VND</span>
-                                                        </div>
+                                            <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%;" >
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar" style="width: 50px; height: 50px">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
                                                     </div>
-                                                    <div class="action">
-                                                        <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                            <a href="#">Đã theo dõi</a>
-                                                        </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
+                                                        <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
+                                                        <span class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    @if(in_array($item->nguoi_theo_doi_id, $listNguoiDuocTheoDoiIds))
+                                                        <form action="{{ route('client.huyTheoDoi.destroy', $item->nguoiTheoDoi->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
+                                                                <a href="#">Đang theo dõi</a>
+                                                            </div>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{ route('client.theoDoi.store') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiTheoDoi->id }}">
+                                                            <div class="btn-follow" style="width: 100px; margin-left: -5%">
+                                                                <a href="#">Theo dõi</a>
+                                                            </div>
+                                                        </form>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h3 class="text-center mb-5">Đang theo dõi</h3>
+                                    <div class="content-scroll" style="height: 400px;scrollbar-width: none; overflow-y: auto;">
+                                        @foreach($nguoiDuocTheoDoi as $item)
+                                            <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%" >
+                                                <div class="author-style2 flex">
+                                                    <div class="author-avatar">
+                                                        <a href="#">
+                                                            <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiDuocTheoDoi->anh_dai_dien)}}" alt="Image"
+                                                                 class="avatar" style="width: 50px; height: 50px">
+                                                        </a>
+                                                        <div class="badge"><i class="ripple"></i></div>
+                                                    </div>
+                                                    <div class="author-infor">
+                                                        <h5><a href="#">{{$item->nguoiDuocTheoDoi->ten}}</a></h5>
+                                                        <div class="tag">{{$item->nguoiDuocTheoDoi->email}}</div>
+                                                        <span class="price">{{number_format($item->nguoiDuocTheoDoi->gia_tien, 0, ',')}} VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action">
+                                                    <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
+                                                        <a href="#">Đang theo dõi</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="bank">
+                        <div class="tab-pane fade" id="chan">
                             <div class="tf-box">
                                 <div class="row">
                                     @foreach($nguoiBiChan as $item)
@@ -180,7 +231,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="momo">
+                        <div class="tab-pane fade" id="naptien">
                             <div class="table-container">
                                 <table class="history-table">
                                     <thead>
@@ -211,6 +262,41 @@
                                             <td>100.000 VND</td>
                                             <td>11/12/2024 - 02:26:25</td>
                                         </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="ruttien">
+                            <div class="table-container">
+                                <table class="history-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Ngân hàng</th>
+                                        <th>Trạng thái</th>
+                                        <th>Số tiền</th>
+                                        <th>Thời gian</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="group">
+                                        <td>Vietcombank</td>
+                                        <td><span class="status text-danger">Thất bại</span></td>
+                                        <td>100.000 VND</td>
+                                        <td>11/12/2024 - 02:26:25</td>
+                                    </tr>
+                                    <tr class="group">
+                                        <td>TP bank</td>
+                                        <td><span class="status text-success">Thành công</span>
+                                        </td>
+                                        <td>100.000 VND</td>
+                                        <td>11/12/2024 - 02:26:25</td>
+                                    </tr>
+                                    <tr class="group">
+                                        <td>MB bank</td>
+                                        <td><span class="status text-warning">Chờ xử lý</span></td>
+                                        <td>100.000 VND</td>
+                                        <td>11/12/2024 - 02:26:25</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
