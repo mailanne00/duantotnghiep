@@ -35,8 +35,6 @@ class ThongtinController extends Controller
         return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selected', 'selectedCategories'));
     }
 
-
-
     public function update(Request $request)
     {
         $user = TaiKhoan::query()->findOrFail(Auth::id());

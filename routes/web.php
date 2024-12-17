@@ -24,16 +24,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
 Route::get('/tai-khoan/{id}', [TaiKhoanController::class, 'show'])->name('client.taikhoan.show');
 
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
 Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
+Route::post('/dang-nhap-facebook', [LoginController::class, 'loginWithFacebook'])->name('dangnhap.facebook');
+Route::get('/login-facebook-callback', [LoginController::class, 'loginFacebookCallBack'])->name('login.facebook.callback');
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
-
 
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
 Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');

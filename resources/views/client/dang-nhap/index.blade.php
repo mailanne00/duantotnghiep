@@ -35,10 +35,13 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="{{ route('client.login') }}" class="sc-button style-2 fl-button pri-3">
-                                    <i class="fas fa-user"></i>
-                                    <span>Login</span>
-                                </a>
+                                <form action="/dang-nhap-facebook" method="post">
+                                    @csrf
+                                    <button class="sc-button style-2 fl-button pri-3">
+                                        <i class="fas fa-user"></i>
+                                        <span>Đăng nhập với facebook</span>
+                                    </button>
+                                </form>
                             </li>
                             <li>
                                 <a href="{{ route('client.dangky') }}" class="sc-button style-2 fl-button pri-3">
