@@ -202,7 +202,7 @@
                                 <div class="card-media">
                                     <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
                                             src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan -> anh_dai_dien)}}" alt="Image"
-                                        style="min-height: 220px; object-fit:cover"></a>
+                                        style="min-height: 220px; max-height: 220px; object-fit:cover"></a>
                                 </div>
                                 <div class="card-title">
                                     <h5><a href="">{{$taiKhoan ->ten}}</a></h5>

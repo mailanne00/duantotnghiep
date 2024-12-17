@@ -56,8 +56,7 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
-                                            alt="{{ $category->ten }}">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}" alt="{{ $category->ten }}">
                                     </div>
                                     <div class="info">
                                         <h6>
@@ -69,10 +68,7 @@
                             @endforeach
                         </div>
 
-                        <p>Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
-                            Facilisi lobortisal morbi fringilla urna amet sed ipsum vitae ipsum malesuada.
-                            Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
-                            Facilisi lobortisal morbi fringilla urna amet sed ipsum</p>
+                        <p style="color: #FFFFFF">{{$player->mo_ta}}</p>
                     </div>
                 </div>
             </div>
