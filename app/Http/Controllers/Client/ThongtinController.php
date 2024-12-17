@@ -25,14 +25,11 @@ class ThongtinController extends Controller
             return redirect()->route('client.login')->with('error', 'Vui lòng đăng nhập để tiếp tục');
         }
 
-        $selectedCategories = explode(',', $user->selected_categories); // Nếu trong DB bạn lưu các ID danh mục dưới dạng chuỗi phân cách bởi dấu phẩy
+        $selectedCategories = DanhMucTaiKhoan::where('tai_khoan_id', $user->id)
+            ->pluck('danh_muc_id')
+            ->toArray();
 
-
-        $selected = $user->selected_categories
-            ? explode(',', $user->selected_categories)
-            : [];
-
-        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selected', 'selectedCategories'));
+        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selectedCategories'));
     }
 
     public function update(Request $request)
