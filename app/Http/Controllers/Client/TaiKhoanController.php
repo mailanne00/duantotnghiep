@@ -12,7 +12,10 @@ class TaiKhoanController extends Controller
 {
     public function index()
     {
-        $taiKhoans = TaiKhoan::all();
+        $taiKhoans = TaiKhoan::all()
+            ->where('id', '!=', auth()->user()->id)
+            ->where('phan_quyen_id', 2);
+
         return view('client.tai-khoan.index', compact('taiKhoans'));
     }
     public function show($id){
@@ -32,19 +35,40 @@ class TaiKhoanController extends Controller
 
     public function topDanhGia()
     {
-        $taiKhoans = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->countDanhGia;
-            });
+        if(auth()->check()){
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
+                ->where('id', '!=', auth()->user()->id)
+                ->where('phan_quyen_id', 2);
+        }else{
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countDanhGia;
+                })
+                ->where('phan_quyen_id', 2);
+        }
+
         return view('client.tai-khoan.index', compact('taiKhoans'));
     }
 
     public function topHot()
     {
-        $taiKhoans = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->countRent;
-            });
+        if (auth()->check()) {
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countRent;
+                })
+                ->where('id', '!=', auth()->user()->id)
+                ->where('phan_quyen_id', 2);
+        }else{
+            $taiKhoans = TaiKhoan::all()
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countRent;
+                })
+                ->where('phan_quyen_id', 2);
+        }
 
         return view('client.tai-khoan.index', compact('taiKhoans'));
     }
