@@ -154,7 +154,10 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
-                                                                <a href="#">Đang theo dõi</a>
+                                                                <a>
+                                                                    <button style="all: unset">
+                                                                        Đang theo dõi
+                                                                    </button></a>
                                                             </div>
                                                         </form>
                                                     @else
@@ -162,7 +165,9 @@
                                                             @csrf
                                                             <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiTheoDoi->id }}">
                                                             <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                                <a href="#">Theo dõi</a>
+                                                                <button style="all: unset">
+                                                                    Theo dõi
+                                                                </button>
                                                             </div>
                                                         </form>
                                                     @endif
