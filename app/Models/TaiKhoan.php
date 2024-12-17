@@ -13,7 +13,8 @@ class TaiKhoan extends Model implements Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['ten',
+    protected $fillable = [
+        'ten',
         'email',
         'password',
         'ngay_sinh',
@@ -26,7 +27,13 @@ class TaiKhoan extends Model implements Authenticatable
         'anh_dai_dien',
         'loi_nhuan',
         'biet_danh',
-        'trang_thai'];
+        'trang_thai'
+    ];
+
+    public function danhMucs()
+    {
+        return $this->belongsToMany(DanhMuc::class, 'danh_muc_tai_khoan', 'tai_khoan_id', 'danh_muc_id');
+    }
 
     // Các phương thức cần thiết để sử dụng với Laravel Authentication
     public function getAuthIdentifierName()
@@ -189,11 +196,10 @@ class TaiKhoan extends Model implements Authenticatable
             ->sum(DB::raw('gia_thue * gio_thue'));
 
         return [
-            'id'=> $this->id,
+            'id' => $this->id,
             '24h' => $total24h,
             'week' => $totalWeek,
             'month' => $totalMonth,
         ];
     }
-
 }
