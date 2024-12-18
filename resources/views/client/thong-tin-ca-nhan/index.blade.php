@@ -198,20 +198,16 @@
             const categoryList = document.getElementById('categoryList');
             const categoryButtons = document.querySelectorAll('.category-btn');
 
-            // Lấy danh mục đã chọn từ PHP
             let selectedCategories = @json($selectedCategories).map(
-                String); // Chuyển ID thành chuỗi để so sánh chính xác
+                String);
 
-            // Hàm cập nhật giá trị của input ẩn
             function updateSelectedCategories() {
-                selectedCategoriesInput.value = selectedCategories.join(','); // Cập nhật giá trị input
+                selectedCategoriesInput.value = selectedCategories.join(',');
             }
 
-            // Hiển thị lại danh mục trong categoryList
             function restoreCategoryToList(categoryId, categoryName) {
-                // Kiểm tra xem danh mục đã tồn tại trong `categoryList` chưa
                 if (document.querySelector(`.category-btn[data-id="${categoryId}"]`)) {
-                    return; // Nếu đã tồn tại, không làm gì cả
+                    return;
                 }
 
                 const categoryButton = document.createElement('div');
@@ -224,13 +220,12 @@
 
                 categoryButton.addEventListener('click', function() {
                     addCategory(categoryId, categoryName);
-                    categoryButton.remove(); // Xóa nút khỏi categoryList sau khi thêm
+                    categoryButton.remove();
                 });
 
                 categoryList.appendChild(categoryButton);
             }
 
-            // Thêm danh mục vào danh sách đã chọn
             function addCategory(categoryId, categoryName) {
                 if (!selectedCategories.includes(categoryId)) {
                     selectedCategories.push(categoryId);
@@ -249,33 +244,29 @@
 
                     selectedCategoriesContainer.appendChild(tag);
 
-                    updateSelectedCategories(); // Cập nhật giá trị input ẩn
+                    updateSelectedCategories();
                 }
             }
 
-            // Xóa danh mục khỏi danh sách đã chọn
             function removeCategory(categoryId, tag, categoryName) {
-                selectedCategories = selectedCategories.filter(id => id !== categoryId); // Xóa ID khỏi mảng
-                tag.remove(); // Xóa thẻ khỏi giao diện
+                selectedCategories = selectedCategories.filter(id => id !== categoryId);
+                tag.remove();
 
-                // Hiển thị lại nút trong categoryList
                 restoreCategoryToList(categoryId, categoryName);
 
-                updateSelectedCategories(); // Cập nhật lại giá trị input ẩn
+                updateSelectedCategories();
             }
 
-            // Gắn sự kiện cho các nút danh mục ban đầu trong categoryList
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const categoryId = this.dataset.id;
                     const categoryName = this.querySelector('span').textContent.trim();
 
                     addCategory(categoryId, categoryName);
-                    this.remove(); // Xóa nút khỏi categoryList sau khi thêm
+                    this.remove();
                 });
             });
 
-            // Xử lý sự kiện xóa danh mục đã chọn
             selectedCategoriesContainer.addEventListener('click', function(event) {
                 if (event.target && event.target.classList.contains('remove-tag')) {
                     const tag = event.target.closest('.selected-tag');
@@ -285,7 +276,6 @@
                 }
             });
 
-            // Cập nhật giá trị ban đầu cho input ẩn
             updateSelectedCategories();
         });
     </script>
