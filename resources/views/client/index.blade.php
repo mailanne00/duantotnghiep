@@ -651,7 +651,7 @@
     }
 
     function themDonThue() {
-        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 1;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;

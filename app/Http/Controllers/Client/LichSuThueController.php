@@ -24,17 +24,34 @@ class LichSuThueController extends Controller
             return redirect()->route('client.login');
         }
 
-        // $validateData = $request->validated();
-
+        $validateData = $request->validated();
         $timeNow = Carbon::now();
         $timePlus5Minutes = $timeNow->addMinutes(5);
+
+        $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
+        ->where('nguoi_duoc_thue', $validateData['user_id'])
+        ->where('expired', '<=', $timeNow)
+        ->first();
+
+    if ($checkLichSuThue) {
+        // Cập nhật bản ghi hiện có
+        $checkLichSuThue->gio_thue += $validateData['gio_thue'];
+        // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
+        $checkLichSuThue->expired = $timePlus5Minutes;
+        $checkLichSuThue->save();
+
+        return redirect()->route('client.index');
+    } else {
+
+       
         $lichSuThue = LichSuThue::create([
             'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $request->user_id,
-            'gia_thue' => $request->gia_thue,
-            'gio_thue' => $request->gio_thue,
+            'nguoi_duoc_thue' => $validateData['user_id'],
+            'gia_thue' => $validateData['gia_thue'],
+            'gio_thue' => $validateData['gio_thue'],
             'expired' => $timePlus5Minutes
         ]);
+    }
 
         // $users = LichSuThue::create([
         //     'nguoi_thue' => auth()->user()->id,
@@ -45,7 +62,7 @@ class LichSuThueController extends Controller
 
         // $khach = TaiKhoan::where('id', '=', auth()->user()->id);
 
-        return redirect()->route('client.lichSuThue');
+        return redirect()->route('client.index');
     }
 
     public function lichSuDuocThue()
