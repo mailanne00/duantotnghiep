@@ -72,6 +72,182 @@
             font-size: 13px;
         }
     </style>
+    <style>
+    .modal-content {
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        min-height: 60vh;
+    }
+
+    .modal-header {
+        border-bottom: 2px solid #007bff;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        padding: 20px;
+        height: calc(100% - 120px);
+        overflow-y: auto;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    .text-muted {
+        font-size: 0.9rem;
+    }
+
+    .video-container {
+        flex: 1;
+        width: 80%;
+        height: 80%;
+        position: relative;
+    }
+
+    #modalVideo {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .video-info {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .video-info h6 {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .video-info p {
+        margin: 5px 0;
+    }
+
+    .video-info .btn {
+        margin-right: 10px;
+    }
+
+    .video-info .form-control {
+        margin-top: 10px;
+    }
+
+    .video-info .form-control::placeholder {
+        color: #aaa;
+    }
+
+    .bi-heart, .bi-chat {
+        margin-right: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .modal-dialog {
+            max-width: 80%;
+            width: 80%;
+        }
+
+        .video-container {
+            max-width: 100%;
+        }
+    }
+
+    .story-card:first-child {
+        border: 3px solid #003366; 
+    }
+
+    .story-card {
+        flex: 0 0 calc(25% - 20px); 
+        max-width: 200px; 
+        height: 300px; 
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .story-card img, 
+    .story-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .story-card:hover {
+        transform: scale(1.05);
+    }
+
+    .story-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .story-badge {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        color: white;
+        font-size: 0.8rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2px 6px;
+        border-radius: 10px;
+    }
+
+    .story-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #videoPreviewContainer {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #videoPreviewContainer:hover {
+        background-color: #f8f9fa;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
@@ -111,7 +287,7 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
-                                                <a href="">Đăng tin</a>
+                                                <a href="{{ route('client.dangTin') }}">Đăng tin</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>
@@ -470,7 +646,53 @@
             </header>
 
             @yield('content')
+            <!-- này là  Đăng Tin -->
+            <div class="modal fade" id="dangTinModal" tabindex="-1" aria-labelledby="dangTinModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-white">
+                            <button type="button" class="btn-close" style="color: black;" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <form method="POST" action="{{ route('client.taoTin') }}" enctype="multipart/form-data">
+                        </div>
+                            <div class="modal-body p-4">
+                                    @csrf
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="content" class="form-label fs-5">Nội dung Story</label>
+                                            <textarea class="form-control rounded-3" name="noi_dung" id="content" rows="7" placeholder="" required style="font-size: 1.2rem; padding: 1rem;"></textarea>
+                                        </div>
+                                        <div class="col-md-6 d-flex flex-column justify-content-between">
+                                            <label for="upload-video" class="form-label fs-5">Tải Video Lên</label>
+                                            <div class="text-center border rounded-3 p-3" id="videoPreviewContainer" style="height: 150px;">
+                                                <i class="bi bi-upload fs-1 text-muted"></i>
+                                                <p class="small text-muted">Chọn video từ thiết bị</p>
+                                                <input type="file" class="form-control d-none" id="upload-video" name="video" accept="video/*" required onchange="previewVideo(event)">
+                                            </div>
+                                            <label for="upload-video" class="btn btn-outline-primary mt-2 w-100">
+                                                <i class="bi bi-folder-plus"></i> Chọn Video
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="videoPreview" class="text-center mt-3 d-none">
+                                        <video id="previewPlayer" width="100%" height="250" controls class="rounded-3 shadow-sm"></video>
+                                    </div>
 
+
+                                
+                            </div>
+                            <div class="modal-footer justify-content-center" style="background-color: #FFC1C1; border-color: #FFC1C1;
+                                    color: white;margin-top: 50px;">
+                                <button type="submit" class="btn btn-success px-8 py-2 rounded-pill" style="font-size: 1.6rem;">
+                                    <i class="bi bi-send fs-4"></i> Đăng Story
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
             <!-- Nạp tiền player duo -->
 
             <div class="chatbox-wrapper">
@@ -628,7 +850,7 @@
     <!-- /#wrapper -->
 
     <a id="scroll-top"></a>
-
+    </script>
     <!-- Javascript -->
     <script src="{{ asset('assets/js/chatbox.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

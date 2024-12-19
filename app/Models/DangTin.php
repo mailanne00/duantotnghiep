@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class DangTin extends Model
 {
+    protected $fillable = [
+        'tai_khoan_id',
+        'video',
+        'noi_dung',
+    ];
     use HasFactory;
 
     public function taiKhoan() {

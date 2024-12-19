@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
+use App\Models\DangTin;
 use Illuminate\Support\Facades\Auth;
 use Storage;
 
@@ -14,7 +15,10 @@ class HomeController extends Controller
     public function index()
     {
         $danhMucs = DanhMuc::all()->take(10);
-
+        $baiDang = DangTin::with('taiKhoan')
+        ->orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();    
         if (auth()->check()) {
             $userDaThues = LichSuThue::query()->where("nguoi_thue", Auth::id())
                 ->where('trang_thai', 1)
@@ -61,7 +65,7 @@ class HomeController extends Controller
             })
             ->take(10);
 
-        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2', 'taiKhoanDaiGias'));
+        return view('client.index', compact('danhMucs', 'userDaThues', 'taiKhoans', 'taiKhoans2', 'taiKhoanDaiGias','baiDang'));
     }
 
     public function modalUser($id)

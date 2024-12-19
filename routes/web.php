@@ -11,6 +11,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
+use App\Http\Controllers\Client\DangTinController;
 use App\Http\Controllers\Client\ThongtinController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,4 +56,5 @@ Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue']
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
 
-    
+Route::get('/dang-tin', [DangTinController::class, 'index'])->name('client.dangTin');
+Route::post('/tao-tin', [DangTinController::class, 'create'])->name('client.taoTin');

@@ -1,10 +1,146 @@
 @extends('client.layouts.app')
 
 @section('css')
+
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection
 
 @section('content')
+<style>
+    .modal-content {
+        border-radius: 15px; /* Tạo viền tròn cho modal */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Thêm bóng cho modal */
+    }
+
+    .modal-header {
+        border-bottom: 2px solid #007bff; /* Đường viền dưới modal header */
+    }
+
+    .modal-title {
+        font-size: 1.5rem; /* Kích thước chữ tiêu đề */
+        font-weight: bold; /* In đậm tiêu đề */
+    }
+
+    .modal-body {
+        padding: 20px; /* Padding cho modal body */
+    }
+
+    .form-label {
+        font-weight: bold; /* In đậm nhãn */
+    }
+
+    textarea.form-control {
+        resize: none; /* Tắt tính năng thay đổi kích thước của textarea */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Màu nền cho nút */
+        border-color: #007bff; /* Màu viền cho nút */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Màu nền khi hover */
+        border-color: #0056b3; /* Màu viền khi hover */
+    }
+
+    .text-muted {
+        font-size: 0.9rem; /* Kích thước chữ cho thông báo */
+    }
+    .modal-content {
+        border-radius: 15px;
+    }
+    .video-container {
+        flex: 1;
+        max-width: 400px;
+        position: relative;
+    }
+    .video-info {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column; /* Thay đổi hướng thành cột */
+        justify-content: space-between; /* Đẩy nội dung xuống dưới */
+    }
+    .video-info h6 {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 5px; /* Giảm khoảng cách */
+    }
+    .video-info p {
+        margin: 5px 0;
+    }
+    .video-info .btn {
+        margin-right: 10px;
+    }
+    .video-info .form-control {
+        margin-top: 10px;
+    }
+    .video-info .form-control::placeholder {
+        color: #aaa;
+    }
+    .bi-heart, .bi-chat {
+        margin-right: 5px;
+    }
+    @media (max-width: 768px) {
+        .modal-dialog {
+            width: 90%;
+        }
+        .video-container {
+            max-width: 100%;
+        }
+    }
+    .story-card:first-child {
+        border: 3px solid #003366; 
+    }
+    .story-card {
+        width: 120px;
+        height: 200px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .story-card img, 
+    .story-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .story-card:hover {
+        transform: scale(1.05);
+    }
+    .story-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+        padding: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    .story-badge {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        color: white;
+        font-size: 0.8rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2px 6px;
+        border-radius: 10px;
+    }
+    .story-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        padding: 10px;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <section class="flat-title-page style3">
     <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png')  }}" alt="">
     <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png')  }}" alt="">
@@ -180,6 +316,89 @@
 @else
     <div style="height: 50px; background: #14141F"></div>
 @endif
+
+<!-- Stories -->
+<section class="tf-section category">
+    <div class="themesflat-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-live-auctions">
+                    <h2 class="tf-title pb-39">Stories</h2>
+                    <a href="{{route('client.dangTin')}}" class="exp style2">XEM TẤT CẢ</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="story-container">
+                <a class="story-card d-flex align-items-center justify-content-center" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#dangTinModal" 
+                    style="color: #fff; background: grey; text-decoration: none; font-size: 2rem; font-weight: bold;">
+                        +
+                        <div class="story-footer">Đăng Story</div>
+                </a>
+                    @foreach($baiDang as $item)
+                        <div class="story-card" 
+                        onclick="openVideo('{{ asset('storage/' . $item->video) }}', '{{ $item->taiKhoan->ten }}',500, `{{ $item->noi_dung }}`)">
+                            <video width="150" height="250" muted playsinline>
+                                <source src="{{ asset('storage/' . $item->video) }}" type="video/mp4"> 
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="story-badge"><i class="bi bi-eye"></i> {{ $item->views }}</div>
+                            <div class="story-footer">{{ $item->taiKhoan->ten }} 🌟</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Chi Tiết Video -->
+    <div class="modal fade" id="videoDetailModal" tabindex="-1" aria-labelledby="videoDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoDetailModalLabel">Chi Tiết Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Body -->
+                <div class="modal-body d-flex">
+                    <!-- Video -->
+                    <div class="video-container me-3">
+                        <video id="modalVideo" controls width="400" height="300">
+                            <source id="videoSource" src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <!-- Video Info -->
+                    <div class="video-info d-flex flex-column w-100">
+                        <!-- Username and Date -->
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+                                <h6 id="videoUsername"><i class="bi bi-person"></i> Tên người đăng</h6>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <h6><i class="bi bi-calendar"></i> Ngày Đăng: Hôm Qua</h6>
+                            </div>
+                        </div>
+                        <!-- Views -->
+                        <p><strong id="videoViews"></strong>:<i class="bi bi-eye"></i></p>
+                        <!-- Nội dung Story -->
+                        <div class="mb-3">
+                            <h6 id="videoContent" class="text-muted" style="font-size: 1rem;"><i class="bi bi-card-text"></i> Nội Dung:</h6>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="d-flex justify-content-between mt-auto">
+                            <button class="btn btn-light">
+                                <i class="bi bi-heart"></i> Thích
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Danh mục -->
 <section class="tf-section category">
@@ -879,5 +1098,40 @@
 
     }
 
+</script>
+<script>
+        function previewVideo(event) {
+            const file = event.target.files[0];
+            const previewContainer = document.getElementById('videoPreview');
+            const previewPlayer = document.getElementById('previewPlayer');
+
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                previewPlayer.src = fileURL;
+                previewContainer.classList.remove('d-none');
+            }
+        }
+
+        function openVideo(videoUrl, username, views, noiDung) {
+            console.log("Video URL:", videoUrl);
+            console.log("Username:", username);
+            console.log("Views:", views);
+            console.log("Nội dung:", noiDung);
+
+
+            var videoSource = document.getElementById('videoSource');
+            videoSource.src = videoUrl;
+
+            var modalVideo = document.getElementById('modalVideo');
+            modalVideo.load(); 
+
+            document.getElementById('videoUsername').textContent = username;
+            document.getElementById('videoViews').textContent = views + " lượt xem";
+            document.getElementById('videoContent').textContent = "Nội dung:" + noiDung;
+
+
+            var videoDetailModal = new bootstrap.Modal(document.getElementById('videoDetailModal'));
+            videoDetailModal.show();
+        }
 </script>
 @endsection
