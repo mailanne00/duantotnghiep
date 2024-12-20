@@ -287,7 +287,7 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ route('client.dangTin') }}">Đăng tin</a>
+                                                <a href="{{ route('client.dangTin') }}">Xem tin</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>
