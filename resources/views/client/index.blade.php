@@ -324,7 +324,7 @@
             <div class="col-md-12">
                 <div class="heading-live-auctions">
                     <h2 class="tf-title pb-39">Stories</h2>
-                    <a href="{{route('client.dangTin')}}" class="exp style2">XEM TẤT</a>
+                    <a href="{{route('client.dangTin')}}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>
             <div class="col-md-12">

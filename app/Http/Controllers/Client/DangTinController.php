@@ -41,7 +41,7 @@ class DangTinController extends Controller
             'noi_dung' => $request->noi_dung,
         ]);
     
-        return redirect()->route('client.dangTin')->with('success', 'Đăng tin thành công!');
+        return redirect()->route('client.index')->with('success', 'Đăng tin thành công!');
     }
     
 }
