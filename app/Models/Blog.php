@@ -11,7 +11,12 @@ class Blog extends Model
 
     public $fillable = ['noi_dung', 'anh', 'tai_khoan_id'];
 
-    public function taiKhoan() {
+    public function taiKhoan()
+    {
         return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');
+    }
+    public function binhLuans()
+    {
+        return $this->hasMany(BinhLuan::class, 'blog_id');
     }
 }
