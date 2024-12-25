@@ -17,6 +17,21 @@ class LichSuThue extends Model
         'trang_thai',
     ];
 
+    public function markAsProcessing()
+    {
+        $this->update(['trang_thai' => '3']);
+    }
+
+    public function markAsCancelled()
+    {
+        $this->update(['trang_thai' => '2']);
+    }
+
+    public function markAsEnd()
+    {
+        $this->update(['trang_thai' => '1']);
+    }
+
     const TRANGTHAITHUE = [
         [
             'color' => 'warning',

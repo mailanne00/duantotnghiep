@@ -154,10 +154,9 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
-                                                                <a>
-                                                                    <button style="all: unset">
-                                                                        Đang theo dõi
-                                                                    </button></a>
+                                                                <button style="all: unset">
+                                                                    Đang theo dõi
+                                                                </button>
                                                             </div>
                                                         </form>
                                                     @else

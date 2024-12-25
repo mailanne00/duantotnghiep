@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\BinhLuan;
 use App\Models\Blog;
 use App\Models\TaiKhoan;
 use Carbon\Carbon;
@@ -20,7 +21,9 @@ class BaiVietController extends Controller
             $taiKhoan= null;
         }
 
-        $baiViet = Blog::orderBy('created_at', 'desc')->get();
+        $baiViet = Blog::with(['binhLuans.taiKhoan'])
+                ->orderBy('created_at', 'desc')
+                ->get();
 
         foreach ($baiViet as $post) {
             $createdAt = Carbon::parse($post->created_at);

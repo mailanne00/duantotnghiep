@@ -61,4 +61,36 @@ class LichSuThueController extends Controller
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
+
+    public function huyDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsCancelled();
+
+        return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+    }
+
+    public function nhanDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsProcessing();
+
+        return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
+    }
+
+    public function ketThucDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsEnd();
+
+        return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
+    }
+
+    public function xoaDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->delete();
+
+        return redirect()->back()->with('success', 'Xoá đơn thuê thành công.');
+    }
 }
