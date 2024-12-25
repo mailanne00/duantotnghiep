@@ -78,6 +78,14 @@ class LichSuThueController extends Controller
         return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
     }
 
+    public function ketThucDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsEnd();
+
+        return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
+    }
+
     public function xoaDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id); 

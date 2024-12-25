@@ -95,23 +95,18 @@
                                 <span style="font-size: 15px;" class="text-{{$user->mau}}">{{$user->trangThai2}}</span>
                             </div>
                             <div class="column td6" style="width:200px; text-align: unset">
-                                @if ($user->trang_thai == '2')
-                                <form action="{{route('client.xoaDonThue', $user->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-secondary" style="font-size: 15px;">Xoá đơn thuê</button>
-                                </form>
-                                @elseif ($user->trang_thai == '3')
-                                <form action="{{route('client.xoaDonThue', $user->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-primary" style="font-size: 15px;">Hoàn thành đơn thuê</button>
-                                </form>
-                                @else
+                                @if ($user->trang_thai == '0')
                                 <form action="{{route('client.huyDonThue', $user->id)}}" method="post">
                                     @csrf
                                     <button type="submit" class="btn btn-danger" style="font-size: 15px;">Huỷ đơn thuê</button>
                                 </form>
+                                @elseif ($user->trang_thai == '3')
+                                <form action="{{route('client.ketThucDonThue', $user->id)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary" style="font-size: 15px;">Kết thúc đơn thuê</button>
+                                </form>
+                                @else
+                                
                                 @endif
                             </div>
                         </div>

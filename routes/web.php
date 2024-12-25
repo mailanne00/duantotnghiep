@@ -55,6 +55,7 @@ Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name
 Route::post('/lich-su-don-thue/{id}/huy-don', [LichSuThueController::class,'huyDonThue'])->name('client.huyDonThue');
 Route::post('/lich-su-don-thue/{id}/nhan-don', [LichSuThueController::class,'nhanDonThue'])->name('client.nhanDonThue');
 Route::delete('/lich-su-don-thue/{id}/xoa-don', [LichSuThueController::class,'xoaDonThue'])->name('client.xoaDonThue');
+Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class,'ketThucDonThue'])->name('client.ketThucDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 

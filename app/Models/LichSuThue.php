@@ -27,6 +27,11 @@ class LichSuThue extends Model
         $this->update(['trang_thai' => '2']);
     }
 
+    public function markAsEnd()
+    {
+        $this->update(['trang_thai' => '1']);
+    }
+
     const TRANGTHAITHUE = [
         [
             'color' => 'warning',
