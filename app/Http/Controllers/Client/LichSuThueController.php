@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Events\LichSuThueCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
@@ -75,5 +76,24 @@ class LichSuThueController extends Controller
             ->get();
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
+    }
+
+    public function themDonThueApi(LichSuThueRequest $request)
+    {
+        $validateData = $request->validated();
+        $timeNow = Carbon::now();
+        $timePlus5Minutes = $timeNow->addMinutes(5);
+
+        $lichSuThue = LichSuThue::create([
+            'nguoi_thue' => auth()->user()->id,
+            'nguoi_duoc_thue' => $validateData['user_id'],
+            'gia_thue' => $validateData['gia_thue'],
+            'gio_thue' => $validateData['gio_thue'],
+            'expired' => $timePlus5Minutes
+        ]);
+
+        broadcast(new LichSuThueCreated($lichSuThue))->toOthers();
+
+        return redirect()->json(['message' => 'Thêm thành công']);
     }
 }

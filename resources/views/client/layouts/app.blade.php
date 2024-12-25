@@ -489,7 +489,8 @@
             </header>
 
             @yield('content')
-
+            
+            @vite('resources/js/public.js')
             <!-- Nạp tiền player duo -->
 
             <div class="chatbox-wrapper">
