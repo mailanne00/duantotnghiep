@@ -23,7 +23,8 @@ class LichSuThueRequest extends FormRequest
     {
         return [
             'user_id' => 'required|exists:tai_khoans,id',
-            'gio_thue' => 'required|integer|min:1|max:24', // Giờ thuê từ 1 đến 24
+            'gio_thue' => 'required|numeric|min:1', // Giờ thuê từ 1 đến 24
+            'gia_thue' => 'required|numeric|min:0',
             'noi_dung' => 'nullable|string|max:500',
         ];
     }
@@ -34,9 +35,11 @@ class LichSuThueRequest extends FormRequest
             'user_id.required' => 'ID người chơi là bắt buộc.',
             'user_id.exists' => 'Người chơi không tồn tại.',
             'gio_thue.required' => 'Số giờ thuê là bắt buộc.',
-            'gio_thue.integer' => 'Số giờ thuê phải là số nguyên.',
+            'gio_thue.numeric' => 'Số giờ thuê phải là số nguyên.',
             'gio_thue.min' => 'Số giờ thuê ít nhất là 1.',
-            'gio_thue.max' => 'Số giờ thuê không vượt quá 24.',
+            'gia_thue.required' => 'Giá thuê là bắt buộc.',
+            'gia_thue.numeric' => 'Giá thuê phải là số nguyên.',
+            'gia_thue.min' => 'Giá thuê ít nhất là 0.',
             'noi_dung.string' => 'Nội dung phải là chuỗi.',
             'noi_dung.max' => 'Nội dung không được vượt quá 500 ký tự.',
         ];

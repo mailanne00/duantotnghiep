@@ -137,8 +137,8 @@
                                                             style="min-height:220px; max-height: 220px; object-fit: cover; object-position: center;"></a>
                                                     <div class="button-place-bid">
                                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                           data-id="{{ $userDaThue->nguoiDuocThue->id }}"
-                                                           class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                            data-id="{{ $userDaThue->nguoiDuocThue->id }}"
+                                                            class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                     </div>
                                                 </div>
                                                 <div class="card-title">
@@ -149,15 +149,16 @@
                                                 <div class="meta-info">
                                                     <div class="author">
                                                         <div class="info style2">
-                                                        <span
-                                                            class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
-                                                            VNĐ</span>
+                                                            <span
+                                                                class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
+                                                                VNĐ</span>
                                                         </div>
+                                                        
                                                     </div>
-
-                                                     <div class="tags">{{$userDaThue->nguoiDuocThue->countDanhGia}}<i
-                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>  ({{$userDaThue->nguoiDuocThue->countRent}})
-                                                     </div>
+                                                    <div class="tags">{{$userDaThue->nguoiDuocThue->countDanhGia}}
+                                                            <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                                            ({{$userDaThue->nguoiDuocThue->countRent}})
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div><!-- item-->
@@ -248,13 +249,13 @@
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
                                     <div class="box-item">
                                         @foreach($chunk as $taiKhoanDaiGia)
-                                           @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
+                                            @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
@@ -271,7 +272,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                           @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -283,16 +284,16 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['week'] !== 0)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            @if($taiKhoanDaiGia->daiGia['week'] !== 0)
 
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
@@ -309,7 +310,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -321,15 +322,15 @@
                                     $index = 1;
                                 @endphp
                                 @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['month'] !== 0)
+                                    <div class="box-item">
+                                        @foreach($chunk as $taiKhoanDaiGia)
+                                            @if($taiKhoanDaiGia->daiGia['month'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
@@ -346,7 +347,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -591,10 +592,6 @@
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
@@ -653,19 +650,19 @@
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
     }
 
-    function themDonThue(){
-        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
+    function themDonThue() {
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 1;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;
         const so_du_auth = document.getElementById('soDuAuth').value;
 
-        if (user_id == null){
+        if (user_id == null) {
             alert("Người chơi không tồn tại")
             return false;
         }
 
-        if (so_du_auth < tongChiPhi){
+        if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
