@@ -9,6 +9,8 @@ class NguoiTheoDoi extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nguoi_theo_doi_id', 'nguoi_duoc_theo_doi_id'];
+
     public function nguoiTheoDoi()
     {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_theo_doi_id');

@@ -24,16 +24,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
 Route::get('/tai-khoan/{id}', [TaiKhoanController::class, 'show'])->name('client.taikhoan.show');
 
 Route::get('/dang-nhap', [LoginController::class, 'index'])->name('client.login');
 Route::post('/dang-nhap', [LoginController::class, 'store'])->name('dangnhap.store');
+Route::post('/dang-nhap-facebook', [LoginController::class, 'loginWithFacebook'])->name('dangnhap.facebook');
+Route::get('/login-facebook-callback', [LoginController::class, 'loginFacebookCallBack'])->name('login.facebook.callback');
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
-
 
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
 Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
@@ -53,9 +52,16 @@ Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('c
 
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
+Route::post('/lich-su-don-thue/{id}/huy-don', [LichSuThueController::class,'huyDonThue'])->name('client.huyDonThue');
+Route::post('/lich-su-don-thue/{id}/nhan-don', [LichSuThueController::class,'nhanDonThue'])->name('client.nhanDonThue');
+Route::delete('/lich-su-don-thue/{id}/xoa-don', [LichSuThueController::class,'xoaDonThue'])->name('client.xoaDonThue');
+Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class,'ketThucDonThue'])->name('client.ketThucDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
+// Thanh toán vn pay
+Route::get('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
+Route::get('/payment/vnpay-return', [\App\Http\Controllers\Client\VNPayController::class, 'paymentReturn']);
 Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
 Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');
 
@@ -63,3 +69,6 @@ Route::get('/thong-ke-tai-khoan', [\App\Http\Controllers\Client\ThongKeTaiKhoanC
 
 Route::get('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'index'])->name('client.baiViet');
 Route::post('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'store'])->name('client.baiViet.store');
+
+Route::post('/theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'store'])->name('client.theoDoi.store');
+Route::delete('/huy-theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'destroy'])->name('client.huyTheoDoi.destroy');

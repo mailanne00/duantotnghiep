@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TaiKhoan;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -40,6 +41,17 @@ class LoginController extends Controller
 
         // Nếu đăng nhập không thành công
         return back()->with('error', 'Thông tin đăng nhập không chính xác!');
+    }
+
+    public function loginWithFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function loginFacebookCallBack(Request $request)
+    {
+        $facebookUser = Socialite::driver('facebook')->stateless()->user();
+        dd($facebookUser);
     }
 
 

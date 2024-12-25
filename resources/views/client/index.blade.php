@@ -134,7 +134,7 @@
                                                     <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
                                                             src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
                                                             alt="Image"
-                                                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
+                                                            style="min-height:220px; max-height: 220px; object-fit: cover; object-position: center;"></a>
                                                     <div class="button-place-bid">
                                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
                                                             data-id="{{ $userDaThue->nguoiDuocThue->id }}"
@@ -378,7 +378,7 @@
                             <div class="card-media">
                                 <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
                                         src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
-                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                             </div>
                             <div class="card-title">
                                 <h5><a href="">{{$taiKhoan->ten}}</a></h5>
@@ -419,7 +419,7 @@
                             <div class="card-media">
                                 <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
                                         src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
-                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                             </div>
                             <div class="card-title">
                                 <h5><a href="">{{$taiKhoan->ten}}</a></h5>

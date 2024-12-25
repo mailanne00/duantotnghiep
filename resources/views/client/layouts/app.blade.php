@@ -401,7 +401,7 @@
                                                             <div class="d-flex align-items-center mt-20 mg-bt-12">
                                                                 <div class="info">
                                                                     <p>Số dư</p>
-                                                                    <p class="style">{{ number_format(Auth::user()->so_du, 0,',','.')}} VNĐ</p>
+                                                                    <p class="style">{{ number_format(Auth::user()->so_du, 0, ',') }} VNĐ</p>
                                                                 </div>
                                                             </div>
                                                             <div class="divider"></div>
@@ -490,7 +490,6 @@
 
             @yield('content')
             
-            @vite('resources/js/public.js')
             <!-- Nạp tiền player duo -->
 
             <div class="chatbox-wrapper">

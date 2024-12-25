@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
 use Carbon\Carbon;
+use Request;
 
 class LichSuThueController extends Controller
 {
@@ -95,5 +96,36 @@ class LichSuThueController extends Controller
         broadcast(new LichSuThueCreated($lichSuThue))->toOthers();
 
         return redirect()->json(['message' => 'Thêm thành công']);
+    }
+    public function huyDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsCancelled();
+
+        return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+    }
+
+    public function nhanDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsProcessing();
+
+        return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
+    }
+
+    public function ketThucDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->markAsEnd();
+
+        return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
+    }
+
+    public function xoaDonThue(Request $request, $id)
+    {
+        $user = LichSuThue::find($id); 
+        $user->delete();
+
+        return redirect()->back()->with('success', 'Xoá đơn thuê thành công.');
     }
 }
