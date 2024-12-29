@@ -413,7 +413,7 @@
                                                                             fill="white" />
                                                                     </svg>
                                                                     <span>Thông tin cá nhân</span>
-                                                                </a>
+                                                                </a>z
                                                                 <a class="mt-10" href="{{ route('client.lichSuThue') }}">
                                                                     <svg width="20" height="20" viewBox="0 0 20 20"
                                                                         fill="none"

@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="client-infor sc-card-product">
-                            @foreach ($selectedCategories as $category)
+                            @foreach ($danhmuctaikhoans as $category)
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">

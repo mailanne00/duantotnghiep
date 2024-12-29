@@ -842,7 +842,7 @@
                 },
                 error: function () {
                     alert('Không thể tải thông tin người dùng.');
-                }
+     a           }
             });
         });
     });

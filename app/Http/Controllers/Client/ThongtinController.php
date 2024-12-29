@@ -24,14 +24,14 @@ class ThongtinController extends Controller
             return redirect()->route('client.login')->with('error', 'Vui lòng đăng nhập để tiếp tục');
         }
 
-        $selectedCategories = explode(',', $user->selected_categories); // Nếu trong DB bạn lưu các ID danh mục dưới dạng chuỗi phân cách bởi dấu phẩy
+        $danhmuctaikhoans = explode(',', $user->danh_muc_tai_khoans); // Nếu trong DB bạn lưu các ID danh mục dưới dạng chuỗi phân cách bởi dấu phẩy
 
 
-        $selected = $user->selected_categories
-            ? explode(',', $user->selected_categories)
+        $selected = $user->danh_muc_tai_khoans
+            ? explode(',', $user->danh_muc_tai_khoans)
             : [];
 
-        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selected', 'selectedCategories'));
+        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selected', 'danhmuctaikhoans'));
     }
 
 
@@ -84,6 +84,38 @@ class ThongtinController extends Controller
         }
 
         $user->save();
+        if ($request->hasFile('cccd')) {
+            // Xóa ảnh CCCD cũ nếu có
+            if ($user->cccd) {
+                Storage::disk('public')->delete($user->cccd);
+            }
+        
+            // Upload ảnh CCCD mới
+            $data['cccd'] = Storage::put(self::PATH_UPLOAD, $request->file('cccd'));
+            $user->cccd= $data['cccd'];
+        }
+        
+        if ($request->hasFile('personal_video')) {
+            // Xóa video cũ nếu có
+            if ($user->personal_video) {
+                Storage::disk('public')->delete($user->personal_video);
+            }
+        
+            // Upload video mới
+            $data['personal_video'] = Storage::put(self::PATH_UPLOAD, $request->file('personal_video'));
+            $user->personal_video = $data['personal_video'];
+        }
+        
+        // Kiểm tra nếu cả ảnh CCCD và video được tải lên -> xác thực
+        if ($user->cccd && $user->personal_video) {
+            $user->trang_thai_xac_thuc = true;
+        } else {
+            $user->trang_thai_xac_thuc = false;
+        }
+        
+        $user->save();
+        
+        
 
         return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
     }
