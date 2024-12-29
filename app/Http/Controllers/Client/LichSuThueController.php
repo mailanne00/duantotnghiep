@@ -6,6 +6,7 @@ use App\Events\LichSuThueCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
+use App\Models\TaiKhoan;
 use Carbon\Carbon;
 use Request;
 
@@ -48,6 +49,10 @@ class LichSuThueController extends Controller
         $checkLichSuThue->expired = $timePlus5Minutes;
         $checkLichSuThue->save();
 
+        $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+        $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+        $taiKhoan->update(['so_du' => $tongGia]);
+
         return redirect()->back();
     } else {
         $lichSuThue = LichSuThue::create([
@@ -57,6 +62,10 @@ class LichSuThueController extends Controller
             'gio_thue' => $validateData['gio_thue'],
             'expired' => $timePlus5Minutes
         ]);
+
+        $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+        $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+        $taiKhoan->update(['so_du' => $tongGia]);
     }
 
         return redirect()->back();
