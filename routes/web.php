@@ -47,8 +47,14 @@ Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.tai
 Route::get('/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
 Route::get('/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
 Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
+
+
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
+Route::delete('/player/{id}/delete-cccd', [ThongtinController::class, 'deleteCccd'])->name('player.delete_cccd');
+Route::delete('/player/{id}/delete-video', [ThongtinController::class, 'deleteVideo'])->name('player.delete_video');
+
+
 
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');

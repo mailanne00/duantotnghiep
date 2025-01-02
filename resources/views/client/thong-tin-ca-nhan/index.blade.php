@@ -123,7 +123,7 @@
                                     <div id="selectedCategoriesContainer"
                                         class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"
                                         style="min-height: 50px;">
-                                        @foreach ($danhmuctaikhoans as $categoryId)
+                                        @foreach ($selectedCategories as $categoryId)
                                         @php
                                         $category = $categories->firstWhere('id', $categoryId);
                                         @endphp
@@ -138,7 +138,7 @@
 
                                     <div id="categoryList">
                                         @foreach ($categories as $category)
-                                        @if (!in_array($category->id, $danhmuctaikhoans))
+                                        @if (!in_array($category->id, $selectedCategories))
                                         <div class="category-btn" data-id="{{ $category->id }}">
                                             <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
                                                 alt="" width="30" height="30">
@@ -241,7 +241,7 @@
         const categoryList = document.getElementById('categoryList');
 
         // Lấy danh mục đã chọn từ PHP (truyền từ server)
-        let selectedCategories = @json($danhmuctaikhoans); // Dữ liệu đã chọn từ database
+        let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
 
         // Cập nhật giá trị của input ẩn
         function updateSelectedCategories() {
