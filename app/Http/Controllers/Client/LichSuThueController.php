@@ -8,7 +8,8 @@ use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use Carbon\Carbon;
-use Request;
+use Illuminate\Http\Request;
+
 
 class LichSuThueController extends Controller
 {
@@ -19,7 +20,7 @@ class LichSuThueController extends Controller
             ->get();
 
         $timeNow = Carbon::now();
-        $checkExpired = LichSuThue::where('expired', '>', $timeNow)
+        $checkExpired = LichSuThue::where('expired', '<', $timeNow)
             ->where('trang_thai', '=', '0')
             ->update(['trang_thai' => '2']);
 
@@ -37,36 +38,39 @@ class LichSuThueController extends Controller
         $timePlus5Minutes = $timeNow->addMinutes(5);
 
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
-        ->where('nguoi_duoc_thue', $validateData['user_id'])
-        ->where('trang_thai', '=', '0')
-        ->where('expired', '<=', $timeNow)
-        ->first();
+            ->where('nguoi_duoc_thue', $validateData['user_id'])
+            ->where('trang_thai', '=', '0')
+            ->where('expired', '<=', $timeNow)
+            ->first();
 
-    if ($checkLichSuThue) {
-        // Cập nhật bản ghi hiện có
-        $checkLichSuThue->gio_thue += $validateData['gio_thue'];
-        // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
-        $checkLichSuThue->expired = $timePlus5Minutes;
-        $checkLichSuThue->save();
 
-        $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
-        $tongGia = $taiKhoan->so_du - $request['tong_gia'];
-        $taiKhoan->update(['so_du' => $tongGia]);
+        if ($checkLichSuThue) {
+            // dd($checkLichSuThue);
+            // Cập nhật bản ghi hiện có
+            $checkLichSuThue->gio_thue += $validateData['gio_thue'];
+            // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
+            $checkLichSuThue->expired = $timePlus5Minutes;
+            $checkLichSuThue->save();
 
-        return redirect()->back();
-    } else {
-        $lichSuThue = LichSuThue::create([
-            'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $validateData['user_id'],
-            'gia_thue' => $validateData['gia_thue'],
-            'gio_thue' => $validateData['gio_thue'],
-            'expired' => $timePlus5Minutes
-        ]);
+            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+            $taiKhoan->update(['so_du' => $tongGia]);
 
-        $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
-        $tongGia = $taiKhoan->so_du - $request['tong_gia'];
-        $taiKhoan->update(['so_du' => $tongGia]);
-    }
+            return redirect()->back();
+        } else {
+
+            $lichSuThue = LichSuThue::create([
+                'nguoi_thue' => auth()->user()->id,
+                'nguoi_duoc_thue' => $validateData['user_id'],
+                'gia_thue' => $validateData['gia_thue'],
+                'gio_thue' => $validateData['gio_thue'],
+                'expired' => $timePlus5Minutes
+            ]);
+
+            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+            $taiKhoan->update(['so_du' => $tongGia]);
+        }
 
         return redirect()->back();
     }
@@ -88,35 +92,22 @@ class LichSuThueController extends Controller
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
 
-    public function themDonThueApi(LichSuThueRequest $request)
-    {
-        $validateData = $request->validated();
-        $timeNow = Carbon::now();
-        $timePlus5Minutes = $timeNow->addMinutes(5);
-
-        $lichSuThue = LichSuThue::create([
-            'nguoi_thue' => auth()->user()->id,
-            'nguoi_duoc_thue' => $validateData['user_id'],
-            'gia_thue' => $validateData['gia_thue'],
-            'gio_thue' => $validateData['gio_thue'],
-            'expired' => $timePlus5Minutes
-        ]);
-
-        broadcast(new LichSuThueCreated($lichSuThue))->toOthers();
-
-        return redirect()->json(['message' => 'Thêm thành công']);
-    }
     public function huyDonThue(Request $request, $id)
     {
-        $user = LichSuThue::find($id); 
+        $user = LichSuThue::find($id);
         $user->markAsCancelled();
+
+        $taiKhoan = auth()->user();
+
+        $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
+        $taiKhoan->save();
 
         return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
     }
 
     public function nhanDonThue(Request $request, $id)
     {
-        $user = LichSuThue::find($id); 
+        $user = LichSuThue::find($id);
         $user->markAsProcessing();
 
         return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
@@ -124,15 +115,21 @@ class LichSuThueController extends Controller
 
     public function ketThucDonThue(Request $request, $id)
     {
-        $user = LichSuThue::find($id); 
-        $user->markAsEnd();
+        $lichSuThue = LichSuThue::find($id);
+        $lichSuThue->markAsEnd();
+
+        $user = TaiKhoan::where('id', $request->user_id)->first();
+
+
+        $user->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
+        $user->save();
 
         return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
     }
 
     public function xoaDonThue(Request $request, $id)
     {
-        $user = LichSuThue::find($id); 
+        $user = LichSuThue::find($id);
         $user->delete();
 
         return redirect()->back()->with('success', 'Xoá đơn thuê thành công.');
