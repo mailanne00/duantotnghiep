@@ -85,12 +85,17 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="#"
+                            data-toggle="modal"
+                            data-target="#popup_bid"
+                            data-id="{{ $player->id }}"
+                            class="sc-button loadmore style fl-button pri-3 {{ $player->isVerified() ? '' : 'disabled' }}"
+                            {{ $player->isVerified() ? '' : 'disabled' }}>
+                            <i class="fa fa-user fa-2x"></i><span>Thuê</span>
+                        </a>
+                        
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
-                           data-id="{{ $player->id }}"
-                           class="sc-button loadmore style  fl-button pri-3"> <i
-                                class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid"
-                           class="sc-button loadmore style fl-button pri-3">
+                            class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
                             <span>Trò Chuyện</span>
                         </a>
@@ -99,7 +104,7 @@
             </div>
         </div>
         <div class="danh-gia-list mt-5">
-            <h2 class="container" >Đánh giá</h2>
+            <h2 class="container">Đánh giá</h2>
             @foreach ($danhGias as $danhGia)
 
             <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
@@ -145,101 +150,122 @@
 
 
 <style>
-/* Phần danh sách đánh giá */
-.danh-gia-list {
-    background-color: #f9f9f9; /* Nền nhẹ */
-    padding: 20px;
-    border-radius: 10px;
-    margin: auto;
-    width: 100%; /* Chiều rộng tự nhiên */
-}
+    /* Phần danh sách đánh giá */
+    .danh-gia-list {
+        background-color: #f9f9f9;
+        /* Nền nhẹ */
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+        width: 100%;
+        /* Chiều rộng tự nhiên */
+    }
 
-/* Tiêu đề */
-.danh-gia-list h2 {
-    font-size: 50px; /* Giữ kích thước lớn */
-    font-weight: bold;
-    color: #007bff; /* Màu nổi bật */
-    text-align: center;
-    margin-bottom: 30px; /* Khoảng cách lớn hơn */
-}
+    /* Tiêu đề */
+    .danh-gia-list h2 {
+        font-size: 50px;
+        /* Giữ kích thước lớn */
+        font-weight: bold;
+        color: #007bff;
+        /* Màu nổi bật */
+        text-align: center;
+        margin-bottom: 30px;
+        /* Khoảng cách lớn hơn */
+    }
 
-/* Mỗi đánh giá */
-.danh-gia-item {
-    display: flex; /* Sắp xếp ngang */
-    align-items: center; /* Canh giữa theo trục dọc */
-    background-color: #ffffff; /* Nền trắng */
-    padding: 15px;
-    margin-bottom: 20px; /* Khoảng cách giữa các đánh giá */
-    border-radius: 8px;
-    width: 100%; /* Chiều rộng tự động */
-}
+    /* Mỗi đánh giá */
+    .danh-gia-item {
+        display: flex;
+        /* Sắp xếp ngang */
+        align-items: center;
+        /* Canh giữa theo trục dọc */
+        background-color: #ffffff;
+        /* Nền trắng */
+        padding: 15px;
+        margin-bottom: 20px;
+        /* Khoảng cách giữa các đánh giá */
+        border-radius: 8px;
+        width: 100%;
+        /* Chiều rộng tự động */
+    }
 
-/* Ảnh đại diện */
-.danh-gia-item img {
-    flex-shrink: 0; /* Không co ảnh */
-    width: 50px;
-    height: 50px;
-    object-fit: cover; /* Ảnh luôn vừa khung */
-    border: 2px solid #007bff;
-    border-radius: 50%; /* Bo tròn */
-    margin-right: 15px; /* Khoảng cách bên phải */
-}
+    /* Ảnh đại diện */
+    .danh-gia-item img {
+        flex-shrink: 0;
+        /* Không co ảnh */
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        /* Ảnh luôn vừa khung */
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        /* Bo tròn */
+        margin-right: 15px;
+        /* Khoảng cách bên phải */
+    }
 
-/* Nội dung đánh giá */
-.danh-gia-content {
-    display: flex; /* Sắp xếp ngang */
-    justify-content: space-between; /* Phân bố đều giữa các phần */
-    align-items: flex-start; /* Canh trên cùng */
-    border-left: 2px dashed #ccc;
-    padding-left: 15px;
-    width: calc(100% - 70px); /* Trừ đi phần chiều rộng của ảnh + margin */
-}
+    /* Nội dung đánh giá */
+    .danh-gia-content {
+        display: flex;
+        /* Sắp xếp ngang */
+        justify-content: space-between;
+        /* Phân bố đều giữa các phần */
+        align-items: flex-start;
+        /* Canh trên cùng */
+        border-left: 2px dashed #ccc;
+        padding-left: 15px;
+        width: calc(100% - 70px);
+        /* Trừ đi phần chiều rộng của ảnh + margin */
+    }
 
-/* Phần trái (Nội dung chính) */
-.danh-gia-left {
-    flex-grow: 1; /* Chiếm tối đa không gian còn lại */
-}
+    /* Phần trái (Nội dung chính) */
+    .danh-gia-left {
+        flex-grow: 1;
+        /* Chiếm tối đa không gian còn lại */
+    }
 
-.danh-gia-left strong {
-    font-size: 16px; /* Kích thước lớn */
-    color: #343a40;
-}
+    .danh-gia-left strong {
+        font-size: 16px;
+        /* Kích thước lớn */
+        color: #343a40;
+    }
 
-.danh-gia-left small {
-    font-size: 0.9rem; /* Nhỏ hơn một chút */
-    color: #6c757d;
-    margin-top: 5px;
-}
+    .danh-gia-left small {
+        font-size: 0.9rem;
+        /* Nhỏ hơn một chút */
+        color: #6c757d;
+        margin-top: 5px;
+    }
 
-.danh-gia-left p {
-    margin-top: 10px;
-    line-height: 1.5;
-    font-size: 14px;
-    color: #555; /* Màu chữ mềm hơn */
-}
+    .danh-gia-left p {
+        margin-top: 10px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #555;
+        /* Màu chữ mềm hơn */
+    }
 
-/* Phần sao đánh giá */
-.danh-gia-stars {
-    flex-shrink: 0; /* Không thu nhỏ phần này */
-    text-align: right; /* Canh phải */
-    white-space: nowrap; /* Không xuống dòng */
-}
+    /* Phần sao đánh giá */
+    .danh-gia-stars {
+        flex-shrink: 0;
+        /* Không thu nhỏ phần này */
+        text-align: right;
+        /* Canh phải */
+        white-space: nowrap;
+        /* Không xuống dòng */
+    }
 
-.danh-gia-stars i {
-    font-size: 1.2rem;
-    margin-right: 2px;
-}
+    .danh-gia-stars i {
+        font-size: 1.2rem;
+        margin-right: 2px;
+    }
 
-.danh-gia-stars p {
-    margin-top: 5px;
-    font-size: 1rem;
-    color: #6c757d;
-    font-style: italic;
-}
-
-
-
-
+    .danh-gia-stars p {
+        margin-top: 5px;
+        font-size: 1rem;
+        color: #6c757d;
+        font-style: italic;
+    }
 </style>
 
 
