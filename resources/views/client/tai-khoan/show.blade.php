@@ -87,13 +87,18 @@
                         </div>
                         <a href="#"
                             data-toggle="modal"
-                            data-target="#popup_bid"
+                            data-target="#popup_bid{{ $player->isVerified() ? '' : 'disabled' }}"
                             data-id="{{ $player->id }}"
-                            class="sc-button loadmore style fl-button pri-3 {{ $player->isVerified() ? '' : 'disabled' }}"
-                            {{ $player->isVerified() ? '' : 'disabled' }}>
-                            <i class="fa fa-user fa-2x"></i><span>Thuê</span>
+                            class="sc-button loadmore style fl-button pri-3 "
+                           >
+                            <i class="fa fa-user fa-2x"></i>
+                            @if ($player->isVerified())
+                            <span>Thuê</span>
+                            @else
+                            <span class="text-danger">Người dùng chưa xác thực</span>
+                            @endif
                         </a>
-                        
+    
                         <a href="#" data-toggle="modal" data-target="#popup_bid"
                             class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
