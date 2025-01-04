@@ -86,11 +86,6 @@
                                         <button type="submit" class="btn btn-success" style="font-size: 15px; margin-left:15%">Chấp nhận</button>
                                     </form>
                                 </div>
-                                @elseif ($user->trang_thai == '3')
-                                <form action="{{route('client.ketThucDonThue', $user->id)}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary" style="font-size: 15px;">Kết thúc đơn thuê</button>
-                                </form>
                                 @else
                                 
                                 @endif
