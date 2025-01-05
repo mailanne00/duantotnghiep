@@ -605,8 +605,6 @@
                             <p> Tổng chi phí:</p>
                             <p class="text-right price color-popup" id="user_gia_tien"></p>
                             <input type="hidden" name="gia_thue" id="gia_thue">
-
-                            <input type="hidden" name="tong_gia" id="tongGia">
                         </div>
                         <div class="d-flex justify-content-between">
                             <p> Số dư:</p>
@@ -650,10 +648,9 @@
                             .so_du) + ' VNĐ');
                         document.getElementById('soDuAuth').value = data.so_du
                         $('#user_image').attr('src', data
-                        .anh_dai_dien); // Cập nhật ảnh đại diện
+                            .anh_dai_dien); // Cập nhật ảnh đại diện
                         document.getElementById('userId').value = data.id
                         document.getElementById('gia_thue').value = data.gia_tien
-                        document.getElementById('tongGia').value = data.gia_tien
 
                         giaMoiGio = data.gia_tien;
                     },
@@ -673,7 +670,6 @@
 
             // Cập nhật hiển thị tổng chi phí
             document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
-            document.getElementById('tongGia').value = tongChiPhi;
         }
 
         function themDonThue() {
