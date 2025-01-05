@@ -1,4 +1,7 @@
 function toggleChatbox() {
+    const badge = document.getElementById("notificationBadge");
+    unreadCount = 0;
+    badge.classList.add("d-none");
     const chatboxBody = document.querySelector(".chatbox-body");
     const toggleIcon = document.getElementById("toggleIcon");
 
