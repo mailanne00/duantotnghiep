@@ -89,7 +89,7 @@
                             <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $player->id }}"
                                 class="sc-button loadmore style  fl-button pri-3"> <i
                                     class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                            <a href="#" data-toggle="modal" data-target="#popup_chat" data-id="{{ $player->id }}"
                                 class="sc-button loadmore style fl-button pri-3">
                                 <i class="fa fa-comments fa-2x"></i>
                                 <span>Trò Chuyện</span>
@@ -303,8 +303,6 @@
                             <p> Tổng chi phí:</p>
                             <p class="text-right price color-popup" id="user_gia_tien"></p>
                             <input type="hidden" name="gia_thue" id="gia_thue">
-
-                            <input type="hidden" name="tong_gia" id="tongGia">
                         </div>
                         <div class="d-flex justify-content-between">
                             <p> Số dư:</p>
@@ -312,9 +310,9 @@
                             <input type="hidden" name="so_du_auth" id="soDuAuth">
                         </div>
                         <!-- <div class="d-flex justify-content-between">
-                                    <p> Số dữ của bạn:</p>
-                                    <p class="text-right price color-popup"></p>
-                                </div> -->
+                                                                                                                                                                        <p> Số dữ của bạn:</p>
+                                                                                                                                                                        <p class="text-right price color-popup"></p>
+                                                                                                                                                                    </div> -->
                         <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                     </div>
                 </form>
@@ -322,6 +320,36 @@
         </div>
     </div>
 @endsection
+
+@section('modal_chat')
+    <div class="modal fade popup" id="popup_chat" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <form id="chatForm" class="modal-body space-y-20 pd-40">
+                    @csrf
+                    <h3>Trò Chuyện</h3>
+                    <p class="text-center">Người chơi: <span class="price color-popup"
+                            id="chat_user_name">{{ $player->ten }}</span></p>
+                    <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                    <textarea id="chatMessage" class="form-control styled-textarea"
+                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                    <button type="button" id="sendMessageBtn" class="btn btn-primary mt-3"
+                        style="color: #FFFFFF">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+<script>
+    const authUserId = @json(auth()->id());
+</script>
+
+@vite('resources/js/createChat.js')
 
 @section('script_footer')
     <script>
@@ -352,10 +380,9 @@
                             .so_du) + ' VNĐ');
                         document.getElementById('soDuAuth').value = data.so_du
                         $('#user_image').attr('src', data
-                        .anh_dai_dien); // Cập nhật ảnh đại diện
+                            .anh_dai_dien); // Cập nhật ảnh đại diện
                         document.getElementById('userId').value = data.id
                         document.getElementById('gia_thue').value = data.gia_tien
-                        document.getElementById('tongGia').value = data.gia_tien
 
                         giaMoiGio = data.gia_tien;
                     },
@@ -375,7 +402,6 @@
 
             // Cập nhật hiển thị tổng chi phí
             document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
-            document.getElementById('tongGia').value = tongChiPhi;
         }
 
         function themDonThue() {
@@ -398,5 +424,23 @@
             return true;
 
         }
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gán sự kiện click vào nút Trò Chuyện
+            document.querySelectorAll('[data-target="#popup_chat"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const userId = this.getAttribute('data-id');
+                    const userName = this.querySelector('span').textContent;
+
+                    // Cập nhật thông tin vào modal Trò Chuyện
+                    document.getElementById('chat_user_name').textContent = userName;
+
+                    // Nếu cần thêm dữ liệu userId vào modal (ví dụ để gửi tin nhắn)
+                    console.log('User ID:', userId); // Bạn có thể thực hiện thêm logic tại đây
+                });
+            });
+        });
     </script>
 @endsection
