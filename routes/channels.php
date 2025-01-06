@@ -13,18 +13,22 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
+Broadcast::channel('user.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('chat.{phong_chat_id}', function ($user, $phong_chat_id) {
+    return $user->isInChat($phong_chat_id); // Kiểm tra nếu user thuộc phòng chat
+});
+
+Broadcast::channel('phong-chat.{phong_chat_id}', function ($user, $phong_chat_id) {
+    return $user->isInChat($phong_chat_id); // Kiểm tra nếu user thuộc phòng chat
+});
+
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
 Broadcast::channel('lichSuThues', function () {
     return true;
-});
-
-Broadcast::channel('chat.{roomId}', function (User $user, $roomId) {
-
-    // if ($user->canJoinRoom($roomId)) {
-    //      return ['id' => $user->id, 'name' => $user->name];
-    // }
-    return ['id' => $user->id, 'name' => $user->name];
 });

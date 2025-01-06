@@ -54,7 +54,6 @@ class BaiVietController extends Controller
     {
         if (auth()->check()) {
 
-//            $validated = $request->validated();
             $data = $request->except('anh');
 
             $data['tai_khoan_id'] = \auth()->id();
@@ -67,6 +66,22 @@ class BaiVietController extends Controller
             return redirect()->route('client.baiViet')->with(['success' => 1]);
 
         }else {
+            return redirect()->route('client.baiViet')->with(['error' => 2]);
+        }
+    }
+
+    public function storeBinhLuan(Request $request)
+    {
+        if (auth()->check()) {
+
+            BinhLuan::create([
+                'noi_dung' => $request->noi_dung,
+                'tai_khoan_id' => auth()->id(),
+                'blog_id' => $request->blog_id,
+            ]);
+
+            return redirect()->back()->with('success', 'Thêm bình luận thành công.');
+        } else {
             return redirect()->route('client.baiViet')->with(['error' => 2]);
         }
     }

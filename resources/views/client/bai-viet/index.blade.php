@@ -194,7 +194,7 @@
                 </div>
                 <div class="post-footer">
                     <button class="like-btn"><i class="fa-solid fa-thumbs-up" style="color: #1877F2"></i> Thích</button>
-                    <div data-toggle="modal" data-target="#commentModal" data-id="{{ $item->id }}">
+                    <div data-toggle="modal" data-target="#commentModal{{$item->id}}" data-id="{{ $item->id }}">
                         <button class="comment-btn">
                             <i class="fa-solid fa-comment" style="color: #1877F2"></i> Bình luận
                         </button>
@@ -203,31 +203,34 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+            <div class="modal fade" id="commentModal{{$item->id}}" tabindex="-1" aria-labelledby="commentModalLabel{{$item->id}}" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content" style="width:800px; margin-left: -30%; border-radius:10px">
+                    <div class="modal-content" style="width:800px; margin-top:50px; margin-left: -30%; border-radius:10px">
                         <!-- Tiêu đề Modal -->
                         <div class="modal-header">
-                            <h5 class="modal-title" style="color: black" id="commentModalLabel">Danh sách bình luận</h5>
+                            <h5 class="modal-title" style="color: black" id="commentModalLabel{{$item->id}}">Danh sách bình luận</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <!-- Nội dung Modal -->
                         <div class="modal-body">
                             <div id="commentsList">
+                                @if ($item->binhLuans->isNotEmpty())
                                 @foreach ($item->binhLuans as $binhLuan)
                                 <div class="comment mb-3" style="display:flex">
                                     <img src="{{Storage::url($binhLuan->taiKhoan->anh_dai_dien)}}" alt="" style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-top:10px">
                                     <p style="margin-left:2%; margin-top:1%; color: #34353A; background-color:#EFF2F5; padding: 10px; border-radius: 10px">{{$binhLuan->noi_dung}}</p>
-                                    <p>{{$binhLuan->timeAgo}}</p>
                                 </div>
                                 @endforeach
+                                @else
+                                <p style="margin-left:2%; font-size:16px">Không có bình luận nào...</p>
+                                @endif
                             </div>
-                            <textarea class="form-control mt-5 my-2" id="newComment" style="font-size: 16px" placeholder="Viết bình luận..."></textarea>
-                        </div>
-                        <!-- Footer Modal -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary" id="submitComment">Gửi</button>
+                            <form action="{{route('client.binhLuan.store', $item->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="blog_id" value="{{ $item->id }}">
+                                <textarea class="form-control mt-5 my-2" id="newComment" name="noi_dung" style="font-size: 16px" placeholder="Viết bình luận..."></textarea>
+                                <button type="submit" class="btn btn-primary" style="width:80px;" id="submitComment">Gửi</button>
+                            </form>
                         </div>
                     </div>
                 </div>
