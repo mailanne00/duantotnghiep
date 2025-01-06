@@ -115,6 +115,9 @@
                             <a class="nav-link" data-bs-toggle="tab" href="#chan">Danh sách chặn User</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#biendongsodu">Biến động số dư   </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#naptien">Lịch sử nạp tiền</a>
                         </li>
                         <li class="nav-item">
@@ -154,7 +157,7 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
-                                                                <button style="all: unset">
+                                                                <button style="all: unset; cursor: pointer;">
                                                                     Đang theo dõi
                                                                 </button>
                                                             </div>
@@ -163,8 +166,8 @@
                                                         <form action="{{ route('client.theoDoi.store') }}" method="POST">
                                                             @csrf
                                                             <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiTheoDoi->id }}">
-                                                            <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                                <button style="all: unset">
+                                                            <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #3C3C56">
+                                                                <button style="all: unset; cursor: pointer;">
                                                                     Theo dõi
                                                                 </button>
                                                             </div>
@@ -233,6 +236,37 @@
                                         </div>
                                     @endforeach
                                 </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="biendongsodu">
+                            <div class="table-container">
+                                <table class="history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Thời gian</th>
+                                            <th>Số tiền</th>
+                                            <th>Nội dung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="group">
+                                            <td>Vietcombank</td>
+                                            <td><span class="status text-danger">Thất bại</span></td>
+                                            <td>100.000 VND</td>
+                                        </tr>
+                                        <tr class="group">
+                                            <td>TP bank</td>
+                                            <td><span class="status text-success">Thành công</span>
+                                            </td>
+                                            <td>100.000 VND</td>
+                                        </tr>
+                                        <tr class="group">
+                                            <td>MB bank</td>
+                                            <td><span class="status text-warning">Chờ xử lý</span></td>
+                                            <td>100.000 VND</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="naptien">

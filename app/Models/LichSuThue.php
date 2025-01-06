@@ -15,6 +15,7 @@ class LichSuThue extends Model
         'gia_thue',
         'gio_thue',
         'trang_thai',
+        'expired'
     ];
 
     public function markAsProcessing()

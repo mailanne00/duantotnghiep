@@ -25,13 +25,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{asset('assets/icon/Favicon.png')}}">
+    <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
     @yield('css')
     <style>
-        .flat-title-page.style3 .heading{
+        .flat-title-page.style3 .heading {
             font-size: 39px;
             line-height: 47px
         }
@@ -52,14 +52,15 @@
             font-size: 18px !important;
         }
 
-        h1{
+        h1 {
             font-size: 30px;
         }
 
         h5 {
             font-size: 15px;
         }
-        .tf-section.wrap-accordion .container{
+
+        .tf-section.wrap-accordion .container {
             width: 1410px;
             max-width: 1410px;
         }
@@ -68,7 +69,7 @@
             font-size: 15px !important;
         }
 
-        .flat-accordion2 .flat-toggle2 .toggle-content p{
+        .flat-accordion2 .flat-toggle2 .toggle-content p {
             font-size: 13px;
         }
 
@@ -77,14 +78,19 @@
             color: #FFFFFF;
         }
     </style>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    @vite('resources/js/app.js')
+
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
 
     <!-- preloade -->
-{{--    <div class="preload preload-container">--}}
-{{--        <div class="preload-logo"></div>--}}
-{{--    </div>--}}
+    {{--    <div class="preload preload-container"> --}}
+    {{--        <div class="preload-logo"></div> --}}
+    {{--    </div> --}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -98,10 +104,11 @@
                                     <div id="site-logo" class="clearfix">
                                         <div id="site-logo-inner">
                                             <a href="{{ route('client.index') }}" rel="home" class="main-logo">
-                                                <img id="logo_header" src="https://files.playerduo.net/production/static-files/logo.png"
+                                                <img id="logo_header"
+                                                    src="https://files.playerduo.net/production/static-files/logo.png"
                                                     alt="nft-gaming" width="50" height="50"
-                                                    data-retina="https://files.playerduo.net/production/static-files/logo.png" data-width="133"
-                                                    data-height="56">
+                                                    data-retina="https://files.playerduo.net/production/static-files/logo.png"
+                                                    data-width="133" data-height="56">
                                             </a>
                                         </div>
                                     </div>
@@ -112,10 +119,13 @@
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
                                             <li class="">
+                                                <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
+                                            </li>
+                                            <li class="">
                                                 <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{route('client.baiViet')}}">Bài viết</a>
+                                                <a href="{{ route('client.baiViet') }}">Bài viết</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.chinhsach') }}">Chính sách</a>
@@ -133,7 +143,8 @@
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                     xmlns="../../../www.w3.org/2000/svg.html">
                                                     <mask id="mask0_334_638" style="mask-type:alpha"
-                                                        maskUnits="userSpaceOnUse" x="1" y="1" width="18" height="17">
+                                                        maskUnits="userSpaceOnUse" x="1" y="1" width="18"
+                                                        height="17">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                             d="M1.66699 1.66666H17.6862V17.3322H1.66699V1.66666Z"
                                                             fill="white" stroke="white" />
@@ -147,7 +158,8 @@
                                                             fill="white" />
                                                     </g>
                                                     <mask id="mask1_334_638" style="mask-type:alpha"
-                                                        maskUnits="userSpaceOnUse" x="13" y="13" width="6" height="6">
+                                                        maskUnits="userSpaceOnUse" x="13" y="13" width="6"
+                                                        height="6">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                             d="M14.2012 14.2999H18.3333V18.3333H14.2012V14.2999Z"
                                                             fill="white" stroke="white" />
@@ -163,11 +175,13 @@
                                                 </svg>
                                             </a>
                                             <div class="top-search">
-                                                <form action="#" method="get" role="search" class="search-form">
+                                                <form action="#" method="get" role="search"
+                                                    class="search-form">
                                                     <input type="search" id="s" class="search-field"
-                                                        placeholder="Search..." value="" name="s" title="Search for"
-                                                        required="">
-                                                    <button class="search search-submit" type="submit" title="Search">
+                                                        placeholder="Search..." value="" name="s"
+                                                        title="Search for" required="">
+                                                    <button class="search search-submit" type="submit"
+                                                        title="Search">
                                                         <i class="icon-fl-search-filled"></i>
                                                     </button>
                                                 </form>
@@ -185,8 +199,8 @@
                                                 <div class="popup-notification">
                                                     <div class="notification">
                                                         <span class="number">3</span>
-                                                        <svg width="19" height="22" viewBox="0 0 19 22" fill="#fff"
-                                                            xmlns="../../../www.w3.org/2000/svg.html">
+                                                        <svg width="19" height="22" viewBox="0 0 19 22"
+                                                            fill="#fff" xmlns="../../../www.w3.org/2000/svg.html">
                                                             <path
                                                                 d="M18.4915 15.495L17.209 13.65C17.0339 13.3992 16.9397 13.1009 16.939 12.795V7.5C16.939 5.51088 16.1488 3.60322 14.7423 2.1967C13.3357 0.790176 11.4281 0 9.43896 0C7.44984 0 5.54218 0.790176 4.13566 2.1967C2.72914 3.60322 1.93896 5.51088 1.93896 7.5V12.795C1.93824 13.1009 1.84403 13.3992 1.66896 13.65L0.386463 15.495C0.192273 15.7102 0.064576 15.977 0.018815 16.2632C-0.0269461 16.5494 0.0111884 16.8427 0.128607 17.1077C0.246026 17.3727 0.437699 17.598 0.680449 17.7563C0.923199 17.9147 1.20663 17.9993 1.49646 18H5.76396C5.9361 18.8477 6.39601 19.6099 7.06577 20.1573C7.73553 20.7047 8.57394 21.0038 9.43896 21.0038C10.304 21.0038 11.1424 20.7047 11.8122 20.1573C12.4819 19.6099 12.9418 18.8477 13.114 18H17.3815C17.6713 17.9993 17.9547 17.9147 18.1975 17.7563C18.4402 17.598 18.6319 17.3727 18.7493 17.1077C18.8667 16.8427 18.9049 16.5494 18.8591 16.2632C18.8133 15.977 18.6856 15.7102 18.4915 15.495ZM9.43896 19.5C8.97475 19.4987 8.52231 19.3538 8.14366 19.0853C7.76501 18.8168 7.4787 18.4377 7.32396 18H11.554C11.3992 18.4377 11.1129 18.8168 10.7343 19.0853C10.3556 19.3538 9.90317 19.4987 9.43896 19.5ZM1.49646 16.5C1.53036 16.4685 1.56056 16.4333 1.58646 16.395L2.89896 14.505C3.24909 14.0034 3.43751 13.4067 3.43896 12.795V7.5C3.43896 5.9087 4.0711 4.38258 5.19632 3.25736C6.32154 2.13214 7.84766 1.5 9.43896 1.5C11.0303 1.5 12.5564 2.13214 13.6816 3.25736C14.8068 4.38258 15.439 5.9087 15.439 7.5V12.795C15.4404 13.4067 15.6288 14.0034 15.979 14.505L17.2915 16.395C17.3174 16.4333 17.3476 16.4685 17.3815 16.5H1.49646Z"
                                                                 fill="white" />
@@ -398,15 +412,18 @@
                                                             <div class="d-flex align-items-center mt-20 mg-bt-12">
                                                                 <div class="info">
                                                                     <p>Số dư</p>
-                                                                    <p class="style">{{ number_format(Auth::user()->so_du, 0, ',') }} VNĐ</p>
+                                                                    <p class="style">
+                                                                        {{ number_format(Auth::user()->so_du, 0, ',') }}
+                                                                        VNĐ</p>
                                                                 </div>
                                                             </div>
                                                             <div class="divider"></div>
                                                             <div class="hr"></div>
                                                             <div class="links mt-20">
-                                                                <a class="mt-10" href="{{ route('client.thongtincanhan') }}">
-                                                                    <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                        fill="none"
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.thongtincanhan') }}">
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z"
@@ -414,9 +431,10 @@
                                                                     </svg>
                                                                     <span>Thông tin cá nhân</span>
                                                                 </a>
-                                                                <a class="mt-10" href="{{ route('client.lichSuThue') }}">
-                                                                    <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                        fill="none"
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.lichSuThue') }}">
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z"
@@ -424,29 +442,32 @@
                                                                     </svg>
                                                                     <span>Lịch sử thuê</span>
                                                                 </a>
-                                                                <a class="mt-10" href="{{ route('client.lichSuDuocThue') }}">
-                                                                    <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                         fill="none"
-                                                                         xmlns="../../../www.w3.org/2000/svg.html">
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.lichSuDuocThue') }}">
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
+                                                                        xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z"
                                                                             fill="white" />
                                                                     </svg>
                                                                     <span>Lịch sử được thuê</span>
                                                                 </a>
-                                                                <a class="mt-10" href="{{ route('client.thongKeTaiKhoan') }}">
-                                                                    <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                         fill="none"
-                                                                         xmlns="../../../www.w3.org/2000/svg.html">
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.thongKeTaiKhoan') }}">
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
+                                                                        xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z"
                                                                             fill="white" />
                                                                     </svg>
                                                                     <span>Thống kê tài khoản</span>
                                                                 </a>
-                                                                <a class="mt-10" href="{{route('client.napTien')}}">
-                                                                    <svg width="20" height="18" viewBox="0 0 20 18"
-                                                                        fill="none"
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.napTien') }}">
+                                                                    <svg width="20" height="18"
+                                                                        viewBox="0 0 20 18" fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M17.1154 0.730469H2.88461C1.29402 0.730469 0 2.02449 0 3.61508V14.3843C0 15.9749 1.29402 17.2689 2.88461 17.2689H17.1154C18.706 17.2689 20 15.9749 20 14.3843V3.61508C20 2.02449 18.706 0.730469 17.1154 0.730469ZM18.7529 10.6035H14.6154C13.6611 10.6035 13 9.95407 13 8.99969C13 8.04532 13.661 7.34544 14.6154 7.34544H18.7529V10.6035ZM18.7529 6.11508H14.6154C13.0248 6.11508 11.7308 7.40911 11.7308 8.99969C11.7308 10.5903 13.0248 11.8843 14.6154 11.8843H18.7529V14.3843C18.7529 15.3386 18.0698 15.9996 17.1154 15.9996H2.88461C1.93027 15.9996 1.29231 15.3387 1.29231 14.3843V3.61508C1.29231 2.66074 1.93023 1.99963 2.88461 1.99963H17.1266C18.0809 1.99963 18.7529 2.6607 18.7529 3.61508V6.11508Z"
@@ -456,8 +477,8 @@
                                                                 </a>
                                                                 <a class="mt-10" href="{{ route('client.logout') }}"
                                                                     id="logout">
-                                                                    <svg width="20" height="20" viewBox="0 0 20 20"
-                                                                        fill="none"
+                                                                    <svg width="20" height="20"
+                                                                        viewBox="0 0 20 20" fill="none"
                                                                         xmlns="../../../www.w3.org/2000/svg.html">
                                                                         <path
                                                                             d="M9.9668 18.3057H2.49168C2.0332 18.3057 1.66113 17.9335 1.66113 17.4751V2.52492C1.66113 2.06644 2.03324 1.69437 2.49168 1.69437H9.9668C10.4261 1.69437 10.7973 1.32312 10.7973 0.863828C10.7973 0.404531 10.4261 0.0332031 9.9668 0.0332031H2.49168C1.11793 0.0332031 0 1.15117 0 2.52492V17.4751C0 18.8488 1.11793 19.9668 2.49168 19.9668H9.9668C10.4261 19.9668 10.7973 19.5955 10.7973 19.1362C10.7973 18.6769 10.4261 18.3057 9.9668 18.3057Z"
@@ -489,12 +510,19 @@
 
             <!-- Nạp tiền player duo -->
 
+            @yield('modal_chat')
+
+
             <div class="chatbox-wrapper">
                 <div class="chatbox-header d-flex justify-content-between align-items-center p-3 bg-primary text-white rounded-top"
                     onclick="toggleChatbox()">
                     <div>
                         <i class="fas fa-comment-dots"></i>
                         Chat với chúng tôi
+                        <span id="notificationBadge" class="notification-badge d-none">
+                            <i class="fas fa-bell"></i>
+                            <span id="unreadCount">0</span>
+                        </span>
                     </div>
                     <div>
                         <i class="fas fa-chevron-up" id="toggleIcon"></i>
@@ -502,57 +530,34 @@
                 </div>
                 <div class="chatbox-body">
                     <div class="chat-list">
-                        <ul class="list-unstyled">
-                            <li class="chat-user d-flex align-items-center mb-3">
-                                <img src="assets/images/avatar/avt-2.jpg" alt="User Avatar" class="rounded-circle"
-                                    width="40px" height="40px">
-                                <span class="ms-2" id="text-title-chatbox">Nguyễn Hoàng</span>
-                            </li>
-                            <li class="chat-user d-flex align-items-center mb-3">
-                                <img src="assets/images/avatar/avt-2.jpg" alt="User Avatar" class="rounded-circle"
-                                    width="40px" height="40px">
-                                <span class="ms-2" id="text-title-chatbox">Nguyễn Hoàng</span>
-                            </li>
-                            <li class="chat-user d-flex align-items-center mb-3">
-                                <img src="assets/images/avatar/avt-3.jpg" alt="User Avatar" class="rounded-circle"
-                                    width="40px" height="40px">
-                                <span class="ms-2" id="text-title-chatbox">Nguyễn Hoàng</span>
-                            </li>
+                        <ul class="list-unstyled" id="chatList">
+                            <!-- Danh sách phòng chat sẽ được tải từ server -->
                         </ul>
                     </div>
+
                     <div class="chat-content">
-                        <div class="chat-messages">
-                            <header class="chat-header mb-5">
-                                <!-- Avatar -->
-                                <img src="assets/images/avatar/avt-3.jpg" alt="User Avatar" class="avatar">
-
-                                <!-- User Info -->
-                                <div class="user-info">
-                                    <p class="user-name">Nguyễn Hoàng</p>
-                                    <p class="user-status">Đang hoạt động</p>
-                                </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <header class="chat-header mb-5" id="chatHeader">
+                                <!-- Thông tin phòng chat sẽ được cập nhật ở đây -->
                             </header>
-
-                            <div>
-                                <div class="message user1">
-                                    <img src="assets/images/avatar/avt-3.jpg" alt="User 1 Avatar" class="avatar">
-                                    <p>Hello</p>
-                                </div>
-
-                            </div>
-                            <div class="message you">
-                                <p> Hi, how can I help you?</p>
+                            <div id="messageContainer" class="messageContainer">
+                                <!-- Tin nhắn sẽ được tải từ server -->
                             </div>
                         </div>
                         <div class="chat-input d-flex p-3">
-                            <input type="text" class="form-control me-2" placeholder="Type a message" id="messageInput">
+                            <input type="text" class="form-control me-2" placeholder="Type a message"
+                                id="messageInput">
                             <button id="sendButton"><i class="fas fa-arrow-right fa-lg"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            <script>
+                // Khai báo user id
+                const authUserId = @json(auth()->id());
+            </script>
+            @vite('resources/js/present.js')
 
 
             <footer id="footer" class="footer-light-style clearfix">
@@ -563,8 +568,9 @@
                                 <div class="logo-footer" id="logo-footer">
                                     <a href="index-2.html">
                                         <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="nft-gaming"
-                                            width="135" height="56" data-retina="assets/images/logo/logo_dark@2x.png"
-                                            data-width="135" data-height="56">
+                                            width="135" height="56"
+                                            data-retina="assets/images/logo/logo_dark@2x.png" data-width="135"
+                                            data-height="56">
                                     </a>
                                 </div>
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
@@ -620,11 +626,13 @@
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
 
-                                        <li class="style-2"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                        <li class="style-2"><a href="#"><i
+                                                    class="fab fa-telegram-plane"></i></a></li>
                                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                                         <li class="mgr-none"><a href="#"><i class="icon-fl-tik-tok-2"></i></a>
                                         </li>
-                                        <li class="mgr-none"><a href="#"><i class="icon-fl-vt"></i></a></li>
+                                        <li class="mgr-none"><a href="#"><i class="icon-fl-vt"></i></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -637,6 +645,7 @@
 
         <!-- Modal Popup Bid -->
         @yield('modal_user')
+
 
 
     </div>

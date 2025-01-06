@@ -9,6 +9,7 @@ class DanhMuc extends Model
 {
     use HasFactory;
 
+    protected $table = 'danh_mucs';
     protected $fillable = ['ten', 'anh'];
 
 

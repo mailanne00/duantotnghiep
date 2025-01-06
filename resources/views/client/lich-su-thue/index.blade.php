@@ -103,6 +103,7 @@
                                 @elseif ($user->trang_thai == '3')
                                 <form action="{{route('client.ketThucDonThue', $user->id)}}" method="post">
                                     @csrf
+                                    <input type="hidden" value="{{$user->nguoiDuocThue->id}}" name="user_id">
                                     <button type="submit" class="btn btn-primary" style="font-size: 15px;">Kết thúc đơn thuê</button>
                                 </form>
                                 @else

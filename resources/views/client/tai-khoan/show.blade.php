@@ -15,7 +15,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="{{route('client.index')}}">Home</a></li>
+                        <li><a href="{{ route('client.index') }}">Home</a></li>
                         <li>{{ $player->ten }}</li>
                     </ul>
                 </div>
@@ -56,7 +56,8 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}" alt="{{ $category->ten }}">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
+                                            alt="{{ $category->ten }}">
                                     </div>
                                     <div class="info">
                                         <h6>
@@ -68,7 +69,7 @@
                             @endforeach
                         </div>
 
-                        <p style="color: #FFFFFF">{{$player->mo_ta}}</p>
+                        <p style="color: #FFFFFF">{{ $player->mo_ta }}</p>
                     </div>
                 </div>
             </div>
@@ -80,17 +81,16 @@
                                 <span class="heading">Giá thuê</span>
                                 <div class="price">
                                     <div class="price-box">
-                                        <h5>{{number_format($player->gia_tien, 0 , ',')}} VNĐ</h5>
+                                        <h5>{{ number_format($player->gia_tien, 0, ',') }} VNĐ</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid"
-                           data-id="{{ $player->id }}"
-                           class="sc-button loadmore style  fl-button pri-3"> <i
+                        <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $player->id }}"
+                            class="sc-button loadmore style  fl-button pri-3"> <i
                                 class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid"
-                           class="sc-button loadmore style fl-button pri-3">
+                        <a href="#" data-toggle="modal" data-target="#popup_chat" data-id="{{ $player->id }}"
+                            class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
                             <span>Trò Chuyện</span>
                         </a>
@@ -99,12 +99,13 @@
             </div>
         </div>
         <div class="danh-gia-list mt-5">
-            <h2 class="container" >Đánh giá</h2>
+            <h2 class="container">Đánh giá</h2>
             @foreach ($danhGias as $danhGia)
-
             <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
                 <!-- Ảnh đại diện -->
-                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}"
+                    alt="Ảnh đại diện" class="rounded-circle me-3"
+                    style="width: 50px; height: 50px; object-fit: cover;">
 
                 <!-- Nội dung đánh giá -->
                 <div class="danh-gia-content w-100 d-flex justify-content-between">
@@ -133,7 +134,7 @@
             </div>
             @endforeach
 
-            @if($danhGias->isEmpty())
+            @if ($danhGias->isEmpty())
             <p class="text-center text-muted">Chưa có đánh giá nào...</p>
             @endif
         </div>
@@ -145,113 +146,126 @@
 
 
 <style>
-/* Phần danh sách đánh giá */
-.danh-gia-list {
-    background-color: #f9f9f9; /* Nền nhẹ */
-    padding: 20px;
-    border-radius: 10px;
-    margin: auto;
-    width: 100%; /* Chiều rộng tự nhiên */
-}
+    /* Phần danh sách đánh giá */
+    .danh-gia-list {
+        background-color: #f9f9f9;
+        /* Nền nhẹ */
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+        width: 100%;
+        /* Chiều rộng tự nhiên */
+    }
 
-/* Tiêu đề */
-.danh-gia-list h2 {
-    font-size: 50px; /* Giữ kích thước lớn */
-    font-weight: bold;
-    color: #007bff; /* Màu nổi bật */
-    text-align: center;
-    margin-bottom: 30px; /* Khoảng cách lớn hơn */
-}
+    /* Tiêu đề */
+    .danh-gia-list h2 {
+        font-size: 50px;
+        /* Giữ kích thước lớn */
+        font-weight: bold;
+        color: #007bff;
+        /* Màu nổi bật */
+        text-align: center;
+        margin-bottom: 30px;
+        /* Khoảng cách lớn hơn */
+    }
 
-/* Mỗi đánh giá */
-.danh-gia-item {
-    display: flex; /* Sắp xếp ngang */
-    align-items: center; /* Canh giữa theo trục dọc */
-    background-color: #ffffff; /* Nền trắng */
-    padding: 15px;
-    margin-bottom: 20px; /* Khoảng cách giữa các đánh giá */
-    border-radius: 8px;
-    width: 100%; /* Chiều rộng tự động */
-}
+    /* Mỗi đánh giá */
+    .danh-gia-item {
+        display: flex;
+        /* Sắp xếp ngang */
+        align-items: center;
+        /* Canh giữa theo trục dọc */
+        background-color: #ffffff;
+        /* Nền trắng */
+        padding: 15px;
+        margin-bottom: 20px;
+        /* Khoảng cách giữa các đánh giá */
+        border-radius: 8px;
+        width: 100%;
+        /* Chiều rộng tự động */
+    }
 
-/* Ảnh đại diện */
-.danh-gia-item img {
-    flex-shrink: 0; /* Không co ảnh */
-    width: 50px;
-    height: 50px;
-    object-fit: cover; /* Ảnh luôn vừa khung */
-    border: 2px solid #007bff;
-    border-radius: 50%; /* Bo tròn */
-    margin-right: 15px; /* Khoảng cách bên phải */
-}
+    /* Ảnh đại diện */
+    .danh-gia-item img {
+        flex-shrink: 0;
+        /* Không co ảnh */
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        /* Ảnh luôn vừa khung */
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        /* Bo tròn */
+        margin-right: 15px;
+        /* Khoảng cách bên phải */
+    }
 
-/* Nội dung đánh giá */
-.danh-gia-content {
-    display: flex; /* Sắp xếp ngang */
-    justify-content: space-between; /* Phân bố đều giữa các phần */
-    align-items: flex-start; /* Canh trên cùng */
-    border-left: 2px dashed #ccc;
-    padding-left: 15px;
-    width: calc(100% - 70px); /* Trừ đi phần chiều rộng của ảnh + margin */
-}
+    /* Nội dung đánh giá */
+    .danh-gia-content {
+        display: flex;
+        /* Sắp xếp ngang */
+        justify-content: space-between;
+        /* Phân bố đều giữa các phần */
+        align-items: flex-start;
+        /* Canh trên cùng */
+        border-left: 2px dashed #ccc;
+        padding-left: 15px;
+        width: calc(100% - 70px);
+        /* Trừ đi phần chiều rộng của ảnh + margin */
+    }
 
-/* Phần trái (Nội dung chính) */
-.danh-gia-left {
-    flex-grow: 1; /* Chiếm tối đa không gian còn lại */
-}
+    /* Phần trái (Nội dung chính) */
+    .danh-gia-left {
+        flex-grow: 1;
+        /* Chiếm tối đa không gian còn lại */
+    }
 
-.danh-gia-left strong {
-    font-size: 16px; /* Kích thước lớn */
-    color: #343a40;
-}
+    .danh-gia-left strong {
+        font-size: 16px;
+        /* Kích thước lớn */
+        color: #343a40;
+    }
 
-.danh-gia-left small {
-    font-size: 0.9rem; /* Nhỏ hơn một chút */
-    color: #6c757d;
-    margin-top: 5px;
-}
+    .danh-gia-left small {
+        font-size: 0.9rem;
+        /* Nhỏ hơn một chút */
+        color: #6c757d;
+        margin-top: 5px;
+    }
 
-.danh-gia-left p {
-    margin-top: 10px;
-    line-height: 1.5;
-    font-size: 14px;
-    color: #555; /* Màu chữ mềm hơn */
-}
+    .danh-gia-left p {
+        margin-top: 10px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #555;
+        /* Màu chữ mềm hơn */
+    }
 
-/* Phần sao đánh giá */
-.danh-gia-stars {
-    flex-shrink: 0; /* Không thu nhỏ phần này */
-    text-align: right; /* Canh phải */
-    white-space: nowrap; /* Không xuống dòng */
-}
+    /* Phần sao đánh giá */
+    .danh-gia-stars {
+        flex-shrink: 0;
+        /* Không thu nhỏ phần này */
+        text-align: right;
+        /* Canh phải */
+        white-space: nowrap;
+        /* Không xuống dòng */
+    }
 
-.danh-gia-stars i {
-    font-size: 1.2rem;
-    margin-right: 2px;
-}
+    .danh-gia-stars i {
+        font-size: 1.2rem;
+        margin-right: 2px;
+    }
 
-.danh-gia-stars p {
-    margin-top: 5px;
-    font-size: 1rem;
-    color: #6c757d;
-    font-style: italic;
-}
-
-
-
-
+    .danh-gia-stars p {
+        margin-top: 5px;
+        font-size: 1rem;
+        color: #6c757d;
+        font-style: italic;
+    }
 </style>
 
 
-<script>
-
-</script>
-
-
-
-
-
-
+<script></script>
 @endsection
 
 @section('modal_user')
@@ -289,16 +303,14 @@
                         <p> Tổng chi phí:</p>
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
                         <input type="hidden" name="gia_thue" id="gia_thue">
+
+                        <input type="hidden" name="tong_gia" id="tongGia">
                     </div>
                     <div class="d-flex justify-content-between">
                         <p> Số dư:</p>
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
@@ -306,6 +318,36 @@
     </div>
 </div>
 @endsection
+
+@section('modal_chat')
+<div class="modal fade popup" id="popup_chat" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <form id="chatForm" class="modal-body space-y-20 pd-40">
+                @csrf
+                <h3>Trò Chuyện</h3>
+                <p class="text-center">Người chơi: <span class="price color-popup"
+                        id="chat_user_name">{{ $player->ten }}</span></p>
+                <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                <textarea id="chatMessage" class="form-control styled-textarea"
+                    style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                <button type="button" id="sendMessageBtn" class="btn btn-primary mt-3"
+                    style="color: #FFFFFF">Gửi</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+
+<script>
+    const authUserId = @json(auth()->id());
+</script>
+
+@vite('resources/js/createChat.js')
 
 @section('script_footer')
 <script>
@@ -330,13 +372,16 @@
                     $('#user_dia_chi').text(data.dia_chi);
                     $('#user_email').text(data.email);
                     $('#user_sdt').text(data.sdt);
-                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
-                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data
+                        .gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data
+                        .so_du) + ' VNĐ');
                     document.getElementById('soDuAuth').value = data.so_du
-                    $('#user_image').attr('src', data.anh_dai_dien); // Cập nhật ảnh đại diện
+                    $('#user_image').attr('src', data
+                        .anh_dai_dien); // Cập nhật ảnh đại diện
                     document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
-
+                    document.getElementById('tongGia').value = data.gia_tien
                     giaMoiGio = data.gia_tien;
                 },
                 error: function() {
@@ -355,6 +400,7 @@
 
         // Cập nhật hiển thị tổng chi phí
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
+        document.getElementById('tongGia').value = tongChiPhi;
     }
 
     function themDonThue() {
@@ -377,5 +423,23 @@
         return true;
 
     }
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Gán sự kiện click vào nút Trò Chuyện
+        document.querySelectorAll('[data-target="#popup_chat"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-id');
+                const userName = this.querySelector('span').textContent;
+
+                // Cập nhật thông tin vào modal Trò Chuyện
+                document.getElementById('chat_user_name').textContent = userName;
+
+                // Nếu cần thêm dữ liệu userId vào modal (ví dụ để gửi tin nhắn)
+                console.log('User ID:', userId); // Bạn có thể thực hiện thêm logic tại đây
+            });
+        });
+    });
 </script>
 @endsection

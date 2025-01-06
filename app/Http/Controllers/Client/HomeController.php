@@ -16,10 +16,13 @@ class HomeController extends Controller
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::query()->where("nguoi_thue", Auth::id())
-                ->where('trang_thai', 1)
-                ->take(10)
-                ->get();
+            $userDaThues = LichSuThue::all()
+            ->where("nguoi_thue", Auth::id())
+            ->where('trang_thai', 1)
+            ->sortByDesc(function ($userDaThue) {
+                return $userDaThue->countRent;
+            })
+                ->take(10);
         }else {
             $userDaThues= null;
         }
