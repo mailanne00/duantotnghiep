@@ -38,9 +38,10 @@
                             </p>
                         </div>
                         <div style="margin-left: 100px">
-                            <form>
+                            <form action="/payment/create" method="POST">
+                                @csrf
                                 <fieldset>
-                                    <input type="text" name="so_tien" placeholder="Nhập số tiền cần nạp"
+                                    <input type="text" name="amount" placeholder="Nhập số tiền cần nạp"
                                            class="form-control text-white bg-dark">
                                 </fieldset>
                                 <button class="tf-button-submit mg-t-15" type="submit">

@@ -60,7 +60,7 @@ Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue']
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
 // Thanh toán vn pay
-Route::get('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
+Route::post('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
 Route::get('/payment/vnpay-return', [\App\Http\Controllers\Client\VNPayController::class, 'paymentReturn']);
 Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
 Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');
