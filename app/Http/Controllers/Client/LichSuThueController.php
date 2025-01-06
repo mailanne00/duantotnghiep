@@ -121,7 +121,7 @@ class LichSuThueController extends Controller
         $user = TaiKhoan::where('id', $request->user_id)->first();
 
 
-        $user->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
+        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue)*0.9;
         $user->save();
 
         return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
