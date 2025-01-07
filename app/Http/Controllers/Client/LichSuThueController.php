@@ -40,7 +40,6 @@ class LichSuThueController extends Controller
             ->where('trang_thai', '=', '0')
             ->where('expired', '<=', $timeNow)
             ->first();
-        event(new LichSuThueCreated($checkLichSuThue));
         if ($checkLichSuThue) {
             // dd($checkLichSuThue);
             // Cập nhật bản ghi hiện có
@@ -48,6 +47,8 @@ class LichSuThueController extends Controller
             // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
             $checkLichSuThue->expired = $timePlus5Minutes;
             $checkLichSuThue->save();
+            event(new LichSuThueCreated($checkLichSuThue));
+
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
@@ -114,7 +115,7 @@ class LichSuThueController extends Controller
         $user = TaiKhoan::where('id', $request->user_id)->first();
 
 
-        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue)*0.9;
+        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * 0.9;
         $user->save();
 
         return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
