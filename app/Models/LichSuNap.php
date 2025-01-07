@@ -9,5 +9,9 @@ class LichSuNap extends Model
 {
     use HasFactory;
 
-
+    protected $fillable = [
+        'tai_khoan_id',
+        'so_tien',
+        'trang_thai',
+    ];
 }
