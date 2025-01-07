@@ -310,9 +310,9 @@
                             <input type="hidden" name="so_du_auth" id="soDuAuth">
                         </div>
                         <!-- <div class="d-flex justify-content-between">
-                                                                                                                                                                        <p> Số dữ của bạn:</p>
-                                                                                                                                                                        <p class="text-right price color-popup"></p>
-                                                                                                                                                                    </div> -->
+                                                                                                                                                                                        <p> Số dữ của bạn:</p>
+                                                                                                                                                                                        <p class="text-right price color-popup"></p>
+                                                                                                                                                                                    </div> -->
                         <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                     </div>
                 </form>
@@ -349,7 +349,6 @@
     const authUserId = @json(auth()->id());
 </script>
 
-@vite('resources/js/createChat.js')
 
 @section('script_footer')
     <script>

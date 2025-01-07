@@ -18,12 +18,10 @@ class LichSuThueController extends Controller
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
             ->orderByDesc("created_at")
             ->get();
-
         $timeNow = Carbon::now();
         $checkExpired = LichSuThue::where('expired', '<', $timeNow)
             ->where('trang_thai', '=', '0')
             ->update(['trang_thai' => '2']);
-
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -42,8 +40,7 @@ class LichSuThueController extends Controller
             ->where('trang_thai', '=', '0')
             ->where('expired', '<=', $timeNow)
             ->first();
-
-
+        event(new LichSuThueCreated($checkLichSuThue));
         if ($checkLichSuThue) {
             // dd($checkLichSuThue);
             // Cập nhật bản ghi hiện có
@@ -51,14 +48,11 @@ class LichSuThueController extends Controller
             // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
             $checkLichSuThue->expired = $timePlus5Minutes;
             $checkLichSuThue->save();
-
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
-
             return redirect()->back();
         } else {
-
             $lichSuThue = LichSuThue::create([
                 'nguoi_thue' => auth()->user()->id,
                 'nguoi_duoc_thue' => $validateData['user_id'],
@@ -66,12 +60,11 @@ class LichSuThueController extends Controller
                 'gio_thue' => $validateData['gio_thue'],
                 'expired' => $timePlus5Minutes
             ]);
-
+            event(new LichSuThueCreated($lichSuThue));
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
         }
-
         return redirect()->back();
     }
 

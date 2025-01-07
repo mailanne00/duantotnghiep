@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Events;
-
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class LichSuThueCreated implements ShouldBroadcast
+class LichSuThueUpdated implements ShouldBroadcast
 {
     use InteractsWithSockets;
 

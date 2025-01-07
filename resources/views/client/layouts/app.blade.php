@@ -559,7 +559,6 @@
             </script>
             @vite('resources/js/present.js')
 
-
             <footer id="footer" class="footer-light-style clearfix">
                 <div class="themesflat-container">
                     <div class="row">
