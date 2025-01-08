@@ -6,12 +6,9 @@
 
 @section('content')
 <section class="flat-title-page style3">
-    <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png') }}"
-        alt="">
-    <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png') }}"
-        alt="">
-    <img class="bgr-gradient gradient3" src="{{ asset('assets/images/backgroup-secsion/bg-gradient3.png') }}"
-        alt="">
+    <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png') }}" alt="">
+    <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png') }}" alt="">
+    <img class="bgr-gradient gradient3" src="{{ asset('assets/images/backgroup-secsion/bg-gradient3.png') }}" alt="">
     <div class="overlay"></div>
     <div class="swiper-container mainslider home auctions">
         <div class="swiper-wrapper">
@@ -117,76 +114,75 @@
 
 <!-- Người chơi đã thuê -->
 @if (auth()->check())
-@if (!empty($userDaThues))
-<section class="tf-section live-auctions home7">
-    <div class="themesflat-container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading-live-auctions">
-                    <h2 class="tf-title pb-22">
-                        Người chơi đã thuê</h2>
-                    <a href="" class="exp style2">XEM TẤT CẢ</a>
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
-                    <div class="swiper-wrapper">
-                        @foreach ($userDaThues as $userDaThue)
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-card-product menu_card style-h7">
-                                    <div class="card-media" style="width: 224px; height: 224px;">
-                                        <a
-                                            href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
-                                                src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
-                                                alt="Image"
-                                                style="min-height:220px; max-height: 220px; object-fit: cover; object-position: center;"></a>
-                                        <div class="button-place-bid">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                data-id="{{ $userDaThue->nguoiDuocThue->id }}"
-                                                class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="card-title">
-                                        <h5><a
-                                                href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
-                                        </h5>
-                                    </div>
-                                    <div class="meta-info">
-                                        <div class="author">
-                                            <div class="info style2">
-                                                <span
-                                                    class="pricing">{{ number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.') }}
-                                                    VNĐ</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="tags">{{ $userDaThue->nguoiDuocThue->countDanhGia }}
-                                            <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-                                            ({{ $userDaThue->nguoiDuocThue->countRent }})
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- item-->
+    @if (!empty($userDaThues))
+        <section class="tf-section live-auctions home7">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-live-auctions">
+                            <h2 class="tf-title pb-22">
+                                Người chơi đã thuê</h2>
+                            <a href="" class="exp style2">XEM TẤT CẢ</a>
                         </div>
-                        @endforeach
-
                     </div>
-                    <div class="swiper-pagination mg-t-13"></div>
-                    <div class="swiper-button-next btn-slide-next active"></div>
-                    <div class="swiper-button-prev btn-slide-prev"></div>
+
+                    <div class="col-md-12">
+                        <div class="swiper-container show-shadow carousel10 pad-t-17 auctions">
+                            <div class="swiper-wrapper">
+                                @foreach ($userDaThues as $userDaThue)
+                                    <div class="swiper-slide">
+                                        <div class="slider-item">
+                                            <div class="sc-card-product menu_card style-h7">
+                                                <div class="card-media" style="width: 224px; height: 224px;">
+                                                    <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
+                                                            src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
+                                                            alt="Image"
+                                                            style="min-height:220px; max-height: 220px; object-fit: cover; object-position: center;"></a>
+                                                    <div class="button-place-bid">
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                                            data-id="{{ $userDaThue->nguoiDuocThue->id }}"
+                                                            class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-title">
+                                                    <h5><a
+                                                            href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
+                                                    </h5>
+                                                </div>
+                                                <div class="meta-info">
+                                                    <div class="author">
+                                                        <div class="info style2">
+                                                            <span
+                                                                class="pricing">{{ number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.') }}
+                                                                VNĐ</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tags">{{ $userDaThue->nguoiDuocThue->countDanhGia }}
+                                                        <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                                        ({{ $userDaThue->nguoiDuocThue->countRent }})
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- item-->
+                                    </div>
+                                @endforeach
+
+                            </div>
+                            <div class="swiper-pagination mg-t-13"></div>
+                            <div class="swiper-button-next btn-slide-next active"></div>
+                            <div class="swiper-button-prev btn-slide-prev"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-        </div>
-    </div>
-</section>
+        </section>
+    @else
+        <div style="height: 50px; background: #14141F"></div>
+    @endif
 @else
-<div style="height: 50px; background: #14141F"></div>
-@endif
-@else
-<div style="height: 50px; background: #14141F"></div>
+    <div style="height: 50px; background: #14141F"></div>
 @endif
 
 <!-- Danh mục -->
@@ -203,22 +199,22 @@
                 <div class="swiper-container carousel11">
                     <div class="swiper-wrapper">
                         @foreach ($danhMucs as $danhMuc)
-                        <div class="swiper-slide" style="max-width: 160px">
-                            <div class="slider-item" style="width: 160px">
-                                <div class="sc-categoty">
-                                    <div class="card-media">
-                                        <a href="{{ route('client.danhmuc.show', $danhMuc->id) }}"><img
-                                                src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                alt="Image" style="min-height:160px"></a>
-                                    </div>
-                                    <div class="card-title">
-                                        <p style="font-size: 14px; color: #FFFFFF; font-weight: 600">
-                                            {{ $danhMuc->ten }}
-                                        </p>
+                            <div class="swiper-slide" style="max-width: 160px">
+                                <div class="slider-item" style="width: 160px">
+                                    <div class="sc-categoty">
+                                        <div class="card-media">
+                                            <a href="{{ route('client.danhmuc.show', $danhMuc->id) }}"><img
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
+                                                    alt="Image" style="min-height:160px"></a>
+                                        </div>
+                                        <div class="card-title">
+                                            <p style="font-size: 14px; color: #FFFFFF; font-weight: 600">
+                                                {{ $danhMuc->ten }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -254,117 +250,117 @@
                         <div class="content-inner">
                             <div class="tf-box">
                                 @php
-                                $index = 1;
+                                    $index = 1;
                                 @endphp
                                 @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
-                                <div class="box-item">
-                                    @foreach ($chunk as $taiKhoanDaiGia)
-                                    @if ($taiKhoanDaiGia->daiGia['24h'] !== 0)
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
-                                                        alt="Image" class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
-                                                <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
-                                                <span
-                                                    class="price">{{ number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.') }}
-                                                    VND</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#{{ $index++ }}</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                    <div class="box-item">
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['24h'] !== 0)
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.') }}
+                                                                VND</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="action">
+                                                        <div class="number">#{{ $index++ }}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    @endif
-                                    @endforeach
-                                </div>
                                 @endforeach
                             </div>
                         </div>
                         <div class="content-inner">
                             <div class="tf-box">
                                 @php
-                                $index = 1;
+                                    $index = 1;
                                 @endphp
                                 @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
-                                <div class="box-item">
-                                    @foreach ($chunk as $taiKhoanDaiGia)
-                                    @if ($taiKhoanDaiGia->daiGia['week'] !== 0)
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
-                                                        alt="Image" class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
-                                                <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
-                                                <span
-                                                    class="price">{{ number_format($taiKhoanDaiGia->daiGia['week'], 0, ',', '.') }}
-                                                    VND</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#{{ $index++ }}</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                    <div class="box-item">
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['week'] !== 0)
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['week'], 0, ',', '.') }}
+                                                                VND</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="action">
+                                                        <div class="number">#{{ $index++ }}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    @endif
-                                    @endforeach
-                                </div>
                                 @endforeach
                             </div>
                         </div>
                         <div class="content-inner">
                             <div class="tf-box">
                                 @php
-                                $index = 1;
+                                    $index = 1;
                                 @endphp
                                 @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
-                                <div class="box-item">
-                                    @foreach ($chunk as $taiKhoanDaiGia)
-                                    @if ($taiKhoanDaiGia->daiGia['month'] !== 0)
-                                    <div class="sc-author-box style-3">
-                                        <div class="author-style2 flex">
-                                            <div class="author-avatar">
-                                                <a href="#">
-                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
-                                                        alt="Image" class="avatar">
-                                                </a>
-                                                <div class="badge"><i class="ripple"></i></div>
-                                            </div>
-                                            <div class="author-infor">
-                                                <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
-                                                <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
-                                                <span
-                                                    class="price">{{ number_format($taiKhoanDaiGia->daiGia['month'], 0, ',', '.') }}
-                                                    VND</span>
-                                            </div>
-                                        </div>
-                                        <div class="action">
-                                            <div class="number">#{{ $index++ }}</div>
-                                            <div class="btn-follow">
-                                                <a href="#">Follow</a>
-                                            </div>
-                                        </div>
+                                    <div class="box-item">
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['month'] !== 0)
+                                                <div class="sc-author-box style-3">
+                                                    <div class="author-style2 flex">
+                                                        <div class="author-avatar">
+                                                            <a href="#">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
+                                                            </a>
+                                                            <div class="badge"><i class="ripple"></i></div>
+                                                        </div>
+                                                        <div class="author-infor">
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['month'], 0, ',', '.') }}
+                                                                VND</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="action">
+                                                        <div class="number">#{{ $index++ }}</div>
+                                                        <div class="btn-follow">
+                                                            <a href="#">Follow</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    @endif
-                                    @endforeach
-                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -389,29 +385,28 @@
             <div class="col-md-12">
                 <div class="top-pick-box">
                     @foreach ($taiKhoans as $taiKhoan)
-                    <div class="sc-card-product menu_card style-h7">
-                        <div class="card-media">
-                            <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
-                                    src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
-                                    alt="Image"
-                                    style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
-                        </div>
-                        <div class="card-title">
-                            <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
-                        </div>
-                        <div class="meta-info">
-                            <div class="author">
-                                <div class="info style2">
-                                    <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
-                                        VNĐ</span>
+                        <div class="sc-card-product menu_card style-h7">
+                            <div class="card-media">
+                                <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
+                                        src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
+                            </div>
+                            <div class="card-title">
+                                <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
+                            </div>
+                            <div class="meta-info">
+                                <div class="author">
+                                    <div class="info style2">
+                                        <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
+                                            VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="tags">{{ $taiKhoan->countDanhGia }}
+                                    <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                    ({{ $taiKhoan->countRent }})
                                 </div>
                             </div>
-                            <div class="tags">{{ $taiKhoan->countDanhGia }}
-                                <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-                                ({{ $taiKhoan->countRent }})
-                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -432,29 +427,28 @@
             <div class="col-md-12">
                 <div class="top-pick-box">
                     @foreach ($taiKhoans2 as $taiKhoan)
-                    <div class="sc-card-product menu_card style-h7">
-                        <div class="card-media">
-                            <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
-                                    src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
-                                    alt="Image"
-                                    style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
-                        </div>
-                        <div class="card-title">
-                            <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
-                        </div>
-                        <div class="meta-info">
-                            <div class="author">
-                                <div class="info style2">
-                                    <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
-                                        VNĐ</span>
+                        <div class="sc-card-product menu_card style-h7">
+                            <div class="card-media">
+                                <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
+                                        src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
+                            </div>
+                            <div class="card-title">
+                                <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
+                            </div>
+                            <div class="meta-info">
+                                <div class="author">
+                                    <div class="info style2">
+                                        <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
+                                            VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="tags">{{ $taiKhoan->countDanhGia }}
+                                    <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                    ({{ $taiKhoan->countRent }})
                                 </div>
                             </div>
-                            <div class="tags">{{ $taiKhoan->countDanhGia }}
-                                <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-                                ({{ $taiKhoan->countRent }})
-                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -550,8 +544,7 @@
                             <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
                                 xmlns="../../../www.w3.org/2000/svg.html">
                                 <rect width="60" height="60" rx="16" fill="#DF4949" />
-                                <rect x="23" y="24" width="13" height="4" fill="white"
-                                    fill-opacity="0.4" />
+                                <rect x="23" y="24" width="13" height="4" fill="white" fill-opacity="0.4" />
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M26.125 18H33.8375C37.225 18 39.9625 19.284 40 22.5478V40.7631C40 40.9671 39.95 41.1711 39.85 41.3511C39.6875 41.6391 39.4125 41.8551 39.075 41.9511C38.75 42.0471 38.3875 41.9991 38.0875 41.8311L29.9875 37.9432L21.875 41.8311C21.6888 41.9259 21.475 41.9871 21.2625 41.9871C20.5625 41.9871 20 41.4351 20 40.7631V22.5478C20 19.284 22.75 18 26.125 18ZM25.2753 27.1437H34.6878C35.2253 27.1437 35.6628 26.7225 35.6628 26.1958C35.6628 25.6678 35.2253 25.2478 34.6878 25.2478H25.2753C24.7378 25.2478 24.3003 25.6678 24.3003 26.1958C24.3003 26.7225 24.7378 27.1437 25.2753 27.1437Z"
                                     fill="white" />
@@ -586,17 +579,15 @@
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
-                    <p>Số giờ thuê
-                    </p>
+                    <p>Số giờ thuê</p>
                     <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
                         class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
                         @for($i = 1; $i <= 24; $i++)
                             <option value="{{ $i }}" style="font-size: 16px;">
-                            {{ $i }} giờ
+                                {{ $i }} giờ
                             </option>
-                            @endfor
+                        @endfor
                     </select>
-
                     <p>Nội Dung</p>
                     <textarea class="form-control quantity styled-textarea"
                         style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
@@ -615,7 +606,6 @@
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
-                </div>
             </form>
         </div>
     </div>
@@ -624,10 +614,14 @@
 
 @section('script_footer')
 <script>
+        const authUserId = @json(auth()->id());
+</script>
+
+<script>
     let giaMoiGio = 0;
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Khi modal popup được mở
-        $('#popup_bid').on('show.bs.modal', function(event) {
+        $('#popup_bid').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Lấy nút "Thuê" đã được click
             var userId = button.data('id'); // Lấy ID người dùng từ thuộc tính data-id
 
@@ -635,7 +629,7 @@
             $.ajax({
                 url: '/modal-user/' + userId, // Đường dẫn tới API lấy thông tin người dùng
                 method: 'GET',
-                success: function(data) {
+                success: function (data) {
                     // Cập nhật thông tin trong modal với dữ liệu trả về
                     $('#user_id').text(data.id);
                     $('#user_name').text(data.ten);
@@ -658,8 +652,8 @@
                     document.getElementById('tongGia').value = data.gia_tien
                     giaMoiGio = data.gia_tien;
                 },
-                error: function() {
-                    alert('Không thể tải thông tin người dùng.');
+                error: function () {
+                    alert('Bạn chưa đăng nhập.');
                 }
             });
         });
@@ -678,7 +672,7 @@
     }
 
     function themDonThue() {
-        const gioThue = parseInt(document.getElementById('gio_thue').value) || 1;
+        const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;
@@ -689,11 +683,16 @@
             return false;
         }
 
+        if (authUserId == null) {
+            alert("Bạn cần đăng nhập để thuê người chơi")
+            return false;
+        }
+
         if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
-
+        
         return true;
 
     }
