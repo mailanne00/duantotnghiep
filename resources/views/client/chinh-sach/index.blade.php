@@ -126,6 +126,14 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="flat-toggle2">
+                            <h6 class="toggle-title">5. Hướng Dẫn Player</h6>
+                            <div class="toggle-content">
+                                <p>4.1. Bạn có thể yêu cầu xóa dữ liệu cá nhân qua fanpage
+                                    https://www.facebook.com/Playerduo hoặc email cskh.playerduo@gmail.com.
+                                </p>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

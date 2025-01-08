@@ -77,11 +77,12 @@
                             <div class="column td6" style="width:200px; text-align: unset">
                                 @if ($user->trang_thai == '0')
                                 <div style="display:flex">
-                                    <form action="{{route('client.huyDonThue', $user->id)}}" method="post">
+                                    <form action="{{route('client.tuChoiDonThue', $user->id)}}" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn từ chối đơn thuê này không?')">
                                         @csrf
+                                        <input type="hidden" value="{{$user->nguoiThue->id}}" name="tai_khoan_id">
                                         <button type="submit" class="btn btn-danger" style="font-size: 15px;">Từ chối</button>
                                     </form>
-                                    <form action="{{route('client.nhanDonThue', $user->id)}}" method="post">
+                                    <form action="{{route('client.nhanDonThue', $user->id)}}" method="post"onsubmit="return confirm('Bạn có chắc chắn muốn nhận đơn thuê này không?')">
                                         @csrf
                                         <button type="submit" class="btn btn-success" style="font-size: 15px; margin-left:15%">Chấp nhận</button>
                                     </form>

@@ -141,10 +141,6 @@
     </div>
 </div>
 
-
-
-
-
 <style>
     /* Phần danh sách đánh giá */
     .danh-gia-list {
@@ -263,9 +259,6 @@
         font-style: italic;
     }
 </style>
-
-
-<script></script>
 @endsection
 
 @section('modal_user')
@@ -342,14 +335,12 @@
 </div>
 @endsection
 
-
-<script>
-    const authUserId = @json(auth()->id());
-</script>
-
 @vite('resources/js/createChat.js')
 
 @section('script_footer')
+<script>
+    const authUserId = @json(auth()->id());
+</script>
 <script>
     let giaMoiGio = 0;
     $(document).ready(function() {
@@ -385,7 +376,7 @@
                     giaMoiGio = data.gia_tien;
                 },
                 error: function() {
-                    alert('Không thể tải thông tin người dùng.');
+                    alert('Bạn chưa đăng nhập.');
                 }
             });
         });
@@ -415,11 +406,16 @@
             return false;
         }
 
+        if (authUserId == null) {
+            alert("Bạn cần đăng nhập để thuê người chơi")
+            return false;
+        }
+
         if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
-
+        
         return true;
 
     }

@@ -17,7 +17,12 @@ class LichSuThueController extends Controller
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
             ->orderByDesc("created_at")
-            ->get();
+            ->get()
+            ->map(function ($user) {
+                // Tính toán thời gian kết thúc
+                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
+                return $user;
+            });
 
         $timeNow = Carbon::now();
         $checkExpired = LichSuThue::where('expired', '<', $timeNow)
@@ -56,7 +61,7 @@ class LichSuThueController extends Controller
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
 
             $lichSuThue = LichSuThue::create([
@@ -72,7 +77,7 @@ class LichSuThueController extends Controller
             $taiKhoan->update(['so_du' => $tongGia]);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Thuê thành công.');
     }
 
     public function lichSuDuocThue()
@@ -103,6 +108,19 @@ class LichSuThueController extends Controller
         $taiKhoan->save();
 
         return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+    }
+
+    public function tuChoiDonThue(Request $request, $id)
+    {
+        $lichSuThue = LichSuThue::find($id);
+        $lichSuThue->markAsCancelled();
+
+        $taiKhoan = TaiKhoan::where('id', $request->tai_khoan_id)->first();
+
+        $taiKhoan->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
+        $taiKhoan->save();
+
+        return redirect()->back()->with('success', 'Từ chối thuê thành công.');
     }
 
     public function nhanDonThue(Request $request, $id)
