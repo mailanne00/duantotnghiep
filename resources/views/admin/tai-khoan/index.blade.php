@@ -4,6 +4,30 @@
 @endsection
 @section('title', 'Quản lí tài khoản')
 @section('content')
+<div class="row mb-3">
+    <div class="col-md-12">
+        <form action="{{ route('admin.tai-khoans.index') }}" method="GET" class="form-inline">
+            <div class="form-group mx-2">
+                <label for="gioi_tinh" class="mr-2">Giới tính:</label>
+                <select name="gioi_tinh" id="gioi_tinh" class="form-control">
+                    <option value="">Tất cả</option>
+                    <option value="nam" {{ request('gioi_tinh') == 'nam' ? 'selected' : '' }}>Nam</option>
+                    <option value="nu" {{ request('gioi_tinh') == 'nu' ? 'selected' : '' }}>Nữ</option>
+                </select>
+            </div>
+            <div class="form-group mx-2">
+                <label for="gia_tien_min" class="mr-2">Giá tiền từ:</label>
+                <input type="number" name="gia_tien_min" id="gia_tien_min" class="form-control" value="{{ request('gia_tien_min') }}" placeholder="Tối thiểu">
+            </div>
+            <div class="form-group mx-2">
+                <label for="gia_tien_max" class="mr-2">Đến:</label>
+                <input type="number" name="gia_tien_max" id="gia_tien_max" class="form-control" value="{{ request('gia_tien_max') }}" placeholder="Tối đa">
+            </div>
+            <button type="submit" class="btn btn-primary mx-2">Lọc</button>
+            <a href="{{ route('admin.tai-khoans.index') }}" class="btn btn-secondary">Xóa lọc</a>
+        </form>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-12">
