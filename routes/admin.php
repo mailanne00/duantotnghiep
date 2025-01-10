@@ -31,4 +31,6 @@ use Illuminate\Support\Facades\Route;
     Route::resource('binh-luans', \App\Http\Controllers\Admin\BinhLuanController::class);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
 
+    Route::resource('lien-he', \App\Http\Controllers\Admin\LienHeController::class);
+
 

@@ -28,8 +28,8 @@ class DanhMucController extends Controller
         $validated = $request->validated();
         $data = $request->except('anh');
 
-        if($request->hasFile('anh')){
-            $data['anh'] = Storage::put(self::PATH_UPLOAD,$request->file('anh'));
+        if ($request->hasFile('anh')) {
+            $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
 
         DanhMuc::create($data);
@@ -37,29 +37,32 @@ class DanhMucController extends Controller
         return redirect()->route('admin.danh-mucs.index')->with(['success' => 1]);
     }
 
-    public function show(DanhMuc $id){}
+    public function show(DanhMuc $id) {}
 
-    public function edit($id){
+    public function edit($id)
+    {
         $danhMuc = DanhMuc::query()->findOrFail($id);
         return view('admin.danh-muc.edit', compact('danhMuc'));
     }
 
-    public function update(DanhMucUpdateRequest $request, $id){
+    public function update(DanhMucUpdateRequest $request, $id)
+    {
         $validated = $request->validated();
 
         $danhMuc = DanhMuc::query()->findOrFail($id);
         $data = $request->except('anh');
 
-        if($request->hasFile('anh')){
+        if ($request->hasFile('anh')) {
             Storage::disk('public')->delete($request->anh);
-            $data['anh'] = Storage::put(self::PATH_UPLOAD,$request->file('anh'));
+            $data['anh'] = Storage::put(self::PATH_UPLOAD, $request->file('anh'));
         }
         $danhMuc->update($data);
         return redirect()->route('admin.danh-mucs.index')->with(['success' => 1]);
     }
-     public function destroy($id){
+    public function destroy($id)
+    {
         $danhMuc = DanhMuc::query()->findOrFail($id);
         $danhMuc->delete();
         return redirect()->route('admin.danh-mucs.index')->with(['success' => 1]);
-     }
+    }
 }

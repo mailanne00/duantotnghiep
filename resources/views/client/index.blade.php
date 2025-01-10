@@ -142,9 +142,9 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <section class="flat-title-page style3">
-    <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png')  }}" alt="">
-    <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png')  }}" alt="">
-    <img class="bgr-gradient gradient3" src="{{ asset('assets/images/backgroup-secsion/bg-gradient3.png')  }}" alt="">
+    <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png') }}" alt="">
+    <img class="bgr-gradient gradient2" src="{{ asset('assets/images/backgroup-secsion/bg-gradient2.png') }}" alt="">
+    <img class="bgr-gradient gradient3" src="{{ asset('assets/images/backgroup-secsion/bg-gradient3.png') }}" alt="">
     <div class="overlay"></div>
     <div class="swiper-container mainslider home auctions">
         <div class="swiper-wrapper">
@@ -172,7 +172,8 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
+                                <img src="{{ asset('assets/images/backgroup-secsion/img_sliderhome7.png') }}"
+                                    alt="Image">
                             </div>
                         </div>
 
@@ -203,7 +204,8 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
+                                <img src="{{ asset('assets/images/backgroup-secsion/img_sliderhome7.png') }}"
+                                    alt="Image">
                             </div>
                         </div>
 
@@ -234,7 +236,8 @@
                             </div>
                             <div class="wrap-image">
                                 <div class="overlay-style2"></div>
-                                <img src="{{asset('assets/images/backgroup-secsion/img_sliderhome7.png')}}" alt="Image">
+                                <img src="{{ asset('assets/images/backgroup-secsion/img_sliderhome7.png') }}"
+                                    alt="Image">
                             </div>
                         </div>
 
@@ -246,8 +249,8 @@
 </section>
 
 <!-- Người chơi đã thuê -->
-@if(auth()->check())
-    @if(!empty($userDaThues))
+@if (auth()->check())
+    @if (!empty($userDaThues))
         <section class="tf-section live-auctions home7">
             <div class="themesflat-container">
                 <div class="row">
@@ -270,11 +273,11 @@
                                                     <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}"><img
                                                             src="{{ \Illuminate\Support\Facades\Storage::url($userDaThue->nguoiDuocThue->anh_dai_dien) }}"
                                                             alt="Image"
-                                                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;"></a>
+                                                            style="min-height:220px; max-height: 220px; object-fit: cover; object-position: center;"></a>
                                                     <div class="button-place-bid">
                                                         <a href="#" data-toggle="modal" data-target="#popup_bid"
-                                                           data-id="{{ $userDaThue->nguoiDuocThue->id }}"
-                                                           class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
+                                                            data-id="{{ $userDaThue->nguoiDuocThue->id }}"
+                                                            class="sc-button style-place-bid style bag fl-button pri-3"><span>Thuê</span></a>
                                                     </div>
                                                 </div>
                                                 <div class="card-title">
@@ -285,15 +288,16 @@
                                                 <div class="meta-info">
                                                     <div class="author">
                                                         <div class="info style2">
-                                                        <span
-                                                            class="pricing">{{number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.')}}
-                                                            VNĐ</span>
+                                                            <span
+                                                                class="pricing">{{ number_format($userDaThue->nguoiDuocThue->gia_tien, 0, ',', '.') }}
+                                                                VNĐ</span>
                                                         </div>
-                                                    </div>
 
-                                                    {{-- <div class="tags">{{$user->countDanhGia}}<i--}} {{--
-                                                        class="fas fa-star f-10 m-l-10 text-c-yellow"></i>({{$user->countRent}})--}}
-                                                    {{-- </div>--}}
+                                                    </div>
+                                                    <div class="tags">{{ $userDaThue->nguoiDuocThue->countDanhGia }}
+                                                        <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
+                                                        ({{ $userDaThue->nguoiDuocThue->countRent }})
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div><!-- item-->
@@ -407,7 +411,7 @@
             <div class="col-md-12">
                 <div class="heading-live-auctions">
                     <h2 class="tf-title pb-39">Danh mục</h2>
-                    <a href="{{route('client.danhmuc')}}" class="exp style2">XEM TẤT CẢ</a>
+                    <a href="{{ route('client.danhmuc') }}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>
             <div class="col-md-12">
@@ -418,11 +422,14 @@
                                 <div class="slider-item" style="width: 160px">
                                     <div class="sc-categoty">
                                         <div class="card-media">
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
-                                                 alt="Image" style="min-height:160px">
+                                            <a href="{{ route('client.danhmuc.show', $danhMuc->id) }}"><img
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($danhMuc->anh) }}"
+                                                    alt="Image" style="min-height:160px"></a>
                                         </div>
                                         <div class="card-title">
-                                            <h4 style="font-size: 14px">{{ $danhMuc->ten }}</h4>
+                                            <p style="font-size: 14px; color: #FFFFFF; font-weight: 600">
+                                                {{ $danhMuc->ten }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -445,7 +452,6 @@
                 <div class="heading-live-auctions">
                     <h2 class="tf-title pb-23">
                         Top Đại Gia</h2>
-                    <a href="explore-3.html" class="exp style2 see-all">XEM TẤT CẢ</a>
                 </div>
                 <div class="flat-tabs seller-tab style2">
                     <ul class="menu-tab">
@@ -465,33 +471,35 @@
                                 @php
                                     $index = 1;
                                 @endphp
-                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
+                                @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
                                     <div class="box-item">
-                                        @foreach($chunk as $taiKhoanDaiGia)
-                                           @if($taiKhoanDaiGia->daiGia['24h'] !== 0)
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['24h'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
-                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',')}} VND</span>
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['24h'], 0, ',', '.') }}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
-                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="number">#{{ $index++ }}</div>
                                                         <div class="btn-follow">
                                                             <a href="#">Follow</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                           @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -502,34 +510,35 @@
                                 @php
                                     $index = 1;
                                 @endphp
-                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['week'] !== 0)
-
+                                @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
+                                    <div class="box-item">
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['week'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
-                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['week'], 0, ',')}} VND</span>
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['week'], 0, ',', '.') }}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
-                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="number">#{{ $index++ }}</div>
                                                         <div class="btn-follow">
                                                             <a href="#">Follow</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -540,33 +549,35 @@
                                 @php
                                     $index = 1;
                                 @endphp
-                                @foreach($taiKhoanDaiGias->chunk(3) as $chunk)
-                                        <div class="box-item">
-                                            @foreach($chunk as $taiKhoanDaiGia)
-                                                @if($taiKhoanDaiGia->daiGia['month'] !== 0)
+                                @foreach ($taiKhoanDaiGias->chunk(3) as $chunk)
+                                    <div class="box-item">
+                                        @foreach ($chunk as $taiKhoanDaiGia)
+                                            @if ($taiKhoanDaiGia->daiGia['month'] !== 0)
                                                 <div class="sc-author-box style-3">
                                                     <div class="author-style2 flex">
                                                         <div class="author-avatar">
                                                             <a href="#">
-                                                                <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien)}}" alt="Image"
-                                                                     class="avatar">
+                                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoanDaiGia->anh_dai_dien) }}"
+                                                                    alt="Image" class="avatar">
                                                             </a>
                                                             <div class="badge"><i class="ripple"></i></div>
                                                         </div>
                                                         <div class="author-infor">
-                                                            <h5><a href="#">{{$taiKhoanDaiGia->ten}}</a></h5>
-                                                            <div class="tag">{{$taiKhoanDaiGia->email}}</div>
-                                                            <span class="price">{{number_format($taiKhoanDaiGia->daiGia['month'], 0, ',')}} VND</span>
+                                                            <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                            <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
+                                                            <span
+                                                                class="price">{{ number_format($taiKhoanDaiGia->daiGia['month'], 0, ',', '.') }}
+                                                                VND</span>
                                                         </div>
                                                     </div>
                                                     <div class="action">
-                                                        <div class="number">#{{$index++}}</div>
+                                                        <div class="number">#{{ $index++ }}</div>
                                                         <div class="btn-follow">
                                                             <a href="#">Follow</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                    @endif
+                                            @endif
                                         @endforeach
                                     </div>
                                 @endforeach
@@ -587,30 +598,31 @@
                 <div class="heading-live-auctions mg-bt-24">
                     <h2 class="tf-title">
                         Top Pick</h2>
-                    <a href="{{route('client.topDanhGia')}}" class="exp style2">XEM TẤT CẢ</a>
+                    <a href="{{ route('client.topDanhGia') }}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="top-pick-box">
-                    @foreach($taiKhoans as $taiKhoan)
+                    @foreach ($taiKhoans as $taiKhoan)
                         <div class="sc-card-product menu_card style-h7">
                             <div class="card-media">
-                                <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
-                                        src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
-                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
+                                <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
+                                        src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                             </div>
                             <div class="card-title">
-                                <h5><a href="">{{$taiKhoan->ten}}</a></h5>
+                                <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
+                                        <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
+                                            VNĐ</span>
                                     </div>
                                 </div>
-                                <div class="tags">{{$taiKhoan->countDanhGia}}
+                                <div class="tags">{{ $taiKhoan->countDanhGia }}
                                     <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-                                    ({{$taiKhoan->countRent}})
+                                    ({{ $taiKhoan->countRent }})
                                 </div>
                             </div>
                         </div>
@@ -628,30 +640,31 @@
                 <div class="heading-live-auctions mg-bt-24">
                     <h2 class="tf-title">
                         Hot Player</h2>
-                    <a href="{{route('client.topHot')}}" class="exp style2">XEM TẤT CẢ</a>
+                    <a href="{{ route('client.topHot') }}" class="exp style2">XEM TẤT CẢ</a>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="top-pick-box">
-                    @foreach($taiKhoans2 as $taiKhoan)
+                    @foreach ($taiKhoans2 as $taiKhoan)
                         <div class="sc-card-product menu_card style-h7">
                             <div class="card-media">
-                                <a href="{{route('client.taikhoan.show', $taiKhoan->id)}}"><img
-                                        src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}"
-                                        alt="Image" style="min-height: 220px; object-fit:cover"></a>
+                                <a href="{{ route('client.taikhoan.show', $taiKhoan->id) }}"><img
+                                        src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien) }}"
+                                        alt="Image" style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                             </div>
                             <div class="card-title">
-                                <h5><a href="">{{$taiKhoan->ten}}</a></h5>
+                                <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
                             </div>
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="info style2">
-                                        <span class="pricing">{{number_format($taiKhoan->gia_tien, 0, ',', '.')}} VNĐ</span>
+                                        <span class="pricing">{{ number_format($taiKhoan->gia_tien, 0, ',', '.') }}
+                                            VNĐ</span>
                                     </div>
                                 </div>
-                                <div class="tags">{{$taiKhoan->countDanhGia}}
+                                <div class="tags">{{ $taiKhoan->countDanhGia }}
                                     <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-                                    ({{$taiKhoan->countRent}})
+                                    ({{ $taiKhoan->countRent }})
                                 </div>
                             </div>
                         </div>
@@ -768,210 +781,6 @@
     </div>
 </section>
 
-<!-- Popular Collection -->
-<section class="tf-section live-auctions style4 home4 live-auctions-style7">
-    <div class="themesflat-container">
-        <div class="row">
-            <div class="col-box-12">
-                <div class="heading-live-auctions">
-                    <h2 class="tf-title pb-40 text-left">
-                        Popular Collection</h2>
-                    <a href="explore-3.html" class="exp style2 mg-t-23">EXPLORE MORE</a>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-17.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-18.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-19.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-20.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-7.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-21.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-22.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-23.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-24.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-10.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-25.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-18.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-19.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-20.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-3.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-17.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-18.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-19.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-20.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-7.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-21.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-22.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-23.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-24.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-10.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fl-collection fl-item3 col-box-4">
-                <div class="sc-card-collection style-2 sc-card-style7">
-                    <div class="card-media-h7">
-                        <img src="assets/images/box-item/collection-item-25.jpg" alt="">
-                    </div>
-                    <div class="card-media-h7 style2">
-                        <img src="assets/images/box-item/collection-item-18.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-19.jpg" alt="">
-                        <img src="assets/images/box-item/collection-item-20.jpg" alt="">
-                    </div>
-                    <div class="card-bottom">
-                        <div class="author">
-                            <div class="content">
-                                <h5><a href="author01.html">Colorful Abstract</a></h5>
-                                <div class="infor">
-                                    <span>Created by</span>
-                                    <span class="name"><a href="author02.html">Mason Woodward</a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="wishlist-button public heart mg-t-6"><span class="number-like">
-                                100</span></button>
-                    </div>
-                    <div class="sc-author-box style-2">
-                        <div class="author-avatar">
-                            <img src="assets/images/avatar/avt-3.jpg" alt="" class="avatar">
-                            <div class="badge"><i class="ripple"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 wrap-inner load-more text-center mg-t9">
-                <a href="#" id="loadmore" class="sc-button loadmore fl-button pri-3"><span>Load
-                        More</span></a>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection
 
 @section('modal_user')
@@ -989,8 +798,7 @@
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
-                    <p>Số giờ thuê
-                    </p>
+                    <p>Số giờ thuê</p>
                     <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
                         class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
                         @for($i = 1; $i <= 24; $i++)
@@ -999,7 +807,6 @@
                             </option>
                         @endfor
                     </select>
-
                     <p>Nội Dung</p>
                     <textarea class="form-control quantity styled-textarea"
                         style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
@@ -1009,18 +816,15 @@
                         <p> Tổng chi phí:</p>
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
                         <input type="hidden" name="gia_thue" id="gia_thue">
+
+                        <input type="hidden" name="tong_gia" id="tongGia">
                     </div>
                     <div class="d-flex justify-content-between">
                         <p> Số dư:</p>
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
-                </div>
             </form>
         </div>
     </div>
@@ -1028,6 +832,10 @@
 @endsection
 
 @section('script_footer')
+<script>
+        const authUserId = @json(auth()->id());
+</script>
+
 <script>
     let giaMoiGio = 0;
     $(document).ready(function () {
@@ -1038,7 +846,7 @@
 
             // Gửi AJAX để lấy dữ liệu người dùng
             $.ajax({
-                url: '/modal-user/' + userId,  // Đường dẫn tới API lấy thông tin người dùng
+                url: '/modal-user/' + userId, // Đường dẫn tới API lấy thông tin người dùng
                 method: 'GET',
                 success: function (data) {
                     // Cập nhật thông tin trong modal với dữ liệu trả về
@@ -1050,17 +858,21 @@
                     $('#user_dia_chi').text(data.dia_chi);
                     $('#user_email').text(data.email);
                     $('#user_sdt').text(data.sdt);
-                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
-                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data
+                        .gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data
+                        .so_du) + ' VNĐ');
                     document.getElementById('soDuAuth').value = data.so_du
-                    $('#user_image').attr('src', data.anh_dai_dien);  // Cập nhật ảnh đại diện
+                    $('#user_image').attr('src', data
+                        .anh_dai_dien); // Cập nhật ảnh đại diện
                     document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
 
+                    document.getElementById('tongGia').value = data.gia_tien
                     giaMoiGio = data.gia_tien;
                 },
                 error: function () {
-                    alert('Không thể tải thông tin người dùng.');
+                    alert('Bạn chưa đăng nhập.');
                 }
             });
         });
@@ -1075,29 +887,34 @@
 
         // Cập nhật hiển thị tổng chi phí
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
+        document.getElementById('tongGia').value = tongChiPhi;
     }
 
-    function themDonThue(){
+    function themDonThue() {
         const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
         const tongChiPhi = gioThue * giaMoiGio;
 
         const user_id = document.getElementById('userId').value;
         const so_du_auth = document.getElementById('soDuAuth').value;
 
-        if (user_id == null){
+        if (user_id == null) {
             alert("Người chơi không tồn tại")
             return false;
         }
 
-        if (so_du_auth < tongChiPhi){
-            alert("Số dư của bạn không đủ")
+        if (authUserId == null) {
+            alert("Bạn cần đăng nhập để thuê người chơi")
             return false;
         }
 
+        if (so_du_auth < tongChiPhi) {
+            alert("Số dư của bạn không đủ")
+            return false;
+        }
+        
         return true;
 
     }
-
 </script>
 <script>
         function previewVideo(event) {

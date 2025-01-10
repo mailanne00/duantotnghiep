@@ -57,8 +57,7 @@
                                     <fieldset>
                                         <h4 class="title-infor-account">Tên</h4>
                                         <input type="text" name="ten" placeholder="Tên đăng nhập"
-                                            class="form-control text-white bg-dark" value="{{ old('ten', $user->ten) }}"
-                                            >
+                                            class="form-control text-white bg-dark" value="{{ old('ten', $user->ten) }}">
 
                                         @error('ten')
                                             <div class="text-danger">{{ $message }}</div>
@@ -68,30 +67,30 @@
                                         <h4 class="title-infor-account">Số điện thoại</h4>
                                         <input type="text" placeholder="Số điện thoại"
                                             class="form-control text-white bg-dark" name="sdt"
-                                            value="{{ old('sdt', $user->sdt) }}" >
+                                            value="{{ old('sdt', $user->sdt) }}">
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Email</h4>
                                         <input type="email" placeholder="Nhập email"
                                             class="form-control text-white bg-dark" name="email"
-                                            value="{{ old('email', $user->email) }}" >
+                                            value="{{ old('email', $user->email) }}">
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Ngày sinh</h4>
                                         <input type="date" class="form-control text-white bg-dark"
                                             placeholder="Ngày tháng năm sinh" name="ngay_sinh"
-                                            value="{{ old('ngay_sinh', $user->ngay_sinh) }}" >
+                                            value="{{ old('ngay_sinh', $user->ngay_sinh) }}">
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Địa chỉ</h4>
                                         <input type="text" placeholder="Địa chỉ" name="dia_chi"
                                             value="{{ old('dia_chi', $user->dia_chi) }}"
-                                            class="form-control text-white bg-dark" >
+                                            class="form-control text-white bg-dark">
                                     </fieldset>
                                     <fieldset class="mb-3">
                                         <h4 class="title-infor-account text-white mb-2">Giới tính</h4>
                                         <select class="form-select text-white bg-dark border-0 rounded-2 p-2"
-                                            name="gioi_tinh" >
+                                            name="gioi_tinh">
                                             <option value="" class="text-white bg-dark" disabled selected>Chọn giới
                                                 tính</option>
                                             <option value="Nam" {{ $user->gioi_tinh == 'Nam' ? 'selected' : '' }}
@@ -104,9 +103,8 @@
                                     </fieldset>
                                     <fieldset>
                                         <h4 class="title-infor-account">Giá tiền</h4>
-                                        <input type="text" placeholder="Giá"
-                                            class="form-control text-white bg-dark" name="gia_tien"
-                                            value="{{ old('gia_tien', $user->gia_tien) }}">
+                                        <input type="text" placeholder="Giá" class="form-control text-white bg-dark"
+                                            name="gia_tien" value="{{ old('gia_tien', $user->gia_tien) }}">
 
                                         @error('ten')
                                             <div class="text-danger">{{ $message }}</div>
@@ -125,7 +123,7 @@
 
                                     <fieldset>
                                         <h4 class="title-infor-account">Danh mục game</h4>
-                                        <input type="hidden" name="selected_categories" id="selectedCategoriesInput">
+                                        <input type="hidden" name="danh_muc" id="selectedCategoriesInput">
 
                                         <div id="selectedCategoriesContainer"
                                             class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"
@@ -197,100 +195,87 @@
         document.addEventListener('DOMContentLoaded', function() {
             const selectedCategoriesContainer = document.getElementById('selectedCategoriesContainer');
             const selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
-            const categoryButtons = document.querySelectorAll('.category-btn');
             const categoryList = document.getElementById('categoryList');
+            const categoryButtons = document.querySelectorAll('.category-btn');
 
-            // Lấy danh mục đã chọn từ PHP (truyền từ server)
-            let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
+            let selectedCategories = @json($selectedCategories).map(
+                String);
 
-            // Cập nhật giá trị của input ẩn
             function updateSelectedCategories() {
-                selectedCategoriesInput.value = selectedCategories.join(
-                    ','); // Chuyển mảng ID thành chuỗi cách nhau bởi dấu phẩy
+                selectedCategoriesInput.value = selectedCategories.join(',');
             }
 
-            // Hàm hiển thị lại danh mục trong categoryList nếu không có trong selectedCategories
-            function updateCategoryList() {
-                // Lọc các game đã chọn và ẩn chúng trong categoryList
-                const categoryButtons = document.querySelectorAll('.category-btn');
-                categoryButtons.forEach(button => {
-                    const categoryId = button.getAttribute('data-id');
-                    // Nếu danh mục chưa được chọn thì hiển thị lại nó trong categoryList
-                    if (!selectedCategories.includes(categoryId)) {
-                        button.style.display = 'block';
-                    }
+            function restoreCategoryToList(categoryId, categoryName) {
+                if (document.querySelector(`.category-btn[data-id="${categoryId}"]`)) {
+                    return;
+                }
+
+                const categoryButton = document.createElement('div');
+                categoryButton.classList.add('category-btn');
+                categoryButton.setAttribute('data-id', categoryId);
+                categoryButton.innerHTML = `
+            <img src="" alt="" width="30" height="30"> <!-- Thêm đường dẫn ảnh nếu cần -->
+            <span>${categoryName}</span>
+        `;
+
+                categoryButton.addEventListener('click', function() {
+                    addCategory(categoryId, categoryName);
+                    categoryButton.remove();
                 });
+
+                categoryList.appendChild(categoryButton);
             }
 
-            // Thêm danh mục vào danh sách đã chọn
+            function addCategory(categoryId, categoryName) {
+                if (!selectedCategories.includes(categoryId)) {
+                    selectedCategories.push(categoryId);
+
+                    const tag = document.createElement('div');
+                    tag.classList.add('selected-tag');
+                    tag.setAttribute('data-id', categoryId);
+                    tag.innerHTML = `
+                <span>${categoryName}</span>
+                <button type="button" class="remove-tag">&times;</button>
+            `;
+
+                    tag.querySelector('.remove-tag').addEventListener('click', function() {
+                        removeCategory(categoryId, tag, categoryName);
+                    });
+
+                    selectedCategoriesContainer.appendChild(tag);
+
+                    updateSelectedCategories();
+                }
+            }
+
+            function removeCategory(categoryId, tag, categoryName) {
+                selectedCategories = selectedCategories.filter(id => id !== categoryId);
+                tag.remove();
+
+                restoreCategoryToList(categoryId, categoryName);
+
+                updateSelectedCategories();
+            }
+
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const categoryId = this.dataset.id;
                     const categoryName = this.querySelector('span').textContent.trim();
 
-                    // Nếu danh mục chưa được chọn
-                    if (!selectedCategories.includes(categoryId)) {
-                        selectedCategories.push(categoryId);
-
-                        // Tạo thẻ để hiển thị danh mục đã chọn
-                        const tag = document.createElement('div');
-                        tag.classList.add('selected-tag');
-                        tag.setAttribute('data-id', categoryId);
-                        tag.innerHTML = `
-                    <span>${categoryName}</span>
-                    <button type="button" class="remove-tag">&times;</button>
-                `;
-
-                        // Thêm sự kiện để xóa danh mục
-                        tag.querySelector('.remove-tag').addEventListener('click', function() {
-                            // Xóa danh mục khỏi danh sách đã chọn
-                            selectedCategories = selectedCategories.filter(id => id !==
-                                categoryId);
-                            tag.remove();
-                            updateSelectedCategories(); // Cập nhật lại input ẩn
-
-                            // Hiển thị lại nút thêm danh mục vào danh sách categoryList
-                            const restoredButton = document.querySelector(
-                                `.category-btn[data-id="${categoryId}"]`);
-                            if (restoredButton) {
-                                restoredButton.style.display = 'block'; // Hiển thị lại nút
-                            }
-                        });
-
-                        // Thêm thẻ vào container
-                        selectedCategoriesContainer.appendChild(tag);
-
-                        // Ẩn nút thêm danh mục khỏi danh sách
-                        this.style.display = 'none';
-
-                        // Cập nhật lại giá trị trong input ẩn
-                        updateSelectedCategories();
-                    }
+                    addCategory(categoryId, categoryName);
+                    this.remove();
                 });
             });
 
-            // Xử lý sự kiện xóa danh mục đã chọn
             selectedCategoriesContainer.addEventListener('click', function(event) {
                 if (event.target && event.target.classList.contains('remove-tag')) {
                     const tag = event.target.closest('.selected-tag');
                     const categoryId = tag.getAttribute('data-id');
-                    // Loại bỏ danh mục khỏi danh sách đã chọn
-                    selectedCategories = selectedCategories.filter(id => id !== categoryId);
-                    tag.remove(); // Xóa thẻ khỏi giao diện
-                    updateSelectedCategories(); // Cập nhật lại giá trị input ẩn
-
-                    // Hiển thị lại nút thêm danh mục vào danh sách categoryList
-                    const restoredButton = document.querySelector(`.category-btn[data-id="${categoryId}"]`);
-                    if (restoredButton) {
-                        restoredButton.style.display = 'block'; // Hiển thị lại nút
-                    }
+                    const categoryName = tag.querySelector('span').textContent.trim();
+                    removeCategory(categoryId, tag, categoryName);
                 }
             });
 
-            // Cập nhật danh mục ban đầu cho categoryList
-            updateCategoryList();
-
-            // Cập nhật giá trị ban đầu cho input ẩn từ danh mục đã chọn (có thể lấy từ server)
             updateSelectedCategories();
         });
     </script>

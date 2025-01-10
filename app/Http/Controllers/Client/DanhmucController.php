@@ -17,7 +17,18 @@ class DanhmucController extends Controller
     public function show(int $id)
     {
         $danhMuc = DanhMuc::query()->findOrFail($id);
-        $taiKhoans = DanhMucTaiKhoan::query()->where('danh_muc_id', $id)->get();
+
+        if(auth()->check())
+        {
+            $taiKhoans = DanhMucTaiKhoan::query()
+                ->where('danh_muc_id', $id)
+                ->where('tai_khoan_id', '!=', auth()->user()->id)
+                ->get();
+        }else{
+            $taiKhoans = DanhMucTaiKhoan::query()
+                ->where('danh_muc_id', $id)
+                ->get();
+        }
 
         return view('client.danh-muc.show', compact('danhMuc', 'taiKhoans'));
     }

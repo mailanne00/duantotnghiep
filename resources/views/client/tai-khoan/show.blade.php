@@ -15,7 +15,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="{{route('client.index')}}">Home</a></li>
+                        <li><a href="{{ route('client.index') }}">Home</a></li>
                         <li>{{ $player->ten }}</li>
                     </ul>
                 </div>
@@ -28,15 +28,15 @@
 <div class="tf-section tf-item-details">
     <div class="themesflat-container">
         <div class="row">
-            <div class="col-xl-6 col-md-12">
+            <div class="col-xl-3 col-md-12">
                 <div class="content-left">
                     <div class="media">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($player->anh_dai_dien) }}" alt=""
-                            width="1000" height="400">
+                            width="400" height="400">
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12">
+            <div class="col-xl-5 col-md-12">
                 <div class="content-right">
                     <div class="sc-item-details">
                         <h2 class="style2">{{ $player->ten }}</h2>
@@ -69,256 +69,43 @@
                             @endforeach
                         </div>
 
-                        <p>Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
-                            Facilisi lobortisal morbi fringilla urna amet sed ipsum vitae ipsum malesuada.
-                            Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
-                            Facilisi lobortisal morbi fringilla urna amet sed ipsum</p>
+                        <p style="color: #FFFFFF">{{ $player->mo_ta }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-12">
+                <div class="content-right">
+                    <div class="sc-item-details">
                         <div class="meta-item-details style2">
                             <div class="item meta-price w-100">
-                                <span class="heading">Price</span>
+                                <span class="heading">Giá thuê</span>
                                 <div class="price">
                                     <div class="price-box">
-                                        <h5>{{number_format($player->gia_tien, 0 , ',')}} VNĐ</h5>
+                                        <h5>{{ number_format($player->gia_tien, 0, ',') }} VNĐ</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid"
+                        <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $player->id }}"
                             class="sc-button loadmore style  fl-button pri-3"> <i
                                 class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid"
+                        <a href="#" data-toggle="modal" data-target="#popup_chat" data-id="{{ $player->id }}"
                             class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
                             <span>Trò Chuyện</span>
                         </a>
-
-                        <div class="flat-tabs themesflat-tabs">
-                            <ul class="menu-tab tab-title">
-                                <li class="item-title active">
-                                    <span class="inner">Bid History</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner">Info</span>
-                                </li>
-                                <li class="item-title">
-                                    <span class="inner">Provenance</span>
-                                </li>
-                            </ul>
-                            <div class="content-tab">
-                                <div class="content-inner tab-content">
-                                    <ul class="bid-history-list">
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-3.jpg" alt=""
-                                                                    class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6><a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-11.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span>bid accepted</span>
-                                                            </div>
-                                                            <span class="time">at 06/10/2021, 3:20 AM</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-1.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-5.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-7.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-8.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="price">
-                                                    <h5> 4.89 ETH</h5>
-                                                    <span>= $12.246</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content-inner tab-content">
-                                    <ul class="bid-history-list">
-                                        <li>
-                                            <div class="content">
-                                                <div class="client">
-                                                    <div class="sc-author-box style-2">
-                                                        <div class="author-avatar">
-                                                            <a href="#">
-                                                                <img src="assets/images/avatar/avt-3.jpg"
-                                                                    alt="" class="avatar">
-                                                            </a>
-                                                            <div class="badge"></div>
-                                                        </div>
-                                                        <div class="author-infor">
-                                                            <div class="name">
-                                                                <h6> <a href="author02.html">Mason Woodward </a></h6>
-                                                                <span> place a bid</span>
-                                                            </div>
-                                                            <span class="time">8 hours ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content-inner tab-content">
-                                    <div class="provenance">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s,
-                                            when an unknown printer took a galley of type and scrambled it to make a
-                                            type specimen book.
-                                            It has survived not only five centuries, but also the leap into electronic
-                                            typesetting,
-                                            remaining essentially unchanged. It was popularised in the 1960s with the
-                                            release of Letraset sheets containing Lorem Ipsum passages,
-                                            and more recently with desktop publishing software like Aldus PageMaker
-                                            including versions of Lorem Ipsum.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="danh-gia-list">
-            <h1 class="container">Đánh giá</h1>
+        <div class="danh-gia-list mt-5">
+            <h2 class="container">Đánh giá</h2>
             @foreach ($danhGias as $danhGia)
-
             <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
                 <!-- Ảnh đại diện -->
-                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}"
+                    alt="Ảnh đại diện" class="rounded-circle me-3"
+                    style="width: 50px; height: 50px; object-fit: cover;">
 
                 <!-- Nội dung đánh giá -->
                 <div class="danh-gia-content w-100 d-flex justify-content-between">
@@ -347,127 +134,131 @@
             </div>
             @endforeach
 
-            @if($danhGias->isEmpty())
+            @if ($danhGias->isEmpty())
             <p class="text-center text-muted">Chưa có đánh giá nào...</p>
             @endif
         </div>
     </div>
 </div>
 
-
-
-
-
 <style>
-/* Phần danh sách đánh giá */
-.danh-gia-list {
-    background-color: #f9f9f9; /* Nền nhẹ */
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px auto; /* Canh giữa */
-    width: 100%; /* Chiều rộng tự nhiên */
-}
+    /* Phần danh sách đánh giá */
+    .danh-gia-list {
+        background-color: #f9f9f9;
+        /* Nền nhẹ */
+        padding: 20px;
+        border-radius: 10px;
+        margin: auto;
+        width: 100%;
+        /* Chiều rộng tự nhiên */
+    }
 
-/* Tiêu đề */
-.danh-gia-list h1 {
-    font-size: 50px; /* Giữ kích thước lớn */
-    font-weight: bold;
-    color: #007bff; /* Màu nổi bật */
-    text-align: center;
-    margin-bottom: 30px; /* Khoảng cách lớn hơn */
-}
+    /* Tiêu đề */
+    .danh-gia-list h2 {
+        font-size: 50px;
+        /* Giữ kích thước lớn */
+        font-weight: bold;
+        color: #007bff;
+        /* Màu nổi bật */
+        text-align: center;
+        margin-bottom: 30px;
+        /* Khoảng cách lớn hơn */
+    }
 
-/* Mỗi đánh giá */
-.danh-gia-item {
-    display: flex; /* Sắp xếp ngang */
-    align-items: center; /* Canh giữa theo trục dọc */
-    background-color: #ffffff; /* Nền trắng */
-    border: 1px solid #ddd;
-    border-left: 4px solid #007bff;
-    padding: 15px;
-    margin-bottom: 20px; /* Khoảng cách giữa các đánh giá */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
-    width: 100%; /* Chiều rộng tự động */
-}
+    /* Mỗi đánh giá */
+    .danh-gia-item {
+        display: flex;
+        /* Sắp xếp ngang */
+        align-items: center;
+        /* Canh giữa theo trục dọc */
+        background-color: #ffffff;
+        /* Nền trắng */
+        padding: 15px;
+        margin-bottom: 20px;
+        /* Khoảng cách giữa các đánh giá */
+        border-radius: 8px;
+        width: 100%;
+        /* Chiều rộng tự động */
+    }
 
-/* Ảnh đại diện */
-.danh-gia-item img {
-    flex-shrink: 0; /* Không co ảnh */
-    width: 50px;
-    height: 50px;
-    object-fit: cover; /* Ảnh luôn vừa khung */
-    border: 2px solid #007bff;
-    border-radius: 50%; /* Bo tròn */
-    margin-right: 15px; /* Khoảng cách bên phải */
-}
+    /* Ảnh đại diện */
+    .danh-gia-item img {
+        flex-shrink: 0;
+        /* Không co ảnh */
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        /* Ảnh luôn vừa khung */
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        /* Bo tròn */
+        margin-right: 15px;
+        /* Khoảng cách bên phải */
+    }
 
-/* Nội dung đánh giá */
-.danh-gia-content {
-    display: flex; /* Sắp xếp ngang */
-    justify-content: space-between; /* Phân bố đều giữa các phần */
-    align-items: flex-start; /* Canh trên cùng */
-    border-left: 2px dashed #ccc;
-    padding-left: 15px;
-    width: calc(100% - 70px); /* Trừ đi phần chiều rộng của ảnh + margin */
-}
+    /* Nội dung đánh giá */
+    .danh-gia-content {
+        display: flex;
+        /* Sắp xếp ngang */
+        justify-content: space-between;
+        /* Phân bố đều giữa các phần */
+        align-items: flex-start;
+        /* Canh trên cùng */
+        border-left: 2px dashed #ccc;
+        padding-left: 15px;
+        width: calc(100% - 70px);
+        /* Trừ đi phần chiều rộng của ảnh + margin */
+    }
 
-/* Phần trái (Nội dung chính) */
-.danh-gia-left {
-    flex-grow: 1; /* Chiếm tối đa không gian còn lại */
-}
+    /* Phần trái (Nội dung chính) */
+    .danh-gia-left {
+        flex-grow: 1;
+        /* Chiếm tối đa không gian còn lại */
+    }
 
-.danh-gia-left strong {
-    font-size: 20px; /* Kích thước lớn */
-    color: #343a40;
-}
+    .danh-gia-left strong {
+        font-size: 16px;
+        /* Kích thước lớn */
+        color: #343a40;
+    }
 
-.danh-gia-left small {
-    font-size: 0.9rem; /* Nhỏ hơn một chút */
-    color: #6c757d;
-    margin-top: 5px;
-}
+    .danh-gia-left small {
+        font-size: 0.9rem;
+        /* Nhỏ hơn một chút */
+        color: #6c757d;
+        margin-top: 5px;
+    }
 
-.danh-gia-left p {
-    margin-top: 10px;
-    line-height: 1.5;
-    color: #555; /* Màu chữ mềm hơn */
-}
+    .danh-gia-left p {
+        margin-top: 10px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #555;
+        /* Màu chữ mềm hơn */
+    }
 
-/* Phần sao đánh giá */
-.danh-gia-stars {
-    flex-shrink: 0; /* Không thu nhỏ phần này */
-    text-align: right; /* Canh phải */
-    white-space: nowrap; /* Không xuống dòng */
-}
+    /* Phần sao đánh giá */
+    .danh-gia-stars {
+        flex-shrink: 0;
+        /* Không thu nhỏ phần này */
+        text-align: right;
+        /* Canh phải */
+        white-space: nowrap;
+        /* Không xuống dòng */
+    }
 
-.danh-gia-stars i {
-    font-size: 1.2rem;
-    margin-right: 2px;
-}
+    .danh-gia-stars i {
+        font-size: 1.2rem;
+        margin-right: 2px;
+    }
 
-.danh-gia-stars p {
-    margin-top: 5px;
-    font-size: 1.5rem;
-    color: #6c757d;
-    font-style: italic;
-}
-
-
-
-
+    .danh-gia-stars p {
+        margin-top: 5px;
+        font-size: 1rem;
+        color: #6c757d;
+        font-style: italic;
+    }
 </style>
-
-
-<script>
-
-</script>
-
-
-
-
-
-
 @endsection
 
 @section('modal_user')
@@ -505,16 +296,14 @@
                         <p> Tổng chi phí:</p>
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
                         <input type="hidden" name="gia_thue" id="gia_thue">
+
+                        <input type="hidden" name="tong_gia" id="tongGia">
                     </div>
                     <div class="d-flex justify-content-between">
                         <p> Số dư:</p>
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
@@ -523,7 +312,35 @@
 </div>
 @endsection
 
+@section('modal_chat')
+<div class="modal fade popup" id="popup_chat" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <form id="chatForm" class="modal-body space-y-20 pd-40">
+                @csrf
+                <h3>Trò Chuyện</h3>
+                <p class="text-center">Người chơi: <span class="price color-popup"
+                        id="chat_user_name">{{ $player->ten }}</span></p>
+                <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                <textarea id="chatMessage" class="form-control styled-textarea"
+                    style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                <button type="button" id="sendMessageBtn" class="btn btn-primary mt-3"
+                    style="color: #FFFFFF">Gửi</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@vite('resources/js/createChat.js')
+
 @section('script_footer')
+<script>
+    const authUserId = @json(auth()->id());
+</script>
 <script>
     let giaMoiGio = 0;
     $(document).ready(function() {
@@ -546,17 +363,20 @@
                     $('#user_dia_chi').text(data.dia_chi);
                     $('#user_email').text(data.email);
                     $('#user_sdt').text(data.sdt);
-                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
-                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data
+                        .gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data
+                        .so_du) + ' VNĐ');
                     document.getElementById('soDuAuth').value = data.so_du
-                    $('#user_image').attr('src', data.anh_dai_dien); // Cập nhật ảnh đại diện
+                    $('#user_image').attr('src', data
+                        .anh_dai_dien); // Cập nhật ảnh đại diện
                     document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
-
+                    document.getElementById('tongGia').value = data.gia_tien
                     giaMoiGio = data.gia_tien;
                 },
                 error: function() {
-                    alert('Không thể tải thông tin người dùng.');
+                    alert('Bạn chưa đăng nhập.');
                 }
             });
         });
@@ -571,6 +391,7 @@
 
         // Cập nhật hiển thị tổng chi phí
         document.getElementById('user_gia_tien').textContent = tongChiPhi.toLocaleString('vi-VN') + ' VNĐ';
+        document.getElementById('tongGia').value = tongChiPhi;
     }
 
     function themDonThue() {
@@ -585,13 +406,36 @@
             return false;
         }
 
+        if (authUserId == null) {
+            alert("Bạn cần đăng nhập để thuê người chơi")
+            return false;
+        }
+
         if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
-
+        
         return true;
 
     }
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Gán sự kiện click vào nút Trò Chuyện
+        document.querySelectorAll('[data-target="#popup_chat"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-id');
+                const userName = this.querySelector('span').textContent;
+
+                // Cập nhật thông tin vào modal Trò Chuyện
+                document.getElementById('chat_user_name').textContent = userName;
+
+                // Nếu cần thêm dữ liệu userId vào modal (ví dụ để gửi tin nhắn)
+                console.log('User ID:', userId); // Bạn có thể thực hiện thêm logic tại đây
+            });
+        });
+    });
 </script>
 @endsection
