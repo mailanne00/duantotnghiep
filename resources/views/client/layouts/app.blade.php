@@ -18,13 +18,10 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-    <!-- Reponsive -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
-    <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
@@ -77,12 +74,121 @@
             text-decoration: none;
             color: #FFFFFF;
         }
+
+
+        /* Container */
+        .chat-header-container {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chat-header-container {
+            margin-top: 100px;
+            /* Cụ thể hóa khoảng cách theo nhu cầu */
+        }
+
+        .chat-header-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Text Styling */
+        .user-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #222;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .user-status {
+            font-size: 1rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        /* Button Group */
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .accept-btn {
+            background: linear-gradient(145deg, #34d058, #28a745);
+            color: white;
+        }
+
+        .accept-btn:hover {
+            background: linear-gradient(145deg, #28a745, #238636);
+        }
+
+        .reject-btn {
+            background: linear-gradient(145deg, #f66c6c, #dc3545);
+            color: white;
+        }
+
+        .reject-btn:hover {
+            background: linear-gradient(145deg, #dc3545, #c82333);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-header-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .avatar {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .user-name {
+                font-size: 1rem;
+            }
+
+            .user-status {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @vite('resources/js/app.js')
-
+    @vite('resources/js/createChat.js')
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
@@ -254,7 +360,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                       
+
                                                                     </div>
                                                                 </div>
                                                             </div>

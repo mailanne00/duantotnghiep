@@ -47,9 +47,10 @@ class LichSuThueController extends Controller
             // $checkLichSuThue->gia_thue += $validateData['gia_thue'];
             $checkLichSuThue->expired = $timePlus5Minutes;
             $checkLichSuThue->save();
-            event(new LichSuThueCreated($checkLichSuThue));
 
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            event(new LichSuThueCreated($checkLichSuThue));
+
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
             return redirect()->back();

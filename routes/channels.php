@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
+Broadcast::channel('presence-online-users', function ($user) {
+    return $user; // Xác thực người dùng
+});
+
 Broadcast::channel('user.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
@@ -25,8 +29,8 @@ Broadcast::channel('chat.{phong_chat_id}', function ($user, $phong_chat_id) {
     return $user->isInChat($phong_chat_id); // Kiểm tra nếu user thuộc phòng chat
 });
 
-Broadcast::channel('phong-chat.{phong_chat_id}', function ($user, $phong_chat_id) {
-    return $user->isInChat($phong_chat_id); // Kiểm tra nếu user thuộc phòng chat
+Broadcast::channel('tin-nhan-moi-channel', function ($user) {
+    return true; // Điều kiện truy cập kênh, ví dụ: kiểm tra người dùng
 });
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
