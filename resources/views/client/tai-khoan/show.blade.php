@@ -141,10 +141,6 @@
         </div>
     </div>
 
-
-
-
-
     <style>
         /* Phần danh sách đánh giá */
         .danh-gia-list {
@@ -263,9 +259,6 @@
             font-style: italic;
         }
     </style>
-
-
-    <script></script>
 @endsection
 
 @section('modal_user')
@@ -344,11 +337,10 @@
 @endsection
 
 
-<script>
-    const authUserId = @json(auth()->id());
-</script>
-
 @section('script_footer')
+    <script>
+        const authUserId = @json(auth()->id());
+    </script>
     <script>
         let giaMoiGio = 0;
         $(document).ready(function() {
@@ -384,7 +376,7 @@
                         giaMoiGio = data.gia_tien;
                     },
                     error: function() {
-                        alert('Không thể tải thông tin người dùng.');
+                        alert('Bạn chưa đăng nhập.');
                     }
                 });
             });
@@ -411,6 +403,11 @@
 
             if (user_id == null) {
                 alert("Người chơi không tồn tại")
+                return false;
+            }
+
+            if (authUserId == null) {
+                alert("Bạn cần đăng nhập để thuê người chơi")
                 return false;
             }
 

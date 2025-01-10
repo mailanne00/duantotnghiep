@@ -568,6 +568,7 @@
             </div>
         </div>
     </section>
+
 @endsection
 
 @section('modal_user')
@@ -585,8 +586,7 @@
                         <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                         </p>
 
-                        <p>Số giờ thuê
-                        </p>
+                        <p>Số giờ thuê</p>
                         <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
                             class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
                             @for ($i = 1; $i <= 24; $i++)
@@ -595,7 +595,6 @@
                                 </option>
                             @endfor
                         </select>
-
                         <p>Nội Dung</p>
                         <textarea class="form-control quantity styled-textarea"
                             style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
@@ -614,7 +613,6 @@
                             <input type="hidden" name="so_du_auth" id="soDuAuth">
                         </div>
                         <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
-                    </div>
                 </form>
             </div>
         </div>
@@ -622,6 +620,10 @@
 @endsection
 
 @section('script_footer')
+    <script>
+        const authUserId = @json(auth()->id());
+    </script>
+
     <script>
         let giaMoiGio = 0;
         $(document).ready(function() {
@@ -658,7 +660,7 @@
                         giaMoiGio = data.gia_tien;
                     },
                     error: function() {
-                        alert('Không thể tải thông tin người dùng.');
+                        alert('Bạn chưa đăng nhập.');
                     }
                 });
             });
@@ -677,7 +679,7 @@
         }
 
         function themDonThue() {
-            const gioThue = parseInt(document.getElementById('gio_thue').value) || 1;
+            const gioThue = parseInt(document.getElementById('gio_thue').value) || 0;
             const tongChiPhi = gioThue * giaMoiGio;
 
             const user_id = document.getElementById('userId').value;
@@ -685,6 +687,11 @@
 
             if (user_id == null) {
                 alert("Người chơi không tồn tại")
+                return false;
+            }
+
+            if (authUserId == null) {
+                alert("Bạn cần đăng nhập để thuê người chơi")
                 return false;
             }
 

@@ -26,6 +26,9 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
+    <!-- Sweetalert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
     @yield('css')
     <style>
         .flat-title-page.style3 .heading {
@@ -633,6 +636,10 @@
     <script src="{{ asset('assets/js/web3.min.js') }}"></script>
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
+
+
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('script_footer')
 </body>
