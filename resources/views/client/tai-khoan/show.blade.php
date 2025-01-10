@@ -15,7 +15,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="{{route('client.index')}}">Home</a></li>
+                        <li><a href="{{ route('client.index') }}">Home</a></li>
                         <li>{{ $player->ten }}</li>
                     </ul>
                 </div>
@@ -56,7 +56,8 @@
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}" alt="{{ $category->ten }}">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
+                                            alt="{{ $category->ten }}">
                                     </div>
                                     <div class="info">
                                         <h6>
@@ -68,7 +69,7 @@
                             @endforeach
                         </div>
 
-                        <p style="color: #FFFFFF">{{$player->mo_ta}}</p>
+                        <p style="color: #FFFFFF">{{ $player->mo_ta }}</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +81,7 @@
                                 <span class="heading">Giá thuê</span>
                                 <div class="price">
                                     <div class="price-box">
-                                        <h5>{{number_format($player->gia_tien, 0 , ',')}} VNĐ</h5>
+                                        <h5>{{ number_format($player->gia_tien, 0, ',') }} VNĐ</h5>
                                     </div>
                                 </div>
                             </div>
@@ -111,10 +112,11 @@
         <div class="danh-gia-list mt-5">
             <h2 class="container">Đánh giá</h2>
             @foreach ($danhGias as $danhGia)
-
             <div class="danh-gia-item d-flex align-items-start mb-4 p-3 rounded shadow-sm">
                 <!-- Ảnh đại diện -->
-                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}" alt="Ảnh đại diện" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <img src="{{ \Illuminate\Support\Facades\Storage::url($danhGia->nguoiThue->anh_dai_dien) }}"
+                    alt="Ảnh đại diện" class="rounded-circle me-3"
+                    style="width: 50px; height: 50px; object-fit: cover;">
 
                 <!-- Nội dung đánh giá -->
                 <div class="danh-gia-content w-100 d-flex justify-content-between">
@@ -143,16 +145,12 @@
             </div>
             @endforeach
 
-            @if($danhGias->isEmpty())
+            @if ($danhGias->isEmpty())
             <p class="text-center text-muted">Chưa có đánh giá nào...</p>
             @endif
         </div>
     </div>
 </div>
-
-
-
-
 
 <style>
     /* Phần danh sách đánh giá */
@@ -272,17 +270,6 @@
         font-style: italic;
     }
 </style>
-
-
-<script>
-
-</script>
-
-
-
-
-
-
 @endsection
 
 @section('modal_user')
@@ -320,7 +307,7 @@
                         <p> Tổng chi phí:</p>
                         <p class="text-right price color-popup" id="user_gia_tien"></p>
                         <input type="hidden" name="gia_thue" id="gia_thue">
-                        
+
                         <input type="hidden" name="tong_gia" id="tongGia">
                     </div>
                     <div class="d-flex justify-content-between">
@@ -328,10 +315,6 @@
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <!-- <div class="d-flex justify-content-between">
-                                <p> Số dữ của bạn:</p>
-                                <p class="text-right price color-popup"></p>
-                            </div> -->
                     <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
@@ -340,7 +323,35 @@
 </div>
 @endsection
 
+@section('modal_chat')
+<div class="modal fade popup" id="popup_chat" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <form id="chatForm" class="modal-body space-y-20 pd-40">
+                @csrf
+                <h3>Trò Chuyện</h3>
+                <p class="text-center">Người chơi: <span class="price color-popup"
+                        id="chat_user_name">{{ $player->ten }}</span></p>
+                <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                <textarea id="chatMessage" class="form-control styled-textarea"
+                    style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                <button type="button" id="sendMessageBtn" class="btn btn-primary mt-3"
+                    style="color: #FFFFFF">Gửi</button>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@vite('resources/js/createChat.js')
+
 @section('script_footer')
+<script>
+    const authUserId = @json(auth()->id());
+</script>
 <script>
     let giaMoiGio = 0;
     $(document).ready(function() {
@@ -363,18 +374,20 @@
                     $('#user_dia_chi').text(data.dia_chi);
                     $('#user_email').text(data.email);
                     $('#user_sdt').text(data.sdt);
-                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data.gia_tien) + ' VNĐ');
-                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data.so_du) + ' VNĐ');
+                    $('#user_gia_tien').text(new Intl.NumberFormat('de-DE').format(data
+                        .gia_tien) + ' VNĐ');
+                    $('#so_du_auth').text(new Intl.NumberFormat('de-DE').format(data
+                        .so_du) + ' VNĐ');
                     document.getElementById('soDuAuth').value = data.so_du
-                    $('#user_image').attr('src', data.anh_dai_dien); // Cập nhật ảnh đại diện
+                    $('#user_image').attr('src', data
+                        .anh_dai_dien); // Cập nhật ảnh đại diện
                     document.getElementById('userId').value = data.id
                     document.getElementById('gia_thue').value = data.gia_tien
                     document.getElementById('tongGia').value = data.gia_tien
-
                     giaMoiGio = data.gia_tien;
                 },
                 error: function() {
-                    alert('Không thể tải thông tin người dùng.');
+                    alert('Bạn chưa đăng nhập.');
                 }
             });
         });
@@ -404,13 +417,36 @@
             return false;
         }
 
+        if (authUserId == null) {
+            alert("Bạn cần đăng nhập để thuê người chơi")
+            return false;
+        }
+
         if (so_du_auth < tongChiPhi) {
             alert("Số dư của bạn không đủ")
             return false;
         }
-
+        
         return true;
 
     }
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Gán sự kiện click vào nút Trò Chuyện
+        document.querySelectorAll('[data-target="#popup_chat"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-id');
+                const userName = this.querySelector('span').textContent;
+
+                // Cập nhật thông tin vào modal Trò Chuyện
+                document.getElementById('chat_user_name').textContent = userName;
+
+                // Nếu cần thêm dữ liệu userId vào modal (ví dụ để gửi tin nhắn)
+                console.log('User ID:', userId); // Bạn có thể thực hiện thêm logic tại đây
+            });
+        });
+    });
 </script>
 @endsection

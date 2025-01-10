@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Client\LichSuThueController;
+use App\Http\Controllers\Client\TinNhanController;
+
+// Ensure that the TinNhanController class exists in the specified namespace
+// If it does not exist, create the class in the specified namespace
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +23,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/tin-nhan', [TinNhanController::class, 'index'])->name('client.tinNhan');
+Route::post('/send-message', [TinNhanController::class, 'sendMessage'])->name('client.tinNhan.send');
+Route::get('/tin-nhan/{phong_id}', [TinNhanController::class, 'chiTiettinNhan'])->name('client.phongChat');
+Route::post('/tao-chat', [TinNhanController::class, 'taoChatMoi'])->name('client.taoChat');
+
 
 Route::post('/themDonThueApi', [LichSuThueController::class, 'themDonThueApi'])->name('client.themDonThueApi');

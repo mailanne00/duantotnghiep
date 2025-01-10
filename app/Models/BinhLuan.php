@@ -9,6 +9,8 @@ class BinhLuan extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['noi_dung', 'tai_khoan_id', 'binh_luan_id', 'blog_id'];
+
     public function taiKhoan() {
         return $this->belongsTo(TaiKhoan::class);
     }
