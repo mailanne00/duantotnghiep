@@ -47,12 +47,40 @@
                                     <button class="btn btn-danger">Gỡ bài đăng</button>
                                     <button class="btn btn-info" data-toggle="modal" data-target="#postDetailModal{{$blog->id}}">
                                         Xem Chi Tiết
-                                        </button>
+                                    </button>
 
-                                        <button class="btn btn-info" data-id="{{ $blog->id }}" data-toggle="modal" data-target="#commentsModal{{$blog->id}}">Xem bình luận</button>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#commentsModal_{{ $blog->id }}">Xem bình luận</button>
 
                                 </td>
                             </tr>
+                            <!-- Modal Xem Bình Luận -->
+                            <div class="modal fade" id="commentsModal_{{ $blog->id }}" tabindex="-1" aria-labelledby="commentsModalLabel_{{ $blog->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="commentsModalLabel_{{ $blog->id }}">Bình luận bài viết: {{$blog->taiKhoan->ten}}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @if($blog->binhLuans->count())
+                                            <ul class="list-group">
+                                                @foreach($blog->binhLuans as $comment)
+                                                <li class="list-group-item">
+                                                    <strong>{{ $comment->taiKhoan->ten }}:</strong>
+                                                    {{ $comment->noi_dung }}
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                            @else
+                                            <p>Chưa có bình luận nào.</p>
+
+                                        </div> @endif
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                         <tfoot>
@@ -70,28 +98,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="commentsModal{{$blog->id}}" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="commentsModalLabel">Bình luận của bài viết</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @foreach($blog->binhLuans as $comment)
-                    <p><strong>{{ $comment->taiKhoan->ten }}:</strong> {{ $comment->noi_dung }}</p>
-                    @endforeach
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-        </div>
 
-    </div>
     <!-- Modal Xem Chi Tiết Bài Viết -->
     <div class="modal fade" id="postDetailModal{{$blog->id}}" tabindex="-1" aria-labelledby="postDetailModalLabel{{$blog->id}}" aria-hidden="true">
         <div class="modal-dialog">
@@ -121,35 +128,19 @@
             </div>
         </div>
     </div>
-    <script>
-        // Đảm bảo rằng bạn đang sử dụng jQuery và Bootstrap JavaScript
-        $(document).ready(function() {
-            // Khi nhấn vào nút "Xem bình luận"
-            $(".btn-info").click(function() {
-                // Lấy id bài viết từ data-id của nút
-                var blogId = $(this).data('id');
 
-                // Gọi AJAX để lấy bình luận
-                $.ajax({
-                    url: '/admin/blogs/' + blogId + '/comments',
-                    method: 'GET',
-                    success: function(data) {
-                        // Cập nhật nội dung modal với các bình luận
-                        $('#commentsModal' + blogId + ' .modal-body').html(data);
-                        // Mở modal
-                        $('#commentsModal' + blogId).modal('show');
-                    }
-                });
-            });
-        });
-    </script>
 </div>
 
 
 
 @endsection
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 @section('script-footer')
 <script src="{{asset('assets-admin/plugins/data-tables/js/datatables.min.js')}}"></script>
 <script src="{{asset('assets-admin/js/pages/data-basic-custom.js')}}"></script>
+
 @endsection
