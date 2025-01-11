@@ -484,20 +484,22 @@ Echo.channel("lich-su-thue-channel").listen(".lich-su-thue.updated", (data) => {
 
     if (lichSuThue) {
         const chatboxBody = document.querySelector(".chatbox-body");
-        const toggleIcon = document.getElementById("toggleIcon");
+        // const toggleIcon = document.getElementById("toggleIcon");
 
         // Mở khung chat nếu đang đóng
-        if (
-            chatboxBody.style.display === "none" ||
-            !chatboxBody.style.display
-        ) {
-            chatboxBody.style.display = "block";
-            toggleIcon.classList.remove("fa-chevron-up");
-            toggleIcon.classList.add("fa-chevron-down");
-        }
+        // if (
+        //     chatboxBody.style.display === "none" ||
+        //     !chatboxBody.style.display
+        // ) {
+        //     chatboxBody.style.display = "block";
+        //     toggleIcon.classList.remove("fa-chevron-up");
+        //     toggleIcon.classList.add("fa-chevron-down");
+        // }
 
         // Hiển thị thông tin đơn thuê mới trong chatHeader
         const chatHeader = document.getElementById("chatHeader");
+        let remainingTime = 300; // 300 giây = 5 phút
+
         chatHeader.innerHTML = `
     <div class="d-flex align-items-center chat-header-container">
         <img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">
@@ -508,6 +510,9 @@ Echo.channel("lich-su-thue-channel").listen(".lich-su-thue.updated", (data) => {
                 lichSuThue.gio_thue
             } giờ</p>
             <p class="user-status">Giá thuê: ${lichSuThue.gia_thue.toLocaleString()} VNĐ</p>
+            <p class="user-status">Thời gian còn lại: <span id="countdownTimer">${formatTime(
+                remainingTime
+            )}</span></p>
             <div class="button-group">
                 <button class="btn accept-btn" id="acceptBtn">Chấp nhận</button>
                 <button class="btn reject-btn" id="rejectBtn">Từ chối</button>
@@ -526,8 +531,81 @@ Echo.channel("lich-su-thue-channel").listen(".lich-su-thue.updated", (data) => {
             console.log("Đã từ chối đơn thuê.");
             // Thêm logic xử lý cho nút Từ chối
         });
+
+        // Cập nhật thời gian đếm ngược
+        const countdownInterval = setInterval(() => {
+            remainingTime--;
+            const countdownTimer = document.getElementById("countdownTimer");
+            if (countdownTimer) {
+                countdownTimer.textContent = formatTime(remainingTime);
+            }
+
+            if (remainingTime <= 0) {
+                clearInterval(countdownInterval);
+                chatboxBody.style.display = "none"; // Ẩn khung chat
+            }
+        }, 1000);
+
+        // Ẩn thông báo sau 5 phút
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            chatboxBody.style.display = "none"; // Ẩn khung chat
+        }, 300000); // 300000ms = 5 phút
+
+        function handleRoomClick(phongChatId, tenNguoiNhan) {
+            const roomElement = document.querySelector(
+                `.chat-user[data-room-id="${phongChatId}"]`
+            );
+
+            if (roomElement) {
+                roomElement.click();
+            } else {
+                const chatList = document.getElementById("chatList");
+                const newRoomElement = document.createElement("li");
+                newRoomElement.className =
+                    "chat-user d-flex align-items-center mb-3";
+                newRoomElement.setAttribute("data-room-id", phongChatId);
+                newRoomElement.innerHTML = `
+                    <img src="/assets/images/avatar/avt-6.jpg" alt="User Avatar" class="rounded-circle" width="40px" height="40px">
+                    <span class="ms-2">${tenNguoiNhan}</span>
+                    <span class="badge bg-danger ms-auto unread-count" data-room-id="${phongChatId}" style="display: none;">0</span>
+                `;
+
+                chatList.appendChild(newRoomElement);
+                newRoomElement.click();
+            }
+        }
+
+        Echo.channel(`tin-nhan-moi-channel`)
+            .listen(".tin-nhan-moi.updated", (e) => {
+                console.log("Tin nhắn mới:", e);
+
+                if (!e.tinNhan.phong_chat_id) {
+                    console.error("IdPhong không được xác định!");
+                    return;
+                }
+
+                if (
+                    authUserId === e.tinNhan.nguoi_nhan ||
+                    authUserId === e.tinNhan.nguoi_gui
+                ) {
+                    handleRoomClick(e.tinNhan.phong_chat_id, nguoiNhanTen);
+                    markMessagesAsRead(e.tinNhan.phong_chat_id);
+                    incrementNotificationBadge();
+                }
+            })
+            .error((error) => {
+                console.error("Lỗi khi lắng nghe kênh:", error);
+            });
     }
 });
+
+// Hàm định dạng thời gian
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+}
 
 document
     .getElementById("messageInput")

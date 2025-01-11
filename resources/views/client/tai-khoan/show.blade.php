@@ -268,7 +268,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
+                <form id="chatForm" action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()"
+                    method="post">
                     @csrf
                     <div class="modal-body space-y-20 pd-40">
                         <h3>Thuê người chơi</h3>
@@ -288,9 +289,11 @@
                         </select>
 
                         <p>Nội Dung</p>
-                        <textarea class="form-control quantity styled-textarea"
-                            style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
-                            placeholder="Nhập nội dung..." name="noi_dung">{{ old('noi_dung') }}</textarea>
+                        <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                        <input type="hidden" id="tenNguoiNhan" name="ten_nguoi_nhan" value="{{ $player->ten }}">
+                        <textarea id="chatMessage" name="tin_nhan" class="form-control styled-textarea"
+                            style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+
                         <div class="hr"></div>
                         <div class="d-flex justify-content-between">
                             <p> Tổng chi phí:</p>
@@ -304,7 +307,8 @@
                             <p class="text-right price color-popup" id="so_du_auth"></p>
                             <input type="hidden" name="so_du_auth" id="soDuAuth">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
+                        <button type="submit" id="sendMessageBtn" class="btn btn-primary"
+                            style="color: #FFFFFF">Thuê</button>
                     </div>
                 </form>
             </div>
