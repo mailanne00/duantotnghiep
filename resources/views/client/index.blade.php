@@ -653,8 +653,8 @@
                     giaMoiGio = data.gia_tien;
                 },
                 error: function () {
-                    alert('Bạn chưa đăng nhập.');
-                }
+                    alert('Không thể tải thông tin người dùng.');
+     a           }
             });
         });
     });

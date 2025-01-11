@@ -124,7 +124,7 @@
                                 <h6 style=" margin-left: 30px">Giá thuê 1 giờ</h6>
                             </div>
                             <div class="col">
-                                <p>{{number_format($taiKhoan->so_du,0,',')}} VNĐ</p>
+                                <p>{{number_format($taiKhoan->gia_tien,0,',')}} VNĐ</p>
                             </div>
                         </div>
                     </div>

@@ -12,12 +12,38 @@ use Illuminate\Support\Facades\Storage;
 class TaiKhoanController extends Controller
 {
 
-    public function index()
-    {
-        $taiKhoans = TaiKhoan::all();
+    public function index(Request $request)
+{
+    // Lấy các tham số từ request
+    $gioiTinh = $request->input('gioi_tinh');
+    $giaTienMin = $request->input('gia_tien_min');
+    $giaTienMax = $request->input('gia_tien_max');
 
-        return view('admin.tai-khoan.index', compact('taiKhoans'));
+    // Query danh sách tài khoản với điều kiện lọc
+    $taiKhoans = TaiKhoan::query();
+
+    // Lọc theo giới tính
+    if (!empty($gioiTinh)) {
+        $taiKhoans->where('gioi_tinh', $gioiTinh);
     }
+
+    // Lọc theo giá tiền tối thiểu
+    if (!empty($giaTienMin)) {
+        $taiKhoans->where('so_du', '>=', $giaTienMin);
+    }
+
+    // Lọc theo giá tiền tối đa
+    if (!empty($giaTienMax)) {
+        $taiKhoans->where('so_du', '<=', $giaTienMax);
+    }
+
+    // Lấy danh sách sau khi áp dụng bộ lọc
+    $taiKhoans = $taiKhoans->get();
+
+    // Trả về view cùng với dữ liệu đã lọc
+    return view('admin.tai-khoan.index', compact('taiKhoans'));
+}
+
 
     public function create()
     {
