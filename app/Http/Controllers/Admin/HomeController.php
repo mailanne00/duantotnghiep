@@ -21,18 +21,26 @@ class HomeController extends Controller
          });
 
 
-         $topPlayers = LichSuThue::select('nguoi_duoc_thue', LichSuThue::raw('COUNT(*) as total_rents'))
-             ->groupBy('nguoi_duoc_thue')
-             ->orderBy('total_rents', 'desc')
-             ->with('nguoiDuocThue')
-             ->limit(10)
-             ->get();
-         $chartData = $topPlayers->map(function ($player) {
-             return [
-                 'name' => $player->nguoiDuocThue->ten ?? 'Không xác định',
-                 'count' => $player->total_rents,
-             ];
-         })->toArray();
+         $topPlayers = LichSuThue::select('nguoi_duoc_thue', LichSuThue::raw('COUNT(*) as total_rents'),
+        LichSuThue::raw('SUM(gio_thue * gia_thue * 0.9) as total_profit'))
+            ->groupBy('nguoi_duoc_thue')
+            ->orderBy('total_rents', 'desc')
+            ->with('nguoiDuocThue')
+            ->limit(10)
+            ->get();
+        $chartData = $topPlayers->map(function ($player) {
+            return [
+                'name' => $player->nguoiDuocThue->ten ?? 'Không xác định',
+                'image' => $player->nguoiDuocThue->anh_dai_dien,
+                'count' => $player->total_rents,
+                'profit' => $player->total_profit,
+                'name2' => $player->nguoiDuocThue->biet_danh,
+                'ngayTao' => $player->nguoiDuocThue->created_at,
+                'soDu' => $player->nguoiDuocThue->so_du,
+                'status' => $player->nguoiDuocThue->getTrangThai2Attribute(),
+                'statusColor' => $player->nguoiDuocThue->getMauAttribute(),
+            ];
+        })->toArray();
 
 
          $rentStatusByMonth = LichSuThue::select(

@@ -94,15 +94,46 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
+        <div class="col-xl-12 col-md-12">
+            <div class="card Application-list table-card">
                 <div class="card-header">
-                    <h5>Top 10 User được thuê nhiều nhất</h5>
+                    <h5>Top 10 player được thuê nhiều nhất</h5>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-5">
-                            <div id="am-pie-2" style="height: 300px"></div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <div class="">
+                            <table class="table table-hover m-0">
+                                <thead>
+                                    <tr>
+                                        <th>Ảnh đại diện</th>
+                                        <th>Tên</th>
+                                        <th>Doanh thu</th>
+                                        <th>Ngày tạo tài khoản</th>
+                                        <th>Số dư</th>
+                                        <th>Trạng thái</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($chartData as $item)
+                                    <tr>
+                                        <td><img class="rounded-circle" style="width:60px;height:60px; object-fit:cover"
+                                                src="{{Storage::url($item['image'])}}"
+                                                alt="activity-user"></td>
+                                        <td>
+                                            <h6 class="mb-1">{{$item['name']}}</h6>
+                                            <p class="m-0">{{$item['name2']}}</p>
+                                        </td>
+                                        <td>
+                                            <p class="mb-1">{{number_format($item['profit'],0 , '.')}}</p>
+                                            <span class="text-c-green m-0">Tổng {{$item['count']}} đơn</span>
+                                        </td>
+                                        <td>{{$item['ngayTao']}}</td>
+                                        <td>{{number_format($item['soDu'], 0 , '.')}}</td>
+                                        <td><a class="badge badge-light-{{$item['statusColor']}} f-12"
+                                                href="#!">{{$item['status']}}</a></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -127,19 +158,6 @@
     <script src="{{asset('assets-admin/plugins/chart-morris/js/morris.min.js')}}"></script>
 
     <script>
-
-        //sơ đồ top 10 user được thuê nhiều nhất
-        $(function () {
-            var chart = am4core.create("am-pie-2", am4charts.PieChart);
-            chart.data = {!! json_encode($chartData) !!};
-            var pieSeries = chart.series.push(new am4charts.PieSeries());
-            pieSeries.dataFields.value = "count";
-            pieSeries.dataFields.category = "name";
-            pieSeries.slices.template.stroke = am4core.color("#fff");
-            pieSeries.slices.template.strokeWidth = 2;
-            pieSeries.slices.template.strokeOpacity = 1;
-            chart.legend = new am4charts.Legend();
-        });
 
         //sơ đồ tình trạng đơn thuê trong 1 năm
         var rentData = [
