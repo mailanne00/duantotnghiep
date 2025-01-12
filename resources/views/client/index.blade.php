@@ -457,7 +457,7 @@
 </section>
 
 <!-- Creat NFT -->
-<section class="tf-box-icon live-auctions tf-section style7 bg-style">
+<section class="tfbox--icon live-auctions tf-section style7 bg-style">
     <div class="themesflat-container">
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-12">
