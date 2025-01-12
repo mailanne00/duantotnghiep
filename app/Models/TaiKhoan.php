@@ -207,6 +207,4 @@ class TaiKhoan extends Model implements Authenticatable
     {
         return $this->cccd !== null && $this->personal_video !== null;
     }
-
-
 }

@@ -83,26 +83,60 @@
     overflow-y: auto;
 }
 
+/* Danh sách người dùng trong phòng chat */
 .chat-user {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    gap: 10px; /* Space between the avatar and name */
+    background-color: #fff; /* Màu nền */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.chat-user img {
-    border-radius: 50%; /* Make the avatar circular */
-    width: 40px; /* Set width of the avatar */
-    height: 40px; /* Set height of the avatar */
+.chat-user:hover {
+    background-color: #f9f9f9; /* Màu nền khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng khi hover */
 }
 
-.chat-user li {
-    list-style-type: none; /* Remove bullet point from list item */
-    font-size: 1rem; /* Adjust font size of the name */
-    font-weight: bold; /* Make name bold */
-    margin: 0; /* Remove default margin */
+.chat-user .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    object-fit: cover;
 }
+
+.chat-user .chat-user-info {
+    flex-grow: 1;
+}
+
+.chat-user .chat-user-name {
+    font-size: 13px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.chat-user .chat-last-message {
+    font-size: 12px;
+    padding-left: 5px;
+    color: #777;
+}
+
+.chat-user .unread-count {
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #dc3545; /* Màu đỏ */
+    border-radius: 50%;
+    padding: 3px 7px;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+}
+
 .chat-content {
     max-width: 500px;
     margin: auto;
@@ -158,17 +192,6 @@
     margin-right: 10px;
 }
 
-.chat-input {
-    background-color: #fff;
-}
-
-.form-control {
-    flex: 1;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    padding-left: 15px;
-}
-
 button {
     background-color: transparent;
     border: none;
@@ -202,10 +225,6 @@ button i {
     background-color: #fffff0;
 }
 
-.chat-user li:hover {
-    background-color: #f5f5f5;
-}
-
 .chat-messages {
     padding: 10px;
     height: 85%;
@@ -216,118 +235,16 @@ button i {
 #text-title-chatbox {
     color: #007bff;
 }
-#messageInput {
-    border-radius: 30px; /* Rounded corners */
-    padding: 15px 20px; /* More padding inside the input */
-    font-size: 15px; /* Slightly larger font size for readability */
-    transition: all 0.3s ease; /* Smooth transition on focus */
-}
-
-#messageInput:focus {
-    border-color: #007bff; /* Blue border when focused */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Glow effect */
-}
-
-/* Style for the send button */
-#sendButton {
-    border-radius: 30px; /* Rounded button */
-    background-color: #0056b3;
-    padding: 10px 20px; /* Spacing inside the button */
-    font-size: 25px; /* Font size for button */
-    transition: all 0.3s ease; /* Smooth transition on hover */
-}
-
-#sendButton:hover {
-    background-color: #0056b3; /* Darken the button on hover */
-    border-color: #0056b3;
-}
-
-/* Adjust input width for better alignment with button */
-.chat-input {
-    width: 100%; /* Ensure full width for the input */
-    max-width: 600px; /* Limit the max width */
-    margin: 0 auto; /* Center horizontally */
-    background-color: #f8f9fa; /* Light background */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-}
-
-.chat-input {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #f1f1f1; /* Màu nền nhẹ cho input */
-    border-radius: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ để tăng độ sâu */
-}
-
-.form-control {
-    flex: 1;
-    border-radius: 30px; /* Viền bo tròn */
-    border: 1px solid #ddd; /* Màu viền nhẹ */
-    padding: 15px 20px; /* Khoảng cách bên trong input */
-    font-size: 25px; /* Kích thước chữ lớn */
-    background-color: #fff; /* Màu nền input */
-    transition: border-color 0.3s ease, font-size 0.3s ease; /* Hiệu ứng khi focus vào input */
-}
-
-/* Tăng kích thước chữ khi focus vào ô input */
-.form-control:focus {
-    font-size: 30px; /* Chữ to hơn khi focus */
-    border-color: #007bff; /* Màu viền khi focus */
-    outline: none; /* Loại bỏ viền ngoài khi focus */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng ánh sáng khi focus */
-}
-
-.form-control:focus {
-    border-color: #007bff;
-    outline: none;
-    font-size: 25px;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-#sendButton {
-    background-color: #007bff; /* Màu nền của nút gửi */
-    width: 50px; /* Chiều rộng của nút */
-    height: 50px; /* Chiều cao của nút */
-    border-radius: 50%; /* Viền tròn hoàn toàn */
-    border: none;
-    font-size: 20px; /* Kích thước chữ */
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Căn giữa nội dung trong nút */
-    transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
-}
-
-#sendButton:hover {
-    background-color: #0056b3; /* Màu tối hơn khi hover */
-}
-
-/* Thêm khoảng cách giữa nút gửi và input */
-.chat-input button {
-    margin-left: 10px;
-}
 
 /* Tăng độ nét và dễ nhìn cho biểu tượng gửi */
 /* #sendButton i {
     font-size: 1.5rem;
 } */
 
-/* Thêm khoảng cách giữa input và nút gửi */
-.chat-input .form-control {
-    margin-right: 10px;
-}
-
 .chat-header {
     position: sticky; /* Đảm bảo header chỉ cố định khi cuộn bên trong .chat-content */
     top: 0;
-    width: 100%;
-    height: 10%;
-    display: flex;
-    background-color: white; /* Màu nền nhẹ cho header */
-    align-items: center;
-    border-bottom: 1px solid #ccc;
+
     z-index: 1000; /* Đảm bảo header luôn ở trên các phần tử khác */
 }
 
@@ -356,4 +273,64 @@ button i {
     margin: 0;
     color: #6c757d;
     font-size: 14px;
+}
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.form-control {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 50%;
+    padding: 12px 18px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    padding-right: 50px; /* Added space for the button inside the input */
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+.form-control::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control:focus::placeholder {
+    color: #007bff;
+}
+
+.send-btn {
+    background-color: #dcdcdc; /* Light gray button */
+    border: none;
+    color: #555; /* Darker gray for icon */
+    padding: 14px;
+    font-size: 18px;
+    width: 40px; /* Equal width and height for a perfect circle */
+    height: 40px; /* Equal width and height for a perfect circle */
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15%;
+}
+
+.send-btn:hover {
+    background-color: #c0c0c0; /* Slightly darker gray on hover */
+}
+
+.send-btn:focus {
+    outline: none;
+}
+
+.send-btn:active {
+    background-color: #a0a0a0; /* Darker gray when clicked */
+}
+
+.chat-input .form-control:focus {
+    outline: none;
 }
