@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="client-infor sc-card-product">
-                            @foreach ($selectedCategories as $category)
+                            @foreach ($danhmuctaikhoans as $category)
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">
@@ -86,10 +86,21 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $player->id }}"
-                            class="sc-button loadmore style  fl-button pri-3"> <i
-                                class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                        <a href="#" data-toggle="modal" data-target="#popup_chat" data-id="{{ $player->id }}"
+                        <a href="#"
+                            data-toggle="modal"
+                            data-target="#popup_bid{{ $player->isVerified() ? '' : 'disabled' }}"
+                            data-id="{{ $player->id }}"
+                            class="sc-button loadmore style fl-button pri-3 "
+                           >
+                            <i class="fa fa-user fa-2x"></i>
+                            @if ($player->isVerified())
+                            <span>Thuê</span>
+                            @else
+                            <span class="text-danger">Người dùng chưa xác thực</span>
+                            @endif
+                        </a>
+    
+                        <a href="#" data-toggle="modal" data-target="#popup_bid"
                             class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
                             <span>Trò Chuyện</span>
@@ -128,7 +139,6 @@
                             @endif
                             @endfor
                             <p> (Thuê {{ $danhGia->lichSuThue->gio_thue }}h)</p>
-
                     </div>
                 </div>
             </div>
@@ -419,8 +429,6 @@
         return true;
 
     }
-
-
 
     document.addEventListener('DOMContentLoaded', () => {
         // Gán sự kiện click vào nút Trò Chuyện
