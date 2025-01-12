@@ -10,6 +10,7 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/public.js",
                 "resources/js/present.js",
+                "resources/js/taoDonThue.js",
             ],
             refresh: true,
         }),

@@ -29,6 +29,7 @@ Route::get('/tin-nhan', [TinNhanController::class, 'index'])->name('client.tinNh
 Route::post('/send-message', [TinNhanController::class, 'sendMessage'])->name('client.tinNhan.send');
 Route::get('/tin-nhan/{phong_id}', [TinNhanController::class, 'chiTiettinNhan'])->name('client.phongChat');
 Route::post('/tao-chat', [TinNhanController::class, 'taoChatMoi'])->name('client.taoChat');
+Route::post('/tin-nhan/{phongChatId}/read', [TinNhanController::class, 'markAsRead']);
 
 
 Route::post('/themDonThueApi', [LichSuThueController::class, 'themDonThueApi'])->name('client.themDonThueApi');
