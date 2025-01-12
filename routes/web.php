@@ -70,6 +70,8 @@ Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 
 Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');
 
 Route::get('/thong-ke-tai-khoan', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'index'])->name('client.thongKeTaiKhoan');
+Route::get('/doanh-thu/ngay', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'layDoanhThuNgay'])->name('client.doanhThuNgay');
+Route::get('/doanh-thu/thang', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'layDoanhThuThang'])->name('client.doanhThuThang');
 
 Route::get('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'index'])->name('client.baiViet');
 Route::post('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'store'])->name('client.baiViet.store');
