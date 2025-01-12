@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\DanhMucTaiKhoan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\TaiKhoan;
 use App\Models\DanhMuc;
+use App\Models\DanhMucTaiKhoan;
 use Illuminate\Support\Facades\Storage;
 
 class ThongtinController extends Controller
@@ -32,8 +32,11 @@ class ThongtinController extends Controller
         return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selectedCategories'));
     }
 
+
+
     public function update(Request $request)
     {
+
         $user = TaiKhoan::query()->findOrFail(Auth::id());
         $data = $request->except('anh_dai_dien', 'danh_muc');
 
@@ -54,7 +57,40 @@ class ThongtinController extends Controller
                 }
             }
         }
-        $user->update($data);
+
+        $user->save();
+        if ($request->hasFile('cccd')) {
+            // Xóa ảnh CCCD cũ nếu có
+            if ($user->cccd) {
+                Storage::disk('public')->delete($user->cccd);
+            }
+        
+            // Upload ảnh CCCD mới
+            $data['cccd'] = Storage::put(self::PATH_UPLOAD, $request->file('cccd'));
+            $user->cccd= $data['cccd'];
+        }
+        
+        if ($request->hasFile('personal_video')) {
+            // Xóa video cũ nếu có
+            if ($user->personal_video) {
+                Storage::disk('public')->delete($user->personal_video);
+            }
+        
+            // Upload video mới
+            $data['personal_video'] = Storage::put(self::PATH_UPLOAD, $request->file('personal_video'));
+            $user->personal_video = $data['personal_video'];
+        }
+        
+        // Kiểm tra nếu cả ảnh CCCD và video được tải lên -> xác thực
+        if ($user->cccd && $user->personal_video) {
+            $user->trang_thai_xac_thuc = true;
+        } else {
+            $user->trang_thai_xac_thuc = false;
+        }
+        
+        $user->save();
+        
+        
 
         return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
     }
