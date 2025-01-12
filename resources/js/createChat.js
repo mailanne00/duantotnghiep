@@ -119,42 +119,40 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }, 1000);
             }
-
-            Echo.channel(`tin-nhan-moi-channel`)
-                .listen(".tin-nhan-moi.updated", (e) => {
-                    // console.log("Tin nhắn mới:", e);
-
-                    if (!e.tinNhan.phong_chat_id) {
-                        console.error("IdPhong không được xác định!");
-                        return;
-                    }
-
-                    if (
-                        authUserId === e.tinNhan.nguoi_nhan ||
-                        authUserId === e.tinNhan.nguoi_gui
-                    ) {
-                        toggleChatbox();
-                        const chatListItem = document.querySelector(
-                            `.chat-user[data-room-id="${e.tinNhan.phong_chat_id}"]`
-                        );
-                        if (chatListItem) {
-                            const lastMessage =
-                                chatListItem.querySelector(
-                                    ".chat-last-message"
-                                );
-                            if (lastMessage) {
-                                lastMessage.textContent = e.tinNhan.tin_nhan;
-                            }
-                        }
-                        handleRoomClick(e.tinNhan.phong_chat_id, nguoiNhanTen);
-                        incrementNotificationBadge();
-                    }
-                })
-                .error((error) => {
-                    console.error("Lỗi khi lắng nghe kênh:", error);
-                });
         }
     );
+
+    Echo.channel(`tin-nhan-moi-channel`)
+        .listen(".tin-nhan-moi.updated", (e) => {
+            // console.log("Tin nhắn mới:", e);
+
+            if (!e.tinNhan.phong_chat_id) {
+                console.error("IdPhong không được xác định!");
+                return;
+            }
+
+            if (
+                authUserId === e.tinNhan.nguoi_nhan ||
+                authUserId === e.tinNhan.nguoi_gui
+            ) {
+                toggleChatbox();
+                const chatListItem = document.querySelector(
+                    `.chat-user[data-room-id="${e.tinNhan.phong_chat_id}"]`
+                );
+                if (chatListItem) {
+                    const lastMessage =
+                        chatListItem.querySelector(".chat-last-message");
+                    if (lastMessage) {
+                        lastMessage.textContent = e.tinNhan.tin_nhan;
+                    }
+                }
+                handleRoomClick(e.tinNhan.phong_chat_id, nguoiNhanTen);
+                incrementNotificationBadge();
+            }
+        })
+        .error((error) => {
+            console.error("Lỗi khi lắng nghe kênh:", error);
+        });
 });
 
 // Hàm định dạng thời gian
