@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Chi tiết tài khoản')
+
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection

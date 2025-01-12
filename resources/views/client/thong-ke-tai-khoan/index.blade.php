@@ -1,5 +1,5 @@
 @extends('client.layouts.app')
-
+@section('title', 'Thống kê tài khoản')
 @section('css')
     <style>
         canvas {
