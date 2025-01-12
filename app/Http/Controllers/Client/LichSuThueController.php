@@ -84,7 +84,13 @@ class LichSuThueController extends Controller
     {
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
             ->orderByDesc("id")
-            ->get();
+            ->get()
+            ->map(function ($user) {
+                // Tính toán thời gian kết thúc
+                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
+                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * 0.9;
+                return $user;
+            });
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
@@ -139,7 +145,7 @@ class LichSuThueController extends Controller
         $user = TaiKhoan::where('id', $request->user_id)->first();
 
 
-        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue)*0.9;
+        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * 0.9;
         $user->save();
 
         return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');

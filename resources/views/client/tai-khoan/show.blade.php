@@ -139,7 +139,6 @@
                             @endif
                             @endfor
                             <p> (Thuê {{ $danhGia->lichSuThue->gio_thue }}h)</p>
-
                     </div>
                 </div>
             </div>
@@ -430,8 +429,6 @@
         return true;
 
     }
-
-
 
     document.addEventListener('DOMContentLoaded', () => {
         // Gán sự kiện click vào nút Trò Chuyện
