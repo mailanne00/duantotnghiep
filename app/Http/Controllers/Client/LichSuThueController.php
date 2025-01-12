@@ -17,7 +17,12 @@ class LichSuThueController extends Controller
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
             ->orderByDesc("created_at")
-            ->get();
+            ->get()
+            ->map(function ($user) {
+                // Tính toán thời gian kết thúc
+                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
+                return $user;
+            });
 
         $timeNow = Carbon::now();
         $checkExpired = LichSuThue::where('expired', '<', $timeNow)
@@ -56,7 +61,7 @@ class LichSuThueController extends Controller
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
 
             $lichSuThue = LichSuThue::create([
@@ -72,14 +77,20 @@ class LichSuThueController extends Controller
             $taiKhoan->update(['so_du' => $tongGia]);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Thuê thành công.');
     }
 
     public function lichSuDuocThue()
     {
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
             ->orderByDesc("id")
-            ->get();
+            ->get()
+            ->map(function ($user) {
+                // Tính toán thời gian kết thúc
+                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
+                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * 0.9;
+                return $user;
+            });
 
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
@@ -95,22 +106,49 @@ class LichSuThueController extends Controller
     public function huyDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id);
-        $user->markAsCancelled();
 
-        $taiKhoan = auth()->user();
+        if($user->trang_thai == 0)
+        {   
+            $user->markAsCancelled();
+    
+            $taiKhoan = auth()->user();
+    
+            $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
+            $taiKhoan->save();
 
-        $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
+            return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+        }else{
+            return redirect()->back()->with('error', 'Đơn thuê đã được nhận');
+        }
+    }
+
+    public function tuChoiDonThue(Request $request, $id)
+    {
+        $lichSuThue = LichSuThue::find($id);
+        if($lichSuThue->trang_thai == 0)
+        {
+            $lichSuThue->markAsCancelled();
+
+        $taiKhoan = TaiKhoan::where('id', $request->tai_khoan_id)->first();
+
+        $taiKhoan->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
         $taiKhoan->save();
 
-        return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+        return redirect()->back()->with('success', 'Từ chối thuê thành công.');
+        }
     }
 
     public function nhanDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id);
-        $user->markAsProcessing();
+        if($user->trang_thai == 0)
+        {
+            $user->markAsProcessing();
 
-        return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
+            return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
+        }else{
+            return redirect()->back()->with('error', 'Đơn đã bị huỷ');
+        }
     }
 
     public function ketThucDonThue(Request $request, $id)
@@ -121,7 +159,7 @@ class LichSuThueController extends Controller
         $user = TaiKhoan::where('id', $request->user_id)->first();
 
 
-        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue)*0.9;
+        $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * 0.9;
         $user->save();
 
         return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
