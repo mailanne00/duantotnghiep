@@ -119,6 +119,15 @@
                                         <h3 class="text-center mb-5">Chi tiết đơn thuê</h3>
                                         <div class="row">
                                             <div class="col-md-12">
+                                            <div class="d-flex justify-content-between mb-3 align-items-center">
+                                                    <div class="modal-info">
+                                                        <p>Ảnh:</p>
+                                                    </div>
+                                                    <div class="modal-info text-right">
+                                                        <img src="{{ Storage::url($user->nguoiThue->anh_dai_dien) }}"
+                                                            alt="Images" style="width:80px; height:80px; object-fit:cover">
+                                                    </div>
+                                                </div>
                                                 <div class="d-flex justify-content-between mb-3">
                                                     <div class="modal-info">
                                                         <p>Người thuê:</p>

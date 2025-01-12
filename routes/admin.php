@@ -33,4 +33,7 @@ use Illuminate\Support\Facades\Route;
     
     Route::resource('lien-he', \App\Http\Controllers\Admin\LienHeController::class);
 
+    Route::get('tai-khoans/{id}/doanh-thu/ngay', [\App\Http\Controllers\Admin\TaiKhoanController::class, 'layDoanhThuNgay'])->name('admin.doanhThuNgay');
+Route::get('tai-khoans/{id}/doanh-thu/thang', [\App\Http\Controllers\Admin\TaiKhoanController::class, 'layDoanhThuThang'])->name('admin.doanhThuThang');
+
 
