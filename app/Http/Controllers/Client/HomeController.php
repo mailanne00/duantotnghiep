@@ -92,6 +92,9 @@ class HomeController extends Controller
             'anh_dai_dien' => Storage::url($user->anh_dai_dien),
         ]);
     }
+
+    public function thongBao() {
+    }
 }
 
 

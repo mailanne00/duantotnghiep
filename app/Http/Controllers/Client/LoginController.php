@@ -30,7 +30,7 @@ class LoginController extends Controller
             'password' => $request->pass,
         ];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             // Lưu thông tin người dùng vào session
             $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
             session()->put('user', $user);
