@@ -4,6 +4,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection
 
+@if (session('success'))
+    <script>
+        alert('Nạp tiền thành công');
+    </script>
+@endif
+
 @section('content')
 <section class="flat-title-page style3">
     <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png') }}" alt="">

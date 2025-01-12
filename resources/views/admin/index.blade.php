@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h5>Top 10 User được thuê nhiều nhất</h5>
