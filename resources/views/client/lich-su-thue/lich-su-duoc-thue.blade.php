@@ -1,5 +1,5 @@
 @extends('client.layouts.app')
-@section('Lịch sử được thuê')
+@section('title','Lịch sử được thuê')
 @section('content')
 <section class="flat-title-page inner">
     <div class="overlay"></div>
