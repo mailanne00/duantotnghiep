@@ -13,7 +13,7 @@ class VNPayController extends Controller
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://localhost:8000/payment/vnpay-return";
-        $vnp_TmnCode = "3IUNM2HN";//Mã website tại VNPAY 
+        $vnp_TmnCode = "3IUNM2HN"; //Mã website tại VNPAY 
         $vnp_HashSecret = "DX201U9LELI35TB4G647D36B9WPG2OU7"; //Chuỗi bí mật
         $napTien = LichSuNap::create([
             'tai_khoan_id' => auth()->id(),
@@ -42,14 +42,14 @@ class VNPayController extends Controller
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
-        
+
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
         }
         if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
             $inputData['vnp_Bill_State'] = $vnp_Bill_State;
         }
-        
+
         //var_dump($inputData);
         ksort($inputData);
         $query = "";
@@ -64,13 +64,13 @@ class VNPayController extends Controller
             }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
-        
+
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-        
+
         return redirect($vnp_Url);
     }
 
@@ -85,13 +85,13 @@ class VNPayController extends Controller
             ]);
             return redirect()->route('client.index')->with('error', 'Nạp tiền thất bại');
         }
-       $taiKhoan->update([
-           'so_du' => $taiKhoan->so_du + $thanhToan->so_tien,
-       ]);
-       $thanhToan->update([
-           'trang_thai' => 'Đã thanh toán',
-       ]);
+        $taiKhoan->update([
+            'so_du' => $taiKhoan->so_du + $thanhToan->so_tien,
+        ]);
+        $thanhToan->update([
+            'trang_thai' => 'Đã thanh toán',
+        ]);
 
-       return redirect()->route('client.index')->with('success', 'Nạp tiền thành công');
+        return redirect()->route('client.index')->with('successNapTien', 'Nạp tiền thành công');
     }
 }

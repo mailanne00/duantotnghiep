@@ -11,7 +11,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Axies | NFT Marketplace HTML Template</title>
+    <title>@yield('title')</title>
 
     <meta name="author" content="themesflat.com">
 
@@ -21,8 +21,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
-
-    <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="https://files.playerduo.net/production/static-files/logo.png">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
 
@@ -253,9 +254,9 @@
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
 
     <!-- preloade -->
-    {{--    <div class="preload preload-container"> --}}
-    {{--        <div class="preload-logo"></div> --}}
-    {{--    </div> --}}
+    {{-- <div class="preload preload-container"> --}}
+    {{-- <div class="preload-logo"></div> --}}
+    {{-- </div> --}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -292,10 +293,6 @@
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
                                             </li>
-                                            <li class="">
-                                                <a href="{{ route('client.chinhsach') }}">Chính sách</a>
-                                            </li>
-
                                             <li class="">
                                                 <a href="{{ route('client.lienhe.create') }}">Liên hệ</a>
 
@@ -438,7 +435,8 @@
                                                                     <p>Số dư</p>
                                                                     <p class="style">
                                                                         {{ number_format(Auth::user()->so_du, 0, ',') }}
-                                                                        VNĐ</p>
+                                                                        VNĐ
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="divider"></div>
@@ -454,7 +452,7 @@
                                                                             fill="white" />
                                                                     </svg>
                                                                     <span>Thông tin cá nhân</span>
-                                                                </a>z
+                                                                </a>
                                                                 <a class="mt-10"
                                                                     href="{{ route('client.lichSuThue') }}">
                                                                     <svg width="20" height="20"
@@ -585,7 +583,7 @@
 
             <script>
                 // Khai báo user id
-                const authUserId = @json(auth()->id());
+                const authUserId = @json(Auth::id());
             </script>
             @vite('resources/js/present.js')
 
@@ -595,11 +593,12 @@
                         <div class="col-lg-3 col-md-12 col-12">
                             <div class="widget widget-logo">
                                 <div class="logo-footer" id="logo-footer">
-                                    <a href="index-2.html">
-                                        <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="nft-gaming"
-                                            width="135" height="56"
-                                            data-retina="assets/images/logo/logo_dark@2x.png" data-width="135"
-                                            data-height="56">
+                                    <a href="#">
+                                        <img id="logo_footer"
+                                            src="https://files.playerduo.net/production/static-files/logo.png"
+                                            alt="nft-gaming" width="56" height="56"
+                                            data-retina="assets/images/logo/logo_dark@2x.png" max-width="56"
+                                            data-height="56"> PLAYERDUO
                                     </a>
                                 </div>
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
@@ -620,7 +619,7 @@
                             <div class="widget widget-menu style-2">
                                 <h5 class="title-widget">Resources</h5>
                                 <ul>
-                                    <li><a href="help-center.html">Help & Support</a></li>
+                                    <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
                                     <li><a href="auctions.html">Live Auctions</a></li>
                                     <li><a href="item-details.html">Item Details</a></li>
                                     <li><a href="activity1.html">Activity</a></li>
@@ -629,10 +628,10 @@
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-5 col-5">
                             <div class="widget widget-menu fl-st-3">
-                                <h5 class="title-widget">Company</h5>
+                                <h5 class="title-widget">Chúng tôi</h5>
                                 <ul>
                                     <li><a href="explore-1.html">Explore</a></li>
-                                    <li><a href="contact1.html">Contact Us</a></li>
+                                    <li><a href="contact1.html">Liên hệ</a></li>
                                     <li><a href="blog.html">Our Blog</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
                                 </ul>
@@ -698,10 +697,6 @@
     <script src="{{ asset('assets/js/web3.min.js') }}"></script>
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
-
-
-    <!-- Sweetalert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('script_footer')
 </body>

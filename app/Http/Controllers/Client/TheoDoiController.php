@@ -18,11 +18,12 @@ class TheoDoiController extends Controller
         return back()->with('success', 'Đã theo dõi người dùng.');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        NguoiTheoDoi::where('nguoi_theo_doi_id', auth()->id())
-            ->where('nguoi_duoc_theo_doi_id', $id)
-            ->delete();
+        $huyTheoDoi = NguoiTheoDoi::query()->findOrFail($id)
+        ->where('nguoi_theo_doi_id', auth()->id())
+        ->where('nguoi_duoc_theo_doi_id', $request->nguoi_duoc_theo_doi_id);
+        $huyTheoDoi->delete();
 
         return back()->with('success', 'Đã hủy theo dõi người dùng.');
     }
