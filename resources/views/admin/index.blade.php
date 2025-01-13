@@ -11,8 +11,8 @@
                 <div class="card-body">
                     <div class="row align-items-center m-b-25">
                         <div class="col">
-                            <h6 class="m-b-5 text-white">Doanh thu</h6>
-                            <h3 class="m-b-0 text-white">{{number_format($totalProfit, 0, ',')}}</h3>
+                            <h6 class="m-b-5 text-white">Lợi nhuận của Website</h6>
+                            <h3 class="m-b-0 text-white">{{number_format($totalProfit, 0, ',')}} VNĐ</h3>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-money-bill-alt text-c-red f-18"></i>
@@ -27,7 +27,7 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h6 class="m-b-5 text-white">Admin</h6>
-                            <h3 class="m-b-0 text-white">{{$countPhanQuyen1}}</h3>
+                            <h3 class="m-b-0 text-white">{{$countPhanQuyen1}} Tài khoản</h3>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user text-c-yellow f-18"></i>
@@ -42,7 +42,7 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h6 class="m-b-5 text-white">User</h6>
-                            <h3 class="m-b-0 text-white">{{$countPhanQuyen2}}</h3>
+                            <h3 class="m-b-0 text-white">{{$countPhanQuyen2}} Tài khoản</h3>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user text-c-blue f-18"></i>
@@ -57,7 +57,7 @@
                     <div class="row align-items-center m-b-25">
                         <div class="col">
                             <h6 class="m-b-5 text-white">Đơn thuê</h6>
-                            <h3 class="m-b-0 text-white">{{$countRent}}</h3>
+                            <h3 class="m-b-0 text-white">{{$countRent}} Đơn thành công</h3>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign text-c-green f-18"></i>
@@ -69,7 +69,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header" style="display:flex; justify-content: space-between">
-                    <h5>Lượng nguời tham gia website</h5>
+                    <h5>Lượng nguời mới tham gia website</h5>
                     <div>
                         <select name="" id="">
                             <option value="" name="year">2025</option>
@@ -85,7 +85,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Doanh thu</h5>
+                    <h5>Lợi nhuận</h5>
                 </div>
                 <div class="card-body">
                     <div id="morris-line-chart" class="ChartShadow" style="height:400px"></div>
@@ -129,7 +129,7 @@
                                             <p class="mb-1">{{number_format($item['profit_admin'],0 , '.')}} VNĐ</p>
                                         </td>
                                         <td>{{$item['ngayTao']}}</td>
-                                        <td>{{number_format($item['soDu'], 0 , '.')}}</td>
+                                        <td>{{number_format($item['soDu'], 0 , '.')}} VNĐ</td>
                                         <td><a class="badge badge-light-{{$item['statusColor']}} f-12"
                                                 href="#!">{{$item['status']}}</a></td>
                                     </tr>

@@ -148,10 +148,10 @@
                         <a class="nav-link" data-bs-toggle="tab" href="#theodoi">Danh sách theo dõi User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#chan">Danh sách chặn User</a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#biendongsodu">Khách hàng thân thiết </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#biendongsodu">Biến động số dư </a>
+                        <a class="nav-link" data-bs-toggle="tab" href="#biendongsodu">Lịch sử được thuê </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#naptien">Lịch sử nạp tiền</a>
@@ -257,39 +257,6 @@
                                     </div>
                                     @endforeach
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="chan">
-                        <div class="tf-box">
-                            <div class="row">
-                                @foreach($nguoiBiChan as $item)
-                                    <div class="col-md-6 col-lg-4 mb-4">
-                                        <div class="sc-author-box style-3"
-                                            style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between">
-                                            <div class="author-style2 flex">
-                                                <div class="author-avatar">
-                                                    <a href="#">
-                                                        <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiBiChan->anh_dai_dien)}}"
-                                                            alt="Image" class="avatar" style="width: 50px; height: 50px">
-                                                    </a>
-                                                </div>
-                                                <div class="author-infor">
-                                                    <h5><a href="#">{{$item->nguoiBiChan->ten}}</a></h5>
-                                                    <div class="tag">{{$item->nguoiBiChan->email}}</div>
-                                                    <span
-                                                        class="price">{{number_format($item->nguoiBiChan->gia_tien, 0, ',')}}
-                                                        VND</span>
-                                                </div>
-                                            </div>
-                                            <div class="action">
-                                                <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                    <a href="#">Đã chặn</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>

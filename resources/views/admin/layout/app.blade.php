@@ -52,8 +52,7 @@
     <div
         class="navbar-wrapper ">
         <div class="navbar-brand header-logo">
-            <a href="admin/" class="b-brand">
-
+            <a href="/" class="b-brand">
                 <img src="https://files.playerduo.net/production/static-files/logo.png" style="width: 36px; height: 36px" alt="logo" class="logo images">
                 <h6 style="margin-top: 10px; margin-left: 6px; color: #fff">PLAYER DUO</h6>
             </a>
@@ -78,7 +77,7 @@
                         <li class=""><a href="{{route('admin.danh-mucs.create')}}" class="">Thêm danh mục</a></li>
                     </ul>
                 </li>
-                <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
+                <!-- <li data-username="dashboard default ecommerce sales Helpdesk ticket CRM analytics project"
                     class="nav-item pcoded-hasmenu">
                     <a href="#" class="nav-link"><span class="pcoded-micon"><i class="fas fa-images"></i></span><span
                             class="pcoded-mtext">Quản lý banner</span></a>
@@ -86,9 +85,9 @@
                         <li class=""><a href="{{route('admin.banners.index')}}" class="">Danh sách banner</a></li>
                         <li class=""><a href="{{route('admin.banners.create')}}" class="">Thêm banner</a></li>
                     </ul>
-                </li>
-                <li data-username="table foo" class="nav-item"><a href="{{route('admin.dang-tins.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a></li>
+                </li> -->
+                <!-- <li data-username="table foo" class="nav-item"><a href="{{route('admin.dang-tins.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a></li> -->
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.danh-gias.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-star-half-alt"></i></span><span class="pcoded-mtext">Quản lý đánh giá</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.binh-luans.index')}}" class="nav-link"><span class="pcoded-micon"><i
