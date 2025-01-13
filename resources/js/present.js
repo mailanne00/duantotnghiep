@@ -243,11 +243,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     
             const room = rooms[0];
-            let currentRecipientId = room.nguoi_gui.id;
-    
+            currentRecipientId = room.nguoi_gui.id;
+
+            // Kiểm tra nếu currentRecipientId là authUserId
             if (currentRecipientId === authUserId) {
+                // Nếu đúng, chuyển currentRecipientId thành room.nguoi_nhan.id
                 currentRecipientId = room.nguoi_nhan.id;
             } else {
+                // Nếu không giống nhau, giữ nguyên currentRecipientId
                 currentRecipientId = room.nguoi_gui.id;
             }
     
@@ -499,6 +502,17 @@ document.addEventListener("DOMContentLoaded", () => {
     sendButton.addEventListener("click", async () => {
         const messageInput = document.getElementById("messageInput");
         const message = messageInput.value.trim();
+
+        console.log("Tin nhắn:", messageInput);
+        console.log("Phòng chat:", message);
+        console.log("Người nhận:", currentRecipientId);
+        console.log("Người gửi:", currentRoomId);
+        console.log("Người gửi123", authUserId);
+        
+        
+        
+        
+        
 
         if (message && currentRoomId && currentRecipientId && authUserId) {
             try {
