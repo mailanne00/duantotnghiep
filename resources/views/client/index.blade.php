@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Trang chủ')
+
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection

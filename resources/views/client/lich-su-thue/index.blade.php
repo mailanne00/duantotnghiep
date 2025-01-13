@@ -1,4 +1,5 @@
 @extends('client.layouts.app')
+@section('title', 'Lịch sử thuê')
 @section('css')
 <style>
     .table-ranking .item .column span {
