@@ -200,7 +200,6 @@
                             <i class="fa-solid fa-comment" style="color: #1877F2"></i> Bình luận
                         </button>
                     </div>
-                    <button class="share-btn"><i class="fa-solid fa-share" style="color: #1877F2"></i> Chia sẻ</button>
                 </div>
             </div>
 

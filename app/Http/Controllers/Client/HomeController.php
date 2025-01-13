@@ -13,6 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $allDanhMuc = DanhMuc::all();
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {

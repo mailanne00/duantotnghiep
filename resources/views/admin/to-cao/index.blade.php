@@ -20,7 +20,6 @@
                                 <th>Người tố cáo</th>
                                 <th>Người bị tố cáo</th>
                                 <th>Mã đơn thuê</th>
-                                <th>Ảnh tố cáo</th>
                                 <th>Thời gian</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
@@ -33,7 +32,6 @@
                                     <td>{{$toCao->nguoiToCao->ten}}</td>
                                     <td>{{$toCao->nguoiBiToCao->ten}}</td>
                                     <td>MS-{{$toCao->donThue->id}}</td>
-                                    <td><img style="width: 100px;" id="image{{$loop->iteration}}" onclick="largeImage({{$loop->iteration}})" src="{{$toCao->anh_bang_chung}}" alt=""></td>
                                     <td>{{$toCao->created_at}}</td>
                                     <td><span class="badge text-bg-{{$toCao->mau}}">{{$toCao->trangThai2}}</span></td>
                                     <td>
@@ -48,7 +46,6 @@
                                 <th>Người tố cáo</th>
                                 <th>Người bị tố cáo</th>
                                 <th>Mã đơn thuê</th>
-                                <th>Ảnh tố cáo</th>
                                 <th>Thời gian</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>

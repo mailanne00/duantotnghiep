@@ -288,7 +288,7 @@
                                                 <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
                                             </li>
                                             <li class="">
-                                                <a href="">Đăng tin</a>
+                                                <a href="{{ route('client.danhmuc') }}">Danh mục</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>

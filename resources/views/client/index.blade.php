@@ -174,8 +174,7 @@
 
                                                         </div>
                                                         <div style="position: relative;">
-                                                            <div style="position: absolute; background: #27ae60; width:10px; height:10px">
-                                                                123
+                                                            <div style="position: absolute; background: #27ae60; width:10px; height:10px; border-radius:50%; transform: translate(59px, -67px);">
                                                             </div>
                                                         <div class="tags">{{ $userDaThue->nguoiDuocThue->countDanhGia }}
                                                             <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
@@ -465,10 +464,15 @@
                                                 VNĐ</span>
                                         </div>
                                     </div>
-                                    <div class="tags">{{ $taiKhoan->countDanhGia }}
+                                    <div style="position: relative;">
+                                                            <div style="position: absolute; background: #27ae60; width:10px; height:10px; border-radius:50%; transform: translate(59px, -67px);">
+                                                            </div>
+                                                            <div class="tags">{{ $taiKhoan->countDanhGia }}
                                         <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
                                         ({{ $taiKhoan->countRent }})
                                     </div>
+                                                        </div>
+                                    
                                 </div>
                             </div>
                         @endforeach
