@@ -37,3 +37,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('tai-khoans/{id}/doanh-thu/thang', [\App\Http\Controllers\Admin\TaiKhoanController::class, 'layDoanhThuThang'])->name('admin.doanhThuThang');
 
 
+Route::get('don-duyet-player', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'donDuyetPlayer'])->name('donDuyetPlayer');
+Route::post('don-duyet-player', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'duyetPlayer'])->name('duyetPlayer');
+

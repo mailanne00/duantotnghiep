@@ -65,6 +65,8 @@
                                 class="feather icon-home"></i></span><span class="pcoded-mtext">Trang chủ</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.tai-khoans.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-user"></i></span><span class="pcoded-mtext">Quản lý tài khoản</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.donDuyetPlayer')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-user"></i></span><span class="pcoded-mtext">Quản lý đơn duyệt</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.lich-su-don-thues.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-file-invoice-dollar"></i></span><span class="pcoded-mtext">Quản lý đơn thuê</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.to-caos.index')}}" class="nav-link"><span class="pcoded-micon"><i
