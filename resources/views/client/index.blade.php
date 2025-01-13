@@ -6,13 +6,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection
 
+@section('content')
 @if (session('successNapTien'))
     <script>
-        alert('Nạp tiền thành công');
+        Swal.fire({
+  title: "Nạp tiền thành công!",
+  icon: "success",
+  draggable: true
+});
     </script>
-@endif
-
-@section('content')
+@endif  
     <section class="flat-title-page style3">
         <img class="bgr-gradient gradient1" src="{{ asset('assets/images/backgroup-secsion/bg-gradient1.png') }}"
             alt="">
@@ -161,7 +164,7 @@
                                                                 href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
                                                         </h5>
                                                     </div>
-                                                    <div class="meta-info">
+                                                    <div class="meta-info" >
                                                         <div class="author">
                                                             <div class="info style2">
                                                                 <span
@@ -170,9 +173,14 @@
                                                             </div>
 
                                                         </div>
+                                                        <div style="position: relative;">
+                                                            <div style="position: absolute; background: #27ae60; width:10px; height:10px">
+                                                                123
+                                                            </div>
                                                         <div class="tags">{{ $userDaThue->nguoiDuocThue->countDanhGia }}
                                                             <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
                                                             ({{ $userDaThue->nguoiDuocThue->countRent }})
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </div>
