@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Danh sách danh mục')
+
 @section('content')
     <section class="flat-title-page inner">
         <div class="overlay"></div>

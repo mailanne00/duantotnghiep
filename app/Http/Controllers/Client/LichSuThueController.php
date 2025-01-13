@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Client;
 
 use App\Events\LichSuThueCreated;
+use App\Events\TinNhanMoi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
+use App\Models\PhongChat;
+use App\Models\TinNhan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 class LichSuThueController extends Controller
@@ -17,18 +21,17 @@ class LichSuThueController extends Controller
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
             ->orderByDesc("created_at")
+
             ->get()
             ->map(function ($user) {
                 // Tính toán thời gian kết thúc
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-
         $timeNow = Carbon::now();
         $checkExpired = LichSuThue::where('expired', '<', $timeNow)
             ->where('trang_thai', '=', '0')
             ->update(['trang_thai' => '2']);
-
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -47,8 +50,6 @@ class LichSuThueController extends Controller
             ->where('trang_thai', '=', '0')
             ->where('expired', '<=', $timeNow)
             ->first();
-
-
         if ($checkLichSuThue) {
             // dd($checkLichSuThue);
             // Cập nhật bản ghi hiện có
@@ -58,12 +59,44 @@ class LichSuThueController extends Controller
             $checkLichSuThue->save();
 
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            event(new LichSuThueCreated($checkLichSuThue));
+
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
 
+            $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
+                $query->where(function ($query) use ($request) {
+                    $query->where('nguoi_gui', auth()->user()->id)
+                        ->where('nguoi_nhan', $request->nguoi_nhan);
+                })->orWhere(function ($query) use ($request) {
+                    $query->where('nguoi_gui', $request->nguoi_nhan)
+                        ->where('nguoi_nhan', auth()->user()->id);
+                });
+            })->first();
+
+            // Nếu chưa có phòng chat thì tạo mới
+            if (!$phongChat) {
+                $maPhongChat = Str::uuid()->toString();
+                $phongChat = PhongChat::create([
+                    'ma_phong_chat' => $maPhongChat,
+                ]);
+            }
+
+            // Tạo tin nhắn mới trong phòng chat
+            $tinNhan = TinNhan::create([
+                'tin_nhan' => $request->tin_nhan,
+                'nguoi_gui' => auth()->user()->id,
+                'nguoi_nhan' => $request->nguoi_nhan,
+                'trang_thai' => 'chua_xem',
+                'phong_chat_id' => $phongChat->id,
+            ]);
+
+
+            event(new TinNhanMoi($tinNhan));
+
+
             return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
-
             $lichSuThue = LichSuThue::create([
                 'nguoi_thue' => auth()->user()->id,
                 'nguoi_duoc_thue' => $validateData['user_id'],
@@ -71,11 +104,12 @@ class LichSuThueController extends Controller
                 'gio_thue' => $validateData['gio_thue'],
                 'expired' => $timePlus5Minutes
             ]);
-
+            event(new LichSuThueCreated($lichSuThue));
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
         }
+
 
         return redirect()->back()->with('success', 'Thuê thành công.');
     }
