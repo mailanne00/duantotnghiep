@@ -76,8 +76,15 @@ class VNPayController extends Controller
 
     public function paymentReturn(Request $request)
     {
-       $thanhToan = LichSuNap::find($request->vnp_TxnRef);
-       $taiKhoan = TaiKhoan::find($thanhToan->tai_khoan_id);
+        $thanhToan = LichSuNap::find($request->vnp_TxnRef);
+        $taiKhoan = TaiKhoan::find($thanhToan->tai_khoan_id);
+
+        if ($request->vnp_ResponseCode != "00") {
+            $thanhToan->update([
+                'trang_thai' => 'Đã bị huỷ',
+            ]);
+            return redirect()->route('client.index')->with('error', 'Nạp tiền thất bại');
+        }
        $taiKhoan->update([
            'so_du' => $taiKhoan->so_du + $thanhToan->so_tien,
        ]);

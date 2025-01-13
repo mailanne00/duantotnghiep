@@ -94,8 +94,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-12 col-md-12">
-            <div class="card Application-list table-card">
+         <div class="col-md-12">
+            <div class="card">
                 <div class="card-header">
                     <h5>Top 10 player được thuê nhiều nhất</h5>
                 </div>
