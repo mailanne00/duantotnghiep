@@ -227,21 +227,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 `http://127.0.0.1:8000/api/tin-nhan/${roomId}`
             );
             const rooms = await response.json();
-    
-            const responseLichSuThue = await fetch(`http://127.0.0.1:8000/api/lich-su-thue/${authUserId}`);
+
+            const responseLichSuThue = await fetch(
+                `http://127.0.0.1:8000/api/lich-su-thue/${authUserId}`
+            );
             const LichSuThue = await responseLichSuThue.json();
             console.log("Lịch sử người thuê", LichSuThue);
-    
-            const responseLichSuDuocThue = await fetch(`http://127.0.0.1:8000/api/lich-su-duoc-thue/${authUserId}`);
+
+            const responseLichSuDuocThue = await fetch(
+                `http://127.0.0.1:8000/api/lich-su-duoc-thue/${authUserId}`
+            );
             const LichSuDuocThue = await responseLichSuDuocThue.json();
             console.log("Lịch sử người được thuê", LichSuDuocThue);
-    
+
             // Kiểm tra xem mảng có ít nhất một phòng chat không
             if (rooms.length === 0) {
                 console.error("No rooms found");
                 return;
             }
-    
+
             const room = rooms[0];
             currentRecipientId = room.nguoi_gui.id;
 
@@ -253,20 +257,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Nếu không giống nhau, giữ nguyên currentRecipientId
                 currentRecipientId = room.nguoi_gui.id;
             }
-    
+
             // Xác định người dùng khác (otherUser)
-            const otherUser = room.nguoi_gui.id === authUserId ? room.nguoi_nhan : room.nguoi_gui;
-    
+            const otherUser =
+                room.nguoi_gui.id === authUserId
+                    ? room.nguoi_nhan
+                    : room.nguoi_gui;
+
             function updateUserStatus(userId, isOnline) {
                 const userElement = document.querySelector(
                     `.user-status[data-user-id="${userId}"]`
                 );
                 if (userElement) {
-                    userElement.textContent = isOnline ? "Đang trong phòng" : "Offline";
+                    userElement.textContent = isOnline
+                        ? "Đang trong phòng"
+                        : "Offline";
                     userElement.classList.toggle("Đang trong phòng", isOnline);
                 }
             }
-    
+
             // Cập nhật giao diện tiêu đề chat
             const chatHeader = document.querySelector(".chat-header");
             if (chatHeader) {
@@ -283,78 +292,106 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Chat header element not found");
                 return;
             }
-    
+
             // Lọc lịch sử thuê chưa hết hạn
 
-            const validLichSuThue = LichSuThue.data.filter(lichSuThue => {
+            const validLichSuThue = LichSuThue.data.filter((lichSuThue) => {
                 const expiredTime = new Date(lichSuThue.expired);
                 const currentTime = new Date();
                 return expiredTime > currentTime; // Chỉ lấy những đơn thuê chưa hết hạn
             });
-            const validLichSuDuocThue = LichSuDuocThue.data.filter(lichSuDuocThue => {
-                const expiredTime = new Date(lichSuDuocThue.expired);
-                const currentTime = new Date();
-                return expiredTime > currentTime;
-            });
-
+            const validLichSuDuocThue = LichSuDuocThue.data.filter(
+                (lichSuDuocThue) => {
+                    const expiredTime = new Date(lichSuDuocThue.expired);
+                    const currentTime = new Date();
+                    return expiredTime > currentTime;
+                }
+            );
 
             const validLichSu = [...validLichSuThue, ...validLichSuDuocThue];
             const donThueContainer = document.getElementById("donThue");
-            
+
             if (validLichSu.length > 0) {
                 const lichSuThue = validLichSu[0];
-                let remainingTime = Math.floor((new Date(lichSuThue.expired) - new Date()) / 1000);
-    
+                let remainingTime = Math.floor(
+                    (new Date(lichSuThue.expired) - new Date()) / 1000
+                );
+
                 // Hiển thị thông báo cho người thuê hoặc người được thuê
                 let notificationMessage = "";
                 if (validLichSuThue.length > 0) {
                     // Người thuê đang có đơn thuê
-                    notificationMessage = `Bạn đang có đơn thuê: ${lichSuThue.nguoi_duoc_thue_info.ten || "Tên người nhận đơn"}`;
+                    notificationMessage = `Bạn đang có đơn thuê: ${
+                        lichSuThue.nguoi_duoc_thue_info.ten ||
+                        "Tên người nhận đơn"
+                    }`;
                 } else if (validLichSuDuocThue.length > 0) {
                     // Người được thuê có đơn thuê đến từ
-                    notificationMessage = `Bạn đang có đơn thuê đến từ: ${lichSuThue.nguoi_thue_info.ten || "Tên người gửi đơn"}`;
+                    notificationMessage = `Bạn đang có đơn thuê đến từ: ${
+                        lichSuThue.nguoi_thue_info.ten || "Tên người gửi đơn"
+                    }`;
                 }
-    
+
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                         <h5 class="mb-2">${notificationMessage}</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
-                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${
+                            lichSuThue.gio_thue
+                        } Giờ</p>
+                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(
+                            remainingTime
+                        )}</span></p>
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
                         </div>
                     </div>
                 `;
-    
-                document.getElementById("acceptBtn").addEventListener("click", () => {
-                    window.location.href = "/lich-su-duoc-thue"; // Chuyển hướng khi bấm "Đi đến đơn thuê"
-                });
-    
+
+                document
+                    .getElementById("acceptBtn")
+                    .addEventListener("click", () => {
+                        window.location.href = "/lich-su-duoc-thue"; // Chuyển hướng khi bấm "Đi đến đơn thuê"
+                    });
+
                 // Đếm ngược thời gian
                 const countdownInterval = setInterval(() => {
                     remainingTime--;
-                    const countdownTimer = document.getElementById("countdownTimer");
+                    const countdownTimer =
+                        document.getElementById("countdownTimer");
                     if (countdownTimer) {
                         countdownTimer.textContent = formatTime(remainingTime);
                     }
-    
+
                     if (remainingTime <= 0) {
                         clearInterval(countdownInterval);
-                        alert("Thời gian thuê đã hết!");
-                        donThueContainer.innerHTML = ""; // Xóa nội dung khi hết thời gian
+                        donThueContainer.innerHTML = `
+                            <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                                <h5 class="mb-2">${notificationMessage}</h5>
+                                <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} Giờ</p>
+                                <p class="mb-1">Đơn thuê này đã hết hạn, vui lòng thuê lại</p>
+                                <div class="button-group mt-3">
+                                    <button class="btn btn-success me-2" id="retryBtn">Thuê lại</button>
+                                </div>
+                            </div>
+                        `;
+
+                        // Xử lý sự kiện khi bấm nút "Thuê lại"
+                        const retryBtn = document.getElementById("retryBtn");
+                        if (retryBtn) {
+                            retryBtn.addEventListener("click", () => {
+                                donThueContainer.innerHTML = ""; // Xóa nội dung hiển thị khi bấm nút "Thuê lại"
+                            });
+                        }
                     }
                 }, 1000);
-            } else {
-                donThueContainer.innerHTML = "<p>Không có đơn thuê còn hiệu lực.</p>";
             }
-    
+
             function formatTime(seconds) {
                 const minutes = Math.floor(seconds / 60);
                 const secs = seconds % 60;
-                return `${minutes}:${secs < 10 ? '0' + secs : secs}`;
+                return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
             }
 
-            
             // Lắng nghe sự kiện người dùng online/offline
             Echo.join("presence-online-users")
                 .here((users) => {
@@ -368,12 +405,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 .leaving((user) => {
                     updateUserStatus(user.id, false); // Người dùng rời khỏi
                 });
-    
         } catch (error) {
             console.error("Error in updateChatHeader:", error);
         }
     }
-    
+
     async function markMessagesAsRead(phongChatId) {
         try {
             const response = await fetch(
@@ -398,7 +434,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Xử lý khi click vào phòng chat
     chatList.addEventListener("click", async (e) => {
-
         const roomElement = e.target.closest(".chat-user");
 
         if (roomElement) {
@@ -508,11 +543,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Người nhận:", currentRecipientId);
         console.log("Người gửi:", currentRoomId);
         console.log("Người gửi123", authUserId);
-        
-        
-        
-        
-        
 
         if (message && currentRoomId && currentRecipientId && authUserId) {
             try {
