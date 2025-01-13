@@ -16,15 +16,13 @@ class HomeController extends Controller
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::all()
-                ->where("nguoi_thue", Auth::id())
-                ->where('trang_thai', 1)
-                ->sortByDesc(function ($userDaThue) {
-                    return $userDaThue->countRent;
-                })
-                ->take(10);
-        } else {
-            $userDaThues = null;
+            $userDaThues = LichSuThue::where("nguoi_thue", Auth::id())
+            ->where('trang_thai', 1)
+            ->take(10)
+            ->get()
+            ->unique('nguoi_duoc_thue');
+        }else {
+            $userDaThues= null;
         }
 
         if (!auth()->check()) {
@@ -36,11 +34,11 @@ class HomeController extends Controller
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
-                ->sortByDesc(function ($taiKhoan) {
-                    return $taiKhoan->countRent;
-                })
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
                 ->where('phan_quyen_id', 2)
-                ->take(10);
+            ->take(10);
         } else {
             $taiKhoans = TaiKhoan::all()
                 ->sortByDesc(function ($taiKhoan) {
@@ -51,12 +49,12 @@ class HomeController extends Controller
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
-                ->sortByDesc(function ($taiKhoan) {
-                    return $taiKhoan->countRent;
-                })
-                ->where('id', '!=', auth()->user()->id)
+            ->sortByDesc(function ($taiKhoan) {
+                return $taiKhoan->countRent;
+            })
+            ->where('id', '!=', auth()->user()->id)
                 ->where('phan_quyen_id', 2)
-                ->take(10);
+            ->take(10);
         }
 
         $taiKhoanDaiGias = TaiKhoan::all()
@@ -74,7 +72,7 @@ class HomeController extends Controller
 
     public function modalUser($id)
     {
-        $user = TaiKhoan::findOrFail($id);
+        $user = TaiKhoan::findOrFail($id);  // Tìm người dùng theo ID
         $khach = auth()->user();
 
         // Trả về dữ liệu người dùng dưới dạng JSON
@@ -94,5 +92,9 @@ class HomeController extends Controller
     }
 
     public function thongBao() {
+                
     }
 }
+
+
+
