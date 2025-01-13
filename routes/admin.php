@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::resource('binh-luans', \App\Http\Controllers\Admin\BinhLuanController::class);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
-    
+
     Route::resource('lien-he', \App\Http\Controllers\Admin\LienHeController::class);
 
     Route::get('tai-khoans/{id}/doanh-thu/ngay', [\App\Http\Controllers\Admin\TaiKhoanController::class, 'layDoanhThuNgay'])->name('admin.doanhThuNgay');
@@ -38,5 +38,6 @@ Route::get('tai-khoans/{id}/doanh-thu/thang', [\App\Http\Controllers\Admin\TaiKh
 
 
 Route::get('don-duyet-player', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'donDuyetPlayer'])->name('donDuyetPlayer');
-Route::post('don-duyet-player', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'duyetPlayer'])->name('duyetPlayer');
+Route::put('duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'duyetPlayer'])->name('duyetPlayer');
+Route::put('huy-duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'huyDuyetPlayer'])->name('huyDuyetPlayer');
 

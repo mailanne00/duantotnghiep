@@ -2,9 +2,28 @@
 @section('script-header')
 <link rel="stylesheet" href="{{asset('assets-admin/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
+
+<style>
+    .no-video {
+    width: 215px;
+    height: 130px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+</style>
+
 @section('title', 'Quản lí đơn duyệt player')
 @section('content')
-
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
@@ -39,16 +58,23 @@
                                             </video>
 
                                             @else
-                                            <div width="215" height="130">
+                                            <div class="no-video">
+                                                No video
                                             </div>
                                         @endif
-                                        
+
                                     </td>
                                     <td>{{$user_gui_xac_thuc->trang_thai_xac_thuc}}</td>
-                                    <td>
-                                        <form action="{{route('admin.duyetPlayer', $user_gui_xac_thuc->id)}}" method="post">
+                                    <td style="display: flex">
+                                        <form action="{{route('admin.duyetPlayer', $user_gui_xac_thuc->id)}}" method="POST" onclick="return confirm('Bạn muốn xác thực người dùng này?')">
                                             @csrf
+                                            @method('PUT')
                                             <button type="submit" class="btn btn-success mt-4">Cập nhật</button>
+                                        </form>
+                                        <form action="{{route('admin.huyDuyetPlayer', $user_gui_xac_thuc->id)}}" method="POST" onclick="return confirm('Bạn không xác thực người dùng này?')">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-danger mt-4">Từ chối</button>
                                         </form>
                                     </td>
                                 </tr>
