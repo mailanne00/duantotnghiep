@@ -41,7 +41,10 @@
                 <div class="col-xl-5 col-md-12">
                     <div class="content-right">
                         <div class="sc-item-details">
+                            <div class="d-flex justify-content-between">
                             <h2 class="style2">{{ $player->ten }}</h2>
+                            <span>Đang online</span>
+                            </div>
                             <div class="meta-item">
                                 <div class="left">
                                     <span class="viewed eye">225</span>

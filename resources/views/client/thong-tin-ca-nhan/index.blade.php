@@ -43,7 +43,7 @@
                             <div id="upload-profile">
                                 <a href="#" class="btn-upload">
                                     Upload New Photo </a>
-                                <input id="tf-upload-img" type="file" name="anh_dai_dien" required="">
+                                <input id="tf-upload-img" type="file" name="anh_dai_dien">
                             </div>
                             {{-- <a href="#" class="btn-upload style2">
                                 Delete</a> --}}

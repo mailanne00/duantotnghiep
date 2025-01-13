@@ -13,16 +13,15 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $allDanhMuc = DanhMuc::all();
         $danhMucs = DanhMuc::all()->take(10);
 
         if (auth()->check()) {
-            $userDaThues = LichSuThue::all()
-            ->where("nguoi_thue", Auth::id())
+            $userDaThues = LichSuThue::where("nguoi_thue", Auth::id())
             ->where('trang_thai', 1)
-            ->sortByDesc(function ($userDaThue) {
-                return $userDaThue->countRent;
-            })
-            ->take(10);
+            ->take(10)
+            ->get()
+            ->unique('nguoi_duoc_thue');
         }else {
             $userDaThues= null;
         }
@@ -33,12 +32,14 @@ class HomeController extends Controller
                     return $taiKhoan->countDanhGia;
                 })
                 ->where('phan_quyen_id', 2)
+                ->where('trang_thai_xac_thuc', 1)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
             ->sortByDesc(function ($taiKhoan) {
                 return $taiKhoan->countRent;
             })
+            ->where('trang_thai_xac_thuc', 1)
                 ->where('phan_quyen_id', 2)
             ->take(10);
         } else {
@@ -48,6 +49,7 @@ class HomeController extends Controller
                 })
                 ->where('id', '!=', auth()->user()->id)
                 ->where('phan_quyen_id', 2)
+                ->where('trang_thai_xac_thuc', 1)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
@@ -55,7 +57,8 @@ class HomeController extends Controller
                 return $taiKhoan->countRent;
             })
             ->where('id', '!=', auth()->user()->id)
-                ->where('phan_quyen_id', 2)
+            ->where('trang_thai_xac_thuc', 1)
+            ->where('phan_quyen_id', 2)
             ->take(10);
         }
 
@@ -94,7 +97,7 @@ class HomeController extends Controller
     }
 
     public function thongBao() {
-
+                
     }
 }
 

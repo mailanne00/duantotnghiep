@@ -4,7 +4,7 @@
 @endsection
 @section('title', 'Chi tiết bản tố cáo số '.$toCao->id  )
 @section('content')
-
+<a href="{{route('admin.to-caos.index')}}" class="btn btn-primary mb-3">Quay trở lại</a>
     <!-- [ breadcrumb ] start -->
     <!-- [ breadcrumb ] end -->
     <!-- [ Main Content ] start -->
@@ -34,30 +34,27 @@
                                                <div class="col"></div>
                                                <div class="col"><img
                                                        class="img-radius img-fluid wid-80"
-                                                       src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
+                                                       src="{{Storage::url($toCao->nguoiToCao->anh_dai_dien)}}"
                                                        alt="User image"></div>
                                                <div class="col"></div>
                                            </div>
                                        </div>
                                        <div class="text-center">
-                                           <h6 class="mb-1 mt-3">Josephin Doe</h6>
-                                           <p class="mb-3 text-muted">UI/UX Designer</p>
-                                           <p class="mb-1">Lorem Ipsum is simply dummy text</p>
-                                           <p class="mb-0">been the industry's standard</p>
+                                           <h6 class="mb-1 mt-3">{{$toCao->nguoiToCao->ten}}</h6>
+                                           <span class="badge text-bg-{{$toCao->nguoiToCao->mau}} mb-3">{{$toCao->nguoiToCao->trangThai2}}</span>
                                        </div>
-                                       <hr class="wid-80 b-wid-3 my-4 m-auto">
                                        <div class="row text-center">
                                            <div class="col">
-                                               <h6 class="mb-1">37</h6>
-                                               <p class="mb-0">Mails</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiToCao->countDanhGia}} <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i></h6> 
+                                               <p class="mb-0">Đánh giá</p>
                                            </div>
                                            <div class="col">
-                                               <h6 class="mb-1">2749</h6>
-                                               <p class="mb-0">Followers</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiToCao->rent['1']}}</h6>
+                                               <p class="mb-0">Số đơn hoàn thành</p>
                                            </div>
                                            <div class="col">
-                                               <h6 class="mb-1">678</h6>
-                                               <p class="mb-0">Following</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiToCao->count}}</h6>
+                                               <p class="mb-0">Lượt yêu thích</p>
                                            </div>
                                        </div>
                                    </div>
@@ -78,31 +75,63 @@
                                                <div class="col"></div>
                                                <div class="col"><img
                                                        class="img-radius img-fluid wid-80"
-                                                       src="{{asset('assets-admin/images/user/avatar-2.jpg')}}"
+                                                       src="{{Storage::url($toCao->nguoiBiToCao->anh_dai_dien)}}"
                                                        alt="User image"></div>
                                                <div class="col"></div>
                                            </div>
                                        </div>
                                        <div class="text-center">
-                                           <h6 class="mb-1 mt-3">Josephin Doe</h6>
-                                           <p class="mb-3 text-muted">UI/UX Designer</p>
-                                           <p class="mb-1">Lorem Ipsum is simply dummy text</p>
-                                           <p class="mb-0">been the industry's standard</p>
+                                           <h6 class="mb-1 mt-3">{{$toCao->nguoiBiToCao->ten}}</h6>
+                                           <span class="badge text-bg-{{$toCao->nguoiBiToCao->mau}} mb-3">{{$toCao->nguoiBiToCao->trangThai2}}</span>
                                        </div>
-                                       <hr class="wid-80 b-wid-3 my-4 m-auto">
                                        <div class="row text-center">
                                            <div class="col">
-                                               <h6 class="mb-1">37</h6>
-                                               <p class="mb-0">Mails</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiBiToCao->countDanhGia}} <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i></h6> 
+                                               <p class="mb-0">Đánh giá</p>
                                            </div>
                                            <div class="col">
-                                               <h6 class="mb-1">2749</h6>
-                                               <p class="mb-0">Followers</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiBiToCao->rent['1']}}</h6>
+                                               <p class="mb-0">Số đơn hoàn thành</p>
                                            </div>
                                            <div class="col">
-                                               <h6 class="mb-1">678</h6>
-                                               <p class="mb-0">Following</p>
+                                               <h6 class="mb-1">{{$toCao->nguoiBiToCao->count}}</h6>
+                                               <p class="mb-0">Lượt yêu thích</p>
                                            </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-xl-4 col-md-6">
+                               <h6 class="text-center">Đơn thuê</h6>
+                               <div class="card user-card user-card-1">
+                                   <div class="card-body pt-0" >
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Mã đơn thuê:</h6>
+                                        <p>MS-{{$toCao->donThue->id}}</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Giờ bắt đầu:</h6>
+                                        <p>{{$toCao->donThue->created_at}}</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Giờ kết thúc:</h6>
+                                        <p>{{$toCao->donThue->thoi_gian_ket_thuc}}</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Giá thuê 1 giờ:</h6>
+                                        <p>{{number_format($toCao->donThue->gia_thue,0,'.')}} VNĐ</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Số giờ thuê:</h6>
+                                        <p>{{$toCao->donThue->gio_thue}}</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Tổng số tiền:</h6>
+                                        <p>{{number_format($toCao->donThue->gia_thue * $toCao->donThue->gio_thue,0,'')}} VNĐ</p>
+                                       </div>
+                                       <div class="mt-2" style="display:flex; justify-content:space-between">
+                                        <h6>Lợi nhuận thu về:</h6>
+                                        <p>{{number_format($toCao->donThue->gia_thue * $toCao->donThue->gio_thue * 0.1,0,'')}} VNĐ</p>
                                        </div>
                                    </div>
                                </div>

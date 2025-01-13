@@ -17,6 +17,7 @@
                             <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã đơn thuê</th>
                                 <th>Người thuê</th>
                                 <th>Người được thuê</th>
                                 <th>Giá thuê 1h</th>
@@ -31,6 +32,7 @@
                                @foreach($lichSuThues as $lichSuThue)
                                    <tr>
                                        <td>{{$loop->iteration}}</td>
+                                       <td>MS-{{$lichSuThue->id}}</td>
                                        <td>{{$lichSuThue->nguoiThue->ten}}</td>
                                        <td>{{$lichSuThue->nguoiDuocThue->ten}}</td>
                                        <td>{{number_format($lichSuThue->gia_thue, 0, ',')}} VNĐ</td>
