@@ -36,16 +36,21 @@ class LichSuThueController extends Controller
 
     public function indexApiNguoiThue($id)
     {
+        // Lấy thông tin lịch sử thuê
         $users = LichSuThue::where("nguoi_thue", $id)
             ->orderByDesc("created_at")
-
             ->get()
-            ->map(function ($user) {
+            ->map(function ($lichSu) {
                 // Tính toán thời gian kết thúc
-                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
-                return $user;
+                $lichSu->thoi_gian_ket_thuc = Carbon::parse($lichSu->created_at)->addHours($lichSu->gio_thue);
+                
+                // Lấy thông tin người thuê (nguoi_thue) và người được thuê (nguoi_duoc_thue)
+                $lichSu->nguoi_thue_info = TaiKhoan::find($lichSu->nguoi_thue); // Lấy thông tin người thuê
+                $lichSu->nguoi_duoc_thue_info = TaiKhoan::find($lichSu->nguoi_duoc_thue); // Lấy thông tin người được thuê
+    
+                return $lichSu;
             });
-
+    
         // Trả về dữ liệu dưới dạng JSON
         return response()->json([
             'success' => true,
@@ -190,6 +195,8 @@ class LichSuThueController extends Controller
                 // Tính toán thời gian kết thúc
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * 0.9;
+                $user->nguoi_thue_info = TaiKhoan::find($user->nguoi_thue); // Lấy thông tin người thuê
+                $user->nguoi_duoc_thue_info = TaiKhoan::find($user->nguoi_duoc_thue); // Lấy thông tin người được thuê
                 return $user;
             });
 

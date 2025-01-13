@@ -303,15 +303,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(lichSuThue);
             
                 let remainingTime = Math.floor((new Date(lichSuThue.expired) - new Date()) / 1000);
-            
+                
+                console.log("Thời gian còn lại:", remainingTime);
+                
                 // Kiểm tra xem người thuê có tên hay không
-                const nguoiThue = lichSuThue.nguoi_thue; // Người thuê là ID hoặc đối tượng (tùy theo API)
-                const tenNguoiThue = nguoiThue.ten || "Tên người thuê chưa có"; // Sử dụng tên người thuê nếu có, nếu không thì là một chuỗi mặc định
+                // const nguoiThue = lichSuThue.nguoi_thue; // Người thuê là ID hoặc đối tượng (tùy theo API)
+                // const tenNguoiThue = nguoiThue.ten || "Tên người thuê chưa có"; // Sử dụng tên người thuê nếu có, nếu không thì là một chuỗi mặc định
             
+                console.log("Cập nhật nội dung donThueContainer...");
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
-                        <h5 class="mb-2">Đơn thuê mới đến từ: ${tenNguoiThue}</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} giờ</p>
+                        <h5 class="mb-2">Đơn thuê mới đến từ: Hoang</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong> 12 giờ</p>
                         <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
@@ -341,6 +344,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 donThueContainer.innerHTML = "<p>Không có đơn thuê còn hiệu lực.</p>";
             }
     
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${minutes}:${secs < 10 ? '0' + secs : secs}`;
+            }
+
+            
             // Lắng nghe sự kiện người dùng online/offline
             Echo.join("presence-online-users")
                 .here((users) => {
@@ -442,7 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             unreadBadge.style.display = "inline-block";
                         }
 
-                        // Thông báo tin nhắn mới
                         incrementNotificationBadge();
                     }
                     // Cuộn xuống tin nhắn mới nhất
