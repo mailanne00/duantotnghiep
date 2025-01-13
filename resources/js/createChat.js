@@ -40,9 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function handleRoomClick(phongChatId, tenNguoiNhan, tinNhan, callback) {
-        console.log("Phòng chat ID:", phongChatId);
-        console.log("Tên người nhận:", tenNguoiNhan);
-
         const roomElement = document.querySelector(
             `.chat-user[data-room-id="${phongChatId}"]`
         );
@@ -60,12 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Tạo nội dung cho phòng mới
             newRoomElement.innerHTML = `
-    <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
-                            <div class="chat-user-info ms-2">
-                                <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
-                                <p class="chat-last-message text-muted small mb-0">
-                    ${tinNhan || "Chưa có tin nhắn"}
-                </p>
+                <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
+                <div class="chat-user-info ms-2">
+                    <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
+                    <p class="chat-last-message text-muted small mb-0">
+                        ${tinNhan || "Chưa có tin nhắn"}
+                    </p>
+                </div>
             `;
 
             chatList.appendChild(newRoomElement);
@@ -75,6 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Gọi callback sau khi hoàn thành
         if (typeof callback === "function") {
             callback();
+        }
+    }
+
+    // Định nghĩa hàm incrementNotificationBadge
+    function incrementNotificationBadge() {
+        const badge = document.getElementById("notificationBadge");
+        if (badge) {
+            let currentCount = parseInt(badge.textContent, 10) || 0;
+            badge.textContent = currentCount + 1;
         }
     }
 
@@ -107,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     nguoiNhanTen,
                     e.tinNhan.tin_nhan
                 );
-                incrementNotificationBadge();
+                incrementNotificationBadge();  // Gọi hàm sau khi nhận tin nhắn mới
             }
         })
         .error((error) => {
@@ -118,21 +125,17 @@ document.addEventListener("DOMContentLoaded", () => {
         ".lich-su-thue.updated",
         (data) => {
             const { lichSuThue } = data;
+            console.log("Lịch sử thuê mới:", lichSuThue);
+            
             if (lichSuThue) {
                 const donThueContainer = document.getElementById("donThue");
                 let remainingTime = 300;
 
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
-                        <h5 class="mb-2">Đơn thuê mới đến từ: ${
-                            lichSuThue.nguoi_thue.ten
-                        }</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong> ${
-                            lichSuThue.gio_thue
-                        } giờ</p>
-                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(
-                            remainingTime
-                        )}</span></p>
+                        <h5 class="mb-2">Đơn thuê mới đến từ: ${lichSuThue.nguoi_thue.ten}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} giờ</p>
+                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
                         </div>
@@ -147,8 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Đếm ngược thời gian
                 const countdownInterval = setInterval(() => {
                     remainingTime--;
-                    const countdownTimer =
-                        document.getElementById("countdownTimer");
+                    const countdownTimer = document.getElementById("countdownTimer");
                     if (countdownTimer) {
                         countdownTimer.textContent = formatTime(remainingTime);
                     }

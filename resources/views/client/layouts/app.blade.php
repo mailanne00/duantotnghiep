@@ -560,7 +560,7 @@
                             <header class="chat-header mb-5" id="chatHeader">
                                 <!-- Thông tin phòng chat sẽ được cập nhật ở đây -->
                             </header>
-                            <div id="donThue"></div>
+                            <div class="donThue" id="donThue"></div>
                             <div id="messageContainer" class="messageContainer">
                                 <!-- Tin nhắn sẽ được tải từ server -->
                             </div>

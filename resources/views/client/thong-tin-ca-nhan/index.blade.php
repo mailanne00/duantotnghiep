@@ -151,79 +151,6 @@
 
 
                                 </div>
-<<<<<<< HEAD
-                                <div class="info-social">
-                                    <h4 class="title-create-item">Your Social media</h4>
-                                    <fieldset>
-                                        <h4 class="title-infor-account">Facebook</h4>
-                                        <input type="text" placeholder="Facebook username"
-                                            class="form-control text-white bg-dark" required>
-                                        <a href="#" class="connect"><i class="fab fa-facebook"></i>Connect to face
-                                            book</a>
-                                    </fieldset>
-                                    <fieldset>
-                                        <h4 class="title-infor-account">Twitter</h4>
-                                        <input type="text" placeholder="Twitter username"
-                                            class="form-control text-white bg-dark" required>
-                                        <a href="#" class="connect"><i class="fab fa-twitter"></i>Connect to
-                                            Twitter</a>
-                                    </fieldset>
-                                    <fieldset>
-                                        <h4 class="title-infor-account">Discord</h4>
-                                        <input type="text" placeholder="Discord username"
-                                            class="form-control text-white bg-dark" required>
-                                        <a href="#" class="connect"><i class="icon-fl-vt"></i>Connect to
-                                            Discord</a>
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div class="form-infor-profile">
-
-                                <div class="form-content d-flex flex-wrap justify-content-between">
-                                    <!-- Ảnh CCCD -->
-                                    <fieldset class="upload-item">
-                                        <h4 class="title-infor-account mb-2">Ảnh CCCD</h4>
-                                        <input type="file" name="cccd" accept="image/*" class="form-control">
-                                        @error('cccd')
-                                            <div class="text-danger mt-2">{{ $message }}</div>
-                                        @enderror
-                                        @if ($user->cccd)
-                                            <div class="uploaded-preview mt-3">
-                                                <h5 class="mb-2">Ảnh CCCD đã tải lên:</h5>
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($user->cccd) }}"
-                                                    alt="Ảnh CCCD" class="img-fluid">
-                                            </div>
-                                        @endif
-                                    </fieldset>
-
-                                    <!-- Video Bản Thân -->
-                                    <fieldset class="upload-item">
-                                        <h4 class="title-infor-account mb-2">Video Bản Thân</h4>
-                                        <input type="file" name="personal_video" accept="video/*"
-                                            class="form-control">
-                                        @error('personal_video')
-                                            <div class="text-danger mt-2">{{ $message }}</div>
-                                        @enderror
-                                        @if ($user->personal_video)
-                                            <div class="uploaded-preview mt-3">
-                                                <h5 class="mb-2">Video bản thân đã tải lên:</h5>
-                                                <video controls>
-                                                    <source
-                                                        src="{{ \Illuminate\Support\Facades\Storage::url($user->personal_video) }}"
-                                                        type="video/mp4">
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            </div>
-                                        @endif
-                                    </fieldset>
-                                </div>
-
-
-                            </div>
-
-
-
-=======
                             </div>
                             <div class="form-infor-profile">
                                 <h3 class="title-create-item">Upload CCCD và Video Bản Thân</h3>
@@ -276,7 +203,6 @@
 
                             </div>
 
->>>>>>> 60075d781ed357e7ee3dd53ca76cc93aecfeb3f3
                             <button class="tf-button-submit mg-t-15" type="submit">
                                 Cập nhật thông tin
                             </button>
@@ -295,8 +221,7 @@
             const categoryButtons = document.querySelectorAll('.category-btn');
             const categoryList = document.getElementById('categoryList');
 
-            // Lấy danh mục đã chọn từ PHP (truyền từ server)
-            let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
+            let selectedCategories = @json($selectedCategories);
 
             // Cập nhật giá trị của input ẩn
             function updateSelectedCategories() {

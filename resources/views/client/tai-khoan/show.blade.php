@@ -349,10 +349,6 @@
     </div>
 @endsection
 
-
-
-@vite('resources/js/createChat.js')
-
 @section('script_footer')
     <script>
         const authUserId = @json(auth()->id());
