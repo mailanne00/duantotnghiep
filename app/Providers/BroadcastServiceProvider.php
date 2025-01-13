@@ -14,6 +14,13 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
+        Broadcast::channel('presence-online-users', function ($user) {
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+            ];
+        });
+
         require base_path('routes/channels.php');
     }
 }

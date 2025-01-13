@@ -50,12 +50,19 @@ Route::get('/tai-khoan', [TaiKhoanController::class, 'index'])->name('client.tai
 Route::get('/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('client.topDanhGia');
 Route::get('/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
 Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
+
+
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
+Route::delete('/player/{id}/delete-cccd', [ThongtinController::class, 'deleteCccd'])->name('player.delete_cccd');
+Route::delete('/player/{id}/delete-video', [ThongtinController::class, 'deleteVideo'])->name('player.delete_video');
+
+
 
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::post('/lich-su-don-thue/{id}/huy-don', [LichSuThueController::class, 'huyDonThue'])->name('client.huyDonThue');
+Route::post('/lich-su-don-thue/{id}/tu-choi-don', [LichSuThueController::class, 'tuChoiDonThue'])->name('client.tuChoiDonThue');
 Route::post('/lich-su-don-thue/{id}/nhan-don', [LichSuThueController::class, 'nhanDonThue'])->name('client.nhanDonThue');
 Route::delete('/lich-su-don-thue/{id}/xoa-don', [LichSuThueController::class, 'xoaDonThue'])->name('client.xoaDonThue');
 Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class, 'ketThucDonThue'])->name('client.ketThucDonThue');
@@ -63,12 +70,14 @@ Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue']
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
 // Thanh toán vn pay
-Route::get('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
+Route::post('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
 Route::get('/payment/vnpay-return', [\App\Http\Controllers\Client\VNPayController::class, 'paymentReturn']);
 Route::get('/nap-tien', [\App\Http\Controllers\Client\NapTienController::class, 'index'])->name('client.napTien');
 Route::get('/nap-tien/create', [\App\Http\Controllers\Client\NapTienController::class, 'create'])->name('client.napTien.create');
 
 Route::get('/thong-ke-tai-khoan', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'index'])->name('client.thongKeTaiKhoan');
+Route::get('/doanh-thu/ngay', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'layDoanhThuNgay'])->name('client.doanhThuNgay');
+Route::get('/doanh-thu/thang', [\App\Http\Controllers\Client\ThongKeTaiKhoanController::class, 'layDoanhThuThang'])->name('client.doanhThuThang');
 
 Route::get('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'index'])->name('client.baiViet');
 Route::post('/bai-viet', [\App\Http\Controllers\Client\BaiVietController::class, 'store'])->name('client.baiViet.store');

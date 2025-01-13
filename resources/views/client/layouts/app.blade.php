@@ -18,16 +18,16 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-    <!-- Reponsive -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
-    <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
+
+    <!-- Sweetalert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
     @yield('css')
     <style>
@@ -77,12 +77,177 @@
             text-decoration: none;
             color: #FFFFFF;
         }
+
+
+        /* Container */
+        .chat-header-container {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header-container .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #ccc;
+            object-fit: cover;
+        }
+
+        .chat-header-container .user-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-header-container .user-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .chat-header-container .user-status {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .chat-header-container .user-status.online {
+            color: #4caf50;
+            /* Màu xanh lá cho trạng thái online */
+            font-weight: bold;
+        }
+
+        .chat-header-container .user-status.offline {
+            color: #f44336;
+            /* Màu đỏ cho trạng thái offline */
+            font-weight: bold;
+        }
+
+        /* Text Styling */
+        .user-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #222;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .user-status {
+            font-size: 1rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .don-thue-header {
+            background-color: #007bff;
+            /* Màu nền xanh dương */
+            color: white;
+            /* Chữ màu trắng */
+            border-radius: 8px;
+            /* Bo góc mềm mại */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Tạo hiệu ứng bóng nhẹ */
+            transition: transform 0.3s ease-in-out;
+            /* Hiệu ứng khi hover */
+        }
+
+        /* Hiệu ứng khi hover */
+        .don-thue-header:hover {
+            transform: translateY(-5px);
+            /* Dịch chuyển nhẹ khi hover */
+        }
+
+        /* Tiêu đề */
+        .don-thue-header h5 {
+            font-size: 1.25rem;
+            /* Kích thước chữ tiêu đề */
+            font-weight: 600;
+            /* Đậm */
+            margin-bottom: 10px;
+        }
+
+        /* Các đoạn thông tin */
+        .don-thue-header p {
+            font-size: 1.25rem;
+            color: white;
+            /* Kích thước chữ cho các đoạn văn */
+            margin-bottom: 8px;
+            /* Khoảng cách giữa các đoạn */
+            line-height: 1.5;
+            /* Khoảng cách giữa các dòng */
+        }
+
+        /* Thời gian còn lại */
+        #countdownTimer {
+            font-weight: bold;
+            color: #ffd700;
+            /* Màu vàng cho thời gian còn lại */
+        }
+
+        /* Các nút */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            /* Giãn cách các nút */
+            margin-top: 15px;
+        }
+
+        /* Nút chấp nhận */
+        #acceptBtn {
+            background-color: #28a745;
+            /* Màu xanh lá */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Nút chấp nhận khi hover */
+        #acceptBtn:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-header-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .avatar {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .user-name {
+                font-size: 1rem;
+            }
+
+            .user-status {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @vite('resources/js/app.js')
-
+    @vite('resources/js/createChat.js')
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
@@ -208,111 +373,17 @@
                                                     </div>
                                                     <div class="avatar_popup2 mt-20">
                                                         <div class="show mg-bt-18">
-                                                            <h4>Notifications</h4>
-                                                            <a href="#">Show All</a>
+                                                            <h4>Thông báo</h4>
                                                         </div>
                                                         <div class="flat-tabs">
                                                             <ul class="menu-tab">
-                                                                <li class="active"><span>All</span></li>
-                                                                <li><span>Unread</span></li>
+                                                                <li class="active"><span>Tất cả</span></li>
+                                                                <li><span>Chưa đọc</span></li>
                                                             </ul>
                                                             <div class="content-tab">
                                                                 <div class="content-inner">
                                                                     <div class="wrap-box">
-                                                                        <div class="heading">Today</div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>liked your items.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="wrap-box">
-                                                                        <div class="heading">Yesterday</div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        <div class="heading">Hôm nay</div>
                                                                         <div class="sc-box">
                                                                             <div class="content">
                                                                                 <div class="avatar">
@@ -348,54 +419,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="wrap-box">
-                                                                        <div class="heading">Yesterday</div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -430,7 +454,7 @@
                                                                             fill="white" />
                                                                     </svg>
                                                                     <span>Thông tin cá nhân</span>
-                                                                </a>
+                                                                </a>z
                                                                 <a class="mt-10"
                                                                     href="{{ route('client.lichSuThue') }}">
                                                                     <svg width="20" height="20"
@@ -540,14 +564,20 @@
                             <header class="chat-header mb-5" id="chatHeader">
                                 <!-- Thông tin phòng chat sẽ được cập nhật ở đây -->
                             </header>
+                            <div id="donThue"></div>
                             <div id="messageContainer" class="messageContainer">
                                 <!-- Tin nhắn sẽ được tải từ server -->
                             </div>
                         </div>
-                        <div class="chat-input d-flex p-3">
-                            <input type="text" class="form-control me-2" placeholder="Type a message"
-                                id="messageInput">
-                            <button id="sendButton"><i class="fas fa-arrow-right fa-lg"></i></button>
+                        <div class="chat-input d-flex p-3 border-top bg-light rounded-pill shadow-lg">
+                            <div class="input-container position-relative w-100">
+                                <input type="text" class="form-control me-2 message-input"
+                                    placeholder="Type a message..." id="messageInput">
+                                <button id="sendButton"
+                                    class="btn send-btn d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-paper-plane fa-lg"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -558,7 +588,6 @@
                 const authUserId = @json(auth()->id());
             </script>
             @vite('resources/js/present.js')
-
 
             <footer id="footer" class="footer-light-style clearfix">
                 <div class="themesflat-container">
@@ -669,6 +698,10 @@
     <script src="{{ asset('assets/js/web3.min.js') }}"></script>
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
+
+
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('script_footer')
 </body>
