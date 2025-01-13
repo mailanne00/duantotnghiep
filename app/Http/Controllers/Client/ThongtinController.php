@@ -38,21 +38,42 @@ class ThongtinController extends Controller
     {
 
         $user = TaiKhoan::query()->findOrFail(Auth::id());
-        $data = $request->except('anh_dai_dien', 'danh_muc');
+        $data = $request->except('anh_dai_dien', 'danh_muc', 'cccd', 'personal_video');
 
         if ($request->hasFile('anh_dai_dien')) {
-            Storage::disk('public')->delete($user->anh_dai_dien);
-            $data['anh_dai_dien'] = Storage::put(self::PATH_UPLOAD, $request->file('anh_dai_dien'));
+            // Xóa ảnh đại diện cũ nếu tồn tại
+            if ($user->anh_dai_dien) {
+                Storage::delete($user->anh_dai_dien);
+            }
+        
+            // Lưu ảnh đại diện mới
+            $data['anh_dai_dien'] = $request->file('anh_dai_dien')->store('public/images');
         }
+        if ($request->hasFile('anh_dai_dien')) {
+            // Xóa ảnh CCCD cũ nếu có
+            if ($user->anh_dai_dien) {
+                Storage::disk('public')->delete($user->anh_dai_dien);
+            }
+        
+            // Upload ảnh CCCD mới
+            $data['anh_dai_dien'] = Storage::put(self::PATH_UPLOAD, $request->file('anh_dai_dien'));
+            $user->anh_dai_dien= $data['anh_dai_dien'];
+        }
+        
+        
 
         if (isset($request->danh_muc)) {
             $danhMucs = explode(',', $request->danh_muc);
-            DanhMucTaiKhoan::query()->where('tai_khoan_id', Auth::id())->delete();
+    
+            // Xóa danh mục cũ
+            DanhMucTaiKhoan::query()->where('tai_khoan_id', $user->id)->delete();
+    
+            // Thêm danh mục mới
             foreach ($danhMucs as $danhMuc) {
-                if ($danhMuc != '') {
+                if (!empty($danhMuc)) {
                     DanhMucTaiKhoan::query()->create([
-                        'tai_khoan_id' => Auth::id(),
-                        'danh_muc_id' => $danhMuc
+                        'tai_khoan_id' => $user->id,
+                        'danh_muc_id' => $danhMuc,
                     ]);
                 }
             }
@@ -88,7 +109,7 @@ class ThongtinController extends Controller
             $user->trang_thai_xac_thuc = false;
         }
         
-        $user->save();
+        $user->update($data);
         
         
 
