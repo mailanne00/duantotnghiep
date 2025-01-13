@@ -18,8 +18,6 @@
                             <i class="fas fa-money-bill-alt text-c-red f-18"></i>
                         </div>
                     </div>
-                    <p class="m-b-0 text-white"><span
-                            class="label label-danger m-r-10">+11%</span>From Previous Month</p>
                 </div>
             </div>
         </div>
@@ -35,8 +33,6 @@
                             <i class="fas fa-user text-c-yellow f-18"></i>
                         </div>
                     </div>
-                    <p class="m-b-0 text-white"><span
-                            class="label label-warning m-r-10">+52%</span>From Previous Month</p>
                 </div>
             </div>
         </div>
@@ -52,8 +48,6 @@
                             <i class="fas fa-user text-c-blue f-18"></i>
                         </div>
                     </div>
-                    <p class="m-b-0 text-white"><span
-                            class="label label-primary m-r-10">+12%</span>From Previous Month</p>
                 </div>
             </div>
         </div>
@@ -69,8 +63,6 @@
                             <i class="fas fa-dollar-sign text-c-green f-18"></i>
                         </div>
                     </div>
-                    <p class="m-b-0 text-white"><span
-                            class="label label-success m-r-10">+52%</span>From Previous Month</p>
                 </div>
             </div>
         </div>

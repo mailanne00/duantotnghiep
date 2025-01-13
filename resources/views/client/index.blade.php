@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection
 
-@if (session('success'))
+@if (session('successNapTien'))
     <script>
         alert('Nạp tiền thành công');
     </script>
