@@ -16,13 +16,13 @@ class HomeController extends Controller
         $countPhanQuyen1 = TaiKhoan::where('phan_quyen_id', 1)->count();
         $countPhanQuyen2 = TaiKhoan::where('phan_quyen_id', 2)->count();
         $countRent = LichSuThue::where('trang_thai', 1)->count();
-        $totalProfit = LichSuThue::all()->sum(function ($lichSuThue) {
+        $totalProfit = LichSuThue::where('trang_thai', 1)->get()->sum(function ($lichSuThue) {
             return ($lichSuThue->gio_thue * $lichSuThue->gia_thue * $lichSuThue->nguoiDuocThue->loi_nhuan) / 100;
         });
 
 
-         $topPlayers = LichSuThue::select('nguoi_duoc_thue', LichSuThue::raw('COUNT(*) as total_rents'),
-        LichSuThue::raw('SUM(gio_thue * gia_thue * 0.9) as total_profit'))
+         $topPlayers = LichSuThue::where('trang_thai', 1)->select('nguoi_duoc_thue', LichSuThue::raw('COUNT(*) as total_rents'),
+        LichSuThue::raw('SUM(gio_thue * gia_thue * 0.9) as total_profit, SUM(gio_thue * gia_thue * 0.1) as total_profit_admin'))
             ->groupBy('nguoi_duoc_thue')
             ->orderBy('total_rents', 'desc')
             ->with('nguoiDuocThue')
@@ -34,6 +34,7 @@ class HomeController extends Controller
                 'image' => $player->nguoiDuocThue->anh_dai_dien,
                 'count' => $player->total_rents,
                 'profit' => $player->total_profit,
+                'profit_admin' => $player->total_profit_admin,
                 'name2' => $player->nguoiDuocThue->biet_danh,
                 'ngayTao' => $player->nguoiDuocThue->created_at,
                 'soDu' => $player->nguoiDuocThue->so_du,
@@ -68,7 +69,7 @@ class HomeController extends Controller
         ksort($rentData);
 
         $months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-        $lichSuThue = LichSuThue::all();
+        $lichSuThue = LichSuThue::where('trang_thai', 1)->whereYear('created_at', now()->year)->get();
         $totalProfitByMonth = $lichSuThue->groupBy(function ($item) {
             return $item->created_at->format('m'); // Nhóm theo tháng
         })->map(function ($group) {
@@ -99,15 +100,7 @@ class HomeController extends Controller
         $dataForChart  = json_encode($a);
         $taiKhoanMoi = TaiKhoan::query()
             ->selectRaw('MONTH(created_at) as thang, COUNT(*) as so_luong')
-            ->groupByRaw('MONTH(created_at)')
-            ->orderByRaw('thang')
-            ->get()
-            ->mapWithKeys(function ($item) {
-                return [$item->thang => $item->so_luong];
-            });
-
-        $taiKhoanMoi = TaiKhoan::query()
-            ->selectRaw('MONTH(created_at) as thang, COUNT(*) as so_luong')
+            ->whereYear('created_at' , now()->year)
             ->groupByRaw('MONTH(created_at)')
             ->orderByRaw('thang')
             ->get()

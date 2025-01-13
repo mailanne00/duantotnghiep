@@ -68,8 +68,14 @@
         </div>
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="display:flex; justify-content: space-between">
                     <h5>Lượng nguời tham gia website</h5>
+                    <div>
+                        <select name="" id="">
+                            <option value="" name="year">2025</option>
+                            <option value="" name="year">2024</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div id="morris-bar-chart" style="height:300px"></div>
@@ -99,7 +105,8 @@
                                     <tr>
                                         <th>Ảnh đại diện</th>
                                         <th>Tên</th>
-                                        <th>Doanh thu</th>
+                                        <th>Lợi nhuận của Player</th>
+                                        <th>Lợi nhuận của Website</th>
                                         <th>Ngày tạo tài khoản</th>
                                         <th>Số dư</th>
                                         <th>Trạng thái</th>
@@ -115,8 +122,11 @@
                                             <p class="m-0">{{$item['name2']}}</p>
                                         </td>
                                         <td>
-                                            <p class="mb-1">{{number_format($item['profit'],0 , '.')}}</p>
+                                            <p class="mb-1">{{number_format($item['profit'],0 , '.')}} VNĐ</p>
                                             <span class="text-c-green m-0">Tổng {{$item['count']}} đơn</span>
+                                        </td>
+                                        <td>
+                                            <p class="mb-1">{{number_format($item['profit_admin'],0 , '.')}} VNĐ</p>
                                         </td>
                                         <td>{{$item['ngayTao']}}</td>
                                         <td>{{number_format($item['soDu'], 0 , '.')}}</td>
