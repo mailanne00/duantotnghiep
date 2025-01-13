@@ -300,32 +300,33 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (validLichSu.length > 0) {
                 const lichSuThue = validLichSu[0];
-                console.log(lichSuThue);
-            
                 let remainingTime = Math.floor((new Date(lichSuThue.expired) - new Date()) / 1000);
-                
-                console.log("Thời gian còn lại:", remainingTime);
-                
-                // Kiểm tra xem người thuê có tên hay không
-                // const nguoiThue = lichSuThue.nguoi_thue; // Người thuê là ID hoặc đối tượng (tùy theo API)
-                // const tenNguoiThue = nguoiThue.ten || "Tên người thuê chưa có"; // Sử dụng tên người thuê nếu có, nếu không thì là một chuỗi mặc định
-            
-                console.log("Cập nhật nội dung donThueContainer...");
+    
+                // Hiển thị thông báo cho người thuê hoặc người được thuê
+                let notificationMessage = "";
+                if (validLichSuThue.length > 0) {
+                    // Người thuê đang có đơn thuê
+                    notificationMessage = `Bạn đang có đơn thuê: ${lichSuThue.nguoi_duoc_thue_info.ten || "Tên người nhận đơn"}`;
+                } else if (validLichSuDuocThue.length > 0) {
+                    // Người được thuê có đơn thuê đến từ
+                    notificationMessage = `Bạn đang có đơn thuê đến từ: ${lichSuThue.nguoi_thue_info.ten || "Tên người gửi đơn"}`;
+                }
+    
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
-                        <h5 class="mb-2">Đơn thuê mới đến từ: Hoang</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong> 12 giờ</p>
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
                         <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
                         </div>
                     </div>
                 `;
-            
+    
                 document.getElementById("acceptBtn").addEventListener("click", () => {
                     window.location.href = "/lich-su-duoc-thue"; // Chuyển hướng khi bấm "Đi đến đơn thuê"
                 });
-            
+    
                 // Đếm ngược thời gian
                 const countdownInterval = setInterval(() => {
                     remainingTime--;
@@ -333,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (countdownTimer) {
                         countdownTimer.textContent = formatTime(remainingTime);
                     }
-            
+    
                     if (remainingTime <= 0) {
                         clearInterval(countdownInterval);
                         alert("Thời gian thuê đã hết!");
