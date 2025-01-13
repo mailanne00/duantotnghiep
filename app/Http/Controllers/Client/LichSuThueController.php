@@ -143,7 +143,7 @@ class LichSuThueController extends Controller
         $user->markAsCancelled();
 
         $taiKhoan = auth()->user();
-
+        
         $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
         $taiKhoan->save();
 

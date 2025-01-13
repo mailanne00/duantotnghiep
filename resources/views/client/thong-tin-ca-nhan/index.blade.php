@@ -1,5 +1,5 @@
 @extends('client.layouts.app')
-
+@section('title', 'Thông tin cá nhân')
 @section('content')
     <section class="flat-title-page inner">
         <div class="overlay"></div>
@@ -151,6 +151,7 @@
 
 
                                 </div>
+<<<<<<< HEAD
                                 <div class="info-social">
                                     <h4 class="title-create-item">Your Social media</h4>
                                     <fieldset>
@@ -222,6 +223,60 @@
 
 
 
+=======
+                            </div>
+                            <div class="form-infor-profile">
+                                <h3 class="title-create-item">Upload CCCD và Video Bản Thân</h3>
+                                <fieldset>
+                                    <h4 class="title-infor-account">Ảnh CCCD</h4>
+                                    <input type="file" name="cccd" accept="image/*"
+                                        class="form-control text-white bg-dark">
+                                    @error('cccd')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    @if ($user->cccd)
+                                        <div class="mt-2">
+                                            <h5>Ảnh CCCD đã tải lên:</h5>
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($user->cccd) }}"
+                                                alt="Ảnh CCCD" class="img-fluid" style="max-width: 200px;">
+                                        </div>
+                                    @endif
+                                </fieldset>
+
+                                <fieldset>
+                                    <h4 class="title-infor-account">Video Bản Thân</h4>
+                                    <input type="file" name="personal_video" accept="video/*"
+                                        class="form-control text-white bg-dark">
+                                    @error('personal_video')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    @if ($user->personal_video)
+                                        <div class="mt-2">
+                                            <h5>Video bản thân đã tải lên:</h5>
+                                            <video controls class="img-fluid" style="max-width: 300px;">
+                                                <source
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($user->personal_video) }}"
+                                                    type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    @endif
+                                </fieldset>
+
+                                <div class="form-infor-profile">
+                                    <h4 class="title-create-item">Trạng thái xác thực</h4>
+                                    <p>
+                                        @if ($user->trang_thai_xac_thuc)
+                                            <span class="text-success">Đã xác thực</span>
+                                        @else
+                                            <span class="text-danger">Chưa xác thực</span>
+                                        @endif
+                                    </p>
+                                </div>
+
+                            </div>
+
+>>>>>>> 60075d781ed357e7ee3dd53ca76cc93aecfeb3f3
                             <button class="tf-button-submit mg-t-15" type="submit">
                                 Cập nhật thông tin
                             </button>
@@ -334,4 +389,8 @@
             updateSelectedCategories();
         });
     </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60075d781ed357e7ee3dd53ca76cc93aecfeb3f3
 @endsection

@@ -1,5 +1,5 @@
 @extends('client.layouts.app')
-
+@section('title', 'Thống kê tài khoản')
 @section('css')
 <style>
     canvas {
@@ -175,93 +175,86 @@
                         <canvas id="doanhThuChart" width="400" height="200"></canvas>
                     </div>
                     <div class="tab-pane fade" id="theodoi">
-                        <div class="row"
-                            style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
+                        <div class="row" style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
                             <div class="col">
                                 <h3 class="text-center mb-5">Người theo dõi</h3>
-                                <div class="content-scroll"
-                                    style="height: 400px;scrollbar-width: none; overflow-y: auto;">
+                                <div class="content-scroll" style="height: 400px;scrollbar-width: none; overflow-y: auto;">
                                     @foreach($nguoiTheoDoi as $item)
-                                        <div class="sc-author-box style-3"
-                                            style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%;">
-                                            <div class="author-style2 flex">
-                                                <div class="author-avatar">
-                                                    <a href="#">
-                                                        <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}"
-                                                            alt="Image" class="avatar" style="width: 50px; height: 50px">
-                                                    </a>
-                                                    <div class="badge"><i class="ripple"></i></div>
-                                                </div>
-                                                <div class="author-infor">
-                                                    <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
-                                                    <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
-                                                    <span
-                                                        class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}}
-                                                        VND</span>
-                                                </div>
+                                    <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%;">
+                                        <div class="author-style2 flex">
+                                            <div class="author-avatar">
+                                                <a href="#">
+                                                    <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiTheoDoi->anh_dai_dien)}}" alt="Image"
+                                                        class="avatar" style="width: 50px; height: 50px">
+                                                </a>
+                                                <div class="badge"><i class="ripple"></i></div>
                                             </div>
-                                            <div class="action">
-                                                @if(in_array($item->nguoi_theo_doi_id, $listNguoiDuocTheoDoiIds))
-                                                    <form
-                                                        action="{{ route('client.huyTheoDoi.destroy', $item->nguoiTheoDoi->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <div class="btn-follow"
-                                                            style="width: 100px; margin-left: -5%; background-color: #0575D8">
-                                                            <button style="all: unset; cursor: pointer;">
-                                                                Đang theo dõi
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                @else
-                                                    <form action="{{ route('client.theoDoi.store') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="nguoi_duoc_theo_doi_id"
-                                                            value="{{ $item->nguoiTheoDoi->id }}">
-                                                        <div class="btn-follow"
-                                                            style="width: 100px; margin-left: -5%; background-color: #3C3C56">
-                                                            <button style="all: unset; cursor: pointer;">
-                                                                Theo dõi
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                @endif
+                                            <div class="author-infor">
+                                                <h5><a href="#">{{$item->nguoiTheoDoi->ten}}</a></h5>
+                                                <div class="tag">{{$item->nguoiTheoDoi->email}}</div>
+                                                <span class="price">{{number_format($item->nguoiTheoDoi->gia_tien, 0, ',')}} VND</span>
                                             </div>
                                         </div>
+                                        <div class="action">
+                                            @if(in_array($item->nguoi_theo_doi_id, $listNguoiDuocTheoDoiIds))
+                                            <form action="{{ route('client.huyTheoDoi.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiTheoDoi->id }}">
+                                                <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
+                                                    <button style="all: unset; cursor: pointer;" type="submit">
+                                                        Đang theo dõi
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            @else
+                                            <form action="{{ route('client.theoDoi.store') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiTheoDoi->id }}">
+                                                <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #3C3C56">
+                                                    <button style="all: unset; cursor: pointer;">
+                                                        Theo dõi
+                                                    </button>
+                                                </div>
+                                            </form>
+                                            @endif
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>
                             <div class="col">
                                 <h3 class="text-center mb-5">Đang theo dõi</h3>
-                                <div class="content-scroll"
-                                    style="height: 400px;scrollbar-width: none; overflow-y: auto;">
+                                <div class="content-scroll" style="height: 400px;scrollbar-width: none; overflow-y: auto;">
                                     @foreach($nguoiDuocTheoDoi as $item)
-                                        <div class="sc-author-box style-3"
-                                            style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%">
-                                            <div class="author-style2 flex">
-                                                <div class="author-avatar">
-                                                    <a href="#">
-                                                        <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiDuocTheoDoi->anh_dai_dien)}}"
-                                                            alt="Image" class="avatar" style="width: 50px; height: 50px">
-                                                    </a>
-                                                    <div class="badge"><i class="ripple"></i></div>
-                                                </div>
-                                                <div class="author-infor">
-                                                    <h5><a href="#">{{$item->nguoiDuocTheoDoi->ten}}</a></h5>
-                                                    <div class="tag">{{$item->nguoiDuocTheoDoi->email}}</div>
-                                                    <span
-                                                        class="price">{{number_format($item->nguoiDuocTheoDoi->gia_tien, 0, ',')}}
-                                                        VND</span>
-                                                </div>
+                                    <div class="sc-author-box style-3" style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between; margin-left: 15%">
+                                        <div class="author-style2 flex">
+                                            <div class="author-avatar">
+                                                <a href="#">
+                                                    <img src="{{\Illuminate\Support\Facades\Storage::url($item->nguoiDuocTheoDoi->anh_dai_dien)}}" alt="Image"
+                                                        class="avatar" style="width: 50px; height: 50px">
+                                                </a>
+                                                <div class="badge"><i class="ripple"></i></div>
                                             </div>
-                                            <div class="action">
-                                                <div class="btn-follow"
-                                                    style="width: 100px; margin-left: -5%; background-color: #0575D8">
-                                                    <a href="#">Đang theo dõi</a>
-                                                </div>
+                                            <div class="author-infor">
+                                                <h5><a href="#">{{$item->nguoiDuocTheoDoi->ten}}</a></h5>
+                                                <div class="tag">{{$item->nguoiDuocTheoDoi->email}}</div>
+                                                <span class="price">{{number_format($item->nguoiDuocTheoDoi->gia_tien, 0, ',')}} VND</span>
                                             </div>
                                         </div>
+                                        <div class="action">
+                                            <form action="{{ route('client.huyTheoDoi.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="nguoi_duoc_theo_doi_id" value="{{ $item->nguoiDuocTheoDoi->id }}">
+                                                <div class="btn-follow" style="width: 100px; margin-left: -5%; background-color: #0575D8">
+                                                    <button style="all: unset; cursor: pointer;" type="submit">
+                                                        Đang theo dõi
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>
