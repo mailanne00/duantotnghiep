@@ -21,7 +21,7 @@ class VNPayController extends Controller
             'trang_thai' => 'Đang chờ xử lý',
         ]);
 
-        $vnp_TxnRef = rand(1000000000, 99000000000); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
+        $vnp_TxnRef = $napTien->id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
         $vnp_OrderInfo = "Nạp tiền cho user";
         $vnp_OrderType = "PLayer Duo";
         $vnp_Amount = $request->amount * 100;

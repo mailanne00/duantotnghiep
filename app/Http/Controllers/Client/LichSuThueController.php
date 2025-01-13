@@ -28,10 +28,7 @@ class LichSuThueController extends Controller
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-        $timeNow = Carbon::now();
-        $checkExpired = LichSuThue::where('expired', '<', $timeNow)
-            ->where('trang_thai', '=', '0')
-            ->update(['trang_thai' => '2']);
+        
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -167,7 +164,10 @@ class LichSuThueController extends Controller
     {
         $user = LichSuThue::find($id);
         $user->markAsProcessing();
-
+        $user->update([
+            'expired' => Carbon::parse($user->updated_at)->addHour($user->gio_thue)
+        ]);
+        
         return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
     }
 
