@@ -2,6 +2,7 @@ import "./bootstrap";
 
 let IdPhongNew = null;
 let nguoiNhanTen = "";
+let avatarNguoiNhan = "";
 
 document.addEventListener("DOMContentLoaded", () => {
     $("#sendMessageBtn").on("click", async function () {
@@ -26,8 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-            $("#chatMessage").val(""); // Reset ô nhập tin nhắn
+            console.log("Gửi tin nhắn thành công:", response.data);
+            $("#chatMessage").val("");
             IdPhongNew = response.data.phong_chat_id;
+            avatarNguoiNhan = response.data.nguoi_nhan.anh_dai_dien;
             // await markMessagesAsRead(IdPhongNew);
             // console.log(`Đã lắng nghe kênh phong-chat.${IdPhongNew}`);
         } catch (error) {
@@ -36,7 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function handleRoomClick(phongChatId, tenNguoiNhan, callback) {
+    function handleRoomClick(phongChatId, tenNguoiNhan, tinNhan, callback) {
+        console.log("Phòng chat ID:", phongChatId);
+        console.log("Tên người nhận:", tenNguoiNhan);
+
         const roomElement = document.querySelector(
             `.chat-user[data-room-id="${phongChatId}"]`
         );
@@ -54,9 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Tạo nội dung cho phòng mới
             newRoomElement.innerHTML = `
-                <img src="/assets/images/avatar/avt-6.jpg" alt="User Avatar" class="rounded-circle" width="40px" height="40px">
-                <span class="ms-2">${tenNguoiNhan}</span>
-                <span class="badge bg-danger ms-auto unread-count" data-room-id="${phongChatId}" style="display: none;">0</span>
+    <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
+                            <div class="chat-user-info ms-2">
+                                <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
+                                <p class="chat-last-message text-muted small mb-0">
+                    ${tinNhan || "Chưa có tin nhắn"}
+                </p>
             `;
 
             chatList.appendChild(newRoomElement);
@@ -69,17 +78,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    Echo.channel(`tin-nhan-moi-channel`)
+        .listen(".tin-nhan-moi.updated", (e) => {
+            // console.log("Tin nhắn mới:", e);
+
+            if (!e.tinNhan.phong_chat_id) {
+                console.error("IdPhong không được xác định!");
+                return;
+            }
+
+            if (
+                authUserId === e.tinNhan.nguoi_nhan ||
+                authUserId === e.tinNhan.nguoi_gui
+            ) {
+                toggleChatbox();
+                const chatListItem = document.querySelector(
+                    `.chat-user[data-room-id="${e.tinNhan.phong_chat_id}"]`
+                );
+                if (chatListItem) {
+                    const lastMessage =
+                        chatListItem.querySelector(".chat-last-message");
+                    if (lastMessage) {
+                        lastMessage.textContent = e.tinNhan.tin_nhan;
+                    }
+                }
+                handleRoomClick(
+                    e.tinNhan.phong_chat_id,
+                    nguoiNhanTen,
+                    e.tinNhan.tin_nhan
+                );
+                incrementNotificationBadge();
+            }
+        })
+        .error((error) => {
+            console.error("Lỗi khi lắng nghe kênh:", error);
+        });
+
     Echo.channel("lich-su-thue-channel").listen(
         ".lich-su-thue.updated",
         (data) => {
             const { lichSuThue } = data;
-
             if (lichSuThue) {
-                // console.log("Phòng chat đã được mở hoặc tạo mới.");
-
-                // Hiển thị thông tin đơn thuê trong phần #donThue
                 const donThueContainer = document.getElementById("donThue");
-                let remainingTime = 300; // 300 giây = 5 phút
+                let remainingTime = 300;
 
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
@@ -121,38 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     );
-
-    Echo.channel(`tin-nhan-moi-channel`)
-        .listen(".tin-nhan-moi.updated", (e) => {
-            // console.log("Tin nhắn mới:", e);
-
-            if (!e.tinNhan.phong_chat_id) {
-                console.error("IdPhong không được xác định!");
-                return;
-            }
-
-            if (
-                authUserId === e.tinNhan.nguoi_nhan ||
-                authUserId === e.tinNhan.nguoi_gui
-            ) {
-                toggleChatbox();
-                const chatListItem = document.querySelector(
-                    `.chat-user[data-room-id="${e.tinNhan.phong_chat_id}"]`
-                );
-                if (chatListItem) {
-                    const lastMessage =
-                        chatListItem.querySelector(".chat-last-message");
-                    if (lastMessage) {
-                        lastMessage.textContent = e.tinNhan.tin_nhan;
-                    }
-                }
-                handleRoomClick(e.tinNhan.phong_chat_id, nguoiNhanTen);
-                incrementNotificationBadge();
-            }
-        })
-        .error((error) => {
-            console.error("Lỗi khi lắng nghe kênh:", error);
-        });
 });
 
 // Hàm định dạng thời gian

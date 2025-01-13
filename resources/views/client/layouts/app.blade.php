@@ -25,6 +25,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/thongtin.css') }}">
 
     <!-- Sweetalert2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -285,9 +286,6 @@
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="">Đăng tin</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
