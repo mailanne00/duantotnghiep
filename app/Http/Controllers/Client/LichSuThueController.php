@@ -9,6 +9,7 @@ use App\Http\Requests\LichSuThueRequest;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use App\Models\PhongChat;
+use App\Models\ThongBao;
 use App\Models\TinNhan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -74,9 +75,14 @@ class LichSuThueController extends Controller
             ->where('expired', '<=', $timeNow)
             ->first();
 
+        ThongBao::create([
+            'nguoi_gui_id' => auth()->user()->id,
+            'noi_dung' => 'đã gửi yêu cầu duo cùng bạn',
+            'tai_khoan_id' => $validateData['user_id']
+        ]);
         $user_dang_nhap = TaiKhoan::where('id', auth()->user()->id)->first();
 
-        if($user_dang_nhap->so_du < $request->tong_gia){
+        if ($user_dang_nhap->so_du < $request->tong_gia) {
             return redirect()->back()->with('error', 'Số dư không đủ');
         }
 
@@ -224,16 +230,16 @@ class LichSuThueController extends Controller
     {
         $user = LichSuThue::find($id);
 
-        if($user->trang_thai == 0){
+        if ($user->trang_thai == 0) {
             $user->markAsCancelled();
 
             $taiKhoan = auth()->user();
             $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
             $taiKhoan->save();
 
-        return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
+            return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
         }
-        
+
         return redirect()->back()->with('error', 'Xảy ra lỗi khi thao tác');
     }
 
@@ -241,31 +247,30 @@ class LichSuThueController extends Controller
     {
         $lichSuThue = LichSuThue::find($id);
 
-        if($lichSuThue->trang_thai == 0){
+        if ($lichSuThue->trang_thai == 0) {
             $lichSuThue->markAsCancelled();
 
             $taiKhoan = TaiKhoan::where('id', $request->tai_khoan_id)->first();
-    
+
             $taiKhoan->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
             $taiKhoan->save();
-    
+
             return redirect()->back()->with('success', 'Từ chối thuê thành công.');
         }
 
         return redirect()->back()->with('error', 'Xảy ra lỗi khi thao tác');
-        
     }
 
     public function nhanDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id);
 
-        if($user->trang_thai == 0){
+        if ($user->trang_thai == 0) {
             $user->markAsProcessing();
             $user->update([
                 'expired' => Carbon::parse($user->updated_at)->addHour($user->gio_thue)
             ]);
-            
+
             return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
         }
 
@@ -276,7 +281,7 @@ class LichSuThueController extends Controller
     {
         $lichSuThue = LichSuThue::find($id);
 
-        if($lichSuThue->trang_thai == 3){
+        if ($lichSuThue->trang_thai == 3) {
             $lichSuThue->markAsEnd();
 
             $user = TaiKhoan::where('id', $request->user_id)->first();

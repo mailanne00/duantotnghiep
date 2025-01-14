@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title')</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <meta name="author" content="themesflat.com">
@@ -255,7 +255,6 @@
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
-
     <!-- preloade -->
     {{-- <div class="preload preload-container"> --}}
     {{-- <div class="preload-logo"></div> --}}
@@ -581,7 +580,7 @@
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-4 col-md-4 col-sm-5 col-5">
                             <div class="widget widget-menu fl-st-3">
                                 <h5 class="title-widget">Tổng đài hỗ trợ</h5>
