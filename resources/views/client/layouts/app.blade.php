@@ -13,6 +13,8 @@
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title')</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <meta name="author" content="themesflat.com">
 
     <!-- Mobile Specific Metas -->
@@ -30,7 +32,9 @@
 
     <!-- Sweetalert2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('css')
     <style>
         .flat-title-page.style3 .heading {
@@ -305,8 +309,6 @@
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
-
-
     <!-- preloade -->
     {{-- <div class="preload preload-container"> --}}
     {{-- <div class="preload-logo"></div> --}}
@@ -340,6 +342,9 @@
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="{{ route('client.danhmuc') }}">Danh Mục</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
@@ -410,8 +415,9 @@
                                         <div class="admin_active" id="header_admin">
                                             <div class="header_avatar">
                                                 <div class="popup-notification">
-                                                    <div class="notification">
-                                                        <span class="number">3</span>
+                                                    <div class="notification" id="nutBamDocThongBao"
+                                                        onclick="docThongBao()">
+                                                        <span class="number" id="numberNotification">0</span>
                                                         <svg width="19" height="22" viewBox="0 0 19 22"
                                                             fill="#fff" xmlns="../../../www.w3.org/2000/svg.html">
                                                             <path
@@ -424,14 +430,9 @@
                                                             <h4>Thông báo</h4>
                                                         </div>
                                                         <div class="flat-tabs">
-                                                            <ul class="menu-tab">
-                                                                <li class="active"><span>Tất cả</span></li>
-                                                                <li><span>Chưa đọc</span></li>
-                                                            </ul>
                                                             <div class="content-tab">
-                                                                <div class="content-inner">
+                                                                <div class="content-inner" id="noiDungThongBao">
                                                                     <div class="wrap-box">
-                                                                        <div class="heading">Hôm nay</div>
                                                                         <div class="sc-box">
                                                                             <div class="content">
                                                                                 <div class="avatar">
@@ -448,28 +449,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content-inner">
-                                                                    <div class="wrap-box">
-                                                                        <div class="heading">Today</div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following
-                                                                                        you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -659,42 +638,30 @@
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu style-1">
-                                <h5 class="title-widget">My Account</h5>
+
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-5">
+                            <div class="widget widget-menu fl-st-3">
+                                <h5 class="title-widget">Tổng đài hỗ trợ</h5>
                                 <ul>
-                                    <li><a href="author01.html">Authors</a></li>
-                                    <li><a href="connect-wallet.html">Collection</a></li>
-                                    <li><a href="profile.html">Author Profile</a></li>
-                                    <li><a href="create-item.html">Create Item</a></li>
+                                    <li><a href="explore-1.html">Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h
+                                            - 24h)</a></li>
+                                    <li><a href="contact1.html">Email: caodang@fpt.edu.vn</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-7 col-7">
                             <div class="widget widget-menu style-2">
-                                <h5 class="title-widget">Resources</h5>
+                                <h5 class="title-widget">Về chúng tôi</h5>
                                 <ul>
+                                    <li><a href="auctions.html">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="auctions.html">Live Auctions</a></li>
-                                    <li><a href="item-details.html">Item Details</a></li>
-                                    <li><a href="activity1.html">Activity</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu fl-st-3">
-                                <h5 class="title-widget">Chúng tôi</h5>
-                                <ul>
-                                    <li><a href="explore-1.html">Explore</a></li>
-                                    <li><a href="contact1.html">Liên hệ</a></li>
-                                    <li><a href="blog.html">Our Blog</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="item-details.html">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-7 col-12">
                             <div class="widget widget-subcribe">
-                                <h5 class="title-widget">Subscribe Us</h5>
+                                <h5 class="title-widget">Theo dõi chúng tôi qua</h5>
                                 <div class="form-subcribe">
                                     <form id="subscribe-form" action="#" method="GET" accept-charset="utf-8"
                                         class="form-submit">
@@ -738,6 +705,75 @@
     <a id="scroll-top"></a>
 
     <!-- Javascript -->
+    <script>
+        function loadThongBa0() {
+            $.ajax({
+                url: '/api/thong-bao', // URL server xử lý
+                method: 'get', // Phương thức HTTP
+                headers: {
+                    'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
+                },
+                success: function(data) {
+                    let html = '';
+                    let daDoc = 0
+                    for (let index = 0; index < data.length; index++) {
+                        if (data[index].da_doc == 0) {
+                            daDoc++
+                        }
+                        html += `
+                                                                    <div class="wrap-box">
+                                                                        <div class="sc-box">
+                                                                            <div class="content">
+                                                                                <div class="avatar">
+                                                                                    <img src="assets/images/avatar/avt-6.jpg"
+                                                                                        alt="">
+                                                                                </div>
+                                                                                <div class="infor">
+                                                                                    <span class="fw-7">${data[index].nguoi_gui.ten}</span>
+                                                                                    <span>${data[index].noi_dung}.</span>
+                                                                                    <p>${data[index].cach_day} trước
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                `
+                    }
+                    if (daDoc > 0) {
+                        if (jqk == false) {
+                            document.getElementById('nutBamDocThongBao').click();
+                        } else {
+                            docThongBao();
+                        }
+                    }
+                    document.getElementById('numberNotification').innerHTML = daDoc
+                    document.getElementById('noiDungThongBao').innerHTML = html;
+                }
+            });
+        }
+        loadThongBa0()
+        setInterval(() => {
+            loadThongBa0()
+        }, 3000);
+        var jqk = false;
+
+        function docThongBao() {
+            if (jqk == false) {
+                jqk = true
+            } else {
+                jqk = false
+            }
+            document.getElementById('numberNotification').innerHTML = 0
+            $.ajax({
+                url: '/api/thong-bao/da-doc', // URL server xử lý
+                method: 'get', // Phương thức HTTP
+                headers: {
+                    'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
+                },
+                success: function(data) {}
+            });
+        }
+    </script>
     <script src="{{ asset('assets/js/chatbox.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>

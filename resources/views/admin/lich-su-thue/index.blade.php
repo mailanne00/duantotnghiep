@@ -21,8 +21,7 @@
                                 <th>Người thuê</th>
                                 <th>Người được thuê</th>
                                 <th>Giá thuê 1h</th>
-                                <th>giờ thuê</th>
-                                <th>Lợi nhuận</th>
+                                <th>Giờ thuê</th>
                                 <th>Thời gian bắt đầu</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
@@ -32,18 +31,17 @@
                             @foreach($lichSuThues as $lichSuThue)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                    <td>{{$lichSuThue->id}}</td>
                                     <td>{{$lichSuThue->nguoiThue->ten}}</td>
                                     <td>{{$lichSuThue->nguoiDuocThue->ten}}</td>
-                                    <td>{{number_format($lichSuThue->gia_thue, 0, ',')}} VNĐ</td>
+                                    <td>{{number_format($lichSuThue->gia_thue, 0, ',', '.')}} VNĐ</td>
                                     <td>{{$lichSuThue->gio_thue}}</td>
-                                    <td>{{number_format($lichSuThue->gio_thue * $lichSuThue->gia_thue * $lichSuThue->nguoiDuocThue->loi_nhuan / 100, 0, ',')}}
-                                        VNĐ</td>
                                     <td>{{$lichSuThue->created_at}}</td>
                                     <td><span class="badge text-bg-{{$lichSuThue->mau}}">{{$lichSuThue->trangThai2}}</span>
                                     </td>
                                     <td>
                                         <a class="btn btn-info" data-bs-toggle="modal"
-                                            data-bs-target="#modalChiTiet_{{ $lichSuThue->id }}">Xem chi tiết</a>
+                                            data-bs-target="#modalChiTiet_{{ $lichSuThue->id }}">Chi tiết</a>
                                     </td>
                                 </tr>
 
@@ -165,11 +163,11 @@
                         <tfoot>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã đơn thuê</th>
                                 <th>Người thuê</th>
                                 <th>Người được thuê</th>
                                 <th>Giá thuê 1h</th>
-                                <th>giờ thuê</th>
-                                <th>Lợi nhuận</th>
+                                <th>Giờ thuê</th>
                                 <th>Thời gian bắt đầu</th>
                                 <th>Trạng thái</th>
                                 <th>Chức năng</th>
