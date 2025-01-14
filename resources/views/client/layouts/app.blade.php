@@ -12,7 +12,9 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title')</title>
-
+    @vite('resources/js/app.js')
+    @vite('resources/js/createChat.js')
+    @vite('resources/js/present.js')
     <meta name="author" content="themesflat.com">
 
     <!-- Mobile Specific Metas -->
@@ -300,8 +302,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @vite('resources/js/app.js')
-    @vite('resources/js/createChat.js')
+
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
@@ -640,7 +641,7 @@
                 // Khai báo user id
                 const authUserId = @json(Auth::id());
             </script>
-            @vite('resources/js/present.js')
+
 
             <footer id="footer" class="footer-light-style clearfix">
                 <div class="themesflat-container">

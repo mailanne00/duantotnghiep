@@ -296,6 +296,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            Echo.join("presence-online-users")
+                .here((users) => {
+                    users.forEach((user) => {
+                        updateUserStatus(user.id, true); // Cập nhật trạng thái người dùng
+                    });
+                })
+                .joining((user) => {
+                    updateUserStatus(user.id, true); // Người dùng tham gia
+                })
+                .leaving((user) => {
+                    updateUserStatus(user.id, false); // Người dùng rời khỏi
+                });
+
             // Lọc lịch sử thuê chưa hết hạn
 
             const validLichSuThue = LichSuThue.data.filter((lichSuThue) => {
@@ -315,10 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const donThueContainer = document.getElementById("donThue");
 
             let trangThai = "";
+
             if (validLichSu.length > 0) {
                 const lichSuThue = validLichSu[0];
 
                 trangThai = Number(lichSuThue.trang_thai);
+                console.log("trangThai", trangThai);
+
                 let remainingTime = Math.floor(
                     (new Date(lichSuThue.expired) - new Date()) / 1000
                 );
@@ -342,8 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 if (trangThai === 0) {
-                    clearInterval(countdownInterval);
-
                     donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                         <h5 class="mb-2">${notificationMessage}</h5>
@@ -468,6 +482,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                 var successMessage = document.getElementById(
                                     "reportSuccessMessage"
                                 );
+                                console.log(
+                                    "Thông báo của tố cáo",
+                                    successMessage
+                                );
 
                                 var nguoiToCao = authUserId;
                                 var nguoiBiToCao = lichSuThue.nguoi_duoc_thue;
@@ -559,38 +577,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     .addEventListener("click", () => {
                         window.location.href = linkUrl; // Chuyển hướng khi bấm "Đi đến đơn thuê"
                     });
-
-                // Đếm ngược thời gian
-                const countdownInterval = setInterval(() => {
-                    remainingTime--;
-                    const countdownTimer =
-                        document.getElementById("countdownTimer");
-                    if (countdownTimer) {
-                        countdownTimer.textContent = formatTime(remainingTime);
-                    }
-
-                    if (remainingTime <= 0) {
-                        clearInterval(countdownInterval);
-                        donThueContainer.innerHTML = `
-                            <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
-                                <h5 class="mb-2">${notificationMessage}</h5>
-                                <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} Giờ</p>
-                                <p class="mb-1">Đơn thuê này đã hết hạn, vui lòng thuê lại</p>
-                                <div class="button-group mt-3">
-                                    <button class="btn btn-success me-2" id="retryBtn">Thuê lại</button>
-                                </div>
-                            </div>
-                        `;
-
-                        // Xử lý sự kiện khi bấm nút "Thuê lại"
-                        const retryBtn = document.getElementById("retryBtn");
-                        if (retryBtn) {
-                            retryBtn.addEventListener("click", () => {
-                                donThueContainer.innerHTML = ""; // Xóa nội dung hiển thị khi bấm nút "Thuê lại"
-                            });
-                        }
-                    }
-                }, 1000);
             }
 
             function formatTime(seconds) {
@@ -598,20 +584,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const secs = seconds % 60;
                 return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
             }
-
-            // Lắng nghe sự kiện người dùng online/offline
-            Echo.join("presence-online-users")
-                .here((users) => {
-                    users.forEach((user) => {
-                        updateUserStatus(user.id, true); // Cập nhật trạng thái người dùng
-                    });
-                })
-                .joining((user) => {
-                    updateUserStatus(user.id, true); // Người dùng tham gia
-                })
-                .leaving((user) => {
-                    updateUserStatus(user.id, false); // Người dùng rời khỏi
-                });
         } catch (error) {
             console.error("Error in updateChatHeader:", error);
         }
