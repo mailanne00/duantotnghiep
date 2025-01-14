@@ -49,37 +49,174 @@
                                         Xem Chi Tiết
                                     </button>
 
-                                    <button class="btn btn-info" data-toggle="modal" data-target="#commentsModal_{{ $blog->id }}">Xem bình luận</button>
-
+                                    
                                 </td>
                             </tr>
-                            <!-- Modal Xem Bình Luận -->
-                            <div class="modal fade" id="commentsModal_{{ $blog->id }}" tabindex="-1" aria-labelledby="commentsModalLabel_{{ $blog->id }}" aria-hidden="true">
+                            <!-- Modal Xem Chi Tiết Bài Viết -->
+                            <div class="modal fade" id="postDetailModal{{$blog->id}}" tabindex="-1" aria-labelledby="postDetailModalLabel{{$blog->id}}" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <div class="modal-content">
+                                    <div class="modal-content" style="width:800px; margin-top:50px; margin-left: -30%; border-radius:10px">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="commentsModalLabel_{{ $blog->id }}">Bình luận bài viết: {{$blog->taiKhoan->ten}}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <h5 class="modal-title" style="color: black" id="postDetailModalLabel{{$blog->id}}">Chi Tiết Bài Viết</h5>
+                                            
                                         </div>
                                         <div class="modal-body">
-                                            @if($blog->binhLuans->count())
-                                            <ul class="list-group">
-                                                @foreach($blog->binhLuans as $comment)
-                                                <li class="list-group-item">
-                                                    <strong>{{ $comment->taiKhoan->ten }}:</strong>
-                                                    {{ $comment->noi_dung }}
-                                                </li>
-                                                @endforeach
-                                            </ul>
-                                            @else
-                                            <p>Chưa có bình luận nào.</p>
+                                            <h3>{{$blog->taiKhoan->ten}}</h3>
+                                            <p>{{$blog->noi_dung}}</p>
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url($blog->anh)}}" alt="" class="img-fluid">
+                                            <div class="comments">
+                                                @foreach ($blog->binhLuans as $binhLuan)
+                                                <div class="comment mb-3" style="display:flex">
+                                                    <!-- Avatar người bình luận -->
+                                                    <img src="{{Storage::url($binhLuan->taiKhoan->anh_dai_dien)}}" alt="" style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-top:10px">
 
-                                        </div> @endif
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <!-- Tên người bình luận và nội dung bình luận -->
+                                                    <div style="margin-left:10px;">
+                                                        <strong>{{ $binhLuan->taiKhoan->ten }}</strong> <!-- Tên người bình luận -->
+                                                        <p style="color: #34353A; background-color:#EFF2F5; padding: 10px; border-radius: 10px; margin-top: 5px;">{{ $binhLuan->noi_dung }}</p>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                 </div>
+                                <style>
+                                    <style>.modal-content {
+                                        border-radius: 12px;
+                                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                                        padding: 20px;
+                                        background-color: #fff;
+                                        transition: transform 0.3s ease-in-out;
+                                    }
+
+                                    .modal-header {
+                                        background-color: #f8f9fa;
+                                        border-bottom: 2px solid #dee2e6;
+                                        padding: 15px 20px;
+                                        text-align: center;
+                                    }
+
+                                    .modal-title {
+                                        color: #34353A;
+                                        font-size: 24px;
+                                        font-weight: 600;
+                                    }
+
+                                    .modal-body {
+                                        padding: 20px;
+                                        max-height: 500px;
+                                        overflow-y: auto;
+                                    }
+
+                                    .modal-footer {
+                                        padding: 10px 15px;
+                                        text-align: center;
+                                    }
+
+                                    .modal-footer .btn {
+                                        font-size: 16px;
+                                        padding: 10px 20px;
+                                        border-radius: 8px;
+                                    }
+
+                                    .modal-footer .btn-primary {
+                                        background-color: #007bff;
+                                        border: none;
+                                    }
+
+                                    .modal-footer .btn-secondary {
+                                        background-color: #6c757d;
+                                        border: none;
+                                    }
+
+                                    .modal .modal-dialog {
+                                        max-width: 800px;
+                                        margin: 30px auto;
+                                    }
+
+                                    /* Định dạng ảnh bài viết */
+                                    .modal-body img {
+                                        width: 100%;
+                                        border-radius: 10px;
+                                        margin-bottom: 15px;
+                                    }
+
+                                    /* Giao diện bình luận */
+                                    .comments .comment {
+                                        display: flex;
+                                        align-items: flex-start;
+                                        background-color: #f9f9f9;
+                                        padding: 12px;
+                                        margin-bottom: 15px;
+                                        border-radius: 8px;
+                                        transition: background-color 0.3s;
+                                    }
+
+                                    .comments .comment:hover {
+                                        background-color: #f1f1f1;
+                                    }
+
+                                    .comments .comment-avatar {
+                                        border-radius: 50%;
+                                        width: 40px;
+                                        height: 40px;
+                                        margin-right: 10px;
+                                        object-fit: cover;
+                                    }
+
+                                    .comments .comment-text {
+                                        flex-grow: 1;
+                                    }
+
+                                    .comments .comment strong {
+                                        font-weight: bold;
+                                        color: #34353A;
+                                    }
+
+                                    .comments .comment p {
+                                        background-color: #eff2f5;
+                                        padding: 10px;
+                                        border-radius: 10px;
+                                        font-size: 16px;
+                                        color: #34353A;
+                                        margin-top: 5px;
+                                    }
+
+                                    /* Style cho textarea */
+                                    textarea.form-control {
+                                        border-radius: 8px;
+                                        font-size: 16px;
+                                        padding: 12px;
+                                        margin-top: 15px;
+                                        border: 1px solid #ccc;
+                                        box-sizing: border-box;
+                                    }
+
+                                    textarea.form-control:focus {
+                                        border-color: #007bff;
+                                        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+                                    }
+
+                                    /* Style cho nút gửi */
+                                    button[type="submit"] {
+                                        background-color: #007bff;
+                                        color: white;
+                                        border-radius: 8px;
+                                        border: none;
+                                        padding: 12px 25px;
+                                        font-size: 16px;
+                                        cursor: pointer;
+                                        margin-top: 10px;
+                                        width: 100%;
+                                    }
+
+                                    button[type="submit"]:hover {
+                                        background-color: #0056b3;
+                                    }
+                                </style>
+                                </style>
                             </div>
                             @endforeach
                         </tbody>
@@ -99,35 +236,7 @@
         </div>
     </div>
 
-    <!-- Modal Xem Chi Tiết Bài Viết -->
-    <div class="modal fade" id="postDetailModal{{$blog->id}}" tabindex="-1" aria-labelledby="postDetailModalLabel{{$blog->id}}" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="width:800px; margin-top:50px; margin-left: -30%; border-radius:10px">
-                <div class="modal-header">
-                    <h5 class="modal-title" style="color: black" id="postDetailModalLabel{{$blog->id}}">Chi Tiết Bài Viết</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3>{{$blog->taiKhoan->ten}}</h3>
-                    <p>{{$blog->noi_dung}}</p>
-                    <img src="{{\Illuminate\Support\Facades\Storage::url($blog->anh)}}" alt="" class="img-fluid">
-                    <div class="comments">
-                        @foreach ($blog->binhLuans as $binhLuan)
-                        <div class="comment mb-3" style="display:flex">
-                            <img src="{{Storage::url($binhLuan->taiKhoan->anh_dai_dien)}}" alt="" style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-top:10px">
-                            <p style="margin-left:2%; margin-top:1%; color: #34353A; background-color:#EFF2F5; padding: 10px; border-radius: 10px">{{$binhLuan->noi_dung}}</p>
-                        </div>
-                        @endforeach
-                    </div>
-                    <form action="{{route('client.binhLuan.store', $blog->id)}}" method="post">
-                        @csrf
-                        <textarea class="form-control mt-5 my-2" id="newComment" name="noi_dung" style="font-size: 16px" placeholder="Viết bình luận..."></textarea>
-                        <button type="submit" class="btn btn-primary" style="width:80px;">Gửi</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 </div>
 
@@ -143,4 +252,4 @@
 <script src="{{asset('assets-admin/plugins/data-tables/js/datatables.min.js')}}"></script>
 <script src="{{asset('assets-admin/js/pages/data-basic-custom.js')}}"></script>
 
-@endsection
+@endsectiont

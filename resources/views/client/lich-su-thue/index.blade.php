@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="content-collection pad-t-4">
                                     <h5 class="title mb-15" style="transform: translateY(25px);"><a
-                                            href="item-details.html">{{ $user->nguoiDuocThue->ten }}</a></h5>
+                                            href="">{{ $user->nguoiDuocThue->ten }}</a></h5>
                                     <div class="author flex">
                                         <!-- <div class="author-avatar">
                                                                         <img src="assets/images/avatar/author_rank.jpg" alt="Images">
