@@ -311,28 +311,37 @@ document.addEventListener("DOMContentLoaded", () => {
             const validLichSu = [...validLichSuThue, ...validLichSuDuocThue];
             const donThueContainer = document.getElementById("donThue");
 
+            let trangThai = "";
             if (validLichSu.length > 0) {
                 const lichSuThue = validLichSu[0];
+
+                trangThai = Number(lichSuThue.trang_thai);
                 let remainingTime = Math.floor(
                     (new Date(lichSuThue.expired) - new Date()) / 1000
                 );
 
                 // Hiển thị thông báo cho người thuê hoặc người được thuê
                 let notificationMessage = "";
+                let linkUrl = "";
                 if (validLichSuThue.length > 0) {
                     // Người thuê đang có đơn thuê
                     notificationMessage = `Bạn đang có đơn thuê: ${
                         lichSuThue.nguoi_duoc_thue_info.ten ||
                         "Tên người nhận đơn"
                     }`;
+                    linkUrl = "/lich-su-thue";
                 } else if (validLichSuDuocThue.length > 0) {
                     // Người được thuê có đơn thuê đến từ
                     notificationMessage = `Bạn đang có đơn thuê đến từ: ${
                         lichSuThue.nguoi_thue_info.ten || "Tên người gửi đơn"
                     }`;
+                    linkUrl = "/lich-su-duoc-thue";
                 }
 
-                donThueContainer.innerHTML = `
+                if (trangThai === 0) {
+                    clearInterval(countdownInterval);
+
+                    donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                         <h5 class="mb-2">${notificationMessage}</h5>
                         <p class="mb-1"><strong>Thời gian thuê:</strong>${
@@ -347,10 +356,82 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 `;
 
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            // Ẩn popup bằng cách xóa nội dung
+                            donThueContainer.innerHTML = "";
+                        });
+                    }
+                }
+
+                if (trangThai === 1) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                        <p class="mb-1">Đơn này đã thanh công</p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="retryBtn">Tuyệt vời</button>
+                        </div>
+                    </div>
+                `;
+
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            // Ẩn popup bằng cách xóa nội dung
+                            donThueContainer.innerHTML = "";
+                        });
+                    }
+                }
+
+                if (trangThai === 2) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                        <p class="mb-1">Đơn này đã bị hủy</p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="retryBtn">Tiếc quá</button>
+                        </div>
+                    </div>
+                `;
+
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            donThueContainer.innerHTML = ""; // Xóa nội dung hiển thị khi bấm nút "Thuê lại"
+                        });
+                    }
+                }
+
+                if (trangThai === 3) {
+                    console.log("Trang thái hiện tại là 3");
+                    donThueContainer.innerHTML = `
+                        <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                            <h5 class="mb-2">${notificationMessage}</h5>
+                            <p class="mb-1"><strong>Thời gian thuê:</strong>${
+                                lichSuThue.gio_thue
+                            } Giờ</p>
+                            <p class="mb-1"><strong>Đơn đang được thực hiện:</strong> <span id="countdownTimer">${formatTime(
+                                remainingTime
+                            )}</span></p>
+                            <div class="button-group mt-3">
+                                <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    console.error(
+                        "Unhandled trang_thai:",
+                        lichSuThue.trang_thai
+                    );
+                }
                 document
                     .getElementById("acceptBtn")
                     .addEventListener("click", () => {
-                        window.location.href = "/lich-su-duoc-thue"; // Chuyển hướng khi bấm "Đi đến đơn thuê"
+                        window.location.href = linkUrl; // Chuyển hướng khi bấm "Đi đến đơn thuê"
                     });
 
                 // Đếm ngược thời gian
