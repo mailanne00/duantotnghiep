@@ -218,6 +218,22 @@
             background-color: #218838;
         }
 
+        #tocaoBtn {
+            background-color: #d83e3e;
+            /* Màu xanh lá */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Nút chấp nhận khi hover */
+        #tocaoBtn:hover {
+            background-color: #e98787;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .chat-header-container {
@@ -244,6 +260,42 @@
                 padding: 8px 15px;
             }
         }
+
+        #reportReason {
+            border: 1px solid #ced4da;
+            /* Viền mỏng, màu xám nhạt */
+            border-radius: 8px;
+            /* Viền bo tròn */
+            padding: 10px;
+
+            line-height: 1.5;
+            /* Khoảng cách giữa các dòng chữ */
+            width: 100%;
+            /* Chiếm toàn bộ chiều rộng của container */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Hiệu ứng chuyển màu viền và đổ bóng */
+        }
+
+        #reportReason:focus {
+            border-color: #007bff;
+            /* Màu viền khi focus vào */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            /* Hiệu ứng bóng đổ khi focus */
+            outline: none;
+            /* Tắt outline mặc định của trình duyệt */
+        }
+
+        #reportReason::placeholder {
+            color: #6c757d;
+            /* Màu placeholder */
+            font-style: italic;
+            /* Kiểu chữ nghiêng cho placeholder */
+        }
+
+        .modal-header .modal-title {
+            color: #000;
+            /* Màu đen cho tiêu đề */
+        }
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -253,6 +305,7 @@
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
+
 
     <!-- preloade -->
     {{-- <div class="preload preload-container"> --}}
@@ -388,7 +441,8 @@
                                                                                 <div class="infor">
                                                                                     <span class="fw-7">Tyler
                                                                                         Covington</span>
-                                                                                    <span>started following you.</span>
+                                                                                    <span>started following
+                                                                                        you.</span>
                                                                                     <p>1 hour ago
                                                                                     </p>
                                                                                 </div>
@@ -408,7 +462,8 @@
                                                                                 <div class="infor">
                                                                                     <span class="fw-7">Tyler
                                                                                         Covington</span>
-                                                                                    <span>started following you.</span>
+                                                                                    <span>started following
+                                                                                        you.</span>
                                                                                     <p>1 hour ago
                                                                                     </p>
                                                                                 </div>
@@ -534,6 +589,8 @@
 
 
             <div class="chatbox-wrapper">
+
+
                 <div class="chatbox-header d-flex justify-content-between align-items-center p-3 bg-primary text-white rounded-top"
                     onclick="toggleChatbox()">
                     <div>
@@ -675,6 +732,7 @@
 
 
     </div>
+
     <!-- /#wrapper -->
 
     <a id="scroll-top"></a>
@@ -697,6 +755,28 @@
     <script src="{{ asset('assets/js/nft.js') }}"></script>
 
     @yield('script_footer')
+
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">Tố cáo player</h5>
+                </div>
+                <div class="modal-body">
+                    <textarea id="reportReason" class="form-control" rows="4" placeholder="Nhập lý do tố cáo"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <span id="reportSuccessMessage" class="text-success d-none">Đã thêm tố cáo thành công</span>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="cancelBtnToCao">Hủy</button>
+
+                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố
+                        cáo</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 
