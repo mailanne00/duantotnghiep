@@ -69,6 +69,8 @@ Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class,
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
 
+Route::post('/danh-gia/{id}', [LichSuThueController::class, 'danhGia'])->name('client.danhGia');
+
 // Thanh toán vn pay
 Route::post('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
 Route::get('/payment/vnpay-return', [\App\Http\Controllers\Client\VNPayController::class, 'paymentReturn']);
