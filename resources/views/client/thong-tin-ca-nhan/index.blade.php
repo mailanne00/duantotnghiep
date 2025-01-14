@@ -313,8 +313,4 @@
             updateSelectedCategories();
         });
     </script>
-<<<<<<< HEAD
-=======
-
->>>>>>> 60075d781ed357e7ee3dd53ca76cc93aecfeb3f3
 @endsection

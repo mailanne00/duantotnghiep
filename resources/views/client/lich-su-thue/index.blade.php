@@ -1,4 +1,4 @@
-@extends('client.layouts.app')
+@extends('client.layouts.app')o
 @section('title', 'Lịch sử thuê')
 @section('css')
 <style>
