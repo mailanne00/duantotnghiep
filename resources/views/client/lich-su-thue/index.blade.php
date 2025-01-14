@@ -1,4 +1,4 @@
-@extends('client.layouts.app')o
+@extends('client.layouts.app')
 @section('title', 'Lịch sử thuê')
 @section('css')
 <style>
@@ -218,7 +218,7 @@
                                                         VNĐ</span>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\TinNhanController;
+use App\Http\Controllers\Client\ToCaoController;
 
 // Ensure that the TinNhanController class exists in the specified namespace
 // If it does not exist, create the class in the specified namespace
@@ -36,6 +37,6 @@ Route::get('/lich-su-thue/{id}', [LichSuThueController::class, 'indexApiNguoiThu
 Route::get('thong-bao', [HomeController::class, 'thongBao'])->name('client.thongBao');
 Route::get('thong-bao/da-doc', [HomeController::class, 'docThongBao'])->name('client.thongBao');
 
-
+Route::post('/to-cao', [ToCaoController::class, 'store']);
 
 Route::post('/themDonThueApi', [LichSuThueController::class, 'themDonThueApi'])->name('client.themDonThueApi');
