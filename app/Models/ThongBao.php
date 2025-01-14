@@ -10,9 +10,9 @@ class ThongBao extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tieu_de',
         'noi_dung',
         'tai_khoan_id',
+        'nguoi_gui_id',
         'da_doc'
     ];
 
