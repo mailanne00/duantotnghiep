@@ -9,6 +9,8 @@ class DanhGia extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nguoi_thue_id', 'nguoi_duoc_thue_id', 'danh_gia', 'noi_dung', 'lich_su_thue_id'];
+
     public function nguoiThue() {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_thue_id');
     }
@@ -16,7 +18,7 @@ class DanhGia extends Model
         return $this->belongsTo(TaiKhoan::class, 'nguoi_duoc_thue_id');
     }
     public function lichSuThue() {
-        return $this->belongsTo(LichSuThue::class,'nguoi_thue_id');
+        return $this->belongsTo(LichSuThue::class,'lich_su_thue_id');
     }
 
 }

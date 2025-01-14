@@ -57,8 +57,6 @@ Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('c
 Route::delete('/player/{id}/delete-cccd', [ThongtinController::class, 'deleteCccd'])->name('player.delete_cccd');
 Route::delete('/player/{id}/delete-video', [ThongtinController::class, 'deleteVideo'])->name('player.delete_video');
 
-
-
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::post('/lich-su-don-thue/{id}/huy-don', [LichSuThueController::class, 'huyDonThue'])->name('client.huyDonThue');
@@ -68,6 +66,8 @@ Route::delete('/lich-su-don-thue/{id}/xoa-don', [LichSuThueController::class, 'x
 Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class, 'ketThucDonThue'])->name('client.ketThucDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
+
+Route::post('/danh-gia/{id}', [LichSuThueController::class, 'danhGia'])->name('client.danhGia');
 
 // Thanh toán vn pay
 Route::post('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);

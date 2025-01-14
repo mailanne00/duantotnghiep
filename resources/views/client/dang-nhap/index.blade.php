@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Đăng nhập')
+
 @section('content')
 <section class="flat-title-page inner">
     <div class="overlay"></div>
@@ -54,12 +56,12 @@
                     <div class="form-inner">
                         <form action="{{ route('dangnhap.store') }}" method="POST" id="contactform">
                             @csrf
-                            <input id="email" name="email" type="email" tabindex="1" value="" aria-required="true"
+                            <input id="email" name="email" type="email" tabindex="1" value="{{ old('email') }}" aria-required="true"
                                 type="text" placeholder="Email" required>
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            <input id="pass" name="pass" type="password" tabindex="2" value="" aria-required="true"
+                            <input id="pass" name="pass" type="password" tabindex="2" value="{{ old('pass') }}" aria-required="true"
                                 type="email" placeholder="Mật khẩu" required>
                             @error('pass')
                                 <div class="alert alert-danger">{{ $message }}</div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\TinNhanController;
 use App\Http\Controllers\Client\ToCaoController;
@@ -33,6 +34,8 @@ Route::post('/tao-chat', [TinNhanController::class, 'taoChatMoi'])->name('client
 Route::post('/tin-nhan/{phongChatId}/read', [TinNhanController::class, 'markAsRead']);
 Route::get('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'indexApiNguoiDuocThue']);
 Route::get('/lich-su-thue/{id}', [LichSuThueController::class, 'indexApiNguoiThue']);
+Route::get('thong-bao', [HomeController::class, 'thongBao'])->name('client.thongBao');
+Route::get('thong-bao/da-doc', [HomeController::class, 'docThongBao'])->name('client.thongBao');
 
 Route::post('/to-cao', [ToCaoController::class, 'store']);
 
