@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã đơn thuê</th>
                                 <th>Người thuê</th>
                                 <th>Người được thuê</th>
                                 <th>Giá thuê 1h</th>

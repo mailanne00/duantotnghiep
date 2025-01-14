@@ -135,46 +135,44 @@
             </div>
         </div>
     </section>
+</section>
 
-    <div class="tf-connect-wallet tf-section">
-        <div class="themesflat-container" style="margin-top: -50px">
-            <div class="row">
-                <div class="col-md-3">
-                    <ul class="nav flex-column nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#doanhthu">Doanh thu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#theodoi">Danh sách theo dõi User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#chan">Danh sách chặn User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#biendongsodu">Biến động số dư </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#naptien">Lịch sử nạp tiền</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#ruttien">Lịch sử rút tiền</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-9">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="doanhthu">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <!-- Bộ chuyển đổi giữa Ngày và Tháng -->
-                                <h4 id="chartTitle" class="text-white">Doanh thu theo ngày</h4>
-                                <div class="btn-group" role="group" aria-label="Doanh thu filter">
-                                    <button type="button" class="custom-btn btn active" id="filterDay">Ngày</button>
-                                    <button type="button" class="custom-btn btn" id="filterMonth">Tháng</button>
-                                </div>
+<div class="tf-connect-wallet tf-section">
+    <div class="themesflat-container" style="margin-top: -50px">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav flex-column nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#doanhthu">Doanh thu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#theodoi">Danh sách theo dõi User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#khachhangthanthiet">Khách hàng thân thiết </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#naptien">Lịch sử nạp tiền</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#ruttien">Lịch sử rút tiền</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="doanhthu">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <!-- Bộ chuyển đổi giữa Ngày và Tháng -->
+                            <h4 id="chartTitle" class="text-white">Doanh thu theo ngày</h4>
+                            <div class="btn-group" role="group" aria-label="Doanh thu filter">
+                                <button type="button" class="custom-btn btn active" id="filterDay">Ngày</button>
+                                <button type="button" class="custom-btn btn" id="filterMonth">Tháng</button>
                             </div>
-                            <canvas id="doanhThuChart" width="400" height="200"></canvas>
                         </div>
-                        <div class="tab-pane fade" id="theodoi">
+                        <canvas id="doanhThuChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="theodoi">
                             <div class="row"
                                 style="display: flex; justify-content: center; align-items: flex-start; gap: 20px;">
                                 <div class="col">
@@ -279,67 +277,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="chan">
-                            <div class="tf-box">
-                                <div class="row">
-                                    @foreach ($nguoiBiChan as $item)
-                                        <div class="col-md-6 col-lg-4 mb-4">
-                                            <div class="sc-author-box style-3"
-                                                style="width: 350px; background-color: #3C3C56; border-radius: 40px ; justify-content: space-between">
-                                                <div class="author-style2 flex">
-                                                    <div class="author-avatar">
-                                                        <a href="#">
-                                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($item->nguoiBiChan->anh_dai_dien) }}"
-                                                                alt="Image" class="avatar"
-                                                                style="width: 50px; height: 50px">
-                                                        </a>
-                                                    </div>
-                                                    <div class="author-infor">
-                                                        <h5><a href="#">{{ $item->nguoiBiChan->ten }}</a></h5>
-                                                        <div class="tag">{{ $item->nguoiBiChan->email }}</div>
-                                                        <span
-                                                            class="price">{{ number_format($item->nguoiBiChan->gia_tien, 0, ',') }}
-                                                            VND</span>
-                                                    </div>
-                                                </div>
-                                                <div class="action">
-                                                    <div class="btn-follow" style="width: 100px; margin-left: -5%">
-                                                        <a href="#">Đã chặn</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="biendongsodu">
-                            <div class="table-container">
+                        <div class="tab-pane fade" id="khachhangthanthiet">
+                        <div class="table-container">
                                 <table class="history-table">
                                     <thead>
                                         <tr>
-                                            <th>Thời gian</th>
-                                            <th>Số tiền</th>
-                                            <th>Nội dung</th>
+                                            <th>Top</th>
+                                            <th colspan="2">Người thuê</th>
+                                            <th>Số giờ thuê</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($khthanthiet as $item)
                                         <tr class="group">
-                                            <td>Vietcombank</td>
-                                            <td><span class="status text-danger">Thất bại</span></td>
-                                            <td>100.000 VND</td>
+                                            <td>Top {{$loop->iteration}}</td>
+                                            <td>{{$item->nguoiThue->ten}}</td>
+                                            <td><img src="{{Storage::url($item->nguoiThue->anh_dai_dien)}}" style="width:60px; height:60px; object-fit:cover; border-radius:10%" alt=""></td>
+                                            <td><span class="text-succsess">{{$item->total_hour}} giờ</span></td>
                                         </tr>
-                                        <tr class="group">
-                                            <td>TP bank</td>
-                                            <td><span class="status text-success">Thành công</span>
-                                            </td>
-                                            <td>100.000 VND</td>
-                                        </tr>
-                                        <tr class="group">
-                                            <td>MB bank</td>
-                                            <td><span class="status text-warning">Chờ xử lý</span></td>
-                                            <td>100.000 VND</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -414,7 +370,6 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

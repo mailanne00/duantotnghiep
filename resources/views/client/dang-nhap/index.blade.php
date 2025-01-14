@@ -11,7 +11,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="{{route('client.login')}}">Trang chủ</a></li>
+                        <li><a href="{{route('client.index')}}">Trang chủ</a></li>
                         <li>Đăng nhập</li>
                     </ul>
                 </div>

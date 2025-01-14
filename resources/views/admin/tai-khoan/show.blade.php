@@ -294,6 +294,7 @@
                 <div class="btn-group" role="group" aria-label="Doanh thu filter">
                     <button type="button" class="btn btn-outline-primary active" id="filterDay">Ngày</button>
                     <button type="button" class="btn btn-outline-primary" id="filterMonth">Tháng</button>
+                    <button type="button" class="btn btn-outline-primary" id="filterYear">Năm</button>
                 </div>
             </div>
             <!-- Biểu đồ -->
@@ -522,6 +523,9 @@
     // Cập nhật biểu đồ
     async function updateChart(url, title) {
         const data = await fetchData(url);
+
+        console.log(data);
+        
         doanhThuChart.data.labels = data.labels;
         doanhThuChart.data.datasets[0].data = data.data;
         doanhThuChart.update();
@@ -535,26 +539,43 @@
     // Sự kiện khi nhấn nút "Ngày"
     document.getElementById('filterDay').addEventListener('click', () => {
         updateChart(userId + '/doanh-thu/ngay', 'Doanh thu theo ngày');
-        toggleActiveButton('filterDay', 'filterMonth'); // Thay đổi trạng thái nút
+        toggleActiveButton('filterDay', ['filterYear', 'filterMonth']); // Thay đổi trạng thái nút
     });
 
     // Sự kiện khi nhấn nút "Tháng"
     document.getElementById('filterMonth').addEventListener('click', () => {
         updateChart(userId + '/doanh-thu/thang', 'Doanh thu theo tháng');
-        toggleActiveButton('filterMonth', 'filterDay'); // Thay đổi trạng thái nút
+        toggleActiveButton('filterMonth', ['filterDay', 'filterYear']); // Thay đổi trạng thái nút
     });
 
+    // Sự kiện khi nhấn nút "Năm"
+document.getElementById('filterYear').addEventListener('click', () => {
+    updateChart(userId + '/doanh-thu/nam', 'Doanh thu theo năm');
+    toggleActiveButton('filterYear', ['filterDay', 'filterMonth']); // Thay đổi trạng thái nút
+});
+
     // Hàm thay đổi trạng thái nút
-    function toggleActiveButton(activeId, inactiveId) {
-        const activeBtn = document.getElementById(activeId);
-        const inactiveBtn = document.getElementById(inactiveId);
+    // function toggleActiveButton(activeId, inactiveId) {
+    //     const activeBtn = document.getElementById(activeId);
+    //     const inactiveBtn = document.getElementById(inactiveId);
 
-        // Gán class 'active' cho nút được chọn
-        activeBtn.classList.add('active');
+    //     // Gán class 'active' cho nút được chọn
+    //     activeBtn.classList.add('active');
 
-        // Loại bỏ class 'active' khỏi nút không được chọn
+    //     // Loại bỏ class 'active' khỏi nút không được chọn
+    //     inactiveBtn.classList.remove('active');
+    // }
+
+    // Hàm thay đổi trạng thái nút với nhiều nút khác
+function toggleActiveButton(activeId, inactiveIds) {
+    const activeBtn = document.getElementById(activeId);
+    activeBtn.classList.add('active');
+
+    inactiveIds.forEach(id => {
+        const inactiveBtn = document.getElementById(id);
         inactiveBtn.classList.remove('active');
-    }
+    });
+}
 
     // Tải dữ liệu ban đầu (mặc định là doanh thu theo ngày)
     updateChart(userId + '/doanh-thu/ngay', 'Doanh thu theo ngày');

@@ -15,36 +15,36 @@ class TaiKhoanController extends Controller
 {
 
     public function index(Request $request)
-{
-    // Lấy các tham số từ request
-    $gioiTinh = $request->input('gioi_tinh');
-    $giaTienMin = $request->input('gia_tien_min');
-    $giaTienMax = $request->input('gia_tien_max');
+    {
+        // Lấy các tham số từ request
+        $gioiTinh = $request->input('gioi_tinh');
+        $giaTienMin = $request->input('gia_tien_min');
+        $giaTienMax = $request->input('gia_tien_max');
 
-    // Query danh sách tài khoản với điều kiện lọc
-    $taiKhoans = TaiKhoan::query();
+        // Query danh sách tài khoản với điều kiện lọc
+        $taiKhoans = TaiKhoan::query();
 
-    // Lọc theo giới tính
-    if (!empty($gioiTinh)) {
-        $taiKhoans->where('gioi_tinh', $gioiTinh);
+        // Lọc theo giới tính
+        if (!empty($gioiTinh)) {
+            $taiKhoans->where('gioi_tinh', $gioiTinh);
+        }
+
+        // Lọc theo giá tiền tối thiểu
+        if (!empty($giaTienMin)) {
+            $taiKhoans->where('so_du', '>=', $giaTienMin);
+        }
+
+        // Lọc theo giá tiền tối đa
+        if (!empty($giaTienMax)) {
+            $taiKhoans->where('so_du', '<=', $giaTienMax);
+        }
+
+        // Lấy danh sách sau khi áp dụng bộ lọc
+        $taiKhoans = $taiKhoans->get();
+
+        // Trả về view cùng với dữ liệu đã lọc
+        return view('admin.tai-khoan.index', compact('taiKhoans'));
     }
-
-    // Lọc theo giá tiền tối thiểu
-    if (!empty($giaTienMin)) {
-        $taiKhoans->where('so_du', '>=', $giaTienMin);
-    }
-
-    // Lọc theo giá tiền tối đa
-    if (!empty($giaTienMax)) {
-        $taiKhoans->where('so_du', '<=', $giaTienMax);
-    }
-
-    // Lấy danh sách sau khi áp dụng bộ lọc
-    $taiKhoans = $taiKhoans->get();
-
-    // Trả về view cùng với dữ liệu đã lọc
-    return view('admin.tai-khoan.index', compact('taiKhoans'));
-}
 
 
     public function create()
@@ -61,7 +61,7 @@ class TaiKhoanController extends Controller
             $flag = false;
             $c = explode(' ', $soNguoiTheoDoi->created_at);
             $c = $c[0];
-            $newDate = new \DateTime($c.' '. '24:59:59');
+            $newDate = new \DateTime($c . ' ' . '24:59:59');
             foreach ($date as $day) {
                 if ($day == $c) {
                     $flag = true;
@@ -69,11 +69,11 @@ class TaiKhoanController extends Controller
             }
 
             $date[] = $c;
-            if ($flag===false) {
+            if ($flag === false) {
                 $b = NguoiTheoDoi::query()->where('created_at', '<=', $newDate)->get()->count();
                 $a[] = [
                     'date' => $c,
-                    'follower'=>$b
+                    'follower' => $b
                 ];
             }
         }
@@ -126,12 +126,12 @@ class TaiKhoanController extends Controller
         ]);
     }
 
-    public function layDoanhThuThang()
+    public function layDoanhThuThang(int $id)
     {
         $currentYear = Carbon::now()->year;  // Năm hiện tại
 
         // Lọc các bản ghi theo người được thuê, trạng thái và tháng năm hiện tại
-        $lichSuThues = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+        $lichSuThues = LichSuThue::where("nguoi_duoc_thue", $id)
             ->where("trang_thai", 1)
             ->whereYear('created_at', $currentYear)
             ->orderByDesc("id")
@@ -164,4 +164,38 @@ class TaiKhoanController extends Controller
             'year' => $currentYear,
         ]);
     }
+
+    public function layDoanhThuNam(int $id)
+    {
+        $lichSuThues = LichSuThue::where("nguoi_duoc_thue", $id)
+            ->where("trang_thai", 1)
+            ->orderByDesc("id")
+            ->get()
+            ->map(function ($lichSuThue) {
+                $lichSuThue->thoi_gian_ket_thuc = Carbon::parse($lichSuThue->created_at)->addHours($lichSuThue->gio_thue);
+                $lichSuThue->tong_tien_nhan = ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * 0.9;
+                return $lichSuThue;
+            });
+
+        $years = $lichSuThues->map(function ($lichSuThue) {
+            return Carbon::parse($lichSuThue->created_at)->year;
+        })->unique()->sort()->values();
+
+        // Tạo mảng doanh thu theo từng năm
+        $data = array_fill(0, $years->count(), 0);
+
+        // Lặp qua các bản ghi để tính tổng doanh thu theo từng năm
+        foreach ($lichSuThues as $lichSuThue) {
+            $year = Carbon::parse($lichSuThue->created_at)->year;
+            $index = $years->search($year); // Tìm vị trí của năm trong mảng $years
+            $data[$index] += $lichSuThue->tong_tien_nhan;
+        }
+
+        // Trả về response dạng JSON
+        return response()->json([
+            'labels' => $years,
+            'data' => $data,
+        ]);
+    }
+
 }

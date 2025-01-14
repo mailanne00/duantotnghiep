@@ -51,12 +51,9 @@
                     </div>
                     <div class="col-xl-9 col-lg-8 col-md-12 col-12">
                         <div class="form-upload-profile">
-
-
-
                             <div class="form-infor-profile">
                                 <div class="info-account">
-                                    <h4 class="title-create-item">Thông tin cả nhân</h4>
+                                    <h4 class="title-create-item">Thông tin cá nhân</h4>
                                     <fieldset>
                                         <h4 class="title-infor-account">Tên</h4>
                                         <input type="text" name="ten" placeholder="Tên đăng nhập"
@@ -193,9 +190,11 @@
                                 <div class="form-infor-profile">
                                     <h4 class="title-create-item">Trạng thái xác thực</h4>
                                     <p>
-                                        @if ($user->trang_thai_xac_thuc)
+                                        @if ($user->trang_thai_xac_thuc == 1)
                                             <span class="text-success">Đã xác thực</span>
-                                        @else
+                                            @elseif ($user->trang_thai_xac_thuc == 2)
+                                            <span class="text-danger">Từ chối xác thực</span>
+                                            @else
                                             <span class="text-danger">Chưa xác thực</span>
                                         @endif
                                     </p>

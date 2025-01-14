@@ -36,12 +36,16 @@ class ThongtinController extends Controller
 
     public function update(Request $request)
     {
-
         $user = TaiKhoan::query()->findOrFail(Auth::id());
-        $data = $request->except('anh_dai_dien', 'danh_muc');
+        $data = $request->except('anh_dai_dien', 'danh_muc', 'cccd', 'personal_video');
 
         if ($request->hasFile('anh_dai_dien')) {
-            Storage::disk('public')->delete($user->anh_dai_dien);
+            // Xóa ảnh đại diện cũ nếu tồn tại
+            if ($user->anh_dai_dien) {
+                Storage::disk('public')->delete($user->anh_dai_dien);
+            }
+        
+            // Lưu ảnh đại diện mới
             $data['anh_dai_dien'] = Storage::put(self::PATH_UPLOAD, $request->file('anh_dai_dien'));
         }
 
@@ -58,7 +62,6 @@ class ThongtinController extends Controller
             }
         }
 
-        $user->save();
         if ($request->hasFile('cccd')) {
             // Xóa ảnh CCCD cũ nếu có
             if ($user->cccd) {
@@ -82,15 +85,18 @@ class ThongtinController extends Controller
         }
         
         // Kiểm tra nếu cả ảnh CCCD và video được tải lên -> xác thực
-        if ($user->cccd && $user->personal_video) {
-            $user->trang_thai_xac_thuc = true;
-        } else {
-            $user->trang_thai_xac_thuc = false;
+        // if ($user->cccd && $user->personal_video) {
+        //     $user->trang_thai_xac_thuc = true;
+        // } else {
+        //     $user->trang_thai_xac_thuc = false;
+        // }
+
+        if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
+                $user->trang_thai_xac_thuc = 0;
         }
         
         $user->save();
-        
-        
+        $user->update($data);
 
         return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
     }
