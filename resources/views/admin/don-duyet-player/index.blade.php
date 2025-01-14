@@ -10,6 +10,11 @@
         {{ session('success') }}
     </div>
 @endif
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
@@ -23,9 +28,9 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tài khoản</th>
+                                <th>Số CCCD</th>
                                 <th>CCCD</th>
                                 <th>Video</th>
-                                <th>Trạng thái xác thực</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -34,6 +39,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$user_gui_xac_thuc->ten}}</td>
+                                    <td>{{$user_gui_xac_thuc->cccd_so}}</td>
                                     <td>
 
                                     <img src="{{\Illuminate\Support\Facades\Storage::url($user_gui_xac_thuc->cccd)}}" style="width: 215px; height: 130; object-fit: cover;" alt="">
@@ -46,7 +52,6 @@
                                         </video>
 
                                     </td>
-                                    <td>{{$user_gui_xac_thuc->trang_thai_xac_thuc}}</td>
                                     <td style="display: flex">
                                         <form action="{{route('admin.duyetPlayer', $user_gui_xac_thuc->id)}}" method="POST"
                                             onclick="return confirm('Bạn muốn xác thực người dùng này?')">
@@ -66,11 +71,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>STT</th>
+                            <th>STT</th>
                                 <th>Tài khoản</th>
+                                <th>Số CCCD</th>
                                 <th>CCCD</th>
                                 <th>Video</th>
-                                <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>
                         </tfoot>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TaiKhoan;
 use App\Models\ThongBao;
-use Illuminate\Http\Request;
 
 class DonDuyetPlayerController extends Controller
 {
@@ -14,6 +13,7 @@ class DonDuyetPlayerController extends Controller
         $user_gui_xac_thucs = TaiKhoan::where('trang_thai_xac_thuc', '0')
             ->where('cccd', '!=', null)
             ->where('personal_video', '!=', null)
+            ->where('cccd_so', '!=', null)
             ->get();
 
         return view('admin.don-duyet-player.index', compact('user_gui_xac_thucs'));
@@ -30,10 +30,12 @@ class DonDuyetPlayerController extends Controller
                 'noi_dung' => 'Người dùng ' . $user->ten . ' đã được xác thực thành công',
                 'tai_khoan_id' => $user->id
             ]);
+
+            return redirect()->route('admin.donDuyetPlayer')->with(['success' => 'Bạn đã xác thực thành công']);
         }
 
 
-        return redirect()->route('admin.donDuyetPlayer')->with(['success' => 'Bạn đã xác thực thành công']);
+        return redirect()->route('admin.donDuyetPlayer')->with(['error' => 'Đã xảy ra lỗi khi thao tác']);
     }
 
     public function huyDuyetPlayer($id)
@@ -47,8 +49,11 @@ class DonDuyetPlayerController extends Controller
                 'noi_dung' => 'Người dùng ' . $user->ten . ' đã được xác thực thất bại',
                 'tai_khoan_id' => $user->id
             ]);
+
+
+            return redirect()->route('admin.donDuyetPlayer')->with(['success' => 'Bạn đã từ chối xác thực']);
         }
 
-        return redirect()->route('admin.donDuyetPlayer')->with(['success' => 'Bạn đã từ chối xác thực']);
+        return redirect()->route('admin.donDuyetPlayer')->with(['error' => 'Đã xảy ra lỗi khi thao tác']);
     }
 }

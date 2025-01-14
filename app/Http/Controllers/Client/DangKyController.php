@@ -20,6 +20,14 @@ class DangKyController extends Controller
             'ten' => 'required|string|max:255',
             'email' => 'required|email|unique:tai_khoans,email', // Kiểm tra email duy nhất trong bảng tai_khoans
             'password' => 'required|min:6',
+        ],[
+            'ten.required' => 'Vui lòng nhập tên',
+            'ten.max' => 'Tên tối đa 255 kí tự',
+            'email.required' => 'Vui lòng nhập email',
+            'email.email' => 'Email không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Vui lòng nhập mật khẩu',
+            'password.min' => 'Mật khẩu phải có ít nhất :min ký tự',
         ]);
 
         TaiKhoan::create([
