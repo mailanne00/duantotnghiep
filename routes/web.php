@@ -85,3 +85,5 @@ Route::post('/bai-viet/{id}/binh-luan', [\App\Http\Controllers\Client\BaiVietCon
 
 Route::post('/theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'store'])->name('client.theoDoi.store');
 Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiController::class, 'destroy'])->name('client.huyTheoDoi.destroy');
+
+
