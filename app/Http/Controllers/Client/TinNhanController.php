@@ -95,13 +95,20 @@ class TinNhanController extends Controller
             'phong_chat_id' => $phongChat->id,
         ]);
 
-
         event(new TinNhanMoi($tinNhan));
+
+        // Lấy thông tin chi tiết của người gửi và người nhận
+        $nguoiGui = $tinNhan->nguoiGui; // Quan hệ nguoiGui()
+        $nguoiNhan = $tinNhan->nguoiNhan; // Quan hệ nguoiNhan()
+
+        // Truyền thông tin vào response
         return response()->json([
             'success' => true,
             'message' => 'Tin nhắn đã được gửi!',
             'phong_chat_id' => $phongChat->id,
             'data' => $tinNhan,
+            'nguoi_gui' => $nguoiGui,
+            'nguoi_nhan' => $nguoiNhan,
         ]);
     }
 }

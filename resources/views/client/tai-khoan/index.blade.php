@@ -28,18 +28,6 @@
                     <div class="col-md-12">
                         <div class="wrap-box explore-1 flex mg-bt-40">
                             <div class="seclect-box style-1">
-                                <div id="item_category" class="dropdown">
-                                    <a href="#" class="btn-selector nolink">All categories</a>
-                                    <ul>
-                                        <li><span>Art</span></li>
-                                        <li class="active"><span>Music</span></li>
-                                        <li><span>Domain Names</span></li>
-                                        <li><span>Virtual World</span></li>
-                                        <li><span>Trading Cards</span></li>
-                                        <li><span>Sports</span></li>
-                                        <li><span>Utility</span></li>
-                                    </ul>
-                                </div>
                                 <div id="buy" class="dropdown">
                                     <a href="#"
                                         class="btn-selector nolink">{{ request('gioi_tinh') ?? 'Giới tính' }}</a>
@@ -72,26 +60,6 @@
                                                     - 500.000 VNĐ</span></a></li>
                                         <li><a href="{{ request()->fullUrlWithQuery(['gia' => '>500.000']) }}"><span>Trên
                                                     500.000 VNĐ</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="seclect-box style-2 box-right">
-                                <div id="artworks" class="dropdown">
-                                    <a href="#" class="btn-selector nolink">All Artworks</a>
-                                    <ul>
-                                        <li><span>Abstraction</span></li>
-                                        <li><span>Skecthify</span></li>
-                                        <li><span>Patternlicious</span></li>
-                                        <li><span>Virtuland</span></li>
-                                        <li><span>Papercut</span></li>
-                                    </ul>
-                                </div>
-                                <div id="sort-by" class="dropdown">
-                                    <a href="#" class="btn-selector nolink">Sort by</a>
-                                    <ul>
-                                        <li><span>Top rate</span></li>
-                                        <li><span>Mid rate</span></li>
-                                        <li><span>Low rate</span></li>
                                     </ul>
                                 </div>
                             </div>

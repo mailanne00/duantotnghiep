@@ -12,10 +12,17 @@ class ThongBao extends Model
     protected $fillable = [
         'tieu_de',
         'noi_dung',
-        'tai_khoan_id'
+        'tai_khoan_id',
+        'da_doc'
     ];
 
-    public function taiKhoan() {
-        return $this->belongsTo(Taikhoan::class,'tai_khoan_id');
+    public function nguoiGui()
+    {
+
+        return $this->belongsTo(Taikhoan::class, 'nguoi_gui_id');
+    }
+    public function taiKhoan()
+    {
+        return $this->belongsTo(Taikhoan::class, 'tai_khoan_id');
     }
 }
