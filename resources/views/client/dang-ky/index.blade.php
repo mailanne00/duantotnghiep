@@ -13,7 +13,7 @@
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Trang chủ</a></li>
+                            <li><a href="{{route('client.index')}}">Trang chủ</a></li>
                             <li>Đăng ký</li>
                         </ul>
                     </div>
@@ -44,22 +44,30 @@
                     </div>
 
                     <div class="flat-form box-login-email">
-
                         <div class="form-inner">
                             <form action="{{ route('dangky.store') }}" method="POST" id="contactform">
                                 @csrf
-                                <input id="ten" name="ten" tabindex="1" value="" aria-required="true"
-                                    required type="text" placeholder="Họ và tên">
-                                <input id="email" name="email" tabindex="2" value="" aria-required="true"
+                                <input id="ten" name="ten" tabindex="1" value="{{ old('ten') }}" aria-required="true"
+                                     type="text" placeholder="Họ và tên" required>
+                                    @error('ten')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                                <input id="email" name="email" tabindex="2" value="{{ old('email') }}" aria-required="true"
                                     type="email" placeholder="Email" required>
-                                <input id="pass" name="password" tabindex="3" value="" aria-required="true"
+                                    @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                                <input id="pass" name="password" tabindex="3" aria-required="true"
                                     type="password" placeholder="Mật khẩu" required>
+                                    @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                                 <div class="row-form style-1">
-                                    <label>Remember me
+                                    <label>Nhớ mật khẩu
                                         <input type="checkbox">
                                         <span class="btn-checkbox"></span>
                                     </label>
-                                    <a href="#" class="forgot-pass">Forgot Password ?</a>
+                                    <a href="#" class="forgot-pass">Quên mật khẩu ?</a>
                                 </div>
                                 <button class="submit" type="submit">Đăng ký</button>
                             </form>
