@@ -12,6 +12,8 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title')</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <meta name="author" content="themesflat.com">
 
@@ -287,6 +289,9 @@
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="{{ route('client.danhmuc') }}">Danh Mục</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
@@ -602,42 +607,29 @@
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu style-1">
-                                <h5 class="title-widget">My Account</h5>
+                        
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-5">
+                            <div class="widget widget-menu fl-st-3">
+                                <h5 class="title-widget">Tổng đài hỗ trợ</h5>
                                 <ul>
-                                    <li><a href="author01.html">Authors</a></li>
-                                    <li><a href="connect-wallet.html">Collection</a></li>
-                                    <li><a href="profile.html">Author Profile</a></li>
-                                    <li><a href="create-item.html">Create Item</a></li>
+                                    <li><a href="explore-1.html">Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h - 24h)</a></li>
+                                    <li><a href="contact1.html">Email: caodang@fpt.edu.vn</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-7 col-7">
                             <div class="widget widget-menu style-2">
-                                <h5 class="title-widget">Resources</h5>
+                                <h5 class="title-widget">Về chúng tôi</h5>
                                 <ul>
+                                    <li><a href="auctions.html">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="auctions.html">Live Auctions</a></li>
-                                    <li><a href="item-details.html">Item Details</a></li>
-                                    <li><a href="activity1.html">Activity</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu fl-st-3">
-                                <h5 class="title-widget">Chúng tôi</h5>
-                                <ul>
-                                    <li><a href="explore-1.html">Explore</a></li>
-                                    <li><a href="contact1.html">Liên hệ</a></li>
-                                    <li><a href="blog.html">Our Blog</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="item-details.html">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-7 col-12">
                             <div class="widget widget-subcribe">
-                                <h5 class="title-widget">Subscribe Us</h5>
+                                <h5 class="title-widget">Theo dõi chúng tôi qua</h5>
                                 <div class="form-subcribe">
                                     <form id="subscribe-form" action="#" method="GET" accept-charset="utf-8"
                                         class="form-submit">

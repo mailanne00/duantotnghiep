@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Đăng ký')
+
 @section('content')
     <section class="flat-title-page inner">
         <div class="overlay"></div>
@@ -7,13 +9,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-title-heading mg-bt-12">
-                        <h1 class="heading text-center">Signup</h1>
+                        <h1 class="heading text-center">Đăng ký</h1>
                     </div>
                     <div class="breadcrumbs style2">
                         <ul>
-                            <li><a href="index-2.html">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li>Signup</li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
+                            <li>Đăng ký</li>
                         </ul>
                     </div>
                 </div>
@@ -25,44 +26,34 @@
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="tf-title-heading ct style-1">
-                        Sigup To NFTs
-                    </h2>
-
                     <div class="flat-form box-login-social">
-                        <div class="box-title-login">
-                            <h5>Login with social</h5>
-                        </div>
                         <ul>
                             <li>
                                 <a href="{{ route('client.login') }}" class="sc-button style-2 fl-button pri-3">
                                     <i class="fas fa-user"></i>
-                                    <span>Login</span>
+                                    <span>Đăng nhập</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('client.dangky') }}" class="sc-button style-2 fl-button pri-3">
                                     <i class="fas fa-user-plus"></i>
-                                    <span>Register</span>
+                                    <span>Đăng ký</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="flat-form box-login-email">
-                        <div class="box-title-login">
-                            <h5>Or login with email</h5>
-                        </div>
 
                         <div class="form-inner">
                             <form action="{{ route('dangky.store') }}" method="POST" id="contactform">
                                 @csrf
                                 <input id="ten" name="ten" tabindex="1" value="" aria-required="true"
-                                    required type="text" placeholder="Your Full Name">
+                                    required type="text" placeholder="Họ và tên">
                                 <input id="email" name="email" tabindex="2" value="" aria-required="true"
-                                    type="email" placeholder="Your Email Address" required>
+                                    type="email" placeholder="Email" required>
                                 <input id="pass" name="password" tabindex="3" value="" aria-required="true"
-                                    type="password" placeholder="Set Your Password" required>
+                                    type="password" placeholder="Mật khẩu" required>
                                 <div class="row-form style-1">
                                     <label>Remember me
                                         <input type="checkbox">

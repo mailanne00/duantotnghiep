@@ -9,7 +9,9 @@ use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use App\Models\TinNhan;
 use App\Events\NewMessage;
+use App\Models\LichSuThue;
 use App\Models\PhongChat;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class TaiKhoanController extends Controller
@@ -46,14 +48,25 @@ class TaiKhoanController extends Controller
     { {
             // Lấy thông tin của player từ bảng tai_khoans
             $player = TaiKhoan::findOrFail($id);
+
+            $formattedDate = Carbon::parse($player->created_at)->format('j/n/Y');
             $danhmuctaikhoans = DanhMuc::whereIn('id', explode(',', $player->danh_muc_tai_khoans))->get();
-            
+
+            $totalHours = LichSuThue::where('nguoi_duoc_thue', $player->id)->where('trang_thai', 1)
+                ->sum('gio_thue');
+
+
+            $allRent = LichSuThue::where('nguoi_duoc_thue', $player->id)->count();
+            $successRent = LichSuThue::where('nguoi_duoc_thue', $player->id)->where('trang_thai', 1)->count();
+            $tyLeThanhCong = ($successRent / $allRent) * 100;
+            $tyLeThanhCong = round($tyLeThanhCong, 2);
+
             // Lấy danh sách đánh giá của player
             $danhGias = DanhGia::where('nguoi_duoc_thue_id', $id)
                 ->with('nguoiThue') // Để lấy thông tin người thuê (nguoi_thue_id)
                 ->get();
-            
-            return view('client.tai-khoan.show', compact('player','danhmuctaikhoans', 'danhGias'));
+
+            return view('client.tai-khoan.show', compact('player', 'formattedDate','totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
         }
     }
 

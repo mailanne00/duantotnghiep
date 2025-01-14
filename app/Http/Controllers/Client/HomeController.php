@@ -13,8 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $allDanhMuc = DanhMuc::all();
-        $danhMucs = DanhMuc::all()->take(10);
+        $danhMucs = DanhMuc::all();
 
         if (auth()->check()) {
             $userDaThues = LichSuThue::where("nguoi_thue", Auth::id())
