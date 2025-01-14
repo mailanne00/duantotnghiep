@@ -26,6 +26,7 @@
     <link rel="shortcut icon" href="https://files.playerduo.net/production/static-files/logo.png">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/thongtin.css') }}">
 
     <!-- Sweetalert2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -286,9 +287,6 @@
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.taikhoan') }}">Tài khoản</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="{{ route('client.danhmuc') }}">Danh mục</a>
                                             </li>
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
@@ -562,7 +560,7 @@
                             <header class="chat-header mb-5" id="chatHeader">
                                 <!-- Thông tin phòng chat sẽ được cập nhật ở đây -->
                             </header>
-                            <div id="donThue"></div>
+                            <div class="donThue" id="donThue"></div>
                             <div id="messageContainer" class="messageContainer">
                                 <!-- Tin nhắn sẽ được tải từ server -->
                             </div>

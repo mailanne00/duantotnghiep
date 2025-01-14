@@ -2,6 +2,7 @@ import "./bootstrap";
 
 let IdPhongNew = null;
 let nguoiNhanTen = "";
+let avatarNguoiNhan = "";
 
 document.addEventListener("DOMContentLoaded", () => {
     $("#sendMessageBtn").on("click", async function () {
@@ -26,8 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
-            $("#chatMessage").val(""); // Reset ô nhập tin nhắn
+            console.log("Gửi tin nhắn thành công:", response.data);
+            $("#chatMessage").val("");
             IdPhongNew = response.data.phong_chat_id;
+            avatarNguoiNhan = response.data.nguoi_nhan.anh_dai_dien;
             // await markMessagesAsRead(IdPhongNew);
             // console.log(`Đã lắng nghe kênh phong-chat.${IdPhongNew}`);
         } catch (error) {
@@ -36,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    function handleRoomClick(phongChatId, tenNguoiNhan, callback) {
+    function handleRoomClick(phongChatId, tenNguoiNhan, tinNhan, callback) {
         const roomElement = document.querySelector(
             `.chat-user[data-room-id="${phongChatId}"]`
         );
@@ -54,9 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Tạo nội dung cho phòng mới
             newRoomElement.innerHTML = `
-                <img src="/assets/images/avatar/avt-6.jpg" alt="User Avatar" class="rounded-circle" width="40px" height="40px">
-                <span class="ms-2">${tenNguoiNhan}</span>
-                <span class="badge bg-danger ms-auto unread-count" data-room-id="${phongChatId}" style="display: none;">0</span>
+                <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
+                <div class="chat-user-info ms-2">
+                    <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
+                    <p class="chat-last-message text-muted small mb-0">
+                        ${tinNhan || "Chưa có tin nhắn"}
+                    </p>
+                </div>
             `;
 
             chatList.appendChild(newRoomElement);
@@ -69,58 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    Echo.channel("lich-su-thue-channel").listen(
-        ".lich-su-thue.updated",
-        (data) => {
-            const { lichSuThue } = data;
-
-            if (lichSuThue) {
-                // console.log("Phòng chat đã được mở hoặc tạo mới.");
-
-                // Hiển thị thông tin đơn thuê trong phần #donThue
-                const donThueContainer = document.getElementById("donThue");
-                let remainingTime = 300; // 300 giây = 5 phút
-
-                donThueContainer.innerHTML = `
-                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
-                        <h5 class="mb-2">Đơn thuê mới đến từ: ${
-                            lichSuThue.nguoi_thue.ten
-                        }</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong> ${
-                            lichSuThue.gio_thue
-                        } giờ</p>
-                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(
-                            remainingTime
-                        )}</span></p>
-                        <div class="button-group mt-3">
-                            <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
-                        </div>
-                    </div>
-                `;
-                document
-                    .getElementById("acceptBtn")
-                    .addEventListener("click", () => {
-                        window.location.href = "/lich-su-duoc-thue";
-                    });
-
-                // Đếm ngược thời gian
-                const countdownInterval = setInterval(() => {
-                    remainingTime--;
-                    const countdownTimer =
-                        document.getElementById("countdownTimer");
-                    if (countdownTimer) {
-                        countdownTimer.textContent = formatTime(remainingTime);
-                    }
-
-                    if (remainingTime <= 0) {
-                        clearInterval(countdownInterval);
-                        alert("Thời gian thuê đã hết!");
-                        donThueContainer.innerHTML = ""; // Xóa nội dung khi hết thời gian
-                    }
-                }, 1000);
-            }
+    // Định nghĩa hàm incrementNotificationBadge
+    function incrementNotificationBadge() {
+        const badge = document.getElementById("notificationBadge");
+        if (badge) {
+            let currentCount = parseInt(badge.textContent, 10) || 0;
+            badge.textContent = currentCount + 1;
         }
-    );
+    }
 
     Echo.channel(`tin-nhan-moi-channel`)
         .listen(".tin-nhan-moi.updated", (e) => {
@@ -146,13 +109,61 @@ document.addEventListener("DOMContentLoaded", () => {
                         lastMessage.textContent = e.tinNhan.tin_nhan;
                     }
                 }
-                handleRoomClick(e.tinNhan.phong_chat_id, nguoiNhanTen);
-                incrementNotificationBadge();
+                handleRoomClick(
+                    e.tinNhan.phong_chat_id,
+                    nguoiNhanTen,
+                    e.tinNhan.tin_nhan
+                );
+                incrementNotificationBadge();  // Gọi hàm sau khi nhận tin nhắn mới
             }
         })
         .error((error) => {
             console.error("Lỗi khi lắng nghe kênh:", error);
         });
+
+    Echo.channel("lich-su-thue-channel").listen(
+        ".lich-su-thue.updated",
+        (data) => {
+            const { lichSuThue } = data;
+            console.log("Lịch sử thuê mới:", lichSuThue);
+            
+            if (lichSuThue) {
+                const donThueContainer = document.getElementById("donThue");
+                let remainingTime = 300;
+
+                donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">Đơn thuê mới đến từ: ${lichSuThue.nguoi_thue.ten}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} giờ</p>
+                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
+                        </div>
+                    </div>
+                `;
+                document
+                    .getElementById("acceptBtn")
+                    .addEventListener("click", () => {
+                        window.location.href = "/lich-su-duoc-thue";
+                    });
+
+                // Đếm ngược thời gian
+                const countdownInterval = setInterval(() => {
+                    remainingTime--;
+                    const countdownTimer = document.getElementById("countdownTimer");
+                    if (countdownTimer) {
+                        countdownTimer.textContent = formatTime(remainingTime);
+                    }
+
+                    if (remainingTime <= 0) {
+                        clearInterval(countdownInterval);
+                        alert("Thời gian thuê đã hết!");
+                        donThueContainer.innerHTML = ""; // Xóa nội dung khi hết thời gian
+                    }
+                }, 1000);
+            }
+        }
+    );
 });
 
 // Hàm định dạng thời gian

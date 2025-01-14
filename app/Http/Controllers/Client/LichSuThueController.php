@@ -28,9 +28,35 @@ class LichSuThueController extends Controller
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-        
+
         return view('client.lich-su-thue.index', compact('users'));
     }
+
+
+    public function indexApiNguoiThue($id)
+    {
+        // Lấy thông tin lịch sử thuê
+        $users = LichSuThue::where("nguoi_thue", $id)
+            ->orderByDesc("created_at")
+            ->get()
+            ->map(function ($lichSu) {
+                // Tính toán thời gian kết thúc
+                $lichSu->thoi_gian_ket_thuc = Carbon::parse($lichSu->created_at)->addHours($lichSu->gio_thue);
+
+                // Lấy thông tin người thuê (nguoi_thue) và người được thuê (nguoi_duoc_thue)
+                $lichSu->nguoi_thue_info = TaiKhoan::find($lichSu->nguoi_thue); // Lấy thông tin người thuê
+                $lichSu->nguoi_duoc_thue_info = TaiKhoan::find($lichSu->nguoi_duoc_thue); // Lấy thông tin người được thuê
+
+                return $lichSu;
+            });
+
+        // Trả về dữ liệu dưới dạng JSON
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
+    }
+
 
     public function themDonThue(LichSuThueRequest $request)
     {
@@ -101,10 +127,41 @@ class LichSuThueController extends Controller
                 'gio_thue' => $validateData['gio_thue'],
                 'expired' => $timePlus5Minutes
             ]);
+
             event(new LichSuThueCreated($lichSuThue));
             $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
+
+            $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
+                $query->where(function ($query) use ($request) {
+                    $query->where('nguoi_gui', auth()->user()->id)
+                        ->where('nguoi_nhan', $request->nguoi_nhan);
+                })->orWhere(function ($query) use ($request) {
+                    $query->where('nguoi_gui', $request->nguoi_nhan)
+                        ->where('nguoi_nhan', auth()->user()->id);
+                });
+            })->first();
+
+            // Nếu chưa có phòng chat thì tạo mới
+            if (!$phongChat) {
+                $maPhongChat = Str::uuid()->toString();
+                $phongChat = PhongChat::create([
+                    'ma_phong_chat' => $maPhongChat,
+                ]);
+            }
+
+            // Tạo tin nhắn mới trong phòng chat
+            $tinNhan = TinNhan::create([
+                'tin_nhan' => $request->tin_nhan,
+                'nguoi_gui' => auth()->user()->id,
+                'nguoi_nhan' => $request->nguoi_nhan,
+                'trang_thai' => 'chua_xem',
+                'phong_chat_id' => $phongChat->id,
+            ]);
+
+
+            event(new TinNhanMoi($tinNhan));
         }
 
 
@@ -126,6 +183,28 @@ class LichSuThueController extends Controller
         return view('client.lich-su-thue.lich-su-duoc-thue', compact('users'));
     }
 
+
+    public function indexApiNguoiDuocThue($id)
+    {
+        $users = LichSuThue::where("nguoi_duoc_thue", $id)
+            ->orderByDesc("id")
+            ->get()
+            ->map(function ($user) {
+                // Tính toán thời gian kết thúc
+                $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
+                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * 0.9;
+                $user->nguoi_thue_info = TaiKhoan::find($user->nguoi_thue); // Lấy thông tin người thuê
+                $user->nguoi_duoc_thue_info = TaiKhoan::find($user->nguoi_duoc_thue); // Lấy thông tin người được thuê
+                return $user;
+            });
+
+        // Trả về dữ liệu dưới dạng JSON
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
+    }
+
     public function suaTrangThaiDonThue($id)
     {
         $trangThais = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
@@ -140,7 +219,7 @@ class LichSuThueController extends Controller
         $user->markAsCancelled();
 
         $taiKhoan = auth()->user();
-        
+
         $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
         $taiKhoan->save();
 
@@ -167,7 +246,7 @@ class LichSuThueController extends Controller
         $user->update([
             'expired' => Carbon::parse($user->updated_at)->addHour($user->gio_thue)
         ]);
-        
+
         return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
     }
 

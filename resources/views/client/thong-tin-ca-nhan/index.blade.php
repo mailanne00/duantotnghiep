@@ -220,8 +220,7 @@
             const categoryButtons = document.querySelectorAll('.category-btn');
             const categoryList = document.getElementById('categoryList');
 
-            // Lấy danh mục đã chọn từ PHP (truyền từ server)
-            let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
+            let selectedCategories = @json($selectedCategories);
 
             // Cập nhật giá trị của input ẩn
             function updateSelectedCategories() {
@@ -314,5 +313,8 @@
             updateSelectedCategories();
         });
     </script>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 60075d781ed357e7ee3dd53ca76cc93aecfeb3f3
 @endsection

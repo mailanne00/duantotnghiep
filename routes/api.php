@@ -30,6 +30,9 @@ Route::post('/send-message', [TinNhanController::class, 'sendMessage'])->name('c
 Route::get('/tin-nhan/{phong_id}', [TinNhanController::class, 'chiTiettinNhan'])->name('client.phongChat');
 Route::post('/tao-chat', [TinNhanController::class, 'taoChatMoi'])->name('client.taoChat');
 Route::post('/tin-nhan/{phongChatId}/read', [TinNhanController::class, 'markAsRead']);
+Route::get('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'indexApiNguoiDuocThue']);
+Route::get('/lich-su-thue/{id}', [LichSuThueController::class, 'indexApiNguoiThue']);
+
 
 
 Route::post('/themDonThueApi', [LichSuThueController::class, 'themDonThueApi'])->name('client.themDonThueApi');
