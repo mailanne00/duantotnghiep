@@ -56,7 +56,7 @@ class TaiKhoanController extends Controller
                 ->sum('gio_thue');
 
 
-            $allRent = LichSuThue::where('nguoi_duoc_thue', $player->id)->count();
+            $allRent = LichSuThue::where('nguoi_duoc_thue', $player->id)->count() == 0 ? 1 : LichSuThue::where('nguoi_duoc_thue', $player->id)->count();
             $successRent = LichSuThue::where('nguoi_duoc_thue', $player->id)->where('trang_thai', 1)->count();
             $tyLeThanhCong = ($successRent / $allRent) * 100;
             $tyLeThanhCong = round($tyLeThanhCong, 2);
@@ -66,7 +66,7 @@ class TaiKhoanController extends Controller
                 ->with('nguoiThue') // Để lấy thông tin người thuê (nguoi_thue_id)
                 ->get();
 
-            return view('client.tai-khoan.show', compact('player', 'formattedDate','totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
+            return view('client.tai-khoan.show', compact('player', 'formattedDate', 'totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
         }
     }
 
