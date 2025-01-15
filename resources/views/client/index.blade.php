@@ -430,7 +430,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
+            <form id="chatForm" action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()"
+                method="post">
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
@@ -438,7 +439,8 @@
                     <p class="text-center">Người chơi: <span class="price color-popup" id="user_name"></span>
                     </p>
 
-                    <p>Số giờ thuê</p>
+                    <p>Số giờ thuê
+                    </p>
                     <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
                         class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
                         @for ($i = 1; $i <= 24; $i++)
@@ -447,10 +449,13 @@
                             </option>
                             @endfor
                     </select>
+
                     <p>Nội Dung</p>
-                    <textarea class="form-control quantity styled-textarea"
-                        style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
-                        placeholder="Nhập nội dung..." name="noi_dung">{{ old('noi_dung') }}</textarea>
+                    <input type="hidden" id="nguoiNhanThue" name="nguoi_nhan">
+                    <input type="hidden" id="tenNguoiNhanThue" name="ten_nguoi_nhan">
+                    <textarea id="chatMessageThue" name="tin_nhan" class="form-control styled-textarea"
+                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
@@ -464,7 +469,9 @@
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
+                    <button type="submit" id="sendMessageBtnThue" class="btn btn-primary"
+                        style="color: #FFFFFF">Thuê</button>
+                </div>
             </form>
         </div>
     </div>
@@ -509,6 +516,10 @@
                     document.getElementById('gia_thue').value = data.gia_tien
 
                     document.getElementById('tongGia').value = data.gia_tien
+
+                    document.getElementById('nguoiNhanThue').value = data.id
+                    document.getElementById('tenNguoiNhanThue').value = data.ten
+
                     giaMoiGio = data.gia_tien;
                 },
                 error: function() {
