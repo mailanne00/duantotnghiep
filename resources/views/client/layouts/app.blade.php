@@ -642,9 +642,8 @@
                             <div class="widget widget-menu fl-st-3">
                                 <h5 class="title-widget">Tổng đài hỗ trợ</h5>
                                 <ul>
-                                    <li><a href="explore-1.html">Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h
-                                            - 24h)</a></li>
-                                    <li><a href="contact1.html">Email: caodang@fpt.edu.vn</a></li>
+                                    <li><a>Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h - 24h)</a></li>
+                                    <li><a>Email: caodang@fpt.edu.vn</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -652,9 +651,9 @@
                             <div class="widget widget-menu style-2">
                                 <h5 class="title-widget">Về chúng tôi</h5>
                                 <ul>
-                                    <li><a href="auctions.html">Giới thiệu</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="item-details.html">Liên hệ</a></li>
+                                    <li><a href="{{route('client.lienhe.create')}}">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
