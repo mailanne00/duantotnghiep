@@ -76,11 +76,7 @@ class LichSuThueController extends Controller
             ->where('expired', '<=', $timeNow)
             ->first();
 
-        ThongBao::create([
-            'nguoi_gui_id' => auth()->user()->id,
-            'noi_dung' => 'đã gửi yêu cầu duo cùng bạn',
-            'tai_khoan_id' => $validateData['user_id']
-        ]);
+        
         $userAuth = TaiKhoan::where('id', auth()->user()->id)->first();
         $user = TaiKhoan::where('id', $validateData['user_id'])->first();
 
@@ -132,6 +128,12 @@ class LichSuThueController extends Controller
 
             event(new TinNhanMoi($tinNhan));
 
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã gửi yêu cầu duo cùng bạn',
+                'tai_khoan_id' => $validateData['user_id']
+            ]);
+
 
             return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
@@ -178,6 +180,12 @@ class LichSuThueController extends Controller
 
 
             event(new TinNhanMoi($tinNhan));
+
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã gửi yêu cầu duo cùng bạn',
+                'tai_khoan_id' => $validateData['user_id']
+            ]);
         }
 
 
@@ -235,13 +243,19 @@ class LichSuThueController extends Controller
     public function huyDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id);
-
+        
         if ($user->trang_thai == 0) {
             $user->markAsCancelled();
 
             $taiKhoan = auth()->user();
             $taiKhoan->so_du += $user->gio_thue * $user->gia_thue;
             $taiKhoan->save();
+
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã huỷ yêu cầu duo',
+                'tai_khoan_id' => $user->nguoiDuocThue->id
+            ]);
 
             return redirect()->back()->with('success', 'Huỷ đơn thuê thành công.');
         }
@@ -261,6 +275,12 @@ class LichSuThueController extends Controller
             $taiKhoan->so_du += $lichSuThue->gio_thue * $lichSuThue->gia_thue;
             $taiKhoan->save();
 
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã từ chối yêu cầu duo',
+                'tai_khoan_id' => $lichSuThue->nguoiThue->id
+            ]);
+
             return redirect()->back()->with('success', 'Từ chối thuê thành công.');
         }
 
@@ -275,6 +295,12 @@ class LichSuThueController extends Controller
             $user->markAsProcessing();
             $user->update([
                 'expired' => Carbon::parse($user->updated_at)->addHour($user->gio_thue)
+            ]);
+
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã nhận yêu cầu duo',
+                'tai_khoan_id' => $user->nguoiThue->id
             ]);
 
             return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
@@ -294,6 +320,13 @@ class LichSuThueController extends Controller
 
             $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - (int)$lichSuThue->loi_nhuan) / 100;
             $user->save();
+
+            ThongBao::create([
+                'nguoi_gui_id' => auth()->user()->id,
+                'noi_dung' => 'đã kết thúc đơn thuê',
+                'tai_khoan_id' => $lichSuThue->nguoiDuocThue->id
+            ]);
+
             return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
         }
 
