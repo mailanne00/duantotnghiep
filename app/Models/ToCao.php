@@ -9,14 +9,28 @@ class ToCao extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nguoi_to_cao',
+        'nguoi_bi_to_cao',
+        'lich_su_thue_id',
+        'anh_bang_chung',
+        'ly_do',
+        'trang_thai',
+        'phong_chat_id',
+        'created_at',
+        'updated_at',
+    ];
+
+
+
     const TRANGTHAITOCAO = [
         [
             'color' => 'warning',
-            'status'=> 'Đang chờ xử lí',
+            'status' => 'Đang chờ xử lí',
         ],
         [
             'color' => 'success',
-            'status'=>'Thành công'
+            'status' => 'Thành công'
         ],
         [
             'color' => 'danger',
@@ -24,7 +38,7 @@ class ToCao extends Model
         ],
         [
             'color' => 'primary',
-            'status'=> 'Đang thực hiện'
+            'status' => 'Đang thực hiện'
         ]
     ];
 
@@ -55,7 +69,13 @@ class ToCao extends Model
         return $this->belongsTo(TaiKhoan::class, 'nguoi_bi_to_cao', 'id');
     }
 
-    public function donThue() {
+    public function donThue()
+    {
         return $this->belongsTo(LichSuThue::class, 'lich_su_thue_id', 'id');
+    }
+
+    public function phongChat()
+    {
+        return $this->belongsTo(PhongChat::class, 'phong_chat_id', 'id');
     }
 }
