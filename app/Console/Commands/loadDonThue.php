@@ -37,5 +37,7 @@ class loadDonThue extends Command
             ->update([
                 'trang_thai' => '1'
             ]);
+
+            
     }
 }

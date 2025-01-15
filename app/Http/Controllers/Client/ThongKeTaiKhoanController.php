@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\ChanChat;
+use App\Models\LichSuNap;
 use App\Models\LichSuThue;
 use App\Models\NguoiTheoDoi;
 use Carbon\Carbon;
@@ -36,6 +37,10 @@ class ThongKeTaiKhoanController extends Controller
             ->orderByDesc(DB::raw('SUM(gio_thue)'))  // Sắp xếp theo tổng số giờ thuê giảm dần
             ->get();
 
+            $lichSuNaps = LichSuNap::where('tai_khoan_id', Auth::id())
+                ->get(); 
+
+
         } else {
             $nguoiTheoDoi = null;
             $nguoiDuocTheoDoi = null;
@@ -45,7 +50,7 @@ class ThongKeTaiKhoanController extends Controller
 
         // dd($khthanthiet);
 
-        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
+        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan','lichSuNaps', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
     }
 
     public function layDoanhThuNgay()

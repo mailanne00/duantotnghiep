@@ -30,8 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-   sendEmailJob::dispatch('bactxph36951@fpt.edu.vn');
-   echo "Đã gửi email";
+   return view('client/rut-tien/mail');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
@@ -97,3 +96,4 @@ Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiControl
 Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
 Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
 Route::post('/rut-tien', [RutTienController::class, 'store'])->name('client.rutTien.store');
+   
