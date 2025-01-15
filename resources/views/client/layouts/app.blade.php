@@ -84,7 +84,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @vite('resources/js/app.js')
+   
 
 </head>
 
@@ -124,9 +124,7 @@
                                             <li class="">
                                                 <a href="{{ route('client.index') }}">Trang chủ</a>
                                             </li>
-                                            <li class="">
-                                                <a href="{{ route('client.dangTin') }}">Xem tin</a>
-                                            </li>
+                                           
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
                                             </li>
@@ -370,49 +368,7 @@
 
             @yield('content')
             <!-- này là  Đăng Tin -->
-            <div class="modal fade" id="dangTinModal" tabindex="-1" aria-labelledby="dangTinModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header text-white">
-                            <button type="button" class="btn-close" style="color: black;" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <form method="POST" action="{{ route('client.taoTin') }}" enctype="multipart/form-data">
-                        </div>
-                            <div class="modal-body p-4">
-                                    @csrf
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <label for="content" class="form-label fs-5">Nội dung Story</label>
-                                            <textarea class="form-control rounded-3" name="noi_dung" id="content" rows="7" placeholder="" required style="font-size: 1.2rem; padding: 1rem;"></textarea>
-                                        </div>
-                                        <div class="col-md-6 d-flex flex-column justify-content-between">
-                                            <label for="upload-video" class="form-label fs-5">Tải Video Lên</label>
-                                            <div class="text-center border rounded-3 p-3" id="videoPreviewContainer" style="height: 150px;">
-                                                <i class="bi bi-upload fs-1 text-muted"></i>
-                                                <p class="small text-muted">Chọn video từ thiết bị</p>
-                                                <input type="file" class="form-control d-none" id="upload-video" name="video" accept="video/*" required onchange="previewVideo(event)">
-                                            </div>
-                                            <label for="upload-video" class="btn btn-outline-primary mt-2 w-100">
-                                                <i class="bi bi-folder-plus"></i> Chọn Video
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div id="videoPreview" class="text-center mt-3 d-none">
-                                        <video id="previewPlayer" width="100%" height="250" controls class="rounded-3 shadow-sm"></video>
-                                    </div>
-
-
-                                
-                            </div>
-                            <div class="modal-footer justify-content-center" style="background-color: #FFC1C1; border-color: #FFC1C1;
-                                    color: white;margin-top: 50px;">
-                                <button type="submit" class="btn btn-success px-8 py-2 rounded-pill" style="font-size: 1.6rem;">
-                                    <i class="bi bi-send fs-4"></i> Đăng Story
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+           
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -465,7 +421,7 @@
                 // Khai báo user id
                 const authUserId = @json(auth()->id());
             </script>
-            @vite('resources/js/present.js')
+           
 
 
             <footer id="footer" class="footer-light-style clearfix">
