@@ -50,7 +50,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Chi tiết đơn thuê</h5>
+                                                <h5 class="modal-title">Chi tiết đơn thuê #{{ $lichSuThue->id }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -152,6 +152,17 @@
                                                                     VNĐ</span>
                                                             </div>
                                                         </div>
+                                                        @if (!empty($lichSuThue->danhGia->toArray()) && $lichSuThue->trang_thai == 1)
+                                                            <div class="d-flex justify-content-between mb-3">
+                                                                <div class="modal-info">
+                                                                    <p>Đánh giá:</p>
+                                                                </div>
+                                                                <div class="modal-info text-right">
+                                                                    <span
+                                                                        class="price color-popup">{{ $lichSuThue->danhGia[0]['danh_gia'] }}⭐️</span>
+                                                                </div>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

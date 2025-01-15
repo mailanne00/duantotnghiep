@@ -185,6 +185,7 @@ class LichSuThueController extends Controller
     {
         $tai_khoan = TaiKhoan::where('id', auth()->user()->id)->first();
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+        ->with('danhGia')
             ->orderByDesc("id")
             ->get()
             ->map(function ($user) {

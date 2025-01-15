@@ -12,11 +12,12 @@ class LichSuThueController extends Controller
     public function index()
     {
         $lichSuThues = LichSuThue::query()
+        ->with('danhGia')
         ->get()
         ->map(function ($lichSuThue) {
             // Tính toán thời gian kết thúc
             $lichSuThue->thoi_gian_ket_thuc = Carbon::parse($lichSuThue->created_at)->addHours($lichSuThue->gio_thue);
-            $lichSuThue->loi_nhuan = ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * 0.1;
+            $lichSuThue->loi_nhuan = ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * $lichSuThue->nguoiDuocThue->loi_nhuan / 100;
             return $lichSuThue;
         });
 
