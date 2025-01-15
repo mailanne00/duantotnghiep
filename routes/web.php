@@ -12,6 +12,9 @@ use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ThongtinController;
+use App\Http\Middleware\VerifyCsrfToken;
+use App\Jobs\sendEmailJob;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+   sendEmailJob::dispatch('bactxph36951@fpt.edu.vn');
+   echo "Đã gửi email";
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
@@ -38,7 +45,8 @@ Route::get('/login-facebook-callback', [LoginController::class, 'loginFacebookCa
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
 
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
-Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
+Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store')->withoutMiddleware(VerifyCsrfToken::class);
+Route::post('/dang-ky/verify-email', [DangKyController::class, 'verifyEmail'])->name('dangky.verifyEmail');
 
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');

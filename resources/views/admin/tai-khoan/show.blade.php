@@ -165,10 +165,7 @@
                 <div class="text-center">
                     <h6 class="mb-1">Thông tin client</h6>
                     <p class="mb-1">
-                        anccdncdjcndjncjdncsjnckjnjnvdfnvxnvjvndfnvfdjnzvlvnlvnflvndjfvndkzjnvznvdjkvndznvdkz
-                        fjdzjkvbzjkbdjvbdzjjhvbjdhvbhdj vh jdbjfhvbdfhvbhfbvjhfbvhjbdvhbvjbnckxjncjk
-                        xvfjvhbx vhfbvxnvjfnvhbvjxnknjnvfvfvh jvnvnkjxfnvfk vnxfkvnxjkfvn vfjkvnfjvnfxlk
-                        nvxfkjvnjxnv vjfvbfkdvnjfv vjfnvjnfjvnxf jfbvjxnvkxnfvkjv jkfvnxkvnx</p>
+                        {{$taiKhoan->mo_ta ?? 'Không có mô tả'}}</p>
                 </div>
             </div>
         </div>
