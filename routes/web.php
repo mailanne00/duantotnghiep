@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\RutTienController;
 use App\Http\Controllers\Client\ThongtinController;
+use App\Http\Controllers\Admin\ToCaoController;
 use App\Http\Middleware\VerifyCsrfToken;
 use App\Jobs\sendEmailJob;
 use Illuminate\Support\Facades\Mail;
@@ -30,8 +31,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-   return view('client/rut-tien/mail');
+    return view('client/rut-tien/mail');
 });
+Route::get('admin/to-caos/approve/{id}', [ToCaoController::class, 'approve'])->name('admin.to-caos.approve');
+Route::get('admin/to-caos/reject/{id}', [ToCaoController::class, 'reject'])->name('admin.to-caos.reject');
+Route::get('admin/to-caos/choxuli/{id}', [ToCaoController::class, 'choxuli'])->name('admin.to-caos.choxuli');
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
@@ -96,4 +100,4 @@ Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiControl
 
 Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
 Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
-Route::post('/rut-tien',[RutTienController::class, 'store'])->name('client.rutTien.store');
+Route::post('/rut-tien', [RutTienController::class, 'store'])->name('client.rutTien.store');
