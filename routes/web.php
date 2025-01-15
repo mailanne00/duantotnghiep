@@ -60,7 +60,6 @@ Route::get('/top-danh-gia', [TaiKhoanController::class, 'topDanhGia'])->name('cl
 Route::get('/hot-player', [TaiKhoanController::class, 'topHot'])->name('client.topHot');
 Route::get('/danh-muc/{id}', [DanhmucController::class, 'show'])->name('client.danhmuc.show');
 
-
 Route::get('/thong-tin-ca-nhan', [ThongtinController::class, 'index'])->name('client.thongtincanhan');
 Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('client.thong-tin-ca-nhan.update');
 Route::delete('/player/{id}/delete-cccd', [ThongtinController::class, 'deleteCccd'])->name('player.delete_cccd');
@@ -97,4 +96,4 @@ Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiControl
 
 Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
 Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
-Route::post('/rut-tien',[RutTienController::class, 'store'])->name('client.rutTien.store');
+Route::post('/rut-tien', [RutTienController::class, 'store'])->name('client.rutTien.store');
