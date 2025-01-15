@@ -22,7 +22,7 @@ class LichSuThueController extends Controller
     public function index()
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
-        ->with('danhGia')
+            ->with('danhGia')
             ->orderByDesc("created_at")
             ->get()
             ->map(function ($user) {
@@ -30,7 +30,7 @@ class LichSuThueController extends Controller
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-        
+
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -68,7 +68,7 @@ class LichSuThueController extends Controller
 
         $validateData = $request->validated();
         $timeNow = Carbon::now();
-        $timePlus5Minutes = $timeNow->addMinutes(4);
+        $timePlus5Minutes = $timeNow->addMinutes(5);
 
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
             ->where('nguoi_duoc_thue', $validateData['user_id'])
@@ -188,7 +188,7 @@ class LichSuThueController extends Controller
     {
         $tai_khoan = TaiKhoan::where('id', auth()->user()->id)->first();
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
-        ->with('danhGia')
+            ->with('danhGia')
             ->orderByDesc("id")
             ->get()
             ->map(function ($user) {
