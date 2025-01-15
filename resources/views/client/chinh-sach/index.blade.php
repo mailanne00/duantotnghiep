@@ -129,9 +129,27 @@
                         <div class="flat-toggle2">
                             <h6 class="toggle-title">5. Hướng Dẫn Player</h6>
                             <div class="toggle-content">
-                                <p>4.1. Bạn có thể yêu cầu xóa dữ liệu cá nhân qua fanpage
-                                    https://www.facebook.com/Playerduo hoặc email cskh.playerduo@gmail.com.
-                                </p>
+                                <p>5.1. Làm sao để trang cá nhân được hiển thị trên trang chủ Player Duo?</p>
+                                <div class="div-content">
+                                    <ul style="margin-left: 20px; padding-left: 0;">
+                                        <li style="line-height: 20px;">Cập nhật cho mình 1 Profile thật hoàn chỉnh và chuyên
+                                            nghiệp.</li>
+                                        <li style="line-height: 20px;">Giới thiệu link profile cá nhân của mình trên tường
+                                            cá nhân hoặc những group game mà bạn tham gia.</li>
+                                        <li style="line-height: 20px;">Tránh từ chối yêu cầu và hoàn thành thật tốt tất cả
+                                            yêu cầu duo để nhận được nhận xét tốt từ khách hàng.</li>
+                                        <li style="line-height: 20px;">Hãy khởi đầu với mức phí tối thiểu để nhanh chóng
+                                            kiếm cho mình những khách hàng thân thiết.</li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <p>5.2. Chi phí cho Player Duo là bao nhiêu?</p>
+                                <div class="div-content">
+                                    <ul style="margin-left: 20px; padding-left: 0;">
+                                        <li style="line-height: 20px;">Đối với mỗi yêu cầu Duo, Player Duo sẽ thu 10% giá
+                                            trị yêu cầu.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 

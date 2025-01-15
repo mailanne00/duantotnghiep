@@ -31,6 +31,20 @@
     </div>
 </section>
 
+
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+
+@if(session('error'))
+<div class="alert alert-success">
+    {{ session('error') }}
+</div>
+@endif
+
 <section class="tf-section tf-rank">
     <div class="container-fluid">
         <div class="row">
@@ -122,6 +136,52 @@
                                     data-toggle="modal" data-target="#modalChiTiet_{{ $user->id }}">
                                     Chi tiết
                                 </button>
+
+                                @if (empty($user->danhGia->toArray()) && $user->trang_thai == 1)
+                                <button type="button" class="btn btn-info" style="font-size: 15px;"
+                                    data-toggle="modal" data-target="#rating_{{ $user->id }}">
+                                    Đánh giá
+                                </button>
+                                @endif
+                                
+
+                                <div class="modal fade popup" id="rating_{{ $user->id }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="ratingModalLabel_{{ $user->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <div class="modal-body pd-40">
+                                                    <h3 class="text-center mb-5">Đánh giá đơn thuê #{{ $user->id }}</h3>
+                                                    <form method="post" action="{{ route('client.danhGia', $user->id) }}" onsubmit="return confirm('Bạn chắc chắn?)">
+                                                        @csrf
+                                                        <input type="hidden" name="user_id" value="{{ $user->nguoiDuocThue->id }}">
+                                                        <div class="mb-3">
+                                                            <label for="ratingSelect_{{ $user->id }}" class="form-label"
+                                                                style="font-size: 15px;">Chọn số sao:</label>
+                                                            <select class="form-select" id="ratingSelect_{{ $user->id }}"
+                                                                name="danh_gia" style="font-size: 15px;" required>
+                                                                <option value="5">⭐️⭐️⭐️⭐️⭐️ - Rất tốt</option>
+                                                                <option value="4">⭐️⭐️⭐️⭐️ - Tốt</option>
+                                                                <option value="3">⭐️⭐️⭐️ - Trung bình</option>
+                                                                <option value="2">⭐️⭐️ - Kém</option>
+                                                                <option value="1">⭐️ - Rất kém</option>
+                                                            </select>
+                                                        </div>
+                                                        <textarea class="form-control quantity styled-textarea"
+                                                            style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px"
+                                                            rows="4" placeholder="Nhập nội dung..."
+                                                            name="noi_dung"></textarea>
+                                                        <div class="d-flex justify-content-between mt-4">
+                                                            <button type="submit" class="btn btn-primary">Gửi đánh
+                                                                giá</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -218,6 +278,7 @@
                                                         VNĐ</span>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -235,10 +296,5 @@
     </div>
 </section>
 
-@if(session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
 
 @endsection

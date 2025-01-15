@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentRoomId = null;
     let currentRecipientId = null;
+    let currentroomId = null;
+
     const unreadMessages = {};
 
     // Lấy danh sách phòng chat từ server
@@ -228,7 +230,17 @@ document.addEventListener("DOMContentLoaded", () => {
             );
             const rooms = await response.json();
 
-            // console.log("🚀 ~ updateChatHeader ~ rooms:", rooms);
+            const responseLichSuThue = await fetch(
+                `http://127.0.0.1:8000/api/lich-su-thue/${authUserId}`
+            );
+            const LichSuThue = await responseLichSuThue.json();
+            console.log("Lịch sử người thuê", LichSuThue);
+
+            const responseLichSuDuocThue = await fetch(
+                `http://127.0.0.1:8000/api/lich-su-duoc-thue/${authUserId}`
+            );
+            const LichSuDuocThue = await responseLichSuDuocThue.json();
+            console.log("Lịch sử người được thuê", LichSuDuocThue);
 
             // Kiểm tra xem mảng có ít nhất một phòng chat không
             if (rooms.length === 0) {
@@ -237,8 +249,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const room = rooms[0];
-
             currentRecipientId = room.nguoi_gui.id;
+            currentroomId = room.phong_chat_id;
 
             // Kiểm tra nếu currentRecipientId là authUserId
             if (currentRecipientId === authUserId) {
@@ -284,28 +296,299 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Lắng nghe sự kiện người dùng online/offline
             Echo.join("presence-online-users")
                 .here((users) => {
-                    // console.log("Users currently online:", users);
-
-                    // Cập nhật giao diện hiển thị danh sách người dùng online
                     users.forEach((user) => {
-                        updateUserStatus(user.id, true); // Hàm tùy chỉnh hiển thị trạng thái
+                        updateUserStatus(user.id, true); // Cập nhật trạng thái người dùng
                     });
                 })
                 .joining((user) => {
-                    // console.log(`${user.name} has joined.`);
-                    updateUserStatus(user.id, true); // Cập nhật trạng thái thành "Online"
+                    updateUserStatus(user.id, true); // Người dùng tham gia
                 })
                 .leaving((user) => {
-                    // console.log(`${user.name} has left.`);
-                    updateUserStatus(user.id, false); // Cập nhật trạng thái thành "Offline"
+                    updateUserStatus(user.id, false); // Người dùng rời khỏi
                 });
+
+            // Lọc lịch sử thuê chưa hết hạn
+
+            const validLichSuThue = LichSuThue.data.filter((lichSuThue) => {
+                const expiredTime = new Date(lichSuThue.expired);
+                const currentTime = new Date();
+                return expiredTime > currentTime; // Chỉ lấy những đơn thuê chưa hết hạn
+            });
+            const validLichSuDuocThue = LichSuDuocThue.data.filter(
+                (lichSuDuocThue) => {
+                    const expiredTime = new Date(lichSuDuocThue.expired);
+                    const currentTime = new Date();
+                    return expiredTime > currentTime;
+                }
+            );
+
+            const validLichSu = [...validLichSuThue, ...validLichSuDuocThue];
+            const donThueContainer = document.getElementById("donThue");
+
+            let trangThai = "";
+
+            if (validLichSu.length > 0) {
+                const lichSuThue = validLichSu[0];
+
+                trangThai = Number(lichSuThue.trang_thai);
+                console.log("trangThai", trangThai);
+
+                let remainingTime = Math.floor(
+                    (new Date(lichSuThue.expired) - new Date()) / 1000
+                );
+
+                // Hiển thị thông báo cho người thuê hoặc người được thuê
+                let notificationMessage = "";
+                let linkUrl = "";
+                if (validLichSuThue.length > 0) {
+                    // Người thuê đang có đơn thuê
+                    notificationMessage = `Bạn đang có đơn thuê: ${
+                        lichSuThue.nguoi_duoc_thue_info.ten ||
+                        "Tên người nhận đơn"
+                    }`;
+                    linkUrl = "/lich-su-thue";
+                } else if (validLichSuDuocThue.length > 0) {
+                    // Người được thuê có đơn thuê đến từ
+                    notificationMessage = `Bạn đang có đơn thuê đến từ: ${
+                        lichSuThue.nguoi_thue_info.ten || "Tên người gửi đơn"
+                    }`;
+                    linkUrl = "/lich-su-duoc-thue";
+                }
+
+                if (trangThai === 0) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${
+                            lichSuThue.gio_thue
+                        } Giờ</p>
+                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(
+                            remainingTime
+                        )}</span></p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
+                        </div>
+                    </div>
+                `;
+
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            // Ẩn popup bằng cách xóa nội dung
+                            donThueContainer.innerHTML = "";
+                        });
+                    }
+                }
+
+                if (trangThai === 1) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                        <p class="mb-1">Đơn này đã thanh công</p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="retryBtn">Tuyệt vời</button>
+                        </div>
+                    </div>
+                `;
+
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            // Ẩn popup bằng cách xóa nội dung
+                            donThueContainer.innerHTML = "";
+                        });
+                    }
+                }
+
+                if (trangThai === 2) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                        <p class="mb-1">Đơn này đã bị hủy</p>
+                        <div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="retryBtn">Tiếc quá</button>
+                        </div>
+                    </div>
+                `;
+
+                    const retryBtn = document.getElementById("retryBtn");
+                    if (retryBtn) {
+                        retryBtn.addEventListener("click", () => {
+                            donThueContainer.innerHTML = ""; // Xóa nội dung hiển thị khi bấm nút "Thuê lại"
+                        });
+                    }
+                }
+
+                if (trangThai === 3) {
+                    console.log("Trang thái hiện tại là 3");
+
+                    const isNguoiThue = validLichSuThue.some(
+                        (lichSuThue) => lichSuThue.nguoi_thue === authUserId
+                    );
+
+                    donThueContainer.innerHTML = `
+                        <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                            <h5 class="mb-2">${notificationMessage}</h5>
+                            <p class="mb-1"><strong>Thời gian thuê:</strong>${
+                                lichSuThue.gio_thue
+                            } Giờ</p>
+                            <p class="mb-1"><strong>Đơn đang được thực hiện:</strong> <span id="countdownTimer">${formatTime(
+                                remainingTime
+                            )}</span></p>
+
+                   <div class="button-group mt-3 d-flex justify-content-start align-items-center gap-2">
+    <button class="btn btn-success" id="acceptBtn">Đi đến đơn thuê</button>
+    ${
+        isNguoiThue
+            ? `<button class="btn btn-warning ml-2" id="tocaoBtn">Tố cáo player</button>`
+            : ""
+    }
+</div>
+                        </div>
+                    `;
+
+                    if (isNguoiThue) {
+                        document
+                            .getElementById("tocaoBtn")
+                            .addEventListener("click", function () {
+                                var myModal = new bootstrap.Modal(
+                                    document.getElementById("reportModal")
+                                );
+                                myModal.show();
+                            });
+
+                        // Thêm sự kiện cho nút Hủy
+                        document
+                            .getElementById("cancelBtnToCao")
+                            .addEventListener("click", function () {
+                                var myModal = new bootstrap.Modal(
+                                    document.getElementById("reportModal")
+                                );
+                                myModal.hide(); // Đóng modal khi nhấn Hủy
+                            });
+
+                        // Thêm sự kiện cho nút gửi tố cáo
+                        document
+                            .getElementById("submitReportBtn")
+                            .addEventListener("click", function () {
+                                var reason =
+                                    document.getElementById(
+                                        "reportReason"
+                                    ).value;
+                                var successMessage = document.getElementById(
+                                    "reportSuccessMessage"
+                                );
+                                console.log(
+                                    "Thông báo của tố cáo",
+                                    successMessage
+                                );
+
+                                var nguoiToCao = authUserId;
+                                var nguoiBiToCao = lichSuThue.nguoi_duoc_thue;
+                                var lichSuThueId = lichSuThue.id; // Lấy ID lịch sử thuê
+                                var anhBangChung =
+                                    "/uploadedImageUrl.jpg" || null; // Nếu có ảnh bằng chứng, lấy URL ảnh (có thể rỗng nếu không có ảnh)
+                                var trangThai = 1; // Trạng thái tố cáo (ví dụ: 1 là đang xử lý)
+                                var phongChatId = currentroomId; // ID phòng chat, nếu có
+
+                                if (reason.trim()) {
+                                    // Tạo đối tượng dữ liệu để gửi
+                                    var data = {
+                                        nguoi_to_cao: nguoiToCao,
+                                        nguoi_bi_to_cao: nguoiBiToCao,
+                                        lich_su_thue_id: lichSuThueId,
+                                        anh_bang_chung: anhBangChung,
+                                        ly_do: reason,
+                                        trang_thai: trangThai,
+                                        phong_chat_id: phongChatId,
+                                    };
+
+                                    console.log("Dữ liệu tố cáo:", data);
+
+                                    fetch("http://127.0.0.1:8000/api/to-cao", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                            Accept: "application/json",
+                                        },
+                                        body: JSON.stringify(data),
+                                    })
+                                        .then((response) => response.json())
+                                        .then((data) => {
+                                            if (data.success) {
+                                                successMessage.textContent =
+                                                    "Đã thêm tố cáo thành công";
+                                                successMessage.classList.remove(
+                                                    "d-none"
+                                                );
+                                                // Đóng modal sau khi gửi tố cáo thành công
+                                                var myModal =
+                                                    new bootstrap.Modal(
+                                                        document.getElementById(
+                                                            "reportModal"
+                                                        )
+                                                    );
+
+                                                document.getElementById(
+                                                    "reportReason"
+                                                ).value = "";
+                                                setTimeout(() => {
+                                                    successMessage.classList.add(
+                                                        "d-none"
+                                                    );
+                                                }, 3000);
+                                            } else {
+                                                console.error(
+                                                    "Lỗi khi gửi tố cáo:",
+                                                    data.message
+                                                );
+                                                alert(
+                                                    "Có lỗi xảy ra, vui lòng thử lại."
+                                                );
+                                            }
+                                        })
+                                        .catch((error) => {
+                                            successMessage.textContent =
+                                                "Lỗi khi gửi yêu cầu";
+                                            successMessage.classList.remove(
+                                                "d-none"
+                                            );
+                                        });
+                                } else {
+                                    successMessage.textContent =
+                                        "Vui lòng nhập nội dung";
+                                    successMessage.classList.remove("d-none");
+                                }
+                            });
+                    }
+                } else {
+                    console.error(
+                        "Unhandled trang_thai:",
+                        lichSuThue.trang_thai
+                    );
+                }
+
+                document
+                    .getElementById("acceptBtn")
+                    .addEventListener("click", () => {
+                        window.location.href = linkUrl; // Chuyển hướng khi bấm "Đi đến đơn thuê"
+                    });
+            }
+
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+            }
         } catch (error) {
             console.error("Error in updateChatHeader:", error);
         }
     }
+
     async function markMessagesAsRead(phongChatId) {
         try {
             const response = await fetch(
@@ -387,7 +670,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             unreadBadge.style.display = "inline-block";
                         }
 
-                        // Thông báo tin nhắn mới
                         incrementNotificationBadge();
                     }
                     // Cuộn xuống tin nhắn mới nhất
@@ -434,6 +716,12 @@ document.addEventListener("DOMContentLoaded", () => {
     sendButton.addEventListener("click", async () => {
         const messageInput = document.getElementById("messageInput");
         const message = messageInput.value.trim();
+
+        console.log("Tin nhắn:", messageInput);
+        console.log("Phòng chat:", message);
+        console.log("Người nhận:", currentRecipientId);
+        console.log("Người gửi:", currentRoomId);
+        console.log("Người gửi123", authUserId);
 
         if (message && currentRoomId && currentRecipientId && authUserId) {
             try {

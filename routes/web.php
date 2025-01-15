@@ -11,7 +11,11 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
+use App\Http\Controllers\Client\RutTienController;
 use App\Http\Controllers\Client\ThongtinController;
+use App\Http\Middleware\VerifyCsrfToken;
+use App\Jobs\sendEmailJob;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +29,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+   sendEmailJob::dispatch('bactxph36951@fpt.edu.vn');
+   echo "Đã gửi email";
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
@@ -38,7 +46,8 @@ Route::get('/login-facebook-callback', [LoginController::class, 'loginFacebookCa
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
 
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
-Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
+Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store')->withoutMiddleware(VerifyCsrfToken::class);
+Route::post('/dang-ky/verify-email', [DangKyController::class, 'verifyEmail'])->name('dangky.verifyEmail');
 
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
@@ -57,8 +66,6 @@ Route::put('/thong-tin-ca-nhan', [ThongtinController::class, 'update'])->name('c
 Route::delete('/player/{id}/delete-cccd', [ThongtinController::class, 'deleteCccd'])->name('player.delete_cccd');
 Route::delete('/player/{id}/delete-video', [ThongtinController::class, 'deleteVideo'])->name('player.delete_video');
 
-
-
 Route::get('/lich-su-thue', [LichSuThueController::class, 'index'])->name('client.lichSuThue');
 Route::post('/lich-su-thue', [LichSuThueController::class, 'themDonThue'])->name('client.themDonThue');
 Route::post('/lich-su-don-thue/{id}/huy-don', [LichSuThueController::class, 'huyDonThue'])->name('client.huyDonThue');
@@ -68,6 +75,8 @@ Route::delete('/lich-su-don-thue/{id}/xoa-don', [LichSuThueController::class, 'x
 Route::post('/lich-su-don-thue/{id}/ket-thuc-don', [LichSuThueController::class, 'ketThucDonThue'])->name('client.ketThucDonThue');
 Route::get('/lich-su-duoc-thue', [LichSuThueController::class, 'lichSuDuocThue'])->name('client.lichSuDuocThue');
 Route::put('/lich-su-duoc-thue/{id}', [LichSuThueController::class, 'suaTrangThaiDonThue'])->name('client.suaTrangThaiDonThue');
+
+Route::post('/danh-gia/{id}', [LichSuThueController::class, 'danhGia'])->name('client.danhGia');
 
 // Thanh toán vn pay
 Route::post('/payment/create', [\App\Http\Controllers\Client\VNPayController::class, 'createPayment']);
@@ -86,4 +95,6 @@ Route::post('/bai-viet/{id}/binh-luan', [\App\Http\Controllers\Client\BaiVietCon
 Route::post('/theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'store'])->name('client.theoDoi.store');
 Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiController::class, 'destroy'])->name('client.huyTheoDoi.destroy');
 
-
+Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
+Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
+Route::post('/rut-tien',[RutTienController::class, 'store'])->name('client.rutTien.store');

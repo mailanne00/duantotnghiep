@@ -25,6 +25,7 @@ class TaiKhoan extends Model implements Authenticatable
         'so_du',
         'bi_cam',
         'anh_dai_dien',
+        'trang_thai_xac_thuc',
         'gioi_tinh',
         'loi_nhuan',
         'biet_danh',

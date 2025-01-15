@@ -1,5 +1,6 @@
 @extends('admin.layout.app')
 
+@section('title', 'Quản lí liên hệ')
 @section('script-header')
     <link rel="stylesheet" href="{{asset('assets-admin/css/pages/pages.css')}}">
 @endsection

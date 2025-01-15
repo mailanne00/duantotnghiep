@@ -202,7 +202,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between mb-3">
                                                     <div class="modal-info">
-                                                        <p>Tổng tiền nhận:</p>
+                                                        <p>Lợi nhuận (đã chiết khấu 10%):</p>
                                                     </div>
                                                     <div class="modal-info text-right">
                                                         <span

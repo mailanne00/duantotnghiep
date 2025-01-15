@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class ThongBao extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'noi_dung',
+        'tai_khoan_id',
+        'nguoi_gui_id',
+        'da_doc'
+    ];
+
+    public function nguoiGui()
+    {
+
+        return $this->belongsTo(Taikhoan::class, 'nguoi_gui_id');
+    }
+    public function taiKhoan()
+    {
+        return $this->belongsTo(Taikhoan::class, 'tai_khoan_id');
+    }
 }
