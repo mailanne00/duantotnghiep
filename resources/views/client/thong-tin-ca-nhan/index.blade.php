@@ -80,8 +80,10 @@
                                     <h4 class="title-infor-account">Ngày sinh</h4>
                                     <input type="date" class="form-control text-white bg-dark"
                                         placeholder="Ngày tháng năm sinh" name="ngay_sinh"
-                                        value="{{ old('ngay_sinh', $user->ngay_sinh) }}" required>
+                                        value="{{ old('ngay_sinh', $user->ngay_sinh) }}"
+                                        max="{{ date('Y-m-d') }}" required>
                                 </fieldset>
+
                                 <fieldset>
                                     <h4 class="title-infor-account">Địa chỉ</h4>
                                     <input type="text" placeholder="Địa chỉ" name="dia_chi"
@@ -106,27 +108,27 @@
                                     <h4 class="title-infor-account">Biệt danh</h4>
                                     <input type="text" placeholder="Biệt danh"
                                         class="form-control text-white bg-dark" name="biet_danh"
-                                        value="{{ old('biet_danh', $user->biet_danh) }}" required>
+                                        value="{{ old('biet_danh', $user->biet_danh) }}" >
 
                                     @error('ten')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </fieldset>
                                 <fieldset>
-                                     {{-- Hiển thị trạng thái xác thực --}}
-                                     @if ($user->trang_thai_xac_thuc == 1)
-            <div class="form-group mt-3">
-                <label for="gia_tien">Giá tiền:</label>
-                <input type="number" id="gia_tien" name="gia_tien" class="form-control" 
-                       value="{{ $user->gia_tien ?? '' }}" placeholder="Nhập giá tiền">
-            </div>
+                                    {{-- Hiển thị trạng thái xác thực --}}
+                                    @if ($user->trang_thai_xac_thuc == 1)
+                                    <h4 class="title-infor-account">Giá tiền</h4>
+                                    <div class="form-group mt-3">
 
-            <div class="form-group mt-3">
-                <label for="mo_ta">Mô tả:</label>
-                <textarea id="mo_ta" name="mo_ta" class="form-control" 
-                          placeholder="Nhập mô tả">{{ $user->mo_ta ?? '' }}</textarea>
-            </div>
-        @endif
+                                        <input type="number" id="gia_tien" name="gia_tien" class="form-control text-white bg-dark"
+                                            value="{{ $user->gia_tien ?? '' }}" placeholder="Nhập giá tiền">
+                                    </div>
+                                    <h4 class="title-infor-account">Mô tả</h4>
+                                    <div class="form-group mt-3">
+                                        <textarea id="mo_ta" name="mo_ta" class="form-control text-white bg-dark"
+                                            placeholder="Nhập mô tả">{{ $user->mo_ta ?? '' }}</textarea>
+                                    </div>
+                                    @endif
                                 </fieldset>
 
 
@@ -224,7 +226,7 @@
 
                     </div>
                 </div>
-                
+
 
             </div>
         </form>
@@ -340,7 +342,7 @@
         padding: 30px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         margin-bottom: 30px;
-
+        justify-content: space-around;
     }
 
     /* Title styling */
@@ -368,6 +370,8 @@
         border-color: #66cc66;
         outline: none;
     }
+    
+    
 
     /* Error message styling */
     .text-danger {
@@ -424,6 +428,9 @@
 
     #cccd-video {
         justify-content: space-around;
+    }
+    .title-create-item{
+        text-align: center;
     }
 </style>
 @endsection
