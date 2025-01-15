@@ -308,7 +308,6 @@
                 }
             });
         });
-<<<<<<< HEAD
 
         // Xử lý sự kiện xóa danh mục đã chọn
         selectedCategoriesContainer.addEventListener('click', function(event) {
@@ -435,7 +434,3 @@
     }
 </style>
 @endsection
-=======
-    </script>
-@endsection
->>>>>>> faea11d480d1996eff88906d852b75431dfd7eef
