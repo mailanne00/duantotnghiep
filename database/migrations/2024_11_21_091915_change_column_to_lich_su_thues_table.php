@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('lich_su_thues', function (Blueprint $table) {
-            $table->string('trang_thai')->default(0)->change();
-        });
+        // Schema::table('lich_su_thues', function (Blueprint $table) {
+        //     $table->string('trang_thai')->default(0)->change();
+        // });
     }
 
     /**
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('lich_su_thues', function (Blueprint $table) {
-            $table->string('trang_thai');
-        });
+        // Schema::table('lich_su_thues', function (Blueprint $table) {
+        //     $table->string('trang_thai');
+        // });
     }
 };
