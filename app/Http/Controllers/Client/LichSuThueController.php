@@ -101,15 +101,17 @@ class LichSuThueController extends Controller
             'noi_dung' => 'đã gửi yêu cầu duo cùng bạn',
             'tai_khoan_id' => $validateData['user_id']
         ]);
-        $user_dang_nhap = TaiKhoan::where('id', auth()->user()->id)->first();
+        $userAuth = TaiKhoan::where('id', auth()->user()->id)->first();
+        $user = TaiKhoan::where('id', $validateData['user_id'])->first();
 
-        if ($user_dang_nhap->so_du < $request->tong_gia) {
+        if ($userAuth->so_du < $request->tong_gia) {
             return redirect()->back()->with('error', 'Số dư không đủ');
         }
 
         if ($checkLichSuThue) {
             // dd($checkLichSuThue);
             // Cập nhật bản ghi hiện có
+            $checkLichSuThue->loi_nhuan = $user->loi_nhuan;
             $checkLichSuThue->gio_thue += $validateData['gio_thue'];
             $checkLichSuThue->expired = $timePlus5Minutes;
             $checkLichSuThue->save();
@@ -136,6 +138,19 @@ class LichSuThueController extends Controller
 
             return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
+            $lichSuThue = LichSuThue::create([
+                'nguoi_thue' => auth()->user()->id,
+                'nguoi_duoc_thue' => $validateData['user_id'],
+                'gia_thue' => $validateData['gia_thue'],
+                'gio_thue' => $validateData['gio_thue'],
+                'loi_nhuan' => $user->loi_nhuan,
+                'expired' => $timePlus5Minutes
+            ]);
+
+            event(new LichSuThueCreated($lichSuThue));
+            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+            $taiKhoan->update(['so_du' => $tongGia]);
 
             $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
                 $query->where(function ($query) use ($request) {
@@ -154,19 +169,6 @@ class LichSuThueController extends Controller
                     'ma_phong_chat' => $maPhongChat,
                 ]);
             }
-
-            $lichSuThue = LichSuThue::create([
-                'nguoi_thue' => auth()->user()->id,
-                'nguoi_duoc_thue' => $validateData['user_id'],
-                'gia_thue' => $validateData['gia_thue'],
-                'gio_thue' => $validateData['gio_thue'],
-                'expired' => $timePlus5Minutes
-            ]);
-
-            event(new LichSuThueCreated($lichSuThue));
-            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
-            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
-            $taiKhoan->update(['so_du' => $tongGia]);
 
 
 
@@ -191,12 +193,14 @@ class LichSuThueController extends Controller
     {
         $tai_khoan = TaiKhoan::where('id', auth()->user()->id)->first();
         $users = LichSuThue::where("nguoi_duoc_thue", auth()->user()->id)
+            ->with('danhGia')
             ->orderByDesc("id")
             ->get()
             ->map(function ($user) {
                 // Tính toán thời gian kết thúc
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
-                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * (100 - $user->nguoiDuocThue->loi_nhuan) / 100;
+                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * (100 - (int)$user->loi_nhuan) / 100;
+                $user->tien_chiet_khau = ($user->gio_thue * $user->gia_thue) * (int)$user->loi_nhuan / 100;
                 return $user;
             });
 
@@ -212,7 +216,7 @@ class LichSuThueController extends Controller
             ->map(function ($user) {
                 // Tính toán thời gian kết thúc
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
-                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * 0.9;
+                $user->tong_tien_nhan = ($user->gio_thue * $user->gia_thue) * (100 - (int)$user->loi_nhuan) / 100;
                 $user->nguoi_thue_info = TaiKhoan::find($user->nguoi_thue); // Lấy thông tin người thuê
                 $user->nguoi_duoc_thue_info = TaiKhoan::find($user->nguoi_duoc_thue); // Lấy thông tin người được thuê
                 return $user;
@@ -293,7 +297,7 @@ class LichSuThueController extends Controller
 
             $user = TaiKhoan::where('id', $request->user_id)->first();
 
-            $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - $lichSuThue->nguoiDuocThue->loi_nhuan) / 100;
+            $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - (int)$lichSuThue->loi_nhuan) / 100;
             $user->save();
             return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
         }

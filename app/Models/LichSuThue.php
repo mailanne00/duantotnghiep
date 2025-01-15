@@ -14,6 +14,7 @@ class LichSuThue extends Model
         'nguoi_duoc_thue',
         'gia_thue',
         'gio_thue',
+        'loi_nhuan',
         'trang_thai',
         'expired'
     ];
