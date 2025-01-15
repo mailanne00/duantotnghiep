@@ -11,7 +11,7 @@
                 </div>
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="index-2.html">Trang chủ</a></li>
+                        <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
                         <li>Lịch Sử Được Thuê</li>
                     </ul>
                 </div>
@@ -57,8 +57,15 @@
                                             style="width:80px; object-fit:cover">
                                     </div>
                                     <div class="content-collection pad-t-4">
-                                        <h5 class="title mb-15" style="transform: translateY(25px);"><a
-                                                href="item-details.html">{{ $user->nguoiThue->ten }}</a></h5>
+                                    @if ($user->nguoiThue->biet_danh != null)
+                                            <h6 class="title mb-15" style="transform: translateY(25px);"><a
+                                                    href="{{route('client.taikhoan.show', $user->nguoiThue->id)}}">{{ $user->nguoiThue->biet_danh }}</a></h6>
+
+                                        @else
+                                            <h6 class="title mb-15" style="transform: translateY(25px);"><a
+                                                    href="{{route('client.taikhoan.show', $user->nguoiThue->id)}}">{{ $user->nguoiThue->ten }}</a>
+                                            </h6>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="column" style="min-width:180px">
@@ -116,7 +123,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div class="modal-body pd-40">
-                                        <h3 class="text-center mb-5">Chi tiết đơn thuê</h3>
+                                        <h3 class="text-center mb-5">Chi tiết đơn thuê #{{ $user->id }}</h3>
                                         <div class="row">
                                             <div class="col-md-12">
                                             <div class="d-flex justify-content-between mb-3 align-items-center">
@@ -202,7 +209,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between mb-3">
                                                     <div class="modal-info">
-                                                        <p>Lợi nhuận (đã chiết khấu 10%):</p>
+                                                        <p>Tiền thực nhận:</p>
                                                     </div>
                                                     <div class="modal-info text-right">
                                                         <span
@@ -210,6 +217,27 @@
                                                             VNĐ</span>
                                                     </div>
                                                 </div>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="modal-info">
+                                                        <p>Tiền chiết khấu ({{$user->loi_nhuan}}%):</p>
+                                                    </div>
+                                                    <div class="modal-info text-right">
+                                                        <span
+                                                            class="price color-popup">{{ number_format($user->tien_chiet_khau, 0, ',', '.') }}
+                                                            VNĐ</span>
+                                                    </div>
+                                                </div>
+                                                @if (!empty($user->danhGia->toArray()) && $user->trang_thai == 1)
+                                                    <div class="d-flex justify-content-between mb-3">
+                                                        <div class="modal-info">
+                                                            <p>Đánh giá:</p>
+                                                        </div>
+                                                        <div class="modal-info text-right">
+                                                            <span
+                                                                class="price color-popup">{{ $user->danhGia[0]['danh_gia'] }}⭐️</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
