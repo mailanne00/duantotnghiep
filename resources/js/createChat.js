@@ -55,13 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 "chat-user d-flex align-items-center mb-3";
             newRoomElement.setAttribute("data-room-id", phongChatId);
 
+            const lastMessageContent = tinNhan || "Chưa có tin nhắn";
+
+            // Kiểm tra độ dài và cắt chuỗi nếu cần
+            const truncatedMessage =
+                lastMessageContent.length > 15
+                    ? lastMessageContent.slice(0, 15) + "..."
+                    : lastMessageContent;
+
             // Tạo nội dung cho phòng mới
             newRoomElement.innerHTML = `
                 <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
                 <div class="chat-user-info ms-2">
                     <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
-                    <p class="chat-last-message text-muted small mb-0">
-                        ${tinNhan || "Chưa có tin nhắn"}
+                    <p class="chat-last-message text-muted small mb-0" id="lastMessage">
+                        ${truncatedMessage || "Chưa có tin nhắn"}
                     </p>
                 </div>
             `;
@@ -114,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     nguoiNhanTen,
                     e.tinNhan.tin_nhan
                 );
-                incrementNotificationBadge();  // Gọi hàm sau khi nhận tin nhắn mới
+                incrementNotificationBadge(); // Gọi hàm sau khi nhận tin nhắn mới
             }
         })
         .error((error) => {
@@ -126,16 +134,58 @@ document.addEventListener("DOMContentLoaded", () => {
         (data) => {
             const { lichSuThue } = data;
             console.log("Lịch sử thuê mới:", lichSuThue);
-            
+
             if (lichSuThue) {
                 const donThueContainer = document.getElementById("donThue");
-                let remainingTime = 300;
+                function formatTime(seconds) {
+                    const minutes = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+                }
+
+                // Function to start countdown
+                function startCountdown(expiredTime) {
+                    const countdownTimer =
+                        document.getElementById("countdownTimer");
+
+                    if (!countdownTimer) {
+                        console.error("Countdown element not found");
+                        return;
+                    }
+
+                    // Calculate initial remaining time in seconds
+                    let remainingTime = Math.floor(
+                        (new Date(expiredTime) - new Date()) / 1000
+                    );
+
+                    console.log("Thời gian còn lại:", remainingTime);
+
+                    // Function to update the countdown display
+                    function updateCountdown() {
+                        if (remainingTime <= 0) {
+                            clearInterval(countdownInterval); // Stop when time is up
+                            countdownTimer.textContent = "Hết thời gian";
+                        } else {
+                            countdownTimer.textContent =
+                                formatTime(remainingTime); // Update countdown text
+                        }
+                    }
+
+                    // Update countdown initially
+                    updateCountdown();
+
+                    // Update countdown every second
+                    const countdownInterval = setInterval(() => {
+                        remainingTime -= 1; // Decrease by 1 second
+                        updateCountdown(); // Update the display
+                    }, 1000); // Run every second
+                }
 
                 donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                         <h5 class="mb-2">Đơn thuê mới đến từ: ${lichSuThue.nguoi_thue.ten}</h5>
                         <p class="mb-1"><strong>Thời gian thuê:</strong> ${lichSuThue.gio_thue} giờ</p>
-                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(remainingTime)}</span></p>
+                       <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">...</span></p>
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
                         </div>
@@ -150,15 +200,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Đếm ngược thời gian
                 const countdownInterval = setInterval(() => {
                     remainingTime--;
-                    const countdownTimer = document.getElementById("countdownTimer");
+                    const countdownTimer =
+                        document.getElementById("countdownTimer");
                     if (countdownTimer) {
                         countdownTimer.textContent = formatTime(remainingTime);
                     }
 
                     if (remainingTime <= 0) {
                         clearInterval(countdownInterval);
-                        alert("Thời gian thuê đã hết!");
-                        donThueContainer.innerHTML = ""; // Xóa nội dung khi hết thời gian
+                        donThueContainer.innerHTML = "";
                     }
                 }, 1000);
             }

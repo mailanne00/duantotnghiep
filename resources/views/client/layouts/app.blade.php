@@ -653,7 +653,7 @@
                                 <ul>
                                     <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="{{route('client.lienhe.create')}}">Liên hệ</a></li>
+                                    <li><a href="{{ route('client.lienhe.create') }}">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -790,7 +790,7 @@
 
     @yield('script_footer')
 
-    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal" id="reportModal" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -802,11 +802,8 @@
                 <div class="modal-footer">
                     <span id="reportSuccessMessage" class="text-success d-none">Đã thêm tố cáo thành công</span>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        id="cancelBtnToCao">Hủy</button>
-
-                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố
-                        cáo</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtnToCao">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố cáo</button>
                 </div>
             </div>
         </div>

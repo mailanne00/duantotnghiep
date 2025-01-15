@@ -22,7 +22,7 @@ class LichSuThueController extends Controller
     public function index()
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
-        ->with('danhGia')
+            ->with('danhGia')
             ->orderByDesc("created_at")
             ->get()
             ->map(function ($user) {
@@ -30,7 +30,7 @@ class LichSuThueController extends Controller
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-        
+
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -70,6 +70,26 @@ class LichSuThueController extends Controller
         $timeNow = Carbon::now();
         $timePlus5Minutes = $timeNow->addMinutes(4);
 
+
+        $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
+                $query->where('nguoi_gui', auth()->user()->id)
+                    ->where('nguoi_nhan', $request->nguoi_nhan);
+            })->orWhere(function ($query) use ($request) {
+                $query->where('nguoi_gui', $request->nguoi_nhan)
+                    ->where('nguoi_nhan', auth()->user()->id);
+            });
+        })->first();
+
+        // Nếu chưa có phòng chat thì tạo mới
+        if (!$phongChat) {
+            $maPhongChat = Str::uuid()->toString();
+            $phongChat = PhongChat::create([
+                'ma_phong_chat' => $maPhongChat,
+            ]);
+        }
+
+
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
             ->where('nguoi_duoc_thue', $validateData['user_id'])
             ->where('trang_thai', '=', '0')
@@ -100,23 +120,6 @@ class LichSuThueController extends Controller
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
 
-            $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
-                $query->where(function ($query) use ($request) {
-                    $query->where('nguoi_gui', auth()->user()->id)
-                        ->where('nguoi_nhan', $request->nguoi_nhan);
-                })->orWhere(function ($query) use ($request) {
-                    $query->where('nguoi_gui', $request->nguoi_nhan)
-                        ->where('nguoi_nhan', auth()->user()->id);
-                });
-            })->first();
-
-            // Nếu chưa có phòng chat thì tạo mới
-            if (!$phongChat) {
-                $maPhongChat = Str::uuid()->toString();
-                $phongChat = PhongChat::create([
-                    'ma_phong_chat' => $maPhongChat,
-                ]);
-            }
 
             // Tạo tin nhắn mới trong phòng chat
             $tinNhan = TinNhan::create([
@@ -133,18 +136,6 @@ class LichSuThueController extends Controller
 
             return redirect()->back()->with('success', 'Thuê thành công.');
         } else {
-            $lichSuThue = LichSuThue::create([
-                'nguoi_thue' => auth()->user()->id,
-                'nguoi_duoc_thue' => $validateData['user_id'],
-                'gia_thue' => $validateData['gia_thue'],
-                'gio_thue' => $validateData['gio_thue'],
-                'expired' => $timePlus5Minutes
-            ]);
-
-            event(new LichSuThueCreated($lichSuThue));
-            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
-            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
-            $taiKhoan->update(['so_du' => $tongGia]);
 
             $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
                 $query->where(function ($query) use ($request) {
@@ -163,6 +154,21 @@ class LichSuThueController extends Controller
                     'ma_phong_chat' => $maPhongChat,
                 ]);
             }
+
+            $lichSuThue = LichSuThue::create([
+                'nguoi_thue' => auth()->user()->id,
+                'nguoi_duoc_thue' => $validateData['user_id'],
+                'gia_thue' => $validateData['gia_thue'],
+                'gio_thue' => $validateData['gio_thue'],
+                'expired' => $timePlus5Minutes
+            ]);
+
+            event(new LichSuThueCreated($lichSuThue));
+            $taiKhoan = TaiKhoan::where('id', auth()->user()->id)->first();
+            $tongGia = $taiKhoan->so_du - $request['tong_gia'];
+            $taiKhoan->update(['so_du' => $tongGia]);
+
+
 
             // Tạo tin nhắn mới trong phòng chat
             $tinNhan = TinNhan::create([

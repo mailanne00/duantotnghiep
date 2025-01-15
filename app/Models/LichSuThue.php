@@ -36,11 +36,11 @@ class LichSuThue extends Model
     const TRANGTHAITHUE = [
         [
             'color' => 'warning',
-            'status'=> 'Đang chờ xử lí',
+            'status' => 'Đang chờ xử lí',
         ],
         [
             'color' => 'success',
-            'status'=>'Thành công'
+            'status' => 'Thành công'
         ],
         [
             'color' => 'danger',
@@ -48,7 +48,7 @@ class LichSuThue extends Model
         ],
         [
             'color' => 'primary',
-            'status'=> 'Đang thực hiện'
+            'status' => 'Đang thực hiện'
         ]
     ];
 
@@ -70,15 +70,18 @@ class LichSuThue extends Model
         }
     }
 
-    public function nguoiThue() {
+    public function nguoiThue()
+    {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_thue', 'id');
     }
 
-    public function nguoiDuocThue() {
+    public function nguoiDuocThue()
+    {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_duoc_thue', 'id');
     }
 
-    public function danhGia() {
+    public function danhGia()
+    {
         return $this->hasMany(DanhGia::class, 'lich_su_thue_id');
     }
 }
