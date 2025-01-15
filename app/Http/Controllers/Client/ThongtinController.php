@@ -20,6 +20,7 @@ class ThongtinController extends Controller
     {
         $categories = DanhMuc::all();
         $user = Auth::user();
+        
 
         if (!$user) {
             return redirect()->route('client.login')->with('error', 'Vui lòng đăng nhập để tiếp tục');
@@ -100,4 +101,10 @@ class ThongtinController extends Controller
 
         return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
     }
+
+    // Xử lý CCCD
+   
+
 }
+
+
