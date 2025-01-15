@@ -34,6 +34,7 @@ class ThongKeTaiKhoanController extends Controller
             $khthanthiet = LichSuThue::select('nguoi_thue', DB::raw('SUM(gio_thue) as total_hour'))
             ->with('nguoiThue')  // Eager load thông tin người thuê
             ->where('nguoi_duoc_thue', Auth::id())  // Chỉ lấy các bản ghi mà nguoi_duoc_thue là người dùng hiện tại
+            ->where('trang_thai', 1)  // Chỉ lấy các bản ghi có trạng thái là 1 (đã kết thúc)
             ->groupBy('nguoi_thue')  // Nhóm theo nguoi_thue để tính tổng số giờ cho từng người thuê
             ->orderByDesc(DB::raw('SUM(gio_thue)'))  // Sắp xếp theo tổng số giờ thuê giảm dần
             ->get();
