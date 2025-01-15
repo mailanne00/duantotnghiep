@@ -144,11 +144,21 @@
                                                         </div>
                                                         <div class="d-flex justify-content-between mb-3">
                                                             <div class="modal-info">
-                                                                <p>Lợi nhuận:</p>
+                                                                <p>Tiền người được thuê nhận:</p>
                                                             </div>
                                                             <div class="modal-info text-right">
                                                                 <span
-                                                                    class="price color-popup">{{ number_format($lichSuThue->loi_nhuan, 0, ',', '.') }}
+                                                                    class="price color-popup">{{ number_format($lichSuThue->tien_user_nhan, 0, ',', '.') }}
+                                                                    VNĐ</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between mb-3">
+                                                            <div class="modal-info">
+                                                                <p>Lợi nhuận ({{$lichSuThue->loi_nhuan}}%):</p>
+                                                            </div>
+                                                            <div class="modal-info text-right">
+                                                                <span
+                                                                    class="price color-popup">{{ number_format($lichSuThue->loi_nhuan_don, 0, ',', '.') }}
                                                                     VNĐ</span>
                                                             </div>
                                                         </div>

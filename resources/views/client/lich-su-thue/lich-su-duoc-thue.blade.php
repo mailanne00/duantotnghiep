@@ -209,11 +209,21 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between mb-3">
                                                     <div class="modal-info">
-                                                        <p>Lợi nhuận (đã chiết khấu 10%):</p>
+                                                        <p>Tiền thực nhận:</p>
                                                     </div>
                                                     <div class="modal-info text-right">
                                                         <span
                                                             class="price color-popup">{{ number_format($user->tong_tien_nhan, 0, ',', '.') }}
+                                                            VNĐ</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div class="modal-info">
+                                                        <p>Tiền chiết khấu ({{$user->loi_nhuan}}%):</p>
+                                                    </div>
+                                                    <div class="modal-info text-right">
+                                                        <span
+                                                            class="price color-popup">{{ number_format($user->tien_chiet_khau, 0, ',', '.') }}
                                                             VNĐ</span>
                                                     </div>
                                                 </div>
