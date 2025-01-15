@@ -30,8 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-   sendEmailJob::dispatch('bactxph36951@fpt.edu.vn');
-   echo "Đã gửi email";
+   return view('client/rut-tien/mail');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');

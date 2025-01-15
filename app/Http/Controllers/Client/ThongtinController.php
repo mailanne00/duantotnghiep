@@ -21,6 +21,7 @@ class ThongtinController extends Controller
         $categories = DanhMuc::all();
         $user = Auth::user();
 
+
         if (!$user) {
             return redirect()->route('client.login')->with('error', 'Vui lòng đăng nhập để tiếp tục');
         }
@@ -37,14 +38,14 @@ class ThongtinController extends Controller
     public function update(Request $request)
     {
         $user = TaiKhoan::query()->findOrFail(Auth::id());
-        $data = $request->except('anh_dai_dien', 'danh_muc', 'cccd', 'personal_video');
+        $data = $request->except('anh_dai_dien', 'danh_muc', 'cccd_so', 'cccd', 'personal_video');
 
         if ($request->hasFile('anh_dai_dien')) {
             // Xóa ảnh đại diện cũ nếu tồn tại
             if ($user->anh_dai_dien) {
                 Storage::disk('public')->delete($user->anh_dai_dien);
             }
-        
+
             // Lưu ảnh đại diện mới
             $data['anh_dai_dien'] = Storage::put(self::PATH_UPLOAD, $request->file('anh_dai_dien'));
         }
@@ -62,28 +63,37 @@ class ThongtinController extends Controller
             }
         }
 
+        if ($request->cccd_so) {
+            $validatedData = $request->validate([
+                'cccd_so' => 'numeric|digits:12',
+            ], [
+                'cccd_so.numeric' => 'Số CCCD chỉ được chứa các chữ số.',
+                'cccd_so.digits' => 'Số CCCD phải có đúng 12 chữ số.',
+            ]);
+        }
+
         if ($request->hasFile('cccd')) {
             // Xóa ảnh CCCD cũ nếu có
             if ($user->cccd) {
                 Storage::disk('public')->delete($user->cccd);
             }
-        
+
             // Upload ảnh CCCD mới
             $data['cccd'] = Storage::put(self::PATH_UPLOAD, $request->file('cccd'));
-            $user->cccd= $data['cccd'];
+            $user->cccd = $data['cccd'];
         }
-        
+
         if ($request->hasFile('personal_video')) {
             // Xóa video cũ nếu có
             if ($user->personal_video) {
                 Storage::disk('public')->delete($user->personal_video);
             }
-        
+
             // Upload video mới
             $data['personal_video'] = Storage::put(self::PATH_UPLOAD, $request->file('personal_video'));
             $user->personal_video = $data['personal_video'];
         }
-        
+
         // Kiểm tra nếu cả ảnh CCCD và video được tải lên -> xác thực
         // if ($user->cccd && $user->personal_video) {
         //     $user->trang_thai_xac_thuc = true;
@@ -94,10 +104,14 @@ class ThongtinController extends Controller
         // if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
         //         $user->trang_thai_xac_thuc = 0;
         // }
-        
+
         $user->save();
         $user->update($data);
 
         return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
     }
+
+
 }
+
+
