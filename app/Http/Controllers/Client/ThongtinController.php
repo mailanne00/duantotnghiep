@@ -91,13 +91,13 @@ class ThongtinController extends Controller
         //     $user->trang_thai_xac_thuc = false;
         // }
 
-        if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
-                $user->trang_thai_xac_thuc = 0;
-        }
+        // if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
+        //         $user->trang_thai_xac_thuc = 0;
+        // }
         
         $user->save();
         $user->update($data);
 
-        return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
+        return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
     }
 }
