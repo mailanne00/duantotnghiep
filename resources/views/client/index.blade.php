@@ -95,10 +95,13 @@
                                         </div>
                                     </div>
                                     <div class="card-title">
-                                        <h5><a
-                                                href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">{{ $userDaThue->nguoiDuocThue->ten }}</a>
+                                        <h5>
+                                            <a href="{{ route('client.taikhoan.show', $userDaThue->nguoiDuocThue->id) }}">
+                                                {{ $userDaThue->nguoiDuocThue->biet_danh ?? $userDaThue->nguoiDuocThue->ten }}
+                                            </a>
                                         </h5>
                                     </div>
+
                                     <div class="meta-info">
                                         <div class="author">
                                             <div class="info style2">
@@ -259,7 +262,12 @@
                                                 <div class="badge"><i class="ripple"></i></div>
                                             </div>
                                             <div class="author-infor">
-                                                <h5><a href="#">{{ $taiKhoanDaiGia->ten }}</a></h5>
+                                                <h5>
+                                                    <a href="#">
+                                                        {{ $taiKhoanDaiGia->biet_danh ?? $taiKhoanDaiGia->ten }}
+                                                    </a>
+                                                </h5>
+
                                                 <div class="tag">{{ $taiKhoanDaiGia->email }}</div>
                                                 <span
                                                     class="price">{{ number_format($taiKhoanDaiGia->daiGia['week'], 0, ',', '.') }}
@@ -347,7 +355,8 @@
                                     style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                         </div>
                         <div class="card-title">
-                            <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
+                            <h5><a href="">{{ $taiKhoan->biet_danh ?? $taiKhoan->ten }}</a></h5>
+
                         </div>
                         <div class="meta-info">
                             <div class="author">
@@ -394,7 +403,8 @@
                                     style="min-height: 220px;max-height: 220px; object-fit:cover"></a>
                         </div>
                         <div class="card-title">
-                            <h5><a href="">{{ $taiKhoan->ten }}</a></h5>
+                            <h5><a href="">{{ $taiKhoan->biet_danh ?? $taiKhoan->ten }}</a></h5>
+
                         </div>
                         <div class="meta-info">
                             <div class="author">

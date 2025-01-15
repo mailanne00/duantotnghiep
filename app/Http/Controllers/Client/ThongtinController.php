@@ -20,16 +20,17 @@ class ThongtinController extends Controller
     {
         $categories = DanhMuc::all();
         $user = Auth::user();
+        
 
         if (!$user) {
             return redirect()->route('client.login')->with('error', 'Vui lòng đăng nhập để tiếp tục');
         }
 
-        $selectedCategories = DanhMucTaiKhoan::where('tai_khoan_id', $user->id)
+        $danh_muc_tai_khoans = DanhMucTaiKhoan::where('tai_khoan_id', $user->id)
             ->pluck('danh_muc_id')
             ->toArray();
 
-        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selectedCategories'));
+        return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'danh_muc_tai_khoans'));
     }
 
 
