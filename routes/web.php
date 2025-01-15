@@ -11,6 +11,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
+use App\Http\Controllers\Client\RutTienController;
 use App\Http\Controllers\Client\ThongtinController;
 use App\Http\Middleware\VerifyCsrfToken;
 use App\Jobs\sendEmailJob;
@@ -93,3 +94,7 @@ Route::post('/bai-viet/{id}/binh-luan', [\App\Http\Controllers\Client\BaiVietCon
 
 Route::post('/theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'store'])->name('client.theoDoi.store');
 Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiController::class, 'destroy'])->name('client.huyTheoDoi.destroy');
+
+Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
+Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
+Route::post('/rut-tien',[RutTienController::class, 'store'])->name('client.rutTien.store');

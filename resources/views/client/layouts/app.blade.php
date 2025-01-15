@@ -528,6 +528,17 @@
                                                                     </svg>
                                                                     <span>Nạp tiền</span>
                                                                 </a>
+                                                                <a class="mt-10"
+                                                                    href="{{ route('client.rutTien') }}">
+                                                                    <svg width="20" height="18"
+                                                                        viewBox="0 0 20 18" fill="none"
+                                                                        xmlns="../../../www.w3.org/2000/svg.html">
+                                                                        <path
+                                                                            d="M17.1154 0.730469H2.88461C1.29402 0.730469 0 2.02449 0 3.61508V14.3843C0 15.9749 1.29402 17.2689 2.88461 17.2689H17.1154C18.706 17.2689 20 15.9749 20 14.3843V3.61508C20 2.02449 18.706 0.730469 17.1154 0.730469ZM18.7529 10.6035H14.6154C13.6611 10.6035 13 9.95407 13 8.99969C13 8.04532 13.661 7.34544 14.6154 7.34544H18.7529V10.6035ZM18.7529 6.11508H14.6154C13.0248 6.11508 11.7308 7.40911 11.7308 8.99969C11.7308 10.5903 13.0248 11.8843 14.6154 11.8843H18.7529V14.3843C18.7529 15.3386 18.0698 15.9996 17.1154 15.9996H2.88461C1.93027 15.9996 1.29231 15.3387 1.29231 14.3843V3.61508C1.29231 2.66074 1.93023 1.99963 2.88461 1.99963H17.1266C18.0809 1.99963 18.7529 2.6607 18.7529 3.61508V6.11508Z"
+                                                                            fill="white" />
+                                                                    </svg>
+                                                                    <span>Rút tiền</span>
+                                                                </a>
                                                                 <a class="mt-10" href="{{ route('client.logout') }}"
                                                                     id="logout">
                                                                     <svg width="20" height="20"
@@ -642,9 +653,8 @@
                             <div class="widget widget-menu fl-st-3">
                                 <h5 class="title-widget">Tổng đài hỗ trợ</h5>
                                 <ul>
-                                    <li><a href="explore-1.html">Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h
-                                            - 24h)</a></li>
-                                    <li><a href="contact1.html">Email: caodang@fpt.edu.vn</a></li>
+                                    <li><a>Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h - 24h)</a></li>
+                                    <li><a>Email: caodang@fpt.edu.vn</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -652,9 +662,9 @@
                             <div class="widget widget-menu style-2">
                                 <h5 class="title-widget">Về chúng tôi</h5>
                                 <ul>
-                                    <li><a href="auctions.html">Giới thiệu</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="item-details.html">Liên hệ</a></li>
+                                    <li><a href="{{route('client.lienhe.create')}}">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
