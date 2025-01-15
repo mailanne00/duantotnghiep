@@ -6,6 +6,7 @@ use App\Events\LichSuThueCreated;
 use App\Events\TinNhanMoi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LichSuThueRequest;
+use App\Models\DanhGia;
 use App\Models\LichSuThue;
 use App\Models\TaiKhoan;
 use App\Models\PhongChat;
@@ -21,15 +22,15 @@ class LichSuThueController extends Controller
     public function index()
     {
         $users = LichSuThue::where("nguoi_thue", auth()->user()->id)
+        ->with('danhGia')
             ->orderByDesc("created_at")
-
             ->get()
             ->map(function ($user) {
                 // Tính toán thời gian kết thúc
                 $user->thoi_gian_ket_thuc = Carbon::parse($user->created_at)->addHours($user->gio_thue);
                 return $user;
             });
-
+        
         return view('client.lich-su-thue.index', compact('users'));
     }
 
@@ -289,6 +290,25 @@ class LichSuThueController extends Controller
             $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - $lichSuThue->nguoiDuocThue->loi_nhuan) / 100;
             $user->save();
             return redirect()->back()->with('success', 'Kết thúc đơn thuê thành công.');
+        }
+
+        return redirect()->back()->with('error', 'Xảy ra lỗi khi thao tác');
+    }
+
+    public function danhGia(Request $request, $id)
+    {
+        $lichSuThue = LichSuThue::find($id);
+        $user = TaiKhoan::find(id: $request->user_id); // người được thuê
+
+        if ($lichSuThue->trang_thai == 1) {
+            $danhGia = DanhGia::create([
+                'nguoi_thue_id' => auth()->user()->id,
+                'nguoi_duoc_thue_id' => $request->user_id,
+                'noi_dung' => $request->noi_dung,
+                'danh_gia' => $request->danh_gia,
+                'lich_su_thue_id' => $id
+            ]);
+            return redirect()->back()->with('success', 'Đánh giá đơn thuê thành công.');
         }
 
         return redirect()->back()->with('error', 'Xảy ra lỗi khi thao tác');
