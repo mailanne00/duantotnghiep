@@ -1,0 +1,63 @@
+/* Input file */
+input[type="file"] {
+    background-color: #2d2d44;
+    border: 2px dashed #555;
+    color: #ccc;
+    padding: 8px;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+    max-width: 300px; /* Đặt kích thước tối đa */
+}
+
+input[type="file"]:hover {
+    border-color: #ff6b6b;
+    cursor: pointer;
+}
+
+/* Ảnh đã tải lên */
+.uploaded-preview img {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+    max-width: 200px; /* Đặt kích thước tối đa */
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: transform 0.3s;
+}
+
+.uploaded-preview img:hover {
+    transform: scale(1.1);
+}
+
+/* Video đã tải lên */
+.uploaded-preview video {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+    max-width: 200px; /* Đặt kích thước tối đa */
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid #ff6b6b;
+    transition: transform 0.3s;
+}
+
+.uploaded-preview video:hover {
+    transform: scale(1.05);
+}
+
+/* Upload item container */
+.upload-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Form container adjustments */
+.form-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}

@@ -22,7 +22,7 @@ class DanhMucStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten' => 'required|unique:danhmuc,ten|max:255',
+            'ten' => 'required|unique:danh_mucs,ten|max:255',
             'anh' => 'required|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
         ];
     }

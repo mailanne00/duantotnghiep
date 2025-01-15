@@ -33,7 +33,7 @@ class TinNhanController extends Controller
             'tin_nhan' => $request->tin_nhan,
             'nguoi_gui' => $request->nguoi_gui,
             'nguoi_nhan' => $request->nguoi_nhan,
-            'trang_thai' => 'sent',
+            'trang_thai' => 'chua_xem',
             'phong_chat_id' => $request->phong_chat_id,
 
         ]);
@@ -53,6 +53,18 @@ class TinNhanController extends Controller
         return response()->json($messages);
     }
 
+    public function markAsRead($phongChatId)
+    {
+        // Cập nhật trạng thái của tất cả tin nhắn trong phòng
+        TinNhan::where('phong_chat_id', $phongChatId)
+            ->where('trang_thai', 'chua_xem') // Chỉ cập nhật tin nhắn chưa xem
+            ->update(['trang_thai' => 'da_xem']);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'All messages marked as read',
+        ], 200);
+    }
     public function taoChatMoi(Request $request)
     {
         // Kiểm tra xem người gửi và người nhận đã có phòng chat hay chưa
@@ -79,16 +91,24 @@ class TinNhanController extends Controller
             'tin_nhan' => $request->tin_nhan,
             'nguoi_gui' => $request->nguoi_gui,
             'nguoi_nhan' => $request->nguoi_nhan,
-            'trang_thai' => 'Hoạt động',
+            'trang_thai' => 'chua_xem',
             'phong_chat_id' => $phongChat->id,
         ]);
 
-        broadcast(new TinNhanMoi($tinNhan));
+        event(new TinNhanMoi($tinNhan));
 
+        // Lấy thông tin chi tiết của người gửi và người nhận
+        $nguoiGui = $tinNhan->nguoiGui; // Quan hệ nguoiGui()
+        $nguoiNhan = $tinNhan->nguoiNhan; // Quan hệ nguoiNhan()
+
+        // Truyền thông tin vào response
         return response()->json([
             'success' => true,
             'message' => 'Tin nhắn đã được gửi!',
+            'phong_chat_id' => $phongChat->id,
             'data' => $tinNhan,
+            'nguoi_gui' => $nguoiGui,
+            'nguoi_nhan' => $nguoiNhan,
         ]);
     }
 }

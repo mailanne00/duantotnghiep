@@ -77,4 +77,8 @@ class LichSuThue extends Model
     public function nguoiDuocThue() {
         return $this->belongsTo(TaiKhoan::class, 'nguoi_duoc_thue', 'id');
     }
+
+    public function danhGia() {
+        return $this->hasMany(DanhGia::class, 'lich_su_thue_id');
+    }
 }

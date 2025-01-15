@@ -18,20 +18,21 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Theme Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-    <!-- Reponsive -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="assets/images/logo/PLAYERDUO.png" >
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chatbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/thongtin.css') }}">
 
     <!-- Sweetalert2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('css')
     <style>
         .flat-title-page.style3 .heading {
@@ -80,6 +81,223 @@
             text-decoration: none;
             color: #FFFFFF;
         }
+
+
+        /* Container */
+        .chat-header-container {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header-container .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #ccc;
+            object-fit: cover;
+        }
+
+        .chat-header-container .user-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chat-header-container .user-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .chat-header-container .user-status {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .chat-header-container .user-status.online {
+            color: #4caf50;
+            /* Màu xanh lá cho trạng thái online */
+            font-weight: bold;
+        }
+
+        .chat-header-container .user-status.offline {
+            color: #f44336;
+            /* Màu đỏ cho trạng thái offline */
+            font-weight: bold;
+        }
+
+        /* Text Styling */
+        .user-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #222;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .user-status {
+            font-size: 1rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .don-thue-header {
+            background-color: #007bff;
+            /* Màu nền xanh dương */
+            color: white;
+            /* Chữ màu trắng */
+            border-radius: 8px;
+            /* Bo góc mềm mại */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Tạo hiệu ứng bóng nhẹ */
+            transition: transform 0.3s ease-in-out;
+            /* Hiệu ứng khi hover */
+        }
+
+        /* Hiệu ứng khi hover */
+        .don-thue-header:hover {
+            transform: translateY(-5px);
+            /* Dịch chuyển nhẹ khi hover */
+        }
+
+        /* Tiêu đề */
+        .don-thue-header h5 {
+            font-size: 1.25rem;
+            /* Kích thước chữ tiêu đề */
+            font-weight: 600;
+            /* Đậm */
+            margin-bottom: 10px;
+        }
+
+        /* Các đoạn thông tin */
+        .don-thue-header p {
+            font-size: 1.25rem;
+            color: white;
+            /* Kích thước chữ cho các đoạn văn */
+            margin-bottom: 8px;
+            /* Khoảng cách giữa các đoạn */
+            line-height: 1.5;
+            /* Khoảng cách giữa các dòng */
+        }
+
+        /* Thời gian còn lại */
+        #countdownTimer {
+            font-weight: bold;
+            color: #ffd700;
+            /* Màu vàng cho thời gian còn lại */
+        }
+
+        /* Các nút */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            /* Giãn cách các nút */
+            margin-top: 15px;
+        }
+
+        /* Nút chấp nhận */
+        #acceptBtn {
+            background-color: #28a745;
+            /* Màu xanh lá */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Nút chấp nhận khi hover */
+        #acceptBtn:hover {
+            background-color: #218838;
+        }
+
+        #tocaoBtn {
+            background-color: #d83e3e;
+            /* Màu xanh lá */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Nút chấp nhận khi hover */
+        #tocaoBtn:hover {
+            background-color: #e98787;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chat-header-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .avatar {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .user-name {
+                font-size: 1rem;
+            }
+
+            .user-status {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+
+        #reportReason {
+            border: 1px solid #ced4da;
+            /* Viền mỏng, màu xám nhạt */
+            border-radius: 8px;
+            /* Viền bo tròn */
+            padding: 10px;
+
+            line-height: 1.5;
+            /* Khoảng cách giữa các dòng chữ */
+            width: 100%;
+            /* Chiếm toàn bộ chiều rộng của container */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Hiệu ứng chuyển màu viền và đổ bóng */
+        }
+
+        #reportReason:focus {
+            border-color: #007bff;
+            /* Màu viền khi focus vào */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            /* Hiệu ứng bóng đổ khi focus */
+            outline: none;
+            /* Tắt outline mặc định của trình duyệt */
+        }
+
+        #reportReason::placeholder {
+            color: #6c757d;
+            /* Màu placeholder */
+            font-style: italic;
+            /* Kiểu chữ nghiêng cho placeholder */
+        }
+
+        .modal-header .modal-title {
+            color: #000;
+            /* Màu đen cho tiêu đề */
+        }
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -89,11 +307,10 @@
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
-
     <!-- preloade -->
-    {{--    <div class="preload preload-container"> --}}
-    {{--        <div class="preload-logo"></div> --}}
-    {{--    </div> --}}
+    {{-- <div class="preload preload-container"> --}}
+    {{-- <div class="preload-logo"></div> --}}
+    {{-- </div> --}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -128,10 +345,6 @@
                                             <li class="">
                                                 <a href="{{ route('client.baiViet') }}">Bài viết</a>
                                             </li>
-                                            <li class="">
-                                                <a href="{{ route('client.chinhsach') }}">Chính sách</a>
-                                            </li>
-
                                             <li class="">
                                                 <a href="{{ route('client.lienhe.create') }}">Liên hệ</a>
 
@@ -198,8 +411,9 @@
                                         <div class="admin_active" id="header_admin">
                                             <div class="header_avatar">
                                                 <div class="popup-notification">
-                                                    <div class="notification">
-                                                        <span class="number">3</span>
+                                                    <div class="notification" id="nutBamDocThongBao"
+                                                        onclick="docThongBao()">
+                                                        <span class="number" id="numberNotification">0</span>
                                                         <svg width="19" height="22" viewBox="0 0 19 22"
                                                             fill="#fff" xmlns="../../../www.w3.org/2000/svg.html">
                                                             <path
@@ -212,14 +426,9 @@
                                                             <h4>Thông báo</h4>
                                                         </div>
                                                         <div class="flat-tabs">
-                                                            <ul class="menu-tab">
-                                                                <li class="active"><span>Tất cả</span></li>
-                                                                <li><span>Chưa đọc</span></li>
-                                                            </ul>
                                                             <div class="content-tab">
-                                                                <div class="content-inner">
+                                                                <div class="content-inner" id="noiDungThongBao">
                                                                     <div class="wrap-box">
-                                                                        <div class="heading">Hôm nay</div>
                                                                         <div class="sc-box">
                                                                             <div class="content">
                                                                                 <div class="avatar">
@@ -229,33 +438,13 @@
                                                                                 <div class="infor">
                                                                                     <span class="fw-7">Tyler
                                                                                         Covington</span>
-                                                                                    <span>started following you.</span>
+                                                                                    <span>started following
+                                                                                        you.</span>
                                                                                     <p>1 hour ago
                                                                                     </p>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="content-inner">
-                                                                    <div class="wrap-box">
-                                                                        <div class="heading">Today</div>
-                                                                        <div class="sc-box">
-                                                                            <div class="content">
-                                                                                <div class="avatar">
-                                                                                    <img src="assets/images/avatar/avt-6.jpg"
-                                                                                        alt="">
-                                                                                </div>
-                                                                                <div class="infor">
-                                                                                    <span class="fw-7">Tyler
-                                                                                        Covington</span>
-                                                                                    <span>started following you.</span>
-                                                                                    <p>1 hour ago
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                       
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -274,7 +463,8 @@
                                                                     <p>Số dư</p>
                                                                     <p class="style">
                                                                         {{ number_format(Auth::user()->so_du, 0, ',') }}
-                                                                        VNĐ</p>
+                                                                        VNĐ
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="divider"></div>
@@ -378,6 +568,8 @@
 
 
             <div class="chatbox-wrapper">
+
+
                 <div class="chatbox-header d-flex justify-content-between align-items-center p-3 bg-primary text-white rounded-top"
                     onclick="toggleChatbox()">
                     <div>
@@ -404,14 +596,20 @@
                             <header class="chat-header mb-5" id="chatHeader">
                                 <!-- Thông tin phòng chat sẽ được cập nhật ở đây -->
                             </header>
+                            <div class="donThue" id="donThue"></div>
                             <div id="messageContainer" class="messageContainer">
                                 <!-- Tin nhắn sẽ được tải từ server -->
                             </div>
                         </div>
-                        <div class="chat-input d-flex p-3">
-                            <input type="text" class="form-control me-2" placeholder="Type a message"
-                                id="messageInput">
-                            <button id="sendButton"><i class="fas fa-arrow-right fa-lg"></i></button>
+                        <div class="chat-input d-flex p-3 border-top bg-light rounded-pill shadow-lg">
+                            <div class="input-container position-relative w-100">
+                                <input type="text" class="form-control me-2 message-input"
+                                    placeholder="Type a message..." id="messageInput">
+                                <button id="sendButton"
+                                    class="btn send-btn d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-paper-plane fa-lg"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -419,7 +617,7 @@
 
             <script>
                 // Khai báo user id
-                const authUserId = @json(auth()->id());
+                const authUserId = @json(Auth::id());
             </script>
            
 
@@ -430,52 +628,40 @@
                         <div class="col-lg-3 col-md-12 col-12">
                             <div class="widget widget-logo">
                                 <div class="logo-footer" id="logo-footer">
-                                    <a href="index-2.html">
-                                        <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="nft-gaming"
-                                            width="135" height="56"
-                                            data-retina="assets/images/logo/logo_dark@2x.png" data-width="135"
-                                            data-height="56">
+                                    <a href="#">
+                                        <img id="logo_footer"
+                                            src="https://files.playerduo.net/production/static-files/logo.png"
+                                            alt="nft-gaming" width="56" height="56"
+                                            data-retina="assets/images/logo/logo_dark@2x.png" max-width="56"
+                                            data-height="56"> PLAYERDUO
                                     </a>
                                 </div>
                                 <p class="sub-widget-logo">Tham gia cộng đồng game thủ lớn nhất Việt Nam.</p>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu style-1">
-                                <h5 class="title-widget">My Account</h5>
+
+                        <div class="col-lg-4 col-md-4 col-sm-5 col-5">
+                            <div class="widget widget-menu fl-st-3">
+                                <h5 class="title-widget">Tổng đài hỗ trợ</h5>
                                 <ul>
-                                    <li><a href="author01.html">Authors</a></li>
-                                    <li><a href="connect-wallet.html">Collection</a></li>
-                                    <li><a href="profile.html">Author Profile</a></li>
-                                    <li><a href="create-item.html">Create Item</a></li>
+                                    <li><a>Số điện thoại: (024) 7300 1955 (hỗ trợ hàng ngày từ 8h - 24h)</a></li>
+                                    <li><a>Email: caodang@fpt.edu.vn</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-7 col-7">
                             <div class="widget widget-menu style-2">
-                                <h5 class="title-widget">Resources</h5>
+                                <h5 class="title-widget">Về chúng tôi</h5>
                                 <ul>
-                                    <li><a href="help-center.html">Help & Support</a></li>
-                                    <li><a href="auctions.html">Live Auctions</a></li>
-                                    <li><a href="item-details.html">Item Details</a></li>
-                                    <li><a href="activity1.html">Activity</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-5 col-5">
-                            <div class="widget widget-menu fl-st-3">
-                                <h5 class="title-widget">Company</h5>
-                                <ul>
-                                    <li><a href="explore-1.html">Explore</a></li>
-                                    <li><a href="contact1.html">Contact Us</a></li>
-                                    <li><a href="blog.html">Our Blog</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
+                                    <li><a href="{{route('client.lienhe.create')}}">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-7 col-12">
                             <div class="widget widget-subcribe">
-                                <h5 class="title-widget">Subscribe Us</h5>
+                                <h5 class="title-widget">Theo dõi chúng tôi qua</h5>
                                 <div class="form-subcribe">
                                     <form id="subscribe-form" action="#" method="GET" accept-charset="utf-8"
                                         class="form-submit">
@@ -513,11 +699,81 @@
 
 
     </div>
+
     <!-- /#wrapper -->
 
     <a id="scroll-top"></a>
     </script>
     <!-- Javascript -->
+    <script>
+        function loadThongBa0() {
+            $.ajax({
+                url: '/api/thong-bao', // URL server xử lý
+                method: 'get', // Phương thức HTTP
+                headers: {
+                    'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
+                },
+                success: function(data) {
+                    let html = '';
+                    let daDoc = 0
+                    for (let index = 0; index < data.length; index++) {
+                        if (data[index].da_doc == 0) {
+                            daDoc++
+                        }
+                        html += `
+                                                                    <div class="wrap-box">
+                                                                        <div class="sc-box">
+                                                                            <div class="content">
+                                                                                <div class="avatar">
+                                                                                    <img src="assets/images/avatar/avt-6.jpg"
+                                                                                        alt="">
+                                                                                </div>
+                                                                                <div class="infor">
+                                                                                    <span class="fw-7">${data[index].nguoi_gui.ten}</span>
+                                                                                    <span>${data[index].noi_dung}.</span>
+                                                                                    <p>${data[index].cach_day} trước
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                `
+                    }
+                    if (daDoc > 0) {
+                        if (jqk == false) {
+                            document.getElementById('nutBamDocThongBao').click();
+                        } else {
+                            docThongBao();
+                        }
+                    }
+                    document.getElementById('numberNotification').innerHTML = daDoc
+                    document.getElementById('noiDungThongBao').innerHTML = html;
+                }
+            });
+        }
+        loadThongBa0()
+        setInterval(() => {
+            loadThongBa0()
+        }, 3000);
+        var jqk = false;
+
+        function docThongBao() {
+            if (jqk == false) {
+                jqk = true
+            } else {
+                jqk = false
+            }
+            document.getElementById('numberNotification').innerHTML = 0
+            $.ajax({
+                url: '/api/thong-bao/da-doc', // URL server xử lý
+                method: 'get', // Phương thức HTTP
+                headers: {
+                    'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
+                },
+                success: function(data) {}
+            });
+        }
+    </script>
     <script src="{{ asset('assets/js/chatbox.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -534,11 +790,29 @@
     <script src="{{ asset('assets/js/moralis.js') }}"></script>
     <script src="{{ asset('assets/js/nft.js') }}"></script>
 
-
-    <!-- Sweetalert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     @yield('script_footer')
+
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">Tố cáo player</h5>
+                </div>
+                <div class="modal-body">
+                    <textarea id="reportReason" class="form-control" rows="4" placeholder="Nhập lý do tố cáo"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <span id="reportSuccessMessage" class="text-success d-none">Đã thêm tố cáo thành công</span>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="cancelBtnToCao">Hủy</button>
+
+                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố
+                        cáo</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 

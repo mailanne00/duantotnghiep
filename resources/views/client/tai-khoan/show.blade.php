@@ -1,5 +1,7 @@
 @extends('client.layouts.app')
 
+@section('title', 'Chi tiết tài khoản')
+
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 @endsection
@@ -29,30 +31,47 @@
     <div class="themesflat-container">
         <div class="row">
             <div class="col-xl-3 col-md-12">
-                <div class="content-left">
+                <div class="content-left text-center">
                     <div class="media">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($player->anh_dai_dien) }}" alt=""
                             width="400" height="400">
+                    </div>
+                    <div>
+                        <span class="badge text-bg-{{$player->mau}}" style="font-size: 14px; border-radius: 50px; padding:8px; margin-top:20px; margin-bottom:20px">{{$player->trangThai2}}</span>
+                    </div>
+                    <div>
+                        <span style="font-size:14px; margin-top:20px">Ngày tham gia: {{$formattedDate}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-5 col-md-12">
                 <div class="content-right">
                     <div class="sc-item-details">
-                        <h2 class="style2">{{ $player->ten }}</h2>
-                        <div class="meta-item">
-                            <div class="left">
-                                <span class="viewed eye">225</span>
-                                <span class="liked heart wishlist-button mg-l-8"><span
-                                        class="number-like">100</span></span>
+                        <div class="d-flex justify-content-between">
+                            <h2 class="style2">{{ $player->ten }}</h2>
+                            <div class="meta-item">
+                                <div class="left">
+                                    <span class="liked heart mg-l-8" min-width="50px"><span
+                                            class="number-like"> Theo dõi</span></span>
+                                </div>
                             </div>
-                            <div class="right">
-                                <a href="#" class="share"></a>
-                                <a class="option"></a>
+                        </div>
+                        <div class="row meta-item mt-5">
+                            <div class="col-4 text-center">
+                                <h4>Đã được thuê</h4>
+                                <h5 class="mt-2 text-warning">{{$totalHours}} giờ</h5>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h4>Tỷ lệ thành công</h>
+                                <h5 class="mt-2 text-warning">{{$tyLeThanhCong}}%</h5>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h4>Số người theo dõi</h>
+                                <h5 class="mt-2 text-warning">{{$player->count}} người</h5>
                             </div>
                         </div>
                         <div class="client-infor sc-card-product">
-                            @foreach ($selectedCategories as $category)
+                            @foreach ($danhmuctaikhoans as $category)
                             <div class="meta-info">
                                 <div class="author">
                                     <div class="avatar">
@@ -86,10 +105,18 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" data-toggle="modal" data-target="#popup_bid" data-id="{{ $player->id }}"
-                            class="sc-button loadmore style  fl-button pri-3"> <i
-                                class="fa fa-user fa-2x"></i><span>Thuê</span></a>
-                        <a href="#" data-toggle="modal" data-target="#popup_chat" data-id="{{ $player->id }}"
+                        <a href="#" data-toggle="modal"
+                            data-target="#popup_bid{{ $player->isVerified() ? '' : 'disabled' }}"
+                            data-id="{{ $player->id }}" class="sc-button loadmore style fl-button pri-3 ">
+                            <i class="fa fa-user fa-2x"></i>
+                            @if ($player->isVerified())
+                            <span>Thuê</span>
+                            @else
+                            <span class="text-danger">Người dùng chưa xác thực</span>
+                            @endif
+                        </a>
+
+                        <a href="#" data-toggle="modal" data-target="#popup_chat"
                             class="sc-button loadmore style fl-button pri-3">
                             <i class="fa fa-comments fa-2x"></i>
                             <span>Trò Chuyện</span>
@@ -128,7 +155,6 @@
                             @endif
                             @endfor
                             <p> (Thuê {{ $danhGia->lichSuThue->gio_thue }}h)</p>
-
                     </div>
                 </div>
             </div>
@@ -268,7 +294,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()" method="post">
+            <form id="chatForm" action="{{ route('client.themDonThue') }}" onsubmit="return themDonThue()"
+                method="post">
                 @csrf
                 <div class="modal-body space-y-20 pd-40">
                     <h3>Thuê người chơi</h3>
@@ -280,7 +307,7 @@
                     </p>
                     <select style="color: #0b0b0b; height: 50px; font-size: 16px; border-radius: 10px;"
                         class="form-control no-scroll" name="gio_thue" id="gio_thue" onchange="tinhTongChiPhi()">
-                        @for($i = 1; $i <= 24; $i++)
+                        @for ($i = 1; $i <= 24; $i++)
                             <option value="{{ $i }}" style="font-size: 16px;">
                             {{ $i }} giờ
                             </option>
@@ -288,9 +315,11 @@
                     </select>
 
                     <p>Nội Dung</p>
-                    <textarea class="form-control quantity styled-textarea"
-                        style="padding-top: 14px; resize: none;font-size: 16px; border-radius: 10px" rows="4"
-                        placeholder="Nhập nội dung..." name="noi_dung">{{ old('noi_dung') }}</textarea>
+                    <input type="hidden" id="nguoiNhanThue" name="nguoi_nhan" value="{{ $player->id }}">
+                    <input type="hidden" id="tenNguoiNhanThue" name="ten_nguoi_nhan" value="{{ $player->ten }}">
+                    <textarea id="chatMessageThue" name="tin_nhan" class="form-control styled-textarea"
+                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">
                         <p> Tổng chi phí:</p>
@@ -304,7 +333,8 @@
                         <p class="text-right price color-popup" id="so_du_auth"></p>
                         <input type="hidden" name="so_du_auth" id="soDuAuth">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="color: #FFFFFF">Thuê</button>
+                    <button type="submit" id="sendMessageBtnThue" class="btn btn-primary"
+                        style="color: #FFFFFF">Thuê</button>
                 </div>
             </form>
         </div>
@@ -325,6 +355,7 @@
                 <p class="text-center">Người chơi: <span class="price color-popup"
                         id="chat_user_name">{{ $player->ten }}</span></p>
                 <input type="hidden" id="nguoiNhan" name="nguoi_nhan" value="{{ $player->id }}">
+                <input type="hidden" id="tenNguoiNhan" name="ten_nguoi_nhan" value="{{ $player->ten }}">
                 <textarea id="chatMessage" class="form-control styled-textarea"
                     style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
                 <button type="button" id="sendMessageBtn" class="btn btn-primary mt-3"
@@ -335,11 +366,9 @@
 </div>
 @endsection
 
-@vite('resources/js/createChat.js')
-
 @section('script_footer')
 <script>
-    const authUserId = @json(auth()->id());
+    const authUserId = @json(Auth::id());
 </script>
 <script>
     let giaMoiGio = 0;
@@ -415,12 +444,10 @@
             alert("Số dư của bạn không đủ")
             return false;
         }
-        
+
         return true;
 
     }
-
-
 
     document.addEventListener('DOMContentLoaded', () => {
         // Gán sự kiện click vào nút Trò Chuyện

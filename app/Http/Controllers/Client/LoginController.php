@@ -22,6 +22,11 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'pass' => 'required|min:6',
+        ],[
+            'email.required' => 'Vui lòng nhập email',
+            'email.email' => 'Email không đúng định dạng',
+            'pass.required' => 'Vui lòng nhập mật khẩu',
+            'pass.min' => 'Mật khẩu phải có ít nhất :min ký tự',
         ]);
 
         // Kiểm tra thông tin đăng nhập
@@ -30,7 +35,7 @@ class LoginController extends Controller
             'password' => $request->pass,
         ];
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             // Lưu thông tin người dùng vào session
             $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
             session()->put('user', $user);

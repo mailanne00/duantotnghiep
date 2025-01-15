@@ -20,15 +20,13 @@ class HomeController extends Controller
         ->take(5)
         ->get();    
         if (auth()->check()) {
-            $userDaThues = LichSuThue::all()
-            ->where("nguoi_thue", Auth::id())
-            ->where('trang_thai', 1)
-            ->sortByDesc(function ($userDaThue) {
-                return $userDaThue->countRent;
-            })
-                ->take(10);
-        }else {
-            $userDaThues= null;
+            $userDaThues = LichSuThue::where("nguoi_thue", Auth::id())
+                ->where('trang_thai', 1)
+                ->take(10)
+                ->get()
+                ->unique('nguoi_duoc_thue');
+        } else {
+            $userDaThues = null;
         }
 
         if (!auth()->check()) {
@@ -37,14 +35,16 @@ class HomeController extends Controller
                     return $taiKhoan->countDanhGia;
                 })
                 ->where('phan_quyen_id', 2)
+                ->where('trang_thai_xac_thuc', 1)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->countRent;
-            })
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countRent;
+                })
+                ->where('trang_thai_xac_thuc', 1)
                 ->where('phan_quyen_id', 2)
-            ->take(10);
+                ->take(10);
         } else {
             $taiKhoans = TaiKhoan::all()
                 ->sortByDesc(function ($taiKhoan) {
@@ -52,15 +52,17 @@ class HomeController extends Controller
                 })
                 ->where('id', '!=', auth()->user()->id)
                 ->where('phan_quyen_id', 2)
+                ->where('trang_thai_xac_thuc', 1)
                 ->take(10);
 
             $taiKhoans2 = TaiKhoan::all()
-            ->sortByDesc(function ($taiKhoan) {
-                return $taiKhoan->countRent;
-            })
-            ->where('id', '!=', auth()->user()->id)
+                ->sortByDesc(function ($taiKhoan) {
+                    return $taiKhoan->countRent;
+                })
+                ->where('id', '!=', auth()->user()->id)
+                ->where('trang_thai_xac_thuc', 1)
                 ->where('phan_quyen_id', 2)
-            ->take(10);
+                ->take(10);
         }
 
         $taiKhoanDaiGias = TaiKhoan::all()
@@ -96,7 +98,31 @@ class HomeController extends Controller
             'anh_dai_dien' => Storage::url($user->anh_dai_dien),
         ]);
     }
+
+    public function thongBao(Request $request)
+    {
+        $token = $request->header('authorization');
+        $user = TaiKhoan::find(explode(' ', $token)[1]);
+        Auth::login($user);
+        $thongBaos = ThongBao::where('tai_khoan_id', Auth::id())->with('nguoiGui')->latest('id')->get();
+        Carbon::setLocale('vi');
+        foreach ($thongBaos as $thongBao) {
+            $difference = Carbon::parse($thongBao->created_at)->diffForHumans(Carbon::now(), true);
+            $thongBao['cach_day'] = $difference;
+        }
+
+        return response()->json($thongBaos);
+    }
+
+    public function docThongBao(Request $request) {
+        $token = $request->header('authorization');
+        $user = TaiKhoan::find(explode(' ', $token)[1]);
+        Auth::login($user);
+        $thongBaos = ThongBao::where('tai_khoan_id', Auth::id())->where('da_doc', 0)->update([
+            'da_doc' => true
+        ]);
+
+        return response()->json(['success' => 'Cập nhật thành công'
+        ]);
+    }
 }
-
-
-
