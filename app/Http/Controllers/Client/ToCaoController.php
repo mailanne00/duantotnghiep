@@ -20,7 +20,17 @@ class ToCaoController extends Controller
 
     public function store(Request $request)
     {
+        // Kiểm tra nếu đã có tố cáo với lich_su_thue_id này
+        $existingToCao = ToCao::where('lich_su_thue_id', $request->input('lich_su_thue_id'))->first();
 
+        if ($existingToCao) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Đã có tố cáo cho đơn thuê này.',
+            ], 400);
+        }
+
+        // Nếu chưa có tố cáo, tạo mới
         $toCao = ToCao::create([
             'nguoi_to_cao' => $request->input('nguoi_to_cao'),
             'nguoi_bi_to_cao' => $request->input('nguoi_bi_to_cao'),
@@ -35,9 +45,11 @@ class ToCaoController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Tố cáo đã được tạo thành công.',
+            'error' => 'Đã có tố cáo cho đơn thuê này.',
             'data' => $toCao,
         ], 201);
     }
+
 
     public function show(int $id)
     {

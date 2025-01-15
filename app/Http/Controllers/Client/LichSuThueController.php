@@ -70,6 +70,26 @@ class LichSuThueController extends Controller
         $timeNow = Carbon::now();
         $timePlus5Minutes = $timeNow->addMinutes(5);
 
+
+        $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
+                $query->where('nguoi_gui', auth()->user()->id)
+                    ->where('nguoi_nhan', $request->nguoi_nhan);
+            })->orWhere(function ($query) use ($request) {
+                $query->where('nguoi_gui', $request->nguoi_nhan)
+                    ->where('nguoi_nhan', auth()->user()->id);
+            });
+        })->first();
+
+        // Nếu chưa có phòng chat thì tạo mới
+        if (!$phongChat) {
+            $maPhongChat = Str::uuid()->toString();
+            $phongChat = PhongChat::create([
+                'ma_phong_chat' => $maPhongChat,
+            ]);
+        }
+
+
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
             ->where('nguoi_duoc_thue', $validateData['user_id'])
             ->where('trang_thai', '=', '0')
@@ -98,23 +118,6 @@ class LichSuThueController extends Controller
             $tongGia = $taiKhoan->so_du - $request['tong_gia'];
             $taiKhoan->update(['so_du' => $tongGia]);
 
-            $phongChat = PhongChat::whereHas('tinNhans', function ($query) use ($request) {
-                $query->where(function ($query) use ($request) {
-                    $query->where('nguoi_gui', auth()->user()->id)
-                        ->where('nguoi_nhan', $request->nguoi_nhan);
-                })->orWhere(function ($query) use ($request) {
-                    $query->where('nguoi_gui', $request->nguoi_nhan)
-                        ->where('nguoi_nhan', auth()->user()->id);
-                });
-            })->first();
-
-            // Nếu chưa có phòng chat thì tạo mới
-            if (!$phongChat) {
-                $maPhongChat = Str::uuid()->toString();
-                $phongChat = PhongChat::create([
-                    'ma_phong_chat' => $maPhongChat,
-                ]);
-            }
 
             // Tạo tin nhắn mới trong phòng chat
             $tinNhan = TinNhan::create([
@@ -168,6 +171,8 @@ class LichSuThueController extends Controller
                     'ma_phong_chat' => $maPhongChat,
                 ]);
             }
+
+
 
             // Tạo tin nhắn mới trong phòng chat
             $tinNhan = TinNhan::create([
