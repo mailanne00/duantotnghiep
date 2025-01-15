@@ -492,7 +492,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 var lichSuThueId = lichSuThue.id; // Lấy ID lịch sử thuê
                                 var anhBangChung =
                                     "/uploadedImageUrl.jpg" || null; // Nếu có ảnh bằng chứng, lấy URL ảnh (có thể rỗng nếu không có ảnh)
-                                var trangThai = 1; // Trạng thái tố cáo (ví dụ: 1 là đang xử lý)
+                                var trangThai = 0; // Trạng thái tố cáo (ví dụ: 1 là đang xử lý)
                                 var phongChatId = currentroomId; // ID phòng chat, nếu có
 
                                 if (reason.trim()) {
