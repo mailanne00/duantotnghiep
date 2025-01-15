@@ -7,6 +7,7 @@ use App\Models\ChanChat;
 use App\Models\LichSuNap;
 use App\Models\LichSuThue;
 use App\Models\NguoiTheoDoi;
+use App\Models\YeuCauRutTien;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,9 @@ class ThongKeTaiKhoanController extends Controller
             $lichSuNaps = LichSuNap::where('tai_khoan_id', Auth::id())
                 ->get(); 
 
+                $yeuCauRutTiens = YeuCauRutTien::where('tai_khoan_id', Auth::id())
+                ->get(); 
+
 
         } else {
             $nguoiTheoDoi = null;
@@ -50,7 +54,7 @@ class ThongKeTaiKhoanController extends Controller
 
         // dd($khthanthiet);
 
-        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan','lichSuNaps', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
+        return view('client.thong-ke-tai-khoan.index', compact('yeuCauRutTiens','nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan','lichSuNaps', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
     }
 
     public function layDoanhThuNgay()

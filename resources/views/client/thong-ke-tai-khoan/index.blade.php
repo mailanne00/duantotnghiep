@@ -305,7 +305,7 @@
                             <table class="history-table">
                                 <thead>
                                     <tr>
-                                        <th>Mã đơn rút</th>
+                                        <th>Mã nạp tiền</th>
                                         <th>Số tiền</th>
                                         <th>Thời gian</th>
                                         <th>Trạng thái</th>
@@ -335,32 +335,35 @@
                             <table class="history-table">
                                 <thead>
                                     <tr>
+                                        <th>Mã yêu cầu rút tiền</th>
                                         <th>Ngân hàng</th>
-                                        <th>Trạng thái</th>
+                                        <th>Số tài khoản</th>
                                         <th>Số tiền</th>
                                         <th>Thời gian</th>
+                                        <th>Trạng thái</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($yeuCauRutTiens as $yeuCauRutTien)
                                     <tr class="group">
-                                        <td>Vietcombank</td>
-                                        <td><span class="status text-danger">Thất bại</span></td>
-                                        <td>100.000 VND</td>
-                                        <td>11/12/2024 - 02:26:25</td>
+                                        <td>MYC-{{$yeuCauRutTien->id}}</td>
+                                        <td>{{$yeuCauRutTien->ten_ngan_hang}}</td>
+                                        <td>{{$yeuCauRutTien->so_tai_khoan}}</td>
+                                        <td>{{number_format($yeuCauRutTien->so_tien,0,'.')}} VNĐ</td>
+                                        <td>{{$yeuCauRutTien->created_at}}</td>
+                                        @if ($yeuCauRutTien->xet_duyet == 0)
+                                        <td class="text-primary">Đang xét duyệt</td>
+                                        @elseif($yeuCauRutTien->xet_duyet == 1)
+                                            @if ($yeuCauRutTien->trang_thai == 0)
+                                            <td class="text-warning">Đang chờ xử lý</td>
+                                            @elseif($yeuCauRutTien->trang_thai == 1)
+                                            <td class="text-success">Rút tiền thành công</td>
+                                            @else
+                                            <td class="text-danger">Rút tiền không thành công</td>
+                                            @endif
+                                        @endif
                                     </tr>
-                                    <tr class="group">
-                                        <td>TP bank</td>
-                                        <td><span class="status text-success">Thành công</span>
-                                        </td>
-                                        <td>100.000 VND</td>
-                                        <td>11/12/2024 - 02:26:25</td>
-                                    </tr>
-                                    <tr class="group">
-                                        <td>MB bank</td>
-                                        <td><span class="status text-warning">Chờ xử lý</span></td>
-                                        <td>100.000 VND</td>
-                                        <td>11/12/2024 - 02:26:25</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
