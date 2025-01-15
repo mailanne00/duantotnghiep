@@ -3,6 +3,14 @@
 @section('title', 'Đăng nhập')
 
 @section('content')
+@if (session('successSignUp'))
+<script>
+    Swal.fire({
+        title: "Đăng ký tài khoản thành công",
+        icon: "success",
+    });
+</script>
+@endif
 <section class="flat-title-page inner">
     <div class="overlay"></div>
     <div class="themesflat-container">
@@ -48,9 +56,9 @@
 
                 <div class="flat-form box-login-email">
                     @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
                     @endif
 
                     <div class="form-inner">
@@ -59,12 +67,12 @@
                             <input id="email" name="email" type="email" tabindex="1" value="{{ old('email') }}" aria-required="true"
                                 type="text" placeholder="Email" required>
                             @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <input id="pass" name="pass" type="password" tabindex="2" value="{{ old('pass') }}" aria-required="true"
                                 type="email" placeholder="Mật khẩu" required>
                             @error('pass')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="row-form style-1">
                                 <label>Nhớ mật khẩu

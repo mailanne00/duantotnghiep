@@ -11,7 +11,11 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LichSuThueController;
 use App\Http\Controllers\Client\LienheController;
 use App\Http\Controllers\Client\LoginController;
+use App\Http\Controllers\Client\RutTienController;
 use App\Http\Controllers\Client\ThongtinController;
+use App\Http\Middleware\VerifyCsrfToken;
+use App\Jobs\sendEmailJob;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +29,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+   sendEmailJob::dispatch('bactxph36951@fpt.edu.vn');
+   echo "Đã gửi email";
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');
@@ -38,7 +46,8 @@ Route::get('/login-facebook-callback', [LoginController::class, 'loginFacebookCa
 Route::get('/logout', [LoginController::class, 'logout'])->name('client.logout');
 
 Route::get('/dang-ky', [DangKyController::class, 'index'])->name('client.dangky');
-Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store');
+Route::post('/dang-ky/store', [DangKyController::class, 'store'])->name('dangky.store')->withoutMiddleware(VerifyCsrfToken::class);
+Route::post('/dang-ky/verify-email', [DangKyController::class, 'verifyEmail'])->name('dangky.verifyEmail');
 
 Route::get('/bang-xep-hang', [BangxephangController::class, 'index'])->name('client.bangxephang');
 Route::get('/chinh-sach', [ChinhsachController::class, 'index'])->name('client.chinhsach');
@@ -85,3 +94,7 @@ Route::post('/bai-viet/{id}/binh-luan', [\App\Http\Controllers\Client\BaiVietCon
 
 Route::post('/theo-doi', [\App\Http\Controllers\Client\TheoDoiController::class, 'store'])->name('client.theoDoi.store');
 Route::delete('/huy-theo-doi/{id}', [\App\Http\Controllers\Client\TheoDoiController::class, 'destroy'])->name('client.huyTheoDoi.destroy');
+
+Route::get('/rut-tien', [RutTienController::class, 'index'])->name('client.rutTien');
+Route::get('/rut-tien/create', [RutTienController::class, 'create'])->name('client.rutTien.create');
+Route::post('/rut-tien',[RutTienController::class, 'store'])->name('client.rutTien.store');

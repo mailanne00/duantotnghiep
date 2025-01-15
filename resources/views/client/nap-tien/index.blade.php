@@ -1,5 +1,5 @@
 @extends('client.layouts.app')
-
+@section('title', 'Nạp tiền')
 @section('content')
     <section class="flat-title-page inner">
         <div class="overlay"></div>
