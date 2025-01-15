@@ -51,9 +51,6 @@
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-12 col-12">
                     <div class="form-upload-profile">
-
-
-
                         <div class="form-infor-profile">
                             <div class="info-account">
                                 <h4 class="title-create-item">Thông tin cả nhân</h4>
@@ -115,38 +112,54 @@
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </fieldset>
-
                                 <fieldset>
-                                    <h4 class="title-infor-account">Danh mục game</h4>
-                                    <input type="hidden" name="selected_categories" id="selectedCategoriesInput">
+                                     {{-- Hiển thị trạng thái xác thực --}}
+                                     @if ($user->trang_thai_xac_thuc == 1)
+            <div class="form-group mt-3">
+                <label for="gia_tien">Giá tiền:</label>
+                <input type="number" id="gia_tien" name="gia_tien" class="form-control" 
+                       value="{{ $user->gia_tien ?? '' }}" placeholder="Nhập giá tiền">
+            </div>
 
-                                    <div id="selectedCategoriesContainer"
-                                        class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"
-                                        style="min-height: 50px;">
-                                        @foreach ($selectedCategories as $categoryId)
-                                        @php
-                                        $category = $categories->firstWhere('id', $categoryId);
-                                        @endphp
-                                        @if ($category)
-                                        <div class="selected-tag" data-id="{{ $category->id }}">
-                                            <span>{{ $category->ten }}</span>
-                                            <button type="button" class="remove-tag">&times;</button>
-                                        </div>
-                                        @endif
-                                        @endforeach
-                                    </div>
+            <div class="form-group mt-3">
+                <label for="mo_ta">Mô tả:</label>
+                <textarea id="mo_ta" name="mo_ta" class="form-control" 
+                          placeholder="Nhập mô tả">{{ $user->mo_ta ?? '' }}</textarea>
+            </div>
+        @endif
+                                </fieldset>
 
-                                    <div id="categoryList">
-                                        @foreach ($categories as $category)
-                                        @if (!in_array($category->id, $selectedCategories))
-                                        <div class="category-btn" data-id="{{ $category->id }}">
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
-                                                alt="" width="30" height="30">
-                                            <span>{{ $category->ten }}</span>
-                                        </div>
-                                        @endif
-                                        @endforeach
+
+                                <h4 class="title-infor-account">Danh mục game</h4>
+                                <input type="hidden" name="selected_categories" id="selectedCategoriesInput">
+
+                                <div id="selectedCategoriesContainer"
+                                    class="border p-2 rounded bg-dark text-white mb-3 d-flex flex-wrap gap-2 align-items-center"
+                                    style="min-height: 50px;">
+                                    @foreach ($selectedCategories as $categoryId)
+                                    @php
+                                    $category = $categories->firstWhere('id', $categoryId);
+                                    @endphp
+                                    @if ($category)
+                                    <div class="selected-tag" data-id="{{ $category->id }}">
+                                        <span>{{ $category->ten }}</span>
+                                        <button type="button" class="remove-tag">&times;</button>
                                     </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+
+                                <div id="categoryList">
+                                    @foreach ($categories as $category)
+                                    @if (!in_array($category->id, $selectedCategories))
+                                    <div class="category-btn" data-id="{{ $category->id }}">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}"
+                                            alt="" width="30" height="30">
+                                        <span>{{ $category->ten }}</span>
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
                                 </fieldset>
 
 
@@ -211,6 +224,8 @@
 
                     </div>
                 </div>
+                
+
             </div>
         </form>
     </div>

@@ -39,7 +39,18 @@ class ThongtinController extends Controller
     $user = TaiKhoan::query()->findOrFail(Auth::id());
     $data = $request->except('anh_dai_dien', 'danh_muc', 'cccd', 'personal_video');
 
-   
+    if ($user->trang_thai_xac_thuc == 1) {
+        $request->validate([
+            'gia_tien' => 'required|numeric|min:0',
+            'mo_ta' => 'nullable|string|max:255',
+        ]);
+
+        // Cập nhật thông tin
+        $user->gia_tien = $request->input('gia_tien');
+        $user->mo_ta = $request->input('mo_ta');
+        $user->save();
+
+
     if ($request->hasFile('anh_dai_dien')) {
         if ($user->anh_dai_dien) {
             Storage::disk('public')->delete($user->anh_dai_dien);
@@ -75,4 +86,5 @@ class ThongtinController extends Controller
     return redirect()->route('client.thongtincanhan')->with('success', 'Cập nhật thông tin thành công!');
 }
 
+}
 }
