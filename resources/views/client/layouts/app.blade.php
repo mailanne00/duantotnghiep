@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <title>@yield('title')</title>
+    
     @vite('resources/js/app.js')
     @vite('resources/js/createChat.js')
     @vite('resources/js/present.js')
