@@ -30,7 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Gửi tin nhắn thành công:", response.data);
             $("#chatMessage").val("");
             IdPhongNew = response.data.phong_chat_id;
-            avatarNguoiNhan = response.data.nguoi_nhan.anh_dai_dien;
+            avatarNguoiNhan = response.data.nguoi_nhan.anh_dai_dien.replace(
+                /^public\//,
+                ""
+            );
+
             // await markMessagesAsRead(IdPhongNew);
             // console.log(`Đã lắng nghe kênh phong-chat.${IdPhongNew}`);
         } catch (error) {
@@ -65,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Tạo nội dung cho phòng mới
             newRoomElement.innerHTML = `
-                <img src="{{ \Illuminate\Support\Facades\Storage::url('${avatarNguoiNhan}') }}" alt="User Avatar" class="rounded-circle chat-avatar">
+                <img src="storage/${avatarNguoiNhan}" alt="User Avatar" class="rounded-circle chat-avatar">
                 <div class="chat-user-info ms-2">
                     <p class="chat-user-name mb-0">${tenNguoiNhan}</p>
                     <p class="chat-last-message text-muted small mb-0" id="lastMessage">
