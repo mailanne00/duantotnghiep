@@ -39,4 +39,32 @@ class ToCaoController extends Controller
         // Kiểm tra kết quả và trả về view
         return view('admin.to-cao.show', compact('toCao', 'tinNhans'));
     }
+
+    public function choxuli($id)
+    {
+        $toCao = ToCao::findOrFail($id);
+        $toCao->trang_thai = '0';
+        $toCao->save();
+
+        return redirect()->route('admin.to-caos.index')->with('success', 'Đơn tố cáo cần thêm thông tin xử lí.');
+    }
+
+
+    public function approve($id)
+    {
+        $toCao = ToCao::findOrFail($id);
+        $toCao->trang_thai = '1';
+        $toCao->save();
+
+        return redirect()->route('admin.to-caos.index')->with('success', 'Đơn tố cáo đã được duyệt.');
+    }
+
+    public function reject($id)
+    {
+        $toCao = ToCao::findOrFail($id);
+        $toCao->trang_thai = '2';
+        $toCao->save();
+
+        return redirect()->route('admin.to-caos.index')->with('error', 'Đơn tố cáo đã bị từ chối.');
+    }
 }

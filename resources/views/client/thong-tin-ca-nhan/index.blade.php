@@ -53,7 +53,7 @@
                     <div class="form-upload-profile">
                         <div class="form-infor-profile">
                             <div class="info-account">
-                                <h4 class="title-create-item">Thông tin cả nhân</h4>
+                                <h4 class="title-create-item">Thông tin cá nhân</h4>
                                 <fieldset>
                                     <h4 class="title-infor-account">Tên</h4>
                                     <input type="text" name="ten" placeholder="Tên đăng nhập"
@@ -209,15 +209,35 @@
                                 @endif
                             </fieldset>
 
+                            
+
                             <div class="form-infor-profiles">
+                                <div>
+                                <h4 class="title-infor-account">Số CCCD</h4>
+                                <input type="text" name="cccd_so" placeholder="Nhập số CCCD"
+                                    class="form-control text-white bg-dark">
+                                @error('cccd_so')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                @if ($user->cccd_so)
+                                <div class="mt-2">
+                                    <h5>Số CCCD đã tải lên: {{$user->cccd_so}}</h5>
+                                </div>
+                                @endif
+                                </div>
+                                
+                                <div>
                                 <h4 class="title-create-item">Trạng thái xác thực</h4>
                                 <p>
-                                    @if ($user->trang_thai_xac_thuc)
-                                    <span class="text-success">Đã xác thực</span>
+                                    @if ($user->trang_thai_xac_thuc == 1)
+                                    <span class="text-success" style="font-size: 18px;">Đã xác thực</span>
+                                    @elseif ($user->trang_thai_xac_thuc == 2)
+                                    <span class="text-danger" style="font-size: 18px;">Từ chối xác thực</span>
                                     @else
-                                    <span class="text-danger">Chưa xác thực</span>
+                                    <span class="text-danger" style="font-size: 18px;">Chưa xác thực</span>
                                     @endif
                                 </p>
+                                </div>
                             </div>
 
                         </div>

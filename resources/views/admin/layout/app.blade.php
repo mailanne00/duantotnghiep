@@ -88,8 +88,8 @@
                         <li class=""><a href="{{route('admin.banners.create')}}" class="">Thêm banner</a></li>
                     </ul>
                 </li> -->
-                <!-- <li data-username="table foo" class="nav-item"><a href="{{route('admin.dang-tins.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý đăng tin</span></a></li> -->
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.nap-tien.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý nạp tiền</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.danh-gias.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-star-half-alt"></i></span><span class="pcoded-mtext">Quản lý đánh giá</span></a></li>
                 
