@@ -10,8 +10,10 @@ use Illuminate\Http\Request;
 use App\Models\TinNhan;
 use App\Events\NewMessage;
 use App\Models\LichSuThue;
+use App\Models\NguoiTheoDoi;
 use App\Models\PhongChat;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class TaiKhoanController extends Controller
@@ -61,12 +63,18 @@ class TaiKhoanController extends Controller
             $tyLeThanhCong = ($successRent / $allRent) * 100;
             $tyLeThanhCong = round($tyLeThanhCong, 2);
 
+            $theoDoi = NguoiTheoDoi::where('nguoi_theo_doi_id', Auth::id())
+                ->where('nguoi_duoc_theo_doi_id', $id)
+                ->first();
+
+                // dd($theoDoi);
+
             // Lấy danh sách đánh giá của player
             $danhGias = DanhGia::where('nguoi_duoc_thue_id', $id)
                 ->with('nguoiThue') // Để lấy thông tin người thuê (nguoi_thue_id)
                 ->get();
 
-            return view('client.tai-khoan.show', compact('player', 'formattedDate', 'totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
+            return view('client.tai-khoan.show', compact('theoDoi', 'player', 'formattedDate', 'totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
         }
     }
 

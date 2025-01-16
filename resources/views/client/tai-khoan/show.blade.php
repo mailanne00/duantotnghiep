@@ -51,8 +51,28 @@
                             <h2 class="style2">{{ $player->ten }}</h2>
                             <div class="meta-item">
                                 <div class="left">
-                                    <span class="liked heart mg-l-8" min-width="50px"><span
-                                            class="number-like"> Theo dõi</span></span>
+                                    @if ($theoDoi)
+                                    <form action="{{route('client.huyTheoDoi.destroy', $theoDoi->id)}}" method="post">
+                                        <input type="hidden" value="{{ $player->id }}" name="nguoi_duoc_theo_doi_id">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="all:unset" class="liked heart mg-l-8" min-width="50px">
+                                            <span
+                                                class="number-like">Huỷ theo dõi</span>
+                                        </button>
+                                    </form>
+                                    
+                                    
+                                    @else
+                                    <form action="{{route('client.theoDoi.store')}}" method="post">
+                                        <input type="hidden" value="{{ $player->id }}" name="nguoi_duoc_theo_doi_id">
+                                        @csrf
+                                        <button style="all:unset" class="liked heart mg-l-8" min-width="50px">
+                                            <span
+                                                class="number-like">Theo dõi</span>
+                                        </button>
+                                    </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -63,11 +83,11 @@
                             </div>
                             <div class="col-4 text-center">
                                 <h4>Tỷ lệ thành công</h>
-                                <h5 class="mt-2 text-warning">{{$tyLeThanhCong}}%</h5>
+                                    <h5 class="mt-2 text-warning">{{$tyLeThanhCong}}%</h5>
                             </div>
                             <div class="col-4 text-center">
                                 <h4>Số người theo dõi</h>
-                                <h5 class="mt-2 text-warning">{{$player->count}} người</h5>
+                                    <h5 class="mt-2 text-warning">{{$player->count}} người</h5>
                             </div>
                         </div>
                         <div class="client-infor sc-card-product">
