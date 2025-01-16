@@ -270,32 +270,48 @@
                 selectedCategoriesInput.value = selectedCategories.join(',');
             }
 
-            selectedCategoriesContainer.addEventListener('click', function(event) {
-                if (event.target && event.target.classList.contains('remove-tag')) {
-                    const tag = event.target.closest('.selected-tag'); // Lấy thẻ category
-                    const categoryId = tag.getAttribute('data-id'); // Lấy ID của category
-
-                    // Xóa category khỏi mảng
-                    selectedCategories = selectedCategories.filter(id => id !== categoryId);
-
-                    // Xóa thẻ khỏi container
-                    tag.remove();
-
-                    // Cập nhật giá trị input ẩn
-                    updateSelectedCategories();
-                }
-            });
-
-            // Hiển thị danh mục chưa được chọn
+            // Hiển thị lại danh mục chưa chọn
             function updateCategoryList() {
-                categoryButtons.forEach(button => {
-                    const categoryId = button.getAttribute('data-id');
-                    if (!selectedCategories.includes(categoryId)) {
-                        button.style.display = 'block';
-                    } else {
-                        button.style.display = 'none';
+                categoryList.innerHTML = ''; // Làm sạch danh sách categories trước
+
+                // Duyệt qua các categories được truyền từ PHP và tạo button cho những category chưa chọn
+                @foreach ($categories as $category)
+                    if (!selectedCategories.includes({{ $category->id }})) {
+                        const newButton = document.createElement('div');
+                        newButton.classList.add('category-btn');
+                        newButton.setAttribute('data-id', '{{ $category->id }}');
+                        newButton.innerHTML = `
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->anh) }}" alt="" width="30" height="30">
+                        <span>{{ $category->ten }}</span>
+                    `;
+                        categoryList.appendChild(newButton);
+
+                        // Gắn sự kiện click cho button mới
+                        newButton.addEventListener('click', function() {
+                            selectCategory('{{ $category->id }}', '{{ $category->ten }}');
+                        });
                     }
-                });
+                @endforeach
+            }
+
+            // Khi chọn một category
+            function selectCategory(categoryId, categoryName) {
+                if (!selectedCategories.includes(categoryId)) {
+                    selectedCategories.push(categoryId);
+
+                    const tag = document.createElement('div');
+                    tag.classList.add('selected-tag');
+                    tag.setAttribute('data-id', categoryId);
+                    tag.innerHTML = `
+                <span>${categoryName}</span>
+                <button type="button" class="remove-tag">&times;</button>
+            `;
+
+                    selectedCategoriesContainer.appendChild(tag);
+                    updateSelectedCategories(); // Cập nhật lại input ẩn
+                    updateCategoryList(); // Cập nhật danh sách category chưa chọn
+                    attachRemoveTagEvents(); // Gắn sự kiện xóa cho các thẻ mới
+                }
             }
 
             // Gắn sự kiện xóa cho các thẻ đã chọn
@@ -316,34 +332,10 @@
                 });
             }
 
-            // Khi chọn một category
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const categoryId = this.dataset.id;
-                    const categoryName = this.querySelector('span').textContent.trim();
-
-                    if (!selectedCategories.includes(categoryId)) {
-                        selectedCategories.push(categoryId);
-
-                        const tag = document.createElement('div');
-                        tag.classList.add('selected-tag');
-                        tag.setAttribute('data-id', categoryId);
-                        tag.innerHTML = `
-                    <span>${categoryName}</span>
-                    <button type="button" class="remove-tag">&times;</button>
-                `;
-
-                        selectedCategoriesContainer.appendChild(tag);
-                        updateSelectedCategories(); // Cập nhật lại input ẩn
-                        updateCategoryList(); // Hiển thị lại nút danh mục chưa chọn
-                        attachRemoveTagEvents(); // Gắn sự kiện xóa cho các thẻ mới
-                    }
-                });
-            });
-
             // Gắn sự kiện cho các thẻ đã có sẵn
             attachRemoveTagEvents();
 
+            // Cập nhật lại danh mục chưa chọn và giá trị input ẩn khi trang tải xong
             updateCategoryList();
             updateSelectedCategories();
         });
