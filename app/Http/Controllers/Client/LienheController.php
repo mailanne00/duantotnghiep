@@ -35,6 +35,8 @@ class LienheController extends Controller
             $data = $request->except('anh');
 
             $data['tai_khoan_id'] = \auth()->id();
+            $data['ten'] = $request->ten;
+            $data['email'] = $request->email;
 
             if($request->hasFile('anh')){
                 $data['anh'] = Storage::put(self::PATH_UPLOAD,$request->file('anh'));
