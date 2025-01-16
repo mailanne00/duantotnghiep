@@ -81,7 +81,7 @@
                         <div class="col-4 text-center">
                             <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-title="Số giờ được thuê"></i>
-                            <h6 class="text-white mt-2 mb-0">189</h6>
+                            <h6 class="text-white mt-2 mb-0">{{$totalHours}}</h6>
                         </div>
                     </div>
                 </div>
@@ -181,9 +181,6 @@
                                 <i class="fas fa-money-bill-wave-alt text-c-blue f-16 mb-2"></i>
                                 <h5 class="m-0">{{number_format($taiKhoan->so_du, 0, ',')}} VNĐ</h5>
                                 <p class="m-0">Số dư</p>
-                            </div>
-                            <div class="process">
-                                <div id="process2" style="height:87px"></div>
                             </div>
                         </div>
                     </div>
@@ -294,25 +291,42 @@
                 <!-- Ảnh CCCD -->
                 <div style="text-align: center; width: 30%;">
                     <h5 style="color: #333333; margin-bottom: 15px;">Ảnh CCCD đã tải lên:</h5>
+                    @if ($taiKhoan->cccd != null)
                     <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->cccd) }}"
                         style="max-height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 10px; width: 100%;"
                         alt="Ảnh CCCD" class="img-fluid">
+                        @else
+                        <p>Chưa cập nhật</p>
+                    @endif
                 </div>
                 <!-- Video -->
                 <div style="text-align: center; width: 30%;">
                     <h5 style="color: #333333; margin-bottom: 15px;">Video bản thân đã tải lên:</h5>
+                    @if ($taiKhoan->personal_video != null)
                     <video style="border: 1px solid #ddd; border-radius: 10px; width: 100%;" controls>
                         <source src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->personal_video) }}"
                             type="video/mp4">
                         Trình duyệt không hỗ trợ phát video.
                     </video>
+                    @else
+                    <p>Chưa cập nhật</p>
+                    @endif
                 </div>
                 <!-- Số CCCD và trạng thái -->
                 <div style="width: 30%;">
                     <h5 style="color: #333333;">Số CCCD đã tải lên:</h5>
-                    <p style="font-weight: bold; font-size: 18px;">016958897897</p>
+                    @if ($taiKhoan->cccd_so != null)
+                    <p style="font-weight: bold; font-size: 18px;">{{$taiKhoan->cccd_so}}</p>
+                    @else
+                    <p>Chưa cập nhật</p>
+                    @endif
                     <h5 style="color: #333333;">Trạng thái xác thực:</h5>
+                    @if ($taiKhoan->trang_thai_xac_thuc == 1)
                     <span style="color: #4caf50; font-weight: bold; font-size: 18px;">Đã xác thực</span>
+                    @else
+                    <span style="color:rgb(243, 19, 19); font-weight: bold; font-size: 18px;">Chưa xác thực</span>
+                    @endif
+                    
                 </div>
             </div>
         </div>

@@ -54,6 +54,10 @@ class TaiKhoanController extends Controller
     public function show(int $id)
     {
         $taiKhoan = TaiKhoan::query()->findOrFail($id);
+
+        $totalHours = LichSuThue::where('nguoi_duoc_thue', $taiKhoan->id)->where('trang_thai', 1)
+        ->sum('gio_thue');
+
         $a = [];
         $date = [1];
         $soNguoiTheoDois = NguoiTheoDoi::query()->where('nguoi_duoc_theo_doi_id', $id)->orderBy('created_at', 'asc')->get();
@@ -78,7 +82,7 @@ class TaiKhoanController extends Controller
             }
         }
         $a = json_encode($a);
-        return view('admin.tai-khoan.show', compact('taiKhoan', 'a'));
+        return view('admin.tai-khoan.show', compact('taiKhoan','totalHours', 'a'));
     }
 
     public function layDoanhThuNgay(int $id)
