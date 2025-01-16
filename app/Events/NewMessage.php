@@ -19,10 +19,14 @@ class NewMessage implements ShouldBroadcast
      * Create a new event instance.
      */
     public $message;
+    public $nguoiGui;
+    public $nguoiNhan;
 
-    public function __construct(TinNhan $message)
+    public function __construct(TinNhan $message, $nguoiGui, $nguoiNhan)
     {
         $this->message = $message;
+        $this->nguoiGui = $nguoiGui;
+        $this->nguoiNhan = $nguoiNhan;
     }
 
     public function broadcastOn()
@@ -33,5 +37,14 @@ class NewMessage implements ShouldBroadcast
     public function broadcastAs()
     {
         return 'new-message';
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'message' => $this->message,
+            'nguoi_gui' => $this->nguoiGui,
+            'nguoi_nhan' => $this->nguoiNhan,
+        ];
     }
 }

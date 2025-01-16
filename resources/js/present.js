@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch("http://127.0.0.1:8000/api/tin-nhan");
             const rooms = await response.json();
+            console.log("🚀 ~ loadChatRooms ~ rooms:", rooms);
+
             // console.log("🚀 ~ loadChatRooms ~ rooms:", rooms);
 
             if (rooms.tin_nhans && Array.isArray(rooms.tin_nhans)) {
@@ -74,11 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                 ? lastMessageContent.slice(0, 15) + "..."
                                 : lastMessageContent;
 
+                        const avatar = otherUser.anh_dai_dien;
+                        const updatedAvatar = avatar.replace(/^public\//, "");
+
                         chatList.innerHTML += `
                         <li class="chat-user d-flex align-items-center mb-3 p-2" data-room-id="${
                             room.phong_chat_id
                         }">
-                            <img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="rounded-circle chat-avatar">
+                            <img src="/storage/${updatedAvatar}" alt="User Avatar" class="rounded-circle chat-avatar">
                             <div class="chat-user-info ms-2">
                                 <p class="chat-user-name mb-0">${
                                     otherUser.ten
@@ -128,16 +133,21 @@ document.addEventListener("DOMContentLoaded", () => {
             .map((msg) => {
                 const isCurrentUser = msg.nguoi_gui.id === authUserId;
 
+                // Lấy ảnh từ người gửi hoặc người nhận
+                const avatar = isCurrentUser
+                    ? msg.nguoi_nhan.anh_dai_dien.replace(/^public\//, "")
+                    : msg.nguoi_gui.anh_dai_dien.replace(/^public\//, "");
+
                 return `
-                    <div class="message ${isCurrentUser ? "you" : "user1"}">
-                        ${
-                            !isCurrentUser
-                                ? `<img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">`
-                                : ""
-                        }
-                        <p>${msg.tin_nhan}</p>
-                    </div>
-                `;
+                <div class="message ${isCurrentUser ? "you" : "user1"}">
+                    ${
+                        !isCurrentUser
+                            ? `<img src="/storage/${avatar}" alt="User Avatar" class="avatar">`
+                            : ""
+                    }
+                    <p>${msg.tin_nhan}</p>
+                </div>
+            `;
             })
             .join("");
 
@@ -301,12 +311,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? room.nguoi_nhan
                     : room.nguoi_gui;
 
+            const avatar = otherUser.anh_dai_dien;
+            const updatedAvatar = avatar.replace(/^public\//, "");
+
             // Cập nhật giao diện tiêu đề chat
             const chatHeader = document.querySelector(".chat-header");
             if (chatHeader) {
                 chatHeader.innerHTML = `
                     <div class="chat-header-container">
-                        <img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">
+                        <img src="storage/${updatedAvatar}" alt="User Avatar" class="avatar">
                         <div class="user-info">
                             <p class="user-name">${otherUser.ten}</p>
                             <p class="user-status" data-user-id="${otherUser.id}">Đang không trong phòng chat</p>
@@ -708,7 +721,11 @@ document.addEventListener("DOMContentLoaded", () => {
             window.Echo.channel(`chat.${roomId}`).listen(
                 ".new-message",
                 (e) => {
-                    // console.log("New message received:", e.message);
+                    // console.log("New message received:", e);
+                    const avatar = e.nguoi_gui.anh_dai_dien.replace(
+                        /^public\//,
+                        ""
+                    );
 
                     messageContainer.innerHTML += `
                     <div class="message ${
@@ -716,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }">
                         ${
                             e.message.nguoi_gui !== authUserId
-                                ? `<img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">`
+                                ? `<img src="storage/${avatar}" alt="User Avatar" class="avatar">`
                                 : ""
                         }
                         <p>${e.message.tin_nhan}</p>

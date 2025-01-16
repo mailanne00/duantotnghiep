@@ -90,18 +90,16 @@ class LichSuThueController extends Controller
             ]);
         }
 
-
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
             ->where('nguoi_duoc_thue', $validateData['user_id'])
             ->where('trang_thai', '=', '0')
             ->where('expired', '<=', $timeNow)
             ->first();
 
-
         $userAuth = TaiKhoan::where('id', auth()->user()->id)->first();
         $user = TaiKhoan::where('id', $validateData['user_id'])->first();
 
-        if($user->trang_thai != 1) {
+        if ($user->trang_thai != 1) {
             return redirect()->back()->with('error', 'Người dùng không thể nhận yêu cầu thuê');
         }
 
@@ -338,7 +336,7 @@ class LichSuThueController extends Controller
             $lichSuThue->markAsEnd();
 
             $user = TaiKhoan::where('id', $request->user_id)->first();
-
+            $user->trang_thai = 1;
             $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - (int)$lichSuThue->loi_nhuan) / 100;
             $user->save();
 
