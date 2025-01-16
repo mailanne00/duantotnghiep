@@ -42,3 +42,5 @@ Route::get('tai-khoans/{id}/doanh-thu/nam', [\App\Http\Controllers\Admin\TaiKhoa
 Route::get('don-duyet-player', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'donDuyetPlayer'])->name('donDuyetPlayer');
 Route::put('duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'duyetPlayer'])->name('duyetPlayer');
 Route::put('huy-duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'huyDuyetPlayer'])->name('huyDuyetPlayer');
+
+Route::resource('nap-tien', \App\Http\Controllers\Admin\NapTienController::class);

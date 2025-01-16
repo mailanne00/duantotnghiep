@@ -14,4 +14,9 @@ class LichSuNap extends Model
         'so_tien',
         'trang_thai',
     ];
+
+    public function nguoiNap()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');
+    }
 }

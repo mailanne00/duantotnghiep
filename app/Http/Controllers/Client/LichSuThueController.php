@@ -14,6 +14,7 @@ use App\Models\ThongBao;
 use App\Models\TinNhan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
@@ -89,16 +90,18 @@ class LichSuThueController extends Controller
             ]);
         }
 
-
         $checkLichSuThue = LichSuThue::where('nguoi_thue', auth()->user()->id)
             ->where('nguoi_duoc_thue', $validateData['user_id'])
             ->where('trang_thai', '=', '0')
             ->where('expired', '<=', $timeNow)
             ->first();
 
-        
         $userAuth = TaiKhoan::where('id', auth()->user()->id)->first();
         $user = TaiKhoan::where('id', $validateData['user_id'])->first();
+
+        if ($user->trang_thai != 1) {
+            return redirect()->back()->with('error', 'Người dùng không thể nhận yêu cầu thuê');
+        }
 
         if ($userAuth->so_du < $request->tong_gia) {
             return redirect()->back()->with('error', 'Số dư không đủ');
@@ -248,7 +251,7 @@ class LichSuThueController extends Controller
     public function huyDonThue(Request $request, $id)
     {
         $user = LichSuThue::find($id);
-        
+
         if ($user->trang_thai == 0) {
             $user->markAsCancelled();
 
@@ -298,6 +301,11 @@ class LichSuThueController extends Controller
 
         if ($user->trang_thai == 0) {
             $user->markAsProcessing();
+            LichSuThue::where('nguoi_duoc_thue', auth()->user()->id)
+                ->where('trang_thai', operator: '0')
+                ->update([
+                    'trang_thai' => 2
+                ]);
             $user->update([
                 'expired' => Carbon::parse($user->updated_at)->addHour($user->gio_thue)
             ]);
@@ -307,6 +315,12 @@ class LichSuThueController extends Controller
                 'noi_dung' => 'đã nhận yêu cầu duo',
                 'tai_khoan_id' => $user->nguoiThue->id
             ]);
+
+            TaiKhoan::find(Auth::id())->update(
+                [
+                    'trang_thai' => 0
+                ]
+            );
 
             return redirect()->back()->with('success', 'Nhận đơn thuê thành công.');
         }
@@ -322,7 +336,7 @@ class LichSuThueController extends Controller
             $lichSuThue->markAsEnd();
 
             $user = TaiKhoan::where('id', $request->user_id)->first();
-
+            $user->trang_thai = 1;
             $user->so_du += ($lichSuThue->gio_thue * $lichSuThue->gia_thue) * (100 - (int)$lichSuThue->loi_nhuan) / 100;
             $user->save();
 
