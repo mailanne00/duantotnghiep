@@ -322,7 +322,7 @@
     <script>
         Swal.fire({
             title: "{{session('success')}}",
-            icon: "error",
+            icon: "success",
             draggable: true
         });
     </script>
