@@ -26,4 +26,9 @@ class YeuCauRutTien extends Model
             'status' => 'Rút tiền không thành công'
         ]
     ];
+
+    public function nguoiRut()
+    {
+        return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');
+    }
 }

@@ -16,20 +16,19 @@
                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                         <thead>
                             <tr>
-                                <th>STT</th>
+                                <th>Mã</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Tên người nạp</th>
                                 <th>Số tiền nạp</th>
                                 <th>Ngày nạp</th>
                                 <th>Trạng thái</th>
-                                <th>Chức năng</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($lichSuNaps as $lichSuNap)
                             <tr>
                                 <th>
-                                    {{$loop->iteration}}
+                                MD-{{$lichSuNap->id}}
                                 </th>
                                 <td>
                                     <img src="{{\Illuminate\Support\Facades\Storage::url($lichSuNap->nguoiNap->anh_dai_dien)}}" style="width: 80px; border-radius: 10px;" alt="">
@@ -51,20 +50,18 @@
                                 <td class="text-danger">Thất bại</td>
                                 @endif
 
-                                <td>Xem chi tiết</td>
 
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>STT</th>
+                                <th>Mã</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Tên người nạp</th>
                                 <th>Số tiền nạp</th>
                                 <th>Ngày nạp</th>
                                 <th>Trạng thái</th>
-                                <th>Chức năng</th>
                             </tr>
                         </tfoot>
                     </table>

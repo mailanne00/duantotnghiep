@@ -43,10 +43,10 @@ class LienheController extends Controller
             }
 
             LienHe::create($data);
-            return redirect()->route('client.lienhe.create')->with(['success' => 1]);
+            return redirect()->route('client.lienhe.create')->with(['success' => 'Gửi liên hệ thành công']);
 
         }else {
-            return redirect()->route('client.lienhe.create')->with(['error' => 2]);
+            return redirect()->route('client.lienhe.create')->with(['error' => 'Không thể gửi liên hệ']);
         }
 
     }

@@ -89,7 +89,9 @@
                     </ul>
                 </li> -->
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.nap-tien.index')}}" class="nav-link"><span class="pcoded-micon"><i
-                                class="fas fa-file-video"></i></span><span class="pcoded-mtext">Quản lý nạp tiền</span></a></li>
+                                class="fas fa-donate"></i></span><span class="pcoded-mtext">Quản lý nạp tiền</span></a></li>
+                <li data-username="table foo" class="nav-item"><a href="{{route('admin.rut-tien.index')}}" class="nav-link"><span class="pcoded-micon"><i
+                                class="fas fa-credit-card"></i></span><span class="pcoded-mtext">Quản lý rút tiền</span></a></li>
                 <li data-username="table foo" class="nav-item"><a href="{{route('admin.danh-gias.index')}}" class="nav-link"><span class="pcoded-micon"><i
                                 class="fas fa-star-half-alt"></i></span><span class="pcoded-mtext">Quản lý đánh giá</span></a></li>
                 

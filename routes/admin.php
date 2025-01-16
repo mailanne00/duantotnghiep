@@ -44,3 +44,4 @@ Route::put('duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerContr
 Route::put('huy-duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'huyDuyetPlayer'])->name('huyDuyetPlayer');
 
 Route::resource('nap-tien', \App\Http\Controllers\Admin\NapTienController::class);
+Route::resource('rut-tien', \App\Http\Controllers\Admin\RutTienController::class);
