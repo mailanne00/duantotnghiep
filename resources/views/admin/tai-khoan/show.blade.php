@@ -165,7 +165,8 @@
                 <div class="text-center">
                     <h6 class="mb-1">Thông tin client</h6>
                     <p class="mb-1">
-                        {{$taiKhoan->mo_ta ?? 'Không có mô tả'}}</p>
+                        {{$taiKhoan->mo_ta ?? 'Không có mô tả'}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -278,6 +279,40 @@
                             <div id="device-chart" style="height:140px;"></div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 mb-4">
+        <div style="background-color: #ffffff; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <!-- Tiêu đề thông tin CCCD -->
+                <h4 style="color: #333333; font-weight: bold;">Thông tin CCCD</h4>
+            </div>
+            <!-- Nội dung thông tin CCCD -->
+            <div style="display: flex; justify-content: space-between; color: #333333;">
+                <!-- Ảnh CCCD -->
+                <div style="text-align: center; width: 30%;">
+                    <h5 style="color: #333333; margin-bottom: 15px;">Ảnh CCCD đã tải lên:</h5>
+                    <img src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->cccd) }}"
+                        style="max-height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 10px; width: 100%;"
+                        alt="Ảnh CCCD" class="img-fluid">
+                </div>
+                <!-- Video -->
+                <div style="text-align: center; width: 30%;">
+                    <h5 style="color: #333333; margin-bottom: 15px;">Video bản thân đã tải lên:</h5>
+                    <video style="border: 1px solid #ddd; border-radius: 10px; width: 100%;" controls>
+                        <source src="{{ \Illuminate\Support\Facades\Storage::url($taiKhoan->personal_video) }}"
+                            type="video/mp4">
+                        Trình duyệt không hỗ trợ phát video.
+                    </video>
+                </div>
+                <!-- Số CCCD và trạng thái -->
+                <div style="width: 30%;">
+                    <h5 style="color: #333333;">Số CCCD đã tải lên:</h5>
+                    <p style="font-weight: bold; font-size: 18px;">016958897897</p>
+                    <h5 style="color: #333333;">Trạng thái xác thực:</h5>
+                    <span style="color: #4caf50; font-weight: bold; font-size: 18px;">Đã xác thực</span>
                 </div>
             </div>
         </div>
@@ -522,7 +557,7 @@
         const data = await fetchData(url);
 
         console.log(data);
-        
+
         doanhThuChart.data.labels = data.labels;
         doanhThuChart.data.datasets[0].data = data.data;
         doanhThuChart.update();
@@ -546,10 +581,10 @@
     });
 
     // Sự kiện khi nhấn nút "Năm"
-document.getElementById('filterYear').addEventListener('click', () => {
-    updateChart(userId + '/doanh-thu/nam', 'Doanh thu theo năm');
-    toggleActiveButton('filterYear', ['filterDay', 'filterMonth']); // Thay đổi trạng thái nút
-});
+    document.getElementById('filterYear').addEventListener('click', () => {
+        updateChart(userId + '/doanh-thu/nam', 'Doanh thu theo năm');
+        toggleActiveButton('filterYear', ['filterDay', 'filterMonth']); // Thay đổi trạng thái nút
+    });
 
     // Hàm thay đổi trạng thái nút
     // function toggleActiveButton(activeId, inactiveId) {
@@ -564,15 +599,15 @@ document.getElementById('filterYear').addEventListener('click', () => {
     // }
 
     // Hàm thay đổi trạng thái nút với nhiều nút khác
-function toggleActiveButton(activeId, inactiveIds) {
-    const activeBtn = document.getElementById(activeId);
-    activeBtn.classList.add('active');
+    function toggleActiveButton(activeId, inactiveIds) {
+        const activeBtn = document.getElementById(activeId);
+        activeBtn.classList.add('active');
 
-    inactiveIds.forEach(id => {
-        const inactiveBtn = document.getElementById(id);
-        inactiveBtn.classList.remove('active');
-    });
-}
+        inactiveIds.forEach(id => {
+            const inactiveBtn = document.getElementById(id);
+            inactiveBtn.classList.remove('active');
+        });
+    }
 
     // Tải dữ liệu ban đầu (mặc định là doanh thu theo ngày)
     updateChart(userId + '/doanh-thu/ngay', 'Doanh thu theo ngày');

@@ -64,12 +64,16 @@ class ThongtinController extends Controller
     
 
         if ($request->cccd_so) {
+            if ($user->trang_thai_xac_thuc != 1) {
             $validatedData = $request->validate([
                 'cccd_so' => 'numeric|digits:12',
             ], [
                 'cccd_so.numeric' => 'Số CCCD chỉ được chứa các chữ số.',
                 'cccd_so.digits' => 'Số CCCD phải có đúng 12 chữ số.',
             ]);
+
+            $data['cccd_so'] = $request->cccd_so;
+        }
         }
 
         if ($request->hasFile('cccd')) {
@@ -94,25 +98,17 @@ class ThongtinController extends Controller
             $user->personal_video = $data['personal_video'];
         }
 
-
-        // Cập nhật trạng thái xác thực nếu có CCCD hoặc video được tải lên
-        if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
-            $user->trang_thai_xac_thuc = 0;
+        if ($request->hasFile('cccd') || $request->hasFile('personal_video') || $request->cccd_so) {
+            if ($user->trang_thai_xac_thuc != 1) {
+                $user->trang_thai_xac_thuc = 0;
+            }else{
+                return redirect()->back()->with('error', 'Đã xảy ra lỗi khi xác thực CCCD');
+            }
         }
 
-
-        // Kiểm tra nếu cả ảnh CCCD và video được tải lên -> xác thực
-        // if ($user->cccd && $user->personal_video) {
-        //     $user->trang_thai_xac_thuc = true;
-        // } else {
-        //     $user->trang_thai_xac_thuc = false;
-        // }
-
-        // if ($request->hasFile('cccd') || $request->hasFile('personal_video')) {
-        //         $user->trang_thai_xac_thuc = 0;
-        // }
         $user->save();
         $user->update($data);
+
 
         return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
     }
