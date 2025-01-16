@@ -310,8 +310,8 @@
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
     <!-- preloade -->
     {{-- <div class="preload preload-container"> --}}
-    {{-- <div class="preload-logo"></div> --}}
-    {{-- </div> --}}
+        {{-- <div class="preload-logo"></div> --}}
+        {{-- </div> --}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -360,8 +360,7 @@
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                     xmlns="../../../www.w3.org/2000/svg.html">
                                                     <mask id="mask0_334_638" style="mask-type:alpha"
-                                                        maskUnits="userSpaceOnUse" x="1" y="1" width="18"
-                                                        height="17">
+                                                        maskUnits="userSpaceOnUse" x="1" y="1" width="18" height="17">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                             d="M1.66699 1.66666H17.6862V17.3322H1.66699V1.66666Z"
                                                             fill="white" stroke="white" />
@@ -375,8 +374,7 @@
                                                             fill="white" />
                                                     </g>
                                                     <mask id="mask1_334_638" style="mask-type:alpha"
-                                                        maskUnits="userSpaceOnUse" x="13" y="13" width="6"
-                                                        height="6">
+                                                        maskUnits="userSpaceOnUse" x="13" y="13" width="6" height="6">
                                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                                             d="M14.2012 14.2999H18.3333V18.3333H14.2012V14.2999Z"
                                                             fill="white" stroke="white" />
@@ -392,13 +390,11 @@
                                                 </svg>
                                             </a>
                                             <div class="top-search">
-                                                <form action="#" method="get" role="search"
-                                                    class="search-form">
+                                                <form action="#" method="get" role="search" class="search-form">
                                                     <input type="search" id="s" class="search-field"
-                                                        placeholder="Search..." value="" name="s"
-                                                        title="Search for" required="">
-                                                    <button class="search search-submit" type="submit"
-                                                        title="Search">
+                                                        placeholder="Search..." value="" name="s" title="Search for"
+                                                        required="">
+                                                    <button class="search search-submit" type="submit" title="Search">
                                                         <i class="icon-fl-search-filled"></i>
                                                     </button>
                                                 </form>
@@ -417,8 +413,8 @@
                                                     <div class="notification" id="nutBamDocThongBao"
                                                         onclick="docThongBao()">
                                                         <span class="number" id="numberNotification">0</span>
-                                                        <svg width="19" height="22" viewBox="0 0 19 22"
-                                                            fill="#fff" xmlns="../../../www.w3.org/2000/svg.html">
+                                                        <svg width="19" height="22" viewBox="0 0 19 22" fill="#fff"
+                                                            xmlns="../../../www.w3.org/2000/svg.html">
                                                             <path
                                                                 d="M18.4915 15.495L17.209 13.65C17.0339 13.3992 16.9397 13.1009 16.939 12.795V7.5C16.939 5.51088 16.1488 3.60322 14.7423 2.1967C13.3357 0.790176 11.4281 0 9.43896 0C7.44984 0 5.54218 0.790176 4.13566 2.1967C2.72914 3.60322 1.93896 5.51088 1.93896 7.5V12.795C1.93824 13.1009 1.84403 13.3992 1.66896 13.65L0.386463 15.495C0.192273 15.7102 0.064576 15.977 0.018815 16.2632C-0.0269461 16.5494 0.0111884 16.8427 0.128607 17.1077C0.246026 17.3727 0.437699 17.598 0.680449 17.7563C0.923199 17.9147 1.20663 17.9993 1.49646 18H5.76396C5.9361 18.8477 6.39601 19.6099 7.06577 20.1573C7.73553 20.7047 8.57394 21.0038 9.43896 21.0038C10.304 21.0038 11.1424 20.7047 11.8122 20.1573C12.4819 19.6099 12.9418 18.8477 13.114 18H17.3815C17.6713 17.9993 17.9547 17.9147 18.1975 17.7563C18.4402 17.598 18.6319 17.3727 18.7493 17.1077C18.8667 16.8427 18.9049 16.5494 18.8591 16.2632C18.8133 15.977 18.6856 15.7102 18.4915 15.495ZM9.43896 19.5C8.97475 19.4987 8.52231 19.3538 8.14366 19.0853C7.76501 18.8168 7.4787 18.4377 7.32396 18H11.554C11.3992 18.4377 11.1129 18.8168 10.7343 19.0853C10.3556 19.3538 9.90317 19.4987 9.43896 19.5ZM1.49646 16.5C1.53036 16.4685 1.56056 16.4333 1.58646 16.395L2.89896 14.505C3.24909 14.0034 3.43751 13.4067 3.43896 12.795V7.5C3.43896 5.9087 4.0711 4.38258 5.19632 3.25736C6.32154 2.13214 7.84766 1.5 9.43896 1.5C11.0303 1.5 12.5564 2.13214 13.6816 3.25736C14.8068 4.38258 15.439 5.9087 15.439 7.5V12.795C15.4404 13.4067 15.6288 14.0034 15.979 14.505L17.2915 16.395C17.3174 16.4333 17.3476 16.4685 17.3815 16.5H1.49646Z"
                                                                 fill="white" />
@@ -664,7 +660,7 @@
                                 <ul>
                                     <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="{{ route('client.chinhsach') }}">Chính sách</a></li>
-                                    <li><a href="{{route('client.lienhe.create')}}">Liên hệ</a></li>
+                                    <li><a href="{{ route('client.lienhe.create') }}">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -685,8 +681,7 @@
                                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
 
-                                        <li class="style-2"><a href="#"><i
-                                                    class="fab fa-telegram-plane"></i></a></li>
+                                        <li class="style-2"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
                                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                                         <li class="mgr-none"><a href="#"><i class="icon-fl-tik-tok-2"></i></a>
                                         </li>
@@ -722,7 +717,8 @@
                 headers: {
                     'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
                 },
-                success: function(data) {
+                success: function (data) {
+
                     let html = '';
                     let daDoc = 0
                     for (let index = 0; index < data.length; index++) {
@@ -779,7 +775,7 @@
                 headers: {
                     'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
                 },
-                success: function(data) {}
+                success: function (data) { }
             });
         }
     </script>
@@ -801,23 +797,21 @@
 
     @yield('script_footer')
 
-    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal" id="reportModal" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="reportModalLabel">Tố cáo player</h5>
                 </div>
                 <div class="modal-body">
-                    <textarea id="reportReason" class="form-control" rows="4" placeholder="Nhập lý do tố cáo"></textarea>
+                    <textarea id="reportReason" class="form-control" rows="4"
+                        placeholder="Nhập lý do tố cáo"></textarea>
                 </div>
                 <div class="modal-footer">
                     <span id="reportSuccessMessage" class="text-success d-none">Đã thêm tố cáo thành công</span>
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        id="cancelBtnToCao">Hủy</button>
-
-                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố
-                        cáo</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtnToCao">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="submitReportBtn">Gửi tố cáo</button>
                 </div>
             </div>
         </div>
