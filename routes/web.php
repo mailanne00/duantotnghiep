@@ -33,9 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     return view('client/rut-tien/mail');
 });
-Route::get('admin/to-caos/approve/{id}', [ToCaoController::class, 'approve'])->name('admin.to-caos.approve');
-Route::get('admin/to-caos/reject/{id}', [ToCaoController::class, 'reject'])->name('admin.to-caos.reject');
-Route::get('admin/to-caos/choxuli/{id}', [ToCaoController::class, 'choxuli'])->name('admin.to-caos.choxuli');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('client.index');
 Route::get('/modal-user/{id}', [HomeController::class, 'modalUser'])->name('client.modalUser');

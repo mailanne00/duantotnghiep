@@ -33,14 +33,14 @@
         }
     </style>
     <a href="{{ route('admin.to-caos.index') }}" class="btn btn-primary mb-3">Quay trở lại</a>
-    <a href="{{ route('admin.to-caos.choxuli', $toCao->id) }}" class="btn btn-warning mb-3">Chờ xử lí</a>
+    <a href="{{ route('admin.to-caos.choxuli', $toCao->id) }}" class="btn btn-warning mb-3">Thêm bằng chứng</a>
     <a href="{{ route('admin.to-caos.approve', $toCao->id) }}" class="btn btn-success mb-3">Duyệt đơn</a>
     <a href="{{ route('admin.to-caos.reject', $toCao->id) }}" class="btn btn-danger mb-3">Từ chối</a>
 
     <!-- [ breadcrumb ] start -->
     <!-- [ breadcrumb ] end -->
     <!-- [ Main Content ] start -->
-
+    
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="mt-2" style="display:flex; justify-content:space-between">
                                             <h6>Lợi nhuận thu về:</h6>
-                                            <p>{{ number_format($toCao->donThue->gia_thue * $toCao->donThue->gio_thue * 0.1, 0, '') }}
+                                            <p>{{ number_format($toCao->donThue->gia_thue * $toCao->donThue->gio_thue * (int)$toCao->donThue->loi_nhuan / 100, 0, '') }}
                                                 VNĐ</p>
                                         </div>
                                         <div class="mt-2" style="display:flex; justify-content:space-between">

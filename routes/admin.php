@@ -44,3 +44,7 @@ Route::put('duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerContr
 Route::put('huy-duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerController::class, 'huyDuyetPlayer'])->name('huyDuyetPlayer');
 
 Route::resource('nap-tien', \App\Http\Controllers\Admin\NapTienController::class);
+
+Route::get('/to-caos/approve/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'approve'])->name('to-caos.approve');
+Route::get('/to-caos/reject/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'reject'])->name('to-caos.reject');
+Route::get('/to-caos/choxuli/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'choxuli'])->name('to-caos.choxuli');
