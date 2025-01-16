@@ -464,7 +464,7 @@
                     <input type="hidden" id="nguoiNhanThue" name="nguoi_nhan">
                     <input type="hidden" id="tenNguoiNhanThue" name="ten_nguoi_nhan">
                     <textarea id="chatMessageThue" name="tin_nhan" class="form-control styled-textarea"
-                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..." required></textarea>
 
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">

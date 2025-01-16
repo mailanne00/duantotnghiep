@@ -15,21 +15,25 @@ class TaiKhoan extends Model implements Authenticatable
 
     protected $fillable = [
         'ten',
-        'email',
-        'password',
         'ngay_sinh',
+        'gioi_tinh',
         'dia_chi',
+        'email',
         'sdt',
+        'cccd_so',
+        'cccd',
         'gia_tien',
         'phan_quyen_id',
         'so_du',
         'bi_cam',
         'anh_dai_dien',
         'trang_thai_xac_thuc',
-        'gioi_tinh',
+        'password',
         'loi_nhuan',
         'biet_danh',
-        'trang_thai'
+        'trang_thai',
+        'mo_ta',
+        'personal_video'
     ];
 
     public function danhMucs()
@@ -203,9 +207,5 @@ class TaiKhoan extends Model implements Authenticatable
             'week' => $totalWeek,
             'month' => $totalMonth,
         ];
-    }
-    public function isVerified()
-    {
-        return $this->cccd !== null && $this->personal_video !== null;
     }
 }

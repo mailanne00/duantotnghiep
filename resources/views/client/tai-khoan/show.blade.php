@@ -17,7 +17,7 @@
                 </div>
                 <div class="breadcrumbs style2">
                     <ul>
-                        <li><a href="{{ route('client.index') }}">Home</a></li>
+                        <li><a href="{{ route('client.index') }}">Trang chủ</a></li>
                         <li>{{ $player->ten }}</li>
                     </ul>
                 </div>
@@ -51,8 +51,28 @@
                             <h2 class="style2">{{ $player->ten }}</h2>
                             <div class="meta-item">
                                 <div class="left">
-                                    <span class="liked heart mg-l-8" min-width="50px"><span
-                                            class="number-like"> Theo dõi</span></span>
+                                    @if ($theoDoi)
+                                    <form action="{{route('client.huyTheoDoi.destroy', $theoDoi->id)}}" method="post">
+                                        <input type="hidden" value="{{ $player->id }}" name="nguoi_duoc_theo_doi_id">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="all:unset" class="liked heart mg-l-8" min-width="50px">
+                                            <span
+                                                class="number-like">Huỷ theo dõi</span>
+                                        </button>
+                                    </form>
+                                    
+                                    
+                                    @else
+                                    <form action="{{route('client.theoDoi.store')}}" method="post">
+                                        <input type="hidden" value="{{ $player->id }}" name="nguoi_duoc_theo_doi_id">
+                                        @csrf
+                                        <button style="all:unset" class="liked heart mg-l-8" min-width="50px">
+                                            <span
+                                                class="number-like">Theo dõi</span>
+                                        </button>
+                                    </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -63,11 +83,11 @@
                             </div>
                             <div class="col-4 text-center">
                                 <h4>Tỷ lệ thành công</h>
-                                <h5 class="mt-2 text-warning">{{$tyLeThanhCong}}%</h5>
+                                    <h5 class="mt-2 text-warning">{{$tyLeThanhCong}}%</h5>
                             </div>
                             <div class="col-4 text-center">
                                 <h4>Số người theo dõi</h>
-                                <h5 class="mt-2 text-warning">{{$player->count}} người</h5>
+                                    <h5 class="mt-2 text-warning">{{$player->count}} người</h5>
                             </div>
                         </div>
                         <div class="client-infor sc-card-product">
@@ -105,16 +125,19 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" data-toggle="modal"
-                            data-target="#popup_bid{{ $player->isVerified() ? '' : 'disabled' }}"
-                            data-id="{{ $player->id }}" class="sc-button loadmore style fl-button pri-3 ">
-                            <i class="fa fa-user fa-2x"></i>
-                            @if ($player->isVerified())
-                            <span>Thuê</span>
+                        @if ($player->trang_thai_xac_thuc == 1)
+                            <a href="#" data-toggle="modal"
+                                data-target="#popup_bid"
+                                data-id="{{ $player->id }}" class="sc-button loadmore style fl-button pri-3">
+                                <i class="fa fa-user fa-2x"></i>
+                                <span>Thuê</span>
+                            </a>
                             @else
-                            <span class="text-danger">Người dùng chưa xác thực</span>
-                            @endif
-                        </a>
+                                <a class="sc-button loadmore style fl-button pri-3">
+                                    <i class="fa fa-user fa-2x"></i>
+                                    <span class="text-danger">Người dùng chưa xác thực</span>
+                                </a>
+                        @endif
 
                         <a href="#" data-toggle="modal" data-target="#popup_chat"
                             class="sc-button loadmore style fl-button pri-3">
@@ -318,7 +341,7 @@
                     <input type="hidden" id="nguoiNhanThue" name="nguoi_nhan" value="{{ $player->id }}">
                     <input type="hidden" id="tenNguoiNhanThue" name="ten_nguoi_nhan" value="{{ $player->ten }}">
                     <textarea id="chatMessageThue" name="tin_nhan" class="form-control styled-textarea"
-                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..."></textarea>
+                        style="resize: none; font-size: 16px; border-radius: 10px" rows="4" placeholder="Nhập tin nhắn..." required></textarea>
 
                     <div class="hr"></div>
                     <div class="d-flex justify-content-between">

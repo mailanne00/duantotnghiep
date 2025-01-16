@@ -4,7 +4,16 @@
 @endsection
 @section('title', 'Quản lí tố cáo')
 @section('content')
-
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
     <div class="row">
         <div class="col-sm-12">
             <div class="card">

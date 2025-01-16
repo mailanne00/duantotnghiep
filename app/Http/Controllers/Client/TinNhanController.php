@@ -8,6 +8,7 @@ use App\Events\NewMessage;
 use App\Events\TinNhanMoi;
 
 use App\Models\PhongChat;
+use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -29,18 +30,28 @@ class TinNhanController extends Controller
 
     public function sendMessage(Request $request)
     {
+        // Tạo tin nhắn mới
         $message = TinNhan::create([
             'tin_nhan' => $request->tin_nhan,
             'nguoi_gui' => $request->nguoi_gui,
             'nguoi_nhan' => $request->nguoi_nhan,
             'trang_thai' => 'chua_xem',
             'phong_chat_id' => $request->phong_chat_id,
-
         ]);
 
-        broadcast(new NewMessage($message));
+        // Lấy thông tin nguoi_gui và nguoi_nhan
+        $nguoiGui = TaiKhoan::find($message->nguoi_gui);
+        $nguoiNhan = TaiKhoan::find($message->nguoi_nhan);
 
-        return response()->json($message);
+        // Phát sóng sự kiện với thông tin tin nhắn và người gửi, người nhận
+        broadcast(new NewMessage($message, $nguoiGui, $nguoiNhan));
+
+        // Trả về JSON với thông tin tin nhắn và người gửi, người nhận
+        return response()->json([
+            'message' => $message,
+            'nguoi_gui' => $nguoiGui,
+            'nguoi_nhan' => $nguoiNhan,
+        ]);
     }
 
     public function chiTiettinNhan($phongChatId)

@@ -62,12 +62,16 @@ class ThongtinController extends Controller
 
         // Kiểm tra số CCCD
         if ($request->cccd_so) {
+            if ($user->trang_thai_xac_thuc != 1) {
             $validatedData = $request->validate([
                 'cccd_so' => 'numeric|digits:12',
             ], [
                 'cccd_so.numeric' => 'Số CCCD chỉ được chứa các chữ số.',
                 'cccd_so.digits' => 'Số CCCD phải có đúng 12 chữ số.',
             ]);
+
+            $data['cccd_so'] = $request->cccd_so;
+        }
         }
 
         // Xử lý ảnh CCCD
@@ -101,6 +105,7 @@ class ThongtinController extends Controller
         $user->trang_thai = $request->has('trang_thai') ? 1 : 2;
         // Lưu lại tất cả thay đổi
         $user->update($data);
+
 
         return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
     }

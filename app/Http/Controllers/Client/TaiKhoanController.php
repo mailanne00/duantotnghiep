@@ -10,8 +10,10 @@ use Illuminate\Http\Request;
 use App\Models\TinNhan;
 use App\Events\NewMessage;
 use App\Models\LichSuThue;
+use App\Models\NguoiTheoDoi;
 use App\Models\PhongChat;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class TaiKhoanController extends Controller
@@ -21,6 +23,7 @@ class TaiKhoanController extends Controller
         $gioiTinh = $request->query('gioi_tinh', ''); // Lấy giá trị lọc từ query string
         $gia = $request->query('gia', ''); // Lấy giá trị lọc từ query string
         $taiKhoans = TaiKhoan::query();
+
 
         if (!empty($gioiTinh) && in_array($gioiTinh, ['Nam', 'Nữ', 'Khác'])) {
             $taiKhoans->where('gioi_tinh', $gioiTinh);
@@ -46,6 +49,10 @@ class TaiKhoanController extends Controller
     }
     public function show($id)
     { {
+
+            if ($id == auth()->user()->id) {
+                return redirect('/thong-tin-ca-nhan');
+            }
             // Lấy thông tin của player từ bảng tai_khoans
             $player = TaiKhoan::findOrFail($id);
 
@@ -61,12 +68,18 @@ class TaiKhoanController extends Controller
             $tyLeThanhCong = ($successRent / $allRent) * 100;
             $tyLeThanhCong = round($tyLeThanhCong, 2);
 
+            $theoDoi = NguoiTheoDoi::where('nguoi_theo_doi_id', Auth::id())
+                ->where('nguoi_duoc_theo_doi_id', $id)
+                ->first();
+
+                // dd($theoDoi);
+
             // Lấy danh sách đánh giá của player
             $danhGias = DanhGia::where('nguoi_duoc_thue_id', $id)
                 ->with('nguoiThue') // Để lấy thông tin người thuê (nguoi_thue_id)
                 ->get();
 
-            return view('client.tai-khoan.show', compact('player', 'formattedDate', 'totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
+            return view('client.tai-khoan.show', compact('theoDoi', 'player', 'formattedDate', 'totalHours', 'danhmuctaikhoans', 'tyLeThanhCong', 'danhGias'));
         }
     }
 
