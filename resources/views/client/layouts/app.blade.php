@@ -308,10 +308,29 @@
 </head>
 
 <body class="body header-fixed is_dark connect-wal" style="background-color: #14141F;">
+    @if (session('error'))
+    <script>
+        Swal.fire({
+            title: "{{session('error')}}",
+            icon: "error",
+            draggable: true
+        });
+    </script>
+    @endif
+
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: "{{session('success')}}",
+            icon: "error",
+            draggable: true
+        });
+    </script>
+    @endif
     <!-- preloade -->
     {{-- <div class="preload preload-container"> --}}
-        {{-- <div class="preload-logo"></div> --}}
-        {{-- </div> --}}
+    {{-- <div class="preload-logo"></div> --}}
+    {{-- </div> --}}
     <!-- /preload -->
 
     <div id="wrapper">
@@ -717,7 +736,7 @@
                 headers: {
                     'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
                 },
-                success: function (data) {
+                success: function(data) {
 
                     let html = '';
                     let daDoc = 0
@@ -775,7 +794,7 @@
                 headers: {
                     'Authorization': `Bearer {{ Auth::id() }}` // Thêm Bearer Token
                 },
-                success: function (data) { }
+                success: function(data) {}
             });
         }
     </script>
