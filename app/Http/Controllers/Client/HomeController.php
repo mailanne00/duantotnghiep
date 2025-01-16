@@ -27,7 +27,7 @@ class HomeController extends Controller
         } else {
             $userDaThues = null;
         }
-
+        
         if (!auth()->check()) {
             $taiKhoans = TaiKhoan::all()
                 ->sortByDesc(function ($taiKhoan) {
@@ -113,7 +113,8 @@ class HomeController extends Controller
         return response()->json($thongBaos);
     }
 
-    public function docThongBao(Request $request) {
+    public function docThongBao(Request $request)
+    {
         $token = $request->header('authorization');
         $user = TaiKhoan::find(explode(' ', $token)[1]);
         Auth::login($user);
@@ -121,7 +122,8 @@ class HomeController extends Controller
             'da_doc' => true
         ]);
 
-        return response()->json(['success' => 'Cập nhật thành công'
+        return response()->json([
+            'success' => 'Cập nhật thành công'
         ]);
     }
 }
