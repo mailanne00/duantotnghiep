@@ -208,8 +208,4 @@ class TaiKhoan extends Model implements Authenticatable
             'month' => $totalMonth,
         ];
     }
-    public function isVerified()
-    {
-        return $this->cccd !== null && $this->personal_video !== null;
-    }
 }
