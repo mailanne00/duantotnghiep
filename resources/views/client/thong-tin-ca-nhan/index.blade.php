@@ -35,18 +35,31 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-12">
                     <div class="sc-card-profile text-center">
-                        <div class="card-media">
-                            <img id="profileimg"
-                                src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}"
-                                alt="Image">
+                        <div class="sc-card-profile text-center">
+                            <div class="card-media">
+                                <img id="profileimg" src="{{ \Illuminate\Support\Facades\Storage::url($user->anh_dai_dien) }}" alt="Image">
+                                <div id="upload-profile">
+                                    <a href="#" class="btn-upload">
+                                        Upload New Photo
+                                    </a>
+                                    <input id="tf-upload-img" type="file" name="anh_dai_dien">
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="status-activity mt-2">
+                                <label class="switch">
+                                    <input type="checkbox" name="trang_thai" value="1" {{ $user->trang_thai == 1 ? 'checked' : '' }}>
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="status-text {{ $user->trang_thai == 1 ? 'text-success' : 'text-danger' }}">
+                                    {{ $user->trang_thai == 1 ? 'Đang chờ thuê' : 'Ngừng nhận đơn thuê' }}
+                                </span>
+                            </div>
                         </div>
-                        <div id="upload-profile">
-                            <a href="#" class="btn-upload">
-                                Upload New Photo </a>
-                            <input id="tf-upload-img" type="file" name="anh_dai_dien">
-                        </div>
-                        {{-- <a href="#" class="btn-upload style2">
-                                Delete</a> --}}
+
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-8 col-md-12 col-12">
@@ -209,34 +222,34 @@
                                 @endif
                             </fieldset>
 
-                            
+
 
                             <div class="form-infor-profiles">
                                 <div>
-                                <h4 class="title-infor-account">Số CCCD</h4>
-                                <input type="text" name="cccd_so" placeholder="Nhập số CCCD"
-                                    class="form-control text-white bg-dark">
-                                @error('cccd_so')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                                @if ($user->cccd_so)
-                                <div class="mt-2">
-                                    <h5>Số CCCD đã tải lên: {{$user->cccd_so}}</h5>
-                                </div>
-                                @endif
-                                </div>
-                                
-                                <div>
-                                <h4 class="title-create-item">Trạng thái xác thực</h4>
-                                <p>
-                                    @if ($user->trang_thai_xac_thuc == 1)
-                                    <span class="text-success" style="font-size: 18px;">Đã xác thực</span>
-                                    @elseif ($user->trang_thai_xac_thuc == 2)
-                                    <span class="text-danger" style="font-size: 18px;">Từ chối xác thực</span>
-                                    @else
-                                    <span class="text-danger" style="font-size: 18px;">Chưa xác thực</span>
+                                    <h4 class="title-infor-account">Số CCCD</h4>
+                                    <input type="text" name="cccd_so" placeholder="Nhập số CCCD"
+                                        class="form-control text-white bg-dark">
+                                    @error('cccd_so')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                    @if ($user->cccd_so)
+                                    <div class="mt-2">
+                                        <h5>Số CCCD đã tải lên: {{$user->cccd_so}}</h5>
+                                    </div>
                                     @endif
-                                </p>
+                                </div>
+
+                                <div>
+                                    <h4 class="title-create-item">Trạng thái xác thực</h4>
+                                    <p>
+                                        @if ($user->trang_thai_xac_thuc == 1)
+                                        <span class="text-success" style="font-size: 18px;">Đã xác thực</span>
+                                        @elseif ($user->trang_thai_xac_thuc == 2)
+                                        <span class="text-danger" style="font-size: 18px;">Từ chối xác thực</span>
+                                        @else
+                                        <span class="text-danger" style="font-size: 18px;">Chưa xác thực</span>
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
 
@@ -256,71 +269,95 @@
 </div>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-    const selectedCategoriesContainer = document.getElementById('selectedCategoriesContainer');
-    const selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const categoryList = document.getElementById('categoryList');
-    
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedCategoriesContainer = document.getElementById('selectedCategoriesContainer');
+        const selectedCategoriesInput = document.getElementById('selectedCategoriesInput');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const categoryList = document.getElementById('categoryList');
 
-    let selectedCategories = @json($selectedCategories); // Dữ liệu đã chọn từ database
+        let selectedCategories = @json($selectedCategories); // Lấy dữ liệu đã chọn từ cơ sở dữ liệu
 
-    // Cập nhật giá trị của input ẩn
-    function updateSelectedCategories() {
-        selectedCategoriesInput.value = selectedCategories.join(',');
-    }
+        // Cập nhật giá trị của input ẩn
+        function updateSelectedCategories() {
+            selectedCategoriesInput.value = selectedCategories.join(','); // Cập nhật lại giá trị của input ẩn
+        }
 
-    // Hiển thị danh mục chưa được chọn
-    function updateCategoryList() {
+        // Hiển thị danh mục chưa được chọn
+        function updateCategoryList() {
+            // Ẩn tất cả các button danh mục và chỉ hiển thị danh mục chưa được chọn
+            categoryButtons.forEach(button => {
+                const categoryId = button.getAttribute('data-id');
+                if (!selectedCategories.includes(categoryId)) {
+                    button.style.display = 'block';
+                } else {
+                    button.style.display = 'none';
+                }
+            });
+        }
+
+        // Cập nhật lại input ẩn và danh sách các danh mục
+        function updateCategoryDisplay() {
+            updateCategoryList();
+            updateSelectedCategories();
+        }
+
+        // Xử lý khi người dùng chọn danh mục
         categoryButtons.forEach(button => {
-            const categoryId = button.getAttribute('data-id');
-            if (!selectedCategories.includes(categoryId)) {
-                button.style.display = 'block';
-            }
-        });
-    }
+            button.addEventListener('click', function() {
+                const categoryId = this.dataset.id;
+                const categoryName = this.querySelector('span').textContent.trim();
 
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const categoryId = this.dataset.id;
-            const categoryName = this.querySelector('span').textContent.trim();
+                if (!selectedCategories.includes(categoryId)) {
+                    selectedCategories.push(categoryId);
 
-            if (!selectedCategories.includes(categoryId)) {
-                selectedCategories.push(categoryId);
-
-                const tag = document.createElement('div');
-                tag.classList.add('selected-tag');
-                tag.setAttribute('data-id', categoryId);
-                tag.innerHTML = `
+                    // Tạo thẻ mới cho danh mục đã chọn
+                    const tag = document.createElement('div');
+                    tag.classList.add('selected-tag');
+                    tag.setAttribute('data-id', categoryId);
+                    tag.innerHTML = `
                     <span>${categoryName}</span>
                     <button type="button" class="remove-tag">&times;</button>
                 `;
 
-                tag.querySelector('.remove-tag').addEventListener('click', function() {
-                    console.log(`Removing category: ${categoryId}`); // Debug log
-                    selectedCategories = selectedCategories.filter(id => id !== categoryId); // Cập nhật mảng khi xóa
-                    tag.remove();
-                    updateSelectedCategories(); // Cập nhật lại input ẩn
-                    updateCategoryList(); // Hiển thị lại nút danh mục chưa chọn
-                   
-                });
+                    // Xử lý sự kiện xóa thẻ danh mục đã chọn
+                    tag.querySelector('.remove-tag').addEventListener('click', function() {
+                        // Xóa danh mục khỏi danh sách đã chọn
+                        selectedCategories = selectedCategories.filter(id => id !== categoryId);
 
-                selectedCategoriesContainer.appendChild(tag);
-                this.style.display = 'none';
-                updateSelectedCategories(); // Cập nhật lại input ẩn
-                
-            }
+                        // Cập nhật lại giá trị của input ẩn sau khi xóa danh mục
+                        updateSelectedCategories();
+
+                        // Xóa thẻ khỏi giao diện
+                        tag.remove();
+
+                        // Hiển thị lại button danh mục có thể chọn
+                        const categoryButton = document.querySelector(`.category-btn[data-id="${categoryId}"]`);
+                        if (categoryButton) {
+                            categoryButton.style.display = 'block';
+                        }
+
+                        // Cập nhật danh sách và input
+                        updateCategoryDisplay();
+                    });
+
+                    selectedCategoriesContainer.appendChild(tag);
+                    this.style.display = 'none'; // Ẩn nút danh mục đã chọn
+                    updateCategoryDisplay(); // Cập nhật lại danh sách danh mục và input ẩn
+                }
+            });
         });
+
+        // Cập nhật danh sách danh mục ban đầu
+        updateCategoryDisplay();
     });
+    document.querySelector('input[name="active_status"]').addEventListener('change', function() {
+        var statusText = this.checked ? 'Đang chờ thuê' : 'Ngừng nhận đơn thuê';
+        var statusColor = this.checked ? 'text-success' : 'text-danger';
+        var statusSpan = document.querySelector('.status-text');
 
-    
-
-    updateCategoryList();
-    updateSelectedCategories();
-});
-
-
-
+        statusSpan.textContent = statusText;
+        statusSpan.className = 'status-text ' + statusColor;
+    });
 </script>
 <style>
     /* Container for the form sections */
@@ -420,6 +457,74 @@
 
     .title-create-item {
         text-align: center;
+    }
+
+    /* Nút bật/tắt (Toggle Button) */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+    }
+
+    input:checked+.slider {
+        background-color: #66cc66;
+        /* Màu xanh khi bật */
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(26px);
+        /* Di chuyển vòng tròn khi bật */
+    }
+
+    .status-activity {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .status-text {
+        margin-left: 10px;
+        font-weight: bold;
+    }
+
+    .text-success {
+        color: #66cc66;
+    }
+
+    .text-danger {
+        color: #ff3b2d;
     }
 </style>
 @endsection
