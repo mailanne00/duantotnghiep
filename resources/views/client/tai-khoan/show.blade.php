@@ -36,8 +36,8 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($player->anh_dai_dien) }}" alt=""
                             width="400" height="400">
                     </div>
-                    <div>
-                        <span class="badge text-bg-{{$player->mau}}" style="font-size: 14px; border-radius: 50px; padding:8px; margin-top:20px; margin-bottom:20px">{{$player->trangThai2}}</span>
+                    <div class="mt-4 mb-4">
+                        <span class="text-{{$player->mau}}" style="font-size: 18px; border-radius: 50px; margin-bottom:20px; font-weight:600">{{$player->trangThai2}}</span>
                     </div>
                     <div>
                         <span style="font-size:14px; margin-top:20px">Ngày tham gia: {{$formattedDate}}</span>

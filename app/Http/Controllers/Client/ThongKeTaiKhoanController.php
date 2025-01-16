@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\ChanChat;
+use App\Models\LichSuNap;
 use App\Models\LichSuThue;
 use App\Models\NguoiTheoDoi;
+use App\Models\YeuCauRutTien;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +34,17 @@ class ThongKeTaiKhoanController extends Controller
             $khthanthiet = LichSuThue::select('nguoi_thue', DB::raw('SUM(gio_thue) as total_hour'))
             ->with('nguoiThue')  // Eager load thông tin người thuê
             ->where('nguoi_duoc_thue', Auth::id())  // Chỉ lấy các bản ghi mà nguoi_duoc_thue là người dùng hiện tại
+            ->where('trang_thai', 1)  // Chỉ lấy các bản ghi có trạng thái là 1 (đã kết thúc)
             ->groupBy('nguoi_thue')  // Nhóm theo nguoi_thue để tính tổng số giờ cho từng người thuê
             ->orderByDesc(DB::raw('SUM(gio_thue)'))  // Sắp xếp theo tổng số giờ thuê giảm dần
             ->get();
+
+            $lichSuNaps = LichSuNap::where('tai_khoan_id', Auth::id())
+                ->get(); 
+
+                $yeuCauRutTiens = YeuCauRutTien::where('tai_khoan_id', Auth::id())
+                ->get(); 
+
 
         } else {
             $nguoiTheoDoi = null;
@@ -45,7 +55,7 @@ class ThongKeTaiKhoanController extends Controller
 
         // dd($khthanthiet);
 
-        return view('client.thong-ke-tai-khoan.index', compact('nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
+        return view('client.thong-ke-tai-khoan.index', compact('yeuCauRutTiens','nguoiTheoDoi', 'nguoiDuocTheoDoi', 'nguoiBiChan','lichSuNaps', 'listNguoiDuocTheoDoiIds', 'khthanthiet'));
     }
 
     public function layDoanhThuNgay()

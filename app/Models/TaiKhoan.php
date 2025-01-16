@@ -85,7 +85,7 @@ class TaiKhoan extends Model implements Authenticatable
         [
             'color' => 'danger',
             'status' => 'Ngừng nhận yêu cầu'
-        ]
+        ],
     ];
 
     public function getTrangThai2Attribute()

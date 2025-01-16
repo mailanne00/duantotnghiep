@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch("http://127.0.0.1:8000/api/tin-nhan");
             const rooms = await response.json();
+            console.log("🚀 ~ loadChatRooms ~ rooms:", rooms);
+
             // console.log("🚀 ~ loadChatRooms ~ rooms:", rooms);
 
             if (rooms.tin_nhans && Array.isArray(rooms.tin_nhans)) {
@@ -64,18 +66,31 @@ document.addEventListener("DOMContentLoaded", () => {
                                 message.nguoi_gui.id !== authUserId
                         ).length;
 
+                        const lastMessageContent =
+                            room.messages[room.messages.length - 1]?.tin_nhan ||
+                            "Chưa có tin nhắn";
+
+                        // Kiểm tra độ dài và cắt chuỗi nếu cần
+                        const truncatedMessage =
+                            lastMessageContent.length > 15
+                                ? lastMessageContent.slice(0, 15) + "..."
+                                : lastMessageContent;
+
+                        const avatar = otherUser.anh_dai_dien;
+                        const updatedAvatar = avatar.replace(/^public\//, "");
+
                         chatList.innerHTML += `
                         <li class="chat-user d-flex align-items-center mb-3 p-2" data-room-id="${
                             room.phong_chat_id
                         }">
-                            <img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="rounded-circle chat-avatar">
+                            <img src="/storage/${updatedAvatar}" alt="User Avatar" class="rounded-circle chat-avatar">
                             <div class="chat-user-info ms-2">
                                 <p class="chat-user-name mb-0">${
                                     otherUser.ten
                                 }</p>
-                                <p class="chat-last-message text-muted small mb-0">
-    ${room.messages[room.messages.length - 1]?.tin_nhan || "Chưa có tin nhắn"}
-</p>
+<p class="chat-last-message text-muted small mb-0">
+                    ${truncatedMessage}
+                </p>
                             </div>
                             <span class="badge bg-danger ms-auto unread-count" data-room-id="${
                                 room.phong_chat_id
@@ -118,16 +133,21 @@ document.addEventListener("DOMContentLoaded", () => {
             .map((msg) => {
                 const isCurrentUser = msg.nguoi_gui.id === authUserId;
 
+                // Lấy ảnh từ người gửi hoặc người nhận
+                const avatar = isCurrentUser
+                    ? msg.nguoi_nhan.anh_dai_dien.replace(/^public\//, "")
+                    : msg.nguoi_gui.anh_dai_dien.replace(/^public\//, "");
+
                 return `
-                    <div class="message ${isCurrentUser ? "you" : "user1"}">
-                        ${
-                            !isCurrentUser
-                                ? `<img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">`
-                                : ""
-                        }
-                        <p>${msg.tin_nhan}</p>
-                    </div>
-                `;
+                <div class="message ${isCurrentUser ? "you" : "user1"}">
+                    ${
+                        !isCurrentUser
+                            ? `<img src="/storage/${avatar}" alt="User Avatar" class="avatar">`
+                            : ""
+                    }
+                    <p>${msg.tin_nhan}</p>
+                </div>
+            `;
             })
             .join("");
 
@@ -242,6 +262,30 @@ document.addEventListener("DOMContentLoaded", () => {
             const LichSuDuocThue = await responseLichSuDuocThue.json();
             console.log("Lịch sử người được thuê", LichSuDuocThue);
 
+            function updateUserStatus(userId, isOnline) {
+                const userElement = document.querySelector(
+                    `.user-status[data-user-id="${userId}"]`
+                );
+                if (userElement) {
+                    userElement.textContent = isOnline
+                        ? "Đang trong phòng"
+                        : "Offline";
+                    userElement.classList.toggle("Đang trong phòng", isOnline);
+                }
+            }
+            Echo.join("presence-online-users")
+                .here((users) => {
+                    users.forEach((user) => {
+                        updateUserStatus(user.id, true); // Cập nhật trạng thái người dùng
+                    });
+                })
+                .joining((user) => {
+                    updateUserStatus(user.id, true); // Người dùng tham gia
+                })
+                .leaving((user) => {
+                    updateUserStatus(user.id, false); // Người dùng rời khỏi
+                });
+
             // Kiểm tra xem mảng có ít nhất một phòng chat không
             if (rooms.length === 0) {
                 console.error("No rooms found");
@@ -267,24 +311,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? room.nguoi_nhan
                     : room.nguoi_gui;
 
-            function updateUserStatus(userId, isOnline) {
-                const userElement = document.querySelector(
-                    `.user-status[data-user-id="${userId}"]`
-                );
-                if (userElement) {
-                    userElement.textContent = isOnline
-                        ? "Đang trong phòng"
-                        : "Offline";
-                    userElement.classList.toggle("Đang trong phòng", isOnline);
-                }
-            }
+            const avatar = otherUser.anh_dai_dien;
+            const updatedAvatar = avatar.replace(/^public\//, "");
 
             // Cập nhật giao diện tiêu đề chat
             const chatHeader = document.querySelector(".chat-header");
             if (chatHeader) {
                 chatHeader.innerHTML = `
                     <div class="chat-header-container">
-                        <img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">
+                        <img src="storage/${updatedAvatar}" alt="User Avatar" class="avatar">
                         <div class="user-info">
                             <p class="user-name">${otherUser.ten}</p>
                             <p class="user-status" data-user-id="${otherUser.id}">Đang không trong phòng chat</p>
@@ -295,19 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Chat header element not found");
                 return;
             }
-
-            Echo.join("presence-online-users")
-                .here((users) => {
-                    users.forEach((user) => {
-                        updateUserStatus(user.id, true); // Cập nhật trạng thái người dùng
-                    });
-                })
-                .joining((user) => {
-                    updateUserStatus(user.id, true); // Người dùng tham gia
-                })
-                .leaving((user) => {
-                    updateUserStatus(user.id, false); // Người dùng rời khỏi
-                });
 
             // Lọc lịch sử thuê chưa hết hạn
 
@@ -335,10 +357,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 trangThai = Number(lichSuThue.trang_thai);
                 console.log("trangThai", trangThai);
 
-                let remainingTime = Math.floor(
-                    (new Date(lichSuThue.expired) - new Date()) / 1000
-                );
-
                 // Hiển thị thông báo cho người thuê hoặc người được thuê
                 let notificationMessage = "";
                 let linkUrl = "";
@@ -358,21 +376,62 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 if (trangThai === 0) {
+                    function formatTime(seconds) {
+                        const minutes = Math.floor(seconds / 60);
+                        const secs = seconds % 60;
+                        return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+                    }
+
+                    // Function to start countdown
+                    function startCountdown(expiredTime) {
+                        const countdownTimer =
+                            document.getElementById("countdownTimer");
+
+                        if (!countdownTimer) {
+                            console.error("Countdown element not found");
+                            return;
+                        }
+
+                        // Calculate initial remaining time in seconds
+                        let remainingTime = Math.floor(
+                            (new Date(expiredTime) - new Date()) / 1000
+                        );
+
+                        console.log("Thời gian còn lại:", remainingTime);
+
+                        // Function to update the countdown display
+                        function updateCountdown() {
+                            if (remainingTime <= 0) {
+                                clearInterval(countdownInterval); // Stop when time is up
+                                countdownTimer.textContent = "Hết thời gian";
+                            } else {
+                                countdownTimer.textContent =
+                                    formatTime(remainingTime); // Update countdown text
+                            }
+                        }
+
+                        // Update countdown initially
+                        updateCountdown();
+
+                        // Update countdown every second
+                        const countdownInterval = setInterval(() => {
+                            remainingTime -= 1; // Decrease by 1 second
+                            updateCountdown(); // Update the display
+                        }, 1000); // Run every second
+                    }
+
                     donThueContainer.innerHTML = `
                     <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                         <h5 class="mb-2">${notificationMessage}</h5>
-                        <p class="mb-1"><strong>Thời gian thuê:</strong>${
-                            lichSuThue.gio_thue
-                        } Giờ</p>
-                        <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">${formatTime(
-                            remainingTime
-                        )}</span></p>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                                                             <p class="mb-1"><strong>Thời gian còn lại:</strong> <span id="countdownTimer">...</span></p>
+
                         <div class="button-group mt-3">
                             <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
                         </div>
                     </div>
                 `;
-
+                    startCountdown(lichSuThue.expired);
                     const retryBtn = document.getElementById("retryBtn");
                     if (retryBtn) {
                         retryBtn.addEventListener("click", () => {
@@ -430,15 +489,57 @@ document.addEventListener("DOMContentLoaded", () => {
                         (lichSuThue) => lichSuThue.nguoi_thue === authUserId
                     );
 
+                    console.log("isNguoiThue", isNguoiThue);
+
+                    function formatTime(seconds) {
+                        const minutes = Math.floor(seconds / 60);
+                        const secs = seconds % 60;
+                        return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
+                    }
+
+                    // Function to start countdown
+                    function startCountdown(expiredTime) {
+                        const countdownTimer =
+                            document.getElementById("countdownTimer");
+
+                        if (!countdownTimer) {
+                            console.error("Countdown element not found");
+                            return;
+                        }
+
+                        // Calculate initial remaining time in seconds
+                        let remainingTime = Math.floor(
+                            (new Date(expiredTime) - new Date()) / 1000
+                        );
+
+                        // Function to update the countdown display
+                        function updateCountdown() {
+                            if (remainingTime <= 0) {
+                                clearInterval(countdownInterval); // Stop when time is up
+                                countdownTimer.textContent = "Hết thời gian";
+                            } else {
+                                countdownTimer.textContent =
+                                    formatTime(remainingTime); // Update countdown text
+                            }
+                        }
+
+                        // Update countdown initially
+                        updateCountdown();
+
+                        // Update countdown every second
+                        const countdownInterval = setInterval(() => {
+                            remainingTime -= 1; // Decrease by 1 second
+                            updateCountdown(); // Update the display
+                        }, 1000); // Run every second
+                    }
                     donThueContainer.innerHTML = `
                         <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
                             <h5 class="mb-2">${notificationMessage}</h5>
                             <p class="mb-1"><strong>Thời gian thuê:</strong>${
                                 lichSuThue.gio_thue
                             } Giờ</p>
-                            <p class="mb-1"><strong>Đơn đang được thực hiện:</strong> <span id="countdownTimer">${formatTime(
-                                remainingTime
-                            )}</span></p>
+                                     <p class="mb-1"><strong>Đơn đang được thực hiện:</strong> <span id="countdownTimer">...</span></p>
+
 
                    <div class="button-group mt-3 d-flex justify-content-start align-items-center gap-2">
     <button class="btn btn-success" id="acceptBtn">Đi đến đơn thuê</button>
@@ -450,25 +551,23 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
                         </div>
                     `;
-
+                    startCountdown(lichSuThue.expired);
                     if (isNguoiThue) {
                         document
                             .getElementById("tocaoBtn")
                             .addEventListener("click", function () {
-                                var myModal = new bootstrap.Modal(
-                                    document.getElementById("reportModal")
-                                );
-                                myModal.show();
+                                document.getElementById(
+                                    "reportModal"
+                                ).style.display = "block";
                             });
 
-                        // Thêm sự kiện cho nút Hủy
+                        // Đóng modal khi nhấn nút Hủy
                         document
                             .getElementById("cancelBtnToCao")
                             .addEventListener("click", function () {
-                                var myModal = new bootstrap.Modal(
-                                    document.getElementById("reportModal")
-                                );
-                                myModal.hide(); // Đóng modal khi nhấn Hủy
+                                document.getElementById(
+                                    "reportModal"
+                                ).style.display = "none";
                             });
 
                         // Thêm sự kiện cho nút gửi tố cáo
@@ -492,7 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 var lichSuThueId = lichSuThue.id; // Lấy ID lịch sử thuê
                                 var anhBangChung =
                                     "/uploadedImageUrl.jpg" || null; // Nếu có ảnh bằng chứng, lấy URL ảnh (có thể rỗng nếu không có ảnh)
-                                var trangThai = 1; // Trạng thái tố cáo (ví dụ: 1 là đang xử lý)
+                                var trangThai = 0; // Trạng thái tố cáo (ví dụ: 1 là đang xử lý)
                                 var phongChatId = currentroomId; // ID phòng chat, nếu có
 
                                 if (reason.trim()) {
@@ -526,28 +625,27 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     "d-none"
                                                 );
                                                 // Đóng modal sau khi gửi tố cáo thành công
-                                                var myModal =
-                                                    new bootstrap.Modal(
-                                                        document.getElementById(
-                                                            "reportModal"
-                                                        )
-                                                    );
+                                                document.getElementById(
+                                                    "reportModal"
+                                                ).style.display = "none";
 
                                                 document.getElementById(
                                                     "reportReason"
                                                 ).value = "";
+
                                                 setTimeout(() => {
                                                     successMessage.classList.add(
                                                         "d-none"
                                                     );
                                                 }, 3000);
                                             } else {
-                                                console.error(
-                                                    "Lỗi khi gửi tố cáo:",
-                                                    data.message
-                                                );
-                                                alert(
-                                                    "Có lỗi xảy ra, vui lòng thử lại."
+                                                document.getElementById(
+                                                    "reportReason"
+                                                ).value = "";
+                                                successMessage.textContent =
+                                                    "Đơn tố cáo đã tồn tại";
+                                                successMessage.classList.remove(
+                                                    "d-none"
                                                 );
                                             }
                                         })
@@ -577,12 +675,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     .addEventListener("click", () => {
                         window.location.href = linkUrl; // Chuyển hướng khi bấm "Đi đến đơn thuê"
                     });
-            }
-
-            function formatTime(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = seconds % 60;
-                return `${minutes}:${secs < 10 ? "0" + secs : secs}`;
             }
         } catch (error) {
             console.error("Error in updateChatHeader:", error);
@@ -629,7 +721,11 @@ document.addEventListener("DOMContentLoaded", () => {
             window.Echo.channel(`chat.${roomId}`).listen(
                 ".new-message",
                 (e) => {
-                    // console.log("New message received:", e.message);
+                    // console.log("New message received:", e);
+                    const avatar = e.nguoi_gui.anh_dai_dien.replace(
+                        /^public\//,
+                        ""
+                    );
 
                     messageContainer.innerHTML += `
                     <div class="message ${
@@ -637,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }">
                         ${
                             e.message.nguoi_gui !== authUserId
-                                ? `<img src="assets/images/avatar/avt-6.jpg" alt="User Avatar" class="avatar">`
+                                ? `<img src="storage/${avatar}" alt="User Avatar" class="avatar">`
                                 : ""
                         }
                         <p>${e.message.tin_nhan}</p>
@@ -692,6 +788,7 @@ document.addEventListener("DOMContentLoaded", () => {
         unreadCountElement.textContent = unreadCount;
         badge.classList.toggle("d-none", unreadCount === 0);
     }
+
     +(messageInput.addEventListener("click", async () => {
         if (currentRoomId) {
             // Đặt số lượng tin nhắn chưa đọc của phòng hiện tại về 0

@@ -22,7 +22,7 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'pass' => 'required|min:6',
-        ],[
+        ], [
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Email không đúng định dạng',
             'pass.required' => 'Vui lòng nhập mật khẩu',

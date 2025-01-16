@@ -61,8 +61,10 @@
                                 <th>Tên</th>
                                 <th>Giới tính</th>
                                 <th>Ảnh đại diện</th>
+                                <th>Giá thuê 1 giờ</th>
                                 <th>Số dư</th>
                                 <th>Tình trạng</th>
+                                <th>Trạng thái xác thực</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -79,13 +81,19 @@
                                     <img style="width: 40px;" src="{{$taiKhoan->gioi_tinh =='nam' ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Male_symbol_%28heavy_blue%29.svg/1200px-Male_symbol_%28heavy_blue%29.svg.png' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Venus_symbol_%28heavy_copper%29.svg/220px-Venus_symbol_%28heavy_copper%29.svg.png'}}" alt="">
                                 </td>
                                 <td>
-                                    <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}" style="width: 100px; border-radius: 100px;" alt="">
+                                    <img src="{{\Illuminate\Support\Facades\Storage::url($taiKhoan->anh_dai_dien)}}" style="width: 100px; height:100px;object-fit:cover; border-radius: 100px;" alt="">
+                                </td>
+                                <td style="color: #0d8360">
+                                    {{number_format($taiKhoan->gia_tien, 0, ',') }} VNĐ
                                 </td>
                                 <td style="color: #0d8360">
                                     {{number_format($taiKhoan->so_du, 0, ',') }} VNĐ
                                 </td>
                                 <td>
                                     {!! $taiKhoan->bi_cam==0 ? '<span class="badge text-bg-success">Mở</span>' : '<span class="badge text-bg-danger">Cấm</span>'!!}
+                                </td>
+                                <td>
+                                    {!! $taiKhoan->trang_thai_xac_thuc==1 ? '<span class="badge text-bg-success">Đã xác thực</span>' : '<span class="badge text-bg-danger">Chưa xác thực</span>'!!}
                                 </td>
                                 <td>
                                     <a href="{{route('admin.tai-khoans.show', $taiKhoan->id)}}" class="btn btn-info">Xem chi tiết</a>
@@ -99,8 +107,10 @@
                                 <th>Tên</th>
                                 <th>Giới tính</th>
                                 <th>Ảnh đại diện</th>
+                                <th>Giá thuê 1 giờ</th>
                                 <th>Số dư</th>
                                 <th>Tình trạng</th>
+                                <th>Trạng thái xác thực</th>
                                 <th>Chức năng</th>
                             </tr>
                         </tfoot>

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\LichSuThue;
+use App\Models\TaiKhoan;
 use Illuminate\Console\Command;
 
 class loadDonThue extends Command
@@ -32,10 +33,18 @@ class loadDonThue extends Command
                 'trang_thai' => '2'
             ]);
 
+        $nguoiDuocThue = LichSuThue::where('trang_thai', '=', '3')
+            ->where('expired', '<', now())
+            ->get()->pluck('nguoi_duoc_thue');
+
         LichSuThue::where('trang_thai', '=', '3')
             ->where('expired', '<', now())
             ->update([
                 'trang_thai' => '1'
             ]);
+
+        TaiKhoan::whereIn('id', $nguoiDuocThue)->update([
+            'trang_thai' => 1
+        ]);
     }
 }
