@@ -670,6 +670,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
                 }
 
+                if (trangThai === 4) {
+                    donThueContainer.innerHTML = `
+                    <div class="don-thue-header p-3 border rounded mb-3 bg-primary text-white">
+                        <h5 class="mb-2">${notificationMessage}</h5>
+                        <p class="mb-1"><strong>Thời gian thuê:</strong>${lichSuThue.gio_thue} Giờ</p>
+                        <p class="mb-1">Đang trong trạng thái tranh chấp</p>
+<div class="button-group mt-3">
+                            <button class="btn btn-success me-2" id="acceptBtn">Đi đến đơn thuê</button>
+                        </div>
+                    </div>
+                `;
+                }
+
                 document
                     .getElementById("acceptBtn")
                     .addEventListener("click", () => {

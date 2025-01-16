@@ -50,7 +50,11 @@ class LichSuThue extends Model
         [
             'color' => 'primary',
             'status' => 'Đang thực hiện'
-        ]
+        ],
+        [
+            'color' => 'warning',
+            'status' => 'Trạng thái đang tranh chấp'
+        ],
     ];
 
     public function getTrangThai2Attribute()

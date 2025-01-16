@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\TinNhan;
 use App\Models\ToCao;
+use App\Models\LichSuThue;
+use App\Models\TaiKhoan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -40,6 +42,18 @@ class ToCaoController extends Controller
             'trang_thai' => $request->input('trang_thai'),
             'phong_chat_id' => $request->input('phong_chat_id'),
         ]);
+
+        $taiKhoan = TaiKhoan::find($toCao->nguoi_bi_to_cao);
+        if ($taiKhoan) {
+            $taiKhoan->trang_thai = 2;
+            $taiKhoan->save();
+        }
+
+        $lichSuThue = LichSuThue::find($toCao->lich_su_thue_id);
+        if ($lichSuThue) {
+            $lichSuThue->trang_thai = 4;
+            $lichSuThue->save();
+        }
 
         // Trả về JSON response
         return response()->json([
