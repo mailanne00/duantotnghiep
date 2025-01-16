@@ -81,7 +81,7 @@
                         <div class="col-4 text-center">
                             <i class="fas fa-clock text-white f-20" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-title="Số giờ được thuê"></i>
-                            <h6 class="text-white mt-2 mb-0">189</h6>
+                            <h6 class="text-white mt-2 mb-0">{{$totalHours}}</h6>
                         </div>
                     </div>
                 </div>
@@ -181,9 +181,6 @@
                                 <i class="fas fa-money-bill-wave-alt text-c-blue f-16 mb-2"></i>
                                 <h5 class="m-0">{{number_format($taiKhoan->so_du, 0, ',')}} VNĐ</h5>
                                 <p class="m-0">Số dư</p>
-                            </div>
-                            <div class="process">
-                                <div id="process2" style="height:87px"></div>
                             </div>
                         </div>
                     </div>
