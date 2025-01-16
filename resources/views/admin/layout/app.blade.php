@@ -22,6 +22,8 @@
           content="admin templates, bootstrap admin templates, bootstrap 5, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, Dasho, Dasho bootstrap admin template">
     <meta name="author" content="Phoenixcoded" />
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Favicon icon -->
     <link rel="icon" href="https://files.playerduo.net/production/static-files/logo.png" type="image/x-icon">
     <!-- fontawesome icon -->
@@ -49,6 +51,26 @@
 <!-- [ Pre-loader ] End -->
 <!-- [ navigation menu ] start -->
 <nav class="pcoded-navbar menupos-fixed menu-dark menu-item-icon-style6 ">
+
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: "{{session('error')}}",
+            icon: "error",
+            draggable: true
+        });
+    </script>
+    @endif
+
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: "{{session('success')}}",
+            icon: "success",
+            draggable: true
+        });
+    </script>
+    @endif
     <div
         class="navbar-wrapper ">
         <div class="navbar-brand header-logo">

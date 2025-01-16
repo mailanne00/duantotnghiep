@@ -45,3 +45,5 @@ Route::put('huy-duyet-player/{id}', [\App\Http\Controllers\Admin\DonDuyetPlayerC
 
 Route::resource('nap-tien', \App\Http\Controllers\Admin\NapTienController::class);
 Route::resource('rut-tien', \App\Http\Controllers\Admin\RutTienController::class);
+Route::post('rut-tien/accept/{id}', [\App\Http\Controllers\Admin\RutTienController::class, 'Accept'])->name('rutTien.thanhToan');
+Route::post('rut-tien/cancel/{id}', [\App\Http\Controllers\Admin\RutTienController::class, 'Cancel'])->name('rutTien.tuChoiThanhToan');

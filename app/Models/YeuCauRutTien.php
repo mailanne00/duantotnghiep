@@ -27,6 +27,16 @@ class YeuCauRutTien extends Model
         ]
     ];
 
+    public function markAsProcessing()
+    {
+        $this->update(['trang_thai' => '1']);
+    }
+
+    public function markAsCancelled()
+    {
+        $this->update(['trang_thai' => '2']);
+    }
+
     public function nguoiRut()
     {
         return $this->belongsTo(TaiKhoan::class, 'tai_khoan_id');

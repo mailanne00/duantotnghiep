@@ -52,9 +52,15 @@
                                 @endif
                                 <td>
                                 @if ($yeuCauRutTien->trang_thai == 0)
-                                <button class="btn btn-success">Đã thanh toán</button> 
+                                <form action="{{route('admin.rutTien.thanhToan', $yeuCauRutTien->id)}}" method="post">
+                                    @csrf
+                                <button class="btn btn-success">Đã thanh toán</button>
+                                </form> 
                                 <br>
+                                <form action="{{route('admin.rutTien.tuChoiThanhToan', $yeuCauRutTien->id)}}" method="post">
+                                @csrf
                                 <button class="btn btn-danger">Từ chối</button>
+                                </form>
                                 @endif
                                 </td>
                             </tr>
