@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ThongtinController extends Controller
 {
-
     const PATH_UPLOAD = 'public/images';
 
     public function index()
     {
         $categories = DanhMuc::all();
         $user = Auth::user();
+
+
 
 
         if (!$user) {
@@ -29,11 +30,9 @@ class ThongtinController extends Controller
         $selectedCategories = DanhMucTaiKhoan::where('tai_khoan_id', $user->id)
             ->pluck('danh_muc_id')
             ->toArray();
-
+        
         return view('client.thong-tin-ca-nhan.index', compact('user', 'categories', 'selectedCategories'));
     }
-
-
 
     public function update(Request $request)
     {
@@ -45,23 +44,24 @@ class ThongtinController extends Controller
             if ($user->anh_dai_dien) {
                 Storage::disk('public')->delete($user->anh_dai_dien);
             }
-
             // Lưu ảnh đại diện mới
             $data['anh_dai_dien'] = Storage::put(self::PATH_UPLOAD, $request->file('anh_dai_dien'));
         }
 
-        if (isset($request->danh_muc)) {
-            $danhMucs = explode(',', $request->danh_muc);
-            DanhMucTaiKhoan::query()->where('tai_khoan_id', Auth::id())->delete();
-            foreach ($danhMucs as $danhMuc) {
-                if ($danhMuc != '') {
-                    DanhMucTaiKhoan::query()->create([
-                        'tai_khoan_id' => Auth::id(),
-                        'danh_muc_id' => $danhMuc
-                    ]);
-                }
-            }
+        DanhMucTaiKhoan::where('tai_khoan_id', $user->id)->delete();
+
+    // Thêm các danh mục mới
+    if ($request->has('danh_muc')) {
+        $danhMucs = explode(',', $request->danh_muc); // Chuyển chuỗi danh mục thành mảng
+        foreach ($danhMucs as $danhMuc) {
+            DanhMucTaiKhoan::create([
+                'tai_khoan_id' => $user->id,
+                'danh_muc_id' => $danhMuc
+            ]);
         }
+    }
+
+    
 
         if ($request->cccd_so) {
             if ($user->trang_thai_xac_thuc != 1) {
@@ -113,7 +113,4 @@ class ThongtinController extends Controller
         return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
     }
 
-
 }
-
-

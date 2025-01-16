@@ -22,6 +22,7 @@ class TaiKhoanController extends Controller
         $gia = $request->query('gia', ''); // Lấy giá trị lọc từ query string
         $taiKhoans = TaiKhoan::query();
 
+
         if (!empty($gioiTinh) && in_array($gioiTinh, ['Nam', 'Nữ', 'Khác'])) {
             $taiKhoans->where('gioi_tinh', $gioiTinh);
         }
@@ -46,6 +47,10 @@ class TaiKhoanController extends Controller
     }
     public function show($id)
     { {
+
+            if ($id == auth()->user()->id) {
+                return redirect('/thong-tin-ca-nhan');
+            }
             // Lấy thông tin của player từ bảng tai_khoans
             $player = TaiKhoan::findOrFail($id);
 

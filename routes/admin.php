@@ -48,3 +48,6 @@ Route::resource('nap-tien', \App\Http\Controllers\Admin\NapTienController::class
 Route::get('/to-caos/approve/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'approve'])->name('to-caos.approve');
 Route::get('/to-caos/reject/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'reject'])->name('to-caos.reject');
 Route::get('/to-caos/choxuli/{id}', [\App\Http\Controllers\Admin\ToCaoController::class, 'choxuli'])->name('to-caos.choxuli');
+Route::resource('rut-tien', \App\Http\Controllers\Admin\RutTienController::class);
+Route::post('rut-tien/accept/{id}', [\App\Http\Controllers\Admin\RutTienController::class, 'Accept'])->name('rutTien.thanhToan');
+Route::post('rut-tien/cancel/{id}', [\App\Http\Controllers\Admin\RutTienController::class, 'Cancel'])->name('rutTien.tuChoiThanhToan');
