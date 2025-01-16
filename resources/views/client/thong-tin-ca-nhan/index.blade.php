@@ -27,6 +27,11 @@
         {{ session('success') }}
     </div>
     @endif
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     <div class="themesflat-container">
         <form action="{{ route('client.thong-tin-ca-nhan.update') }}" method="POST" class="form-profile"
             enctype="multipart/form-data">
@@ -172,9 +177,11 @@
                         <div class="form-infor-profile" id="cccd-video">
 
                             <fieldset>
+                                @if ($user->trang_thai_xac_thuc != 1)
                                 <h4 class="title-infor-account">Ảnh CCCD</h4>
                                 <input type="file" name="cccd" accept="image/*"
-                                    class="form-control text-white bg-dark">
+                                class="form-control text-white bg-dark">
+                                @endif
                                 @error('cccd')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -188,9 +195,11 @@
                             </fieldset>
 
                             <fieldset>
+                            @if ($user->trang_thai_xac_thuc != 1)
                                 <h4 class="title-infor-account">Video Bản Thân</h4>
                                 <input type="file" name="personal_video" accept="video/*"
                                     class="form-control text-white bg-dark">
+                                    @endif
                                 @error('personal_video')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -211,22 +220,25 @@
 
                             <div class="form-infor-profiles">
                                 <div>
+                                @if ($user->trang_thai_xac_thuc != 1)
                                 <h4 class="title-infor-account">Số CCCD</h4>
                                 <input type="text" name="cccd_so" placeholder="Nhập số CCCD"
                                     class="form-control text-white bg-dark">
+                                    @endif
                                 @error('cccd_so')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 @if ($user->cccd_so)
                                 <div class="mt-2">
-                                    <h5>Số CCCD đã tải lên: {{$user->cccd_so}}</h5>
+                                    <h5>Số CCCD đã tải lên: </h5>
+                                    <p style="color:white;font-size: 18px;">{{$user->cccd_so}}</p>
                                 </div>
                                 @endif
                                 </div>
                                 
-                                <div>
+                                <div class="mt-3">
                                 <h4 class="title-create-item">Trạng thái xác thực</h4>
-                                <p>
+                                <p class="text-align-center">
                                     @if ($user->trang_thai_xac_thuc == 1)
                                     <span class="text-success" style="font-size: 18px;">Đã xác thực</span>
                                     @elseif ($user->trang_thai_xac_thuc == 2)
